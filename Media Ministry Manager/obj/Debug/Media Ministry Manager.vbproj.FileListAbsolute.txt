@@ -1,0 +1,83 @@
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.config
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.manifest
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.application
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.pdb
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.xml
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_Main.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdateInventory.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_ViewInventory.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Resources.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe.manifest
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.application
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.xml
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.pdb
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.config
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.manifest
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.application
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.pdb
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.xml
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
+C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_Main.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdateInventory.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_ViewInventory.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Resources.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe.manifest
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.application
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.xml
+C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.pdb
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.config
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.manifest
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.application
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.pdb
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.xml
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Main.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_UpdateInventory.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ViewInventory.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.Resources.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe.manifest
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.application
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Login.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ChangePassword.resources
+C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_CreateUser.resources

@@ -1,0 +1,25 @@
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Release\Media Ministry Manager.exe.config
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Release\Media Ministry Manager.exe
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Release\Media Ministry Manager.pdb
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Release\Media Ministry Manager.xml
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.Media_Ministry_Splash.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_AddNewProduct.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_DisplayOrders.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_Main.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_PlaceOrder.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.Resources.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_AddNewCustomer.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.vbproj.GenerateResource.cache
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.vbproj.CoreCompileInputs.cache
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.exe
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.xml
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.pdb
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Release\Media Ministry Manager.exe.manifest
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Release\Media Ministry Manager.application
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.exe.manifest
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media Ministry Manager.application
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_DisplayCustomers.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_UpdateInventory.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_UpdatePhoneNumber.resources
+C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_ViewInventory.resources

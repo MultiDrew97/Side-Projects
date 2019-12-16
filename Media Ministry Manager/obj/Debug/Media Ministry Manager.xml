@@ -1,0 +1,221 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Media Ministry Manager
+</name>
+</assembly>
+<members>
+<member name="T:Media_Ministry.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Media_Ministry.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Media_Ministry.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:Media_Ministry.My.Resources.Resources.logout_button">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Media_Ministry.My.Resources.Resources.Media_Ministry_Manage_Image">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.INVENTORYDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDER_COUNTSDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDERSDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.COMPLETED_ORDER_COUNTSDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.COMPLETED_ORDERSDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.CUSTOMERSDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDER_SUMMARYDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.INVENTORYRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDER_COUNTSRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDERSRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.COMPLETED_ORDER_COUNTSRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.COMPLETED_ORDERSRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.CUSTOMERSRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDER_SUMMARYRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.INVENTORYRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDER_COUNTSRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDERSRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.COMPLETED_ORDER_COUNTSRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.COMPLETED_ORDERSRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.CUSTOMERSRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSet.ORDER_SUMMARYRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_COUNTSTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.ORDERSTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.COMPLETED_ORDER_COUNTSTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.COMPLETED_ORDERSTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Media_Ministry.Media_MinistryDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Media_Ministry.Media_MinistryDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Media_Ministry.Media_MinistryDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager.UpdateAll(Media_Ministry.Media_MinistryDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+</members>
+</doc>
