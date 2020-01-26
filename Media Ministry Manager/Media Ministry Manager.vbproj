@@ -15,9 +15,10 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>ftp://127.0.0.1/FTP_Server/Media_Ministry_Manager/</PublishUrl>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\inetpub\wwwroot\Media Ministry Manager\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,8 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\127.0.0.1\Media_Ministry_Manager\</InstallUrl>
-    <UpdateUrl>\\192.168.1.63\Media_Ministry_Manager\</UpdateUrl>
+    <UpdateUrl>http://192.168.56.1/Media Ministry Manager/</UpdateUrl>
     <ProductName>Media Ministry Manager</ProductName>
     <PublisherName>Andrew Randle-Warren</PublisherName>
     <SuiteName>Media Ministry</SuiteName>
@@ -38,7 +38,6 @@
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

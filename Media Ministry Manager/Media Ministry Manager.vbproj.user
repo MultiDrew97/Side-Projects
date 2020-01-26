@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>ftp://127.0.0.1/FTP_Server/Media_Ministry_Manager/|ftp://192.168.1.63/FTP_Server/Media_Ministry_Manager/|ftp://192.168.1.63/FTP Server/Media Ministry Manager/|ftp://192.168.1.63/Media Ministry Manager/|ftp://192.168.1.63/Media Ministry Manager/Media Ministry Manager.zip/</PublishUrlHistory>
+    <PublishUrlHistory>C:\inetpub\wwwroot\Media Ministry Manager\|ftp://127.0.0.1/FTP_Server/Media_Ministry_Manager/|ftp://192.168.1.63/FTP_Server/Media_Ministry_Manager/|ftp://192.168.1.63/FTP Server/Media Ministry Manager/|ftp://192.168.1.63/Media Ministry Manager/</PublishUrlHistory>
     <InstallUrlHistory>\\127.0.0.1\Media_Ministry_Manager\|\\192.168.1.63\Media_Ministry_Manager\|\\192.168.1.63\Media Ministry Manager\|http://localhost/Media Ministry Manager/|\\192.168.1.63\Side Projects\FTP Server\</InstallUrlHistory>
     <SupportUrlHistory />
-    <UpdateUrlHistory>\\192.168.1.63\Media Ministry Manager\|\\192.168.1.63\FTP Server\|\\fileserver\FTP Server\</UpdateUrlHistory>
+    <UpdateUrlHistory>\\192.168.1.63\Media_Ministry_Manager\|\\192.168.1.63\Media Ministry Manager\|\\192.168.1.63\FTP Server\|\\fileserver\FTP Server\</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arand\\OneDrive\\Documents\\Side_Projects\\Media Ministry Manager\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {}
+    "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arand\\OneDrive\\Documents\\Side_Projects\\Media Ministry Manager\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {
+    "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arand\\OneDrive\\Documents\\Side_Projects\\Media Ministry Manager\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
+        "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
         "projectName": "MediaMinistryManagerMobile",
-        "projectPath": "C:\\Users\\arand\\OneDrive\\Documents\\Side_Projects\\Media Ministry Manager\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
+        "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
         "packagesPath": "C:\\Users\\arand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arand\\OneDrive\\Documents\\Side_Projects\\Media Ministry Manager\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\obj\\",
+        "outputPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
