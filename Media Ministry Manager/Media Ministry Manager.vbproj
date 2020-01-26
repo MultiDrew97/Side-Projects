@@ -14,11 +14,11 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <PublishUrl>C:\inetpub\wwwroot\Media Ministry Manager\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -26,14 +26,16 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://192.168.56.1/Media Ministry Manager/</UpdateUrl>
+    <InstallUrl>http://192.168.1.62/Media Ministry Manager/</InstallUrl>
+    <UpdateUrl>http://192.168.1.62/Media Ministry Manager/</UpdateUrl>
     <ProductName>Media Ministry Manager</ProductName>
     <PublisherName>Andrew Randle-Warren</PublisherName>
     <SuiteName>Media Ministry</SuiteName>
-    <MinimumRequiredVersion>1.1.5.18</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.1.28.0</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>25</ApplicationRevision>
-    <ApplicationVersion>1.1.26.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.1.28.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
