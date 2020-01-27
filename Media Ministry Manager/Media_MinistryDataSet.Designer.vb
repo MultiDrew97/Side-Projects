@@ -2717,18 +2717,18 @@ Partial Public Class Media_MinistryDataSet
                 Me(Me.tableINVENTORY.ITEM_INDEXColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>
-        Public Overloads Property ITEM() As String
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ITEM() As String
             Get
-                Return CType(Me(Me.tableINVENTORY.ITEMColumn), String)
+                Return CType(Me(Me.tableINVENTORY.ITEMColumn),String)
             End Get
             Set
-                Me(Me.tableINVENTORY.ITEMColumn) = Value
+                Me(Me.tableINVENTORY.ITEMColumn) = value
             End Set
         End Property
-
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property IN_STOCK() As Integer
@@ -3419,17 +3419,17 @@ Partial Public Class Media_MinistryDataSet
             End Set
         End Property
         
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>
-        Public Overloads Property ITEM() As String
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ITEM() As String
             Get
-                Return CType(Me(Me.tableORDER_SUMMARY.ITEMColumn), String)
+                Return CType(Me(Me.tableORDER_SUMMARY.ITEMColumn),String)
             End Get
             Set
-                Me(Me.tableORDER_SUMMARY.ITEMColumn) = Value
+                Me(Me.tableORDER_SUMMARY.ITEMColumn) = value
             End Set
         End Property
-
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property QUANTITY() As Integer
@@ -3857,8 +3857,8 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[INVENTORY] ([ITEM_INDEX], [ITEM], [IN_STOCK], [PRICE]) VALUES "& _ 
-                "(@ITEM_INDEX, @ITEM, @IN_STOCK, @PRICE);"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM_INDEX, ITEM, IN_STOCK, PRIC"& _ 
-                "E FROM INVENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
+                "(@ITEM_INDEX, @ITEM, @IN_STOCK, @PRICE);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM_INDEX, ITEM, IN_STOCK, PRI"& _ 
+                "CE FROM INVENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM_INDEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -3870,8 +3870,8 @@ Namespace Media_MinistryDataSetTableAdapters
                 "K] = @IN_STOCK, [PRICE] = @PRICE WHERE (([ITEM_INDEX] = @Original_ITEM_INDEX) AN"& _ 
                 "D ([ITEM] = @Original_ITEM) AND ((@IsNull_IN_STOCK = 1 AND [IN_STOCK] IS NULL) O"& _ 
                 "R ([IN_STOCK] = @Original_IN_STOCK)) AND ((@IsNull_PRICE = 1 AND [PRICE] IS NULL"& _ 
-                ") OR ([PRICE] = @Original_PRICE)));"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM_INDEX, ITEM, IN_STOCK, PRICE FRO"& _ 
-                "M INVENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
+                ") OR ([PRICE] = @Original_PRICE)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM_INDEX, ITEM, IN_STOCK, PRICE FR"& _ 
+                "OM INVENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM_INDEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -3889,7 +3889,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.Media_MinistryConnectionString
+            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.masterConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4231,7 +4231,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.Media_MinistryConnectionString
+            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.masterConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4240,7 +4240,7 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ORDER_NUMBER, ITEM_INDEX"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ORDER_COUNTS"
+            Me._commandCollection(0).CommandText = "SELECT        ORDER_NUMBER, ITEM_INDEX"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ORDER_COUNTS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -4482,8 +4482,8 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ORDERS] ([ORDER_NUMBER], [FIRST_NAME], [LAST_NAME], [SHIPPING_"& _ 
                 "ADDRESS], [PHONE_NUMBER], [PAYMENT_TYPE], [ORDER_DATE]) VALUES (@ORDER_NUMBER, @"& _ 
                 "FIRST_NAME, @LAST_NAME, @SHIPPING_ADDRESS, @PHONE_NUMBER, @PAYMENT_TYPE, @ORDER_"& _ 
-                "DATE);"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, FIRST_NAME, LAST_NAME, SHIPPING_ADDRESS, PHONE_NUMBE"& _ 
-                "R, PAYMENT_TYPE, ORDER_DATE FROM ORDERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
+                "DATE);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, FIRST_NAME, LAST_NAME, SHIPPING_ADDRESS, PHONE_NUMB"& _ 
+                "ER, PAYMENT_TYPE, ORDER_DATE FROM ORDERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_NUMBER", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4502,9 +4502,9 @@ Namespace Media_MinistryDataSetTableAdapters
                 "ESS = 1 AND [SHIPPING_ADDRESS] IS NULL) OR ([SHIPPING_ADDRESS] = @Original_SHIPP"& _ 
                 "ING_ADDRESS)) AND ([PHONE_NUMBER] = @Original_PHONE_NUMBER) AND ((@IsNull_PAYMEN"& _ 
                 "T_TYPE = 1 AND [PAYMENT_TYPE] IS NULL) OR ([PAYMENT_TYPE] = @Original_PAYMENT_TY"& _ 
-                "PE)) AND ([ORDER_DATE] = @Original_ORDER_DATE));"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, FIRST_NAME"& _ 
-                ", LAST_NAME, SHIPPING_ADDRESS, PHONE_NUMBER, PAYMENT_TYPE, ORDER_DATE FROM ORDER"& _ 
-                "S WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
+                "PE)) AND ([ORDER_DATE] = @Original_ORDER_DATE));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, FIRST_NAM"& _ 
+                "E, LAST_NAME, SHIPPING_ADDRESS, PHONE_NUMBER, PAYMENT_TYPE, ORDER_DATE FROM ORDE"& _ 
+                "RS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_NUMBER", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4528,7 +4528,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.Media_MinistryConnectionString
+            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.masterConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4943,8 +4943,8 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[COMPLETED_ORDER_COUNTS] ([ORDER_INDEX], [ORDER_NUMBER], [ITEM_"& _ 
                 "INDEX], [QUANTITY]) VALUES (@ORDER_INDEX, @ORDER_NUMBER, @ITEM_INDEX, @QUANTITY)"& _ 
-                ";"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_INDEX, ORDER_NUMBER, ITEM_INDEX, QUANTITY FROM COMPLETED_ORDER_CO"& _ 
-                "UNTS WHERE (ORDER_INDEX = @ORDER_INDEX)"
+                ";"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_INDEX, ORDER_NUMBER, ITEM_INDEX, QUANTITY FROM COMPLETED_ORDER_C"& _ 
+                "OUNTS WHERE (ORDER_INDEX = @ORDER_INDEX)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_INDEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_NUMBER", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4956,9 +4956,9 @@ Namespace Media_MinistryDataSetTableAdapters
                 "MBER] = @ORDER_NUMBER, [ITEM_INDEX] = @ITEM_INDEX, [QUANTITY] = @QUANTITY WHERE "& _ 
                 "(([ORDER_INDEX] = @Original_ORDER_INDEX) AND ((@IsNull_ORDER_NUMBER = 1 AND [ORD"& _ 
                 "ER_NUMBER] IS NULL) OR ([ORDER_NUMBER] = @Original_ORDER_NUMBER)) AND ([ITEM_IND"& _ 
-                "EX] = @Original_ITEM_INDEX) AND ([QUANTITY] = @Original_QUANTITY));"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER"& _ 
-                "_INDEX, ORDER_NUMBER, ITEM_INDEX, QUANTITY FROM COMPLETED_ORDER_COUNTS WHERE (OR"& _ 
-                "DER_INDEX = @ORDER_INDEX)"
+                "EX] = @Original_ITEM_INDEX) AND ([QUANTITY] = @Original_QUANTITY));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDE"& _ 
+                "R_INDEX, ORDER_NUMBER, ITEM_INDEX, QUANTITY FROM COMPLETED_ORDER_COUNTS WHERE (O"& _ 
+                "RDER_INDEX = @ORDER_INDEX)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_INDEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_NUMBER", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4975,7 +4975,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.Media_MinistryConnectionString
+            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.masterConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5288,8 +5288,8 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[COMPLETED_ORDERS] ([ORDER_NUMBER], [PHONE_NUMBER]) VALUES (@OR"& _ 
-                "DER_NUMBER, @PHONE_NUMBER);"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, PHONE_NUMBER FROM COMPLETED_ORD"& _ 
-                "ERS WHERE (ORDER_NUMBER = @ORDER_NUMBER)"
+                "DER_NUMBER, @PHONE_NUMBER);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, PHONE_NUMBER FROM COMPLETED_OR"& _ 
+                "DERS WHERE (ORDER_NUMBER = @ORDER_NUMBER)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_NUMBER", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PHONE_NUMBER", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PHONE_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5298,8 +5298,8 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[COMPLETED_ORDERS] SET [ORDER_NUMBER] = @ORDER_NUMBER, [PHONE_NUMBER"& _ 
                 "] = @PHONE_NUMBER WHERE (([ORDER_NUMBER] = @Original_ORDER_NUMBER) AND ((@IsNull"& _ 
                 "_PHONE_NUMBER = 1 AND [PHONE_NUMBER] IS NULL) OR ([PHONE_NUMBER] = @Original_PHO"& _ 
-                "NE_NUMBER)));"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, PHONE_NUMBER FROM COMPLETED_ORDERS WHERE (ORD"& _ 
-                "ER_NUMBER = @ORDER_NUMBER)"
+                "NE_NUMBER)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ORDER_NUMBER, PHONE_NUMBER FROM COMPLETED_ORDERS WHERE (OR"& _ 
+                "DER_NUMBER = @ORDER_NUMBER)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ORDER_NUMBER", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ORDER_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PHONE_NUMBER", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PHONE_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5312,7 +5312,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.Media_MinistryConnectionString
+            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.masterConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5648,9 +5648,9 @@ Namespace Media_MinistryDataSetTableAdapters
                 "PPING_CITY], [SHIPPING_STATE], [SHIPPING_ZIP], [PHONE_NUMBER], [EMAIL], [PREFERR"& _ 
                 "ED_PAYMENT], [JOIN_DATE]) VALUES (@FIRST_NAME, @LAST_NAME, @SHIPPING_STREET, @SH"& _ 
                 "IPPING_CITY, @SHIPPING_STATE, @SHIPPING_ZIP, @PHONE_NUMBER, @EMAIL, @PREFERRED_P"& _ 
-                "AYMENT, @JOIN_DATE);"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CIT"& _ 
-                "Y, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRED_PAYMENT, JOIN_DA"& _ 
-                "TE FROM CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
+                "AYMENT, @JOIN_DATE);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CI"& _ 
+                "TY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRED_PAYMENT, JOIN_D"& _ 
+                "ATE FROM CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LAST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LAST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5678,9 +5678,9 @@ Namespace Media_MinistryDataSetTableAdapters
                 "NUMBER] = @Original_PHONE_NUMBER) AND ((@IsNull_EMAIL = 1 AND [EMAIL] IS NULL) O"& _ 
                 "R ([EMAIL] = @Original_EMAIL)) AND ((@IsNull_PREFERRED_PAYMENT = 1 AND [PREFERRE"& _ 
                 "D_PAYMENT] IS NULL) OR ([PREFERRED_PAYMENT] = @Original_PREFERRED_PAYMENT)) AND "& _ 
-                "([JOIN_DATE] = @Original_JOIN_DATE));"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, LAST_NAME, SHIPPING_STR"& _ 
-                "EET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRED"& _ 
-                "_PAYMENT, JOIN_DATE FROM CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
+                "([JOIN_DATE] = @Original_JOIN_DATE));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, LAST_NAME, SHIPPING_ST"& _ 
+                "REET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRE"& _ 
+                "D_PAYMENT, JOIN_DATE FROM CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LAST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LAST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5714,7 +5714,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.Media_MinistryConnectionString
+            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.masterConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6250,7 +6250,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.Media_MinistryConnectionString
+            Me._connection.ConnectionString = Global.Media_Ministry.My.MySettings.Default.masterConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

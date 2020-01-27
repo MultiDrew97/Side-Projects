@@ -23,6 +23,7 @@ Partial Class frm_Login
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Login))
         Me.btn_LogIn = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -140,9 +141,9 @@ Partial Class frm_Login
         'btn_ChangePassword
         '
         Me.btn_ChangePassword.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ChangePassword.Location = New System.Drawing.Point(269, 135)
+        Me.btn_ChangePassword.Location = New System.Drawing.Point(268, 135)
         Me.btn_ChangePassword.Name = "btn_ChangePassword"
-        Me.btn_ChangePassword.Size = New System.Drawing.Size(17, 32)
+        Me.btn_ChangePassword.Size = New System.Drawing.Size(18, 32)
         Me.btn_ChangePassword.TabIndex = 4
         Me.btn_ChangePassword.Text = ">"
         Me.tt_Info.SetToolTip(Me.btn_ChangePassword, "Change Password")
@@ -164,6 +165,8 @@ Partial Class frm_Login
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btn_LogIn)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimizeBox = False
         Me.Name = "frm_Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"

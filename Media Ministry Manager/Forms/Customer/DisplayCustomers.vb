@@ -1,5 +1,5 @@
 ﻿Option Strict On
-Imports Media_Ministry.frm_AddNewCustomer
+Imports System.Data.SqlClient
 Public Class frm_DisplayCustomers
     Private db As Database
     Private mainForm As frm_Main
@@ -54,7 +54,7 @@ Public Class frm_DisplayCustomers
                     Try
                         db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
                         updateCount += 1
-                    Catch
+                    Catch ex As SqlException
                         failedUpdate = True
                     End Try
                 End If
@@ -108,7 +108,7 @@ Public Class frm_DisplayCustomers
 
     Private Sub btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
         Dim updateNumber = New frm_UpdatePhoneNumber(db, Me)
-        updateNumber.show()
+        updateNumber.Show()
         Me.Hide()
     End Sub
 

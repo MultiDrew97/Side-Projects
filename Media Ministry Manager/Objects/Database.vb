@@ -25,8 +25,14 @@ Public Class Database
         myConn.Open()
     End Sub
 
-    Public Sub New()
-        myConn = New SqlConnection(My.Settings.Media_MinistryConnectionString)
+    Public Sub New(username As String, password As String)
+        Dim connectionString As SqlConnectionStringBuilder = New SqlConnectionStringBuilder()
+        connectionString.UserID = username
+        connectionString.Password = password
+        connectionString.DataSource = My.Settings.DataSource
+        connectionString.InitialCatalog = My.Settings.InitalCatalog
+
+        myConn = New SqlConnection(connectionString.ConnectionString)
         myCmd = myConn.CreateCommand
         myConn.Open()
     End Sub
@@ -37,6 +43,8 @@ Public Class Database
             'if the reader is still open, close it
             myReader.Close()
         End If
+
+
         myConn.Close()
         myConn.Dispose()
     End Sub
@@ -50,7 +58,7 @@ Public Class Database
     End Sub
 
     Public Sub ChangePassword(username As String, password As String)
-        myCmd.CommandText = String.Format("ALTER USER {0} WITH PASSWORD = '{1}'", username, password)
+        myCmd.CommandText = String.Format("ALTER LOGIN {0} WITH PASSWORD = '{1}'", username, password)
 
         myReader = myCmd.ExecuteReader()
 

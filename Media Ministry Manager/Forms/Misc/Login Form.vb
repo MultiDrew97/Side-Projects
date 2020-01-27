@@ -7,17 +7,17 @@ Public Class frm_Login
     Private Sub frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
 
-        _dbConnection = New SqlConnectionStringBuilder
+        _dbConnection = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
 
-        _dbConnection.DataSource = My.Settings.DataSource
-        _dbConnection.InitialCatalog = My.Settings.InitalCatalog
-        _dbConnection.PersistSecurityInfo = My.Settings.PersistSecurityInfo
+        '_dbConnection.DataSource = My.Settings.DataSource
+        '_dbConnection.InitialCatalog = My.Settings.InitalCatalog
+        '_dbConnection.PersistSecurityInfo = My.Settings.PersistSecurityInfo
     End Sub
 
     Private Sub frm_Login_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         If My.Settings.KeepLoggedIn Then
-            _dbConnection.Password = txt_Password.Text
             _dbConnection.UserID = txt_Username.Text
+            _dbConnection.Password = txt_Password.Text
 
             btn_LogIn.PerformClick()
         End If
@@ -33,12 +33,15 @@ Public Class frm_Login
                 _dbConnection.UserID = txt_Username.Text
             End If
 
-            Dim db = New Database(_dbConnection)
+            If checkCreds(txt_Username.Text, txt_Password.Text) Then
+                Dim db = New Database(_dbConnection)
 
-            Dim mainForm = New frm_Main(db)
-            mainForm.Show()
-
-            bw_SaveSettings.RunWorkerAsync()
+                Dim mainForm = New frm_Main(db)
+                mainForm.Show()
+                bw_SaveSettings.RunWorkerAsync()
+                'Else
+                'Throw New SqlException()
+            End If
         Catch exception As SqlException
             tss_UserFeedback.Text = "Username/Password was inccorect. Please try again."
             tss_UserFeedback.ForeColor = Color.Red
@@ -47,9 +50,9 @@ Public Class frm_Login
     End Sub
 
     Private Sub reset()
-        txt_Username.Focus()
         txt_Username.Clear()
         txt_Password.Clear()
+        txt_Username.Focus()
         tss_UserFeedback.Text = "Please enter your log-in information"
         tss_UserFeedback.ForeColor = Color.Black
         chk_KeepLoggedIn.Checked = False
@@ -83,6 +86,19 @@ Public Class frm_Login
         password.show()
         Me.Hide()
     End Sub
+
+    Private Function checkCreds(username As String, password As String) As Boolean
+        Try
+            Dim db As Database = New Database(username, password)
+            db.Close()
+            Return True
+        Catch e As SqlException
+            tss_UserFeedback.Text = "Username/Password was inccorect. Please try again."
+            tss_UserFeedback.ForeColor = Color.Red
+            Console.WriteLine(e.Message)
+            Return False
+        End Try
+    End Function
 
 
     'creating a login for a user in the database

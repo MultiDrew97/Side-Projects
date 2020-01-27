@@ -15,6 +15,7 @@ Public Class frm_PlaceOrder
         _db = database
         Me.mainForm = mainForm
         bw_LoadingData.RunWorkerAsync()
+        wait(1)
     End Sub
 
     Private Sub frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -70,5 +71,14 @@ Public Class frm_PlaceOrder
 
     Private Sub bw_LoadingData_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_LoadingData.RunWorkerCompleted
         Console.WriteLine("Done working")
+    End Sub
+
+    Private Sub wait(ByVal seconds As Integer)
+        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
+
+        For i As Integer = 0 To seconds * 100
+            System.Threading.Thread.Sleep(10)
+            Application.DoEvents()
+        Next
     End Sub
 End Class

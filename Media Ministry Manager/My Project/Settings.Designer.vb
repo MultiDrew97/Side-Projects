@@ -57,11 +57,11 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P"& _ 
-            "ersist Security Info=True;User ID=arandlemiller97;Password=AMrw2697")>  _
-        Public ReadOnly Property Media_MinistryConnectionString() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
+            "ser ID=arandlemiller97;Password=AMrw2697")>  _
+        Public ReadOnly Property masterConnectionString() As String
             Get
-                Return CType(Me("Media_MinistryConnectionString"),String)
+                Return CType(Me("masterConnectionString"),String)
             End Get
         End Property
         
@@ -125,6 +125,42 @@ Namespace My
             End Get
             Set
                 Me("KeepLoggedIn") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property AdminUser() As String
+            Get
+                Return CType(Me("AdminUser"),String)
+            End Get
+            Set
+                Me("AdminUser") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property AdminPass() As String
+            Get
+                Return CType(Me("AdminPass"),String)
+            End Get
+            Set
+                Me("AdminPass") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property AdminInfoRecieved() As Boolean
+            Get
+                Return CType(Me("AdminInfoRecieved"),Boolean)
+            End Get
+            Set
+                Me("AdminInfoRecieved") = value
             End Set
         End Property
     End Class

@@ -32,12 +32,13 @@ Partial Class frm_Main
         Me.ss_Queries = New System.Windows.Forms.StatusStrip()
         Me.tss_DatabaseQueries = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_LogOut = New System.Windows.Forms.Button()
+        Me.bw_Database = New System.ComponentModel.BackgroundWorker()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
         Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CUSTOMERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
-        Me.bw_Database = New System.ComponentModel.BackgroundWorker()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ss_Queries.SuspendLayout()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,50 +48,50 @@ Partial Class frm_Main
         'btn_placeOrder
         '
         Me.btn_placeOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_placeOrder.Location = New System.Drawing.Point(92, 93)
+        Me.btn_placeOrder.Location = New System.Drawing.Point(92, 88)
         Me.btn_placeOrder.Name = "btn_placeOrder"
-        Me.btn_placeOrder.Size = New System.Drawing.Size(179, 48)
-        Me.btn_placeOrder.TabIndex = 1
+        Me.btn_placeOrder.Size = New System.Drawing.Size(179, 50)
+        Me.btn_placeOrder.TabIndex = 2
         Me.btn_placeOrder.Text = "Place an Order"
         Me.btn_placeOrder.UseVisualStyleBackColor = True
         '
         'btn_ShowOrders
         '
         Me.btn_ShowOrders.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ShowOrders.Location = New System.Drawing.Point(92, 171)
+        Me.btn_ShowOrders.Location = New System.Drawing.Point(92, 163)
         Me.btn_ShowOrders.Name = "btn_ShowOrders"
-        Me.btn_ShowOrders.Size = New System.Drawing.Size(179, 48)
-        Me.btn_ShowOrders.TabIndex = 2
+        Me.btn_ShowOrders.Size = New System.Drawing.Size(179, 50)
+        Me.btn_ShowOrders.TabIndex = 3
         Me.btn_ShowOrders.Text = "Show Orders"
         Me.btn_ShowOrders.UseVisualStyleBackColor = True
         '
         'btn_ProductManagement
         '
         Me.btn_ProductManagement.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ProductManagement.Location = New System.Drawing.Point(92, 249)
+        Me.btn_ProductManagement.Location = New System.Drawing.Point(92, 238)
         Me.btn_ProductManagement.Name = "btn_ProductManagement"
-        Me.btn_ProductManagement.Size = New System.Drawing.Size(179, 48)
-        Me.btn_ProductManagement.TabIndex = 3
+        Me.btn_ProductManagement.Size = New System.Drawing.Size(179, 50)
+        Me.btn_ProductManagement.TabIndex = 4
         Me.btn_ProductManagement.Text = "Product Management"
         Me.btn_ProductManagement.UseVisualStyleBackColor = True
         '
         'btn_AddNewCustomer
         '
         Me.btn_AddNewCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(92, 15)
+        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(92, 13)
         Me.btn_AddNewCustomer.Name = "btn_AddNewCustomer"
-        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(179, 48)
-        Me.btn_AddNewCustomer.TabIndex = 0
+        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(179, 50)
+        Me.btn_AddNewCustomer.TabIndex = 1
         Me.btn_AddNewCustomer.Text = "Customer Management"
         Me.btn_AddNewCustomer.UseVisualStyleBackColor = True
         '
         'ss_Queries
         '
         Me.ss_Queries.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_DatabaseQueries})
-        Me.ss_Queries.Location = New System.Drawing.Point(0, 324)
+        Me.ss_Queries.Location = New System.Drawing.Point(0, 391)
         Me.ss_Queries.Name = "ss_Queries"
-        Me.ss_Queries.Size = New System.Drawing.Size(369, 22)
-        Me.ss_Queries.TabIndex = 15
+        Me.ss_Queries.Size = New System.Drawing.Size(397, 22)
+        Me.ss_Queries.TabIndex = 0
         '
         'tss_DatabaseQueries
         '
@@ -106,7 +107,7 @@ Partial Class frm_Main
         Me.btn_LogOut.Location = New System.Drawing.Point(331, 12)
         Me.btn_LogOut.Name = "btn_LogOut"
         Me.btn_LogOut.Size = New System.Drawing.Size(26, 24)
-        Me.btn_LogOut.TabIndex = 16
+        Me.btn_LogOut.TabIndex = 6
         Me.btn_LogOut.UseVisualStyleBackColor = False
         '
         'INVENTORYBindingSource
@@ -132,8 +133,15 @@ Partial Class frm_Main
         '
         Me.CUSTOMERSTableAdapter.ClearBeforeFill = True
         '
-        'bw_Database
+        'Button1
         '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Button1.Location = New System.Drawing.Point(92, 313)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(179, 50)
+        Me.Button1.TabIndex = 5
+        Me.Button1.Text = "Email Ministry"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frm_Main
         '
@@ -141,7 +149,8 @@ Partial Class frm_Main
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Media_Ministry.My.Resources.Resources.Media_Ministry_Manage_Image
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(369, 346)
+        Me.ClientSize = New System.Drawing.Size(397, 413)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btn_LogOut)
         Me.Controls.Add(Me.ss_Queries)
         Me.Controls.Add(Me.btn_AddNewCustomer)
@@ -177,4 +186,5 @@ Partial Class frm_Main
     Friend WithEvents CUSTOMERSTableAdapter As Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents btn_LogOut As Button
     Friend WithEvents bw_Database As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Button1 As Button
 End Class

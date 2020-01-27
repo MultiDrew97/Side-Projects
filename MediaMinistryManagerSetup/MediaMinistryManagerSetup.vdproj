@@ -21,8 +21,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6B492821DD6490F102F2DE2540DAD9DB"
+        "MsmKey" = "8:_21C09626480AAA9AA1610EA15678CC49"
+        "OwnerKey" = "8:_854162708FF3A32115C35909B644F4A4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_21C09626480AAA9AA1610EA15678CC49"
         "OwnerKey" = "8:_D266AB4CA515400A8AA669B03CA1333B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_854162708FF3A32115C35909B644F4A4"
+        "OwnerKey" = "8:_D266AB4CA515400A8AA669B03CA1333B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BBFB76FC7A38423082AFC154FAFB3CEA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -33,6 +51,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F603052F4251114B0DA5BC5E4FED358C"
+        "OwnerKey" = "8:_D266AB4CA515400A8AA669B03CA1333B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F603052F4251114B0DA5BC5E4FED358C"
+        "OwnerKey" = "8:_854162708FF3A32115C35909B644F4A4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D266AB4CA515400A8AA669B03CA1333B"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,7 +70,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6B492821DD6490F102F2DE2540DAD9DB"
+        "OwnerKey" = "8:_854162708FF3A32115C35909B644F4A4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_21C09626480AAA9AA1610EA15678CC49"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F603052F4251114B0DA5BC5E4FED358C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -168,14 +210,76 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6B492821DD6490F102F2DE2540DAD9DB"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_21C09626480AAA9AA1610EA15678CC49"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_21C09626480AAA9AA1610EA15678CC49"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_67D267DEF9014059AB8F7B732C4D136E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_854162708FF3A32115C35909B644F4A4"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Mailjet.Client, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_854162708FF3A32115C35909B644F4A4"
+                    {
+                    "Name" = "8:Mailjet.Client.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Mailjet.Client.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_67D267DEF9014059AB8F7B732C4D136E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F603052F4251114B0DA5BC5E4FED358C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_6B492821DD6490F102F2DE2540DAD9DB"
+                    "_F603052F4251114B0DA5BC5E4FED358C"
                     {
                     "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
@@ -814,9 +918,37 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BBFB76FC7A38423082AFC154FAFB3CEA"
+            {
+            "SourcePath" = "8:..\\SendEmails\\obj\\Debug\\netcoreapp3.1\\SendEmails.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_67D267DEF9014059AB8F7B732C4D136E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{A59B850F-0ADC-4199-973D-12C18A04723F}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D266AB4CA515400A8AA669B03CA1333B"
             {
-            "SourcePath" = "8:..\\Old Man's Media Ministry\\obj\\Debug\\Media Ministry Manager.exe"
+            "SourcePath" = "8:..\\Media Ministry Manager\\obj\\Debug\\Media Ministry Manager.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_67D267DEF9014059AB8F7B732C4D136E"

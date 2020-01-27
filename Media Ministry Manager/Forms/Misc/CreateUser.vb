@@ -12,14 +12,20 @@ Public Class frm_CreateUser
     Private Sub btn_Create_Click(sender As Object, e As EventArgs) Handles btn_Create.Click
         Try
             If passwordCheck() Then
-                Dim adminUser = InputBox("Enter admin username", "Enter admin password")
+                'Dim adminUser = InputBox("Enter admin username", "Enter admin password")
 
-                Console.WriteLine(adminUser)
-                Dim adminPassword = InputBox("Enter admin")
+                'Console.WriteLine(adminUser)
+                'Dim adminPassword = InputBox("Enter admin")
+                Dim adminInfo As frm_AdminSignIn = New frm_AdminSignIn()
+                adminInfo.Show()
 
-                _connection.UserID = adminUser
-                _connection.Password = adminPassword
+
+                _connection.UserID = My.Settings.AdminUser
+                _connection.Password = My.Settings.AdminPass
                 db.CreateUser(txt_Username.Text, txt_Password.Text)
+
+                My.Settings.AdminUser = ""
+                My.Settings.AdminPass = ""
                 Me.Close()
             Else
                 Throw New Exception(String.Format("Password: {0}\nConfirm{1}", txt_Password.Text, txt_ConfirmPassword.Text))
@@ -48,7 +54,11 @@ Public Class frm_CreateUser
     End Function
 
     Private Sub frm_CreateUser_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        db.Close()
+        If db IsNot Nothing Then
+            'if there is a connection open, then close it
+            db.Close()
+        End If
+
         frm_Login.Show()
     End Sub
 End Class

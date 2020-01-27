@@ -31,10 +31,10 @@
     <ProductName>Media Ministry Manager</ProductName>
     <PublisherName>Andrew Randle-Warren</PublisherName>
     <SuiteName>Media Ministry</SuiteName>
-    <MinimumRequiredVersion>1.1.28.0</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.1.28.2</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.1.28.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -97,6 +97,13 @@
     <ApplicationIcon>Resources\App Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mailjet.Client, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mailjet.Api.1.2.2\lib\net45\Mailjet.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -129,6 +136,12 @@
     <Compile Include="Assets\Media Ministry Splash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Email Listeners\EmailListeners.Designer.vb">
+      <DependentUpon>EmailListeners.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\EmailListeners.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Inventory\AddNewProduct.Designer.vb">
       <DependentUpon>AddNewProduct.vb</DependentUpon>
     </Compile>
@@ -151,6 +164,12 @@
       <DependentUpon>CreateUser.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Misc\CreateUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Misc\frm_AdminSignIn.Designer.vb">
+      <DependentUpon>frm_AdminSignIn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Misc\frm_AdminSignIn.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Misc\Login Form.Designer.vb">
@@ -233,6 +252,9 @@
       <DependentUpon>Media Ministry Splash.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Email Listeners\EmailListeners.resx">
+      <DependentUpon>EmailListeners.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory\AddNewProduct.resx">
       <DependentUpon>AddNewProduct.vb</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Misc\CreateUser.resx">
       <DependentUpon>CreateUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Misc\frm_AdminSignIn.resx">
+      <DependentUpon>frm_AdminSignIn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Misc\Login Form.resx">
       <DependentUpon>Login Form.vb</DependentUpon>
@@ -315,6 +340,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\Media Ministry Manage Image.JPG" />
   </ItemGroup>
   <ItemGroup>

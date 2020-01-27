@@ -110,3 +110,9 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AdminSignIn.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_EmailListeners.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Mailjet.Client.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CopyComplete

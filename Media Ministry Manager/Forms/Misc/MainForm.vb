@@ -14,12 +14,12 @@ Public Class frm_Main
     End Sub
 
     Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
-        Me.CUSTOMERSTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
-        Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet1.INVENTORY' table. You can move, or remove it, as needed.
-        Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
+        ''TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
+        'Me.CUSTOMERSTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
+        ''TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        'Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
+        ''TODO: This line of code loads data into the 'Media_MinistryDataSet1.INVENTORY' table. You can move, or remove it, as needed.
+        'Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
         reset()
     End Sub
 
@@ -34,7 +34,7 @@ Public Class frm_Main
 
     Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
         Dim Order As frm_PlaceOrder = New frm_PlaceOrder(db, Me)
-        bw_Database.RunWorkerAsync(Order)
+        'bw_Database.RunWorkerAsync(Order)
         Order.Show()
         Me.Hide()
     End Sub
@@ -74,10 +74,13 @@ Public Class frm_Main
         My.Settings.Username = ""
         My.Settings.Password = ""
         My.Settings.KeepLoggedIn = False
+        My.Settings.Save()
         Me.Close()
     End Sub
 
-    Private Sub bw_Database_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Database.DoWork
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'create a email listeners form
+        Dim emailListeners = New frm_EmailListeners(Me)
+        'frm_EmailListeners.Show()
     End Sub
 End Class
