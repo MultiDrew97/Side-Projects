@@ -2717,18 +2717,18 @@ Partial Public Class Media_MinistryDataSet
                 Me(Me.tableINVENTORY.ITEM_INDEXColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ITEM() As String
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>
+        Public Overloads Property ITEM() As String
             Get
-                Return CType(Me(Me.tableINVENTORY.ITEMColumn),String)
+                Return CType(Me(Me.tableINVENTORY.ITEMColumn), String)
             End Get
             Set
-                Me(Me.tableINVENTORY.ITEMColumn) = value
+                Me(Me.tableINVENTORY.ITEMColumn) = Value
             End Set
         End Property
-        
+
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property IN_STOCK() As Integer
@@ -3418,18 +3418,18 @@ Partial Public Class Media_MinistryDataSet
                 Me(Me.tableORDER_SUMMARY.PHONE_NUMBERColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ITEM() As String
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>
+        Public Overloads Property ITEM() As String
             Get
-                Return CType(Me(Me.tableORDER_SUMMARY.ITEMColumn),String)
+                Return CType(Me(Me.tableORDER_SUMMARY.ITEMColumn), String)
             End Get
             Set
-                Me(Me.tableORDER_SUMMARY.ITEMColumn) = value
+                Me(Me.tableORDER_SUMMARY.ITEMColumn) = Value
             End Set
         End Property
-        
+
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property QUANTITY() As Integer

@@ -26,11 +26,9 @@ Public Class Database
     End Sub
 
     Public Sub New(username As String, password As String)
-        Dim connectionString As SqlConnectionStringBuilder = New SqlConnectionStringBuilder()
+        Dim connectionString As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
         connectionString.UserID = username
         connectionString.Password = password
-        connectionString.DataSource = My.Settings.DataSource
-        connectionString.InitialCatalog = My.Settings.InitalCatalog
 
         myConn = New SqlConnection(connectionString.ConnectionString)
         myCmd = myConn.CreateCommand

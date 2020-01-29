@@ -23,3 +23,6 @@ C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Mi
 C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_UpdateInventory.resources
 C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_UpdatePhoneNumber.resources
 C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Release\Media_Ministry.frm_ViewInventory.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.exe
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.pdb

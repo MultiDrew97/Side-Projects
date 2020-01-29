@@ -29,7 +29,7 @@ Partial Class frm_CreateUser
         Me.lbl_Password = New System.Windows.Forms.Label()
         Me.txt_Username = New System.Windows.Forms.TextBox()
         Me.txt_Password = New System.Windows.Forms.TextBox()
-        Me.bw_LoadDatabase = New System.ComponentModel.BackgroundWorker()
+        Me.bw_ClearAdminInfo = New System.ComponentModel.BackgroundWorker()
         Me.txt_ConfirmPassword = New System.Windows.Forms.TextBox()
         Me.lbl_ConfirmPassword = New System.Windows.Forms.Label()
         Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
@@ -94,7 +94,7 @@ Partial Class frm_CreateUser
         Me.txt_Password.Size = New System.Drawing.Size(220, 26)
         Me.txt_Password.TabIndex = 3
         '
-        'bw_LoadDatabase
+        'bw_ClearAdminInfo
         '
         '
         'txt_ConfirmPassword
@@ -163,7 +163,7 @@ Partial Class frm_CreateUser
     Friend WithEvents lbl_Password As Label
     Friend WithEvents txt_Username As TextBox
     Friend WithEvents txt_Password As TextBox
-    Friend WithEvents bw_LoadDatabase As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bw_ClearAdminInfo As System.ComponentModel.BackgroundWorker
     Friend WithEvents txt_ConfirmPassword As TextBox
     Friend WithEvents lbl_ConfirmPassword As Label
     Friend WithEvents ss_Feedback As StatusStrip

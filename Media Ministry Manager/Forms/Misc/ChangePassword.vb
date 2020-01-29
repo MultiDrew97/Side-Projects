@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 
 Public Class frm_ChangePassword
     Dim db As Database
-    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder()
+    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
     Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
         Try
             If passwordCheck() Then
@@ -45,8 +45,6 @@ Public Class frm_ChangePassword
     End Sub
 
     Private Sub bw_LoadDatabase_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_LoadDatabase.DoWork
-        _connection.PersistSecurityInfo = My.Settings.PersistSecurityInfo
-        _connection.DataSource = My.Settings.DataSource
         _connection.InitialCatalog = "master"
     End Sub
 
@@ -62,7 +60,7 @@ Public Class frm_ChangePassword
         'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
 
         For i As Integer = 0 To seconds * 100
-            System.Threading.Thread.Sleep(10)
+            Threading.Thread.Sleep(10)
             Application.DoEvents()
         Next
     End Sub
