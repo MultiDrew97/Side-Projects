@@ -8,7 +8,7 @@ Public Class frm_ChangePassword
     Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
         Try
             If passwordCheck() Then
-                Dim adminInfo As frm_AdminSignIn = New frm_AdminSignIn()
+                Dim adminInfo As AdminSignIn = New AdminSignIn()
                 adminInfo.Show()
                 'Dim adminPassword = InputBox("Enter admin password")
 

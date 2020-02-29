@@ -193,16 +193,16 @@
     <Compile Include="Forms\Misc\CreateUser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Misc\frm_AdminSignIn.Designer.vb">
-      <DependentUpon>frm_AdminSignIn.vb</DependentUpon>
+    <Compile Include="Forms\Misc\AdminSignIn.Designer.vb">
+      <DependentUpon>AdminSignIn.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Misc\frm_AdminSignIn.vb">
+    <Compile Include="Forms\Misc\AdminSignIn.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Misc\Login Form.Designer.vb">
-      <DependentUpon>Login Form.vb</DependentUpon>
+    <Compile Include="Forms\Misc\LoginForm.Designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Misc\Login Form.vb">
+    <Compile Include="Forms\Misc\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Orders\DisplayOrders.Designer.vb">
@@ -294,11 +294,11 @@
     <EmbeddedResource Include="Forms\Misc\CreateUser.resx">
       <DependentUpon>CreateUser.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Misc\frm_AdminSignIn.resx">
-      <DependentUpon>frm_AdminSignIn.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Misc\AdminSignIn.resx">
+      <DependentUpon>AdminSignIn.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Misc\Login Form.resx">
-      <DependentUpon>Login Form.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Misc\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\DisplayOrders.resx">
       <DependentUpon>DisplayOrders.vb</DependentUpon>
@@ -386,7 +386,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2019/5/8" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_ConfigurationName="Any" />
+      <UserProperties BuildVersion_ConfigurationName="Any" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_StartDate="2019/5/8" BuildVersion_UseGlobalSettings="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
