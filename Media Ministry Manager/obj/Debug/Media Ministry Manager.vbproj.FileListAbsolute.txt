@@ -89,12 +89,40 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Core.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.PlatformServices.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\MailKit.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\MimeKit.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\System.Data.SqlClient.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Core.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Core.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\MailKit.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\MimeKit.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\System.Data.SqlClient.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.g.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_EmailListeners.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Folder.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ChangePassword.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_CreateUser.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.AdminSignIn.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Login.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Main.resources
@@ -107,12 +135,7 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe.manifest
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.application
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CopyComplete
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AdminSignIn.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_EmailListeners.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Mailjet.Client.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CopyComplete
