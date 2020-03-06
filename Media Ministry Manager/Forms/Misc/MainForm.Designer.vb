@@ -38,7 +38,7 @@ Partial Class frm_Main
         Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CUSTOMERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_EmailMinistry = New System.Windows.Forms.Button()
         Me.ss_Queries.SuspendLayout()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +110,9 @@ Partial Class frm_Main
         Me.btn_LogOut.TabIndex = 6
         Me.btn_LogOut.UseVisualStyleBackColor = False
         '
+        'bw_Database
+        '
+        '
         'INVENTORYBindingSource
         '
         Me.INVENTORYBindingSource.DataMember = "INVENTORY"
@@ -133,15 +136,15 @@ Partial Class frm_Main
         '
         Me.CUSTOMERSTableAdapter.ClearBeforeFill = True
         '
-        'Button1
+        'btn_EmailMinistry
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Button1.Location = New System.Drawing.Point(92, 313)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(179, 50)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Email Ministry"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btn_EmailMinistry.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_EmailMinistry.Location = New System.Drawing.Point(92, 313)
+        Me.btn_EmailMinistry.Name = "btn_EmailMinistry"
+        Me.btn_EmailMinistry.Size = New System.Drawing.Size(179, 50)
+        Me.btn_EmailMinistry.TabIndex = 5
+        Me.btn_EmailMinistry.Text = "Email Ministry"
+        Me.btn_EmailMinistry.UseVisualStyleBackColor = True
         '
         'frm_Main
         '
@@ -150,7 +153,7 @@ Partial Class frm_Main
         Me.BackgroundImage = Global.Media_Ministry.My.Resources.Resources.Media_Ministry_Manage_Image
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(397, 413)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btn_EmailMinistry)
         Me.Controls.Add(Me.btn_LogOut)
         Me.Controls.Add(Me.ss_Queries)
         Me.Controls.Add(Me.btn_AddNewCustomer)
@@ -186,5 +189,5 @@ Partial Class frm_Main
     Friend WithEvents CUSTOMERSTableAdapter As Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents btn_LogOut As Button
     Friend WithEvents bw_Database As System.ComponentModel.BackgroundWorker
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_EmailMinistry As Button
 End Class

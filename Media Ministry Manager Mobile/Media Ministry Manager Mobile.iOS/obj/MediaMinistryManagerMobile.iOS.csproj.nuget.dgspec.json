@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj": {}
+    "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj": {
+    "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj",
+        "projectUniqueName": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj",
         "projectName": "MediaMinistryManagerMobile.iOS",
-        "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj",
+        "projectPath": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\MediaMinistryManagerMobile.iOS.csproj",
         "packagesPath": "C:\\Users\\arand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\obj\\",
+        "outputPath": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {
-                "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj"
+              "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {
+                "projectPath": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj"
               }
             }
           }
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {
+    "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
+        "projectUniqueName": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
         "projectName": "MediaMinistryManagerMobile",
-        "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
+        "projectPath": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
         "packagesPath": "C:\\Users\\arand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\obj\\",
+        "outputPath": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

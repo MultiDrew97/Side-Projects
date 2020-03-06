@@ -54,16 +54,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";")>  _
-        Public ReadOnly Property masterConnectionString() As String
-            Get
-                Return CType(Me("masterConnectionString"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
@@ -138,19 +128,12 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("99dbe9992162bf54d2b3f69f814d1b7f")>  _
-        Public ReadOnly Property PublicKey() As String
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
+            "ser ID=arandlemiller97;Password=AMrw2697;")>  _
+        Public ReadOnly Property masterConnectionString() As String
             Get
-                Return CType(Me("PublicKey"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0f84619c6bc01c6fc151028f3e5a35c7")>  _
-        Public ReadOnly Property PrivateKey() As String
-            Get
-                Return CType(Me("PrivateKey"),String)
+                Return CType(Me("masterConnectionString"),String)
             End Get
         End Property
     End Class

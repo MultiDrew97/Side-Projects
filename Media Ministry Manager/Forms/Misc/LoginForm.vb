@@ -61,9 +61,12 @@ Public Class frm_Login
     Private Sub bw_SaveSettings_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_SaveSettings.DoWork
         If chk_KeepLoggedIn.Checked Then
             My.Settings.KeepLoggedIn = True
-            My.Settings.Username = txt_Username.Text
-            My.Settings.Password = txt_Password.Text
         End If
+
+        My.Settings.Username = txt_Username.Text
+        My.Settings.Password = txt_Password.Text
+
+        My.Settings.Save()
     End Sub
 
     Private Sub bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted

@@ -1,8 +1,9 @@
 ﻿Option Strict On
-Imports Media_Ministry.Database
-'Imports System.Threading
+
 Public Class frm_Main
     Dim db As Database
+    Dim uploader As SendingEmails.DriveUploader
+    'Dim emailer As SendingEmailsCS.EmailSender
 
     Public Sub New(ByRef database As Database)
 
@@ -28,6 +29,9 @@ Public Class frm_Main
         If My.Settings.KeepLoggedIn Then
             frm_Login.Close()
         Else
+            My.Settings.Username = ""
+            My.Settings.Password = ""
+
             frm_Login.Show()
         End If
     End Sub
@@ -78,9 +82,18 @@ Public Class frm_Main
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'create a email listeners form
-        Dim emailListeners = New frm_EmailListeners(Me)
-        'frm_EmailListeners.Show()
+    Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
+        'create a email listeners form in the background
+        bw_Database.RunWorkerAsync()
+    End Sub
+
+    Private Sub bw_Database_DoWork(sender As Object, e As ComponentModel.DoWorkEventArgs) Handles bw_Database.DoWork
+        uploader = New SendingEmails.DriveUploader(".\Resources")
+        'emailer = New SendingEmailsCS.EmailSender(".\Resources", My.Settings.Username, My.Settings.Password)
+    End Sub
+
+    Private Sub bw_Database_RunWorkerCompleted(sender As Object, e As ComponentModel.RunWorkerCompletedEventArgs) Handles bw_Database.RunWorkerCompleted
+        Dim emailListeners = New frm_EmailListeners(Me, uploader) ', emailer)
+        Me.Hide()
     End Sub
 End Class

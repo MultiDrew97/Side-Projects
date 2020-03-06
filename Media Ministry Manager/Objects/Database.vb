@@ -3,6 +3,7 @@
 'got the database set up information from here
 'https://support.microsoft.com/en-us/help/308656/how-to-open-a-sql-server-database-by-using-the-sql-server-net-data-pro
 Imports System.Data.SqlClient
+Imports Media_Ministry.SendingEmails
 Public Class Database
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
@@ -490,6 +491,21 @@ Public Class Database
         myReader.Close()
 
         Return results
+    End Function
+
+    Function RetrieveListeners() As List(Of Listener)
+        Dim listeners As List(Of Listener) = New List(Of Listener)
+
+        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
+
+        myReader = myCmd.ExecuteReader()
+
+        Do While myReader.Read()
+            Console.WriteLine("Name: {0}\nEmail: {1}", myReader.GetString(0), myReader.GetString(1))
+            listeners.Add(New Listener(myReader.GetString(0), myReader.GetString(1)))
+        Loop
+
+        Return listeners
     End Function
 
     'Public Function UniqueRecord(tableName As String, column As String, value As Integer) As Boolean
