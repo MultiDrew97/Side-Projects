@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 
 Public Class frm_CreateUser
     Dim db As Database
-    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder()
+    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
     End Sub
@@ -16,17 +16,19 @@ Public Class frm_CreateUser
 
                 'Console.WriteLine(adminUser)
                 'Dim adminPassword = InputBox("Enter admin")
-                Dim adminInfo As frm_AdminSignIn = New frm_AdminSignIn()
+                Dim adminInfo As AdminSignIn = New AdminSignIn()
                 adminInfo.Show()
 
+                Do Until My.Settings.AdminInfoRecieved
+                    Console.WriteLine("Waiting for admin information")
+                    wait(1)
+                Loop
 
                 _connection.UserID = My.Settings.AdminUser
                 _connection.Password = My.Settings.AdminPass
                 db.CreateUser(txt_Username.Text, txt_Password.Text)
 
-                My.Settings.AdminUser = ""
-                My.Settings.AdminPass = ""
-                Me.Close()
+                bw_ClearAdminInfo.RunWorkerAsync()
             Else
                 Throw New Exception(String.Format("Password: {0}\nConfirm{1}", txt_Password.Text, txt_ConfirmPassword.Text))
             End If
@@ -40,13 +42,14 @@ Public Class frm_CreateUser
     End Sub
 
     Private Sub frm_CreateUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        bw_LoadDatabase.RunWorkerAsync()
+        _connection.InitialCatalog = "master"
     End Sub
 
-    Private Sub bw_LoadDatabase_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_LoadDatabase.DoWork
-        _connection.PersistSecurityInfo = My.Settings.PersistSecurityInfo
-        _connection.DataSource = My.Settings.DataSource
-        _connection.InitialCatalog = My.Settings.InitalCatalog
+    Private Sub bw_LoadDatabase_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_ClearAdminInfo.DoWork
+        My.Settings.AdminUser = ""
+        My.Settings.AdminPass = ""
+        My.Settings.AdminInfoRecieved = False
+        My.Settings.Save()
     End Sub
 
     Private Function passwordCheck() As Boolean
@@ -60,5 +63,18 @@ Public Class frm_CreateUser
         End If
 
         frm_Login.Show()
+    End Sub
+
+    Private Sub wait(ByVal seconds As Integer)
+        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
+
+        For i As Integer = 0 To seconds * 100
+            Threading.Thread.Sleep(10)
+            Application.DoEvents()
+        Next
+    End Sub
+
+    Private Sub bw_LoadDatabase_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_ClearAdminInfo.RunWorkerCompleted
+        Me.Close()
     End Sub
 End Class

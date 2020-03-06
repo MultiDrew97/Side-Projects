@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj": {}
+    "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj": {
+    "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj",
         "projectName": "MediaMinistryManagerAPI",
-        "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj",
+        "projectPath": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\MediaMinistryManagerAPI.csproj",
         "packagesPath": "C:\\Users\\arand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\obj\\",
+        "outputPath": "C:\\Users\\arand\\source\\repos\\MultiDrew97\\Side-Projects\\MediaMinistryManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -75,7 +75,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

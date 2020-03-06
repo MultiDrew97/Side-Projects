@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>1.1.28.2</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.1.28.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -182,7 +182,9 @@
     <Compile Include="Forms\Email Listeners\frm_Folder.Designer.vb">
       <DependentUpon>frm_Folder.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\frm_Folder.vb" />
+    <Compile Include="Forms\Email Listeners\frm_Folder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Inventory\AddNewProduct.Designer.vb">
       <DependentUpon>AddNewProduct.vb</DependentUpon>
     </Compile>
@@ -210,11 +212,15 @@
     <Compile Include="Forms\Misc\AdminSignIn.Designer.vb">
       <DependentUpon>AdminSignIn.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Misc\AdminSignIn.vb" />
+    <Compile Include="Forms\Misc\AdminSignIn.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Misc\LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Misc\LoginForm.vb" />
+    <Compile Include="Forms\Misc\LoginForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Orders\DisplayOrders.Designer.vb">
       <DependentUpon>DisplayOrders.vb</DependentUpon>
     </Compile>
