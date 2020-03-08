@@ -49,3 +49,5 @@ I will have to research on what goes into an API that will affect the performanc
 This is just the project that was created to have an easier time installing the desktop application of the user's computer. Not much is in here
 that I feel needs any next steps since it was just a simple installation project.
 
+# Sender
+This is the email sending program, built in Java. This handles the email ministry functionality of the software.
