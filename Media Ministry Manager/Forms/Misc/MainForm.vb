@@ -1,10 +1,11 @@
 ﻿Option Strict On
-
+Imports System.ComponentModel
+Imports System.IO
+Imports Media_Ministry.SendingEmails
 Public Class frm_Main
     Dim db As Database
-    Dim uploader As SendingEmails.DriveUploader
-    'Dim emailer As SendingEmailsCS.EmailSender
-
+    Dim uploader As DriveUploader
+    Private emailListeners As frm_EmailListeners
     Public Sub New(ByRef database As Database)
 
         ' This call is required by the designer.
@@ -12,15 +13,12 @@ Public Class frm_Main
 
         ' Add any initialization after the InitializeComponent() call.
         db = database
+        If Not bw_UpdateJar.IsBusy Then
+            bw_UpdateJar.RunWorkerAsync(Application.StartupPath & "\sender.jar")
+        End If
     End Sub
 
     Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ''TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
-        'Me.CUSTOMERSTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
-        ''TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
-        'Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
-        ''TODO: This line of code loads data into the 'Media_MinistryDataSet1.INVENTORY' table. You can move, or remove it, as needed.
-        'Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
         reset()
     End Sub
 
@@ -29,17 +27,13 @@ Public Class frm_Main
         If My.Settings.KeepLoggedIn Then
             frm_Login.Close()
         Else
-            My.Settings.Username = ""
-            My.Settings.Password = ""
-
             frm_Login.Show()
         End If
     End Sub
 
     Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
-        Dim Order As frm_PlaceOrder = New frm_PlaceOrder(db, Me)
-        'bw_Database.RunWorkerAsync(Order)
-        Order.Show()
+        Dim frm_PlaceOrder As frm_PlaceOrder = New frm_PlaceOrder(db, Me)
+        frm_PlaceOrder.Show()
         Me.Hide()
     End Sub
 
@@ -63,15 +57,15 @@ Public Class frm_Main
         reset()
     End Sub
 
-    Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
+    Private Sub btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
         Dim displayCustomers = New frm_DisplayCustomers(db, Me)
         displayCustomers.Show()
         Me.Hide()
     End Sub
 
     Private Sub reset()
-        tss_DatabaseQueries.Text = "What would you like to do?"
-        tss_DatabaseQueries.ForeColor = SystemColors.WindowText
+        tss_Feedback.Text = "What would you like to do?"
+        tss_Feedback.ForeColor = SystemColors.WindowText
     End Sub
 
     Private Sub btn_LogOut_Click(sender As Object, e As EventArgs) Handles btn_LogOut.Click
@@ -84,16 +78,22 @@ Public Class frm_Main
 
     Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
         'create a email listeners form in the background
-        bw_Database.RunWorkerAsync()
-    End Sub
-
-    Private Sub bw_Database_DoWork(sender As Object, e As ComponentModel.DoWorkEventArgs) Handles bw_Database.DoWork
-        uploader = New SendingEmails.DriveUploader(".\Resources")
-        'emailer = New SendingEmailsCS.EmailSender(".\Resources", My.Settings.Username, My.Settings.Password)
-    End Sub
-
-    Private Sub bw_Database_RunWorkerCompleted(sender As Object, e As ComponentModel.RunWorkerCompletedEventArgs) Handles bw_Database.RunWorkerCompleted
-        Dim emailListeners = New frm_EmailListeners(Me, uploader) ', emailer)
+        tss_Feedback.Text = "Initializing Google Drive Uploader..."
+        Dim emailListeners As New frm_EmailListeners() With {.frm_main = Me, .uploader = New DriveUploader()}
+        emailListeners.Show()
         Me.Hide()
+        reset()
+    End Sub
+
+    Private Sub bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
+        If Not File.Exists(CType(e.Argument, String)) Then
+            Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
+                out.Write(My.Resources.sender)
+            End Using
+        ElseIf Not New FileInfo(CType(e.Argument, String)).Length = My.Resources.sender.Length Then
+            Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
+                out.Write(My.Resources.sender)
+            End Using
+        End If
     End Sub
 End Class

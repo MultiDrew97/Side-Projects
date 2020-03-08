@@ -47,8 +47,8 @@ Partial Class frm_DisplayOrders
         '
         Me.dgv_Orders.AllowUserToAddRows = False
         Me.dgv_Orders.AllowUserToDeleteRows = False
-        Me.dgv_Orders.AllowUserToResizeRows = False
         Me.dgv_Orders.AutoGenerateColumns = False
+        Me.dgv_Orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Orders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv_Orders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Selection, Me.ORDERNUMBERDataGridViewTextBoxColumn, Me.PHONENUMBERDataGridViewTextBoxColumn, Me.ITEMDataGridViewTextBoxColumn, Me.QUANTITYDataGridViewTextBoxColumn})
@@ -63,14 +63,15 @@ Partial Class frm_DisplayOrders
         'Selection
         '
         Me.Selection.FalseValue = "false"
+        Me.Selection.FillWeight = 126.9036!
         Me.Selection.HeaderText = ""
         Me.Selection.Name = "Selection"
         Me.Selection.TrueValue = "true"
-        Me.Selection.Width = 50
         '
         'ORDERNUMBERDataGridViewTextBoxColumn
         '
         Me.ORDERNUMBERDataGridViewTextBoxColumn.DataPropertyName = "ORDER_NUMBER"
+        Me.ORDERNUMBERDataGridViewTextBoxColumn.FillWeight = 93.27411!
         Me.ORDERNUMBERDataGridViewTextBoxColumn.HeaderText = "Order Number"
         Me.ORDERNUMBERDataGridViewTextBoxColumn.Name = "ORDERNUMBERDataGridViewTextBoxColumn"
         Me.ORDERNUMBERDataGridViewTextBoxColumn.ReadOnly = True
@@ -78,24 +79,25 @@ Partial Class frm_DisplayOrders
         'PHONENUMBERDataGridViewTextBoxColumn
         '
         Me.PHONENUMBERDataGridViewTextBoxColumn.DataPropertyName = "PHONE_NUMBER"
+        Me.PHONENUMBERDataGridViewTextBoxColumn.FillWeight = 93.27411!
         Me.PHONENUMBERDataGridViewTextBoxColumn.HeaderText = "Phone Number"
         Me.PHONENUMBERDataGridViewTextBoxColumn.Name = "PHONENUMBERDataGridViewTextBoxColumn"
         Me.PHONENUMBERDataGridViewTextBoxColumn.ReadOnly = True
         Me.PHONENUMBERDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.PHONENUMBERDataGridViewTextBoxColumn.Width = 150
         '
         'ITEMDataGridViewTextBoxColumn
         '
         Me.ITEMDataGridViewTextBoxColumn.DataPropertyName = "ITEM"
+        Me.ITEMDataGridViewTextBoxColumn.FillWeight = 93.27411!
         Me.ITEMDataGridViewTextBoxColumn.HeaderText = "Product Name"
         Me.ITEMDataGridViewTextBoxColumn.Name = "ITEMDataGridViewTextBoxColumn"
         Me.ITEMDataGridViewTextBoxColumn.ReadOnly = True
         Me.ITEMDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ITEMDataGridViewTextBoxColumn.Width = 200
         '
         'QUANTITYDataGridViewTextBoxColumn
         '
         Me.QUANTITYDataGridViewTextBoxColumn.DataPropertyName = "QUANTITY"
+        Me.QUANTITYDataGridViewTextBoxColumn.FillWeight = 93.27411!
         Me.QUANTITYDataGridViewTextBoxColumn.HeaderText = "Quantity"
         Me.QUANTITYDataGridViewTextBoxColumn.Name = "QUANTITYDataGridViewTextBoxColumn"
         Me.QUANTITYDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
@@ -176,10 +178,10 @@ Partial Class frm_DisplayOrders
         Me.Controls.Add(Me.dgv_Orders)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimizeBox = False
+        Me.MaximizeBox = False
         Me.Name = "frm_DisplayOrders"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry"
+        Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDERSUMMARYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -194,11 +196,11 @@ Partial Class frm_DisplayOrders
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents btn_Fulfil As Button
     Friend WithEvents ORDER_COUNTSTableAdapter As Media_MinistryDataSetTableAdapters.ORDER_COUNTSTableAdapter
+    Friend WithEvents btn_UpdateOrder As Button
+    Friend WithEvents btn_CancelOrder As Button
     Friend WithEvents Selection As DataGridViewCheckBoxColumn
     Friend WithEvents ORDERNUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PHONENUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ITEMDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents QUANTITYDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents btn_UpdateOrder As Button
-    Friend WithEvents btn_CancelOrder As Button
 End Class

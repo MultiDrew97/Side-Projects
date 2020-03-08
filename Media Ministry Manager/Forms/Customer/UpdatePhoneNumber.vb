@@ -28,7 +28,7 @@ Public Class frm_UpdatePhoneNumber
 
             Try
                 db.UpdatePhone(newNumber, oldNumber)
-                Me.Close()
+                tss_UpdatePhone.Text = String.Format("{0}'s number has been updated", cbx_FirstName.SelectedItem)
             Catch exception As SqlException
                 tss_UpdatePhone.ForeColor = Color.Red
                 tss_UpdatePhone.Text = "Number could not be updated. Please try again."
@@ -41,7 +41,7 @@ Public Class frm_UpdatePhoneNumber
     End Sub
 
     Private Sub UpdatePhoneNumber_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        display.customLoad()
+        display.Refresh()
         display.Show()
     End Sub
 

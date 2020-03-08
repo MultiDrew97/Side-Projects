@@ -129,8 +129,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
-            "ser ID=arandlemiller97;Password=AMrw2697;")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P"& _ 
+            "ersist Security Info=True;User ID=arandlemiller97;Password=AMrw2697")>  _
         Public ReadOnly Property masterConnectionString() As String
             Get
                 Return CType(Me("masterConnectionString"),String)

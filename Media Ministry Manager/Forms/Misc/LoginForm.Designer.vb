@@ -166,6 +166,7 @@ Partial Class frm_Login
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btn_LogIn)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frm_Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

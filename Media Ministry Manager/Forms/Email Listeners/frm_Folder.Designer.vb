@@ -22,6 +22,7 @@ Partial Class frm_Folder
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Folder))
         Me.txt_FolderName = New System.Windows.Forms.TextBox()
         Me.lbl_FolderName = New System.Windows.Forms.Label()
         Me.btn_CreateFolder = New System.Windows.Forms.Button()
@@ -98,8 +99,10 @@ Partial Class frm_Folder
         Me.Controls.Add(Me.btn_CreateFolder)
         Me.Controls.Add(Me.lbl_FolderName)
         Me.Controls.Add(Me.txt_FolderName)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "frm_Folder"
-        Me.Text = "frm_Folder"
+        Me.Text = "Media Ministry Manager"
         Me.ts_Feedback.ResumeLayout(False)
         Me.ts_Feedback.PerformLayout()
         Me.ResumeLayout(False)

@@ -23,6 +23,7 @@ Partial Class frm_AddNewCustomer
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_AddNewCustomer))
         Me.btn_AddNewCustomer = New System.Windows.Forms.Button()
         Me.txt_FirstName = New System.Windows.Forms.TextBox()
         Me.txt_LastName = New System.Windows.Forms.TextBox()
@@ -310,10 +311,11 @@ Partial Class frm_AddNewCustomer
         Me.Controls.Add(Me.txt_FirstName)
         Me.Controls.Add(Me.btn_AddNewCustomer)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frm_AddNewCustomer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry"
+        Me.Text = "Media Ministry Manager"
         Me.ss_Status.ResumeLayout(False)
         Me.ss_Status.PerformLayout()
         CType(Me.ep_EmptyFields, System.ComponentModel.ISupportInitialize).EndInit()

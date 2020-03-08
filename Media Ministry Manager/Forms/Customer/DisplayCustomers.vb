@@ -15,17 +15,10 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
-        customLoad()
-    End Sub
-
-    Public Sub customLoad()
         Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
-        For index As Integer = 0 To (dgv_Customers.Rows.Count - 1)
-            dgv_Customers.Rows(index).Cells(0).Value = False
-        Next
     End Sub
 
-    Private Sub btn_Update_Click(sender As Object, e As EventArgs) Handles btn_Update.Click
+    Private Sub btn_Update_Click(sender As Object, e As EventArgs) 
         'update customer information that was entered
         Dim index, updateCount As Integer
         Dim street, city, state, zip, phone, email, payment As String
@@ -42,7 +35,7 @@ Public Class frm_DisplayCustomers
             'https://stackoverflow.com/questions/19721984/how-to-get-cell-value-from-datagridview-in-vb-net
 
             Do
-                If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
+            If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
                     street = dgv_Customers.Rows(index).Cells(4).Value.ToString
                     city = dgv_Customers.Rows(index).Cells(5).Value.ToString
                     state = dgv_Customers.Rows(index).Cells(6).Value.ToString
@@ -75,33 +68,6 @@ Public Class frm_DisplayCustomers
         End If
     End Sub
 
-    Private Sub btn_Remove_Click(sender As Object, e As EventArgs) Handles btn_Remove.Click
-        'remove the person from the customer list
-        Dim index, removeCount As Integer
-        Dim phone As String
-        Do
-            If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
-                phone = dgv_Customers.Rows(index).Cells(3).Value.ToString
-
-                Try
-                    db.RemovePerson(phone)
-                    dgv_Customers.Rows.RemoveAt(index)
-                    removeCount += 1
-                Catch
-                    tss_CustomersView.Text = "Some people could not be removed. Please try again."
-                End Try
-            End If
-
-            index += 1
-        Loop Until (index >= dgv_Customers.Rows.Count)
-
-        If removeCount > 1 Then
-            tss_CustomersView.Text = String.Format("{0} people were removed from the database", removeCount)
-        ElseIf removeCount = 1 Then
-            tss_CustomersView.Text = "1 person was removed from the database"
-        End If
-    End Sub
-
     Private Sub frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
     End Sub
@@ -112,13 +78,32 @@ Public Class frm_DisplayCustomers
         Me.Hide()
     End Sub
 
-    Private Sub frm_DisplayCustomers_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        'Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
-    End Sub
-
     Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
         Dim addForm = New frm_AddNewCustomer(db, Me)
         addForm.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
+        db.RemovePerson(CType(e.Row.Cells(2).Value, String))
+    End Sub
+
+    Public Overrides Sub refresh()
+        Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
+    End Sub
+
+    Private Sub dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
+        Dim changedRow As Integer = e.RowIndex
+
+        'get values from table
+        Dim phone As String = CType(dgv_Customers.Rows(changedRow).Cells(2).Value, String)
+        Dim street As String = CType(dgv_Customers.Rows(changedRow).Cells(3).Value, String)
+        Dim city As String = CType(dgv_Customers.Rows(changedRow).Cells(4).Value, String)
+        Dim state As String = CType(dgv_Customers.Rows(changedRow).Cells(5).Value, String)
+        Dim zip As String = CType(dgv_Customers.Rows(changedRow).Cells(6).Value, String)
+        Dim email As String = CType(dgv_Customers.Rows(changedRow).Cells(7).Value, String)
+        Dim payment As String = CType(dgv_Customers.Rows(changedRow).Cells(8).Value, String)
+
+        db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
     End Sub
 End Class

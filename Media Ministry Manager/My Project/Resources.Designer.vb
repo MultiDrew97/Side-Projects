@@ -61,6 +61,26 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        '''</summary>
+        Friend ReadOnly Property App_Icon() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("App_Icon", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property credentials() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("credentials", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property logout_button() As System.Drawing.Bitmap
@@ -75,8 +95,18 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property Media_Ministry_Manage_Image() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Media Ministry Manage Image", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Media_Ministry_Manage_Image", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property sender() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("sender", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
     End Module

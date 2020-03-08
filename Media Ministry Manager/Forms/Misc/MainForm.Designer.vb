@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_Main
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frm_Main
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Main))
@@ -28,17 +28,18 @@ Partial Class frm_Main
         Me.btn_ShowOrders = New System.Windows.Forms.Button()
         Me.btn_ProductManagement = New System.Windows.Forms.Button()
         Me.tt_ControlInfo = New System.Windows.Forms.ToolTip(Me.components)
-        Me.btn_AddNewCustomer = New System.Windows.Forms.Button()
+        Me.btn_CustomerManagement = New System.Windows.Forms.Button()
         Me.ss_Queries = New System.Windows.Forms.StatusStrip()
-        Me.tss_DatabaseQueries = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tss_Feedback = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_LogOut = New System.Windows.Forms.Button()
-        Me.bw_Database = New System.ComponentModel.BackgroundWorker()
+        Me.bw_CreateUploader = New System.ComponentModel.BackgroundWorker()
+        Me.btn_EmailMinistry = New System.Windows.Forms.Button()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
         Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CUSTOMERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
-        Me.btn_EmailMinistry = New System.Windows.Forms.Button()
+        Me.bw_UpdateJar = New System.ComponentModel.BackgroundWorker()
         Me.ss_Queries.SuspendLayout()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,29 +76,29 @@ Partial Class frm_Main
         Me.btn_ProductManagement.Text = "Product Management"
         Me.btn_ProductManagement.UseVisualStyleBackColor = True
         '
-        'btn_AddNewCustomer
+        'btn_CustomerManagement
         '
-        Me.btn_AddNewCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(92, 13)
-        Me.btn_AddNewCustomer.Name = "btn_AddNewCustomer"
-        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(179, 50)
-        Me.btn_AddNewCustomer.TabIndex = 1
-        Me.btn_AddNewCustomer.Text = "Customer Management"
-        Me.btn_AddNewCustomer.UseVisualStyleBackColor = True
+        Me.btn_CustomerManagement.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_CustomerManagement.Location = New System.Drawing.Point(92, 13)
+        Me.btn_CustomerManagement.Name = "btn_CustomerManagement"
+        Me.btn_CustomerManagement.Size = New System.Drawing.Size(179, 50)
+        Me.btn_CustomerManagement.TabIndex = 1
+        Me.btn_CustomerManagement.Text = "Customer Management"
+        Me.btn_CustomerManagement.UseVisualStyleBackColor = True
         '
         'ss_Queries
         '
-        Me.ss_Queries.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_DatabaseQueries})
+        Me.ss_Queries.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
         Me.ss_Queries.Location = New System.Drawing.Point(0, 391)
         Me.ss_Queries.Name = "ss_Queries"
         Me.ss_Queries.Size = New System.Drawing.Size(397, 22)
         Me.ss_Queries.TabIndex = 0
         '
-        'tss_DatabaseQueries
+        'tss_Feedback
         '
-        Me.tss_DatabaseQueries.Name = "tss_DatabaseQueries"
-        Me.tss_DatabaseQueries.Size = New System.Drawing.Size(151, 17)
-        Me.tss_DatabaseQueries.Text = "What would you like to do?"
+        Me.tss_Feedback.Name = "tss_Feedback"
+        Me.tss_Feedback.Size = New System.Drawing.Size(151, 17)
+        Me.tss_Feedback.Text = "What would you like to do?"
         '
         'btn_LogOut
         '
@@ -110,8 +111,18 @@ Partial Class frm_Main
         Me.btn_LogOut.TabIndex = 6
         Me.btn_LogOut.UseVisualStyleBackColor = False
         '
-        'bw_Database
+        'bw_CreateUploader
         '
+        '
+        'btn_EmailMinistry
+        '
+        Me.btn_EmailMinistry.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_EmailMinistry.Location = New System.Drawing.Point(92, 313)
+        Me.btn_EmailMinistry.Name = "btn_EmailMinistry"
+        Me.btn_EmailMinistry.Size = New System.Drawing.Size(179, 50)
+        Me.btn_EmailMinistry.TabIndex = 5
+        Me.btn_EmailMinistry.Text = "Email Ministry"
+        Me.btn_EmailMinistry.UseVisualStyleBackColor = True
         '
         'INVENTORYBindingSource
         '
@@ -136,15 +147,8 @@ Partial Class frm_Main
         '
         Me.CUSTOMERSTableAdapter.ClearBeforeFill = True
         '
-        'btn_EmailMinistry
+        'bw_UpdateJar
         '
-        Me.btn_EmailMinistry.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_EmailMinistry.Location = New System.Drawing.Point(92, 313)
-        Me.btn_EmailMinistry.Name = "btn_EmailMinistry"
-        Me.btn_EmailMinistry.Size = New System.Drawing.Size(179, 50)
-        Me.btn_EmailMinistry.TabIndex = 5
-        Me.btn_EmailMinistry.Text = "Email Ministry"
-        Me.btn_EmailMinistry.UseVisualStyleBackColor = True
         '
         'frm_Main
         '
@@ -156,7 +160,7 @@ Partial Class frm_Main
         Me.Controls.Add(Me.btn_EmailMinistry)
         Me.Controls.Add(Me.btn_LogOut)
         Me.Controls.Add(Me.ss_Queries)
-        Me.Controls.Add(Me.btn_AddNewCustomer)
+        Me.Controls.Add(Me.btn_CustomerManagement)
         Me.Controls.Add(Me.btn_ProductManagement)
         Me.Controls.Add(Me.btn_placeOrder)
         Me.Controls.Add(Me.btn_ShowOrders)
@@ -165,7 +169,7 @@ Partial Class frm_Main
         Me.MaximizeBox = False
         Me.Name = "frm_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry"
+        Me.Text = "Media Ministry Manager"
         Me.ss_Queries.ResumeLayout(False)
         Me.ss_Queries.PerformLayout()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -179,15 +183,16 @@ Partial Class frm_Main
     Friend WithEvents btn_ShowOrders As Button
     Friend WithEvents btn_ProductManagement As Button
     Friend WithEvents tt_ControlInfo As ToolTip
-    Friend WithEvents btn_AddNewCustomer As Button
+    Friend WithEvents btn_CustomerManagement As Button
     Friend WithEvents ss_Queries As StatusStrip
-    Friend WithEvents tss_DatabaseQueries As ToolStripStatusLabel
+    Friend WithEvents tss_Feedback As ToolStripStatusLabel
     Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
     Friend WithEvents INVENTORYBindingSource As BindingSource
     Friend WithEvents INVENTORYTableAdapter As Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
     Friend WithEvents CUSTOMERSTableAdapter As Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents btn_LogOut As Button
-    Friend WithEvents bw_Database As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bw_CreateUploader As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_EmailMinistry As Button
+    Friend WithEvents bw_UpdateJar As System.ComponentModel.BackgroundWorker
 End Class

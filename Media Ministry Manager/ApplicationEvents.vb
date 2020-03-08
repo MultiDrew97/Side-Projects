@@ -1,5 +1,6 @@
 ﻿Option Strict On
 Imports System.Collections.ObjectModel
+Imports System.ComponentModel
 
 Namespace My
     ' The following events are available for MyApplication:

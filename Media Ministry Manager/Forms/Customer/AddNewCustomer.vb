@@ -17,7 +17,6 @@ Public Class frm_AddNewCustomer
 
     Private Sub frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
-        Me.Focus()
     End Sub
 
     Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
@@ -89,8 +88,8 @@ Public Class frm_AddNewCustomer
         txt_Email.ForeColor = SystemColors.ControlLight
     End Sub
 
-    Private Sub frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        displayCustomers.customLoad()
+    Private Sub frm_AddNewCustomer_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        displayCustomers.Refresh()
         displayCustomers.Show()
     End Sub
 

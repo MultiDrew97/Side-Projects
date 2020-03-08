@@ -153,7 +153,7 @@ Partial Class frm_ChangePassword
         Me.Controls.Add(Me.btn_ChangePassword)
         Me.Controls.Add(Me.btn_Cancel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimizeBox = False
+        Me.MaximizeBox = False
         Me.Name = "frm_ChangePassword"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"

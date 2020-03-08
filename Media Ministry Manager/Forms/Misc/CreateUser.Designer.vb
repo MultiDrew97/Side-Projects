@@ -147,6 +147,7 @@ Partial Class frm_CreateUser
         Me.Controls.Add(Me.btn_Create)
         Me.Controls.Add(Me.btn_Cancel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "frm_CreateUser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"

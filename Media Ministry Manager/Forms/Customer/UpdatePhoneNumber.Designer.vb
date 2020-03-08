@@ -23,6 +23,7 @@ Partial Class frm_UpdatePhoneNumber
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_UpdatePhoneNumber))
         Me.cbx_FirstName = New System.Windows.Forms.ComboBox()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
@@ -164,10 +165,11 @@ Partial Class frm_UpdatePhoneNumber
         Me.Controls.Add(Me.lbl_FirstName)
         Me.Controls.Add(Me.cbx_FirstName)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frm_UpdatePhoneNumber"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry"
+        Me.Text = "Media Ministry Manager"
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_UpdatePhone.ResumeLayout(False)

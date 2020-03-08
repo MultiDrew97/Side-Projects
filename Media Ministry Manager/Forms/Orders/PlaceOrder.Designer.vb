@@ -23,6 +23,7 @@ Partial Class frm_PlaceOrder
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_PlaceOrder))
         Me.cbx_ItemName = New System.Windows.Forms.ComboBox()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
@@ -50,8 +51,6 @@ Partial Class frm_PlaceOrder
         '
         'cbx_ItemName
         '
-        Me.cbx_ItemName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbx_ItemName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbx_ItemName.DataSource = Me.INVENTORYBindingSource
         Me.cbx_ItemName.DisplayMember = "ITEM"
         Me.cbx_ItemName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
@@ -97,8 +96,6 @@ Partial Class frm_PlaceOrder
         '
         'cbx_FirstName
         '
-        Me.cbx_FirstName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbx_FirstName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbx_FirstName.DataSource = Me.CUSTOMERSBindingSource
         Me.cbx_FirstName.DisplayMember = "FIRST_NAME"
         Me.cbx_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
@@ -167,8 +164,6 @@ Partial Class frm_PlaceOrder
         '
         'cbx_PhoneNumber
         '
-        Me.cbx_PhoneNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbx_PhoneNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbx_PhoneNumber.DataSource = Me.CUSTOMERSBindingSource
         Me.cbx_PhoneNumber.DisplayMember = "PHONE_NUMBER"
         Me.cbx_PhoneNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
@@ -196,9 +191,6 @@ Partial Class frm_PlaceOrder
         '
         Me.INVENTORYTableAdapter.ClearBeforeFill = True
         '
-        'bw_LoadingData
-        '
-        '
         'frm_PlaceOrder
         '
         Me.AcceptButton = Me.btn_AddOrder
@@ -218,10 +210,11 @@ Partial Class frm_PlaceOrder
         Me.Controls.Add(Me.cbx_FirstName)
         Me.Controls.Add(Me.cbx_ItemName)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frm_PlaceOrder"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry"
+        Me.Text = "Media Ministry Manager"
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_AddOrder.ResumeLayout(False)

@@ -26,7 +26,6 @@ Partial Class frm_DisplayCustomers
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DisplayCustomers))
         Me.CustomersTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
-        Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.FIRSTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LASTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PHONENUMBERDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -39,8 +38,6 @@ Partial Class frm_DisplayCustomers
         Me.JOINDATEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
-        Me.btn_Update = New System.Windows.Forms.Button()
-        Me.btn_Remove = New System.Windows.Forms.Button()
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_UpdatePhone = New System.Windows.Forms.Button()
@@ -58,22 +55,16 @@ Partial Class frm_DisplayCustomers
         'dgv_Customers
         '
         Me.dgv_Customers.AllowUserToAddRows = False
-        Me.dgv_Customers.AllowUserToDeleteRows = False
         Me.dgv_Customers.AutoGenerateColumns = False
+        Me.dgv_Customers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Selection, Me.FIRSTNAMEDataGridViewTextBoxColumn, Me.LASTNAMEDataGridViewTextBoxColumn, Me.PHONENUMBERDataGridViewTextBoxColumn, Me.SHIPPINGSTREETDataGridViewTextBoxColumn, Me.SHIPPINGCITYDataGridViewTextBoxColumn, Me.SHIPPINGSTATEDataGridViewTextBoxColumn, Me.SHIPPINGZIPDataGridViewTextBoxColumn, Me.EMAILDataGridViewTextBoxColumn, Me.PREFERREDPAYMENTDataGridViewTextBoxColumn, Me.JOINDATEDataGridViewTextBoxColumn})
+        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FIRSTNAMEDataGridViewTextBoxColumn, Me.LASTNAMEDataGridViewTextBoxColumn, Me.PHONENUMBERDataGridViewTextBoxColumn, Me.SHIPPINGSTREETDataGridViewTextBoxColumn, Me.SHIPPINGCITYDataGridViewTextBoxColumn, Me.SHIPPINGSTATEDataGridViewTextBoxColumn, Me.SHIPPINGZIPDataGridViewTextBoxColumn, Me.EMAILDataGridViewTextBoxColumn, Me.PREFERREDPAYMENTDataGridViewTextBoxColumn, Me.JOINDATEDataGridViewTextBoxColumn})
         Me.dgv_Customers.DataSource = Me.CUSTOMERSBindingSource
         Me.dgv_Customers.Dock = System.Windows.Forms.DockStyle.Top
         Me.dgv_Customers.Location = New System.Drawing.Point(0, 0)
         Me.dgv_Customers.Name = "dgv_Customers"
         Me.dgv_Customers.Size = New System.Drawing.Size(1013, 455)
         Me.dgv_Customers.TabIndex = 0
-        '
-        'Selection
-        '
-        Me.Selection.HeaderText = ""
-        Me.Selection.Name = "Selection"
-        Me.Selection.Width = 30
         '
         'FIRSTNAMEDataGridViewTextBoxColumn
         '
@@ -113,7 +104,6 @@ Partial Class frm_DisplayCustomers
         Me.SHIPPINGSTATEDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_STATE"
         Me.SHIPPINGSTATEDataGridViewTextBoxColumn.HeaderText = "ST"
         Me.SHIPPINGSTATEDataGridViewTextBoxColumn.Name = "SHIPPINGSTATEDataGridViewTextBoxColumn"
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn.Width = 40
         '
         'SHIPPINGZIPDataGridViewTextBoxColumn
         '
@@ -150,26 +140,6 @@ Partial Class frm_DisplayCustomers
         Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
         Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'btn_Update
-        '
-        Me.btn_Update.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Update.Location = New System.Drawing.Point(524, 480)
-        Me.btn_Update.Name = "btn_Update"
-        Me.btn_Update.Size = New System.Drawing.Size(218, 65)
-        Me.btn_Update.TabIndex = 1
-        Me.btn_Update.Text = "Update Customer"
-        Me.btn_Update.UseVisualStyleBackColor = True
-        '
-        'btn_Remove
-        '
-        Me.btn_Remove.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Remove.Location = New System.Drawing.Point(18, 480)
-        Me.btn_Remove.Name = "btn_Remove"
-        Me.btn_Remove.Size = New System.Drawing.Size(218, 65)
-        Me.btn_Remove.TabIndex = 2
-        Me.btn_Remove.Text = "Remove Customer"
-        Me.btn_Remove.UseVisualStyleBackColor = True
-        '
         'ss_CustomerView
         '
         Me.ss_CustomerView.BackColor = System.Drawing.SystemColors.Control
@@ -190,9 +160,9 @@ Partial Class frm_DisplayCustomers
         'btn_UpdatePhone
         '
         Me.btn_UpdatePhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_UpdatePhone.Location = New System.Drawing.Point(271, 480)
+        Me.btn_UpdatePhone.Location = New System.Drawing.Point(106, 480)
         Me.btn_UpdatePhone.Name = "btn_UpdatePhone"
-        Me.btn_UpdatePhone.Size = New System.Drawing.Size(218, 65)
+        Me.btn_UpdatePhone.Size = New System.Drawing.Size(270, 65)
         Me.btn_UpdatePhone.TabIndex = 4
         Me.btn_UpdatePhone.Text = "Update Phone Number"
         Me.btn_UpdatePhone.UseVisualStyleBackColor = True
@@ -200,9 +170,9 @@ Partial Class frm_DisplayCustomers
         'btn_AddNewCustomer
         '
         Me.btn_AddNewCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(777, 480)
+        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(636, 480)
         Me.btn_AddNewCustomer.Name = "btn_AddNewCustomer"
-        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(218, 65)
+        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(270, 65)
         Me.btn_AddNewCustomer.TabIndex = 1
         Me.btn_AddNewCustomer.Text = "Add New Customer"
         Me.btn_AddNewCustomer.UseVisualStyleBackColor = True
@@ -215,16 +185,14 @@ Partial Class frm_DisplayCustomers
         Me.ClientSize = New System.Drawing.Size(1013, 592)
         Me.Controls.Add(Me.btn_UpdatePhone)
         Me.Controls.Add(Me.ss_CustomerView)
-        Me.Controls.Add(Me.btn_Remove)
         Me.Controls.Add(Me.btn_AddNewCustomer)
-        Me.Controls.Add(Me.btn_Update)
         Me.Controls.Add(Me.dgv_Customers)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frm_DisplayCustomers"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry"
+        Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -239,12 +207,10 @@ Partial Class frm_DisplayCustomers
     Friend WithEvents dgv_Customers As DataGridView
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
     Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
-    Friend WithEvents btn_Update As Button
-    Friend WithEvents btn_Remove As Button
     Friend WithEvents ss_CustomerView As StatusStrip
     Friend WithEvents tss_CustomersView As ToolStripStatusLabel
     Friend WithEvents btn_UpdatePhone As Button
-    Friend WithEvents Selection As DataGridViewCheckBoxColumn
+    Friend WithEvents btn_AddNewCustomer As Button
     Friend WithEvents FIRSTNAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LASTNAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PHONENUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -255,5 +221,4 @@ Partial Class frm_DisplayCustomers
     Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PREFERREDPAYMENTDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents JOINDATEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents btn_AddNewCustomer As Button
 End Class

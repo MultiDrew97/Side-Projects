@@ -17,18 +17,16 @@ Namespace SendingEmails
         Private ReadOnly ApplicationName As String = "Drive Uploader"
         Private permissions As New List(Of Permission)()
         Private tss As ToolStripStatusLabel
-        Private Property message() As String = "Blessed Morning {0},\n\n"
         Private Property service() As DriveService
         Private db As Database
 
-        Sub New(location As String)
+        Sub New()
             Dim credential As UserCredential
 
-            Using reader As New FileStream(location & "\credentials.json", FileMode.Open, FileAccess.Read)
-
+            Using reader As New MemoryStream(My.Resources.credentials)
                 'The file token.json stores the user's access and refresh tokens, and is created
                 'automatically when the authorization flow completes for the first time.
-                Dim credPath = "token.json"
+                Dim credPath = "Drive Token"
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                         GoogleClientSecrets.Load(reader).Secrets,
                         Scopes,
@@ -203,15 +201,5 @@ Namespace SendingEmails
 
             Return folders
         End Function
-
-        Private Sub setMessage()
-            Dim messageFile = System.IO.File.ReadAllLines("C:\\Users\\arand\\OneDrive\\Desktop\\message.txt")
-
-            For Each line As String In messageFile
-                message += line + "\n"
-            Next
-
-            Console.WriteLine(message)
-        End Sub
     End Class
 End Namespace
