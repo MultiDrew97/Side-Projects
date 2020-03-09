@@ -142,3 +142,4 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\UrlBase64.dll

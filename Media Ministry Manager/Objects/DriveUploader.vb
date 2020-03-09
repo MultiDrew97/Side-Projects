@@ -8,6 +8,8 @@ Imports Google.Apis.Util.Store
 Imports System.IO
 Imports System.Threading
 Imports MimeKit
+Imports System.Text
+Imports NeoSmart.Utils
 
 Namespace SendingEmails
     Public Class DriveUploader
@@ -23,25 +25,29 @@ Namespace SendingEmails
         Sub New()
             Dim credential As UserCredential
 
-            Using reader As New MemoryStream(My.Resources.credentials)
-                'The file token.json stores the user's access and refresh tokens, and is created
-                'automatically when the authorization flow completes for the first time.
-                Dim credPath = "Drive Token"
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                        GoogleClientSecrets.Load(reader).Secrets,
-                        Scopes,
-                        "user",
-                        CancellationToken.None,
-                        New FileDataStore(credPath, True)).Result
-            End Using
+            'Using reader As New MemoryStream(My.Resources.credentials)
+            'The file token.json stores the user's access and refresh tokens, and is created
+            'automatically when the authorization flow completes for the first time.
+            Dim credPath = "Drive Token"
+            Dim secrets As New ClientSecrets() With {
+                .ClientId = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff1"))),
+                .ClientSecret = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff2")))
+            }
+            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                            secrets,
+                            Scopes,
+                            "user",
+                            CancellationToken.None,
+                            New FileDataStore(credPath, True)).Result
+
+            'End Using
 
             'Create Drive API service.
-            service = New DriveService(New BaseClientService.Initializer() _
-                    With {
-                        .HttpClientInitializer = credential,
-                        .ApplicationName = ApplicationName
-                         }
-                     )
+            service = New DriveService(New BaseClientService.Initializer() With {
+                    .HttpClientInitializer = credential,
+                    .ApplicationName = ApplicationName
+                        }
+                    )
         End Sub
 
         Function upload(fileName As String, ByVal folderName As String, tss As ToolStripStatusLabel) As String

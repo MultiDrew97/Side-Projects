@@ -1,7 +1,7 @@
 ﻿Option Strict On
 
 Namespace SendingEmails
-    Public Class Listener
+    Public Structure Listener
         Public Property name As String
         Public Property email As String
 
@@ -9,5 +9,5 @@ Namespace SendingEmails
             Me.name = name
             Me.email = email
         End Sub
-    End Class
+    End Structure
 End Namespace

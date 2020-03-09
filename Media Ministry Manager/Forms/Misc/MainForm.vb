@@ -1,7 +1,10 @@
 ﻿Option Strict On
 Imports System.ComponentModel
 Imports System.IO
+Imports System.Text
 Imports Media_Ministry.SendingEmails
+Imports NeoSmart.Utils
+
 Public Class frm_Main
     Dim db As Database
     Dim uploader As DriveUploader

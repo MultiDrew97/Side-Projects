@@ -105,10 +105,6 @@ Public Class frm_EmailListeners
         Me.Hide()
     End Sub
 
-    Private Sub bw_SendEmails_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_SendEmails.DoWork
-
-    End Sub
-
     Private Sub frm_EmailListeners_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
