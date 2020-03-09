@@ -34,8 +34,8 @@
     <MinimumRequiredVersion>1.1.28.2</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>12</ApplicationRevision>
-    <ApplicationVersion>1.1.28.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -386,6 +386,78 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="sender\.git\COMMIT_EDITMSG" />
+    <None Include="sender\.git\config" />
+    <None Include="sender\.git\description" />
+    <None Include="sender\.git\HEAD" />
+    <None Include="sender\.git\hooks\applypatch-msg.sample" />
+    <None Include="sender\.git\hooks\commit-msg.sample" />
+    <None Include="sender\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="sender\.git\hooks\post-update.sample" />
+    <None Include="sender\.git\hooks\pre-applypatch.sample" />
+    <None Include="sender\.git\hooks\pre-commit.sample" />
+    <None Include="sender\.git\hooks\pre-merge-commit.sample" />
+    <None Include="sender\.git\hooks\pre-push.sample" />
+    <None Include="sender\.git\hooks\pre-rebase.sample" />
+    <None Include="sender\.git\hooks\pre-receive.sample" />
+    <None Include="sender\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="sender\.git\hooks\update.sample" />
+    <None Include="sender\.git\index" />
+    <None Include="sender\.git\info\exclude" />
+    <None Include="sender\.git\logs\HEAD" />
+    <None Include="sender\.git\logs\refs\heads\master" />
+    <None Include="sender\.git\logs\refs\remotes\origin\master" />
+    <None Include="sender\.git\objects\05\19e4a4e16c207f18527175c6a4425b2b1bacbd" />
+    <None Include="sender\.git\objects\0d\c1872e17f64bcd48f9f0d968e49e9bbbba189e" />
+    <None Include="sender\.git\objects\11\92781dc476baa973d5bcbe163fa9eb6b6af9fe" />
+    <None Include="sender\.git\objects\11\ddc732d5943fa642c185b25a6210d8334c1fed" />
+    <None Include="sender\.git\objects\21\d80e0ed3b5e20aa787087247a006398cda7679" />
+    <None Include="sender\.git\objects\2c\87f298c87674b250e784295f3b58a524b25942" />
+    <None Include="sender\.git\objects\2c\c843b6e2fac4ac41cf83c0c7f264c87dfe2fbb" />
+    <None Include="sender\.git\objects\32\414488b0cb9f9509f3f68fae9343f1c5ebf423" />
+    <None Include="sender\.git\objects\37\d4d779682d2cda4403dd0e5b8712773d42a808" />
+    <None Include="sender\.git\objects\38\b7396427f1c88e6bad66696b3a153ac67b4251" />
+    <None Include="sender\.git\objects\3f\18bca3e7e748926fb84461120994f4e21cb08f" />
+    <None Include="sender\.git\objects\4c\f9feeffebabbbbcb2fb7e6879e56a8fe6fc288" />
+    <None Include="sender\.git\objects\4e\3f81541ed0e3a423824cddf4e9a5effda12564" />
+    <None Include="sender\.git\objects\4e\bf5ecd4c9ab83540ef206f6c5a1906db008098" />
+    <None Include="sender\.git\objects\52\dca7f561c5d579ca764cb25b96d3f539cf242a" />
+    <None Include="sender\.git\objects\57\2fbdd30bc185d180412897157393c31f914b25" />
+    <None Include="sender\.git\objects\57\326139363c1fa64f3a427f336d02d1e46e6f07" />
+    <None Include="sender\.git\objects\5c\98b428844d9f7d529e2b6fb918d15bf072f3df" />
+    <None Include="sender\.git\objects\5d\e6f682026f2bd9eaa4418a39c7e2185bdf278c" />
+    <None Include="sender\.git\objects\66\0610bc75f5ccf366ba74f45865ca84873febe4" />
+    <None Include="sender\.git\objects\69\6a2345878907025784d2e6e49c6e6b41d1cfac" />
+    <None Include="sender\.git\objects\71\e337bfa0e8d8afbb002f09135bd85c882eee69" />
+    <None Include="sender\.git\objects\72\9c6952389cd4769d5d840b3d1a7941b3c0f63e" />
+    <None Include="sender\.git\objects\78\b2cc53b203f0b97534bb1184cdc7b474339fb4" />
+    <None Include="sender\.git\objects\7b\e17cc742fde5e957696dd98f6d0cf6520ed294" />
+    <None Include="sender\.git\objects\87\8bbe364eab07156d9f3b6ef72a65d8fb9a0109" />
+    <None Include="sender\.git\objects\94\a25f7f4cb416c083d265558da75d457237d671" />
+    <None Include="sender\.git\objects\9c\0631cea0fd56031db19fc3edbb4db4bfbb923a" />
+    <None Include="sender\.git\objects\a3\1c9f400a46ca0d07029411dc87a7711138dce7" />
+    <None Include="sender\.git\objects\a4\9347afef10a9b5f95305e1058ba36adec7d6dd" />
+    <None Include="sender\.git\objects\a4\979622118a3eafc0fac76ae54169cfd747fcf2" />
+    <None Include="sender\.git\objects\ab\2634a19673696a59a6f44a0863ccd0621abab1" />
+    <None Include="sender\.git\objects\ae\3379a2a39ece679005e81fd49c1db3983df7a9" />
+    <None Include="sender\.git\objects\b3\5fedc8e6b5b2a2a54a035d895ed6e7c4e34b63" />
+    <None Include="sender\.git\objects\b7\882bd6d00f8b6a1d62f014bc267f00a40760d7" />
+    <None Include="sender\.git\objects\bc\ec597f8927ea2b30cca215a895a93f115c13ff" />
+    <None Include="sender\.git\objects\c8\a535d59e81dc490934f11a0f1e835a423a219c" />
+    <None Include="sender\.git\objects\d1\8bceab34cf9508b8aa078f46719e5fde902a22" />
+    <None Include="sender\.git\objects\d3\1451ada1ad9a4471d9bae383df647c9b4b5235" />
+    <None Include="sender\.git\objects\d8\b38fff3be6ec36850437a3dde6d12d583a7348" />
+    <None Include="sender\.git\objects\ee\8f7f61d2fe51ebb090649bea0e1fb7828ff9a3" />
+    <None Include="sender\.git\refs\heads\master" />
+    <None Include="sender\.git\refs\remotes\origin\master" />
+    <None Include="sender\sender.iml" />
+    <None Include="sender\src\main\resources\credentials.json" />
+    <None Include="sender\target\classes\api%241.class" />
+    <None Include="sender\target\classes\api.class" />
+    <None Include="sender\target\classes\credentials.json" />
+    <None Include="sender\target\classes\Listener.class" />
+    <None Include="sender\target\classes\META-INF\sender.kotlin_module" />
+    <None Include="sender\target\classes\sender.class" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
@@ -420,6 +492,35 @@
     <AdditionalFiles Include="Resources\sender.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sender\.idea\.gitignore" />
+    <Content Include="sender\.idea\artifacts\sender_jar.xml" />
+    <Content Include="sender\.idea\compiler.xml" />
+    <Content Include="sender\.idea\libraries\Java_EE_6_Java_EE_6.xml" />
+    <Content Include="sender\.idea\misc.xml" />
+    <Content Include="sender\.idea\vcs.xml" />
+    <Content Include="sender\.idea\workspace.xml" />
+    <Content Include="sender\lib\javax.annotation.jar" />
+    <Content Include="sender\lib\javax.ejb.jar" />
+    <Content Include="sender\lib\javax.jms.jar" />
+    <Content Include="sender\lib\javax.persistence.jar" />
+    <Content Include="sender\lib\javax.resource.jar" />
+    <Content Include="sender\lib\javax.servlet.jar" />
+    <Content Include="sender\lib\javax.servlet.jsp.jar" />
+    <Content Include="sender\lib\javax.servlet.jsp.jstl.jar" />
+    <Content Include="sender\lib\javax.transaction.jar" />
+    <Content Include="sender\pom.xml" />
+    <Content Include="sender\src\main\java\api.java" />
+    <Content Include="sender\src\main\java\Listener.java" />
+    <Content Include="sender\src\main\java\sender.java" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="sender\.git\objects\info\" />
+    <Folder Include="sender\.git\objects\pack\" />
+    <Folder Include="sender\.git\refs\tags\" />
+    <Folder Include="sender\src\test\java\" />
+    <Folder Include="sender\target\generated-sources\annotations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>

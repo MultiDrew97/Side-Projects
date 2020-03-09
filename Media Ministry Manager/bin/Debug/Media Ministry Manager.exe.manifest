@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Media Ministry Manager.exe" version="1.1.28.12" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Media Ministry Manager.exe" version="2.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7813568">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7818688">
       <assemblyIdentity name="Media Ministry Manager" version="1.1.28.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FrMLfAJTP663IfvDcEbKEpm9EgD31g1n69uwV4OiGmA=</dsig:DigestValue>
+        <dsig:DigestValue>xSgkMXpFygeqvJ1warfxR/yKL0p/YmdBpkmS9cf16x4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -214,6 +214,186 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>uMM3k72HzQ/z7rG9/ZFchMxoFk8JiiekXne5taFHfyk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\.idea\.gitignore" size="39">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>gA9InOlUitsW6efrwQG/eJbGbdUMQb0tnQUaXyINLgQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\.idea\artifacts\sender_jar.xml" size="5335" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OBo/PCrQN1DnndyhsNZcxcywBySrxSEVOUHWLvfe148=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\.idea\compiler.xml" size="539" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>apWanGbN998Ftev/oSXpDUhvpqLhJL5oWynDNmrJNOE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\.idea\libraries\Java_EE_6_Java_EE_6.xml" size="1480" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>nu/dx5MwXdrPGh5XAVC1qA066WsXZaeKkAbvJZLFlzw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\.idea\misc.xml" size="630" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>5tJg0/6HRtGOqmyDyk7wukzIUGUfjR4OIX9ljUneCPU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\.idea\vcs.xml" size="185" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>E2+LCiDj4W9bYOhQUhnDR0bh7GLGhDP0+OyX7v46oDg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\.idea\workspace.xml" size="10020" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Zt87K+WXWvgtMsQX3Px84PWVOCg6EZKI7/vdmrTW95g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.annotation.jar" size="7713">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>u3I9ccRaA6eKsmt8rww7WwwM/ZcoRIWoCQ6s1xmdxSI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.ejb.jar" size="47581">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KsQOkkMSbLqZmbG/3bCaJhsNukQm36frb3NJSRMXBjU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.jms.jar" size="25957">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>gaz9x6WGE45pbTrefffJV1s1M97qOlZKrtDk5PpcZHs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.persistence.jar" size="129793">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>L+WsH1qjjZbkVFeST5Bu3Zd4W42qCmVASgb0SNI+GEA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.resource.jar" size="44511">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>lcpxqnuEZhPBJfXuej2j1DAdc7RwNFuBVHrJAzkxTvE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.servlet.jar" size="69933">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2mfL2SexacPP8JNn40YkbML/aKCeY86oOrw/D46hNkI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.servlet.jsp.jar" size="78836">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>gy+dbC5h0v6Ds44HcmXdK8b/43BEUG0bjdskHl1ndOY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.servlet.jsp.jstl.jar" size="28120">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>/hQpib4cbNa82LJP0yA1R5DiBPf0tOBqqGsvmF1fuZo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\lib\javax.transaction.jar" size="9714">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>3J6VyO2k5O2Nks9mdd6F2Ft9+1QC5RhxOS71mYBIhfY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\pom.xml" size="1709" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>oqv97HEcbYPV4qduKcmoJ8ydG1kl47s1nOdGB5LOICc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\src\main\java\api.java" size="5919">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>jXPy/VMM9QS2XzR9piPDeCq41dnUd3FDWcglJ51mjFQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\src\main\java\Listener.java" size="489">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>WzaTRmFo9GddrX+HSy0kfmdirRN1uXCDcLzv9u8/C3U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\src\main\java\sender.java" size="3210">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R0oFpJeSNTVDS6OiC3adwnnf/ExJVSdUNihGtICZfcs=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
