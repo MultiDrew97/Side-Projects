@@ -340,6 +340,9 @@ ASALocalRun/
 healthchecksdb
 
 #Security
-.exe
-.settings
-.json
+*.exe
+*.settings
+*.json
+*.jar
+*.resx
+*.txt
