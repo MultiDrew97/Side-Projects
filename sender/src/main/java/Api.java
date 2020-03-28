@@ -13,21 +13,27 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.Message;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
-public class api {
+public class Api {
     private static final String APPLICATION_NAME = "Email Sender";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "Gmail Token";
     private static Gmail service;
+    private static final MimeBodyPart logo = new MimeBodyPart();
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
@@ -35,12 +41,21 @@ public class api {
     private static final List<String> SCOPES = Collections.singletonList(GmailScopes.GMAIL_SEND);
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
-    public api() throws IOException, GeneralSecurityException {
+    public Api() throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         service = new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
+
+        try {
+            logo.setDataHandler(new DataHandler(new FileDataSource(new File("./target/classes/Media Ministry.JPG"))));
+            logo.setFileName("Media Ministry Logo");
+        } catch (MessagingException ex) {
+
+        }
+
+
     }//end constructor
 
     /**
@@ -51,7 +66,7 @@ public class api {
      */
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
         // Load client secrets.
-        InputStream in = api.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+        InputStream in = Api.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
         }
@@ -73,12 +88,12 @@ public class api {
      * @param to email address of the receiver
      * @param from email address of the sender
      * @param subject subject of the email
-     * @param bodyText body text of the email
+     * @param body body text of the email
      * @return the MimeMessage to be used to send email
      * @throws MessagingException if there's an issue with the message
      * @throws IOException if the message can't write to buffer
      */
-    public static Message createEmail(String to, String from, String subject, String bodyText) throws MessagingException, IOException {
+    public static Message createEmail(String to, String from, String subject, String body) throws MessagingException, IOException {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
 
@@ -86,8 +101,16 @@ public class api {
             setFrom(new InternetAddress(from));
             addRecipient(RecipientType.TO, new InternetAddress(to));
             setSubject(subject);
-            setText(bodyText);
         }};
+
+        MimeBodyPart html = new MimeBodyPart() {{
+           setContent(body, "text/html");
+        }};
+
+        Multipart mp = new MimeMultipart();
+        mp.addBodyPart(html);
+        mp.addBodyPart(logo);
+        email.setContent(mp);
 
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         email.writeTo(buffer);
