@@ -37,7 +37,11 @@ Partial Class frm_EmailListeners
         Me.btn_SendEmails = New System.Windows.Forms.Button()
         Me.btn_ViewListeners = New System.Windows.Forms.Button()
         Me.bw_SendEmails = New System.ComponentModel.BackgroundWorker()
+        Me.gbx_EmailType = New System.Windows.Forms.GroupBox()
+        Me.rdo_GoingLive = New System.Windows.Forms.RadioButton()
+        Me.rdo_EmailMinistry = New System.Windows.Forms.RadioButton()
         Me.ss_Feedback.SuspendLayout()
+        Me.gbx_EmailType.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_Upload
@@ -61,7 +65,7 @@ Partial Class frm_EmailListeners
         Me.cbx_Folders.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbx_Folders.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbx_Folders.FormattingEnabled = True
-        Me.cbx_Folders.Location = New System.Drawing.Point(389, 55)
+        Me.cbx_Folders.Location = New System.Drawing.Point(389, 68)
         Me.cbx_Folders.Name = "cbx_Folders"
         Me.cbx_Folders.Size = New System.Drawing.Size(367, 33)
         Me.cbx_Folders.TabIndex = 1
@@ -71,7 +75,7 @@ Partial Class frm_EmailListeners
         Me.lbl_Folder.AutoSize = True
         Me.lbl_Folder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_Folder.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_Folder.Location = New System.Drawing.Point(293, 55)
+        Me.lbl_Folder.Location = New System.Drawing.Point(293, 68)
         Me.lbl_Folder.Name = "lbl_Folder"
         Me.lbl_Folder.Size = New System.Drawing.Size(79, 26)
         Me.lbl_Folder.TabIndex = 2
@@ -82,7 +86,7 @@ Partial Class frm_EmailListeners
         Me.lbl_FileLocation.AutoSize = True
         Me.lbl_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_FileLocation.Location = New System.Drawing.Point(314, 114)
+        Me.lbl_FileLocation.Location = New System.Drawing.Point(314, 127)
         Me.lbl_FileLocation.Name = "lbl_FileLocation"
         Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 26)
         Me.lbl_FileLocation.TabIndex = 3
@@ -92,7 +96,7 @@ Partial Class frm_EmailListeners
         '
         Me.txt_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txt_FileLocation.Location = New System.Drawing.Point(389, 114)
+        Me.txt_FileLocation.Location = New System.Drawing.Point(389, 127)
         Me.txt_FileLocation.Name = "txt_FileLocation"
         Me.txt_FileLocation.ReadOnly = True
         Me.txt_FileLocation.Size = New System.Drawing.Size(367, 32)
@@ -102,7 +106,7 @@ Partial Class frm_EmailListeners
         '
         Me.btn_Browse.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Browse.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btn_Browse.Location = New System.Drawing.Point(762, 114)
+        Me.btn_Browse.Location = New System.Drawing.Point(762, 127)
         Me.btn_Browse.Name = "btn_Browse"
         Me.btn_Browse.Size = New System.Drawing.Size(44, 31)
         Me.btn_Browse.TabIndex = 5
@@ -115,7 +119,7 @@ Partial Class frm_EmailListeners
         'btn_AddFolder
         '
         Me.btn_AddFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_AddFolder.Location = New System.Drawing.Point(762, 57)
+        Me.btn_AddFolder.Location = New System.Drawing.Point(762, 70)
         Me.btn_AddFolder.Name = "btn_AddFolder"
         Me.btn_AddFolder.Size = New System.Drawing.Size(44, 31)
         Me.btn_AddFolder.TabIndex = 6
@@ -125,9 +129,9 @@ Partial Class frm_EmailListeners
         'ss_Feedback
         '
         Me.ss_Feedback.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
-        Me.ss_Feedback.Location = New System.Drawing.Point(0, 179)
+        Me.ss_Feedback.Location = New System.Drawing.Point(0, 727)
         Me.ss_Feedback.Name = "ss_Feedback"
-        Me.ss_Feedback.Size = New System.Drawing.Size(826, 22)
+        Me.ss_Feedback.Size = New System.Drawing.Size(884, 22)
         Me.ss_Feedback.TabIndex = 7
         Me.ss_Feedback.Text = "ss_Feedback"
         '
@@ -157,8 +161,38 @@ Partial Class frm_EmailListeners
         Me.btn_ViewListeners.Text = "Current Listeners"
         Me.btn_ViewListeners.UseVisualStyleBackColor = True
         '
-        'bw_SendEmails
+        'gbx_EmailType
         '
+        Me.gbx_EmailType.Controls.Add(Me.rdo_GoingLive)
+        Me.gbx_EmailType.Controls.Add(Me.rdo_EmailMinistry)
+        Me.gbx_EmailType.Location = New System.Drawing.Point(389, 13)
+        Me.gbx_EmailType.Name = "gbx_EmailType"
+        Me.gbx_EmailType.Size = New System.Drawing.Size(352, 49)
+        Me.gbx_EmailType.TabIndex = 11
+        Me.gbx_EmailType.TabStop = False
+        Me.gbx_EmailType.Text = "What Email"
+        '
+        'rdo_GoingLive
+        '
+        Me.rdo_GoingLive.AutoSize = True
+        Me.rdo_GoingLive.Location = New System.Drawing.Point(196, 19)
+        Me.rdo_GoingLive.Name = "rdo_GoingLive"
+        Me.rdo_GoingLive.Size = New System.Drawing.Size(95, 17)
+        Me.rdo_GoingLive.TabIndex = 1
+        Me.rdo_GoingLive.Text = "Live Streaming"
+        Me.rdo_GoingLive.UseVisualStyleBackColor = True
+        '
+        'rdo_EmailMinistry
+        '
+        Me.rdo_EmailMinistry.AutoSize = True
+        Me.rdo_EmailMinistry.Checked = True
+        Me.rdo_EmailMinistry.Location = New System.Drawing.Point(65, 19)
+        Me.rdo_EmailMinistry.Name = "rdo_EmailMinistry"
+        Me.rdo_EmailMinistry.Size = New System.Drawing.Size(88, 17)
+        Me.rdo_EmailMinistry.TabIndex = 0
+        Me.rdo_EmailMinistry.TabStop = True
+        Me.rdo_EmailMinistry.Text = "Email Ministry"
+        Me.rdo_EmailMinistry.UseVisualStyleBackColor = True
         '
         'frm_EmailListeners
         '
@@ -166,7 +200,8 @@ Partial Class frm_EmailListeners
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(826, 201)
+        Me.ClientSize = New System.Drawing.Size(884, 749)
+        Me.Controls.Add(Me.gbx_EmailType)
         Me.Controls.Add(Me.btn_ViewListeners)
         Me.Controls.Add(Me.btn_SendEmails)
         Me.Controls.Add(Me.ss_Feedback)
@@ -184,6 +219,8 @@ Partial Class frm_EmailListeners
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)
         Me.ss_Feedback.PerformLayout()
+        Me.gbx_EmailType.ResumeLayout(False)
+        Me.gbx_EmailType.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -203,4 +240,7 @@ Partial Class frm_EmailListeners
     Friend WithEvents btn_SendEmails As Button
     Friend WithEvents btn_ViewListeners As Button
     Friend WithEvents bw_SendEmails As System.ComponentModel.BackgroundWorker
+    Friend WithEvents gbx_EmailType As GroupBox
+    Friend WithEvents rdo_GoingLive As RadioButton
+    Friend WithEvents rdo_EmailMinistry As RadioButton
 End Class

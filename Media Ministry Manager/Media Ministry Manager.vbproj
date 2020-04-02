@@ -27,14 +27,16 @@
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://192.168.1.62/Media Ministry Manager/</InstallUrl>
-    <UpdateUrl>http://192.168.1.62/Media Ministry Manager/</UpdateUrl>
+    <UpdateUrl>https://sppbc.hopto.org:22/var/www/sppbc/files/</UpdateUrl>
+    <TargetCulture>en-US</TargetCulture>
     <ProductName>Media Ministry Manager</ProductName>
     <PublisherName>Andrew Randle-Warren</PublisherName>
     <SuiteName>Media Ministry</SuiteName>
     <MinimumRequiredVersion>1.1.28.2</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <WebPage>MediaMinsitryManager</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -170,28 +172,28 @@
     <Compile Include="Assets\Media Ministry Splash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Email Listeners\AddListener.Designer.vb">
+      <DependentUpon>AddListener.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\AddListener.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\Folder.designer.vb">
+      <DependentUpon>Folder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\Folder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Email Listeners\EmailListeners.Designer.vb">
       <DependentUpon>EmailListeners.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Email Listeners\EmailListeners.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\frm_AddListener.Designer.vb">
-      <DependentUpon>frm_AddListener.vb</DependentUpon>
+    <Compile Include="Forms\Email Listeners\ViewListeners.Designer.vb">
+      <DependentUpon>ViewListeners.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\frm_AddListener.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Email Listeners\frm_Folder.Designer.vb">
-      <DependentUpon>frm_Folder.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Email Listeners\frm_Folder.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Email Listeners\frm_ViewListeners.Designer.vb">
-      <DependentUpon>frm_ViewListeners.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Email Listeners\frm_ViewListeners.vb">
+    <Compile Include="Forms\Email Listeners\ViewListeners.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Inventory\AddNewProduct.Designer.vb">
@@ -303,17 +305,14 @@
       <DependentUpon>Media Ministry Splash.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Email Listeners\Folder.resx">
+      <DependentUpon>Folder.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\EmailListeners.resx">
       <DependentUpon>EmailListeners.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\frm_AddListener.resx">
-      <DependentUpon>frm_AddListener.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\frm_Folder.resx">
-      <DependentUpon>frm_Folder.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
-      <DependentUpon>frm_ViewListeners.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Email Listeners\ViewListeners.resx">
+      <DependentUpon>ViewListeners.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory\AddNewProduct.resx">
       <DependentUpon>AddNewProduct.vb</DependentUpon>
@@ -466,6 +465,11 @@
       <ProductName>Microsoft .NET Framework 4.7.1 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Java.SE.Development.Kit">
+      <Visible>False</Visible>
+      <ProductName>JDKInstaller</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
@@ -515,6 +519,7 @@
     <Content Include="sender\src\main\java\api.java" />
     <Content Include="sender\src\main\java\Listener.java" />
     <Content Include="sender\src\main\java\sender.java" />
+    <Content Include="sender\src\main\resources\Media Ministry.JPG" />
     <Content Include="sender\src\main\resources\message.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -527,7 +532,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2019/5/8" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_ConfigurationName="Any" />
+      <UserProperties BuildVersion_ConfigurationName="Any" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_StartDate="2019/5/8" BuildVersion_UseGlobalSettings="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -1,7 +1,6 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
-Imports System.IO
 Imports Media_Ministry.SendingEmails
 
 Public Class frm_EmailListeners
@@ -10,6 +9,36 @@ Public Class frm_EmailListeners
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
     ReadOnly emailer As String = Application.StartupPath & "\sender.jar"
+
+    Structure MinisLocations
+        Shared upload As New Point(20, 13)
+        Shared sending As New Point(20, 71)
+        Shared view As New Point(20, 129)
+        Shared folders As New Point(389, 68)
+        Shared file As New Point(389, 127)
+        Shared group As New Point(389, 13)
+        Shared ministry As New Point(65, 19)
+        Shared live As New Point(196, 19)
+    End Structure
+
+    Structure LiveLocations
+        Shared upload As New Point()
+        Shared sending As New Point()
+        Shared view As New Point()
+        Shared folders As New Point()
+        Shared file As New Point()
+        Shared group As New Point()
+        Shared ministry As New Point()
+        Shared live As New Point()
+    End Structure
+
+    Structure MinisSizes
+        Shared form As New Size(842, 240)
+    End Structure
+
+    Structure LiveSizes
+        Shared form As New Size(900, 800)
+    End Structure
 
     Private Sub btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
         tss_Feedback.ForeColor = Color.Black
@@ -48,7 +77,7 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
-        Dim frm_Folder As frm_Folder = New frm_Folder(uploader)
+        Dim frm_Folder As Folder = New Folder(uploader)
         frm_Folder.Show()
 
         Do Until My.Settings.AdminInfoRecieved
@@ -99,7 +128,7 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
-        Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners(New Database(My.Settings.Username, My.Settings.Password))
+        Dim frm_ViewListeners As ViewListeners = New ViewListeners(New Database(My.Settings.Username, My.Settings.Password))
         frm_ViewListeners.emails = Me
         frm_ViewListeners.Show()
         Me.Hide()
@@ -119,5 +148,25 @@ Public Class frm_EmailListeners
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
         End If
+    End Sub
+
+    Private Sub rdo_EmailMinistry_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_EmailMinistry.CheckedChanged
+        If rdo_EmailMinistry.Checked Then
+            normal()
+        End If
+    End Sub
+
+    Private Sub rdo_GoingLive_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_GoingLive.CheckedChanged
+        If rdo_GoingLive.Checked Then
+            goLive()
+        End If
+    End Sub
+
+    Sub normal()
+        Me.Size = MinisSizes.form
+    End Sub
+
+    Sub goLive()
+        Me.Size = LiveSizes.form
     End Sub
 End Class

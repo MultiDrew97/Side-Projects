@@ -27,12 +27,17 @@ Media Ministry Manager
   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
 </summary>
 </member>
+<member name="P:Media_Ministry.My.Resources.Resources.credentials">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
 <member name="P:Media_Ministry.My.Resources.Resources.logout_button">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:Media_Ministry.My.Resources.Resources.Media_Ministry_Manage_Image">
+<member name="P:Media_Ministry.My.Resources.Resources.Media_Ministry_Logo">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

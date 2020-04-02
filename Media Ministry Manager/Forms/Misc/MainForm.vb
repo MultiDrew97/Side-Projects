@@ -1,14 +1,16 @@
 ﻿Option Strict On
 Imports System.ComponentModel
 Imports System.IO
-Imports System.Text
 Imports Media_Ministry.SendingEmails
-Imports NeoSmart.Utils
 
 Public Class frm_Main
     Dim db As Database
     Dim uploader As DriveUploader
     Private emailListeners As frm_EmailListeners
+    Structure Sizes
+        Shared normal As New Size(413, 452)
+        Shared max As New Size(1382, 744)
+    End Structure
     Public Sub New(ByRef database As Database)
 
         ' This call is required by the designer.
@@ -99,4 +101,55 @@ Public Class frm_Main
             End Using
         End If
     End Sub
+
+    Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        If Size = Sizes.max Then
+            'form set to max window size
+            hideNormal()
+        Else
+            'form set to default window size
+            hideMax()
+        End If
+    End Sub
+
+    Sub hideNormal()
+        btn_CustomerManagement.Hide()
+        btn_EmailMinistry.Hide()
+        btn_placeOrder.Hide()
+        btn_ProductManagement.Hide()
+        btn_ShowOrders.Hide()
+        showMax()
+    End Sub
+
+    Sub showMax()
+        tbc_MaxView.Show()
+        mst_MaxStrip.Show()
+    End Sub
+    Sub hideMax()
+        tbc_MaxView.Hide()
+        mst_MaxStrip.Hide()
+        showNormal()
+    End Sub
+
+    Sub showNormal()
+        btn_CustomerManagement.Show()
+        btn_EmailMinistry.Show()
+        btn_placeOrder.Show()
+        btn_ProductManagement.Show()
+        btn_ShowOrders.Show()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
+        Me.Close()
+    End Sub
+
+    'Private Sub CustomizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomizeToolStripMenuItem.Click
+    '    Dim customize As New frm_Customize()
+    '    customize.Show()
+    'End Sub
+
+    'Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+    '    Dim options As New frm_Options()
+    '    options.show()
+    'End Sub
 End Class
