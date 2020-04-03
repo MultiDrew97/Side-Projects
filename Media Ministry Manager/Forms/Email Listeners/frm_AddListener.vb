@@ -183,8 +183,16 @@ Public Class frm_AddListener
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
             ofd_ListenerList.FileName = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
-            ofd_ListenerList_FileOk(sender, New CancelEventArgs)
-            'txt_FilePath.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            If ofd_ListenerList.CheckFileExists And CorrectExtension(ofd_ListenerList.FileName) Then
+                ofd_ListenerList_FileOk(sender, New CancelEventArgs)
+                'txt_FilePath.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            Else
+                tss_Feedback.Text = "The file you selected does not have the correct extension. You need a file with the .csv extension"
+            End If
         End If
     End Sub
+
+    Private Function CorrectExtension(filename As String) As Boolean
+        Return filename.Split({"."c})(1).Equals("csv")
+    End Function
 End Class

@@ -169,6 +169,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
-        'TODO: Add Find Listener Functionality
+        Dim frm_View As New frm_ViewListeners(db)
+        frm_View.Show()
     End Sub
 End Class

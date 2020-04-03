@@ -11,6 +11,40 @@ Public Class frm_EmailListeners
     Private fileID As String = Nothing
     ReadOnly emailer As String = Application.StartupPath & "\sender.jar"
 
+    Structure Sizes
+        'Window Sizes
+        Shared [Default] As New Size(842, 240)
+        Shared Max As New Size(1382, 744)
+    End Structure
+
+    Structure Locations
+        'upload button locations
+        Shared UploadDefault As New Point(20, 13)
+
+        'Send button locations
+        Shared SendDefault As New Point(20, 71)
+
+        'View button Locations
+        Shared ViewDefault As New Point(20, 129)
+
+        'Folder combo locations
+        Shared FolderDefault As New Point(389, 55)
+
+        'File text locations
+        Shared FileDefault As New Point(389, 114)
+
+        'new folder button locations
+        Shared FolderAddDefault As New Point(762, 57)
+
+        'find file button
+        Shared BrowseDefault As New Point(762, 114)
+
+        'folder label locations
+        Shared FolderLabelDefault As New Point(293, 55)
+
+        'file label locations
+        Shared FileLabelDefault As New Point(314, 114)
+    End Structure
     Private Sub btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
         tss_Feedback.ForeColor = Color.Black
         bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
@@ -109,8 +143,10 @@ Public Class frm_EmailListeners
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
             ofd_SelectAudio.FileName = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
-            ofd_SelectAudio_FileOk(sender, New CancelEventArgs)
-            'txt_FileLocation.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            If ofd_SelectAudio.CheckFileExists Then
+                ofd_SelectAudio_FileOk(sender, New CancelEventArgs)
+                'txt_FileLocation.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            End If
         End If
     End Sub
 
@@ -119,5 +155,31 @@ Public Class frm_EmailListeners
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
         End If
+    End Sub
+
+    Private Sub frm_EmailListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        If Me.Size = Sizes.Max Then
+            MaxChanges()
+        Else
+            DefaultChanges()
+        End If
+    End Sub
+
+    Private Sub MaxChanges()
+
+    End Sub
+
+    Private Sub DefaultChanges()
+        'Locations
+        btn_Upload.Location = Locations.UploadDefault
+        btn_SendEmails.Location = Locations.SendDefault
+        btn_ViewListeners.Location = Locations.ViewDefault
+        lbl_Folder.Location = Locations.FolderLabelDefault
+        cbx_Folders.Location = Locations.FolderDefault
+        btn_AddFolder.Location = Locations.FolderAddDefault
+        lbl_FileLocation.Location = Locations.FileLabelDefault
+        txt_FileLocation.Location = Locations.FileDefault
+        btn_Browse.Location = Locations.BrowseDefault
+
     End Sub
 End Class

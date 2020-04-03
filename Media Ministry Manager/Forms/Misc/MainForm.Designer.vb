@@ -40,7 +40,7 @@ Partial Class frm_Main
         Me.CUSTOMERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.bw_UpdateJar = New System.ComponentModel.BackgroundWorker()
         Me.pnl_Controls = New System.Windows.Forms.Panel()
-        Me.mnstr_MaxStrip = New System.Windows.Forms.MenuStrip()
+        Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -51,22 +51,16 @@ Partial Class frm_Main
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.IndexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.toolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ss_Queries.SuspendLayout()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnl_Controls.SuspendLayout()
-        Me.mnstr_MaxStrip.SuspendLayout()
+        Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_placeOrder
@@ -165,7 +159,7 @@ Partial Class frm_Main
         Me.pnl_Controls.BackgroundImage = Global.Media_Ministry.My.Resources.Resources.Media_Ministry_Manage_Image
         Me.pnl_Controls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnl_Controls.Controls.Add(Me.btn_EmailMinistry)
-        Me.pnl_Controls.Controls.Add(Me.mnstr_MaxStrip)
+        Me.pnl_Controls.Controls.Add(Me.mnstr_Strip)
         Me.pnl_Controls.Controls.Add(Me.btn_CustomerManagement)
         Me.pnl_Controls.Controls.Add(Me.btn_ShowOrders)
         Me.pnl_Controls.Controls.Add(Me.btn_placeOrder)
@@ -176,15 +170,15 @@ Partial Class frm_Main
         Me.pnl_Controls.Size = New System.Drawing.Size(397, 413)
         Me.pnl_Controls.TabIndex = 0
         '
-        'mnstr_MaxStrip
+        'mnstr_Strip
         '
-        Me.mnstr_MaxStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
-        Me.mnstr_MaxStrip.Location = New System.Drawing.Point(0, 0)
-        Me.mnstr_MaxStrip.Name = "mnstr_MaxStrip"
-        Me.mnstr_MaxStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mnstr_MaxStrip.Size = New System.Drawing.Size(397, 24)
-        Me.mnstr_MaxStrip.TabIndex = 0
-        Me.mnstr_MaxStrip.Text = "MenuStrip1"
+        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem})
+        Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
+        Me.mnstr_Strip.Name = "mnstr_Strip"
+        Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.mnstr_Strip.Size = New System.Drawing.Size(397, 24)
+        Me.mnstr_Strip.TabIndex = 0
+        Me.mnstr_Strip.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
@@ -199,43 +193,43 @@ Partial Class frm_Main
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'CustomerToolStripMenuItem
         '
         Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
-        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.CustomerToolStripMenuItem.Text = "Customer"
         '
         'ProductToolStripMenuItem
         '
         Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
-        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.ProductToolStripMenuItem.Text = "Product"
         '
         'ListenerToolStripMenuItem
         '
         Me.ListenerToolStripMenuItem.Name = "ListenerToolStripMenuItem"
-        Me.ListenerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ListenerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.ListenerToolStripMenuItem.Text = "Listener"
         '
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(109, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.Media_Ministry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -249,68 +243,32 @@ Partial Class frm_Main
         '
         Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem1, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.CustomizeToolStripMenuItem.Text = "Find..."
-        '
-        'OptionsToolStripMenuItem
-        '
-        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.OptionsToolStripMenuItem.Text = "&Options"
-        '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContentsToolStripMenuItem, Me.IndexToolStripMenuItem, Me.SearchToolStripMenuItem, Me.toolStripSeparator5, Me.AboutToolStripMenuItem})
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.HelpToolStripMenuItem.Text = "&Help"
-        '
-        'ContentsToolStripMenuItem
-        '
-        Me.ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
-        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
-        Me.ContentsToolStripMenuItem.Text = "&Contents"
-        '
-        'IndexToolStripMenuItem
-        '
-        Me.IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
-        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
-        Me.IndexToolStripMenuItem.Text = "&Index"
-        '
-        'SearchToolStripMenuItem
-        '
-        Me.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
-        Me.SearchToolStripMenuItem.Text = "&Search"
-        '
-        'toolStripSeparator5
-        '
-        Me.toolStripSeparator5.Name = "toolStripSeparator5"
-        Me.toolStripSeparator5.Size = New System.Drawing.Size(119, 6)
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
-        Me.AboutToolStripMenuItem.Text = "&About..."
         '
         'CustomerToolStripMenuItem1
         '
         Me.CustomerToolStripMenuItem1.Name = "CustomerToolStripMenuItem1"
-        Me.CustomerToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.CustomerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
         Me.CustomerToolStripMenuItem1.Text = "Customer"
         '
         'ProductToolStripMenuItem1
         '
         Me.ProductToolStripMenuItem1.Name = "ProductToolStripMenuItem1"
-        Me.ProductToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ProductToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
         Me.ProductToolStripMenuItem1.Text = "Product"
         '
         'ListenerToolStripMenuItem1
         '
         Me.ListenerToolStripMenuItem1.Name = "ListenerToolStripMenuItem1"
-        Me.ListenerToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ListenerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
         Me.ListenerToolStripMenuItem1.Text = "Listener"
+        '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'frm_Main
         '
@@ -322,7 +280,8 @@ Partial Class frm_Main
         Me.Controls.Add(Me.pnl_Controls)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MainMenuStrip = Me.mnstr_MaxStrip
+        Me.MainMenuStrip = Me.mnstr_Strip
+        Me.MaximizeBox = False
         Me.Name = "frm_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
@@ -333,8 +292,8 @@ Partial Class frm_Main
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnl_Controls.ResumeLayout(False)
         Me.pnl_Controls.PerformLayout()
-        Me.mnstr_MaxStrip.ResumeLayout(False)
-        Me.mnstr_MaxStrip.PerformLayout()
+        Me.mnstr_Strip.ResumeLayout(False)
+        Me.mnstr_Strip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -355,7 +314,7 @@ Partial Class frm_Main
     Friend WithEvents btn_EmailMinistry As Button
     Friend WithEvents bw_UpdateJar As System.ComponentModel.BackgroundWorker
     Friend WithEvents pnl_Controls As Panel
-    Friend WithEvents mnstr_MaxStrip As MenuStrip
+    Friend WithEvents mnstr_Strip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CustomerToolStripMenuItem As ToolStripMenuItem
@@ -366,12 +325,6 @@ Partial Class frm_Main
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CustomizeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ContentsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents IndexToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SearchToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents toolStripSeparator5 As ToolStripSeparator
-    Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents CustomerToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ProductToolStripMenuItem1 As ToolStripMenuItem

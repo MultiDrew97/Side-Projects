@@ -157,9 +157,6 @@ Partial Class frm_EmailListeners
         Me.btn_ViewListeners.Text = "Current Listeners"
         Me.btn_ViewListeners.UseVisualStyleBackColor = True
         '
-        'bw_SendEmails
-        '
-        '
         'frm_EmailListeners
         '
         Me.AcceptButton = Me.btn_Upload
@@ -177,6 +174,7 @@ Partial Class frm_EmailListeners
         Me.Controls.Add(Me.lbl_Folder)
         Me.Controls.Add(Me.cbx_Folders)
         Me.Controls.Add(Me.btn_Upload)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frm_EmailListeners"
