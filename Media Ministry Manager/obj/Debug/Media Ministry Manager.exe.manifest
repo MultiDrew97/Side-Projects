@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Media Ministry Manager.exe" version="2.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Media Ministry Manager.exe" version="2.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7818688">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7934912">
       <assemblyIdentity name="Media Ministry Manager" version="1.1.28.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xSgkMXpFygeqvJ1warfxR/yKL0p/YmdBpkmS9cf16x4=</dsig:DigestValue>
+        <dsig:DigestValue>MxITmtF77BSAI36oo1mJx26a2GhnK67WWMBXZt3eN54=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -270,13 +270,13 @@
       <dsig:DigestValue>E2+LCiDj4W9bYOhQUhnDR0bh7GLGhDP0+OyX7v46oDg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="sender\.idea\workspace.xml" size="10020" writeableType="applicationData">
+  <file name="sender\.idea\workspace.xml" size="17603" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Zt87K+WXWvgtMsQX3Px84PWVOCg6EZKI7/vdmrTW95g=</dsig:DigestValue>
+      <dsig:DigestValue>UZIIr9aTn1Y2jG6CSvD9mLbUoS6fjjjQGmaopUr7Jmg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="sender\lib\javax.annotation.jar" size="7713">
@@ -369,31 +369,40 @@
       <dsig:DigestValue>oqv97HEcbYPV4qduKcmoJ8ydG1kl47s1nOdGB5LOICc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="sender\src\main\java\api.java" size="5919">
+  <file name="sender\src\main\java\api.java" size="6687">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>jXPy/VMM9QS2XzR9piPDeCq41dnUd3FDWcglJ51mjFQ=</dsig:DigestValue>
+      <dsig:DigestValue>lo1EZMQMjkvd58YltGArf70CUvBNkqiQeg//j3JFvZk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="sender\src\main\java\Listener.java" size="489">
+  <file name="sender\src\main\java\Listener.java" size="525">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WzaTRmFo9GddrX+HSy0kfmdirRN1uXCDcLzv9u8/C3U=</dsig:DigestValue>
+      <dsig:DigestValue>pnH8DHHmkFKIr28Tn+NFlP/ywVbihqCbp9mprWb+t98=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="sender\src\main\java\sender.java" size="3210">
+  <file name="sender\src\main\java\sender.java" size="3968">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>R0oFpJeSNTVDS6OiC3adwnnf/ExJVSdUNihGtICZfcs=</dsig:DigestValue>
+      <dsig:DigestValue>SZm3Q9g2V0sGT5V63aC2eZ5r1rAneEa4SJZMmLR3kMA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sender\src\main\resources\message.txt" size="130">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>gE9o0YiSSGkYmvDefjApW9oNLFsHwZRSoqbRwSNv7KQ=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
