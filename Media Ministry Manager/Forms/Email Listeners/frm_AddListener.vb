@@ -1,8 +1,8 @@
-﻿Imports System.IO
-Imports Microsoft.VisualBasic.FileIO
-Imports System.Text.RegularExpressions.Regex
+﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
-Imports System.ComponentModel
+Imports System.IO
+Imports System.Text.RegularExpressions.Regex
+Imports Microsoft.VisualBasic.FileIO
 
 Public Class frm_AddListener
     Public frm_Emails As frm_ViewListeners
@@ -10,6 +10,7 @@ Public Class frm_AddListener
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails
     ReadOnly emailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
+
     Private Sub reset()
         rdo_Single.Checked = True
 
@@ -74,7 +75,10 @@ Public Class frm_AddListener
 
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
-        frm_Emails.Show()
+        Try
+            frm_Emails.Show()
+        Catch
+        End Try
     End Sub
 
     Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
@@ -138,8 +142,12 @@ Public Class frm_AddListener
                 End Using
 
                 tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
-                frm_Emails.customLoad()
-                wait(2)
+                Try
+                    frm_Emails.customLoad()
+                Catch
+                Finally
+                    wait(2)
+                End Try
 
                 If (failCount > 0) Then
                     tss_Feedback.ForeColor = Color.Red
@@ -195,4 +203,5 @@ Public Class frm_AddListener
     Private Function CorrectExtension(filename As String) As Boolean
         Return filename.Split({"."c})(1).Equals("csv")
     End Function
+
 End Class

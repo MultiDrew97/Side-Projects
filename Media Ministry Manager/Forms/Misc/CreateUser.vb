@@ -1,10 +1,12 @@
 ﻿Option Strict On
+
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class frm_CreateUser
     Dim db As Database
     ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
     End Sub
@@ -77,4 +79,5 @@ Public Class frm_CreateUser
     Private Sub bw_LoadDatabase_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_ClearAdminInfo.RunWorkerCompleted
         Me.Close()
     End Sub
+
 End Class

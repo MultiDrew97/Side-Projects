@@ -1,5 +1,7 @@
 ﻿Option Strict On
+
 Imports System.Data.SqlClient
+
 Public Class frm_DisplayCustomers
     Private db As Database
     Private mainForm As frm_Main
@@ -18,7 +20,7 @@ Public Class frm_DisplayCustomers
         Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
     End Sub
 
-    Private Sub btn_Update_Click(sender As Object, e As EventArgs) 
+    Private Sub btn_Update_Click(sender As Object, e As EventArgs)
         'update customer information that was entered
         Dim index, updateCount As Integer
         Dim street, city, state, zip, phone, email, payment As String
@@ -35,7 +37,7 @@ Public Class frm_DisplayCustomers
             'https://stackoverflow.com/questions/19721984/how-to-get-cell-value-from-datagridview-in-vb-net
 
             Do
-            If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
+                If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
                     street = dgv_Customers.Rows(index).Cells(4).Value.ToString
                     city = dgv_Customers.Rows(index).Cells(5).Value.ToString
                     state = dgv_Customers.Rows(index).Cells(6).Value.ToString
@@ -106,4 +108,5 @@ Public Class frm_DisplayCustomers
 
         db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
     End Sub
+
 End Class

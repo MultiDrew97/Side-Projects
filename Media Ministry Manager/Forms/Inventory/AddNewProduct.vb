@@ -1,9 +1,11 @@
 ﻿Option Strict On
-Imports Media_Ministry.Database
+
 Imports System.Text.RegularExpressions.Regex
+
 Public Class frm_AddNewProduct
     Private db As Database
     Private sendingForm As Form
+
     Public Sub New(ByRef database As Database, ByRef inventoryView As Form)
 
         ' This call is required by the designer.
@@ -13,6 +15,7 @@ Public Class frm_AddNewProduct
         db = database
         sendingForm = inventoryView
     End Sub
+
     Private Sub frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
     End Sub
@@ -21,7 +24,6 @@ Public Class frm_AddNewProduct
         Try
             CType(sendingForm, frm_ViewInventory).customLoad()
         Catch
-
         Finally
             sendingForm.Show()
         End Try

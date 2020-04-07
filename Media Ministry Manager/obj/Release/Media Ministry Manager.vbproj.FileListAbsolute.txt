@@ -82,3 +82,5 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.pdb
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\UrlBase64.dll
+C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.vbproj.CoreCompileInputs.cache

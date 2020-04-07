@@ -1,5 +1,7 @@
 ﻿Option Strict On
+
 Imports System.Text.RegularExpressions.Regex
+
 Public Class frm_AddNewCustomer
     Private db As Database
     Private sendingForm As Form
@@ -93,7 +95,6 @@ Public Class frm_AddNewCustomer
         Try
             CType(sendingForm, frm_DisplayCustomers).refresh()
         Catch
-
         Finally
             sendingForm.Show()
         End Try
@@ -261,4 +262,5 @@ Public Class frm_AddNewCustomer
             txt_Email.SelectionStart = txt_Email.Text.Length + 1
         End If
     End Sub
+
 End Class

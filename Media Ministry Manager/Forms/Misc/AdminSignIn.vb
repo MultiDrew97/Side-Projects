@@ -1,7 +1,9 @@
 ﻿Option Strict On
+
 Imports System.Data.SqlClient
 
 Public Class AdminSignIn
+
     Private Sub btn_ShowPassword_Click(sender As Object, e As EventArgs) Handles btn_ShowPassword.Click
         If txt_Password.UseSystemPasswordChar Then
             txt_Password.UseSystemPasswordChar = False
@@ -47,4 +49,5 @@ Public Class AdminSignIn
             Return False
         End Try
     End Function
+
 End Class

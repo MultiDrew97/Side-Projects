@@ -1,21 +1,24 @@
 ﻿Option Strict On
 
+Imports System.IO
+Imports System.Text
+Imports System.Threading
 Imports Google.Apis.Auth.OAuth2
 Imports Google.Apis.Drive.v3
 Imports Google.Apis.Drive.v3.Data
 Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
-Imports System.IO
-Imports System.Threading
 Imports MimeKit
-Imports System.Text
 Imports NeoSmart.Utils
 
 Namespace SendingEmails
+
     Public Class DriveUploader
+
         'If modifying these scopes, delete your previously saved credentials
         'at ~/.credentials/drive-dotnet-quickstart.json
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
+
         Private ReadOnly ApplicationName As String = "Drive Uploader"
         Private permissions As New List(Of Permission)()
         Private tss As ToolStripStatusLabel
@@ -57,9 +60,10 @@ Namespace SendingEmails
 
             Dim uploadName As String = fileName.Split(CType("\\", Char()))(fileName.Split(CType("\\", Char())).Length - 1).Split(CType(".", Char()))(0) + " " + DateTime.UtcNow.ToString("MM/dd/yyyy")
 
-            Dim fileMetadata As New Data.File()
-            fileMetadata.Name = uploadName
-            fileMetadata.Parents = parents
+            Dim fileMetadata As New Data.File With {
+                .Name = uploadName,
+                .Parents = parents
+            }
 
             Dim request As FilesResource.CreateMediaUpload
 
@@ -94,7 +98,6 @@ Namespace SendingEmails
                 Dim fileMetadata As New Data.File
                 fileMetadata.Name = folderName
                 fileMetadata.MimeType = "application/vnd.google-apps.folder"
-
 
                 Dim request = service.Files.Create(fileMetadata)
 
@@ -150,6 +153,7 @@ Namespace SendingEmails
 
             Return Nothing
         End Function
+
         Sub setPermissions(ByVal fileID As String)
 
             Dim request As PermissionsResource.CreateRequest
@@ -207,5 +211,7 @@ Namespace SendingEmails
 
             Return folders
         End Function
+
     End Class
+
 End Namespace

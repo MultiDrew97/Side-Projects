@@ -1,4 +1,5 @@
 ﻿Option Strict On
+
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 
@@ -74,14 +75,14 @@ Public Class frm_Login
 
     Private Sub btn_CreateUser_Click(sender As Object, e As EventArgs) Handles btn_CreateUser.Click
         Dim createForm = New frm_CreateUser()
-        createForm.show()
+        createForm.Show()
         Me.Hide()
         reset()
     End Sub
 
     Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
         Dim password = New frm_ChangePassword()
-        password.show()
+        password.Show()
         Me.Hide()
         reset()
     End Sub
@@ -100,7 +101,6 @@ Public Class frm_Login
             Return False
         End Try
     End Function
-
 
     'creating a login for a user in the database
     'CREATE USER [NAME] WITH PASSWORD = [PASSWORD]

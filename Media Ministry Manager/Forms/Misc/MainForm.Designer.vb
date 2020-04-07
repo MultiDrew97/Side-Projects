@@ -55,6 +55,7 @@ Partial Class frm_Main
         Me.ProductToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.wb_Updater = New System.Windows.Forms.WebBrowser()
         Me.ss_Queries.SuspendLayout()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,6 +159,7 @@ Partial Class frm_Main
         Me.pnl_Controls.BackColor = System.Drawing.Color.Transparent
         Me.pnl_Controls.BackgroundImage = Global.Media_Ministry.My.Resources.Resources.Media_Ministry_Manage_Image
         Me.pnl_Controls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnl_Controls.Controls.Add(Me.wb_Updater)
         Me.pnl_Controls.Controls.Add(Me.btn_EmailMinistry)
         Me.pnl_Controls.Controls.Add(Me.mnstr_Strip)
         Me.pnl_Controls.Controls.Add(Me.btn_CustomerManagement)
@@ -193,7 +195,7 @@ Partial Class frm_Main
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'CustomerToolStripMenuItem
@@ -217,19 +219,19 @@ Partial Class frm_Main
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(109, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.Media_Ministry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -243,7 +245,7 @@ Partial Class frm_Main
         '
         Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem1, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CustomizeToolStripMenuItem.Text = "Find..."
         '
         'CustomerToolStripMenuItem1
@@ -267,8 +269,17 @@ Partial Class frm_Main
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
-        Me.OptionsToolStripMenuItem.Text = "&Options"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OptionsToolStripMenuItem.Text = "Update"
+        '
+        'wb_Updater
+        '
+        Me.wb_Updater.Location = New System.Drawing.Point(340, 335)
+        Me.wb_Updater.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.wb_Updater.Name = "wb_Updater"
+        Me.wb_Updater.Size = New System.Drawing.Size(45, 36)
+        Me.wb_Updater.TabIndex = 6
+        Me.wb_Updater.Visible = False
         '
         'frm_Main
         '
@@ -329,4 +340,5 @@ Partial Class frm_Main
     Friend WithEvents CustomerToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ProductToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ListenerToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents wb_Updater As WebBrowser
 End Class

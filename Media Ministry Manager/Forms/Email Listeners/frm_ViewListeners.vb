@@ -1,4 +1,5 @@
 ﻿Option Strict On
+
 Imports System.ComponentModel
 
 Public Class frm_ViewListeners
@@ -6,39 +7,50 @@ Public Class frm_ViewListeners
     Dim db As Database
 
     ReadOnly totalListeners As String = "Total Listeners: {0}"
+
     Structure Sizes
+
         'window sizes
         Shared max As New Size(1382, 744)
+
         Shared [Default] As New Size(1014, 489)
 
         'dgv sizes
         Shared DefaultDGV As New Size(613, 450)
+
         Shared dgvMax As New Size(957, 705)
     End Structure
 
     Structure Locations
+
         'add button locations
         Shared AddDefault As New Point(712, 319)
+
         Shared maxAdd As New Point(1093, 555)
 
         'count label locations
         Shared CountDefault As New Point(707, 389)
+
         Shared maxCount As New Point(1088, 616)
 
         'search box locations
         Shared SearchBoxDefault As New Point(712, 75)
+
         Shared SearchBoxMax As New Point(1062, 82)
 
         'search label locations
         Shared SearchLabelDefault As New Point(619, 75)
+
         Shared SearchLabelMax As New Point(963, 85)
 
         'column combo box locations
         Shared ColumnBoxDefault As New Point(730, 12)
+
         Shared ColumnBoxMax As New Point(1139, 21)
 
         'search button locations
         Shared SearchDefault As New Point(781, 123)
+
         Shared SearchMax As New Point(1093, 151)
     End Structure
 
@@ -50,6 +62,7 @@ Public Class frm_ViewListeners
         ' Add any initialization after the InitializeComponent() call.
         Me.db = db
     End Sub
+
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         customLoad()
     End Sub
@@ -67,7 +80,11 @@ Public Class frm_ViewListeners
     End Sub
 
     Private Sub frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        emails.Show()
+        Try
+            emails.Show()
+        Catch
+
+        End Try
     End Sub
 
     Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
@@ -113,6 +130,7 @@ Public Class frm_ViewListeners
         lbl_SearchLabel.Hide()
         btn_Advanced.Hide()
         cbx_Column.Hide()
+        btn_Search.Hide()
     End Sub
 
     Private Sub MaxChanges()
@@ -155,5 +173,7 @@ Public Class frm_ViewListeners
         lbl_SearchLabel.Show()
         btn_Advanced.Show()
         cbx_Column.Show()
+        btn_Search.Show()
     End Sub
+
 End Class

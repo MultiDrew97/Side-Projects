@@ -1,9 +1,8 @@
 ﻿Option Strict On
+
 Imports System.ComponentModel
 Imports System.IO
-Imports System.Text
 Imports Media_Ministry.SendingEmails
-Imports NeoSmart.Utils
 
 Public Class frm_Main
     Dim db As Database
@@ -23,12 +22,13 @@ Public Class frm_Main
         ' Add any initialization after the InitializeComponent() call.
         db = database
         If Not bw_UpdateJar.IsBusy Then
-            bw_UpdateJar.RunWorkerAsync(Application.StartupPath & "\sender.jar")
+            bw_UpdateJar.RunWorkerAsync("C:\Program Files (x86)\Media Ministry Manager\sender.jar")
         End If
     End Sub
 
     Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
+        tss_Feedback.Text = Application.StartupPath
     End Sub
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
@@ -96,6 +96,10 @@ Public Class frm_Main
                 out.Write(My.Resources.sender)
             End Using
         End If
+
+        If Not validateSender(CType(e.Argument, String)) Then
+            Throw New Exception("Sender was not found or was not copied correctly. Contact your developer.")
+        End If
     End Sub
 
     Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -143,6 +147,7 @@ Public Class frm_Main
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
         Me.Close()
+        frm_Login.Close()
     End Sub
 
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
@@ -169,7 +174,27 @@ Public Class frm_Main
     End Sub
 
     Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
-        Dim frm_View As New frm_ViewListeners(db)
-        frm_View.Show()
+        'TODO: Add Find Listener Functionality
+    End Sub
+
+    Private Function validateSender(path As String) As Boolean
+        Return (File.Exists(path) And (New FileInfo(path).Length = My.Resources.sender.Length))
+    End Function
+
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+        Dim updateLocation As String = "http://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
+        Dim updateCheck As String = "http://sppbc.hopto.org/Manager%20Installer/version.txt"
+
+        Dim request As HttpWebRequest = WebRequest.CreateHttp(updateCheck)
+        Dim responce As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+
+        Dim sr As StreamReader = New StreamReader(responce.GetResponseStream)
+
+        Dim newestVersion As String = sr.ReadToEnd()
+        Dim currentVersion As String = Application.ProductVersion
+
+        If Not newestVersion.Contains(currentVersion) Then
+            wb_Updater.Navigate(updateLocation)
+        End If
     End Sub
 End Class

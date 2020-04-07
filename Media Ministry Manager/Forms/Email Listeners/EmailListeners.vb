@@ -1,7 +1,6 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
-Imports System.IO
 Imports Media_Ministry.SendingEmails
 
 Public Class frm_EmailListeners
@@ -9,15 +8,18 @@ Public Class frm_EmailListeners
     Public frm_main As frm_Main
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
-    ReadOnly emailer As String = Application.StartupPath & "\sender.jar"
+    ReadOnly emailer As String = "C:\Program Files (x86)\Media Ministry Manager\sender.jar"
 
     Structure Sizes
+
         'Window Sizes
         Shared [Default] As New Size(842, 240)
+
         Shared Max As New Size(1382, 744)
     End Structure
 
     Structure Locations
+
         'upload button locations
         Shared UploadDefault As New Point(20, 13)
 
@@ -44,7 +46,9 @@ Public Class frm_EmailListeners
 
         'file label locations
         Shared FileLabelDefault As New Point(314, 114)
+
     End Structure
+
     Private Sub btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
         tss_Feedback.ForeColor = Color.Black
         bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
@@ -69,6 +73,7 @@ Public Class frm_EmailListeners
     Private Sub btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
         ofd_SelectAudio.ShowDialog()
     End Sub
+
     Private Sub bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
         If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
             Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
@@ -117,6 +122,7 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
+        tss_Feedback.ForeColor = Color.Black
         If fileID IsNot Nothing Then
             tss_Feedback.Text = "Sending emails to listeners..."
             Dim sending As Process = Process.Start(emailer, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
@@ -126,9 +132,13 @@ Public Class frm_EmailListeners
             If sending.ExitCode = 0 Then
                 txt_FileLocation.Text = ""
                 tss_Feedback.Text = "All emails sent successfully..."
+            Else
+                tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact you developer..."
+                tss_Feedback.ForeColor = Color.Red
             End If
         Else
             tss_Feedback.Text = "You have to upload something first..."
+            tss_Feedback.ForeColor = Color.Red
         End If
     End Sub
 
@@ -182,4 +192,5 @@ Public Class frm_EmailListeners
         btn_Browse.Location = Locations.BrowseDefault
 
     End Sub
+
 End Class

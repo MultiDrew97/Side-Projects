@@ -1,8 +1,10 @@
 ﻿Option Strict On
 
 Imports Media_Ministry.SendingEmails
+
 Public Class frm_Folder
     Dim uploader As DriveUploader
+
     Public Sub New(uploader As DriveUploader)
 
         ' This call is required by the designer.
@@ -11,6 +13,7 @@ Public Class frm_Folder
         ' Add any initialization after the InitializeComponent() call.
         Me.uploader = uploader
     End Sub
+
     Private Sub btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
         Dim temp As String = uploader.createFolder(txt_FolderName.Text)
 
@@ -27,4 +30,5 @@ Public Class frm_Folder
         My.Settings.AdminInfoRecieved = True
         Me.Close()
     End Sub
+
 End Class

@@ -1,10 +1,12 @@
 ﻿Option Strict On
+
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class frm_ChangePassword
     Dim db As Database
     ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+
     Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
         Try
             If passwordCheck() Then
@@ -12,12 +14,10 @@ Public Class frm_ChangePassword
                 adminInfo.Show()
                 'Dim adminPassword = InputBox("Enter admin password")
 
-
                 Do Until My.Settings.AdminInfoRecieved
                     Console.WriteLine("Waiting for admin information")
                     wait(1)
                 Loop
-
 
                 _connection.UserID = My.Settings.AdminUser
                 _connection.Password = My.Settings.AdminPass
@@ -84,4 +84,5 @@ Public Class frm_ChangePassword
     Private Sub bw_ResetAdminInfo_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_ResetAdminInfo.RunWorkerCompleted
         Me.Close()
     End Sub
+
 End Class
