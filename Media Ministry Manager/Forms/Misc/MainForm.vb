@@ -1,4 +1,5 @@
 ﻿Option Strict On
+
 Imports System.ComponentModel
 Imports System.IO
 Imports Media_Ministry.SendingEmails
@@ -7,10 +8,12 @@ Public Class frm_Main
     Dim db As Database
     Dim uploader As DriveUploader
     Private emailListeners As frm_EmailListeners
-    Structure Sizes
+
+    Structure WindowSizes
         Shared normal As New Size(413, 452)
         Shared max As New Size(1382, 744)
     End Structure
+
     Public Sub New(ByRef database As Database)
 
         ' This call is required by the designer.
@@ -19,12 +22,13 @@ Public Class frm_Main
         ' Add any initialization after the InitializeComponent() call.
         db = database
         If Not bw_UpdateJar.IsBusy Then
-            bw_UpdateJar.RunWorkerAsync(Application.StartupPath & "\sender.jar")
+            bw_UpdateJar.RunWorkerAsync("C:\Program Files (x86)\St. Paul PBC\Media Ministry Manager\sender.jar")
         End If
     End Sub
 
     Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
+        tss_Feedback.Text = Application.StartupPath
     End Sub
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
@@ -73,14 +77,6 @@ Public Class frm_Main
         tss_Feedback.ForeColor = SystemColors.WindowText
     End Sub
 
-    Private Sub btn_LogOut_Click(sender As Object, e As EventArgs) Handles btn_LogOut.Click
-        My.Settings.Username = ""
-        My.Settings.Password = ""
-        My.Settings.KeepLoggedIn = False
-        My.Settings.Save()
-        Me.Close()
-    End Sub
-
     Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
         'create a email listeners form in the background
         tss_Feedback.Text = "Initializing Google Drive Uploader..."
@@ -100,56 +96,106 @@ Public Class frm_Main
                 out.Write(My.Resources.sender)
             End Using
         End If
-    End Sub
 
-    Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
-        If Size = Sizes.max Then
-            'form set to max window size
-            hideNormal()
-        Else
-            'form set to default window size
-            hideMax()
+        If Not validateSender(CType(e.Argument, String)) Then
+            Throw New Exception("Sender was not found or was not copied correctly. Contact your developer.")
         End If
     End Sub
 
-    Sub hideNormal()
+    Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        If Me.Size = WindowSizes.max Then
+            'growToMax()
+        Else
+            backToNormal()
+        End If
+    End Sub
+
+    Private Sub growToMax()
+        'Hide normal size menu buttons
         btn_CustomerManagement.Hide()
-        btn_EmailMinistry.Hide()
         btn_placeOrder.Hide()
-        btn_ProductManagement.Hide()
         btn_ShowOrders.Hide()
-        showMax()
+        btn_ProductManagement.Hide()
+        btn_EmailMinistry.Hide()
+
+        'show max size menu options
+        'tctl_MaxOption.Show()
+
+        'tctl size
+        '1366, 667
     End Sub
 
-    Sub showMax()
-        tbc_MaxView.Show()
-        mst_MaxStrip.Show()
-    End Sub
-    Sub hideMax()
-        tbc_MaxView.Hide()
-        mst_MaxStrip.Hide()
-        showNormal()
-    End Sub
-
-    Sub showNormal()
+    Private Sub backToNormal()
+        'show normal size menu buttons
         btn_CustomerManagement.Show()
-        btn_EmailMinistry.Show()
         btn_placeOrder.Show()
-        btn_ProductManagement.Show()
         btn_ShowOrders.Show()
+        btn_ProductManagement.Show()
+        btn_EmailMinistry.Show()
+
+        'hide max size menu options
+        'tctl_MaxOption.Hide()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+        My.Settings.Username = ""
+        My.Settings.Password = ""
+        My.Settings.KeepLoggedIn = False
+        My.Settings.Save()
+        Me.Close()
     End Sub
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
         Me.Close()
+        frm_Login.Close()
     End Sub
 
-    'Private Sub CustomizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomizeToolStripMenuItem.Click
-    '    Dim customize As New frm_Customize()
-    '    customize.Show()
-    'End Sub
+    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
+        Dim frm_AddCustomer As New frm_AddNewCustomer(db, Me)
+        frm_AddCustomer.Show()
+    End Sub
 
-    'Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
-    '    Dim options As New frm_Options()
-    '    options.show()
-    'End Sub
+    Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
+        Dim frm_AddProduct As New frm_AddNewProduct(db, Me)
+        frm_AddProduct.Show()
+    End Sub
+
+    Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem.Click
+        Dim frm_AddListener As New frm_AddListener()
+        frm_AddListener.Show()
+    End Sub
+
+    Private Sub CustomerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem1.Click
+        'TODO: Add Find Customer Functionality
+    End Sub
+
+    Private Sub ProductToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem1.Click
+        'TODO: Add Find Product Functionality
+    End Sub
+
+    Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
+        'TODO: Add Find Listener Functionality
+    End Sub
+
+    Private Function validateSender(path As String) As Boolean
+        Return (File.Exists(path) And (New FileInfo(path).Length = My.Resources.sender.Length))
+    End Function
+
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+        Dim updateLocation As String = "http://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
+        Dim updateCheck As String = "http://sppbc.hopto.org/Manager%20Installer/version.txt"
+
+        Dim request As HttpWebRequest = WebRequest.CreateHttp(updateCheck)
+        Dim responce As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+
+        Dim sr As StreamReader = New StreamReader(responce.GetResponseStream)
+
+        Dim newestVersion As String = sr.ReadToEnd()
+        Console.WriteLine(newestVersion)
+        Dim currentVersion As String = Application.ProductVersion
+
+        If Not newestVersion.Contains(currentVersion) Then
+            wb_Updater.Navigate(updateLocation)
+        End If
+    End Sub
 End Class

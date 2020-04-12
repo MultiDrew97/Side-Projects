@@ -87,11 +87,6 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:Media_Ministry.Media_MinistryDataSet.EMAIL_LISTENERSDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:Media_Ministry.Media_MinistryDataSet.INVENTORYRow">
 <summary>
 Represents strongly named DataRow class.
@@ -123,11 +118,6 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:Media_Ministry.Media_MinistryDataSet.ORDER_SUMMARYRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:Media_Ministry.Media_MinistryDataSet.EMAIL_LISTENERSRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -167,11 +157,6 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:Media_Ministry.Media_MinistryDataSet.EMAIL_LISTENERSRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
 <member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -203,11 +188,6 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:Media_Ministry.Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

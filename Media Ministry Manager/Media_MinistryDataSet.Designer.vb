@@ -47,8 +47,6 @@ Partial Public Class Media_MinistryDataSet
     
     Private relationFK__COMPLETED__PHONE__3E1D39E1 As Global.System.Data.DataRelation
     
-    Private relationFK__ORDER_COU__ORDER__43D61337 As Global.System.Data.DataRelation
-    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -373,7 +371,6 @@ Partial Public Class Media_MinistryDataSet
         Me.relationFK__ORDERS__PHONE_NU__3B40CD36 = Me.Relations("FK__ORDERS__PHONE_NU__3B40CD36")
         Me.relationFK__COMPLETED__ORDER__47A6A41B = Me.Relations("FK__COMPLETED__ORDER__47A6A41B")
         Me.relationFK__COMPLETED__PHONE__3E1D39E1 = Me.Relations("FK__COMPLETED__PHONE__3E1D39E1")
-        Me.relationFK__ORDER_COU__ORDER__43D61337 = Me.Relations("FK__ORDER_COU__ORDER__43D61337")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -406,8 +403,6 @@ Partial Public Class Media_MinistryDataSet
         Me.Relations.Add(Me.relationFK__COMPLETED__ORDER__47A6A41B)
         Me.relationFK__COMPLETED__PHONE__3E1D39E1 = New Global.System.Data.DataRelation("FK__COMPLETED__PHONE__3E1D39E1", New Global.System.Data.DataColumn() {Me.tableCUSTOMERS.PHONE_NUMBERColumn}, New Global.System.Data.DataColumn() {Me.tableCOMPLETED_ORDERS.PHONE_NUMBERColumn}, false)
         Me.Relations.Add(Me.relationFK__COMPLETED__PHONE__3E1D39E1)
-        Me.relationFK__ORDER_COU__ORDER__43D61337 = New Global.System.Data.DataRelation("FK__ORDER_COU__ORDER__43D61337", New Global.System.Data.DataColumn() {Me.tableORDERS.ORDER_NUMBERColumn}, New Global.System.Data.DataColumn() {Me.tableORDER_COUNTS.ORDER_NUMBERColumn}, false)
-        Me.Relations.Add(Me.relationFK__ORDER_COU__ORDER__43D61337)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -936,12 +931,9 @@ Partial Public Class Media_MinistryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddORDER_COUNTSRow(ByVal ITEM_INDEX As Integer, ByVal parentORDERSRowByFK__ORDER_COU__ORDER__43D61337 As ORDERSRow) As ORDER_COUNTSRow
+        Public Overloads Function AddORDER_COUNTSRow(ByVal ITEM_INDEX As Integer, ByVal ORDER_NUMBER As Integer) As ORDER_COUNTSRow
             Dim rowORDER_COUNTSRow As ORDER_COUNTSRow = CType(Me.NewRow,ORDER_COUNTSRow)
-            Dim columnValuesArray() As Object = New Object() {ITEM_INDEX, Nothing}
-            If (Not (parentORDERSRowByFK__ORDER_COU__ORDER__43D61337) Is Nothing) Then
-                columnValuesArray(1) = parentORDERSRowByFK__ORDER_COU__ORDER__43D61337(0)
-            End If
+            Dim columnValuesArray() As Object = New Object() {ITEM_INDEX, ORDER_NUMBER}
             rowORDER_COUNTSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowORDER_COUNTSRow)
             Return rowORDER_COUNTSRow
@@ -3147,17 +3139,6 @@ Partial Public Class Media_MinistryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ORDERSRow() As ORDERSRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK__ORDER_COU__ORDER__43D61337")),ORDERSRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("FK__ORDER_COU__ORDER__43D61337"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsORDER_NUMBERNull() As Boolean
             Return Me.IsNull(Me.tableORDER_COUNTS.ORDER_NUMBERColumn)
         End Function
@@ -3303,16 +3284,6 @@ Partial Public Class Media_MinistryDataSet
         Public Sub SetPAYMENT_TYPENull()
             Me(Me.tableORDERS.PAYMENT_TYPEColumn) = Global.System.Convert.DBNull
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function GetORDER_COUNTSRows() As ORDER_COUNTSRow()
-            If (Me.Table.ChildRelations("FK__ORDER_COU__ORDER__43D61337") Is Nothing) Then
-                Return New ORDER_COUNTSRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK__ORDER_COU__ORDER__43D61337")),ORDER_COUNTSRow())
-            End If
-        End Function
     End Class
     
     '''<summary>
@@ -6835,23 +6806,23 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[EMAIL_LISTENERS] WHERE (([NAME] = @Original_NAME) AND ([EMAIL]"& _ 
-                " = @Original_EMAIL))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EMAIL_LISTENERS] WHERE (([NAME] = @Original_NAME) AND ([EMAIL] = @Or"& _ 
+                "iginal_EMAIL))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NAME", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NAME", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EMAIL", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[EMAIL_LISTENERS] ([NAME], [EMAIL]) VALUES (@NAME, @EMAIL);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SE"& _ 
-                "LECT NAME, EMAIL FROM EMAIL_LISTENERS WHERE (EMAIL = @EMAIL)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EMAIL_LISTENERS] ([NAME], [EMAIL]) VALUES (@NAME, @EMAIL);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT N"& _ 
+                "AME, EMAIL FROM EMAIL_LISTENERS WHERE (EMAIL = @EMAIL)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NAME", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EMAIL", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[EMAIL_LISTENERS] SET [NAME] = @NAME, [EMAIL] = @EMAIL WHERE (([NAME"& _ 
-                "] = @Original_NAME) AND ([EMAIL] = @Original_EMAIL));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT NAME, EMAIL FROM E"& _ 
-                "MAIL_LISTENERS WHERE (EMAIL = @EMAIL)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [EMAIL_LISTENERS] SET [NAME] = @NAME, [EMAIL] = @EMAIL WHERE (([NAME] = @O"& _ 
+                "riginal_NAME) AND ([EMAIL] = @Original_EMAIL));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT NAME, EMAIL FROM EMAIL_L"& _ 
+                "ISTENERS WHERE (EMAIL = @EMAIL)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NAME", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EMAIL", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6872,7 +6843,7 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT NAME, EMAIL FROM dbo.EMAIL_LISTENERS"
+            Me._commandCollection(0).CommandText = "SELECT * FROM EMAIL_LISTENERS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -7278,15 +7249,6 @@ Namespace Media_MinistryDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._oRDERSTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._oRDERSTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._cOMPLETED_ORDERSTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.COMPLETED_ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -7311,6 +7273,15 @@ Namespace Media_MinistryDataSetTableAdapters
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._oRDER_COUNTSTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._oRDERSTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._oRDERSTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -7350,14 +7321,6 @@ Namespace Media_MinistryDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._oRDERSTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._oRDERSTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._cOMPLETED_ORDERSTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.COMPLETED_ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -7379,6 +7342,14 @@ Namespace Media_MinistryDataSetTableAdapters
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._oRDER_COUNTSTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._oRDERSTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._oRDERSTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -7424,6 +7395,14 @@ Namespace Media_MinistryDataSetTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
+            If (Not (Me._oRDERSTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._oRDERSTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._oRDER_COUNTSTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.ORDER_COUNTS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -7445,14 +7424,6 @@ Namespace Media_MinistryDataSetTableAdapters
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._cOMPLETED_ORDERSTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._oRDERSTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.ORDERS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._oRDERSTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
