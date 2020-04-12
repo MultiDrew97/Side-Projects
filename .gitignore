@@ -341,8 +341,6 @@ healthchecksdb
 
 #Security
 *.exe
-*.settings
 *.json
 *.jar
-*.resx
 *.txt
