@@ -60,6 +60,7 @@ Public Class frm_ViewListeners
 
         ' Add any initialization after the InitializeComponent() call.
         Me.db = db
+        cbx_Column.SelectedIndex = 0
     End Sub
 
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -116,7 +117,17 @@ Public Class frm_ViewListeners
 
     Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
         Dim criteria = txt_SearchBox.Text
-        Dim area = cbx_Column.SelectedText
+        Dim column = cbx_Column.SelectedText
+        Dim queryString As String = String.Format("SELECT * FROM EMAIL_LISTENERS WHERE {0} LIKE '%{1}%", column, criteria)
+
+        'db.search(queryString)
+        'If cbx_Column.SelectedText = "Email" Then
+        '    Console.WriteLine("EMAIL")
+
+        '    'EMAIL_LISTENERSTableAdapter.Fill(Media_MinistryDataSet.EMAIL_LISTENERS.FindByEMAIL(criteria))
+        'Else
+        '    Console.WriteLine("NAME")
+        'End If
     End Sub
 
     Private Sub btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click

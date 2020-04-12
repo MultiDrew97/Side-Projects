@@ -1,8 +1,8 @@
-﻿Imports System.IO
-Imports Microsoft.VisualBasic.FileIO
-Imports System.Text.RegularExpressions.Regex
+﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
-Imports System.ComponentModel
+Imports System.IO
+Imports System.Text.RegularExpressions.Regex
+Imports Microsoft.VisualBasic.FileIO
 
 Public Class AddListener
     Public frm_Emails As ViewListeners
@@ -10,6 +10,7 @@ Public Class AddListener
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails
     ReadOnly emailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
+
     Private Sub reset()
         rdo_Single.Checked = True
 
@@ -74,7 +75,10 @@ Public Class AddListener
 
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
-        frm_Emails.Show()
+        Try
+            frm_Emails.Show()
+        Catch
+        End Try
     End Sub
 
     Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
@@ -138,8 +142,12 @@ Public Class AddListener
                 End Using
 
                 tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
-                frm_Emails.customLoad()
-                wait(2)
+                Try
+                    frm_Emails.customLoad()
+                Catch
+                Finally
+                    wait(2)
+                End Try
 
                 If (failCount > 0) Then
                     tss_Feedback.ForeColor = Color.Red
@@ -183,8 +191,17 @@ Public Class AddListener
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
             ofd_ListenerList.FileName = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
-            ofd_ListenerList_FileOk(sender, New CancelEventArgs)
-            'txt_FilePath.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            If ofd_ListenerList.CheckFileExists And CorrectExtension(ofd_ListenerList.FileName) Then
+                ofd_ListenerList_FileOk(sender, New CancelEventArgs)
+                'txt_FilePath.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            Else
+                tss_Feedback.Text = "The file you selected does not have the correct extension. You need a file with the .csv extension"
+            End If
         End If
     End Sub
+
+    Private Function CorrectExtension(filename As String) As Boolean
+        Return filename.Split({"."c})(1).Equals("csv")
+    End Function
+
 End Class

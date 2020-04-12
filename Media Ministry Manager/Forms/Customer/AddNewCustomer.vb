@@ -1,18 +1,20 @@
 ﻿Option Strict On
+
 Imports System.Text.RegularExpressions.Regex
+
 Public Class frm_AddNewCustomer
     Private db As Database
-    Private displayCustomers As frm_DisplayCustomers
+    Private sendingForm As Form
     Private phonePattern As String = "(\d{3})-\d{3}-\d{4}"
     'Private phoneParenPattern As String = "(\d{3})-\d{3}-\d{4}"
 
-    Public Sub New(ByRef database As Database, parentForm As frm_DisplayCustomers)
+    Public Sub New(ByRef database As Database, parentForm As Form)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         db = database
-        displayCustomers = parentForm
+        sendingForm = parentForm
     End Sub
 
     Private Sub frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -89,8 +91,13 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub frm_AddNewCustomer_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        displayCustomers.Refresh()
-        displayCustomers.Show()
+
+        Try
+            CType(sendingForm, frm_DisplayCustomers).refresh()
+        Catch
+        Finally
+            sendingForm.Show()
+        End Try
     End Sub
 
     Private Sub txt_FirstName_GotFocus(sender As Object, e As EventArgs) Handles txt_FirstName.GotFocus
@@ -255,4 +262,5 @@ Public Class frm_AddNewCustomer
             txt_Email.SelectionStart = txt_Email.Text.Length + 1
         End If
     End Sub
+
 End Class

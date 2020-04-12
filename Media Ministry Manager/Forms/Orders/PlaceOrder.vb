@@ -3,6 +3,7 @@
 Public Class frm_PlaceOrder
     Private _db As Database
     Private mainForm As frm_Main
+
     Public Sub New(database As Database, ByRef mainForm As frm_Main)
         ' This call is required by the designer.
         InitializeComponent()

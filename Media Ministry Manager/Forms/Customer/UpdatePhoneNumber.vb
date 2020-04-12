@@ -1,4 +1,5 @@
 ﻿Option Strict On
+
 Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
 
@@ -6,6 +7,7 @@ Public Class frm_UpdatePhoneNumber
     Private db As Database
     Private validNumberFormat As String = "\d{3}-\d{3}-\d{4}"
     Private display As frm_DisplayCustomers
+
     Public Sub New(ByRef database As Database, ByRef displayForm As frm_DisplayCustomers)
 
         ' This call is required by the designer.
@@ -15,6 +17,7 @@ Public Class frm_UpdatePhoneNumber
         db = database
         display = displayForm
     End Sub
+
     Private Sub UpdatePhoneNumber_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         Me.CUSTOMERSTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
@@ -41,7 +44,7 @@ Public Class frm_UpdatePhoneNumber
     End Sub
 
     Private Sub UpdatePhoneNumber_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        display.Refresh()
+        display.refresh()
         display.Show()
     End Sub
 
@@ -74,4 +77,5 @@ Public Class frm_UpdatePhoneNumber
             cbx_FirstName.SelectedIndex = cbx_OldNumber.SelectedIndex
         End If
     End Sub
+
 End Class

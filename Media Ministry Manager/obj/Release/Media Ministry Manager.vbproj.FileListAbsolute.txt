@@ -36,7 +36,6 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Google.Apis.Drive.v3.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Google.Apis.Gmail.v1.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Google.Apis.PlatformServices.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\MailKit.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\MimeKit.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Newtonsoft.Json.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\System.Data.SqlClient.dll
@@ -50,7 +49,6 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Google.Apis.Drive.v3.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Google.Apis.Gmail.v1.pdb
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Google.Apis.Gmail.v1.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\MailKit.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\MimeKit.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Newtonsoft.Json.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\System.Data.SqlClient.xml
@@ -82,3 +80,7 @@ C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.pdb
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\UrlBase64.dll
+C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.vbproj.CoreCompileInputs.cache
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.xml

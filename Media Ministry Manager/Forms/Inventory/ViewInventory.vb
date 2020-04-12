@@ -1,7 +1,9 @@
 ﻿Option Strict On
+
 Public Class frm_ViewInventory
     Private db As Database
     Private mainForm As frm_Main
+
     Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
 
         ' This call is required by the designer.
@@ -11,6 +13,7 @@ Public Class frm_ViewInventory
         db = database
         Me.mainForm = mainForm
     End Sub
+
     Private Sub ViewInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         customLoad()
     End Sub
@@ -57,6 +60,7 @@ Public Class frm_ViewInventory
     Private Sub frm_ViewInventory_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
     End Sub
+
     Public Sub customLoad()
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
         Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
@@ -74,4 +78,5 @@ Public Class frm_ViewInventory
     Private Sub dgv_Inventory_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Inventory.UserDeletingRow
         db.RemoveProduct(e.Row.Index)
     End Sub
+
 End Class
