@@ -342,3 +342,5 @@ healthchecksdb
 #Security
 *.exe
 *.json
+*.jar
+*.txt
