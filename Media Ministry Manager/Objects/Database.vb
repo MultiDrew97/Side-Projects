@@ -424,6 +424,17 @@ Public Class Database
         Return listeners
     End Function
 
+    Public Function search(queryString As String) As String()
+        myCmd.CommandText = queryString
+        myReader = myCmd.ExecuteReader()
+        Dim result As String()
+
+        result(0) = myReader.GetString(0)
+        result(1) = myReader.GetString(1)
+
+        Return result
+    End Function
+
     'Public Function UniqueRecord(tableName As String, column As String, value As Integer) As Boolean
     '    results = ""
     '    myCmd.CommandText = String.Format("SELECT * FROM {0} WHERE {1} = {2}", tableName, column, value)

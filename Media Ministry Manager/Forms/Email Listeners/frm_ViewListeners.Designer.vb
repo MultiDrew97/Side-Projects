@@ -27,15 +27,10 @@ Partial Class frm_ViewListeners
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_ViewListeners))
         Me.btn_Add = New System.Windows.Forms.Button()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
-        Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
         Me.lbl_Total = New System.Windows.Forms.Label()
         Me.btn_Search = New System.Windows.Forms.Button()
         Me.lbl_SearchLabel = New System.Windows.Forms.Label()
         Me.txt_SearchBox = New System.Windows.Forms.TextBox()
-        Me.EMAIL_LISTENERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
         Me.btn_Advanced = New System.Windows.Forms.Button()
         Me.cbx_Column = New System.Windows.Forms.ComboBox()
         Me.txt_NameSearch = New System.Windows.Forms.TextBox()
@@ -43,12 +38,17 @@ Partial Class frm_ViewListeners
         Me.lbl_NameSearch = New System.Windows.Forms.Label()
         Me.lbl_EmailSearch = New System.Windows.Forms.Label()
         Me.gbx_AdvancedSearch = New System.Windows.Forms.GroupBox()
-        Me.btn_AdvancedCancel = New System.Windows.Forms.Button()
         Me.btn_AdvancedSearch = New System.Windows.Forms.Button()
+        Me.btn_AdvancedCancel = New System.Windows.Forms.Button()
+        Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
+        Me.EMAIL_LISTENERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbx_AdvancedSearch.SuspendLayout()
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbx_AdvancedSearch.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_Add
@@ -84,28 +84,6 @@ Partial Class frm_ViewListeners
         Me.dgv_Listeners.Name = "dgv_Listeners"
         Me.dgv_Listeners.Size = New System.Drawing.Size(613, 450)
         Me.dgv_Listeners.TabIndex = 0
-        '
-        'NAMEDataGridViewTextBoxColumn
-        '
-        Me.NAMEDataGridViewTextBoxColumn.DataPropertyName = "NAME"
-        Me.NAMEDataGridViewTextBoxColumn.HeaderText = "NAME"
-        Me.NAMEDataGridViewTextBoxColumn.Name = "NAMEDataGridViewTextBoxColumn"
-        '
-        'EMAILDataGridViewTextBoxColumn
-        '
-        Me.EMAILDataGridViewTextBoxColumn.DataPropertyName = "EMAIL"
-        Me.EMAILDataGridViewTextBoxColumn.HeaderText = "EMAIL"
-        Me.EMAILDataGridViewTextBoxColumn.Name = "EMAILDataGridViewTextBoxColumn"
-        '
-        'EMAILLISTENERSBindingSource
-        '
-        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
-        Me.EMAILLISTENERSBindingSource.DataSource = Me.Media_MinistryDataSet
-        '
-        'Media_MinistryDataSet
-        '
-        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbl_Total
         '
@@ -147,10 +125,6 @@ Partial Class frm_ViewListeners
         Me.txt_SearchBox.Size = New System.Drawing.Size(269, 31)
         Me.txt_SearchBox.TabIndex = 5
         '
-        'EMAIL_LISTENERSTableAdapter
-        '
-        Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
-        '
         'btn_Advanced
         '
         Me.btn_Advanced.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
@@ -166,7 +140,7 @@ Partial Class frm_ViewListeners
         '
         Me.cbx_Column.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.cbx_Column.FormattingEnabled = True
-        Me.cbx_Column.Items.AddRange(New Object() {"Name", "Email Address"})
+        Me.cbx_Column.Items.AddRange(New Object() {"NAME", "EMAIL"})
         Me.cbx_Column.Location = New System.Drawing.Point(730, 12)
         Me.cbx_Column.Name = "cbx_Column"
         Me.cbx_Column.Size = New System.Drawing.Size(192, 33)
@@ -226,6 +200,15 @@ Partial Class frm_ViewListeners
         Me.gbx_AdvancedSearch.Text = "Advanced Search"
         Me.gbx_AdvancedSearch.Visible = False
         '
+        'btn_AdvancedSearch
+        '
+        Me.btn_AdvancedSearch.Location = New System.Drawing.Point(231, 187)
+        Me.btn_AdvancedSearch.Name = "btn_AdvancedSearch"
+        Me.btn_AdvancedSearch.Size = New System.Drawing.Size(95, 35)
+        Me.btn_AdvancedSearch.TabIndex = 13
+        Me.btn_AdvancedSearch.Text = "Search"
+        Me.btn_AdvancedSearch.UseVisualStyleBackColor = True
+        '
         'btn_AdvancedCancel
         '
         Me.btn_AdvancedCancel.Location = New System.Drawing.Point(74, 187)
@@ -235,14 +218,31 @@ Partial Class frm_ViewListeners
         Me.btn_AdvancedCancel.Text = "Cancel"
         Me.btn_AdvancedCancel.UseVisualStyleBackColor = True
         '
-        'btn_AdvancedSearch
+        'NAMEDataGridViewTextBoxColumn
         '
-        Me.btn_AdvancedSearch.Location = New System.Drawing.Point(231, 187)
-        Me.btn_AdvancedSearch.Name = "btn_AdvancedSearch"
-        Me.btn_AdvancedSearch.Size = New System.Drawing.Size(95, 35)
-        Me.btn_AdvancedSearch.TabIndex = 13
-        Me.btn_AdvancedSearch.Text = "Search"
-        Me.btn_AdvancedSearch.UseVisualStyleBackColor = True
+        Me.NAMEDataGridViewTextBoxColumn.DataPropertyName = "NAME"
+        Me.NAMEDataGridViewTextBoxColumn.HeaderText = "NAME"
+        Me.NAMEDataGridViewTextBoxColumn.Name = "NAMEDataGridViewTextBoxColumn"
+        '
+        'EMAILDataGridViewTextBoxColumn
+        '
+        Me.EMAILDataGridViewTextBoxColumn.DataPropertyName = "EMAIL"
+        Me.EMAILDataGridViewTextBoxColumn.HeaderText = "EMAIL"
+        Me.EMAILDataGridViewTextBoxColumn.Name = "EMAILDataGridViewTextBoxColumn"
+        '
+        'EMAILLISTENERSBindingSource
+        '
+        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
+        Me.EMAILLISTENERSBindingSource.DataSource = Me.Media_MinistryDataSet
+        '
+        'Media_MinistryDataSet
+        '
+        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'EMAIL_LISTENERSTableAdapter
+        '
+        Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
         '
         'frm_ViewListeners
         '
@@ -264,10 +264,10 @@ Partial Class frm_ViewListeners
         Me.Name = "frm_ViewListeners"
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbx_AdvancedSearch.ResumeLayout(False)
         Me.gbx_AdvancedSearch.PerformLayout()
+        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

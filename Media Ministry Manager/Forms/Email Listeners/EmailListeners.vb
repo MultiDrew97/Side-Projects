@@ -8,7 +8,7 @@ Public Class frm_EmailListeners
     Public frm_main As frm_Main
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
-    ReadOnly emailer As String = "C:\Program Files (x86)\Media Ministry Manager\sender.jar"
+    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
 
     Structure Sizes
 
@@ -125,7 +125,7 @@ Public Class frm_EmailListeners
         tss_Feedback.ForeColor = Color.Black
         If fileID IsNot Nothing Then
             tss_Feedback.Text = "Sending emails to listeners..."
-            Dim sending As Process = Process.Start(emailer, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
+            Dim sending As Process = Process.Start(emailerLocation, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
 
             sending.WaitForExit()
 

@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("Media Ministry Manager")>
 <Assembly: AssemblyDescription("This is a program that will be used to keep track of people signing up and requesting media ministry products")>
-<Assembly: AssemblyCompany("Damascus Christian Fellowship Church")>
+<Assembly: AssemblyCompany("St. Paul Primitive Baptist Church")>
 <Assembly: AssemblyProduct("Media Ministry Manager")>
 <Assembly: AssemblyCopyright("Copyright ©  2019")>
 <Assembly: AssemblyTrademark("")>
@@ -30,5 +30,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("2.0.0.6")>
-<Assembly: AssemblyFileVersion("2.0.0.6")>
+<Assembly: AssemblyVersion("2.0.0.9")>
+<Assembly: AssemblyFileVersion("2.0.0.9")>

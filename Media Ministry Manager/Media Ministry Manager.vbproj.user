@@ -2,9 +2,9 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PublishUrlHistory>C:\Users\arand\OneDrive\Desktop\Media Ministry Manager\|sftp://sppbc.hopto.org/|sftp://sppbc.hopto.org/Manager/|sftp://sppbc.hopto.org/Media Ministry Manager/|sftp://sppbc.hopto.org/Temp/</PublishUrlHistory>
-    <InstallUrlHistory>http://sppbc.hopto.org/Manager/|http://sppbc.hopto.org/|http://sppbc.hopto.org/Media Ministry Manager/|http://192.168.1.62/Media Ministry Manager/|http://localhost/Media Ministry Manager/</InstallUrlHistory>
+    <InstallUrlHistory>http://sppbc.hopto.org/Manager/|https://sppbc.hopto.org/Manager/|http://sppbc.hopto.org/|http://sppbc.hopto.org/Media Ministry Manager/|http://192.168.1.62/Media Ministry Manager/</InstallUrlHistory>
     <SupportUrlHistory />
-    <UpdateUrlHistory>http://sppbc.hopto.org/Manager/|http://192.168.1.62/Media Ministry Manager/|http://192.168.56.1/Media Ministry Manager/|\\192.168.1.63\Media_Ministry_Manager\|\\192.168.1.63\Media Ministry Manager\</UpdateUrlHistory>
+    <UpdateUrlHistory>http://sppbc.hopto.org/Manager/|https://sppbc.hopto.org/Manager/|http://192.168.1.62/Media Ministry Manager/|http://192.168.56.1/Media Ministry Manager/|\\192.168.1.63\Media_Ministry_Manager\</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
