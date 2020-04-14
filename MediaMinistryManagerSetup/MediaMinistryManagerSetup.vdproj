@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_02D598107EC849CE8608033CE9E2B7F1"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_13C55B629A2A6D17DEE03E2C02BC083B"
         "OwnerKey" = "8:_D266AB4CA515400A8AA669B03CA1333B"
         "MsmSig" = "8:_UNDEFINED"
@@ -429,22 +423,6 @@
             {
             "SourcePath" = "8:..\\Media Ministry Manager\\Resources\\version.txt"
             "TargetName" = "8:version.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_67D267DEF9014059AB8F7B732C4D136E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:TRUE"
-            "Hidden" = "11:TRUE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_13C55B629A2A6D17DEE03E2C02BC083B"
             {
             "AssemblyRegister" = "3:1"
@@ -455,17 +433,17 @@
                     "_13C55B629A2A6D17DEE03E2C02BC083B"
                     {
                     "Name" = "8:Google.Apis.Drive.v3.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Google.Apis.Drive.v3.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_67D267DEF9014059AB8F7B732C4D136E"
+            "Folder" = "8:_6A8A181667FE40BCBD66C1818823B8BA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:TRUE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -486,7 +464,7 @@
                     "_16094441B9712A61E7465D9D1815A56D"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Newtonsoft.Json.dll"
@@ -517,7 +495,7 @@
                     "_407E1C8F1D4502123A785342570DCB33"
                     {
                     "Name" = "8:Google.Apis.Core.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Google.Apis.Core.dll"
@@ -548,7 +526,7 @@
                     "_437AC05E5B1E978EE498B64A75AD53E9"
                     {
                     "Name" = "8:Google.Apis.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Google.Apis.dll"
@@ -831,7 +809,7 @@
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_67D267DEF9014059AB8F7B732C4D136E"
+            "Folder" = "8:_6A8A181667FE40BCBD66C1818823B8BA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -997,7 +975,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"

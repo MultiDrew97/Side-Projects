@@ -1,25 +1,32 @@
 ﻿Option Strict On
-Imports Media_Ministry.Database
+
 Imports System.Text.RegularExpressions.Regex
+
 Public Class frm_AddNewProduct
     Private db As Database
-    Private inventoryViewForm As frm_ViewInventory
-    Public Sub New(ByRef database As Database, ByRef inventoryView As frm_ViewInventory)
+    Private sendingForm As Form
+
+    Public Sub New(ByRef database As Database, ByRef inventoryView As Form)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         db = database
-        inventoryViewForm = inventoryView
+        sendingForm = inventoryView
     End Sub
+
     Private Sub frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
     End Sub
 
     Private Sub frm_AddNewProduct_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        inventoryViewForm.customLoad()
-        inventoryViewForm.Show()
+        Try
+            CType(sendingForm, frm_ViewInventory).customLoad()
+        Catch
+        Finally
+            sendingForm.Show()
+        End Try
     End Sub
 
     Private Sub reset()

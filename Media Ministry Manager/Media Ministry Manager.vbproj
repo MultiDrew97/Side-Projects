@@ -31,10 +31,10 @@
     <ProductName>Media Ministry Manager</ProductName>
     <PublisherName>Andrew Randle-Warren</PublisherName>
     <SuiteName>Media Ministry</SuiteName>
-    <MinimumRequiredVersion>2.0.0.1</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.0.0.12</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -496,6 +496,11 @@
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Java.SE.Development.Kit">
+      <Visible>False</Visible>
+      <ProductName>JDK 13.0.2</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

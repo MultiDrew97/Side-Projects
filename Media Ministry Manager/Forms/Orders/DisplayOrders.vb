@@ -1,7 +1,9 @@
 ﻿Option Strict On
+
 Public Class frm_DisplayOrders
     Private db As Database
     Private mainForm As frm_Main
+
     Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
 
         ' This call is required by the designer.
@@ -106,4 +108,5 @@ Public Class frm_DisplayOrders
             Loop Until (index >= dgv_Orders.Rows.Count)
         End If
     End Sub
+
 End Class

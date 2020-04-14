@@ -18,7 +18,7 @@ Partial Class frm_EmailListeners
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
@@ -161,39 +161,6 @@ Partial Class frm_EmailListeners
         Me.btn_ViewListeners.Text = "Current Listeners"
         Me.btn_ViewListeners.UseVisualStyleBackColor = True
         '
-        'gbx_EmailType
-        '
-        Me.gbx_EmailType.Controls.Add(Me.rdo_GoingLive)
-        Me.gbx_EmailType.Controls.Add(Me.rdo_EmailMinistry)
-        Me.gbx_EmailType.Location = New System.Drawing.Point(389, 13)
-        Me.gbx_EmailType.Name = "gbx_EmailType"
-        Me.gbx_EmailType.Size = New System.Drawing.Size(352, 49)
-        Me.gbx_EmailType.TabIndex = 11
-        Me.gbx_EmailType.TabStop = False
-        Me.gbx_EmailType.Text = "What Email"
-        '
-        'rdo_GoingLive
-        '
-        Me.rdo_GoingLive.AutoSize = True
-        Me.rdo_GoingLive.Location = New System.Drawing.Point(196, 19)
-        Me.rdo_GoingLive.Name = "rdo_GoingLive"
-        Me.rdo_GoingLive.Size = New System.Drawing.Size(95, 17)
-        Me.rdo_GoingLive.TabIndex = 1
-        Me.rdo_GoingLive.Text = "Live Streaming"
-        Me.rdo_GoingLive.UseVisualStyleBackColor = True
-        '
-        'rdo_EmailMinistry
-        '
-        Me.rdo_EmailMinistry.AutoSize = True
-        Me.rdo_EmailMinistry.Checked = True
-        Me.rdo_EmailMinistry.Location = New System.Drawing.Point(65, 19)
-        Me.rdo_EmailMinistry.Name = "rdo_EmailMinistry"
-        Me.rdo_EmailMinistry.Size = New System.Drawing.Size(88, 17)
-        Me.rdo_EmailMinistry.TabIndex = 0
-        Me.rdo_EmailMinistry.TabStop = True
-        Me.rdo_EmailMinistry.Text = "Email Ministry"
-        Me.rdo_EmailMinistry.UseVisualStyleBackColor = True
-        '
         'frm_EmailListeners
         '
         Me.AcceptButton = Me.btn_Upload
@@ -212,6 +179,7 @@ Partial Class frm_EmailListeners
         Me.Controls.Add(Me.lbl_Folder)
         Me.Controls.Add(Me.cbx_Folders)
         Me.Controls.Add(Me.btn_Upload)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frm_EmailListeners"

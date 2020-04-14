@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xrml="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <assemblyIdentity name="Media Ministry Manager.application" version="1.1.28.11" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <assemblyIdentity name="Media Ministry Manager.application" version="2.0.0.14" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <description asmv2:publisher="Andrew Randle-Warren" co.v1:suiteName="Media Ministry" asmv2:product="Media Ministry Manager" xmlns="urn:schemas-microsoft-com:asm.v1" />
-  <deployment install="true" mapFileExtensions="true" minimumRequiredVersion="1.1.28.2" co.v1:createDesktopShortcut="true">
+  <deployment install="true" mapFileExtensions="true" minimumRequiredVersion="2.0.0.12" co.v1:createDesktopShortcut="true">
     <subscription>
       <update>
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="http://192.168.1.62/Media%20Ministry%20Manager/Media%20Ministry%20Manager.application" />
+    <deploymentProvider codebase="http://sppbc.hopto.org/Manager/Media%20Ministry%20Manager.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Media Ministry Manager.exe.manifest" size="12588">
-      <assemblyIdentity name="Media Ministry Manager.exe" version="1.1.28.11" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+    <dependentAssembly dependencyType="install" codebase="Media Ministry Manager.exe.manifest" size="22022">
+      <assemblyIdentity name="Media Ministry Manager.exe" version="2.0.0.14" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tITY/narEVRozOqQedj93gmz3s2H84Zug/UEeUfO3/s=</dsig:DigestValue>
+        <dsig:DigestValue>8mInmmLijFeeV46qyiCrQ1B3Xw+mmz/7pam/gQCmukI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

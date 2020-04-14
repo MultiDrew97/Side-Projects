@@ -8,6 +8,7 @@ Public Class frm_Main
     Dim db As Database
     Dim uploader As DriveUploader
     Private emailListeners As frm_EmailListeners
+    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
 
     Structure WindowSizes
         Shared normal As New Size(413, 452)
@@ -22,7 +23,7 @@ Public Class frm_Main
         ' Add any initialization after the InitializeComponent() call.
         db = database
         If Not bw_UpdateJar.IsBusy Then
-            bw_UpdateJar.RunWorkerAsync("C:\Program Files (x86)\St. Paul PBC\Media Ministry Manager\sender.jar")
+            bw_UpdateJar.RunWorkerAsync(emailerLocation)
         End If
     End Sub
 
@@ -182,20 +183,19 @@ Public Class frm_Main
     End Function
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
-        Dim updateLocation As String = "http://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
-        Dim updateCheck As String = "http://sppbc.hopto.org/Manager%20Installer/version.txt"
+        'Dim updateLocation As String = "https://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
+        'Dim updateCheck As String = "https://sppbc.hopto.org/Manager%20Installer/version.txt"
 
-        Dim request As HttpWebRequest = WebRequest.CreateHttp(updateCheck)
-        Dim responce As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+        'Dim request As HttpWebRequest = WebRequest.CreateHttp(updateCheck)
+        'Dim responce As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
 
-        Dim sr As StreamReader = New StreamReader(responce.GetResponseStream)
+        'Dim sr As StreamReader = New StreamReader(responce.GetResponseStream)
 
-        Dim newestVersion As String = sr.ReadToEnd()
-        Console.WriteLine(newestVersion)
-        Dim currentVersion As String = Application.ProductVersion
+        'Dim newestVersion As String = sr.ReadToEnd()
+        'Dim currentVersion As String = Application.ProductVersion
 
-        If Not newestVersion.Contains(currentVersion) Then
-            wb_Updater.Navigate(updateLocation)
-        End If
+        'If Not newestVersion.Contains(currentVersion) Then
+        '    wb_Updater.Navigate(updateLocation)
+        'End If
     End Sub
 End Class

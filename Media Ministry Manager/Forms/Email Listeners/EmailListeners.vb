@@ -8,7 +8,46 @@ Public Class frm_EmailListeners
     Public frm_main As frm_Main
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
-    ReadOnly emailer As String = Application.StartupPath & "\sender.jar"
+    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
+
+    Structure Sizes
+
+        'Window Sizes
+        Shared [Default] As New Size(842, 240)
+
+        Shared Max As New Size(1382, 744)
+    End Structure
+
+    Structure Locations
+
+        'upload button locations
+        Shared UploadDefault As New Point(20, 13)
+
+        'Send button locations
+        Shared SendDefault As New Point(20, 71)
+
+        'View button Locations
+        Shared ViewDefault As New Point(20, 129)
+
+        'Folder combo locations
+        Shared FolderDefault As New Point(389, 55)
+
+        'File text locations
+        Shared FileDefault As New Point(389, 114)
+
+        'new folder button locations
+        Shared FolderAddDefault As New Point(762, 57)
+
+        'find file button
+        Shared BrowseDefault As New Point(762, 114)
+
+        'folder label locations
+        Shared FolderLabelDefault As New Point(293, 55)
+
+        'file label locations
+        Shared FileLabelDefault As New Point(314, 114)
+
+    End Structure
 
     Structure MinisLocations
         Shared upload As New Point(20, 13)
@@ -64,6 +103,7 @@ Public Class frm_EmailListeners
     Private Sub btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
         ofd_SelectAudio.ShowDialog()
     End Sub
+
     Private Sub bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
         If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
             Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
@@ -112,18 +152,23 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
+        tss_Feedback.ForeColor = Color.Black
         If fileID IsNot Nothing Then
             tss_Feedback.Text = "Sending emails to listeners..."
-            Dim sending As Process = Process.Start(emailer, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
+            Dim sending As Process = Process.Start(emailerLocation, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
 
             sending.WaitForExit()
 
             If sending.ExitCode = 0 Then
                 txt_FileLocation.Text = ""
                 tss_Feedback.Text = "All emails sent successfully..."
+            Else
+                tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact you developer..."
+                tss_Feedback.ForeColor = Color.Red
             End If
         Else
             tss_Feedback.Text = "You have to upload something first..."
+            tss_Feedback.ForeColor = Color.Red
         End If
     End Sub
 
@@ -138,8 +183,10 @@ Public Class frm_EmailListeners
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
             ofd_SelectAudio.FileName = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
-            ofd_SelectAudio_FileOk(sender, New CancelEventArgs)
-            'txt_FileLocation.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            If ofd_SelectAudio.CheckFileExists Then
+                ofd_SelectAudio_FileOk(sender, New CancelEventArgs)
+                'txt_FileLocation.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
+            End If
         End If
     End Sub
 
@@ -149,24 +196,30 @@ Public Class frm_EmailListeners
             e.Effect = DragDropEffects.Copy
         End If
     End Sub
-
-    Private Sub rdo_EmailMinistry_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_EmailMinistry.CheckedChanged
-        If rdo_EmailMinistry.Checked Then
-            normal()
+    
+    Private Sub frm_EmailListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        If Me.Size = Sizes.Max Then
+            MaxChanges()
+        Else
+            DefaultChanges()
         End If
     End Sub
 
-    Private Sub rdo_GoingLive_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_GoingLive.CheckedChanged
-        If rdo_GoingLive.Checked Then
-            goLive()
-        End If
+    Private Sub MaxChanges()
+
     End Sub
 
-    Sub normal()
-        Me.Size = MinisSizes.form
-    End Sub
+    Private Sub DefaultChanges()
+        'Locations
+        btn_Upload.Location = Locations.UploadDefault
+        btn_SendEmails.Location = Locations.SendDefault
+        btn_ViewListeners.Location = Locations.ViewDefault
+        lbl_Folder.Location = Locations.FolderLabelDefault
+        cbx_Folders.Location = Locations.FolderDefault
+        btn_AddFolder.Location = Locations.FolderAddDefault
+        lbl_FileLocation.Location = Locations.FileLabelDefault
+        txt_FileLocation.Location = Locations.FileDefault
+        btn_Browse.Location = Locations.BrowseDefault
 
-    Sub goLive()
-        Me.Size = LiveSizes.form
     End Sub
 End Class
