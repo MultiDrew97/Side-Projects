@@ -4,8 +4,8 @@ Imports System.IO
 Imports System.Text.RegularExpressions.Regex
 Imports Microsoft.VisualBasic.FileIO
 
-Public Class AddListener
-    Public frm_Emails As ViewListeners
+Public Class frm_AddListener
+    Public frm_Emails As frm_ViewListeners
 
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails

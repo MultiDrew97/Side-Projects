@@ -117,7 +117,7 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
-        Dim frm_Folder As Folder = New Folder(uploader)
+        Dim frm_Folder As frm_Folder = New frm_Folder(uploader)
         frm_Folder.Show()
 
         Do Until My.Settings.AdminInfoRecieved
@@ -173,8 +173,7 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
-        Dim frm_ViewListeners As ViewListeners = New ViewListeners(New Database(My.Settings.Username, My.Settings.Password))
-        frm_ViewListeners.emails = Me
+        Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners(New Database(My.Settings.Username, My.Settings.Password)) With {.sendingForm = Me}
         frm_ViewListeners.Show()
         Me.Hide()
     End Sub

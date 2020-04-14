@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>2.0.0.12</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -207,14 +207,18 @@
     <Compile Include="Forms\Email Listeners\EmailListeners.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Email Listeners\Folder.Designer.vb">
+      <DependentUpon>Folder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\Folder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Email Listeners\frm_AddListener.Designer.vb">
       <DependentUpon>frm_AddListener.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\frm_AddListener.vb" />
-    <Compile Include="Forms\Email Listeners\frm_Folder.Designer.vb">
-      <DependentUpon>frm_Folder.vb</DependentUpon>
+    <Compile Include="Forms\Email Listeners\frm_AddListener.vb">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\frm_Folder.vb" />
     <Compile Include="Forms\Email Listeners\frm_ViewListeners.Designer.vb">
       <DependentUpon>frm_ViewListeners.vb</DependentUpon>
     </Compile>
@@ -334,11 +338,11 @@
     <EmbeddedResource Include="Forms\Email Listeners\EmailListeners.resx">
       <DependentUpon>EmailListeners.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Email Listeners\Folder.resx">
+      <DependentUpon>Folder.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\frm_AddListener.resx">
       <DependentUpon>frm_AddListener.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\frm_Folder.resx">
-      <DependentUpon>frm_Folder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
       <DependentUpon>frm_ViewListeners.vb</DependentUpon>

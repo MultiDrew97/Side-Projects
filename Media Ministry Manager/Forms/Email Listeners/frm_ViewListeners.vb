@@ -3,7 +3,7 @@
 Imports System.ComponentModel
 
 Public Class frm_ViewListeners
-    Public emails As frm_EmailListeners
+    Public sendingForm As Form
     Dim db As Database
     ReadOnly totalListeners As String = "Total Listeners: {0}"
 
@@ -81,7 +81,7 @@ Public Class frm_ViewListeners
 
     Private Sub frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Try
-            emails.Show()
+            sendingForm.Show()
         Catch
 
         End Try

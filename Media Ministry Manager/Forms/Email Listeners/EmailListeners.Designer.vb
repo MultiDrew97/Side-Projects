@@ -37,11 +37,9 @@ Partial Class frm_EmailListeners
         Me.btn_SendEmails = New System.Windows.Forms.Button()
         Me.btn_ViewListeners = New System.Windows.Forms.Button()
         Me.bw_SendEmails = New System.ComponentModel.BackgroundWorker()
-        Me.gbx_EmailType = New System.Windows.Forms.GroupBox()
         Me.rdo_GoingLive = New System.Windows.Forms.RadioButton()
         Me.rdo_EmailMinistry = New System.Windows.Forms.RadioButton()
         Me.ss_Feedback.SuspendLayout()
-        Me.gbx_EmailType.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_Upload
@@ -129,9 +127,9 @@ Partial Class frm_EmailListeners
         'ss_Feedback
         '
         Me.ss_Feedback.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
-        Me.ss_Feedback.Location = New System.Drawing.Point(0, 727)
+        Me.ss_Feedback.Location = New System.Drawing.Point(0, 179)
         Me.ss_Feedback.Name = "ss_Feedback"
-        Me.ss_Feedback.Size = New System.Drawing.Size(884, 22)
+        Me.ss_Feedback.Size = New System.Drawing.Size(826, 22)
         Me.ss_Feedback.TabIndex = 7
         Me.ss_Feedback.Text = "ss_Feedback"
         '
@@ -161,14 +159,27 @@ Partial Class frm_EmailListeners
         Me.btn_ViewListeners.Text = "Current Listeners"
         Me.btn_ViewListeners.UseVisualStyleBackColor = True
         '
+        'rdo_GoingLive
+        '
+        Me.rdo_GoingLive.Location = New System.Drawing.Point(0, 0)
+        Me.rdo_GoingLive.Name = "rdo_GoingLive"
+        Me.rdo_GoingLive.Size = New System.Drawing.Size(104, 24)
+        Me.rdo_GoingLive.TabIndex = 0
+        '
+        'rdo_EmailMinistry
+        '
+        Me.rdo_EmailMinistry.Location = New System.Drawing.Point(0, 0)
+        Me.rdo_EmailMinistry.Name = "rdo_EmailMinistry"
+        Me.rdo_EmailMinistry.Size = New System.Drawing.Size(104, 24)
+        Me.rdo_EmailMinistry.TabIndex = 0
+        '
         'frm_EmailListeners
         '
         Me.AcceptButton = Me.btn_Upload
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(884, 749)
-        Me.Controls.Add(Me.gbx_EmailType)
+        Me.ClientSize = New System.Drawing.Size(826, 201)
         Me.Controls.Add(Me.btn_ViewListeners)
         Me.Controls.Add(Me.btn_SendEmails)
         Me.Controls.Add(Me.ss_Feedback)
@@ -187,8 +198,6 @@ Partial Class frm_EmailListeners
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)
         Me.ss_Feedback.PerformLayout()
-        Me.gbx_EmailType.ResumeLayout(False)
-        Me.gbx_EmailType.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -208,7 +217,6 @@ Partial Class frm_EmailListeners
     Friend WithEvents btn_SendEmails As Button
     Friend WithEvents btn_ViewListeners As Button
     Friend WithEvents bw_SendEmails As System.ComponentModel.BackgroundWorker
-    Friend WithEvents gbx_EmailType As GroupBox
     Friend WithEvents rdo_GoingLive As RadioButton
     Friend WithEvents rdo_EmailMinistry As RadioButton
 End Class

@@ -29,7 +29,6 @@ Public Class frm_Main
 
     Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
-        tss_Feedback.Text = Application.StartupPath
     End Sub
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
@@ -179,7 +178,7 @@ Public Class frm_Main
     End Sub
 
     Private Function validateSender(path As String) As Boolean
-        Return (File.Exists(path) And (New FileInfo(path).Length = My.Resources.sender.Length))
+        Return File.Exists(path)
     End Function
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
@@ -197,5 +196,25 @@ Public Class frm_Main
         'If Not newestVersion.Contains(currentVersion) Then
         '    wb_Updater.Navigate(updateLocation)
         'End If
+    End Sub
+
+    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomersToolStripMenuItem.Click
+        Dim customers As New frm_DisplayCustomers(db, Me)
+        customers.Show()
+    End Sub
+
+    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsToolStripMenuItem.Click
+        Dim products As New frm_ViewInventory(db, Me)
+        products.Show()
+    End Sub
+
+    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrdersToolStripMenuItem.Click
+        Dim orders As New frm_DisplayOrders(db, Me)
+        orders.Show()
+    End Sub
+
+    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenersToolStripMenuItem.Click
+        Dim listeners As New frm_ViewListeners(db) With {.sendingForm = Me}
+        listeners.Show()
     End Sub
 End Class

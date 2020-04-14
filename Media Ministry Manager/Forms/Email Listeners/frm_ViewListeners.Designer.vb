@@ -27,21 +27,8 @@ Partial Class frm_ViewListeners
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_ViewListeners))
         Me.btn_Add = New System.Windows.Forms.Button()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
-        Me.lbl_Total = New System.Windows.Forms.Label()
-        Me.btn_Search = New System.Windows.Forms.Button()
-        Me.lbl_SearchLabel = New System.Windows.Forms.Label()
-        Me.txt_SearchBox = New System.Windows.Forms.TextBox()
-        Me.btn_Advanced = New System.Windows.Forms.Button()
-        Me.cbx_Column = New System.Windows.Forms.ComboBox()
-        Me.txt_NameSearch = New System.Windows.Forms.TextBox()
-        Me.txt_EmailSearch = New System.Windows.Forms.TextBox()
-        Me.lbl_NameSearch = New System.Windows.Forms.Label()
-        Me.lbl_EmailSearch = New System.Windows.Forms.Label()
-        Me.gbx_AdvancedSearch = New System.Windows.Forms.GroupBox()
-        Me.btn_AdvancedSearch = New System.Windows.Forms.Button()
-        Me.btn_AdvancedCancel = New System.Windows.Forms.Button()
-        Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NAMEDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EMAILDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
         Me.lbl_Total = New System.Windows.Forms.Label()
@@ -57,8 +44,10 @@ Partial Class frm_ViewListeners
         Me.gbx_AdvancedSearch = New System.Windows.Forms.GroupBox()
         Me.btn_AdvancedSearch = New System.Windows.Forms.Button()
         Me.btn_AdvancedCancel = New System.Windows.Forms.Button()
+        Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmaiL_LISTENERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbx_AdvancedSearch.SuspendLayout()
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbx_AdvancedSearch.SuspendLayout()
@@ -83,6 +72,7 @@ Partial Class frm_ViewListeners
         Me.dgv_Listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Listeners.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.dgv_Listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv_Listeners.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NAMEDataGridViewTextBoxColumn1, Me.EMAILDataGridViewTextBoxColumn1})
         Me.dgv_Listeners.DataSource = Me.EMAILLISTENERSBindingSource
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
@@ -97,10 +87,22 @@ Partial Class frm_ViewListeners
         Me.dgv_Listeners.Size = New System.Drawing.Size(613, 450)
         Me.dgv_Listeners.TabIndex = 0
         '
+        'NAMEDataGridViewTextBoxColumn1
+        '
+        Me.NAMEDataGridViewTextBoxColumn1.DataPropertyName = "NAME"
+        Me.NAMEDataGridViewTextBoxColumn1.HeaderText = "NAME"
+        Me.NAMEDataGridViewTextBoxColumn1.Name = "NAMEDataGridViewTextBoxColumn1"
+        '
+        'EMAILDataGridViewTextBoxColumn1
+        '
+        Me.EMAILDataGridViewTextBoxColumn1.DataPropertyName = "EMAIL"
+        Me.EMAILDataGridViewTextBoxColumn1.HeaderText = "EMAIL"
+        Me.EMAILDataGridViewTextBoxColumn1.Name = "EMAILDataGridViewTextBoxColumn1"
+        '
         'EMAILLISTENERSBindingSource
         '
+        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
         Me.EMAILLISTENERSBindingSource.DataSource = Me.Media_MinistryDataSet
-        Me.EMAILLISTENERSBindingSource.Position = 0
         '
         'Media_MinistryDataSet
         '
@@ -162,7 +164,7 @@ Partial Class frm_ViewListeners
         '
         Me.cbx_Column.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.cbx_Column.FormattingEnabled = True
-        Me.cbx_Column.Items.AddRange(New Object() {"NAME", "EMAIL"})
+        Me.cbx_Column.Items.AddRange(New Object() {"NAME", "EMAIL", "Name", "Email Address"})
         Me.cbx_Column.Location = New System.Drawing.Point(730, 12)
         Me.cbx_Column.Name = "cbx_Column"
         Me.cbx_Column.Size = New System.Drawing.Size(192, 33)
@@ -240,104 +242,23 @@ Partial Class frm_ViewListeners
         Me.btn_AdvancedCancel.Text = "Cancel"
         Me.btn_AdvancedCancel.UseVisualStyleBackColor = True
         '
-        'btn_Advanced
+        'NAMEDataGridViewTextBoxColumn
         '
-        Me.btn_Advanced.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_Advanced.Location = New System.Drawing.Point(1199, 151)
-        Me.btn_Advanced.Name = "btn_Advanced"
-        Me.btn_Advanced.Size = New System.Drawing.Size(132, 33)
-        Me.btn_Advanced.TabIndex = 6
-        Me.btn_Advanced.Text = "Advanced"
-        Me.btn_Advanced.UseVisualStyleBackColor = True
-        Me.btn_Advanced.Visible = False
+        Me.NAMEDataGridViewTextBoxColumn.Name = "NAMEDataGridViewTextBoxColumn"
         '
-        'cbx_Column
+        'EMAILDataGridViewTextBoxColumn
         '
-        Me.cbx_Column.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.cbx_Column.FormattingEnabled = True
-        Me.cbx_Column.Items.AddRange(New Object() {"Name", "Email Address"})
-        Me.cbx_Column.Location = New System.Drawing.Point(730, 12)
-        Me.cbx_Column.Name = "cbx_Column"
-        Me.cbx_Column.Size = New System.Drawing.Size(192, 33)
-        Me.cbx_Column.TabIndex = 7
+        Me.EMAILDataGridViewTextBoxColumn.Name = "EMAILDataGridViewTextBoxColumn"
         '
-        'txt_NameSearch
+        'EmaiL_LISTENERSTableAdapter
         '
-        Me.txt_NameSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.txt_NameSearch.Location = New System.Drawing.Point(24, 60)
-        Me.txt_NameSearch.Name = "txt_NameSearch"
-        Me.txt_NameSearch.Size = New System.Drawing.Size(356, 31)
-        Me.txt_NameSearch.TabIndex = 8
-        '
-        'txt_EmailSearch
-        '
-        Me.txt_EmailSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.txt_EmailSearch.Location = New System.Drawing.Point(24, 140)
-        Me.txt_EmailSearch.Name = "txt_EmailSearch"
-        Me.txt_EmailSearch.Size = New System.Drawing.Size(356, 31)
-        Me.txt_EmailSearch.TabIndex = 9
-        '
-        'lbl_NameSearch
-        '
-        Me.lbl_NameSearch.AutoSize = True
-        Me.lbl_NameSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.lbl_NameSearch.Location = New System.Drawing.Point(19, 32)
-        Me.lbl_NameSearch.Name = "lbl_NameSearch"
-        Me.lbl_NameSearch.Size = New System.Drawing.Size(79, 25)
-        Me.lbl_NameSearch.TabIndex = 10
-        Me.lbl_NameSearch.Text = "Name:"
-        '
-        'lbl_EmailSearch
-        '
-        Me.lbl_EmailSearch.AutoSize = True
-        Me.lbl_EmailSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.lbl_EmailSearch.Location = New System.Drawing.Point(19, 112)
-        Me.lbl_EmailSearch.Name = "lbl_EmailSearch"
-        Me.lbl_EmailSearch.Size = New System.Drawing.Size(170, 25)
-        Me.lbl_EmailSearch.TabIndex = 11
-        Me.lbl_EmailSearch.Text = "Email Address:"
-        '
-        'gbx_AdvancedSearch
-        '
-        Me.gbx_AdvancedSearch.BackColor = System.Drawing.Color.Gray
-        Me.gbx_AdvancedSearch.Controls.Add(Me.btn_AdvancedSearch)
-        Me.gbx_AdvancedSearch.Controls.Add(Me.btn_AdvancedCancel)
-        Me.gbx_AdvancedSearch.Controls.Add(Me.txt_EmailSearch)
-        Me.gbx_AdvancedSearch.Controls.Add(Me.lbl_EmailSearch)
-        Me.gbx_AdvancedSearch.Controls.Add(Me.txt_NameSearch)
-        Me.gbx_AdvancedSearch.Controls.Add(Me.lbl_NameSearch)
-        Me.gbx_AdvancedSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.gbx_AdvancedSearch.Location = New System.Drawing.Point(968, 63)
-        Me.gbx_AdvancedSearch.Name = "gbx_AdvancedSearch"
-        Me.gbx_AdvancedSearch.Size = New System.Drawing.Size(386, 243)
-        Me.gbx_AdvancedSearch.TabIndex = 12
-        Me.gbx_AdvancedSearch.TabStop = False
-        Me.gbx_AdvancedSearch.Text = "Advanced Search"
-        Me.gbx_AdvancedSearch.Visible = False
-        '
-        'btn_AdvancedSearch
-        '
-        Me.btn_AdvancedSearch.Location = New System.Drawing.Point(231, 187)
-        Me.btn_AdvancedSearch.Name = "btn_AdvancedSearch"
-        Me.btn_AdvancedSearch.Size = New System.Drawing.Size(95, 35)
-        Me.btn_AdvancedSearch.TabIndex = 13
-        Me.btn_AdvancedSearch.Text = "Search"
-        Me.btn_AdvancedSearch.UseVisualStyleBackColor = True
-        '
-        'btn_AdvancedCancel
-        '
-        Me.btn_AdvancedCancel.Location = New System.Drawing.Point(74, 187)
-        Me.btn_AdvancedCancel.Name = "btn_AdvancedCancel"
-        Me.btn_AdvancedCancel.Size = New System.Drawing.Size(99, 35)
-        Me.btn_AdvancedCancel.TabIndex = 12
-        Me.btn_AdvancedCancel.Text = "Cancel"
-        Me.btn_AdvancedCancel.UseVisualStyleBackColor = True
+        Me.EmaiL_LISTENERSTableAdapter.ClearBeforeFill = True
         '
         'frm_ViewListeners
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Media_Ministry.My.Resources.Resources.Media_Ministry_Manage_Image
+        Me.BackgroundImage = Global.Media_Ministry.My.Resources.Resources.Media_Ministry_Logo
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(998, 450)
         Me.Controls.Add(Me.cbx_Column)
@@ -351,10 +272,9 @@ Partial Class frm_ViewListeners
         Me.Controls.Add(Me.gbx_AdvancedSearch)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_ViewListeners"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbx_AdvancedSearch.ResumeLayout(False)
-        Me.gbx_AdvancedSearch.PerformLayout()
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbx_AdvancedSearch.ResumeLayout(False)
@@ -366,8 +286,6 @@ Partial Class frm_ViewListeners
     Friend WithEvents btn_Add As Button
     Friend WithEvents dgv_Listeners As DataGridView
     Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
-    Friend WithEvents EMAILLISTENERSBindingSource As BindingSource
-    Friend WithEvents EMAIL_LISTENERSTableAdapter As Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
     Friend WithEvents NAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents lbl_Total As Label
@@ -383,4 +301,8 @@ Partial Class frm_ViewListeners
     Friend WithEvents gbx_AdvancedSearch As GroupBox
     Friend WithEvents btn_AdvancedSearch As Button
     Friend WithEvents btn_AdvancedCancel As Button
+    Friend WithEvents EmaiL_LISTENERSTableAdapter As Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
+    Friend WithEvents NAMEDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents EMAILDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents EMAILLISTENERSBindingSource As BindingSource
 End Class
