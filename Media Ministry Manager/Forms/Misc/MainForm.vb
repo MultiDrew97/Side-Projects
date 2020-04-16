@@ -7,7 +7,6 @@ Imports Media_Ministry.SendingEmails
 Public Class frm_Main
     Dim db As Database
     Dim uploader As DriveUploader
-    Private emailListeners As frm_EmailListeners
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
 
     Structure WindowSizes
@@ -87,15 +86,9 @@ Public Class frm_Main
     End Sub
 
     Private Sub bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-        If Not File.Exists(CType(e.Argument, String)) Then
-            Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
-                out.Write(My.Resources.sender)
-            End Using
-        ElseIf Not New FileInfo(CType(e.Argument, String)).Length = My.Resources.sender.Length Then
-            Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
-                out.Write(My.Resources.sender)
-            End Using
-        End If
+        Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
+            out.Write(My.Resources.sender)
+        End Using
 
         If Not validateSender(CType(e.Argument, String)) Then
             Throw New Exception("Sender was not found or was not copied correctly. Contact your developer.")
@@ -104,7 +97,7 @@ Public Class frm_Main
 
     Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.Size = WindowSizes.max Then
-            'growToMax()
+            growToMax()
         Else
             backToNormal()
         End If

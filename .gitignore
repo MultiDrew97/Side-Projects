@@ -340,7 +340,6 @@ ASALocalRun/
 healthchecksdb
 
 #Security
-*.exe
-*.json
-*.jar
-*.txt
+Media Ministry Manager.exe
+credentials.json
+sender.jar
