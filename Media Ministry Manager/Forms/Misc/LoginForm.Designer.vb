@@ -45,7 +45,7 @@ Partial Class frm_Login
         Me.btn_LogIn.Location = New System.Drawing.Point(111, 226)
         Me.btn_LogIn.Name = "btn_LogIn"
         Me.btn_LogIn.Size = New System.Drawing.Size(76, 27)
-        Me.btn_LogIn.TabIndex = 7
+        Me.btn_LogIn.TabIndex = 6
         Me.btn_LogIn.Text = "Log In"
         Me.btn_LogIn.UseVisualStyleBackColor = True
         '
@@ -114,7 +114,7 @@ Partial Class frm_Login
         Me.ss_Feedback.Location = New System.Drawing.Point(0, 265)
         Me.ss_Feedback.Name = "ss_Feedback"
         Me.ss_Feedback.Size = New System.Drawing.Size(297, 22)
-        Me.ss_Feedback.TabIndex = 8
+        Me.ss_Feedback.TabIndex = 7
         Me.ss_Feedback.Text = "StatusStrip1"
         '
         'tss_UserFeedback
@@ -133,7 +133,7 @@ Partial Class frm_Login
         Me.btn_CreateUser.Location = New System.Drawing.Point(13, 226)
         Me.btn_CreateUser.Name = "btn_CreateUser"
         Me.btn_CreateUser.Size = New System.Drawing.Size(24, 27)
-        Me.btn_CreateUser.TabIndex = 6
+        Me.btn_CreateUser.TabIndex = 5
         Me.btn_CreateUser.Text = "+"
         Me.tt_Info.SetToolTip(Me.btn_CreateUser, "Create a new user")
         Me.btn_CreateUser.UseVisualStyleBackColor = True

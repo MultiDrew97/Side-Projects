@@ -155,8 +155,8 @@ Public Class frm_EmailListeners
         tss_Feedback.ForeColor = Color.Black
         If fileID IsNot Nothing Then
             tss_Feedback.Text = "Sending emails to listeners..."
-            Dim sending As Process = Process.Start(emailerLocation, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
-
+            Dim sending As Process = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
+            'Environment.GetEnvironmentVariable("MediaUsername"), Environment.GetEnvironmentVariable("MediaPassword")
             sending.WaitForExit()
 
             If sending.ExitCode = 0 Then
@@ -164,6 +164,7 @@ Public Class frm_EmailListeners
                 tss_Feedback.Text = "All emails sent successfully..."
             Else
                 tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact you developer..."
+                MessageBox.Show("Exit Code: " & sending.ExitCode, "Error")
                 tss_Feedback.ForeColor = Color.Red
             End If
         Else
