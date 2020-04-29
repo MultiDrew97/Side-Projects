@@ -11,8 +11,7 @@ Imports Google.Apis.Util.Store
 Imports MimeKit
 Imports NeoSmart.Utils
 
-Namespace SendingEmails
-
+Namespace Utils
     Public Class DriveUploader
 
         'If modifying these scopes, delete your previously saved credentials
@@ -21,8 +20,7 @@ Namespace SendingEmails
 
         Private ReadOnly ApplicationName As String = "Drive Uploader"
         Private permissions As New List(Of Permission)()
-        Private tss As ToolStripStatusLabel
-        Private Property service() As DriveService
+        Private service As DriveService
         Private db As Database
 
         Sub New()
@@ -54,7 +52,6 @@ Namespace SendingEmails
         End Sub
 
         Function upload(fileName As String, ByVal folderName As String, tss As ToolStripStatusLabel) As String
-            Me.tss = tss
             Dim parents As IList(Of String) = New List(Of String)
             parents.Add(getFolderID(folderName))
 
@@ -78,7 +75,7 @@ Namespace SendingEmails
 
             If (file IsNot Nothing) Then
                 tss.Text = String.Format("File Uploaded:\n\tID: {0}\n\tName: {1}", file.Id, file.Name)
-                setPermissions(file.Id)
+                setPermissions(file.Id, tss)
                 Console.WriteLine("ID: {0}", file.Id)
                 Return file.Id
             Else
@@ -109,20 +106,21 @@ Namespace SendingEmails
             End If
         End Function
 
-        Function getFolderID(ByVal name As String) As String
+        Function getFolderID(ByVal folderName As String) As String
 
             Dim pageToken As String = Nothing
+            Dim folderSearch As FilesResource.ListRequest
             Do
+                folderSearch = service.Files.List()
+                folderSearch.Q = "mimeType='application/vnd.google-apps.folder'"
+                folderSearch.Spaces = "drive"
+                folderSearch.Fields = "nextPageToken, files(id, name)"
+                folderSearch.PageToken = pageToken
 
-                service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
-                service.Files.List().Spaces = "drive"
-                service.Files.List().Fields = "nextPageToken, files(id, name)"
-                service.Files.List().PageToken = pageToken
-
-                Dim result As FileList = service.Files.List().Execute()
+                Dim result As FileList = folderSearch.Execute()
 
                 For Each files As Data.File In result.Files
-                    If (files.Name.Equals(name)) Then
+                    If (files.Name.Equals(folderName)) Then
                         Return files.Id
                     End If
                 Next
@@ -132,16 +130,18 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
-        Function findFile(ByVal fileName As String) As String
+        Function getFileID(ByVal fileName As String, folderName As String) As String
             Dim pageToken As String = Nothing
+            Dim fileSearch As FilesResource.ListRequest
+
             Do
+                fileSearch = service.Files.List()
+                fileSearch.Q = String.Format("name='{0}' and '{1}' in parent", fileName, getFolderID(folderName))
+                fileSearch.Spaces = "drive"
+                fileSearch.Fields = "nextPageToken, files(id, name)"
+                fileSearch.PageToken = pageToken
 
-                service.Files.List().Q = "mimeType='text/plain'"
-                service.Files.List().Spaces = "drive"
-                service.Files.List().Fields = "nextPageToken, files(id, name)"
-                service.Files.List().PageToken = pageToken
-
-                Dim result As FileList = service.Files.List().Execute()
+                Dim result As FileList = fileSearch.Execute()
 
                 For Each files As Data.File In result.Files
                     If (files.Name.Equals(fileName)) Then
@@ -154,14 +154,37 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
-        Sub setPermissions(ByVal fileID As String)
+        Function loadFiles(folderName As String) As List(Of String)
+            Dim pageToken As String = Nothing
+            Dim folderID = getFolderID(folderName)
+            Dim files As New List(Of String)
+            Dim fileSearch As FilesResource.ListRequest
+            Do
+                fileSearch = service.Files.List()
+                fileSearch.Q = String.Format("mimeType!='application/vnd.google-apps.folder' and '{0}' in parents", folderID)
+                fileSearch.Spaces = "drive"
+                fileSearch.Fields = "nextPageToken, files(id, name, parents)"
+                fileSearch.PageToken = pageToken
 
+                Dim result As FileList = fileSearch.Execute
+
+                For Each file In result.Files
+                    files.Add(file.Name)
+                Next
+
+                pageToken = result.NextPageToken
+            Loop While (pageToken IsNot Nothing)
+
+            Return files
+        End Function
+
+        Sub setPermissions(ByVal fileID As String, tss As ToolStripStatusLabel)
             Dim request As PermissionsResource.CreateRequest
 
             tss.Text = String.Format("Setting permissions for FileID: {0}", fileID)
 
             request = service.Permissions.Create(createPermission(), fileID)
-            'request.EmailMessage = String.Format(message, listener.name)
+
             request.Execute()
         End Sub
 
@@ -179,8 +202,9 @@ Namespace SendingEmails
         Function retrieveEmails() As List(Of Listener)
             Dim listeners As New List(Of Listener)
 
-            db = New Database(My.Settings.Username, My.Settings.Password)
-            listeners = db.RetrieveListeners()
+            Using db As New Database(My.Settings.Username, My.Settings.Password)
+                listeners = db.RetrieveListeners()
+            End Using
 
             Return listeners
         End Function

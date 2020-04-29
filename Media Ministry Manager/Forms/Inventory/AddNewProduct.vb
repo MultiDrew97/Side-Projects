@@ -1,19 +1,18 @@
 ﻿Option Strict On
 
 Imports System.Text.RegularExpressions.Regex
+Imports Media_Ministry.Utils
 
 Public Class frm_AddNewProduct
-    Private db As Database
     Private sendingForm As Form
 
-    Public Sub New(ByRef database As Database, ByRef inventoryView As Form)
+    Public Sub New(ByRef sendingForm As Form)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        db = database
-        sendingForm = inventoryView
+        Me.sendingForm = sendingForm
     End Sub
 
     Private Sub frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -46,7 +45,9 @@ Public Class frm_AddNewProduct
         price = Decimal.Parse("0" & Format(txt_Price.Text, "Standard"))
 
         Try
-            db.AddNewProduct(name, stock, price)
+            Using db As New Database(My.Settings.Username, My.Settings.Password)
+                db.AddNewProduct(name, stock, price)
+            End Using
             tss_AddProduct.ForeColor = SystemColors.WindowText
             tss_AddProduct.Text = "Product was successfully added."
         Catch

@@ -1,6 +1,6 @@
 ﻿Option Strict On
 
-Imports Media_Ministry.SendingEmails
+Imports Media_Ministry.Utils
 
 Public Class frm_Folder
     Dim uploader As DriveUploader

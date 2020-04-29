@@ -52,15 +52,15 @@ Partial Friend NotInheritable Class MySettings
             Return defaultInstance
         End Get
     End Property
-    
-    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P"& _ 
-        "ersist Security Info=True;User ID=arandlemiller97;Password=AMrw2697")>  _
-    Public ReadOnly Property masterConnectionString() As String
+
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P" &
+        "ersist Security Info=True;User ID=arandlemiller97;Password=AMrw2697;Encrypt=True")>
+    Public ReadOnly Property masterConnection() As String
         Get
-            Return CType(Me("masterConnectionString"),String)
+            Return CType(Me("masterConnection"),String)
         End Get
     End Property
     

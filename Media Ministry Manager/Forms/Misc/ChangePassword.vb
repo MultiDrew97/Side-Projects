@@ -2,10 +2,10 @@
 
 Imports System.ComponentModel
 Imports System.Data.SqlClient
-
+Imports Media_Ministry.Utils
 Public Class frm_ChangePassword
     Dim db As Database
-    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnection)
 
     Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
         Try
@@ -22,9 +22,9 @@ Public Class frm_ChangePassword
                 _connection.UserID = My.Settings.AdminUser
                 _connection.Password = My.Settings.AdminPass
 
-                db = New Database(_connection)
-                db.ChangePassword(txt_Username.Text, txt_Password.Text)
-
+                Using db = New Database(_connection)
+                    db.ChangePassword(txt_Username.Text, txt_Password.Text)
+                End Using
                 Console.WriteLine("Successfully Changed Password")
                 bw_ResetAdminInfo.RunWorkerAsync()
             Else
@@ -66,11 +66,6 @@ Public Class frm_ChangePassword
     End Sub
 
     Private Sub frm_ChangePassword_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If db IsNot Nothing Then
-            'if there is a connection open, then close it
-            db.Close()
-        End If
-
         frm_Login.Show()
     End Sub
 

@@ -1,19 +1,18 @@
 ﻿Option Strict On
 
 Imports System.Text.RegularExpressions.Regex
-
+Imports Media_Ministry.Utils
 Public Class frm_AddNewCustomer
     Private db As Database
     Private sendingForm As Form
     Private phonePattern As String = "(\d{3})-\d{3}-\d{4}"
     'Private phoneParenPattern As String = "(\d{3})-\d{3}-\d{4}"
 
-    Public Sub New(ByRef database As Database, parentForm As Form)
+    Public Sub New(parentForm As Form)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        db = database
         sendingForm = parentForm
     End Sub
 
@@ -68,7 +67,9 @@ Public Class frm_AddNewCustomer
                          addrStreet As String, addrCity As String, addrState As String, addrZip As String,
                          phoneNumber As String, email As String, paymentPreference As String)
 
-        db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference)
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference)
+        End Using
     End Sub
 
     Private Sub reset()

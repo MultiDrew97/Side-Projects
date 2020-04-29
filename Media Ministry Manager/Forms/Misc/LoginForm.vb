@@ -2,16 +2,15 @@
 
 Imports System.ComponentModel
 Imports System.Data.SqlClient
-
+Imports Media_Ministry.Utils
 Public Class frm_Login
-    ReadOnly _dbConnection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+    ReadOnly _dbConnection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.MySettings.Default.masterConnection)
 
     Private Sub frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If My.Settings.KeepLoggedIn Then
             txt_Username.Text = My.Settings.Username
             txt_Password.Text = My.Settings.Password
-            'txt_Username.Text = Environment.GetEnvironmentVariable("MediaUsername")
-            'txt_Password.Text = Environment.GetEnvironmentVariable("MediaPassword")
+            chk_KeepLoggedIn.Checked = My.Settings.KeepLoggedIn
             btn_LogIn.PerformClick()
         End If
     End Sub
@@ -21,11 +20,12 @@ Public Class frm_Login
             _dbConnection.Password = txt_Password.Text
             _dbConnection.UserID = txt_Username.Text
 
-            Dim db = New Database(_dbConnection)
+            Using db = New Database(_dbConnection)
+            End Using
 
-            Dim mainForm = New frm_Main(db)
-            Environment.SetEnvironmentVariable("updated", "False")
+            Dim mainForm = New frm_Main()
             mainForm.Show()
+
             bw_SaveSettings.RunWorkerAsync()
         Catch ex As SqlException
             tss_UserFeedback.Text = "Username/Password was inccorect. Please try again."
@@ -48,8 +48,6 @@ Public Class frm_Login
         My.Settings.KeepLoggedIn = chk_KeepLoggedIn.Checked
         My.Settings.Username = txt_Username.Text
         My.Settings.Password = txt_Password.Text
-        'Environment.SetEnvironmentVariable("MediaUsername", txt_Username.Text)
-        'Environment.SetEnvironmentVariable("MediaPassword", txt_Password.Text)
 
         My.Settings.Save()
     End Sub
@@ -77,21 +75,6 @@ Public Class frm_Login
         Me.Hide()
         reset()
     End Sub
-
-    'Private Function checkCreds() As Boolean
-    '    Try
-    '        Dim db As Database = New Database(txt_Username.Text, txt_Password.Text)
-    '        db.Close()
-    '        Return True
-    '    Catch e As SqlException
-    '        tss_UserFeedback.Text = "Username/Password was inccorect. Please try again."
-    '        tss_UserFeedback.ForeColor = Color.Red
-    '        Console.WriteLine(e.Message)
-    '        txt_Password.Text = ""
-    '        txt_Password.Focus()
-    '        Return False
-    '    End Try
-    'End Function
 
     'creating a login for a user in the database
     'CREATE USER [NAME] WITH PASSWORD = [PASSWORD]

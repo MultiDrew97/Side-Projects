@@ -34,8 +34,8 @@
     <MinimumRequiredVersion>2.0.0.12</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
-    <ApplicationRevision>23</ApplicationRevision>
-    <ApplicationVersion>2.0.1.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.0.145.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -329,7 +329,10 @@
     </Compile>
     <Compile Include="Objects\DriveUploader.vb" />
     <Compile Include="Objects\Listener.vb" />
-    <Compile Include="Settings.vb" />
+    <Compile Include="Settings.vb">
+      <Generator>Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My.MySettings</CustomToolNamespace>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Media Ministry Splash.resx">
@@ -404,7 +407,6 @@
     <None Include="Media_MinistryDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Media_MinistryDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Media_MinistryDataSet.xss">
       <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>

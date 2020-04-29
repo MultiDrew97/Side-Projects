@@ -1,12 +1,13 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
-
+Imports Media_Ministry.Utils
 Public Class frm_ViewListeners
     Public sendingForm As Form
     Dim db As Database
     ReadOnly totalListeners As String = "Total Listeners: {0}"
-
+    Private purpose As String
+    Private amount As Double
     Structure Sizes
 
         'window sizes
@@ -23,52 +24,48 @@ Public Class frm_ViewListeners
     Structure Locations
 
         'add button locations
-        Shared AddDefault As New Point(712, 319)
-
+        Shared AddDefault As New Point(780, 364)
         Shared maxAdd As New Point(1093, 555)
 
         'count label locations
-        Shared CountDefault As New Point(707, 389)
-
+        Shared CountDefault As New Point(775, 406)
         Shared maxCount As New Point(1088, 616)
 
         'search box locations
         Shared SearchBoxDefault As New Point(712, 75)
-
         Shared SearchBoxMax As New Point(1062, 82)
 
         'search label locations
         Shared SearchLabelDefault As New Point(619, 75)
-
         Shared SearchLabelMax As New Point(963, 85)
 
         'column combo box locations
-        Shared ColumnBoxDefault As New Point(730, 12)
-
+        Shared ColumnBoxDefault As New Point(757, 12)
         Shared ColumnBoxMax As New Point(1139, 21)
 
         'search button locations
-        Shared SearchDefault As New Point(781, 123)
-
+        Shared SearchDefault As New Point(881, 118)
         Shared SearchMax As New Point(1093, 151)
+
+        'ClearSearch button Locations
+        Shared ClearDefault As New Point(705, 118)
+        Shared ClearMax As New Point(1122, 200)
+
+        'CreateReceipt button locations
+        Shared CreateDefault As New Point(757, 164)
+        Shared CreateMax As New Point(1129, 312)
+
+        'PuposeGroup locations
+        Shared ReceiptDefault As New Point(670, 164)
+        Shared ReceiptMax As New Point(1044, 321)
     End Structure
-
-    Public Sub New(ByRef db As Database)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        Me.db = db
-        cbx_Column.SelectedIndex = 0
-    End Sub
 
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         customLoad()
     End Sub
 
     Public Sub customLoad()
-        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
+        Me.EmaiL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
         updateTotal()
     End Sub
@@ -88,7 +85,9 @@ Public Class frm_ViewListeners
     End Sub
 
     Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
-        db.removeListener(CType(e.Row.Cells(0).Value, String), CType(e.Row.Cells(1).Value, String))
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            db.removeListener(CType(e.Row.Cells(1).Value, String))
+        End Using
     End Sub
 
     Private Sub dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
@@ -96,7 +95,9 @@ Public Class frm_ViewListeners
         Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
 
-        db.updateListener(name, email)
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            db.updateListener(name, email)
+        End Using
     End Sub
 
     Private Sub updateTotal()
@@ -116,18 +117,7 @@ Public Class frm_ViewListeners
     End Sub
 
     Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
-        Dim criteria = txt_SearchBox.Text
-        Dim column = cbx_Column.SelectedText
-        Dim queryString As String = String.Format("SELECT * FROM EMAIL_LISTENERS WHERE {0} LIKE '%{1}%", column, criteria)
-
-        'db.search(queryString)
-        'If cbx_Column.SelectedText = "Email" Then
-        '    Console.WriteLine("EMAIL")
-
-        '    'EMAIL_LISTENERSTableAdapter.Fill(Media_MinistryDataSet.EMAIL_LISTENERS.FindByEMAIL(criteria))
-        'Else
-        '    Console.WriteLine("NAME")
-        'End If
+        searchListeners(False)
     End Sub
 
     Private Sub btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click
@@ -141,6 +131,7 @@ Public Class frm_ViewListeners
         btn_Advanced.Hide()
         cbx_Column.Hide()
         btn_Search.Hide()
+        btn_CancelSearch.Hide()
     End Sub
 
     Private Sub MaxChanges()
@@ -151,6 +142,9 @@ Public Class frm_ViewListeners
         lbl_Total.Location = Locations.maxCount
         btn_Add.Location = Locations.maxAdd
         btn_Search.Location = Locations.SearchMax
+        btn_CancelSearch.Location = Locations.ClearMax
+        btn_CreateReceipt.Location = Locations.CreateMax
+        gbx_Receipt.Location = Locations.ReceiptMax
 
         'Change Visibilities
         btn_Advanced.Show()
@@ -166,6 +160,9 @@ Public Class frm_ViewListeners
         lbl_SearchLabel.Location = Locations.SearchLabelDefault
         lbl_Total.Location = Locations.CountDefault
         btn_Add.Location = Locations.AddDefault
+        btn_CancelSearch.Location = Locations.ClearDefault
+        btn_CreateReceipt.Location = Locations.CreateDefault
+        gbx_Receipt.Location = Locations.ReceiptDefault
 
         'Change Visibilities
         txt_SearchBox.Show()
@@ -184,6 +181,88 @@ Public Class frm_ViewListeners
         btn_Advanced.Show()
         cbx_Column.Show()
         btn_Search.Show()
+        btn_CancelSearch.Show()
     End Sub
 
+    Private Sub btn_CreateReceipt_Click(sender As Object, e As EventArgs) Handles btn_CreateReceipt.Click
+        gbx_Receipt.Show()
+        btn_CreateReceipt.Hide()
+    End Sub
+
+    Private Sub ofd_ReceiptImage_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_ReceiptImage.FileOk
+        If nud_Amount.Value > 0 Then
+            Dim email As String = CType(dgv_Listeners.SelectedRows(0).Cells(1).Value, String)
+            Dim receipt As Process = Process.Start("cmd", String.Format("/C java -jar sender.jar -r {0} {1} ""{2}"" ""{3}""", email, amount, purpose, ofd_ReceiptImage.FileName))
+            receipt.WaitForExit()
+
+            If receipt.ExitCode = 0 Then
+                gbx_Receipt.Hide()
+                btn_CreateReceipt.Show()
+            Else
+                MessageBox.Show("Couldn't send the receipt")
+            End If
+        Else
+            MessageBox.Show("You have to set a dollar amount...")
+        End If
+    End Sub
+
+    Private Sub btn_AdvancedSearch_Click(sender As Object, e As EventArgs) Handles btn_AdvancedSearch.Click
+        searchListeners(True)
+    End Sub
+
+    Private Sub searchListeners(advanced As Boolean)
+        Dim criteria(1) As String
+        Dim column As String
+
+        If advanced Then
+            criteria(0) = "%" & txt_NameSearch.Text & "%"
+            criteria(1) = "%" & txt_EmailSearch.Text & "%"
+        Else
+            If cbx_Column.SelectedIndex >= 0 Then
+                column = cbx_Column.SelectedItem.ToString()
+                criteria(0) = "%" & txt_SearchBox.Text & "%"
+            End If
+        End If
+
+        If cbx_Column.SelectedIndex >= 0 Then
+            Using db As New Database(My.Settings.Username, My.Settings.Password)
+                dgv_Listeners.DataSource = db.searchListeners(advanced, column, criteria)
+            End Using
+        End If
+    End Sub
+
+    Private Sub btn_CancelSearch_Click(sender As Object, e As EventArgs) Handles btn_CancelSearch.Click
+        'Me.EmaiL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
+        dgv_Listeners.DataSource = EMAILLISTENERSBindingSource
+    End Sub
+
+    Private Sub btn_SendReceipt_Click(sender As Object, e As EventArgs) Handles btn_SendReceipt.Click
+        If dgv_Listeners.SelectedRows.Count = 1 Then
+            ofd_ReceiptImage.ShowDialog()
+        Else
+            MessageBox.Show("You must select a listener first...")
+        End If
+    End Sub
+
+    Private Sub rdo_Tithes_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Tithes.CheckedChanged
+        If rdo_Tithes.Checked Then
+            purpose = "Tithes"
+        End If
+    End Sub
+
+    Private Sub rdo_Offering_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Offering.CheckedChanged
+        If rdo_Offering.Checked Then
+            purpose = "Offering"
+        End If
+    End Sub
+
+    Private Sub rdo_BuildingFund_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_BuildingFund.CheckedChanged
+        If rdo_BuildingFund.Checked Then
+            purpose = "Building Fund"
+        End If
+    End Sub
+
+    Private Sub nud_Amount_ValueChanged(sender As Object, e As EventArgs) Handles nud_Amount.ValueChanged
+        amount = nud_Amount.Value
+    End Sub
 End Class

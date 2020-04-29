@@ -1,18 +1,17 @@
 ﻿Option Strict On
 
 Imports System.Data.SqlClient
+Imports Media_Ministry.Utils
 
 Public Class frm_DisplayCustomers
-    Private db As Database
     Private mainForm As frm_Main
 
-    Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
+    Public Sub New(ByRef mainForm As frm_Main)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        db = database
         Me.mainForm = mainForm
     End Sub
 
@@ -47,7 +46,9 @@ Public Class frm_DisplayCustomers
                     payment = dgv_Customers.Rows(index).Cells(9).Value.ToString
 
                     Try
-                        db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+                        Using db As New Database(My.Settings.Username, My.Settings.Password)
+                            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+                        End Using
                         updateCount += 1
                     Catch ex As SqlException
                         failedUpdate = True
@@ -75,19 +76,21 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
-        Dim updateNumber = New frm_UpdatePhoneNumber(db, Me)
+        Dim updateNumber = New frm_UpdatePhoneNumber(Me)
         updateNumber.Show()
         Me.Hide()
     End Sub
 
     Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
-        Dim addForm = New frm_AddNewCustomer(db, Me)
+        Dim addForm = New frm_AddNewCustomer(Me)
         addForm.Show()
         Me.Hide()
     End Sub
 
     Private Sub dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
-        db.RemovePerson(CType(e.Row.Cells(2).Value, String))
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            db.RemoveCustomer(CType(e.Row.Cells(2).Value, String))
+        End Using
     End Sub
 
     Public Overrides Sub refresh()
@@ -106,7 +109,9 @@ Public Class frm_DisplayCustomers
         Dim email As String = CType(dgv_Customers.Rows(changedRow).Cells(7).Value, String)
         Dim payment As String = CType(dgv_Customers.Rows(changedRow).Cells(8).Value, String)
 
-        db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+        End Using
     End Sub
 
 End Class

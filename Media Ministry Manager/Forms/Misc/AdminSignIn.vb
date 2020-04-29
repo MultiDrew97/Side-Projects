@@ -1,7 +1,7 @@
 ﻿Option Strict On
 
 Imports System.Data.SqlClient
-
+Imports Media_Ministry.Utils
 Public Class AdminSignIn
 
     Private Sub btn_ShowPassword_Click(sender As Object, e As EventArgs) Handles btn_ShowPassword.Click
@@ -41,8 +41,9 @@ Public Class AdminSignIn
 
     Private Function checkCreds(username As String, password As String) As Boolean
         Try
-            Dim db As Database = New Database(username, password)
-            db.Close()
+            Using db = New Database(username, password)
+            End Using
+
             Return True
         Catch e As SqlException
             Console.WriteLine(e.Message)

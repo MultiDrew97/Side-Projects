@@ -2,19 +2,17 @@
 
 Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
-
+Imports Media_Ministry.Utils
 Public Class frm_UpdatePhoneNumber
-    Private db As Database
     Private validNumberFormat As String = "\d{3}-\d{3}-\d{4}"
     Private display As frm_DisplayCustomers
 
-    Public Sub New(ByRef database As Database, ByRef displayForm As frm_DisplayCustomers)
+    Public Sub New(ByRef displayForm As frm_DisplayCustomers)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        db = database
         display = displayForm
     End Sub
 
@@ -30,7 +28,9 @@ Public Class frm_UpdatePhoneNumber
             Dim oldNumber = cbx_FirstName.Text
 
             Try
-                db.UpdatePhone(newNumber, oldNumber)
+                Using db As New Database(My.Settings.Username, My.Settings.Password)
+                    db.UpdatePhone(newNumber, oldNumber)
+                End Using
                 tss_UpdatePhone.Text = String.Format("{0}'s number has been updated", cbx_FirstName.SelectedItem)
             Catch exception As SqlException
                 tss_UpdatePhone.ForeColor = Color.Red

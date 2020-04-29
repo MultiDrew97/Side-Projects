@@ -67,6 +67,7 @@ Partial Class frm_ViewInventory
         Me.PRICEDataGridViewTextBoxColumn.DataPropertyName = "PRICE"
         Me.PRICEDataGridViewTextBoxColumn.HeaderText = "Price per Unit"
         Me.PRICEDataGridViewTextBoxColumn.Name = "PRICEDataGridViewTextBoxColumn"
+        Me.PRICEDataGridViewTextBoxColumn.ReadOnly = True
         '
         'INVENTORYBindingSource
         '

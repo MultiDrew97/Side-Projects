@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text.RegularExpressions.Regex
 Imports Microsoft.VisualBasic.FileIO
+Imports Media_Ministry.Utils
 
 Public Class frm_AddListener
     Public frm_Emails As frm_ViewListeners
@@ -10,10 +11,11 @@ Public Class frm_AddListener
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails
     ReadOnly emailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
+    Private newListeners As Listener()
+    Dim temp As Integer()
 
     Private Sub reset()
         rdo_Single.Checked = True
-
         lbl_Name.Visible = True
         txt_Name.Visible = True
 
@@ -91,6 +93,7 @@ Public Class frm_AddListener
                         db.AddListener(txt_Name.Text, txt_Email.Text)
                         tss_Feedback.ForeColor = Color.Black
                         tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
+                        sendEmail()
                         frm_Emails.customLoad()
                     Catch ex As SqlException
                         tss_Feedback.ForeColor = Color.Red
@@ -128,6 +131,7 @@ Public Class frm_AddListener
                             If IsMatch(fields(1), emailPattern) Then
                                 Try
                                     db.AddListener(fields(0), fields(1))
+                                    newListeners(successCount) = New Listener(fields(0), fields(1))
                                     successCount += 1
                                 Catch ex As SqlException
                                     fout.WriteLineAsync(String.Format("{0},{1} #{2}", fields(0), fields(1), ex.Message))
@@ -144,6 +148,7 @@ Public Class frm_AddListener
                 tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
                 Try
                     frm_Emails.customLoad()
+                    sendEmails(newListeners)
                 Catch
                 Finally
                     wait(2)
@@ -151,7 +156,7 @@ Public Class frm_AddListener
 
                 If (failCount > 0) Then
                     tss_Feedback.ForeColor = Color.Red
-                    tss_Feedback.Text = "Check the Faild Additions file in the locaiton to see failed additions."
+                    tss_Feedback.Text = "Check the Failed Additions file in the locaiton to see failed additions."
                 Else
                     tss_Feedback.ForeColor = Color.Black
                     tss_Feedback.Text = "All emails were imported successfully..."
@@ -204,4 +209,29 @@ Public Class frm_AddListener
         Return filename.Split({"."c})(1).Equals("csv")
     End Function
 
+    Private Sub sendEmails(listeners As Listener())
+        'send the emails to the new listeners
+        Dim sending As Process
+        For Each listener As Listener In listeners
+            'send the email
+            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar -n {0} {1}", listener.name, listener.email))
+
+            sending.WaitForExit()
+
+            If Not sending.ExitCode = 0 Then
+                Return
+            End If
+        Next
+    End Sub
+
+    Private Sub sendEmail()
+        'send the email
+        Dim sending = Process.Start("cmd", String.Format("/C java -jar sender.jar -n {0} {1}", txt_Name.Text, txt_Email.Text))
+
+        sending.WaitForExit()
+
+        If Not sending.ExitCode = 0 Then
+            Return
+        End If
+    End Sub
 End Class

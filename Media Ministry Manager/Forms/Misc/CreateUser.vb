@@ -2,10 +2,10 @@
 
 Imports System.ComponentModel
 Imports System.Data.SqlClient
-
+Imports Media_Ministry.Utils
 Public Class frm_CreateUser
     Dim db As Database
-    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+    ReadOnly _conn As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnection)
 
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
@@ -26,9 +26,12 @@ Public Class frm_CreateUser
                     wait(1)
                 Loop
 
-                _connection.UserID = My.Settings.AdminUser
-                _connection.Password = My.Settings.AdminPass
-                db.CreateUser(txt_Username.Text, txt_Password.Text)
+                _conn.UserID = My.Settings.AdminUser
+                _conn.Password = My.Settings.AdminPass
+
+                Using db = New Database(_conn)
+                    db.CreateUser(txt_Username.Text, txt_Password.Text)
+                End Using
 
                 bw_ClearAdminInfo.RunWorkerAsync()
             Else
@@ -44,7 +47,7 @@ Public Class frm_CreateUser
     End Sub
 
     Private Sub frm_CreateUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _connection.InitialCatalog = "master"
+        _conn.InitialCatalog = "master"
     End Sub
 
     Private Sub bw_LoadDatabase_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_ClearAdminInfo.DoWork
@@ -59,11 +62,6 @@ Public Class frm_CreateUser
     End Function
 
     Private Sub frm_CreateUser_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If db IsNot Nothing Then
-            'if there is a connection open, then close it
-            db.Close()
-        End If
-
         frm_Login.Show()
     End Sub
 

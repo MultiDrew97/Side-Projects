@@ -1,7 +1,6 @@
 ﻿Option Strict On
 
-Namespace SendingEmails
-
+Namespace Utils
     Public Structure Listener
         Public Property name As String
         Public Property email As String
