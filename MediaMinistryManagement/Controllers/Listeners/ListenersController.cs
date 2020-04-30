@@ -20,39 +20,39 @@ namespace MediaMinistryManagerAPI.Controllers.Listeners
             _context = context;
         }
 
-        // GET: api/Listeners
+        // GET: api/EmailListeners
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Listener>>> GetListeners()
+        public async Task<ActionResult<IEnumerable<EmailListener>>> GetEmailListeners()
         {
-            return await _context.Listeners.ToListAsync();
+            return await _context.Email_Listeners.ToListAsync();
         }
 
-        // GET: api/Listeners/5
+        // GET: api/EmailListeners/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Listener>> GetListener(string id)
+        public async Task<ActionResult<EmailListener>> GetEmailListener(string id)
         {
-            var listener = await _context.Listeners.FindAsync(id);
+            var emailListener = await _context.Email_Listeners.FindAsync(id);
 
-            if (listener == null)
+            if (emailListener == null)
             {
                 return NotFound();
             }
 
-            return listener;
+            return emailListener;
         }
 
-        // PUT: api/Listeners/5
+        // PUT: api/EmailListeners/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutListener(string id, Listener listener)
+        public async Task<IActionResult> PutEmailListener(string id, EmailListener emailListener)
         {
-            if (id != listener.EMAIL)
+            if (id != emailListener.EMAIL)
             {
                 return BadRequest();
             }
 
-            _context.Entry(listener).State = EntityState.Modified;
+            _context.Entry(emailListener).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace MediaMinistryManagerAPI.Controllers.Listeners
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ListenerExists(id))
+                if (!EmailListenerExists(id))
                 {
                     return NotFound();
                 }
@@ -73,20 +73,20 @@ namespace MediaMinistryManagerAPI.Controllers.Listeners
             return NoContent();
         }
 
-        // POST: api/Listeners
+        // POST: api/EmailListeners
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Listener>> PostListener(Listener listener)
+        public async Task<ActionResult<EmailListener>> PostEmailListener(EmailListener emailListener)
         {
-            _context.Listeners.Add(listener);
+            _context.Email_Listeners.Add(emailListener);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (ListenerExists(listener.EMAIL))
+                if (EmailListenerExists(emailListener.EMAIL))
                 {
                     return Conflict();
                 }
@@ -96,28 +96,28 @@ namespace MediaMinistryManagerAPI.Controllers.Listeners
                 }
             }
 
-            return CreatedAtAction("GetListener", new { id = listener.EMAIL }, listener);
+            return CreatedAtAction("GetEmailListener", new { id = emailListener.EMAIL }, emailListener);
         }
 
-        // DELETE: api/Listeners/5
+        // DELETE: api/EmailListeners/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Listener>> DeleteListener(string id)
+        public async Task<ActionResult<EmailListener>> DeleteEmailListener(string id)
         {
-            var listener = await _context.Listeners.FindAsync(id);
-            if (listener == null)
+            var emailListener = await _context.Email_Listeners.FindAsync(id);
+            if (emailListener == null)
             {
                 return NotFound();
             }
 
-            _context.Listeners.Remove(listener);
+            _context.Email_Listeners.Remove(emailListener);
             await _context.SaveChangesAsync();
 
-            return listener;
+            return emailListener;
         }
 
-        private bool ListenerExists(string id)
+        private bool EmailListenerExists(string id)
         {
-            return _context.Listeners.Any(e => e.EMAIL == id);
+            return _context.Email_Listeners.Any(e => e.EMAIL == id);
         }
     }
 }

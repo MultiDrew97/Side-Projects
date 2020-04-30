@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MediaMinistryManagement.Controllers
 {
-    [Route("api/completed_orders")]
+    [Route("api/[controller]")]
     public class Completed_OrdersController : Controller
     {
         private readonly Completed_OrdersContext _context;

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MediaMinistryManagement.Controllers
 {
-    [Route("api/completed_order_counts")]
+    [Route("api/[controller]")]
     public class Completed_Order_CountsController : Controller
     {
         private readonly Completed_Order_CountsContext _context;

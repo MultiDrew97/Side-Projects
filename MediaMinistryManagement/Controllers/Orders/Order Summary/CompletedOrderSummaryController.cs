@@ -9,7 +9,7 @@ using MediaMinistryManagement.Models;
 
 namespace MediaMinistryManagement.Controllers
 {
-    [Route("api/completed_order_summary")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CompletedOrderSummaryController : ControllerBase
     {

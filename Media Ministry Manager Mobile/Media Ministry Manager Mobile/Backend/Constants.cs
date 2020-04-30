@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MediaMinistryManagerMobile
+namespace MediaMinistryManagerMobile.Utils
 {
     class Constants
     {
-        static public string REST_API { get; set; } = "https://sppbc.hopto.org:4000/api/";
+        static public string REST_API { get; set; } = "https://sppbc.hopto.org/api/";
     }
 }

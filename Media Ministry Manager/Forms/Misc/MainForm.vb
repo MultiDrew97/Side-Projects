@@ -8,8 +8,8 @@ Imports System.Data.SqlClient
 Imports Microsoft.VisualBasic.FileIO
 
 Public Class frm_Main
-    Dim db As Database
-    Dim uploader As DriveUploader
+    ReadOnly db As Database
+    ReadOnly uploader As DriveUploader
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
     Dim first As Boolean = True
     ReadOnly emailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
@@ -354,7 +354,7 @@ Public Class frm_Main
                     Dim counter As Integer = 0
                     Dim successCount As Integer = 0
                     Dim failCount As Integer = 0
-                    Dim newListeners As Listener()
+                    Dim newListeners() As Listener
                     'Dim fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
 
                     Using fin As TextFieldParser = New TextFieldParser(ofd_ListenerList.FileName)

@@ -9,7 +9,7 @@ using MediaMinistryManagement.Models;
 
 namespace MediaMinistryManagement.Controllers
 {
-    [Route("api/inventory")]
+    [Route("api/[controller]")]
     [ApiController]
     public class InventoryController : ControllerBase
     {

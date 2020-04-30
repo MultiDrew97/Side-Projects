@@ -1,8 +1,6 @@
 ﻿#region USING/NAMESPAES
 using System.Collections.Generic;
 //figured out how to use this from https://social.msdn.microsoft.com/Forums/en-US/ec2361a3-1931-4423-bf68-08b206ce67aa/reference-systemdatasqlclient-not-found?forum=netfxbcl
-//using System.Data.SqlClient;
-//using System.Data;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -10,17 +8,15 @@ using System;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Diagnostics;
-
-namespace MediaMinistryManagerMobile.Models
-
+using MediaMinistryManagerMobile.Models;
 #endregion
+
+namespace MediaMinistryManagerMobile.Utils
 {
     class Database
     {
         #region GLOBALS
         HttpClient _client;
-        //public List<InventoryItem> inventory { get; private set; }
-        //public List<Customer> customers { get; private set; }
         #endregion
 
         #region CONSTRUCT/DESTRUCT
@@ -40,7 +36,7 @@ namespace MediaMinistryManagerMobile.Models
         public async Task<ObservableCollection<Customer>> getCustomers()
         {
             var customers = new ObservableCollection<Customer>();
-            var uri = Constants.REST_API + "customers";
+            var uri = String.Format("{0}customers", Constants.REST_API);
 
             var response = await _client.GetAsync(uri);
 
@@ -196,7 +192,7 @@ namespace MediaMinistryManagerMobile.Models
         {
             var orders = new ObservableCollection<OrderSummary>();
 
-            var uri = string.Format("{0}order_summary", Constants.REST_API);
+            var uri = string.Format("{0}ordersummary", Constants.REST_API);
 
             try
             {
@@ -218,7 +214,6 @@ namespace MediaMinistryManagerMobile.Models
 
         public async Task<List<OrderSummary>> getOrderSummary(string phoneNumber)
         {
-
             //UPDATE SO THAT THIS WILL FIND THE ORDER SUMMARY FOR THE GIVEN PHONE NUMBER
             var allSummary = await getOrderSummary();
 
@@ -274,7 +269,7 @@ namespace MediaMinistryManagerMobile.Models
         public async Task<bool> cancelOrder_Counts(int order_number)
         {
             //return await this.cancelOrder_Counts(await this.getOrderIndex(order_number));
-            var uri = string.Format("{0}order_counts/{1}", Constants.REST_API, await this.getOrderIndex(order_number));
+            var uri = string.Format("{0}ordercounts/{1}", Constants.REST_API, await this.getOrderIndex(order_number));
 
             var response = await _client.DeleteAsync(uri);
 
@@ -283,7 +278,7 @@ namespace MediaMinistryManagerMobile.Models
 
         public async Task<bool> cancelOrder_Counts(Order_Counts counts)
         {
-            var uri = string.Format("{0}order_counts/{1}", Constants.REST_API, counts.order_index);
+            var uri = string.Format("{0}ordercounts/{1}", Constants.REST_API, counts.order_index);
 
             //find the order_index of the order with the order number
             var response = await _client.DeleteAsync(uri);
@@ -292,7 +287,7 @@ namespace MediaMinistryManagerMobile.Models
 
         public async Task<bool> completeOrder(Orders completed)
         {
-            var uri = string.Format("{0}completed_orders/", Constants.REST_API);
+            var uri = string.Format("{0}completedorders/", Constants.REST_API);
 
             var json = JsonConvert.SerializeObject(completed);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -317,7 +312,7 @@ namespace MediaMinistryManagerMobile.Models
         public async Task<bool> completeOrder_Counts(int order_number)
         {
             var counts = await this.getOrderCounts(await this.getOrderIndex(order_number));
-            var uri = string.Format("{0}completed_order_counts/", Constants.REST_API);
+            var uri = string.Format("{0}completedordercounts/", Constants.REST_API);
 
             var json = JsonConvert.SerializeObject(counts);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -331,7 +326,7 @@ namespace MediaMinistryManagerMobile.Models
         {
             var orders = new List<OrderSummary>();
 
-            var uri = string.Format("{0}completed_order_summary", Constants.REST_API);
+            var uri = string.Format("{0}completedordersummary", Constants.REST_API);
 
             var response = await _client.GetAsync(uri);
 
@@ -365,7 +360,7 @@ namespace MediaMinistryManagerMobile.Models
         {
             var orders = new List<Order_Counts>();
 
-            var uri = string.Format("{0}completed_order_counts", Constants.REST_API);
+            var uri = string.Format("{0}completedordercounts", Constants.REST_API);
 
             var response = await _client.GetAsync(uri);
 
@@ -382,7 +377,7 @@ namespace MediaMinistryManagerMobile.Models
         {
             var orders = new List<Order_Counts>();
 
-            var uri = string.Format("{0}order_counts", Constants.REST_API);
+            var uri = string.Format("{0}ordercounts", Constants.REST_API);
 
             var response = await _client.GetAsync(uri);
 
@@ -449,7 +444,7 @@ namespace MediaMinistryManagerMobile.Models
         public async Task<ObservableCollection<Listener>> getListeners()
         {
             var listeners = new ObservableCollection<Listener>();
-            var uri = Constants.REST_API + "customers";
+            var uri = String.Format("{0}listeners", Constants.REST_API);
 
             var response = await _client.GetAsync(uri);
 
@@ -460,6 +455,58 @@ namespace MediaMinistryManagerMobile.Models
             }
 
             return listeners;
+        }
+
+        public async Task<Listener> getListener(string email)
+        {
+            var listener = new Listener();
+            var uri = String.Format("{0}listeners/{1}", Constants.REST_API, email);
+
+            var response = await _client.GetAsync(uri);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                listener = JsonConvert.DeserializeObject<Listener>(content);
+            }
+
+            return listener;
+        }
+
+        public async Task<bool> addListener(Listener listener)
+        {
+            var uri = String.Format("{0}listeners", Constants.REST_API);
+            var json = JsonConvert.SerializeObject(listener);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync(uri, content);
+
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> addListener(string name, string email)
+        {
+            return await addListener(new Listener() { NAME = name, EMAIL = email });
+        }
+
+        public async Task<bool> updateListener(Listener listener, string oldEmail)
+        {
+            var uri = String.Format("{0}listeners/{1}", Constants.REST_API, oldEmail);
+            var json = JsonConvert.SerializeObject(listener);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _client.PutAsync(uri, content);
+
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> removeListener(string email)
+        {
+            var uri = String.Format("{0}listeners/{1}", Constants.REST_API, email);
+
+            var request = await _client.DeleteAsync(uri);
+
+            return request.IsSuccessStatusCode;
         }
         #endregion
     }

@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MediaMinistryManagement.Models
 {
@@ -10,11 +6,11 @@ namespace MediaMinistryManagement.Models
     {
         public ListenerContext(DbContextOptions<ListenerContext> options) : base(options) { }
 
-        public DbSet<Listener> Listeners { get; set; }
+        public DbSet<EmailListener> Email_Listeners { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Listener>().HasKey(x => x.EMAIL);
+            modelBuilder.Entity<EmailListener>().HasKey(x => x.EMAIL);
             base.OnModelCreating(modelBuilder);
         }
     }
