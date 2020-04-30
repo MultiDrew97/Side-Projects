@@ -2,18 +2,17 @@
 
 namespace MediaMinistryManagement.Models
 {
-    public class InventoryContext : DbContext
+    public class CustomerContext : DbContext
     {
-        public InventoryContext(DbContextOptions<InventoryContext> options)
+        public CustomerContext(DbContextOptions<CustomerContext> options)
             : base(options)
         {
         }
 
-        public DbSet<InventoryItem> Inventory { get; set; }
-
+        public DbSet<Customer> Customers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<InventoryItem>().HasKey(x => x.ITEM_INDEX);
+            modelBuilder.Entity<Customer>().HasKey(x => x.PHONE_NUMBER);
             base.OnModelCreating(modelBuilder);
         }
     }

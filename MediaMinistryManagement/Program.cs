@@ -19,7 +19,6 @@ namespace MediaMinistryManagement
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args).UseUrls("https://*:4000").UseStartup<Startup>();
     }
 }

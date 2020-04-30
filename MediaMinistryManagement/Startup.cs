@@ -4,11 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MediaMinistryManagement.Models.OrdersFolder.OrderSummary;
-using MediaMinistryManagement.Models.OrdersFolder.OrdersFiles;
-using MediaMinistryManagement.Models.OrdersFolder.OrderCountsFiles;
-using MediaMinistryManagement.Models.CustomerFiles;
-using MediaMinistryManagement.Models.Inventory;
+using MediaMinistryManagement.Models;
 
 namespace MediaMinistryManagement
 {
@@ -27,6 +23,7 @@ namespace MediaMinistryManagement
         {
             #region DATABASE CONTEXTS
             services.AddDbContext<CustomerContext>(opt => opt.UseSqlServer(_connection));
+            services.AddDbContext<ListenerContext>(opt => opt.UseSqlServer(_connection));
             services.AddDbContext<InventoryContext>(opt => opt.UseSqlServer(_connection));
             services.AddDbContext<OrderSummaryContext>(opt => opt.UseSqlServer(_connection));
             services.AddDbContext<CompletedOrderSummaryContext>(opt => opt.UseSqlServer(_connection));
@@ -35,10 +32,11 @@ namespace MediaMinistryManagement
             services.AddDbContext<Completed_OrdersContext>(opt => opt.UseSqlServer(_connection));
             services.AddDbContext<Completed_Order_CountsContext>(opt => opt.UseSqlServer(_connection));
             #endregion
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [System.Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

@@ -444,5 +444,23 @@ namespace MediaMinistryManagerMobile.Models
             return order_counts;
         }
         #endregion
+
+        #region Listeners
+        public async Task<ObservableCollection<Listener>> getListeners()
+        {
+            var listeners = new ObservableCollection<Listener>();
+            var uri = Constants.REST_API + "customers";
+
+            var response = await _client.GetAsync(uri);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                listeners = JsonConvert.DeserializeObject<ObservableCollection<Listener>>(content);
+            }
+
+            return listeners;
+        }
+        #endregion
     }
 }

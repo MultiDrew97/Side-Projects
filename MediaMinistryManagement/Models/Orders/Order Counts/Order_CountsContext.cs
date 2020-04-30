@@ -2,18 +2,17 @@
 
 namespace MediaMinistryManagement.Models
 {
-    public class InventoryContext : DbContext
+    public class Order_CountsContext : DbContext
     {
-        public InventoryContext(DbContextOptions<InventoryContext> options)
+        public Order_CountsContext(DbContextOptions<Order_CountsContext> options)
             : base(options)
         {
         }
 
-        public DbSet<InventoryItem> Inventory { get; set; }
-
+        public DbSet<Order_Counts> Order_Counts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<InventoryItem>().HasKey(x => x.ITEM_INDEX);
+            modelBuilder.Entity<Order_Counts>().HasKey(x => x.order_index);
             base.OnModelCreating(modelBuilder);
         }
     }

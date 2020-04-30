@@ -1,4 +1,4 @@
-﻿namespace MediaMinistryManagement.Models.Inventory
+﻿namespace MediaMinistryManagement.Models
 {
     public class InventoryItem
     {

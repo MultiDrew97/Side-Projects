@@ -8,8 +8,8 @@
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
-    <WebStackScaffolding_DbContextTypeFullName>MediaMinistryManagement.Models.OrdersContext</WebStackScaffolding_DbContextTypeFullName>
+    <WebStackScaffolding_DbContextTypeFullName>MediaMinistryManagement.Models.ListenerContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <NameOfLastUsedPublishProfile>DatabaseInteraction - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>sppbc</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

@@ -6,6 +6,6 @@ namespace MediaMinistryManagerMobile
 {
     class Constants
     {
-        static public string REST_API { get; set; } = "https://databaseinteraction.azurewebsites.net/api/";
+        static public string REST_API { get; set; } = "https://sppbc.hopto.org:4000/api/";
     }
 }
