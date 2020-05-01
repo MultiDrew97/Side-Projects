@@ -1197,9 +1197,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
+      "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\Mobile.csproj",
       "projectName": "MediaMinistryManagerMobile",
-      "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj",
+      "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\Mobile.csproj",
       "packagesPath": "C:\\Users\\arand\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\obj\\",
       "projectStyle": "PackageReference",

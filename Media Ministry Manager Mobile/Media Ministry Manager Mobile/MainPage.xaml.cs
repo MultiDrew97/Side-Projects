@@ -7,13 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using MediaMinistryManagerMobile.Utils;
 
 namespace MediaMinistryManagerMobile
 {
     public partial class MainPage : ContentPage
     {
-        private Database db = new Database();
         public MainPage()
         {
             InitializeComponent();

@@ -2055,8 +2055,8 @@
     },
     "MediaMinistryManagerMobile/1.0.0": {
       "type": "project",
-      "path": "../Media Ministry Manager Mobile/MediaMinistryManagerMobile.csproj",
-      "msbuildProject": "../Media Ministry Manager Mobile/MediaMinistryManagerMobile.csproj"
+      "path": "../Media Ministry Manager Mobile/Mobile.csproj",
+      "msbuildProject": "../Media Ministry Manager Mobile/Mobile.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2079,9 +2079,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.Android\\MediaMinistryManagerMobile.Android.csproj",
-      "projectName": "MediaMinistryManagerMobile.Android",
-      "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.Android\\MediaMinistryManagerMobile.Android.csproj",
+      "projectUniqueName": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.Android\\Mobile.Android.csproj",
+      "projectName": "Mobile.Android",
+      "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.Android\\Mobile.Android.csproj",
       "packagesPath": "C:\\Users\\arand\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile.Android\\obj\\",
       "projectStyle": "PackageReference",
@@ -2104,8 +2104,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj": {
-              "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\MediaMinistryManagerMobile.csproj"
+            "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\Mobile.csproj": {
+              "projectPath": "C:\\Users\\arand\\Source\\Repos\\MultiDrew97\\Side-Projects\\Media Ministry Manager Mobile\\Media Ministry Manager Mobile\\Mobile.csproj"
             }
           }
         }

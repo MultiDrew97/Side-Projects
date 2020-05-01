@@ -35,18 +35,26 @@ namespace MediaMinistryManagerMobile.Utils
         #region CUSTOMERS
         public async Task<ObservableCollection<Customer>> getCustomers()
         {
-            var customers = new ObservableCollection<Customer>();
-            var uri = String.Format("{0}customers", Constants.REST_API);
-
-            var response = await _client.GetAsync(uri);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                customers = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(content);
-            }
+                var customers = new ObservableCollection<Customer>();
+                var uri = String.Format("{0}customers", Constants.REST_API);
 
-            return customers;
+                var response = await _client.GetAsync(uri);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    customers = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(content);
+                }
+
+                return customers;
+            } catch
+            {
+                Console.WriteLine("Something went wrong with accessing database...");
+
+                return null;
+            }
         }
 
         public async Task<Customer> getCustomer(string phoneNumber)

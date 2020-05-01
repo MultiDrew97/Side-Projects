@@ -115,9 +115,9 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Media Ministry Manager Mobile\MediaMinistryManagerMobile.csproj">
+    <ProjectReference Include="..\Media Ministry Manager Mobile\Mobile.csproj">
       <Project>{ffbaf2e4-1a0e-4c75-b121-0e9a4dcb77f0}</Project>
-      <Name>MediaMinistryManagerMobile</Name>
+      <Name>Mobile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
