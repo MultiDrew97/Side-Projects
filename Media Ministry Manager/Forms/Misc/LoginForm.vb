@@ -6,7 +6,7 @@ Imports Media_Ministry.Utils
 Public Class frm_Login
     ReadOnly _dbConnection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.MySettings.Default.masterConnection)
 
-    Private Sub frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frm_Login_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         If My.Settings.KeepLoggedIn Then
             txt_Username.Text = My.Settings.Username
             txt_Password.Text = My.Settings.Password
