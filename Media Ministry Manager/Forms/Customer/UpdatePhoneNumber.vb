@@ -30,8 +30,8 @@ Public Class frm_UpdatePhoneNumber
             Try
                 Using db As New Database(My.Settings.Username, My.Settings.Password)
                     db.UpdatePhone(newNumber, oldNumber)
-
-                    tss_UpdatePhone.Text = String.Format("{0}'s number has been updated", cbx_FirstName.SelectedItem)
+                End Using
+                tss_UpdatePhone.Text = String.Format("{0}'s number has been updated", cbx_FirstName.SelectedItem)
             Catch exception As SqlException
                 tss_UpdatePhone.ForeColor = Color.Red
                 tss_UpdatePhone.Text = "Number could not be updated. Please try again."

@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#btn_SendEmails_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Forms\Email Listeners" File="EmailListeners.vb" Line="157">Method 'frm_EmailListeners.btn_SendEmails_Click(Object, EventArgs)' calls 'String.Format(String, ParamArray Object())' and does not provide a format item for argument "1". The provided format string is: '"/C java -jar sender.jar (0) {1} {2} {3}"'</Issue>
             </Message>
            </Messages>
@@ -21,63 +21,63 @@
         </Type>
         <Type Name="Media_MinistryDataSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+COMPLETED_ORDER_COUNTSDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.COMPLETED_ORDER_COUNTSDataTable'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+COMPLETED_ORDERSDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.COMPLETED_ORDERSDataTable'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+CUSTOMERSDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.CUSTOMERSDataTable'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+EMAIL_LISTENERSDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.EMAIL_LISTENERSDataTable'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+INVENTORYDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.INVENTORYDataTable'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+ORDER_COUNTSDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.ORDER_COUNTSDataTable'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+ORDER_SUMMARYDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.ORDER_SUMMARYDataTable'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="Media_MinistryDataSet+ORDERSDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'Media_MinistryDataSet.ORDERSDataTable'.</Issue>
           </Message>
          </Messages>
@@ -88,59 +88,59 @@
        <Types>
         <Type Name="Database" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="Breaking">
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="Breaking">
            <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Provide an overridable implementation of Dispose(bool) on 'Database' or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#AddListener(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="93">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.AddListener(String, String)' could contain the following variables 'name', 'email'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#AddNewCustomer(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="85">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.AddNewCustomer(String, String, String, String, String, String, String, String, String)' could contain the following variables 'fName', 'lName', 'addrStreet', 'addrCity', 'addrState', 'addrZip', 'phoneNumber', 'email', 'paymentPreference'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#AddNewProduct(System.String,System.Int32,System.Decimal)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="165">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.AddNewProduct(String, Integer, Decimal)' could contain the following variables 'Me.Count("ITEM_INDEX", "INVENTORY")', 'itemName', 'stock', 'price'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#AddOrder(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="285">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.AddOrder(String, Integer, Integer)' could contain the following variables '(maxOrder + 1)', 'phoneNumber', '(maxCount + 1)', 'itemIndex', 'quantity'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CancelOrder(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="326">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.CancelOrder(Integer)' could contain the following variables 'orderNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ChangePassword(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="51">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.ChangePassword(String, String)' could contain the following variables 'username', 'password'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#close()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="myAdapter" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="NonBreaking">
+            <Message Id="myAdapter" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="NonBreaking">
              <Issue Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="33">'Database' contains field 'Database.myAdapter' that is of IDisposable type: 'SqlDataAdapter'. Change the Dispose method on 'Database' to call Dispose or Close on this field.</Issue>
             </Message>
-            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="Breaking">
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="Breaking">
              <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="33">Modify 'Database.close()' so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Issue>
              <Issue Name="RenameDispose" Certainty="95" Level="Error" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="33">Rename 'Database.close()' to 'Dispose' and ensure that it is declared as public and sealed.</Issue>
             </Message>
@@ -148,119 +148,119 @@
           </Member>
           <Member Name="#Count(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="333">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.Count(String, String)' could contain the following variables 'column', 'table'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CreateUser(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="45">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.CreateUser(String, String)' could contain the following variables 'username', 'password'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#DeleteUser(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="57">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.DeleteUser(String)' could contain the following variables 'username'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#FindOrderIndex(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="312">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.FindOrderIndex(Integer)' could contain the following variables 'orderNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#FulfilOrder(System.Int32,System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="381">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.FulfilOrder(Integer, String, Integer, Integer)' could contain the following variables 'quantity', 'itemIndex', 'orderNumber', 'phoneNumber', 'orderIndex'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetCustomerInfo(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="208">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.GetCustomerInfo(String)' could contain the following variables 'phoneNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetIndexNumber(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="245">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.GetIndexNumber(Integer)' could contain the following variables 'orderNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetOrders(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="227">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.GetOrders(String)' could contain the following variables 'phoneNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Max(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="348">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.Max(String, String)' could contain the following variables 'column', 'table'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#RemoveCustomer(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="140">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.RemoveCustomer(String)' could contain the following variables 'phone'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#removeListener(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="103">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.removeListener(String)' could contain the following variables 'email'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#RemoveProduct(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="177">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.RemoveProduct(Integer)' could contain the following variables 'itemIndex'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#UpdateCustomerInfo(System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="124">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.UpdateCustomerInfo(String, String, String, String, String, String, String)' could contain the following variables 'addrStreet', 'addrCity', 'addrState', 'addrZip', 'email', 'payment', 'phoneNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#UpdateInventory(System.String,System.Int32,System.Decimal,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="171">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.UpdateInventory(String, Integer, Decimal, Integer)' could contain the following variables 'name', 'currentStock', 'price', 'itemIndex'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#updateListener(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="113">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.updateListener(String, String)' could contain the following variables 'name', 'email'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#UpdateOrder(System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="304">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.UpdateOrder(Integer, Integer)' could contain the following variables 'quantity', 'orderNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#UpdatePhone(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\Objects" File="Database.vb" Line="132">The query string passed to 'SqlCommand.CommandText.Set(String)' in 'Database.UpdatePhone(String, String)' could contain the following variables 'newPhoneNumber', 'oldPhoneNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
@@ -269,7 +269,7 @@
         </Type>
         <Type Name="DriveUploader" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2020-04-28 19:20:54Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2020-04-30 21:00:20Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'DriveUploader' because it creates members of the following IDisposable types: 'DriveService'. If 'DriveUploader' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
           </Message>
          </Messages>
