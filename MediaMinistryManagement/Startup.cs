@@ -11,7 +11,7 @@ namespace MediaMinistryManagement
 {
     public class Startup
     {
-        private readonly string _connection = "Data Source=mediaministry.database.windows.net;Initial Catalog=\"Media Ministry\";Persist Security Info=True;User ID=arandlemiller97;Password=AMrw2697";
+        private readonly string _connection = "Data Source=mediaministry.database.windows.net;Initial Catalog=\"Media Ministry\";Persist Security Info=True;User ID=arandlemiller97;";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
