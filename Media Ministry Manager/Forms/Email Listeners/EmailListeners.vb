@@ -91,6 +91,7 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+        uploader = New DriveUploader()
         cbx_Folders.DataSource = uploader.getFolders()
     End Sub
 
@@ -148,7 +149,7 @@ Public Class frm_EmailListeners
         tss_Feedback.ForeColor = Color.Black
         tss_Feedback.Text = "Sending emails to listeners..."
 
-        Dim sending As Process
+        Dim sending As Process = Nothing
 
         Select Case comm
             Case "-s"

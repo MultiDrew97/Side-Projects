@@ -11,7 +11,7 @@ namespace MediaMinistryManagement
 {
     public class Startup
     {
-        private readonly string _connection = "Data Source=mediaministry.database.windows.net;Initial Catalog=\"Media Ministry\";Persist Security Info=True;User ID=arandlemiller97;";
+        private readonly string _connection = "Data Source=mediaministry.database.windows.net;Initial Catalog=\"Media Ministry\";Persist Security Info=True;User ID=arandlemiller97;Password=AMrw2697;";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -50,7 +50,10 @@ namespace MediaMinistryManagement
                 //app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseMvc();
@@ -69,6 +72,11 @@ namespace MediaMinistryManagement
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+            });
 
             app.UseRouting();
             app.UseHttpsRedirection();

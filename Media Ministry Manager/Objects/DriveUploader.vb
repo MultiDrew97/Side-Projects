@@ -26,29 +26,30 @@ Namespace Utils
         Sub New()
             Dim credential As UserCredential
 
-            'Using reader As New MemoryStream(My.Resources.credentials)
-            'The file token.json stores the user's access and refresh tokens, and is created
-            'automatically when the authorization flow completes for the first time.
-            Dim credPath = "Drive Token"
-            Dim secrets As New ClientSecrets() With {
-                .ClientId = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff1"))),
-                .ClientSecret = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff2")))
-            }
-            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                            secrets,
+            Using reader As New MemoryStream(My.Resources.credentials)
+                'The file token.json stores the user's access and refresh tokens, and is created
+                'automatically when the authorization flow completes for the first time.
+                Dim credPath = "Drive Token"
+                Dim secrets As GoogleClientSecrets = New GoogleClientSecrets().Load(reader)
+
+                Console.WriteLine("DEBUG: Creating the token")
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                            secrets.Secrets,
                             Scopes,
                             "user",
                             CancellationToken.None,
                             New FileDataStore(credPath, True)).Result
+                Console.WriteLine("DEBUG: Created the token")
+            End Using
 
-            'End Using
-
+            Console.WriteLine("DEBUG: Creating the service")
             'Create Drive API service.
             service = New DriveService(New BaseClientService.Initializer() With {
                     .HttpClientInitializer = credential,
                     .ApplicationName = ApplicationName
                         }
                     )
+            Console.WriteLine("DEBUG: Created the service")
         End Sub
 
         Function upload(fileName As String, ByVal folderName As String, tss As ToolStripStatusLabel) As String
@@ -212,15 +213,16 @@ Namespace Utils
         Public Function getFolders() As List(Of String)
             Dim folders As List(Of String) = New List(Of String)
             Dim pageToken As String = Nothing
+            Dim folderSearch As FilesResource.ListRequest
 
             Do
+                folderSearch = service.Files.List()
+                folderSearch.Q = "mimeType='application/vnd.google-apps.folder'"
+                folderSearch.Spaces = "drive"
+                folderSearch.Fields = "nextPageToken, files(id, name)"
+                folderSearch.PageToken = pageToken
 
-                service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
-                service.Files.List().Spaces = "drive"
-                service.Files.List().Fields = "nextPageToken, files(id, name)"
-                service.Files.List().PageToken = pageToken
-
-                Dim result As FileList = service.Files.List().Execute()
+                Dim result As FileList = folderSearch.Execute()
 
                 For Each folder As Data.File In result.Files
                     If folder.MimeType.Equals("application/vnd.google-apps.folder") Then

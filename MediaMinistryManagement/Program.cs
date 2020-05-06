@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Http;
 namespace MediaMinistryManagement
 {
     public class Program
@@ -12,6 +13,6 @@ namespace MediaMinistryManagement
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).UseUrls("https://*:4000").UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args).UseUrls("https://*:44320").UseStartup<Startup>();
     }
 }
