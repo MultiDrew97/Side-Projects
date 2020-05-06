@@ -225,9 +225,9 @@ Namespace Utils
                 Dim result As FileList = folderSearch.Execute()
 
                 For Each folder As Data.File In result.Files
-                    If folder.MimeType.Equals("application/vnd.google-apps.folder") Then
-                        folders.Add(folder.Name)
-                    End If
+                    'If folder.MimeType.Equals("application/vnd.google-apps.folder") Then
+                    folders.Add(folder.Name)
+                    'End If
                 Next
 
                 pageToken = result.NextPageToken

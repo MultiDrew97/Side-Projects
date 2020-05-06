@@ -3,50 +3,15 @@
 ' The PropertyChanged event is raised after a setting's value is changed.
 ' The SettingsLoaded event is raised after the setting values are loaded.
 ' The SettingsSaving event is raised before the setting values are saved.
-Namespace My
-    Partial Friend NotInheritable Class MySettings
-        Friend Structure [Default]
-            Shared ReadOnly Property masterConnection As String
-                Get
-                    Return String.Format(My.Settings.masterConnection, My.Settings.Username, My.Settings.Password)
-                End Get
-            End Property
 
-            Shared ReadOnly Property KeepLoggedIn As Boolean
-                Get
-                    Return False
-                End Get
-            End Property
+Imports System.ComponentModel
 
-            Shared ReadOnly Property Username As String
-                Get
-                    Return String.Empty
-                End Get
-            End Property
-
-            Shared ReadOnly Property Password As String
-                Get
-                    Return String.Empty
-                End Get
-            End Property
-
-            Shared ReadOnly Property AdminPass As String
-                Get
-                    Return String.Empty
-                End Get
-            End Property
-
-            Shared ReadOnly Property AdminUser As String
-                Get
-                    Return String.Empty
-                End Get
-            End Property
-
-            Shared ReadOnly Property AdminInfoReceived As Boolean
-                Get
-                    Return False
-                End Get
-            End Property
-        End Structure
-    End Class
-End Namespace
+Partial Friend NotInheritable Class MySettings
+    Protected Overrides Sub OnSettingsSaving(sender As Object, e As CancelEventArgs)
+        ''got this idea from 
+        ''https://social.msdn.microsoft.com/Forums/en-US/7483b816-be7a-4204-a4d3-cfb14b2aae26/how-to-dynamically-change-connection-string-in-generated-dataset-class?forum=adodotnetdataset
+        ''This handles making sure that the database connection string does not have hard coded passwords and usernames for security and future proofing
+        MyBase.OnSettingsSaving(sender, e)
+        Me.Item("masterConnection") = "Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";Persist Security Info=True;Encrypt=True;User ID=" & CType(Me.Item("Username"), String) & ";Password=" & CType(Me.Item("Password"), String)
+    End Sub
+End Class

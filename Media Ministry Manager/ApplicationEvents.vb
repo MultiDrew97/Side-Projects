@@ -1,7 +1,7 @@
 ﻿Option Strict On
 
 Imports System.Collections.ObjectModel
-Imports System.ComponentModel
+Imports Microsoft.VisualBasic.ApplicationServices
 Imports NeoSmart.Utils
 
 Namespace My
@@ -23,6 +23,21 @@ Namespace My
             Environment.SetEnvironmentVariable("stuff1", UrlBase64.Encode(stuff1))
             Environment.SetEnvironmentVariable("stuff2", UrlBase64.Encode(stuff2))
             Return MyBase.OnInitialize(commandLineArgs)
+        End Function
+
+        Protected Overrides Function OnStartup(eventArgs As StartupEventArgs) As Boolean
+            If My.Settings.KeepLoggedIn Then
+                frm_Login.txt_Username.Text = My.Settings.Username
+                frm_Login.txt_Password.Text = My.Settings.Password
+                frm_Login.chk_KeepLoggedIn.Checked = My.Settings.KeepLoggedIn
+            End If
+
+            Return MyBase.OnStartup(eventArgs)
+        End Function
+
+        Protected Overrides Function OnUnhandledException(e As UnhandledExceptionEventArgs) As Boolean
+            MessageBox.Show("Something went wrong", e.Exception.Message)
+            Return MyBase.OnUnhandledException(e)
         End Function
 
     End Class

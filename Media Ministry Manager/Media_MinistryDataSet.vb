@@ -1,5 +1,0 @@
-﻿Namespace Media_MinistryDataSetTableAdapters
-End Namespace
-
-Partial Class Media_MinistryDataSet
-End Class

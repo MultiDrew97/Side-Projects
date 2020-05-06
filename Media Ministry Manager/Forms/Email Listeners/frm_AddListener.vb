@@ -11,7 +11,7 @@ Public Class frm_AddListener
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails
     ReadOnly emailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
-    Private newListeners As Listener()
+    Private newListeners As New List(Of Listener)
     Dim temp As Integer()
 
     Private Sub reset()
@@ -84,88 +84,89 @@ Public Class frm_AddListener
     End Sub
 
     Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        Dim db As Database = New Database(My.Settings.Username, My.Settings.Password)
+        Using db As Database = New Database(My.Settings.Username, My.Settings.Password)
 
-        If rdo_Single.Checked Then
-            If Not String.IsNullOrWhiteSpace(txt_Email.Text) And Not String.IsNullOrWhiteSpace(txt_Name.Text) Then
-                If IsMatch(txt_Email.Text, emailPattern) Then
-                    Try
-                        db.AddListener(txt_Name.Text, txt_Email.Text)
-                        tss_Feedback.ForeColor = Color.Black
-                        tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
-                        sendEmail()
-                        frm_Emails.customLoad()
-                    Catch ex As SqlException
+            If rdo_Single.Checked Then
+                If Not String.IsNullOrWhiteSpace(txt_Email.Text) And Not String.IsNullOrWhiteSpace(txt_Name.Text) Then
+                    If IsMatch(txt_Email.Text, emailPattern) Then
+                        Try
+                            db.AddListener(txt_Name.Text, txt_Email.Text)
+                            tss_Feedback.ForeColor = Color.Black
+                            tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
+                            sendEmail()
+                            frm_Emails.customLoad()
+                        Catch ex As SqlException
+                            tss_Feedback.ForeColor = Color.Red
+                            tss_Feedback.Text = "Listener might already be in the system. Please try again."
+                        End Try
+                    Else
+                        tss_Feedback.Text = "The email is not in a supported format (username@domain.com)..."
                         tss_Feedback.ForeColor = Color.Red
-                        tss_Feedback.Text = "Listener might already be in the system. Please try again."
-                    End Try
+                    End If
                 Else
-                    tss_Feedback.Text = "The email is not in a supported format (username@domain.com)..."
-                    tss_Feedback.ForeColor = Color.Red
+                    tss_Feedback.Text = "No name or email was present"
+                    txt_Name.Focus()
                 End If
-            Else
-                tss_Feedback.Text = "No name or email was present"
-                txt_Name.Focus()
-            End If
-        ElseIf rdo_Multiple.Checked Then
-            If Not String.IsNullOrWhiteSpace(txt_FilePath.Text) And Path.GetExtension(txt_FilePath.Text).Equals(".csv") Then
-                Dim fields(2) As String
-                Dim counter As Integer = 0
-                Dim successCount As Integer = 0
-                Dim failCount As Integer = 0
-                'Dim fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
+            ElseIf rdo_Multiple.Checked Then
+                If Not String.IsNullOrWhiteSpace(txt_FilePath.Text) And Path.GetExtension(txt_FilePath.Text).Equals(".csv") Then
+                    Dim fields(1) As String
+                    Dim counter As Integer = 0
+                    Dim successCount As Integer = 0
+                    Dim failCount As Integer = 0
+                    'Dim fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
 
-                Using fin As TextFieldParser = New TextFieldParser(ofd_ListenerList.FileName)
-                    fin.TextFieldType = FieldType.Delimited
-                    fin.SetDelimiters(",")
+                    Using fin As TextFieldParser = New TextFieldParser(ofd_ListenerList.FileName)
+                        fin.TextFieldType = FieldType.Delimited
+                        fin.SetDelimiters(",")
 
-                    Using fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
+                        Using fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
 
-                        While (Not fin.EndOfData)
-                            counter = 0
-                            For Each field As String In fin.ReadFields()
-                                fields(counter) = field
-                                counter += 1
-                            Next
+                            While (Not fin.EndOfData)
+                                counter = 0
+                                For Each field As String In fin.ReadFields()
+                                    fields(counter) = field
+                                    counter += 1
+                                Next
 
-                            If IsMatch(fields(1), emailPattern) Then
-                                Try
-                                    db.AddListener(fields(0), fields(1))
-                                    newListeners(successCount) = New Listener(fields(0), fields(1))
-                                    successCount += 1
-                                Catch ex As SqlException
-                                    fout.WriteLineAsync(String.Format("{0},{1} #{2}", fields(0), fields(1), ex.Message))
+                                If IsMatch(fields(1), emailPattern) Then
+                                    Try
+                                        db.AddListener(fields(0), fields(1))
+                                        newListeners.Add(New Listener(fields(0), fields(1)))
+                                        successCount += 1
+                                    Catch ex As SqlException
+                                        fout.WriteLineAsync(String.Format("{0},{1} #{2}", fields(0), fields(1), ex.Message))
+                                        failCount += 1
+                                    End Try
+                                Else
+                                    fout.WriteLineAsync(String.Format("{0},{1} # Email does not match email pattern (johndoe@domain.ext)", fields(0), fields(1)))
                                     failCount += 1
-                                End Try
-                            Else
-                                fout.WriteLineAsync(String.Format("{0},{1} # Email does not match email pattern (johndoe@domain.ext)", fields(0), fields(1)))
-                                failCount += 1
-                            End If
-                        End While
+                                End If
+                            End While
+                        End Using
                     End Using
-                End Using
 
-                tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
-                Try
-                    frm_Emails.customLoad()
-                    sendEmails(newListeners)
-                Catch
-                Finally
-                    wait(2)
-                End Try
+                    tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
+                    Try
+                        frm_Emails.customLoad()
+                        sendEmails(newListeners)
+                    Catch
+                    Finally
+                        wait(2)
+                    End Try
 
-                If (failCount > 0) Then
-                    tss_Feedback.ForeColor = Color.Red
-                    tss_Feedback.Text = "Check the Failed Additions file in the locaiton to see failed additions."
+                    If (failCount > 0) Then
+                        tss_Feedback.ForeColor = Color.Red
+                        tss_Feedback.Text = "Check the Failed Additions file in the locaiton to see failed additions."
+                    Else
+                        tss_Feedback.ForeColor = Color.Black
+                        tss_Feedback.Text = "All emails were imported successfully..."
+                    End If
                 Else
-                    tss_Feedback.ForeColor = Color.Black
-                    tss_Feedback.Text = "All emails were imported successfully..."
+                    tss_Feedback.ForeColor = Color.Red
+                    tss_Feedback.Text = "You have to select a .csv file..."
                 End If
-            Else
-                tss_Feedback.ForeColor = Color.Red
-                tss_Feedback.Text = "You have to select a .csv file..."
             End If
-        End If
+        End Using
     End Sub
 
     Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
@@ -209,7 +210,7 @@ Public Class frm_AddListener
         Return filename.Split({"."c})(1).Equals("csv")
     End Function
 
-    Private Sub sendEmails(listeners As Listener())
+    Private Sub sendEmails(listeners As List(Of Listener))
         'send the emails to the new listeners
         Dim sending As Process
         For Each listener As Listener In listeners

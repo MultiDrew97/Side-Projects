@@ -4,13 +4,17 @@ Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports Media_Ministry.Utils
 Public Class frm_Login
-    ReadOnly _dbConnection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.MySettings.Default.masterConnection)
+    ReadOnly _dbConnection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.Default.masterConnection)
 
     Private Sub frm_Login_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        'If My.Settings.KeepLoggedIn Then
+        '    txt_Username.Text = My.Settings.Username
+        '    txt_Password.Text = My.Settings.Password
+        '    chk_KeepLoggedIn.Checked = My.Settings.KeepLoggedIn
+        '    btn_LogIn.PerformClick()
+        'End If
+
         If My.Settings.KeepLoggedIn Then
-            txt_Username.Text = My.Settings.Username
-            txt_Password.Text = My.Settings.Password
-            chk_KeepLoggedIn.Checked = My.Settings.KeepLoggedIn
             btn_LogIn.PerformClick()
         End If
     End Sub

@@ -112,9 +112,9 @@ Public Class frm_Main
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
-        My.Settings.Username = My.MySettings.Default.Username
-        My.Settings.Password = My.MySettings.Default.Password
-        My.Settings.KeepLoggedIn = My.MySettings.Default.KeepLoggedIn
+        My.Settings.Username = ""
+        My.Settings.Password = ""
+        My.Settings.KeepLoggedIn = False
         My.Settings.Save()
         Me.Close()
     End Sub

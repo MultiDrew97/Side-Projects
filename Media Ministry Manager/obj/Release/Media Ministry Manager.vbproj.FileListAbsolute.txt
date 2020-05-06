@@ -84,3 +84,5 @@ C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin
 C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.vbproj.CoreCompileInputs.cache
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Media Ministry Manager.exe.CodeAnalysisLog.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\Media Ministry Manager.exe.lastcodeanalysissucceeded
