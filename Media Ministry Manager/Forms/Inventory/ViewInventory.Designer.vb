@@ -24,13 +24,13 @@ Partial Class frm_ViewInventory
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
-        Me.ITEMDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.INSTOCKDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRICEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
         Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.btn_AddProduct = New System.Windows.Forms.Button()
+        Me.ITEMDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.INSTOCKDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PRICEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,25 +49,6 @@ Partial Class frm_ViewInventory
         Me.dgv_Inventory.Name = "dgv_Inventory"
         Me.dgv_Inventory.Size = New System.Drawing.Size(443, 450)
         Me.dgv_Inventory.TabIndex = 0
-        '
-        'ITEMDataGridViewTextBoxColumn
-        '
-        Me.ITEMDataGridViewTextBoxColumn.DataPropertyName = "ITEM"
-        Me.ITEMDataGridViewTextBoxColumn.HeaderText = "Product Name"
-        Me.ITEMDataGridViewTextBoxColumn.Name = "ITEMDataGridViewTextBoxColumn"
-        '
-        'INSTOCKDataGridViewTextBoxColumn
-        '
-        Me.INSTOCKDataGridViewTextBoxColumn.DataPropertyName = "IN_STOCK"
-        Me.INSTOCKDataGridViewTextBoxColumn.HeaderText = "Current Stock"
-        Me.INSTOCKDataGridViewTextBoxColumn.Name = "INSTOCKDataGridViewTextBoxColumn"
-        '
-        'PRICEDataGridViewTextBoxColumn
-        '
-        Me.PRICEDataGridViewTextBoxColumn.DataPropertyName = "PRICE"
-        Me.PRICEDataGridViewTextBoxColumn.HeaderText = "Price per Unit"
-        Me.PRICEDataGridViewTextBoxColumn.Name = "PRICEDataGridViewTextBoxColumn"
-        Me.PRICEDataGridViewTextBoxColumn.ReadOnly = True
         '
         'INVENTORYBindingSource
         '
@@ -92,6 +73,24 @@ Partial Class frm_ViewInventory
         Me.btn_AddProduct.TabIndex = 3
         Me.btn_AddProduct.Text = "Add New Product"
         Me.btn_AddProduct.UseVisualStyleBackColor = True
+        '
+        'ITEMDataGridViewTextBoxColumn
+        '
+        Me.ITEMDataGridViewTextBoxColumn.DataPropertyName = "ITEM"
+        Me.ITEMDataGridViewTextBoxColumn.HeaderText = "Product Name"
+        Me.ITEMDataGridViewTextBoxColumn.Name = "ITEMDataGridViewTextBoxColumn"
+        '
+        'INSTOCKDataGridViewTextBoxColumn
+        '
+        Me.INSTOCKDataGridViewTextBoxColumn.DataPropertyName = "IN_STOCK"
+        Me.INSTOCKDataGridViewTextBoxColumn.HeaderText = "Current Stock"
+        Me.INSTOCKDataGridViewTextBoxColumn.Name = "INSTOCKDataGridViewTextBoxColumn"
+        '
+        'PRICEDataGridViewTextBoxColumn
+        '
+        Me.PRICEDataGridViewTextBoxColumn.DataPropertyName = "PRICE"
+        Me.PRICEDataGridViewTextBoxColumn.HeaderText = "Price per Unit"
+        Me.PRICEDataGridViewTextBoxColumn.Name = "PRICEDataGridViewTextBoxColumn"
         '
         'frm_ViewInventory
         '

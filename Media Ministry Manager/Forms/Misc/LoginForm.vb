@@ -80,6 +80,10 @@ Public Class frm_Login
         reset()
     End Sub
 
+    Private Sub frm_Login_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        My.Settings.Item("masterConnection") = "Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";Persist Security Info=True;Encrypt=True;"
+    End Sub
+
     'creating a login for a user in the database
     'CREATE USER [NAME] WITH PASSWORD = [PASSWORD]
 

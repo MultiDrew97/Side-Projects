@@ -35,25 +35,34 @@ Public Class frm_AddNewProduct
     End Sub
 
     Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        btn_Add.Focus()
         Dim name As String
         Dim stock As Integer
         Dim price As Decimal
 
-        name = txt_ProductName.Text
-        stock = CInt(nud_Stock.Value)
-        price = Decimal.Parse("0" & Format(txt_Price.Text, "Standard"))
+        If txt_Price.Text <> "$0.00" Then
+            If txt_ProductName.Text <> "Product Name" Then
+                price = Decimal.Parse("0" & Format(txt_Price.Text, "Standard"))
+                name = txt_ProductName.Text
+                stock = CInt(nud_Stock.Value)
 
-        Try
-            Using db As New Database(My.Settings.Username, My.Settings.Password)
-                db.AddNewProduct(name, stock, price)
-            End Using
-            tss_AddProduct.ForeColor = SystemColors.WindowText
-            tss_AddProduct.Text = "Product was successfully added."
-        Catch
-            tss_AddProduct.ForeColor = Color.Red
-            tss_AddProduct.Text = "Product could not be added. Try again."
-        End Try
+                Try
+                    Using db As New Database(My.Settings.Username, My.Settings.Password)
+                        db.AddNewProduct(name, stock, price)
+                    End Using
+                    tss_AddProduct.ForeColor = SystemColors.WindowText
+                    tss_AddProduct.Text = "Product was successfully added."
+                Catch
+                    tss_AddProduct.ForeColor = Color.Red
+                    tss_AddProduct.Text = "Product could not be added. Try again."
+                End Try
+            Else
+                MessageBox.Show("You have to give the product a name before adding it...", "Product Name is Empty")
+            End If
+        Else
+            MessageBox.Show("You have to enter a price for the product before adding it...", "Price is Empty")
+        End If
+
+
     End Sub
 
     Private Sub txt_ProductName_GotFocus(sender As Object, e As EventArgs) Handles txt_ProductName.GotFocus

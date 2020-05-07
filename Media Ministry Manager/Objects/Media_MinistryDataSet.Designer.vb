@@ -655,7 +655,7 @@ Partial Public Class Media_MinistryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddINVENTORYRow(ByVal ITEM_INDEX As Integer, ByVal ITEM As String, ByVal IN_STOCK As Integer, ByVal PRICE As String) As INVENTORYRow
+        Public Overloads Function AddINVENTORYRow(ByVal ITEM_INDEX As Integer, ByVal ITEM As String, ByVal IN_STOCK As Integer, ByVal PRICE As Decimal) As INVENTORYRow
             Dim rowINVENTORYRow As INVENTORYRow = CType(Me.NewRow,INVENTORYRow)
             Dim columnValuesArray() As Object = New Object() {ITEM_INDEX, ITEM, IN_STOCK, PRICE}
             rowINVENTORYRow.ItemArray = columnValuesArray
@@ -701,15 +701,13 @@ Partial Public Class Media_MinistryDataSet
             MyBase.Columns.Add(Me.columnITEM)
             Me.columnIN_STOCK = New Global.System.Data.DataColumn("IN_STOCK", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIN_STOCK)
-            Me.columnPRICE = New Global.System.Data.DataColumn("PRICE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnPRICE = New Global.System.Data.DataColumn("PRICE", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPRICE)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnITEM_INDEX}, true))
             Me.columnITEM_INDEX.AllowDBNull = false
             Me.columnITEM_INDEX.Unique = true
             Me.columnITEM.AllowDBNull = false
             Me.columnITEM.MaxLength = 30
-            Me.columnPRICE.ReadOnly = true
-            Me.columnPRICE.MaxLength = 4000
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3029,10 +3027,10 @@ Partial Public Class Media_MinistryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property PRICE() As String
+        Public Property PRICE() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableINVENTORY.PRICEColumn),String)
+                    Return CType(Me(Me.tableINVENTORY.PRICEColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'PRICE' in table 'INVENTORY' is DBNull.", e)
                 End Try
@@ -4136,36 +4134,44 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [INVENTORY] WHERE (([ITEM] = @Original_ITEM) AND ((@IsNull_IN_STOCK ="& _ 
-                " 1 AND [IN_STOCK] IS NULL) OR ([IN_STOCK] = @Original_IN_STOCK)) AND ([ITEM_INDE"& _ 
-                "X] = @Original_ITEM_INDEX))"
+                " 1 AND [IN_STOCK] IS NULL) OR ([IN_STOCK] = @Original_IN_STOCK)) AND ((@IsNull_P"& _ 
+                "RICE = 1 AND [PRICE] IS NULL) OR ([PRICE] = @Original_PRICE)) AND ([ITEM_INDEX] "& _ 
+                "= @Original_ITEM_INDEX))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ITEM", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IN_STOCK", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IN_STOCK", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IN_STOCK", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IN_STOCK", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PRICE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRICE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PRICE", Global.System.Data.SqlDbType.SmallMoney, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRICE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ITEM_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM_INDEX", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [INVENTORY] ([ITEM], [IN_STOCK], [ITEM_INDEX]) VALUES (@ITEM, @IN_STO"& _ 
-                "CK, @ITEM_INDEX);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM, IN_STOCK, FORMAT(PRICE, 'C', 'en-us') AS PRICE, "& _ 
-                "ITEM_INDEX FROM INVENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [INVENTORY] ([ITEM], [IN_STOCK], [PRICE], [ITEM_INDEX]) VALUES (@ITEM"& _ 
+                ", @IN_STOCK, @PRICE, @ITEM_INDEX);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM, IN_STOCK, PRICE, ITEM_INDEX FRO"& _ 
+                "M INVENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IN_STOCK", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IN_STOCK", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PRICE", Global.System.Data.SqlDbType.SmallMoney, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRICE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM_INDEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [INVENTORY] SET [ITEM] = @ITEM, [IN_STOCK] = @IN_STOCK, [ITEM_INDEX] = @IT"& _ 
-                "EM_INDEX WHERE (([ITEM] = @Original_ITEM) AND ((@IsNull_IN_STOCK = 1 AND [IN_STO"& _ 
-                "CK] IS NULL) OR ([IN_STOCK] = @Original_IN_STOCK)) AND ([ITEM_INDEX] = @Original"& _ 
-                "_ITEM_INDEX));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM, IN_STOCK, FORMAT(PRICE, 'C', 'en-us') AS PRICE, ITE"& _ 
-                "M_INDEX FROM INVENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [INVENTORY] SET [ITEM] = @ITEM, [IN_STOCK] = @IN_STOCK, [PRICE] = @PRICE, "& _ 
+                "[ITEM_INDEX] = @ITEM_INDEX WHERE (([ITEM] = @Original_ITEM) AND ((@IsNull_IN_STO"& _ 
+                "CK = 1 AND [IN_STOCK] IS NULL) OR ([IN_STOCK] = @Original_IN_STOCK)) AND ((@IsNu"& _ 
+                "ll_PRICE = 1 AND [PRICE] IS NULL) OR ([PRICE] = @Original_PRICE)) AND ([ITEM_IND"& _ 
+                "EX] = @Original_ITEM_INDEX));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ITEM, IN_STOCK, PRICE, ITEM_INDEX FROM INV"& _ 
+                "ENTORY WHERE (ITEM_INDEX = @ITEM_INDEX)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IN_STOCK", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IN_STOCK", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PRICE", Global.System.Data.SqlDbType.SmallMoney, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRICE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ITEM_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM_INDEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ITEM", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IN_STOCK", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IN_STOCK", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IN_STOCK", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IN_STOCK", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PRICE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRICE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PRICE", Global.System.Data.SqlDbType.SmallMoney, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRICE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ITEM_INDEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ITEM_INDEX", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -4182,8 +4188,7 @@ Namespace Media_MinistryDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ITEM, IN_STOCK, FORMAT(PRICE, 'C', 'en-us') AS PRICE, ITEM_INDEX FROM INVE"& _ 
-                "NTORY"
+            Me._commandCollection(0).CommandText = "SELECT ITEM, IN_STOCK, PRICE, ITEM_INDEX"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM INVENTORY"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -4243,7 +4248,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ITEM As String, ByVal Original_IN_STOCK As Global.System.Nullable(Of Integer), ByVal Original_ITEM_INDEX As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ITEM As String, ByVal Original_IN_STOCK As Global.System.Nullable(Of Integer), ByVal Original_PRICE As Global.System.Nullable(Of Decimal), ByVal Original_ITEM_INDEX As Integer) As Integer
             If (Original_ITEM Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ITEM")
             Else
@@ -4256,7 +4261,14 @@ Namespace Media_MinistryDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_ITEM_INDEX,Integer)
+            If (Original_PRICE.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_PRICE.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_ITEM_INDEX,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -4276,7 +4288,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ITEM As String, ByVal IN_STOCK As Global.System.Nullable(Of Integer), ByVal ITEM_INDEX As Integer) As Integer
+        Public Overloads Overridable Function Insert(ByVal ITEM As String, ByVal IN_STOCK As Global.System.Nullable(Of Integer), ByVal PRICE As Global.System.Nullable(Of Decimal), ByVal ITEM_INDEX As Integer) As Integer
             If (ITEM Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("ITEM")
             Else
@@ -4287,7 +4299,12 @@ Namespace Media_MinistryDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(ITEM_INDEX,Integer)
+            If (PRICE.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(PRICE.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.InsertCommand.Parameters(3).Value = CType(ITEM_INDEX,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -4307,7 +4324,7 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ITEM As String, ByVal IN_STOCK As Global.System.Nullable(Of Integer), ByVal ITEM_INDEX As Integer, ByVal Original_ITEM As String, ByVal Original_IN_STOCK As Global.System.Nullable(Of Integer), ByVal Original_ITEM_INDEX As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal ITEM As String, ByVal IN_STOCK As Global.System.Nullable(Of Integer), ByVal PRICE As Global.System.Nullable(Of Decimal), ByVal ITEM_INDEX As Integer, ByVal Original_ITEM As String, ByVal Original_IN_STOCK As Global.System.Nullable(Of Integer), ByVal Original_PRICE As Global.System.Nullable(Of Decimal), ByVal Original_ITEM_INDEX As Integer) As Integer
             If (ITEM Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("ITEM")
             Else
@@ -4318,20 +4335,32 @@ Namespace Media_MinistryDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(ITEM_INDEX,Integer)
+            If (PRICE.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(PRICE.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(ITEM_INDEX,Integer)
             If (Original_ITEM Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ITEM")
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_ITEM,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_ITEM,String)
             End If
             If (Original_IN_STOCK.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_IN_STOCK.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_IN_STOCK.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_ITEM_INDEX,Integer)
+            If (Original_PRICE.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_PRICE.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_ITEM_INDEX,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -4351,8 +4380,8 @@ Namespace Media_MinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ITEM As String, ByVal IN_STOCK As Global.System.Nullable(Of Integer), ByVal Original_ITEM As String, ByVal Original_IN_STOCK As Global.System.Nullable(Of Integer), ByVal Original_ITEM_INDEX As Integer) As Integer
-            Return Me.Update(ITEM, IN_STOCK, Original_ITEM_INDEX, Original_ITEM, Original_IN_STOCK, Original_ITEM_INDEX)
+        Public Overloads Overridable Function Update(ByVal ITEM As String, ByVal IN_STOCK As Global.System.Nullable(Of Integer), ByVal PRICE As Global.System.Nullable(Of Decimal), ByVal Original_ITEM As String, ByVal Original_IN_STOCK As Global.System.Nullable(Of Integer), ByVal Original_PRICE As Global.System.Nullable(Of Decimal), ByVal Original_ITEM_INDEX As Integer) As Integer
+            Return Me.Update(ITEM, IN_STOCK, PRICE, Original_ITEM_INDEX, Original_ITEM, Original_IN_STOCK, Original_PRICE, Original_ITEM_INDEX)
         End Function
     End Class
     

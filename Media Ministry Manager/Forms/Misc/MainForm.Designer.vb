@@ -98,10 +98,6 @@ Partial Class frm_Main
         Me.Inventory_Manager = New System.Windows.Forms.TabPage()
         Me.gbx_NewProduct = New System.Windows.Forms.GroupBox()
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
-        Me.ITEMINDEXDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Email_Ministry = New System.Windows.Forms.TabPage()
         Me.lbl_TotalListeners = New System.Windows.Forms.Label()
         Me.gbx_NewListener = New System.Windows.Forms.GroupBox()
@@ -129,6 +125,9 @@ Partial Class frm_Main
         Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.ORDER_SUMMARYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter()
         Me.EMAIL_LISTENERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ss_Queries.SuspendLayout()
         Me.pnl_MainForm.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
@@ -246,8 +245,8 @@ Partial Class frm_Main
         Me.pnl_MainForm.BackgroundImage = Global.Media_Ministry.My.Resources.Resources.Media_Ministry_Logo
         Me.pnl_MainForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnl_MainForm.Controls.Add(Me.mnstr_Strip)
-        Me.pnl_MainForm.Controls.Add(Me.pnl_Buttons)
         Me.pnl_MainForm.Controls.Add(Me.pnl_Max)
+        Me.pnl_MainForm.Controls.Add(Me.pnl_Buttons)
         Me.pnl_MainForm.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnl_MainForm.Location = New System.Drawing.Point(0, 0)
         Me.pnl_MainForm.Name = "pnl_MainForm"
@@ -767,38 +766,13 @@ Partial Class frm_Main
         Me.dgv_Inventory.AutoGenerateColumns = False
         Me.dgv_Inventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Inventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Inventory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ITEMINDEXDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13})
+        Me.dgv_Inventory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13})
         Me.dgv_Inventory.DataSource = Me.INVENTORYBindingSource
         Me.dgv_Inventory.Dock = System.Windows.Forms.DockStyle.Left
         Me.dgv_Inventory.Location = New System.Drawing.Point(3, 3)
         Me.dgv_Inventory.Name = "dgv_Inventory"
         Me.dgv_Inventory.Size = New System.Drawing.Size(662, 625)
         Me.dgv_Inventory.TabIndex = 0
-        '
-        'ITEMINDEXDataGridViewTextBoxColumn
-        '
-        Me.ITEMINDEXDataGridViewTextBoxColumn.DataPropertyName = "ITEM_INDEX"
-        Me.ITEMINDEXDataGridViewTextBoxColumn.HeaderText = "ITEM_INDEX"
-        Me.ITEMINDEXDataGridViewTextBoxColumn.Name = "ITEMINDEXDataGridViewTextBoxColumn"
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ITEM"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "ITEM"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "IN_STOCK"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "IN_STOCK"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PRICE"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "PRICE"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.ReadOnly = True
         '
         'Email_Ministry
         '
@@ -1029,6 +1003,24 @@ Partial Class frm_Main
         '
         Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
         '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ITEM"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Product Name"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "IN_STOCK"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Current Stock"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PRICE"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Price per Unit"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
         'frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1190,10 +1182,6 @@ Partial Class frm_Main
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
-    Friend WithEvents ITEMINDEXDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
     Friend WithEvents INVENTORYTableAdapter As Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
@@ -1203,4 +1191,7 @@ Partial Class frm_Main
     Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
     Friend WithEvents EMAIL_LISTENERSTableAdapter As Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
 End Class
