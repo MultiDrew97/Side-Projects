@@ -20,7 +20,6 @@ Public Class frm_EmailListeners
     End Structure
 
     Structure Locations
-
         'upload button locations
         Shared UploadDefault As New Point(20, 13)
 
@@ -48,7 +47,6 @@ Public Class frm_EmailListeners
         'file label locations
         Shared FileLabelUpload As New Point(326, 145)
         Shared FileLabelDefault As New Point(326, 91)
-
     End Structure
 
     Structure MinisLocations
@@ -151,17 +149,17 @@ Public Class frm_EmailListeners
 
         Dim sending As Process = Nothing
 
-        Select Case comm
-            Case "-s"
-                If chk_Attachment.Checked Then
-                    fileID = uploader.getFileID(cbx_FileList.SelectedItem.ToString, cbx_Folders.SelectedItem.ToString)
-                    sending = Process.Start("cmd", String.Format("/C java -jar sender.jar (0) {1} {2} {3}", comm, My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
-                Else
-                    sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, My.Settings.Username, My.Settings.Password))
-                End If
-                'Case "-r"
-                'sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, recipient, ofd_SelectFile.FileName))
-        End Select
+        'Select Case comm
+        'Case "-s"
+        If chk_Attachment.Checked Then
+            fileID = uploader.getFileID(cbx_FileList.SelectedItem.ToString, cbx_Folders.SelectedItem.ToString)
+            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar (0) {1} {2} {3}", comm, My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
+        Else
+            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, My.Settings.Username, My.Settings.Password))
+        End If
+        'Case "-r"
+        'sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, recipient, ofd_SelectFile.FileName))
+        'End Select
 
         sending.WaitForExit()
 
@@ -292,11 +290,11 @@ Public Class frm_EmailListeners
         cbx_Folders.DataSource = uploader.getFolders()
     End Sub
 
-    Private Sub chk_Attachment_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Attachment.CheckedChanged
-        If chk_Attachment.Checked Then
-            loadFolders()
-        End If
-    End Sub
+    'Private Sub chk_Attachment_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Attachment.CheckedChanged
+    '    If chk_Attachment.Checked Then
+    '        loadFolders()
+    '    End If
+    'End Sub
 
     Private Sub btn_CancelUpload_Click(sender As Object, e As EventArgs) Handles btn_CancelUpload.Click
         btn_CancelUpload.Hide()

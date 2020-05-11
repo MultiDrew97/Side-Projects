@@ -215,7 +215,7 @@ Public Class frm_AddListener
         Dim sending As Process
         For Each listener As Listener In listeners
             'send the email
-            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar -n {0} {1}", listener.name, listener.email))
+            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar -n ""{0}"" {1}", listener.name, listener.email))
 
             sending.WaitForExit()
 
@@ -227,7 +227,7 @@ Public Class frm_AddListener
 
     Private Sub sendEmail()
         'send the email
-        Dim sending = Process.Start("cmd", String.Format("/C java -jar sender.jar -n {0} {1}", txt_Name.Text, txt_Email.Text))
+        Dim sending = Process.Start("cmd", String.Format("/C java -jar sender.jar -n ""{0}"" {1}", txt_Name.Text, txt_Email.Text))
 
         sending.WaitForExit()
 

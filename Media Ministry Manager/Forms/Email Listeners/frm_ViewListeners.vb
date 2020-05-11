@@ -234,6 +234,7 @@ Public Class frm_ViewListeners
     Private Sub btn_CancelSearch_Click(sender As Object, e As EventArgs) Handles btn_CancelSearch.Click
         'Me.EmaiL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
         dgv_Listeners.DataSource = EMAILLISTENERSBindingSource
+        txt_SearchBox.Text = ""
     End Sub
 
     Private Sub btn_SendReceipt_Click(sender As Object, e As EventArgs) Handles btn_SendReceipt.Click
