@@ -134,10 +134,10 @@ Namespace Utils
         Function getFileID(ByVal fileName As String, folderName As String) As String
             Dim pageToken As String = Nothing
             Dim fileSearch As FilesResource.ListRequest
-
+            Dim folderID = getFolderID(folderName)
             Do
                 fileSearch = service.Files.List()
-                fileSearch.Q = String.Format("name='{0}' and '{1}' in parent", fileName, getFolderID(folderName))
+                fileSearch.Q = String.Format("name='{0}' and '{1}' in parents", fileName, folderID)
                 fileSearch.Spaces = "drive"
                 fileSearch.Fields = "nextPageToken, files(id, name)"
                 fileSearch.PageToken = pageToken
@@ -145,7 +145,7 @@ Namespace Utils
                 Dim result As FileList = fileSearch.Execute()
 
                 For Each files As Data.File In result.Files
-                    If (files.Name.Equals(fileName)) Then
+                    If files.Name.Equals(fileName) Then
                         Return files.Id
                     End If
                 Next
