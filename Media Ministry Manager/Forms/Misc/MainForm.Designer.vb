@@ -98,6 +98,9 @@ Partial Class frm_Main
         Me.Inventory_Manager = New System.Windows.Forms.TabPage()
         Me.gbx_NewProduct = New System.Windows.Forms.GroupBox()
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Email_Ministry = New System.Windows.Forms.TabPage()
         Me.lbl_TotalListeners = New System.Windows.Forms.Label()
         Me.gbx_NewListener = New System.Windows.Forms.GroupBox()
@@ -125,9 +128,7 @@ Partial Class frm_Main
         Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.ORDER_SUMMARYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter()
         Me.EMAIL_LISTENERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bw_RemoveTokens = New System.ComponentModel.BackgroundWorker()
         Me.ss_Queries.SuspendLayout()
         Me.pnl_MainForm.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
@@ -774,6 +775,24 @@ Partial Class frm_Main
         Me.dgv_Inventory.Size = New System.Drawing.Size(662, 625)
         Me.dgv_Inventory.TabIndex = 0
         '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ITEM"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Product Name"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "IN_STOCK"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Current Stock"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PRICE"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Price per Unit"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
         'Email_Ministry
         '
         Me.Email_Ministry.Controls.Add(Me.lbl_TotalListeners)
@@ -1003,23 +1022,8 @@ Partial Class frm_Main
         '
         Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
         '
-        'DataGridViewTextBoxColumn11
+        'bw_RemoveTokens
         '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ITEM"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Product Name"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "IN_STOCK"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Current Stock"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PRICE"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Price per Unit"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
         '
         'frm_Main
         '
@@ -1194,4 +1198,5 @@ Partial Class frm_Main
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
+    Friend WithEvents bw_RemoveTokens As System.ComponentModel.BackgroundWorker
 End Class

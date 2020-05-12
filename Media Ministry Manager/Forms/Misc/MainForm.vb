@@ -8,6 +8,7 @@ Imports System.Data.SqlClient
 Imports Microsoft.VisualBasic.FileIO
 
 Public Class frm_Main
+#Region "Variables"
     ReadOnly db As Database
     ReadOnly uploader As DriveUploader
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
@@ -20,7 +21,9 @@ Public Class frm_Main
         Shared max As New Size(1382, 744)
         'tctl_Max size = 1366, 667
     End Structure
+#End Region
 
+#Region "Form Subs"
     Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
     End Sub
@@ -30,9 +33,33 @@ Public Class frm_Main
             frm_Login.Close()
         Else
             frm_Login.Show()
+            bw_RemoveTokens.RunWorkerAsync()
         End If
     End Sub
+    Private Sub frm_Main_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        'keep things from firing on the initial load
+        first = False
+        tss_Progress.Value = 0
+    End Sub
+    Private Sub reset()
+        tss_Feedback.Text = "What would you like to do?"
+        tss_Feedback.ForeColor = SystemColors.WindowText
+    End Sub
 
+    Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        If Not first Then
+            'Dim controlsArray As Control() = {btn_CustomerManagement, btn_placeOrder, btn_ShowOrders, btn_ProductManagement, btn_EmailMinistry, tctl_Max}
+
+            If Me.Size = WindowSizes.max Then
+                Grow()
+            Else
+                Shrink()
+            End If
+        End If
+    End Sub
+#End Region
+
+#Region "Buttons"
     Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
         Dim frm_PlaceOrder As New frm_PlaceOrder(Me)
         frm_PlaceOrder.Show()
@@ -65,11 +92,6 @@ Public Class frm_Main
         Me.Hide()
     End Sub
 
-    Private Sub reset()
-        tss_Feedback.Text = "What would you like to do?"
-        tss_Feedback.ForeColor = SystemColors.WindowText
-    End Sub
-
     Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
         'create a email listeners form in the background
         tss_Feedback.Text = "Initializing Google Drive Uploader..."
@@ -78,44 +100,59 @@ Public Class frm_Main
         Me.Hide()
         reset()
     End Sub
+#End Region
 
-    Private Sub bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-        If File.Exists(CType(e.Argument, String)) Then
-            File.Delete(CType(e.Argument, String))
-        End If
+#Region "Size Change"
+    Private Sub Grow()
+        'Hide normal size button options
+        pnl_Buttons.Hide()
 
-        bw_UpdateJar.ReportProgress(33)
+        'show max size menu options
+        pnl_Max.Show()
 
-        Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.Create, FileAccess.Write))
-            out.Write(My.Resources.sender)
-        End Using
-
-        bw_UpdateJar.ReportProgress(67)
-
-        If Not File.Exists(CType(e.Argument, String)) Then
-            Throw New Exception("Sender was not found or was not copied correctly. Contact your developer.")
-        End If
-
-        bw_UpdateJar.ReportProgress(100)
+        loadTables()
     End Sub
 
-    Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
-        If Not first Then
-            'Dim controlsArray As Control() = {btn_CustomerManagement, btn_placeOrder, btn_ShowOrders, btn_ProductManagement, btn_EmailMinistry, tctl_Max}
+    Private Sub Shrink()
+        'show normal size buttons options
+        pnl_Buttons.Show()
 
-            If Me.Size = WindowSizes.max Then
-                Grow()
-            Else
-                Shrink()
-            End If
-        End If
+        'hide max size menu options
+        pnl_Max.Hide()
+    End Sub
+#End Region
+
+#Region "Tool Strip"
+    Private Sub CustomerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem1.Click
+        'TODO: Add Find Customer Functionality
     End Sub
 
+    Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
+        'TODO: Add Find Listener Functionality
+    End Sub
+
+    Private Sub bw_UpdateJar_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bw_UpdateJar.ProgressChanged
+        tss_Progress.Value = e.ProgressPercentage
+    End Sub
+
+    Private Sub bw_UpdateJar_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_UpdateJar.RunWorkerCompleted
+        tss_Progress.Value = 0
+    End Sub
+
+    Private Sub EmailerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EmailerToolStripMenuItem.Click
+        bw_UpdateJar.RunWorkerAsync(emailerLocation)
+    End Sub
+
+    'the sub that will run the update check
+    Private Sub MediaMinistryManagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MediaMinistryManagerToolStripMenuItem.Click
+        'bw_UpdateApp.RunWorkerAsync()
+    End Sub
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         My.Settings.Username = ""
         My.Settings.Password = ""
         My.Settings.KeepLoggedIn = False
         My.Settings.Save()
+        bw_RemoveTokens.RunWorkerAsync()
         Me.Close()
     End Sub
 
@@ -158,86 +195,8 @@ Public Class frm_Main
         Dim listeners As New frm_ViewListeners() With {.sendingForm = Me}
         listeners.Show()
     End Sub
+#End Region
 
-    Private Sub bw_Grow_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Grow.DoWork
-        'Convert the argument parameter into the object array to then hide and show the proper controls
-        Dim bwControls As Control() = CType(e.Argument, Control())
-
-        'Hide normal size menu buttons
-        bwControls(0).Hide()
-        bwControls(1).Hide()
-        bwControls(2).Hide()
-        bwControls(3).Hide()
-        bwControls(4).Hide()
-
-        'show max size menu options
-        bwControls(5).Show()
-
-        loadTables()
-    End Sub
-
-    Private Sub bw_Shrink_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Shrink.DoWork
-        'Convert the argument parameter into the object array to then hide and show the proper controls
-        Dim bwControls As Control() = CType(e.Argument, Control())
-
-        'show normal size menu buttons
-        bwControls(0).Show()
-        bwControls(1).Show()
-        bwControls(2).Show()
-        bwControls(3).Show()
-        bwControls(4).Show()
-
-        'hide max size menu options
-        bwControls(5).Hide()
-    End Sub
-
-    Private Sub Grow()
-        'Hide normal size button options
-        pnl_Buttons.Hide()
-
-        'show max size menu options
-        pnl_Max.Show()
-
-        loadTables()
-    End Sub
-
-    Private Sub Shrink()
-        'show normal size buttons options
-        pnl_Buttons.Show()
-
-        'hide max size menu options
-        pnl_Max.Hide()
-    End Sub
-    Private Sub frm_Main_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        'keep things from firing on the initial load
-        first = False
-        tss_Progress.Value = 0
-    End Sub
-
-    Private Sub CustomerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem1.Click
-        'TODO: Add Find Customer Functionality
-    End Sub
-
-    Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
-        'TODO: Add Find Listener Functionality
-    End Sub
-
-    Private Sub bw_UpdateJar_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bw_UpdateJar.ProgressChanged
-        tss_Progress.Value = e.ProgressPercentage
-    End Sub
-
-    Private Sub bw_UpdateJar_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_UpdateJar.RunWorkerCompleted
-        tss_Progress.Value = 0
-    End Sub
-
-    Private Sub EmailerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EmailerToolStripMenuItem.Click
-        bw_UpdateJar.RunWorkerAsync(emailerLocation)
-    End Sub
-
-    'the sub that will run the update check
-    Private Sub MediaMinistryManagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MediaMinistryManagerToolStripMenuItem.Click
-        bw_UpdateApp.RunWorkerAsync()
-    End Sub
 #Region "Table Loaders"
     Private Sub loadTables()
         loadOrder()
@@ -271,6 +230,8 @@ Public Class frm_Main
         lbl_TotalCustomers.Text = String.Format(totalTemplate, "Listeners", dgv_Customers.RowCount())
     End Sub
 #End Region
+
+#Region "Background Workers"
     Private Sub bw_UpdateApp_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateApp.DoWork
         'Dim updateMSILocation As String = "https://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
         'Dim updateEXELocation As String = "https://sppbc.hopto.org/Manager%20Installer/setup.exe"
@@ -288,6 +249,69 @@ Public Class frm_Main
 
         'bw_UpdateApp.ReportProgress(100)
     End Sub
+
+    Private Sub bw_RemoveTokens_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_RemoveTokens.DoWork
+        If File.Exists(".\Drive Token") Then
+            File.Delete(".\Drive Token")
+        End If
+
+        If File.Exists(".\Gmail Token") Then
+            File.Delete(".\Gmail Token")
+        End If
+    End Sub
+
+    Private Sub bw_Grow_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Grow.DoWork
+        'Convert the argument parameter into the object array to then hide and show the proper controls
+        Dim bwControls As Control() = CType(e.Argument, Control())
+
+        'Hide normal size menu buttons
+        bwControls(0).Hide()
+        bwControls(1).Hide()
+        bwControls(2).Hide()
+        bwControls(3).Hide()
+        bwControls(4).Hide()
+
+        'show max size menu options
+        bwControls(5).Show()
+
+        loadTables()
+    End Sub
+
+    Private Sub bw_Shrink_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Shrink.DoWork
+        'Convert the argument parameter into the object array to then hide and show the proper controls
+        Dim bwControls As Control() = CType(e.Argument, Control())
+
+        'show normal size menu buttons
+        bwControls(0).Show()
+        bwControls(1).Show()
+        bwControls(2).Show()
+        bwControls(3).Show()
+        bwControls(4).Show()
+
+        'hide max size menu options
+        bwControls(5).Hide()
+    End Sub
+    Private Sub bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
+        If File.Exists(CType(e.Argument, String)) Then
+            File.Delete(CType(e.Argument, String))
+        End If
+
+        bw_UpdateJar.ReportProgress(33)
+
+        Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.Create, FileAccess.Write))
+            out.Write(My.Resources.sender)
+        End Using
+
+        bw_UpdateJar.ReportProgress(67)
+
+        If Not File.Exists(CType(e.Argument, String)) Then
+            Throw New Exception("Sender was not found or was not copied correctly. Contact your developer.")
+        End If
+
+        bw_UpdateJar.ReportProgress(100)
+    End Sub
+#End Region
+
 #Region "Email Listeners Tab"
     Private Sub rdo_Single_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Single.CheckedChanged
         If rdo_Single.Checked Then

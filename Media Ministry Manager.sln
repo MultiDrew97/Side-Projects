@@ -112,6 +112,7 @@ Global
 		{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
 		{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
@@ -236,11 +237,11 @@ Global
 		{67998C5A-5C9B-4089-92C3-E28E54F937AB} = {F074EADF-BD35-4481-9E2C-056FEED0D398}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UseGlobalSettings = False
-		SolutionGuid = {95A49186-3F3E-4EA7-B4F3-D35023EDF0C2}
-		BuildVersion_StartDate = 2019/5/8
-		BuildVersion_BuildVersioningStyle = None.None.Increment.None
-		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_UpdateFileVersion = True
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.Increment.None
+		BuildVersion_StartDate = 2019/5/8
+		SolutionGuid = {95A49186-3F3E-4EA7-B4F3-D35023EDF0C2}
+		BuildVersion_UseGlobalSettings = False
 	EndGlobalSection
 EndGlobal
