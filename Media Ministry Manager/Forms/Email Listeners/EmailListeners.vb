@@ -1,7 +1,9 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.ComponentModel
 Imports Media_Ministry.Utils
+#End Region
 
 Public Class frm_EmailListeners
 #Region "Variables"
@@ -220,7 +222,6 @@ Public Class frm_EmailListeners
         txt_FileLocation.Text = ofd_SelectFile.SafeFileName
     End Sub
 #End Region
-
 
 #Region "Backgroud Workers"
     Private Sub bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork

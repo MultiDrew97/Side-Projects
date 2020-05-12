@@ -1,7 +1,7 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.IO
-Imports System.Text
 Imports System.Threading
 Imports Google.Apis.Auth.OAuth2
 Imports Google.Apis.Drive.v3
@@ -9,11 +9,11 @@ Imports Google.Apis.Drive.v3.Data
 Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
 Imports MimeKit
-Imports NeoSmart.Utils
+#End Region
 
 Namespace Utils
     Public Class DriveUploader
-
+#Region "Variables"
         'If modifying these scopes, delete your previously saved credentials
         'at ~/.credentials/drive-dotnet-quickstart.json
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
@@ -22,7 +22,9 @@ Namespace Utils
         Private permissions As New List(Of Permission)()
         Private service As DriveService
         Private db As Database
+#End Region
 
+#Region "Constructor"
         Sub New()
             Dim credential As UserCredential
 
@@ -32,26 +34,24 @@ Namespace Utils
                 Dim credPath = "Drive Token"
                 Dim secrets As GoogleClientSecrets = New GoogleClientSecrets().Load(reader)
 
-                Console.WriteLine("DEBUG: Creating the token")
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                             secrets.Secrets,
                             Scopes,
                             "user",
                             CancellationToken.None,
                             New FileDataStore(credPath, True)).Result
-                Console.WriteLine("DEBUG: Created the token")
             End Using
 
-            Console.WriteLine("DEBUG: Creating the service")
             'Create Drive API service.
             service = New DriveService(New BaseClientService.Initializer() With {
                     .HttpClientInitializer = credential,
                     .ApplicationName = ApplicationName
                         }
                     )
-            Console.WriteLine("DEBUG: Created the service")
         End Sub
+#End Region
 
+#Region "Uploading"
         Function upload(fileName As String, ByVal folderName As String, tss As ToolStripStatusLabel) As String
             Dim parents As IList(Of String) = New List(Of String)
             parents.Add(getFolderID(folderName))
@@ -85,7 +85,9 @@ Namespace Utils
                 Return Nothing
             End If
         End Function
+#End Region
 
+#Region "Folder"
         Function createFolder(folderName As String) As String
             Dim folderID = getFolderID(folderName)
 
@@ -131,6 +133,36 @@ Namespace Utils
             Return Nothing
         End Function
 
+        Public Function getFolders() As List(Of String)
+            Dim folders As List(Of String) = New List(Of String)
+            Dim pageToken As String = Nothing
+            Dim folderSearch As FilesResource.ListRequest
+
+            Do
+                folderSearch = service.Files.List()
+                folderSearch.Q = "mimeType='application/vnd.google-apps.folder'"
+                folderSearch.Spaces = "drive"
+                folderSearch.Fields = "nextPageToken, files(id, name)"
+                folderSearch.PageToken = pageToken
+
+                Dim result As FileList = folderSearch.Execute()
+
+                For Each folder As Data.File In result.Files
+                    'If folder.MimeType.Equals("application/vnd.google-apps.folder") Then
+                    folders.Add(folder.Name)
+                    'End If
+                Next
+
+                pageToken = result.NextPageToken
+            Loop While (pageToken IsNot Nothing)
+
+            folders.Sort()
+
+            Return folders
+        End Function
+#End Region
+
+#Region "Files"
         Function getFileID(ByVal fileName As String, folderName As String) As String
             Dim pageToken As String = Nothing
             Dim fileSearch As FilesResource.ListRequest
@@ -178,7 +210,9 @@ Namespace Utils
 
             Return files
         End Function
+#End Region
 
+#Region "Permissions"
         Sub setPermissions(ByVal fileID As String, tss As ToolStripStatusLabel)
             Dim request As PermissionsResource.CreateRequest
 
@@ -199,45 +233,6 @@ Namespace Utils
 
             Return temp
         End Function
-
-        Function retrieveEmails() As List(Of Listener)
-            Dim listeners As New List(Of Listener)
-
-            Using db As New Database(My.Settings.Username, My.Settings.Password)
-                listeners = db.RetrieveListeners()
-            End Using
-
-            Return listeners
-        End Function
-
-        Public Function getFolders() As List(Of String)
-            Dim folders As List(Of String) = New List(Of String)
-            Dim pageToken As String = Nothing
-            Dim folderSearch As FilesResource.ListRequest
-
-            Do
-                folderSearch = service.Files.List()
-                folderSearch.Q = "mimeType='application/vnd.google-apps.folder'"
-                folderSearch.Spaces = "drive"
-                folderSearch.Fields = "nextPageToken, files(id, name)"
-                folderSearch.PageToken = pageToken
-
-                Dim result As FileList = folderSearch.Execute()
-
-                For Each folder As Data.File In result.Files
-                    'If folder.MimeType.Equals("application/vnd.google-apps.folder") Then
-                    folders.Add(folder.Name)
-                    'End If
-                Next
-
-                pageToken = result.NextPageToken
-            Loop While (pageToken IsNot Nothing)
-
-            folders.Sort()
-
-            Return folders
-        End Function
-
+#End Region
     End Class
-
 End Namespace

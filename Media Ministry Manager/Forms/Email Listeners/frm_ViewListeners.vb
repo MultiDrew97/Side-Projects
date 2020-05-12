@@ -1,8 +1,12 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.ComponentModel
 Imports Media_Ministry.Utils
+#End Region
+
 Public Class frm_ViewListeners
+#Region "Variables"
     Public sendingForm As Form
     Dim db As Database
     ReadOnly totalListeners As String = "Total Listeners: {0}"
@@ -59,7 +63,9 @@ Public Class frm_ViewListeners
         Shared ReceiptDefault As New Point(670, 164)
         Shared ReceiptMax As New Point(1044, 321)
     End Structure
+#End Region
 
+#Region "Form Subs"
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         customLoad()
     End Sub
@@ -70,42 +76,12 @@ Public Class frm_ViewListeners
         updateTotal()
     End Sub
 
-    Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        Dim frm_AddListeners As frm_AddListener = New frm_AddListener()
-        frm_AddListeners.frm_Emails = Me
-        frm_AddListeners.Show()
-    End Sub
-
     Private Sub frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Try
             sendingForm.Show()
         Catch
 
         End Try
-    End Sub
-
-    Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
-        Using db As New Database(My.Settings.Username, My.Settings.Password)
-            db.removeListener(CType(e.Row.Cells(1).Value, String))
-        End Using
-    End Sub
-
-    Private Sub dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
-        Dim changed As Integer = e.RowIndex
-        Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
-        Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
-
-        Using db As New Database(My.Settings.Username, My.Settings.Password)
-            db.updateListener(name, email)
-        End Using
-    End Sub
-
-    Private Sub updateTotal()
-        lbl_Total.Text = String.Format(totalListeners, dgv_Listeners.RowCount())
-    End Sub
-
-    Private Sub dgv_Listeners_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgv_Listeners.UserDeletedRow
-        updateTotal()
     End Sub
 
     Private Sub frm_ViewListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -116,22 +92,8 @@ Public Class frm_ViewListeners
         End If
     End Sub
 
-    Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
-        searchListeners(False)
-    End Sub
-
-    Private Sub btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click
-        'lbl_EmailSearch.Show()
-        'lbl_NameSearch.Show()
-        'txt_NameSearch.Show()
-        'txt_EmailSearch.Show()
-        gbx_AdvancedSearch.Show()
-        txt_SearchBox.Hide()
-        lbl_SearchLabel.Hide()
-        btn_Advanced.Hide()
-        cbx_Column.Hide()
-        btn_Search.Hide()
-        btn_CancelSearch.Hide()
+    Private Sub updateTotal()
+        lbl_Total.Text = String.Format(totalListeners, dgv_Listeners.RowCount())
     End Sub
 
     Private Sub MaxChanges()
@@ -173,6 +135,32 @@ Public Class frm_ViewListeners
         'Change Sizes
         dgv_Listeners.Size = Sizes.DefaultDGV
     End Sub
+#End Region
+
+#Region "Buttons"
+    Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
+        Dim frm_AddListeners As frm_AddListener = New frm_AddListener()
+        frm_AddListeners.frm_Emails = Me
+        frm_AddListeners.Show()
+    End Sub
+
+    Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
+        searchListeners(False)
+    End Sub
+
+    Private Sub btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click
+        'lbl_EmailSearch.Show()
+        'lbl_NameSearch.Show()
+        'txt_NameSearch.Show()
+        'txt_EmailSearch.Show()
+        gbx_AdvancedSearch.Show()
+        txt_SearchBox.Hide()
+        lbl_SearchLabel.Hide()
+        btn_Advanced.Hide()
+        cbx_Column.Hide()
+        btn_Search.Hide()
+        btn_CancelSearch.Hide()
+    End Sub
 
     Private Sub btn_AdvancedCancel_Click(sender As Object, e As EventArgs) Handles btn_AdvancedCancel.Click
         gbx_AdvancedSearch.Hide()
@@ -189,6 +177,47 @@ Public Class frm_ViewListeners
         btn_CreateReceipt.Hide()
     End Sub
 
+    Private Sub btn_AdvancedSearch_Click(sender As Object, e As EventArgs) Handles btn_AdvancedSearch.Click
+        searchListeners(True)
+    End Sub
+
+    Private Sub btn_CancelSearch_Click(sender As Object, e As EventArgs) Handles btn_CancelSearch.Click
+        'Me.EmaiL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
+        dgv_Listeners.DataSource = EMAILLISTENERSBindingSource
+        txt_SearchBox.Text = ""
+    End Sub
+
+    Private Sub btn_SendReceipt_Click(sender As Object, e As EventArgs) Handles btn_SendReceipt.Click
+        If dgv_Listeners.SelectedRows.Count = 1 Then
+            ofd_ReceiptImage.ShowDialog()
+        Else
+            MessageBox.Show("You must select a listener first...")
+        End If
+    End Sub
+#End Region
+
+#Region "Data Grid Views"
+    Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            db.removeListener(CType(e.Row.Cells(1).Value, String))
+        End Using
+    End Sub
+
+    Private Sub dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
+        Dim changed As Integer = e.RowIndex
+        Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
+        Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
+
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            db.updateListener(name, email)
+        End Using
+    End Sub
+    Private Sub dgv_Listeners_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgv_Listeners.UserDeletedRow
+        updateTotal()
+    End Sub
+#End Region
+
+#Region "File Dialog"
     Private Sub ofd_ReceiptImage_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_ReceiptImage.FileOk
         If nud_Amount.Value > 0 Then
             Dim email As String = CType(dgv_Listeners.SelectedRows(0).Cells(1).Value, String)
@@ -205,11 +234,35 @@ Public Class frm_ViewListeners
             MessageBox.Show("You have to set a dollar amount...")
         End If
     End Sub
+#End Region
 
-    Private Sub btn_AdvancedSearch_Click(sender As Object, e As EventArgs) Handles btn_AdvancedSearch.Click
-        searchListeners(True)
+#Region "Radio Buttons"
+    Private Sub rdo_Tithes_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Tithes.CheckedChanged
+        If rdo_Tithes.Checked Then
+            purpose = "Tithes"
+        End If
     End Sub
 
+    Private Sub rdo_Offering_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Offering.CheckedChanged
+        If rdo_Offering.Checked Then
+            purpose = "Offering"
+        End If
+    End Sub
+
+    Private Sub rdo_BuildingFund_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_BuildingFund.CheckedChanged
+        If rdo_BuildingFund.Checked Then
+            purpose = "Building Fund"
+        End If
+    End Sub
+#End Region
+
+#Region "Numeric Up-Down"
+    Private Sub nud_Amount_ValueChanged(sender As Object, e As EventArgs) Handles nud_Amount.ValueChanged
+        amount = nud_Amount.Value
+    End Sub
+#End Region
+
+#Region "Utils"
     Private Sub searchListeners(advanced As Boolean)
         Dim criteria(1) As String
         Dim column As String
@@ -230,40 +283,5 @@ Public Class frm_ViewListeners
             End Using
         End If
     End Sub
-
-    Private Sub btn_CancelSearch_Click(sender As Object, e As EventArgs) Handles btn_CancelSearch.Click
-        'Me.EmaiL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
-        dgv_Listeners.DataSource = EMAILLISTENERSBindingSource
-        txt_SearchBox.Text = ""
-    End Sub
-
-    Private Sub btn_SendReceipt_Click(sender As Object, e As EventArgs) Handles btn_SendReceipt.Click
-        If dgv_Listeners.SelectedRows.Count = 1 Then
-            ofd_ReceiptImage.ShowDialog()
-        Else
-            MessageBox.Show("You must select a listener first...")
-        End If
-    End Sub
-
-    Private Sub rdo_Tithes_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Tithes.CheckedChanged
-        If rdo_Tithes.Checked Then
-            purpose = "Tithes"
-        End If
-    End Sub
-
-    Private Sub rdo_Offering_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Offering.CheckedChanged
-        If rdo_Offering.Checked Then
-            purpose = "Offering"
-        End If
-    End Sub
-
-    Private Sub rdo_BuildingFund_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_BuildingFund.CheckedChanged
-        If rdo_BuildingFund.Checked Then
-            purpose = "Building Fund"
-        End If
-    End Sub
-
-    Private Sub nud_Amount_ValueChanged(sender As Object, e As EventArgs) Handles nud_Amount.ValueChanged
-        amount = nud_Amount.Value
-    End Sub
+#End Region
 End Class
