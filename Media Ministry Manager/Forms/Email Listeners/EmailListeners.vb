@@ -153,7 +153,7 @@ Public Class frm_EmailListeners
         'Case "-s"
         If chk_Attachment.Checked Then
             fileID = uploader.getFileID(cbx_FileList.SelectedItem.ToString, cbx_Folders.SelectedItem.ToString)
-            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar (0) {1} {2} {3}", comm, My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
+            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2} {3}", comm, My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
         Else
             sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, My.Settings.Username, My.Settings.Password))
         End If
@@ -167,7 +167,7 @@ Public Class frm_EmailListeners
             txt_FileLocation.Text = ""
             tss_Feedback.Text = "All emails sent successfully..."
         Else
-            tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact you developer..."
+            tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact your developer..."
             MessageBox.Show("Exit Code: " & sending.ExitCode, "Error")
             tss_Feedback.ForeColor = Color.Red
         End If
