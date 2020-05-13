@@ -1,8 +1,15 @@
 ﻿Option Strict On
-Imports Media_Ministry.Utils
-Public Class frm_DisplayOrders
-    Private mainForm As frm_Main
 
+#Region "Imports"
+Imports Media_Ministry.Utils
+#End Region
+
+Public Class frm_DisplayOrders
+#Region "Globals"
+    Private mainForm As frm_Main
+#End Region
+
+#Region "Form Subs"
     Public Sub New(ByRef mainForm As frm_Main)
 
         ' This call is required by the designer.
@@ -23,7 +30,9 @@ Public Class frm_DisplayOrders
     Private Sub frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
     End Sub
+#End Region
 
+#Region "Buttons"
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
     End Sub
@@ -114,5 +123,5 @@ Public Class frm_DisplayOrders
             End If
         End Using
     End Sub
-
+#End Region
 End Class

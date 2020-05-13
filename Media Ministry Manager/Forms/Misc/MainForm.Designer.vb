@@ -62,18 +62,6 @@ Partial Class frm_Main
         Me.lbl_TotalCustomers = New System.Windows.Forms.Label()
         Me.btn_AddCustomer = New System.Windows.Forms.Button()
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomersBinding = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
         Me.Order_Manager = New System.Windows.Forms.TabPage()
         Me.btn_OrderComplete = New System.Windows.Forms.Button()
         Me.btn_OrderCancel = New System.Windows.Forms.Button()
@@ -85,16 +73,10 @@ Partial Class frm_Main
         Me.nud_Quantity = New System.Windows.Forms.NumericUpDown()
         Me.btn_CreateOrder = New System.Windows.Forms.Button()
         Me.cbx_OrderProduct = New System.Windows.Forms.ComboBox()
-        Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbx_OrderPhone = New System.Windows.Forms.ComboBox()
         Me.cbx_OrderName = New System.Windows.Forms.ComboBox()
         Me.dgv_Orders = New System.Windows.Forms.DataGridView()
         Me.Select_Order = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ORDERSUMMARYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Inventory_Manager = New System.Windows.Forms.TabPage()
         Me.gbx_NewProduct = New System.Windows.Forms.GroupBox()
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
@@ -113,21 +95,40 @@ Partial Class frm_Main
         Me.rdo_Single = New System.Windows.Forms.RadioButton()
         Me.btn_AddListener = New System.Windows.Forms.Button()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.pnl_Buttons = New System.Windows.Forms.Panel()
         Me.bw_Grow = New System.ComponentModel.BackgroundWorker()
         Me.bw_Shrink = New System.ComponentModel.BackgroundWorker()
         Me.bw_UpdateApp = New System.ComponentModel.BackgroundWorker()
         Me.ofd_ListenerList = New System.Windows.Forms.OpenFileDialog()
+        Me.bw_RemoveTokens = New System.ComponentModel.BackgroundWorker()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomersBinding = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
+        Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ORDERSUMMARYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CustomersTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.ORDER_SUMMARYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter()
         Me.EMAIL_LISTENERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ss_Queries.SuspendLayout()
         Me.pnl_MainForm.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
@@ -135,22 +136,22 @@ Partial Class frm_Main
         Me.tctl_Max.SuspendLayout()
         Me.Customer_Manager.SuspendLayout()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CustomersBinding, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Order_Manager.SuspendLayout()
         Me.gbx_NewOrder.SuspendLayout()
         CType(Me.nud_Quantity, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ORDERSUMMARYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Inventory_Manager.SuspendLayout()
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Email_Ministry.SuspendLayout()
         Me.gbx_NewListener.SuspendLayout()
         Me.gbx_Options.SuspendLayout()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnl_Buttons.SuspendLayout()
+        CType(Me.CustomersBinding, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ORDERSUMMARYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_placeOrder
@@ -468,77 +469,6 @@ Partial Class frm_Main
         Me.dgv_Customers.Size = New System.Drawing.Size(1352, 502)
         Me.dgv_Customers.TabIndex = 0
         '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "FIRST_NAME"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "FIRST_NAME"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "LAST_NAME"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "LAST_NAME"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "SHIPPING_STREET"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "SHIPPING_STREET"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "SHIPPING_CITY"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "SHIPPING_CITY"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "SHIPPING_STATE"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "SHIPPING_STATE"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "SHIPPING_ZIP"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "SHIPPING_ZIP"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "PHONE_NUMBER"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "PHONE_NUMBER"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "EMAIL"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "EMAIL"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "PREFERRED_PAYMENT"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "PREFERRED_PAYMENT"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "JOIN_DATE"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "JOIN_DATE"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        '
-        'CustomersBinding
-        '
-        Me.CustomersBinding.DataMember = "CUSTOMERS"
-        Me.CustomersBinding.DataSource = Me.Media_MinistryDataSet
-        Me.CustomersBinding.Sort = "FIRST_NAME"
-        '
-        'Media_MinistryDataSet
-        '
-        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Order_Manager
         '
         Me.Order_Manager.Controls.Add(Me.btn_OrderComplete)
@@ -662,11 +592,6 @@ Partial Class frm_Main
         Me.cbx_OrderProduct.Size = New System.Drawing.Size(288, 33)
         Me.cbx_OrderProduct.TabIndex = 1
         '
-        'INVENTORYBindingSource
-        '
-        Me.INVENTORYBindingSource.DataMember = "INVENTORY"
-        Me.INVENTORYBindingSource.DataSource = Me.Media_MinistryDataSet
-        '
         'cbx_OrderPhone
         '
         Me.cbx_OrderPhone.DataSource = Me.CustomersBinding
@@ -709,35 +634,6 @@ Partial Class frm_Main
         Me.Select_Order.FillWeight = 76.14214!
         Me.Select_Order.HeaderText = ""
         Me.Select_Order.Name = "Select_Order"
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "ORDER_NUMBER"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "ORDER_NUMBER"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "PHONE_NUMBER"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "PHONE_NUMBER"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "ITEM"
-        Me.DataGridViewTextBoxColumn16.HeaderText = "ITEM"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "QUANTITY"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "QUANTITY"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        '
-        'ORDERSUMMARYBindingSource
-        '
-        Me.ORDERSUMMARYBindingSource.DataMember = "ORDER_SUMMARY"
-        Me.ORDERSUMMARYBindingSource.DataSource = Me.Media_MinistryDataSet
         '
         'Inventory_Manager
         '
@@ -941,24 +837,6 @@ Partial Class frm_Main
         Me.dgv_Listeners.Size = New System.Drawing.Size(627, 631)
         Me.dgv_Listeners.TabIndex = 0
         '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "NAME"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "NAME"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.DataPropertyName = "EMAIL"
-        Me.DataGridViewTextBoxColumn19.HeaderText = "EMAIL"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        '
-        'EMAILLISTENERSBindingSource
-        '
-        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
-        Me.EMAILLISTENERSBindingSource.DataSource = Me.Media_MinistryDataSet
-        Me.EMAILLISTENERSBindingSource.Sort = "NAME"
-        '
         'pnl_Buttons
         '
         Me.pnl_Buttons.Controls.Add(Me.btn_ProductManagement)
@@ -987,21 +865,113 @@ Partial Class frm_Main
         Me.ofd_ListenerList.Filter = "List (*.csv)|*.csv"
         Me.ofd_ListenerList.Title = "List of Listeners (.csv)"
         '
-        'CustomersTableAdapter
+        'bw_RemoveTokens
         '
-        Me.CustomersTableAdapter.ClearBeforeFill = True
         '
-        'INVENTORYTableAdapter
+        'DataGridViewTextBoxColumn1
         '
-        Me.INVENTORYTableAdapter.ClearBeforeFill = True
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "FIRST_NAME"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "FIRST_NAME"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         '
-        'ORDER_SUMMARYTableAdapter
+        'DataGridViewTextBoxColumn2
         '
-        Me.ORDER_SUMMARYTableAdapter.ClearBeforeFill = True
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "LAST_NAME"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "LAST_NAME"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         '
-        'EMAIL_LISTENERSTableAdapter
+        'DataGridViewTextBoxColumn3
         '
-        Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "SHIPPING_STREET"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "SHIPPING_STREET"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "SHIPPING_CITY"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "SHIPPING_CITY"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "SHIPPING_STATE"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "SHIPPING_STATE"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "SHIPPING_ZIP"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "SHIPPING_ZIP"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "PHONE_NUMBER"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "PHONE_NUMBER"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "EMAIL"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "EMAIL"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "PREFERRED_PAYMENT"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "PREFERRED_PAYMENT"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "JOIN_DATE"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "JOIN_DATE"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        '
+        'CustomersBinding
+        '
+        Me.CustomersBinding.DataMember = "CUSTOMERS"
+        Me.CustomersBinding.DataSource = Me.Media_MinistryDataSet
+        Me.CustomersBinding.Sort = "FIRST_NAME"
+        '
+        'Media_MinistryDataSet
+        '
+        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'INVENTORYBindingSource
+        '
+        Me.INVENTORYBindingSource.DataMember = "INVENTORY"
+        Me.INVENTORYBindingSource.DataSource = Me.Media_MinistryDataSet
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "ORDER_NUMBER"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "ORDER_NUMBER"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "PHONE_NUMBER"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "PHONE_NUMBER"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "ITEM"
+        Me.DataGridViewTextBoxColumn16.HeaderText = "ITEM"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "QUANTITY"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "QUANTITY"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        '
+        'ORDERSUMMARYBindingSource
+        '
+        Me.ORDERSUMMARYBindingSource.DataMember = "ORDER_SUMMARY"
+        Me.ORDERSUMMARYBindingSource.DataSource = Me.Media_MinistryDataSet
         '
         'DataGridViewTextBoxColumn11
         '
@@ -1020,6 +990,40 @@ Partial Class frm_Main
         Me.DataGridViewTextBoxColumn13.DataPropertyName = "PRICE"
         Me.DataGridViewTextBoxColumn13.HeaderText = "Price per Unit"
         Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "NAME"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "NAME"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.DataPropertyName = "EMAIL"
+        Me.DataGridViewTextBoxColumn19.HeaderText = "EMAIL"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        '
+        'EMAILLISTENERSBindingSource
+        '
+        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
+        Me.EMAILLISTENERSBindingSource.DataSource = Me.Media_MinistryDataSet
+        Me.EMAILLISTENERSBindingSource.Sort = "NAME"
+        '
+        'CustomersTableAdapter
+        '
+        Me.CustomersTableAdapter.ClearBeforeFill = True
+        '
+        'INVENTORYTableAdapter
+        '
+        Me.INVENTORYTableAdapter.ClearBeforeFill = True
+        '
+        'ORDER_SUMMARYTableAdapter
+        '
+        Me.ORDER_SUMMARYTableAdapter.ClearBeforeFill = True
+        '
+        'EMAIL_LISTENERSTableAdapter
+        '
+        Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
         '
         'frm_Main
         '
@@ -1047,15 +1051,11 @@ Partial Class frm_Main
         Me.Customer_Manager.ResumeLayout(False)
         Me.Customer_Manager.PerformLayout()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CustomersBinding, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Order_Manager.ResumeLayout(False)
         Me.gbx_NewOrder.ResumeLayout(False)
         Me.gbx_NewOrder.PerformLayout()
         CType(Me.nud_Quantity, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ORDERSUMMARYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Inventory_Manager.ResumeLayout(False)
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Email_Ministry.ResumeLayout(False)
@@ -1065,8 +1065,12 @@ Partial Class frm_Main
         Me.gbx_Options.ResumeLayout(False)
         Me.gbx_Options.PerformLayout()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnl_Buttons.ResumeLayout(False)
+        CType(Me.CustomersBinding, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ORDERSUMMARYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1194,4 +1198,5 @@ Partial Class frm_Main
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
+    Friend WithEvents bw_RemoveTokens As System.ComponentModel.BackgroundWorker
 End Class

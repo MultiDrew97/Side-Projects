@@ -9,7 +9,5 @@ Namespace Utils
             Me.name = name
             Me.email = email
         End Sub
-
     End Structure
-
 End Namespace

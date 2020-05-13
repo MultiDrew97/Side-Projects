@@ -1,9 +1,12 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.ComponentModel
 Imports Media_Ministry.Utils
+#End Region
 
 Public Class frm_EmailListeners
+#Region "Globals"
     Public uploader As DriveUploader
     Public frm_main As frm_Main
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
@@ -78,59 +81,13 @@ Public Class frm_EmailListeners
     Structure LiveSizes
         Shared form As New Size(900, 800)
     End Structure
+#End Region
 
-    Private Sub btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
-        tss_Feedback.ForeColor = Color.Black
-        bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
-    End Sub
-
-    Private Sub ofd_SelectAudio_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_SelectFile.FileOk
-        txt_FileLocation.Text = ofd_SelectFile.SafeFileName
-    End Sub
-
+#Region "Form Subs"
     Private Sub frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         uploader = New DriveUploader()
         cbx_Folders.DataSource = uploader.getFolders()
     End Sub
-
-    Private Sub btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
-        ofd_SelectFile.ShowDialog()
-    End Sub
-
-    Private Sub bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
-        If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
-            btn_CancelUpload.Hide()
-            Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
-            Dim folderName As String = CType(CType(e.Argument, Object())(0), String)
-
-            fileID = uploader.upload(ofd_SelectFile.FileName, folderName, tss)
-            tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to or Send the last one to your listeners"
-        Else
-            tss_Feedback.Text = "You have to select a file first..."
-        End If
-    End Sub
-
-    Private Sub btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
-        Dim frm_Folder As frm_Folder = New frm_Folder(uploader)
-        frm_Folder.Show()
-
-        Do Until My.Settings.AdminInfoRecieved
-            wait(1)
-        Loop
-
-        My.Settings.AdminInfoRecieved = False
-        My.Settings.Save()
-    End Sub
-
-    Private Sub wait(ByVal seconds As Integer)
-        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
-
-        For i As Integer = 0 To seconds * 100
-            Threading.Thread.Sleep(10)
-            Application.DoEvents()
-        Next
-    End Sub
-
     Private Sub frm_EmailListeners_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Not frm_main.IsDisposed Then
             frm_main.Show()
@@ -141,46 +98,6 @@ Public Class frm_EmailListeners
         If frm_main.IsDisposed Then
             Close()
         End If
-    End Sub
-
-    Private Sub btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
-        tss_Feedback.ForeColor = Color.Black
-        tss_Feedback.Text = "Sending emails to listeners..."
-
-        Dim sending As Process = Nothing
-
-        'Select Case comm
-        'Case "-s"
-        If chk_Attachment.Checked Then
-            fileID = uploader.getFileID(cbx_FileList.SelectedItem.ToString, cbx_Folders.SelectedItem.ToString)
-            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2} {3}", comm, My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
-        Else
-            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, My.Settings.Username, My.Settings.Password))
-        End If
-        'Case "-r"
-        'sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, recipient, ofd_SelectFile.FileName))
-        'End Select
-
-        sending.WaitForExit()
-
-        If sending.ExitCode = 0 Then
-            txt_FileLocation.Text = ""
-            tss_Feedback.Text = "All emails sent successfully..."
-        Else
-            tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact your developer..."
-            MessageBox.Show("Exit Code: " & sending.ExitCode, "Error")
-            tss_Feedback.ForeColor = Color.Red
-        End If
-        'Else
-        'tss_Feedback.Text = "You have to upload something first..."
-        'Feedback.ForeColor = Color.Red
-        'End If
-    End Sub
-
-    Private Sub btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
-        Dim frm_ViewListeners As New frm_ViewListeners() With {.sendingForm = Me}
-        frm_ViewListeners.Show()
-        Me.Hide()
     End Sub
 
     Private Sub frm_EmailListeners_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
@@ -225,18 +142,113 @@ Public Class frm_EmailListeners
     '    txt_FileLocation.Location = Locations.FileDefault
     '    btn_Browse.Location = Locations.BrowseDefault
     'End Sub
+#End Region
 
-    Private Sub btn_UploadFile_Click(sender As Object, e As EventArgs) Handles btn_UploadFile.Click
-        lbl_FileLocation.Location = Locations.FileLabelUpload
-        txt_FileLocation.Show()
-        btn_Upload.Show()
-        btn_Browse.Show()
-        btn_CancelUpload.Show()
-        chk_Attachment.Hide()
-        cbx_FileList.Hide()
-        btn_UploadFile.Hide()
+#Region "Buttons"
+    Private Sub btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
+        tss_Feedback.ForeColor = Color.Black
+        bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
     End Sub
 
+    Private Sub btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
+        ofd_SelectFile.ShowDialog()
+    End Sub
+    Private Sub btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
+        Dim frm_Folder As frm_Folder = New frm_Folder(uploader)
+        frm_Folder.Show()
+
+        Do Until My.Settings.AdminInfoRecieved
+            wait(1)
+        Loop
+
+        My.Settings.AdminInfoRecieved = False
+        My.Settings.Save()
+    End Sub
+
+    Private Sub btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
+        tss_Feedback.ForeColor = Color.Black
+        tss_Feedback.Text = "Sending emails to listeners..."
+
+        Dim sending As Process = Nothing
+
+        'Select Case comm
+        'Case "-s"
+        If chk_Attachment.Checked Then
+            fileID = uploader.getFileID(cbx_FileList.SelectedItem.ToString, cbx_Folders.SelectedItem.ToString)
+            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2} {3}", comm, My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
+        Else
+            sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, My.Settings.Username, My.Settings.Password))
+        End If
+        'Case "-r"
+        'sending = Process.Start("cmd", String.Format("/C java -jar sender.jar {0} {1} {2}", comm, recipient, ofd_SelectFile.FileName))
+        'End Select
+
+        sending.WaitForExit()
+
+        If sending.ExitCode = 0 Then
+            txt_FileLocation.Text = ""
+            tss_Feedback.Text = "All emails sent successfully..."
+        Else
+            tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact your developer..."
+            MessageBox.Show("Exit Code: " & sending.ExitCode, "Error")
+            tss_Feedback.ForeColor = Color.Red
+        End If
+        'Else
+        'tss_Feedback.Text = "You have to upload something first..."
+        'Feedback.ForeColor = Color.Red
+        'End If
+    End Sub
+
+    Private Sub btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
+        Dim frm_ViewListeners As New frm_ViewListeners() With {.sendingForm = Me}
+        frm_ViewListeners.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub btn_CancelUpload_Click(sender As Object, e As EventArgs) Handles btn_CancelUpload.Click
+        btn_CancelUpload.Hide()
+        cbx_FileList.Show()
+        btn_UploadFile.Show()
+        chk_Attachment.Show()
+        lbl_FileLocation.Location = Locations.FileLabelDefault
+        txt_FileLocation.Hide()
+        btn_Browse.Hide()
+        btn_Upload.Hide()
+    End Sub
+#End Region
+
+#Region "File Dialog"
+    Private Sub ofd_SelectAudio_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_SelectFile.FileOk
+        txt_FileLocation.Text = ofd_SelectFile.SafeFileName
+    End Sub
+#End Region
+
+#Region "Backgroud Workers"
+    Private Sub bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
+        If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
+            btn_CancelUpload.Hide()
+            Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
+            Dim folderName As String = CType(CType(e.Argument, Object())(0), String)
+
+            fileID = uploader.upload(ofd_SelectFile.FileName, folderName, tss)
+            tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to or Send the last one to your listeners"
+        Else
+            tss_Feedback.Text = "You have to select a file first..."
+        End If
+    End Sub
+    Private Sub bw_Upload_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_Upload.RunWorkerCompleted
+        cbx_FileList.Show()
+        btn_UploadFile.Show()
+        chk_Attachment.Show()
+        lbl_FileLocation.Location = Locations.FileLabelDefault
+        loadFiles()
+        txt_FileLocation.Hide()
+        btn_Browse.Hide()
+        btn_Upload.Hide()
+    End Sub
+#End Region
+
+#Region "Radio Buttons"
     Private Sub rdo_Receipt_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Receipt.CheckedChanged
         If rdo_Receipt.Checked Then
             comm = "-r"
@@ -263,25 +275,18 @@ Public Class frm_EmailListeners
             ofd_SelectFile.Filter = audioFilter
         End If
     End Sub
+#End Region
 
+#Region "Combo Boxes"
     Private Sub cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Folders.SelectedIndexChanged
         If cbx_FileList.Visible Then
             cbx_FileList.DataSource = Nothing
             loadFiles()
         End If
     End Sub
+#End Region
 
-    Private Sub bw_Upload_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_Upload.RunWorkerCompleted
-        cbx_FileList.Show()
-        btn_UploadFile.Show()
-        chk_Attachment.Show()
-        lbl_FileLocation.Location = Locations.FileLabelDefault
-        loadFiles()
-        txt_FileLocation.Hide()
-        btn_Browse.Hide()
-        btn_Upload.Hide()
-    End Sub
-
+#Region "Utils"
     Private Sub loadFiles()
         cbx_FileList.DataSource = uploader.loadFiles(cbx_Folders.SelectedItem.ToString()).ToArray()
     End Sub
@@ -289,21 +294,21 @@ Public Class frm_EmailListeners
     Private Sub loadFolders()
         cbx_Folders.DataSource = uploader.getFolders()
     End Sub
+    Private Sub wait(ByVal seconds As Integer)
+        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
 
+        For i As Integer = 0 To seconds * 100
+            Threading.Thread.Sleep(10)
+            Application.DoEvents()
+        Next
+    End Sub
+#End Region
+
+#Region "Check Boxes"
     'Private Sub chk_Attachment_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Attachment.CheckedChanged
     '    If chk_Attachment.Checked Then
     '        loadFolders()
     '    End If
     'End Sub
-
-    Private Sub btn_CancelUpload_Click(sender As Object, e As EventArgs) Handles btn_CancelUpload.Click
-        btn_CancelUpload.Hide()
-        cbx_FileList.Show()
-        btn_UploadFile.Show()
-        chk_Attachment.Show()
-        lbl_FileLocation.Location = Locations.FileLabelDefault
-        txt_FileLocation.Hide()
-        btn_Browse.Hide()
-        btn_Upload.Hide()
-    End Sub
+#End Region
 End Class
