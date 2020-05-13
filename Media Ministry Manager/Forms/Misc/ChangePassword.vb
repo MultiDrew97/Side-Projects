@@ -1,12 +1,28 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports Media_Ministry.Utils
-Public Class frm_ChangePassword
-    Dim db As Database
-    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnection)
+#End Region
 
+Public Class frm_ChangePassword
+
+#Region "Globals"
+    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnection)
+#End Region
+
+#Region "Form Subs"
+    Private Sub frm_ChangePassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        _connection.InitialCatalog = "master"
+    End Sub
+
+    Private Sub frm_ChangePassword_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        frm_Login.Show()
+    End Sub
+#End Region
+
+#Region "Buttons"
     Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
         Try
             If passwordCheck() Then
@@ -25,6 +41,7 @@ Public Class frm_ChangePassword
                 Using db = New Database(_connection)
                     db.ChangePassword(txt_Username.Text, txt_Password.Text)
                 End Using
+
                 Console.WriteLine("Successfully Changed Password")
                 bw_ResetAdminInfo.RunWorkerAsync()
             Else
@@ -40,21 +57,15 @@ Public Class frm_ChangePassword
         End Try
     End Sub
 
-    Private Sub frm_ChangePassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        bw_LoadDatabase.RunWorkerAsync()
-    End Sub
-
-    Private Sub bw_LoadDatabase_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_LoadDatabase.DoWork
-        _connection.InitialCatalog = "master"
-    End Sub
-
-    Private Function passwordCheck() As Boolean
-        Return txt_Password.Text.Equals(txt_ConfirmPassword.Text)
-    End Function
-
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
     End Sub
+#End Region
+
+#Region "Utils"
+    Private Function passwordCheck() As Boolean
+        Return txt_Password.Text.Equals(txt_ConfirmPassword.Text)
+    End Function
 
     Private Sub wait(ByVal seconds As Integer)
         'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
@@ -64,11 +75,9 @@ Public Class frm_ChangePassword
             Application.DoEvents()
         Next
     End Sub
+#End Region
 
-    Private Sub frm_ChangePassword_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        frm_Login.Show()
-    End Sub
-
+#Region "Background Workers"
     Private Sub bw_ResetAdminInfo_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_ResetAdminInfo.DoWork
         My.Settings.AdminUser = ""
         My.Settings.AdminPass = ""
@@ -79,5 +88,5 @@ Public Class frm_ChangePassword
     Private Sub bw_ResetAdminInfo_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_ResetAdminInfo.RunWorkerCompleted
         Me.Close()
     End Sub
-
+#End Region
 End Class

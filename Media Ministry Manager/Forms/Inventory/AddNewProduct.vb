@@ -1,11 +1,17 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.Text.RegularExpressions.Regex
 Imports Media_Ministry.Utils
+#End Region
 
 Public Class frm_AddNewProduct
-    Private sendingForm As Form
 
+#Region "Globals"
+    Private sendingForm As Form
+#End Region
+
+#Region "Form Subs"
     Public Sub New(ByRef sendingForm As Form)
 
         ' This call is required by the designer.
@@ -33,7 +39,9 @@ Public Class frm_AddNewProduct
         nud_Stock.Value = 0
         txt_Price.Text = "$0.00"
     End Sub
+#End Region
 
+#Region "Buttons"
     Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
         Dim name As String
         Dim stock As Integer
@@ -61,10 +69,14 @@ Public Class frm_AddNewProduct
         Else
             MessageBox.Show("You have to enter a price for the product before adding it...", "Price is Empty")
         End If
-
-
     End Sub
 
+    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Text Boxes"
     Private Sub txt_ProductName_GotFocus(sender As Object, e As EventArgs) Handles txt_ProductName.GotFocus
         tss_AddProduct.ForeColor = SystemColors.WindowText
         tss_AddProduct.Text = "Enter the products information."
@@ -99,10 +111,6 @@ Public Class frm_AddNewProduct
         End If
     End Sub
 
-    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
-        Me.Close()
-    End Sub
-
     Private Sub txt_ProductName_TextChanged(sender As Object, e As EventArgs) Handles txt_ProductName.TextChanged
         If (Not txt_ProductName.Text.Equals("Product Name")) Then
             txt_ProductName.ForeColor = SystemColors.WindowText
@@ -111,14 +119,17 @@ Public Class frm_AddNewProduct
         End If
     End Sub
 
-    Private Sub nud_Stock_GotFocus(sender As Object, e As EventArgs) Handles nud_Stock.GotFocus
-        nud_Stock.Select()
-        nud_Stock.Select(0, nud_Stock.Text.Length)
-    End Sub
-
     'Private Sub txt_Price_TextChanged(sender As Object, e As EventArgs) Handles txt_Price.TextChanged
     '    If (Regex.IsMatch(txt_Price.Text, "\d{1,}.\d{0,2}")) Then
     '        txt_Price.Text = Format(txt_Price.Text.Substring(0, txt_Price.Text.Length - 1), "Currency")
     '    End If
     'End Sub
+#End Region
+
+#Region "Numeric Up-Downs"
+    Private Sub nud_Stock_GotFocus(sender As Object, e As EventArgs) Handles nud_Stock.GotFocus
+        nud_Stock.Select()
+        nud_Stock.Select(0, nud_Stock.Text.Length)
+    End Sub
+#End Region
 End Class

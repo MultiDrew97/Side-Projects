@@ -1,12 +1,28 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports Media_Ministry.Utils
-Public Class frm_CreateUser
-    Dim db As Database
-    ReadOnly _conn As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnection)
+#End Region
 
+Public Class frm_CreateUser
+
+#Region "Globals"
+    ReadOnly _conn As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnection)
+#End Region
+
+#Region "Form Subs"
+    Private Sub frm_CreateUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        _conn.InitialCatalog = "master"
+    End Sub
+
+    Private Sub frm_CreateUser_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        frm_Login.Show()
+    End Sub
+#End Region
+
+#Region "Buttons"
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
     End Sub
@@ -45,25 +61,25 @@ Public Class frm_CreateUser
             Console.WriteLine("Passwords didn't match: " & passwordException.Message)
         End Try
     End Sub
+#End Region
 
-    Private Sub frm_CreateUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _conn.InitialCatalog = "master"
-    End Sub
-
-    Private Sub bw_LoadDatabase_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_ClearAdminInfo.DoWork
+#Region "Background Workers"
+    Private Sub bw_ClearAdminInfo_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_ClearAdminInfo.DoWork
         My.Settings.AdminUser = ""
         My.Settings.AdminPass = ""
         My.Settings.AdminInfoRecieved = False
         My.Settings.Save()
     End Sub
 
+    Private Sub bw_ClearAdminInfo_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_ClearAdminInfo.RunWorkerCompleted
+        Me.Close()
+    End Sub
+#End Region
+
+#Region "Utils"
     Private Function passwordCheck() As Boolean
         Return txt_Password.Text.Equals(txt_ConfirmPassword.Text)
     End Function
-
-    Private Sub frm_CreateUser_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        frm_Login.Show()
-    End Sub
 
     Private Sub wait(ByVal seconds As Integer)
         'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
@@ -73,9 +89,5 @@ Public Class frm_CreateUser
             Application.DoEvents()
         Next
     End Sub
-
-    Private Sub bw_LoadDatabase_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_ClearAdminInfo.RunWorkerCompleted
-        Me.Close()
-    End Sub
-
+#End Region
 End Class

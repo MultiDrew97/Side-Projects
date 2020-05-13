@@ -1,14 +1,16 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.ComponentModel
 Imports System.IO
 Imports Media_Ministry.Utils
 Imports System.Text.RegularExpressions.Regex
 Imports System.Data.SqlClient
 Imports Microsoft.VisualBasic.FileIO
+#End Region
 
 Public Class frm_Main
-#Region "Variables"
+#Region "Globals"
     ReadOnly db As Database
     ReadOnly uploader As DriveUploader
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
@@ -33,7 +35,9 @@ Public Class frm_Main
             frm_Login.Close()
         Else
             frm_Login.Show()
-            bw_RemoveTokens.RunWorkerAsync()
+            If Not bw_RemoveTokens.IsBusy Then
+                bw_RemoveTokens.RunWorkerAsync()
+            End If
         End If
     End Sub
     Private Sub frm_Main_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -251,12 +255,14 @@ Public Class frm_Main
     End Sub
 
     Private Sub bw_RemoveTokens_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_RemoveTokens.DoWork
-        If File.Exists(".\Drive Token") Then
-            File.Delete(".\Drive Token")
+        If File.Exists(".\Drive Token\Google.Apis.Auth.OAuth2.Responses.TokenResponse-user") Then
+            File.Delete(".\Drive Token\Google.Apis.Auth.OAuth2.Responses.TokenResponse-user")
+            Console.WriteLine("Found Drive Token")
         End If
 
-        If File.Exists(".\Gmail Token") Then
-            File.Delete(".\Gmail Token")
+        If File.Exists(".\Gmail Token\StoredCredential") Then
+            File.Delete(".\Gmail Token\StoredCredential")
+            'Console.WriteLine("Found Gmail Token")
         End If
     End Sub
 

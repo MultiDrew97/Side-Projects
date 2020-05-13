@@ -3,16 +3,22 @@
 'needed for database work
 'got the database set up information from here
 'https://support.microsoft.com/en-us/help/308656/how-to-open-a-sql-server-database-by-using-the-sql-server-net-data-pro
+#Region "Imports"
 Imports System.Data.SqlClient
+#End Region
+
 Namespace Utils
     Public Class Database : Implements IDisposable
+#Region "Globals"
         Private myConn As SqlConnection
         Private myCmd As SqlCommand
         Private myReader As SqlDataReader
         Private myAdapter As SqlDataAdapter
         Private mySet As DataSet
         Private results As String
+#End Region
 
+#Region "Constructors/Disposer"
         Public Sub New(connectionString As SqlConnectionStringBuilder)
             'Connect to database using Connection String Builder
             Me.New(New SqlConnection(connectionString.ConnectionString))
@@ -40,7 +46,9 @@ Namespace Utils
             myConn.Close()
             myConn.Dispose()
         End Sub
+#End Region
 
+#Region "User Operations"
         Public Sub CreateUser(username As String, password As String)
             myCmd.CommandText = String.Format("CREATE USER {0} WITH PASSWORD = '{1}'", username, password)
 
@@ -58,37 +66,9 @@ Namespace Utils
 
             myCmd.ExecuteNonQuery()
         End Sub
+#End Region
 
-        Public Sub AddNewCustomer(
-                       fName As String, lName As String,
-                       addrStreet As String, addrCity As String, addrState As String, addrZip As String,
-                       phoneNumber As String, email As String, paymentPreference As String)
-
-            'used string.format due to enormous query strings and concatination, allowing for easy expansion
-            'SELECT CONVERT(VARCHAR(10), getdate(), 101) is a query found online that gets just the date of getdate().
-            'source = https://tableplus.io/blog/2018/09/ms-sql-server-how-to-get-date-only-from-datetime-value.html
-
-            'Style	How it’s displayed
-            '101    mm/dd/yyyy
-            '102    yyyy.mm.dd
-            '103    dd/mm/yyyy
-            '104    dd.mm.yyyy
-            '105    dd-mm-yyyy
-            '110    mm-dd-yyyy
-            '111    yyyy/mm/dd
-            '106    dd mon yyyy
-            '107    Mon dd, yyyy
-
-            'date string that holds the command to get the date for when the person joined
-            Dim dateString = "SELECT CONVERT(VARCHAR(10), GETDATE(), 111)"
-
-            myCmd.CommandText = String.Format("INSERT INTO CUSTOMERS
-                                                VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', ({9}))",
-                                                fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference, dateString)
-
-            myCmd.ExecuteNonQuery()
-        End Sub
-
+#Region "Listeners"
         Public Sub AddListener(name As String, email As String)
             myCmd.CommandText = String.Format("insert into email_listeners values ('{0}', '{1}')", name, email)
 
@@ -117,6 +97,74 @@ Namespace Utils
 
         Public Sub updateListener(listener As Listener)
             updateListener(listener.name, listener.email)
+        End Sub
+
+        Public Function RetrieveListeners() As List(Of Listener)
+            Dim listeners As List(Of Listener) = New List(Of Listener)
+
+            myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
+
+            myReader = myCmd.ExecuteReader()
+
+            Do While myReader.Read()
+                listeners.Add(New Listener(myReader.GetString(0), myReader.GetString(1)))
+            Loop
+
+            Return listeners
+        End Function
+
+        Public Function searchListeners(advanced As Boolean, column As String, criteria As String()) As DataTable
+            If advanced Then
+                myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE NAME LIKE @name and EMAIL LIKE @email"
+                myCmd.Parameters.AddWithValue("@name", criteria(0))
+                myCmd.Parameters.AddWithValue("@email", criteria(1))
+            Else
+                Select Case column
+                    Case "NAME"
+                        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE NAME LIKE @criteria"
+                    Case "EMAIL"
+                        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE EMAIL LIKE @criteria"
+                End Select
+
+                myCmd.Parameters.AddWithValue("@criteria", criteria(0))
+            End If
+
+            Dim dataset As New DataTable("EMAIL_LISTENERS")
+            myAdapter = New SqlDataAdapter(myCmd)
+            myAdapter.Fill(dataset)
+            Return dataset
+        End Function
+#End Region
+
+#Region "Customers"
+        Public Sub AddNewCustomer(
+                       fName As String, lName As String,
+                       addrStreet As String, addrCity As String, addrState As String, addrZip As String,
+                       phoneNumber As String, email As String, paymentPreference As String)
+
+            'used string.format due to enormous query strings and concatination, allowing for easy expansion
+            'SELECT CONVERT(VARCHAR(10), getdate(), 101) is a query found online that gets just the date of getdate().
+            'source = https://tableplus.io/blog/2018/09/ms-sql-server-how-to-get-date-only-from-datetime-value.html
+
+            'Style	How it’s displayed
+            '101    mm/dd/yyyy
+            '102    yyyy.mm.dd
+            '103    dd/mm/yyyy
+            '104    dd.mm.yyyy
+            '105    dd-mm-yyyy
+            '110    mm-dd-yyyy
+            '111    yyyy/mm/dd
+            '106    dd mon yyyy
+            '107    Mon dd, yyyy
+
+            'date string that holds the command to get the date for when the person joined
+            Dim dateString = "SELECT CONVERT(VARCHAR(10), GETDATE(), 111)"
+
+            myCmd.CommandText = String.Format("INSERT INTO CUSTOMERS
+                                                VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', ({9}))",
+                                                fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference, dateString)
+
+            myCmd.ExecuteNonQuery()
         End Sub
 
         Public Sub UpdateCustomerInfo(addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String, payment As String, phoneNumber As String)
@@ -161,6 +209,26 @@ Namespace Utils
             'Return results
         End Sub
 
+        Public Function GetCustomerInfo(phoneNumber As String) As String
+            results = ""
+            myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phoneNumber)
+            myReader = myCmd.ExecuteReader()
+
+            Do While myReader.Read()
+                results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) &
+                                myReader.GetString(2) & vbTab & myReader.GetString(3) &
+                                myReader.GetString(4) & vbTab & myReader.GetString(5) &
+                                myReader.GetString(6) & vbTab & myReader.GetString(7) &
+                                myReader.GetString(8) & vbTab & myReader.GetString(9) & vbLf
+            Loop
+
+            myReader.Close()
+
+            Return results
+        End Function
+#End Region
+
+#Region "Products/Inventory"
         Public Sub AddNewProduct(itemName As String, stock As Integer, price As Decimal)
             myCmd.CommandText = String.Format("INSERT INTO INVENTORY VALUES ({0}, '{1}', {2}, {3})", Count("ITEM_INDEX", "INVENTORY"), itemName, stock, price)
 
@@ -179,7 +247,9 @@ Namespace Utils
                                            itemIndex, vbLf)
             myCmd.ExecuteNonQuery()
         End Sub
+#End Region
 
+#Region "Orders"
         Public Function GetOrders() As String
             results = ""
             'create view to use with
@@ -203,23 +273,6 @@ Namespace Utils
             Return results
         End Function
 
-        Public Function GetCustomerInfo(phoneNumber As String) As String
-            results = ""
-            myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phoneNumber)
-            myReader = myCmd.ExecuteReader()
-
-            Do While myReader.Read()
-                results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) &
-                                myReader.GetString(2) & vbTab & myReader.GetString(3) &
-                                myReader.GetString(4) & vbTab & myReader.GetString(5) &
-                                myReader.GetString(6) & vbTab & myReader.GetString(7) &
-                                myReader.GetString(8) & vbTab & myReader.GetString(9) & vbLf
-            Loop
-
-            myReader.Close()
-
-            Return results
-        End Function
 
         Public Function GetOrders(phoneNumber As String) As String
             results = ""
@@ -342,6 +395,19 @@ Namespace Utils
             Return total
         End Function
 
+        Public Sub FulfilOrder(orderNumber As Integer, phoneNumber As String, itemIndex As Integer, quantity As Integer)
+            Dim orderIndex = FindOrderIndex(orderNumber)
+            myCmd.CommandText = String.Format("UPDATE INVENTORY SET IN_STOCK = IN_STOCK - {5} WHERE ITEM_INDEX = {4}{2}
+                                           INSERT INTO COMPLETED_ORDERS VALUES ({0}, {1}){2}
+                                           INSERT INTO COMPLETED_ORDER_COUNTS VALUES ({3}, {0}, {4}, {5}){2}
+                                           DELETE ORDER_COUNTS WHERE ORDER_NUMBER = {0}{2}
+                                           DELETE ORDERS WHERE ORDER_NUMBER = {0}",
+                                          orderNumber, phoneNumber, vbLf, orderIndex, itemIndex, quantity)
+            myCmd.ExecuteNonQuery()
+        End Sub
+#End Region
+
+#Region "Utils"
         Public Function Max(column As String, table As String) As Integer
             Dim maxValue As Integer
 
@@ -374,53 +440,6 @@ Namespace Utils
             End If
 
             Return maxNum
-        End Function
-
-        Public Sub FulfilOrder(orderNumber As Integer, phoneNumber As String, itemIndex As Integer, quantity As Integer)
-            Dim orderIndex = FindOrderIndex(orderNumber)
-            myCmd.CommandText = String.Format("UPDATE INVENTORY SET IN_STOCK = IN_STOCK - {5} WHERE ITEM_INDEX = {4}{2}
-                                           INSERT INTO COMPLETED_ORDERS VALUES ({0}, {1}){2}
-                                           INSERT INTO COMPLETED_ORDER_COUNTS VALUES ({3}, {0}, {4}, {5}){2}
-                                           DELETE ORDER_COUNTS WHERE ORDER_NUMBER = {0}{2}
-                                           DELETE ORDERS WHERE ORDER_NUMBER = {0}",
-                                          orderNumber, phoneNumber, vbLf, orderIndex, itemIndex, quantity)
-            myCmd.ExecuteNonQuery()
-        End Sub
-
-        Public Function RetrieveListeners() As List(Of Listener)
-            Dim listeners As List(Of Listener) = New List(Of Listener)
-
-            myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
-
-            myReader = myCmd.ExecuteReader()
-
-            Do While myReader.Read()
-                listeners.Add(New Listener(myReader.GetString(0), myReader.GetString(1)))
-            Loop
-
-            Return listeners
-        End Function
-
-        Public Function searchListeners(advanced As Boolean, column As String, criteria As String()) As DataTable
-            If advanced Then
-                myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE NAME LIKE @name and EMAIL LIKE @email"
-                myCmd.Parameters.AddWithValue("@name", criteria(0))
-                myCmd.Parameters.AddWithValue("@email", criteria(1))
-            Else
-                Select Case column
-                    Case "NAME"
-                        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE NAME LIKE @criteria"
-                    Case "EMAIL"
-                        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE EMAIL LIKE @criteria"
-                End Select
-
-                myCmd.Parameters.AddWithValue("@criteria", criteria(0))
-            End If
-
-            Dim dataset As New DataTable("EMAIL_LISTENERS")
-            myAdapter = New SqlDataAdapter(myCmd)
-            myAdapter.Fill(dataset)
-            Return dataset
         End Function
 
         'Public Function UniqueRecord(tableName As String, column As String, value As Integer) As Boolean
@@ -458,5 +477,6 @@ Namespace Utils
 
         '    Return results.Equals("")
         'End Function
+#End Region
     End Class
 End Namespace
