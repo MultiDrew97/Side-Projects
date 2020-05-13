@@ -6,7 +6,7 @@ Imports Media_Ministry.Utils
 #End Region
 
 Public Class frm_EmailListeners
-#Region "Variables"
+#Region "Globals"
     Public uploader As DriveUploader
     Public frm_main As frm_Main
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"

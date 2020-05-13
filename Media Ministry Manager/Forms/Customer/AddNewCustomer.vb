@@ -1,13 +1,20 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.Text.RegularExpressions.Regex
 Imports Media_Ministry.Utils
+#End Region
+
 Public Class frm_AddNewCustomer
+
+#Region "Globals"
     Private db As Database
     Private sendingForm As Form
     Private phonePattern As String = "(\d{3})-\d{3}-\d{4}"
     'Private phoneParenPattern As String = "(\d{3})-\d{3}-\d{4}"
+#End Region
 
+#Region "Form Subs"
     Public Sub New(parentForm As Form)
         ' This call is required by the designer.
         InitializeComponent()
@@ -20,6 +27,37 @@ Public Class frm_AddNewCustomer
         reset()
     End Sub
 
+    Private Sub reset()
+        txt_FirstName.Text = "First Name"
+        txt_LastName.Text = "Last Name"
+        txt_Street.Text = "Street"
+        txt_City.Text = "City"
+        cbx_State.Text = ""
+        txt_Zip.Text = "Zip"
+        txt_PhoneNumber.Text = "Phone Number"
+        txt_Email.Text = "E-Mail"
+        cbx_PaymentType.Text = "Select One..."
+        txt_FirstName.ForeColor = SystemColors.ControlLight
+        txt_LastName.ForeColor = SystemColors.ControlLight
+        txt_Street.ForeColor = SystemColors.ControlLight
+        txt_City.ForeColor = SystemColors.ControlLight
+        txt_Zip.ForeColor = SystemColors.ControlLight
+        txt_PhoneNumber.ForeColor = SystemColors.ControlLight
+        txt_Email.ForeColor = SystemColors.ControlLight
+    End Sub
+
+    Private Sub frm_AddNewCustomer_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+
+        Try
+            CType(sendingForm, frm_DisplayCustomers).refresh()
+        Catch
+        Finally
+            sendingForm.Show()
+        End Try
+    End Sub
+#End Region
+
+#Region "Button"
     Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
         Dim fName, lName, addrStreet, addrCity, addrState, addrZip, phone, paymentPreference, email As String
 
@@ -62,45 +100,9 @@ Public Class frm_AddNewCustomer
             End Try
         End If
     End Sub
+#End Region
 
-    Private Sub addNewCustomer(fName As String, lName As String,
-                         addrStreet As String, addrCity As String, addrState As String, addrZip As String,
-                         phoneNumber As String, email As String, paymentPreference As String)
-
-        Using db = New Database(My.Settings.Username, My.Settings.Password)
-            db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference)
-        End Using
-    End Sub
-
-    Private Sub reset()
-        txt_FirstName.Text = "First Name"
-        txt_LastName.Text = "Last Name"
-        txt_Street.Text = "Street"
-        txt_City.Text = "City"
-        cbx_State.Text = ""
-        txt_Zip.Text = "Zip"
-        txt_PhoneNumber.Text = "Phone Number"
-        txt_Email.Text = "E-Mail"
-        cbx_PaymentType.Text = "Select One..."
-        txt_FirstName.ForeColor = SystemColors.ControlLight
-        txt_LastName.ForeColor = SystemColors.ControlLight
-        txt_Street.ForeColor = SystemColors.ControlLight
-        txt_City.ForeColor = SystemColors.ControlLight
-        txt_Zip.ForeColor = SystemColors.ControlLight
-        txt_PhoneNumber.ForeColor = SystemColors.ControlLight
-        txt_Email.ForeColor = SystemColors.ControlLight
-    End Sub
-
-    Private Sub frm_AddNewCustomer_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-
-        Try
-            CType(sendingForm, frm_DisplayCustomers).refresh()
-        Catch
-        Finally
-            sendingForm.Show()
-        End Try
-    End Sub
-
+#Region "Text Boxes"
     Private Sub txt_FirstName_GotFocus(sender As Object, e As EventArgs) Handles txt_FirstName.GotFocus
         If (txt_FirstName.Text.Equals("First Name")) Then
             ep_EmptyFields.Clear()
@@ -205,25 +207,6 @@ Public Class frm_AddNewCustomer
         End If
     End Sub
 
-    Private Function validText() As Boolean
-        If ((txt_FirstName.Text.Equals("First Name") Or txt_LastName.Text.Equals("Last Name") Or
-            txt_PhoneNumber.Text.Equals("Phone Number")) And IsMatch(txt_PhoneNumber.Text, phonePattern)) Then
-            tss_AddCustomer.ForeColor = Color.Red
-            tss_AddCustomer.Text = "Please enter the required information for the person"
-            Return False
-        Else
-            Return True
-        End If
-        '(IsMatch(txt_PhoneNumber.Text, phonePattern) Or IsMatch(txt_PhoneNumber.Text, phoneParenPattern))
-    End Function
-
-    'Private Function isUniquePerson(phoneNumber As String, fName As String, lName As String) As Boolean
-    '    Dim table As String
-    '    table = db.GetOrders(phoneNumber, fName, lName)
-    '    Console.WriteLine(Not table.Equals(""))
-    '    Return table.Equals("")
-    'End Function
-
     Private Sub txt_FirstName_TextChanged(sender As Object, e As EventArgs) Handles txt_FirstName.TextChanged
         If (Not txt_FirstName.Text.Equals("First Name")) Then
             txt_FirstName.Text = txt_FirstName.Text.ToUpper
@@ -263,5 +246,36 @@ Public Class frm_AddNewCustomer
             txt_Email.SelectionStart = txt_Email.Text.Length + 1
         End If
     End Sub
+#End Region
+
+#Region "Utils"
+    Private Function validText() As Boolean
+        If ((txt_FirstName.Text.Equals("First Name") Or txt_LastName.Text.Equals("Last Name") Or
+            txt_PhoneNumber.Text.Equals("Phone Number")) And IsMatch(txt_PhoneNumber.Text, phonePattern)) Then
+            tss_AddCustomer.ForeColor = Color.Red
+            tss_AddCustomer.Text = "Please enter the required information for the person"
+            Return False
+        Else
+            Return True
+        End If
+        '(IsMatch(txt_PhoneNumber.Text, phonePattern) Or IsMatch(txt_PhoneNumber.Text, phoneParenPattern))
+    End Function
+
+    Private Sub addNewCustomer(fName As String, lName As String,
+                         addrStreet As String, addrCity As String, addrState As String, addrZip As String,
+                         phoneNumber As String, email As String, paymentPreference As String)
+
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference)
+        End Using
+    End Sub
+#End Region
+
+    'Private Function isUniquePerson(phoneNumber As String, fName As String, lName As String) As Boolean
+    '    Dim table As String
+    '    table = db.GetOrders(phoneNumber, fName, lName)
+    '    Console.WriteLine(Not table.Equals(""))
+    '    Return table.Equals("")
+    'End Function
 
 End Class

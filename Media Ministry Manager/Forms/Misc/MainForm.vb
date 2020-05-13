@@ -10,7 +10,7 @@ Imports Microsoft.VisualBasic.FileIO
 #End Region
 
 Public Class frm_Main
-#Region "Variables"
+#Region "Globals"
     ReadOnly db As Database
     ReadOnly uploader As DriveUploader
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"

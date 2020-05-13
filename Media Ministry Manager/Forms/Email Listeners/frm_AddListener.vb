@@ -1,19 +1,26 @@
-﻿Imports System.ComponentModel
+﻿Option Strict On
+
+#Region "Imports"
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text.RegularExpressions.Regex
 Imports Microsoft.VisualBasic.FileIO
 Imports Media_Ministry.Utils
+#End Region
 
 Public Class frm_AddListener
-    Public frm_Emails As frm_ViewListeners
 
+#Region "Globals"
+    Public frm_Emails As frm_ViewListeners
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails
     ReadOnly emailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
     Private newListeners As New List(Of Listener)
     Dim temp As Integer()
+#End Region
 
+#Region "Utils"
     Private Sub reset()
         rdo_Single.Checked = True
         lbl_Name.Visible = True
@@ -42,6 +49,25 @@ Public Class frm_AddListener
         txt_Name.Focus()
     End Sub
 
+    Private Sub ofd_ListenerList_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ofd_ListenerList.FileOk
+        txt_FilePath.Text = ofd_ListenerList.SafeFileName
+    End Sub
+
+    Private Sub wait(ByVal seconds As Integer)
+        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
+
+        For i As Integer = 0 To seconds * 100
+            Threading.Thread.Sleep(10)
+            Application.DoEvents()
+        Next
+    End Sub
+
+    Private Function CorrectExtension(filename As String) As Boolean
+        Return filename.Split({"."c})(1).Equals("csv")
+    End Function
+#End Region
+
+#Region "Radio Buttons"
     Private Sub rdo_Single_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Single.CheckedChanged
         If rdo_Single.Checked Then
             rdo_Multiple.Checked = False
@@ -74,7 +100,9 @@ Public Class frm_AddListener
             Me.AllowDrop = True
         End If
     End Sub
+#End Region
 
+#Region "Buttons"
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
         Try
@@ -172,20 +200,9 @@ Public Class frm_AddListener
     Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
         ofd_ListenerList.ShowDialog()
     End Sub
+#End Region
 
-    Private Sub ofd_ListenerList_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ofd_ListenerList.FileOk
-        txt_FilePath.Text = ofd_ListenerList.SafeFileName
-    End Sub
-
-    Private Sub wait(ByVal seconds As Integer)
-        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
-
-        For i As Integer = 0 To seconds * 100
-            Threading.Thread.Sleep(10)
-            Application.DoEvents()
-        Next
-    End Sub
-
+#Region "Drag and Drop"
     Private Sub frm_AddListener_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
@@ -205,11 +222,9 @@ Public Class frm_AddListener
             End If
         End If
     End Sub
+#End Region
 
-    Private Function CorrectExtension(filename As String) As Boolean
-        Return filename.Split({"."c})(1).Equals("csv")
-    End Function
-
+#Region "Send Emails"
     Private Sub sendEmails(listeners As List(Of Listener))
         'send the emails to the new listeners
         Dim sending As Process
@@ -235,4 +250,5 @@ Public Class frm_AddListener
             Return
         End If
     End Sub
+#End Region
 End Class

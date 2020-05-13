@@ -6,7 +6,7 @@ Imports Media_Ministry.Utils
 #End Region
 
 Public Class frm_ViewListeners
-#Region "Variables"
+#Region "Globals"
     Public sendingForm As Form
     Dim db As Database
     ReadOnly totalListeners As String = "Total Listeners: {0}"

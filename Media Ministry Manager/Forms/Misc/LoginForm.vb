@@ -7,7 +7,7 @@ Imports Media_Ministry.Utils
 #End Region
 
 Public Class frm_Login
-#Region "Variables"
+#Region "Globals"
     ReadOnly _dbConnection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.Default.masterConnection)
 #End Region
 

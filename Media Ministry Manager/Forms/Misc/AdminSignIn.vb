@@ -1,9 +1,16 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.Data.SqlClient
 Imports Media_Ministry.Utils
-Public Class AdminSignIn
+#End Region
 
+Public Class AdminSignIn
+#Region "Globals"
+
+#End Region
+
+#Region "Buttons"
     Private Sub btn_ShowPassword_Click(sender As Object, e As EventArgs) Handles btn_ShowPassword.Click
         If txt_Password.UseSystemPasswordChar Then
             txt_Password.UseSystemPasswordChar = False
@@ -38,7 +45,9 @@ Public Class AdminSignIn
             Console.WriteLine(ex.Message)
         End Try
     End Sub
+#End Region
 
+#Region "Utils"
     Private Function checkCreds(username As String, password As String) As Boolean
         Try
             Using db = New Database(username, password)
@@ -50,5 +59,5 @@ Public Class AdminSignIn
             Return False
         End Try
     End Function
-
+#End Region
 End Class

@@ -1,10 +1,15 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports Media_Ministry.Utils
+#End Region
 
 Public Class frm_Folder
+#Region "Globals"
     Dim uploader As DriveUploader
+#End Region
 
+#Region "Form Subs"
     Public Sub New(uploader As DriveUploader)
 
         ' This call is required by the designer.
@@ -13,7 +18,9 @@ Public Class frm_Folder
         ' Add any initialization after the InitializeComponent() call.
         Me.uploader = uploader
     End Sub
+#End Region
 
+#Region "Buttons"
     Private Sub btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
         Dim temp As String = uploader.createFolder(txt_FolderName.Text)
 
@@ -30,5 +37,5 @@ Public Class frm_Folder
         My.Settings.AdminInfoRecieved = True
         Me.Close()
     End Sub
-
+#End Region
 End Class

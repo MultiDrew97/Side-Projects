@@ -1,9 +1,15 @@
 ﻿Option Strict On
-Imports Media_Ministry.Utils
-Public Class frm_PlaceOrder
-    Private db As Database
-    Private mainForm As frm_Main
 
+#Region "Imports"
+Imports Media_Ministry.Utils
+#End Region
+
+Public Class frm_PlaceOrder
+#Region "Globals"
+    Private mainForm As frm_Main
+#End Region
+
+#Region "Form Subs"
     Public Sub New(ByRef mainForm As frm_Main)
         ' This call is required by the designer.
         InitializeComponent()
@@ -22,7 +28,9 @@ Public Class frm_PlaceOrder
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         CUSTOMERSTableAdapter.Fill(Media_MinistryDataSet.CUSTOMERS)
     End Sub
+#End Region
 
+#Region "Buttons"
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
     End Sub
@@ -39,7 +47,9 @@ Public Class frm_PlaceOrder
             tss_AddOrder.ForeColor = Color.Red
         End Try
     End Sub
+#End Region
 
+#Region "Combo Boxes"
     Private Sub cbx_FirstName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_FirstName.SelectedIndexChanged
         If Not cbx_FirstName.SelectedIndex.Equals(cbx_PhoneNumber.SelectedIndex) Then
             cbx_PhoneNumber.SelectedIndex = cbx_FirstName.SelectedIndex
@@ -51,7 +61,9 @@ Public Class frm_PlaceOrder
             cbx_FirstName.SelectedIndex = cbx_PhoneNumber.SelectedIndex
         End If
     End Sub
+#End Region
 
+#Region "Utils"
     'Private Sub wait(ByVal seconds As Integer)
     '    'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
 
@@ -60,4 +72,5 @@ Public Class frm_PlaceOrder
     '        Application.DoEvents()
     '    Next
     'End Sub
+#End Region
 End Class

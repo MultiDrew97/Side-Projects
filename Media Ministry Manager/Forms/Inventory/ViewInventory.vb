@@ -1,9 +1,16 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports Media_Ministry.Utils
-Public Class frm_ViewInventory
-    Private mainForm As frm_Main
+#End Region
 
+Public Class frm_ViewInventory
+
+#Region "Globals"
+    Private mainForm As frm_Main
+#End Region
+
+#Region "Form Subs"
     Public Sub New(ByRef mainForm As frm_Main)
 
         ' This call is required by the designer.
@@ -17,6 +24,17 @@ Public Class frm_ViewInventory
         customLoad()
     End Sub
 
+    Private Sub frm_ViewInventory_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        mainForm.Show()
+    End Sub
+
+    Public Sub customLoad()
+        'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
+    End Sub
+#End Region
+
+#Region "Buttons"
     'Private Sub btn_Remove_Click(sender As Object, e As EventArgs) Handles btn_Remove.Click
     '    Dim index, removeCount As Integer
 
@@ -55,16 +73,9 @@ Public Class frm_ViewInventory
         addNewProduct.Show()
         Me.Hide()
     End Sub
+#End Region
 
-    Private Sub frm_ViewInventory_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        mainForm.Show()
-    End Sub
-
-    Public Sub customLoad()
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
-        Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
-    End Sub
-
+#Region "Data Grid Views"
     Private Sub dgv_Inventory_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Inventory.CellEndEdit
         Dim editedRow As Integer = e.RowIndex
         Dim name As String = CType(dgv_Inventory.Rows(editedRow).Cells(0).Value, String)
@@ -81,5 +92,6 @@ Public Class frm_ViewInventory
             db.RemoveProduct(e.Row.Index)
         End Using
     End Sub
+#End Region
 
 End Class

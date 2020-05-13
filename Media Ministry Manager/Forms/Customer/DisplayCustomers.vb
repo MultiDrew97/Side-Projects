@@ -1,11 +1,17 @@
 ﻿Option Strict On
 
+#Region "Imports"
 Imports System.Data.SqlClient
 Imports Media_Ministry.Utils
+#End Region
 
 Public Class frm_DisplayCustomers
-    Private mainForm As frm_Main
 
+#Region "Globals"
+    Private mainForm As frm_Main
+#End Region
+
+#Region "Form Subs"
     Public Sub New(ByRef mainForm As frm_Main)
 
         ' This call is required by the designer.
@@ -19,6 +25,16 @@ Public Class frm_DisplayCustomers
         Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
     End Sub
 
+    Private Sub frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        mainForm.Show()
+    End Sub
+
+    Public Overrides Sub refresh()
+        Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
+    End Sub
+#End Region
+
+#Region "Buttons"
     Private Sub btn_Update_Click(sender As Object, e As EventArgs)
         'update customer information that was entered
         Dim index, updateCount As Integer
@@ -71,10 +87,6 @@ Public Class frm_DisplayCustomers
         End If
     End Sub
 
-    Private Sub frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        mainForm.Show()
-    End Sub
-
     Private Sub btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
         Dim updateNumber = New frm_UpdatePhoneNumber(Me)
         updateNumber.Show()
@@ -86,15 +98,13 @@ Public Class frm_DisplayCustomers
         addForm.Show()
         Me.Hide()
     End Sub
+#End Region
 
+#Region "Data Grid View"
     Private Sub dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
         Using db As New Database(My.Settings.Username, My.Settings.Password)
             db.RemoveCustomer(CType(e.Row.Cells(2).Value, String))
         End Using
-    End Sub
-
-    Public Overrides Sub refresh()
-        Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
     End Sub
 
     Private Sub dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
@@ -113,5 +123,6 @@ Public Class frm_DisplayCustomers
             db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
         End Using
     End Sub
+#End Region
 
 End Class
