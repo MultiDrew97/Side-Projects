@@ -87,7 +87,7 @@ Namespace Utils
         End Function
 #End Region
 
-#Region "Folder"
+#Region "Folders"
         Function createFolder(folderName As String) As String
             Dim folderID = getFolderID(folderName)
 

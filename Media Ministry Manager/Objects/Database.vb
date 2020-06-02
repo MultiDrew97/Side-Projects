@@ -247,6 +247,28 @@ Namespace Utils
                                            itemIndex, vbLf)
             myCmd.ExecuteNonQuery()
         End Sub
+
+        Public Function filterInventory(advanced As Boolean, column As String, criteria As String()) As DataTable
+            If advanced Then
+                myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE NAME LIKE @name and EMAIL LIKE @email"
+                myCmd.Parameters.AddWithValue("@name", criteria(0))
+                myCmd.Parameters.AddWithValue("@email", criteria(1))
+            Else
+                Select Case column
+                    Case "NAME"
+                        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE NAME LIKE @criteria"
+                    Case "EMAIL"
+                        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS WHERE EMAIL LIKE @criteria"
+                End Select
+
+                myCmd.Parameters.AddWithValue("@criteria", criteria(0))
+            End If
+
+            Dim dataset As New DataTable("EMAIL_LISTENERS")
+            myAdapter = New SqlDataAdapter(myCmd)
+            myAdapter.Fill(dataset)
+            Return dataset
+        End Function
 #End Region
 
 #Region "Orders"

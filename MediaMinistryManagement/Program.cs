@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using System.Security.Cryptography.X509Certificates;
-using System.Net.Http;
 namespace MediaMinistryManagement
 {
     public class Program

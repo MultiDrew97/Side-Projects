@@ -7,6 +7,7 @@ Imports Media_Ministry.Utils
 Imports System.Text.RegularExpressions.Regex
 Imports System.Data.SqlClient
 Imports Microsoft.VisualBasic.FileIO
+Imports System.ComponentModel.Design
 #End Region
 
 Public Class frm_Main
@@ -135,22 +136,17 @@ Public Class frm_Main
         'TODO: Add Find Listener Functionality
     End Sub
 
-    Private Sub bw_UpdateJar_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bw_UpdateJar.ProgressChanged
-        tss_Progress.Value = e.ProgressPercentage
-    End Sub
-
-    Private Sub bw_UpdateJar_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_UpdateJar.RunWorkerCompleted
-        tss_Progress.Value = 0
-    End Sub
-
     Private Sub EmailerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EmailerToolStripMenuItem.Click
+        tss_Progress.Visible = True
         bw_UpdateJar.RunWorkerAsync(emailerLocation)
     End Sub
 
     'the sub that will run the update check
     Private Sub MediaMinistryManagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MediaMinistryManagerToolStripMenuItem.Click
         'bw_UpdateApp.RunWorkerAsync()
+        'tss_Progress.Visible = True
     End Sub
+
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         My.Settings.Username = ""
         My.Settings.Password = ""
@@ -315,6 +311,15 @@ Public Class frm_Main
         End If
 
         bw_UpdateJar.ReportProgress(100)
+    End Sub
+
+    Private Sub bw_UpdateJar_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bw_UpdateJar.ProgressChanged, bw_UpdateApp.ProgressChanged
+        tss_Progress.Value = e.ProgressPercentage
+    End Sub
+
+    Private Sub bw_UpdateJar_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_UpdateJar.RunWorkerCompleted, bw_UpdateApp.RunWorkerCompleted
+        tss_Progress.Value = 0
+        tss_Progress.Visible = False
     End Sub
 #End Region
 
@@ -567,6 +572,105 @@ Public Class frm_Main
                 index += 1
             Loop Until (index >= dgv_Orders.Rows.Count)
         End If
+    End Sub
+#End Region
+
+#Region "Inventory Tab"
+    Private Sub btn_AddProduct_Click(sender As Object, e As EventArgs) Handles btn_AddProduct.Click
+        If txt_Price.Text <> "$0.00" Then
+            If txt_ProductName.Text <> "Product Name" Then
+                Try
+                    Using db As New Database(My.Settings.Username, My.Settings.Password)
+                        db.AddNewProduct(txt_ProductName.Text, CInt(nud_CurrentStock.Value), Decimal.Parse("0" & Format(txt_Price.Text, "Standard")))
+                    End Using
+                    tss_Feedback.ForeColor = SystemColors.WindowText
+                    tss_Feedback.Text = "Product was successfully added."
+                Catch
+                    tss_Feedback.ForeColor = Color.Red
+                    tss_Feedback.Text = "Product could not be added. Try again."
+                End Try
+            Else
+                MessageBox.Show("You have to give the product a name before adding it...", "Product Name is Empty")
+            End If
+        Else
+            MessageBox.Show("You have to enter a price for the product before adding it...", "Price is Empty")
+        End If
+    End Sub
+    Private Sub txt_ProductName_GotFocus(sender As Object, e As EventArgs) Handles txt_ProductName.GotFocus
+        tss_Feedback.ForeColor = SystemColors.WindowText
+        tss_Feedback.Text = "Enter the products information."
+
+        If (txt_ProductName.Text.Equals("Product Name")) Then
+            txt_ProductName.Text = ""
+            txt_ProductName.ForeColor = SystemColors.WindowText
+        End If
+    End Sub
+
+    Private Sub txt_ProductName_LostFocus(sender As Object, e As EventArgs) Handles txt_ProductName.LostFocus
+        If (txt_ProductName.Text.Equals("") Or txt_ProductName.Text.Equals(" ")) Then
+            txt_ProductName.Text = "Product Name"
+            txt_ProductName.ForeColor = SystemColors.ControlLight
+        End If
+    End Sub
+
+    Private Sub txt_Price_GotFocus(sender As Object, e As EventArgs) Handles txt_Price.GotFocus
+        If (txt_Price.Text.Equals("$0.00")) Then
+            txt_Price.Text = ""
+            txt_Price.ForeColor = SystemColors.WindowText
+        End If
+    End Sub
+
+    Private Sub txt_Price_LostFocus(sender As Object, e As EventArgs) Handles txt_Price.LostFocus
+        If (txt_Price.Text.Equals("") Or Not IsMatch(txt_Price.Text, "\d*.\d*")) Then
+            txt_Price.Text = Format("0", "Currency")
+            txt_Price.ForeColor = SystemColors.ControlLight
+        ElseIf IsMatch(txt_Price.Text, "\d*.\d*") Then
+            txt_Price.Text = Format(txt_Price.Text, "Currency")
+        End If
+    End Sub
+
+    Private Sub txt_ProductName_TextChanged(sender As Object, e As EventArgs) Handles txt_ProductName.TextChanged
+        If (Not txt_ProductName.Text.Equals("Product Name")) Then
+            txt_ProductName.ForeColor = SystemColors.WindowText
+            txt_ProductName.Text = txt_ProductName.Text.ToUpper
+            txt_ProductName.SelectionStart = txt_ProductName.Text.Length + 1
+        End If
+    End Sub
+
+    Private Sub nud_Stock_GotFocus(sender As Object, e As EventArgs) Handles nud_CurrentStock.GotFocus
+        nud_CurrentStock.Select()
+        nud_CurrentStock.Select(0, nud_CurrentStock.Text.Length)
+    End Sub
+
+    Private Sub cbx__SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_InventoryColumn.SelectedIndexChanged
+        If cbx_InventoryColumn.SelectedIndex = 1 Or cbx_InventoryColumn.SelectedIndex = 2 Then
+            cbx_Comparison.Show()
+        End If
+    End Sub
+
+    Private Sub btn_Filter_Click(sender As Object, e As EventArgs) Handles btn_Filter.Click
+        Dim queryString As String = "Select * FROM INVENTORY WHERE "
+
+        Select Case cbx_InventoryColumn.SelectedIndex
+            Case 0
+                'ITEM
+            Case 1
+                'STOCK
+            Case 2
+                'PRICE
+        End Select
+
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            'dgv_Inventory.DataSource = db.filterInventory(queryString)
+        End Using
+    End Sub
+
+    Private Sub btn_Cancel_Click_1(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+        txt_InventoryCriteria.Text = ""
+        cbx_InventoryColumn.SelectedIndex = -1
+        cbx_InventoryColumn.Text = "Column..."
+        cbx_Comparison.SelectedIndex = -1
+        cbx_Comparison.Text = "Comparison..."
     End Sub
 #End Region
 End Class

@@ -221,7 +221,9 @@ Public Class frm_ViewListeners
     Private Sub ofd_ReceiptImage_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_ReceiptImage.FileOk
         If nud_Amount.Value > 0 Then
             Dim email As String = CType(dgv_Listeners.SelectedRows(0).Cells(1).Value, String)
+
             Dim receipt As Process = Process.Start("cmd", String.Format("/C java -jar sender.jar -r {0} {1} ""{2}"" ""{3}""", email, amount, purpose, ofd_ReceiptImage.FileName))
+
             receipt.WaitForExit()
 
             If receipt.ExitCode = 0 Then
@@ -270,11 +272,11 @@ Public Class frm_ViewListeners
         If advanced Then
             criteria(0) = "%" & txt_NameSearch.Text & "%"
             criteria(1) = "%" & txt_EmailSearch.Text & "%"
-        Else
-            If cbx_Column.SelectedIndex >= 0 Then
-                column = cbx_Column.SelectedItem.ToString()
-                criteria(0) = "%" & txt_SearchBox.Text & "%"
-            End If
+        End If
+
+        If cbx_Column.SelectedIndex >= 0 Then
+            column = cbx_Column.SelectedItem.ToString()
+            criteria(0) = "%" & txt_SearchBox.Text & "%"
         End If
 
         If cbx_Column.SelectedIndex >= 0 Then

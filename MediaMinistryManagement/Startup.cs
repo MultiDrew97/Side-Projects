@@ -11,7 +11,7 @@ namespace MediaMinistryManagement
 {
     public class Startup
     {
-        private readonly string _connection = "Data Source=mediaministry.database.windows.net;Initial Catalog=\"Media Ministry\";Persist Security Info=True;User ID=arandlemiller97;";
+        private readonly string _connection = "Server=tcp:mediaministry.database.windows.net,1433;Initial Catalog=\"Media Ministry\";Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;User ID=arandlemiller97;";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,6 +37,7 @@ namespace MediaMinistryManagement
             //services.AddRazorPages();
         }
 
+        #region Obselete
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         [System.Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -47,7 +48,7 @@ namespace MediaMinistryManagement
             }
             else
             {
-                //app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
             app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -58,7 +59,9 @@ namespace MediaMinistryManagement
             app.UseStaticFiles();
             app.UseMvc();
         }
+        #endregion
 
+        #region Updated
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         // This is the new updated way to do the method above
         /*public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -88,5 +91,6 @@ namespace MediaMinistryManagement
                 endpoints.MapRazorPages();
             });
         }*/
+        #endregion
     }
 }
