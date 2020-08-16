@@ -3,18 +3,27 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Exe</OutputType>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>M3A.pfx</AssemblyOriginatorKeyFile>
     <UserSecretsId>6b47fb5b-2746-41af-96cd-6af88f7e7be4</UserSecretsId>
     <StartupObject></StartupObject>
     <ApplicationIcon></ApplicationIcon>
+    <Version>1.3.0</Version>
+    <Authors>Andrew Randle-Warren</Authors>
+    <Company>St. Paul Primitive Baptist Church</Company>
+    <Description>An API developed to be used with the Media Ministry Mobile App and Webpage developed for St. Paul Primitive Baptist Church</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.Development.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />

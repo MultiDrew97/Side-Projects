@@ -6,12 +6,13 @@ using Microsoft.Extensions.DependencyInjection;
 using MediaMinistryManagement.Models;
 //using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using BasicAuthentication;
 
 namespace MediaMinistryManagement
 {
     public class Startup
     {
-        private readonly string _connection = "Server=tcp:mediaministry.database.windows.net,1433;Initial Catalog=\"Media Ministry\";Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;User ID=arandlemiller97;";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,18 +23,20 @@ namespace MediaMinistryManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string _conn = string.Format(Configuration["ConnectionStrings:MediaMinistry"], Configuration["ConnectionStrings:UserID"], Configuration["ConnectionStrings:Password"]);
+            Console.WriteLine(_conn);
             #region DATABASE CONTEXTS
-            services.AddDbContext<CustomerContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<InventoryContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<OrderSummaryContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<CompletedOrderSummaryContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<OrdersContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<Order_CountsContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<Completed_OrdersContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<Completed_Order_CountsContext>(opt => opt.UseSqlServer(_connection));
-            services.AddDbContext<ListenerContext>(opt => opt.UseSqlServer(_connection));
+            services.AddDbContext<CustomerContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<InventoryContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<OrderSummaryContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<CompletedOrderSummaryContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<OrdersContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<Order_CountsContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<Completed_OrdersContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<Completed_Order_CountsContext>(opt => opt.UseSqlServer(_conn));
+            services.AddDbContext<ListenerContext>(opt => opt.UseSqlServer(_conn));
             #endregion
-            services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Latest);
             //services.AddRazorPages();
         }
 
