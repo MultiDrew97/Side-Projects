@@ -18,6 +18,7 @@ namespace API.Controllers
         [Route("api/[controller]")]
         public string Get()
         {
+            Console.WriteLine(this.Request.Headers);
             return "Method was accessed";
         }
     }

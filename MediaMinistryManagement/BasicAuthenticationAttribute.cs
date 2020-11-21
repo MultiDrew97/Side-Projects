@@ -22,7 +22,7 @@ namespace BasicAuthentication
                 // split the token into an array for access
                 var userInfo = decodeAuthToken.Split(":");
 
-                if (isAuthorized(userInfo[0], userInfo[1]))
+                if (IsAuthorized(userInfo))
                 {
                     Console.WriteLine(userInfo[0]);
                     Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(userInfo[0]), null);
@@ -38,10 +38,10 @@ namespace BasicAuthentication
             }
         }
 
-        public bool isAuthorized(string username, string password)
+        public bool IsAuthorized(string[] auth)
         {
-            /* TODO: Figure out how to access the users access to the database dynamically */
-            return username == "arandlemiller97" && password == "JasmineLove2697";
+        //TODO: Figure out how to access the users access to the database dynamically
+            return auth[0] == "arandlemiller97" && auth[1] == "JasmineLove2697";
         }
     }
 }

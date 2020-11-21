@@ -4,12 +4,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MediaMinistryManagement.Models;
+using System;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using BasicAuthentication;
+using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace MediaMinistryManagement.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
+    [BasicAuthentication]
     public class CustomersController : ControllerBase
     {
         private readonly CustomerContext _context;
