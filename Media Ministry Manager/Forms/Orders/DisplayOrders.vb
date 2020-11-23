@@ -1,10 +1,11 @@
 ﻿Option Strict On
+Imports System.Data.SqlClient
 
-Public Class frm_DisplayOrders
-    Private db As Database
-    Private mainForm As frm_Main
+Public Class Frm_DisplayOrders
+    Private ReadOnly db As Database
+    Private ReadOnly mainForm As Frm_Main
 
-    Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
+    Public Sub New(ByRef database As Database, ByRef mainForm As Frm_Main)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -14,23 +15,23 @@ Public Class frm_DisplayOrders
         Me.mainForm = mainForm
     End Sub
 
-    Private Sub frm_DisplayOrders_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub Frm_DisplayOrders_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.ORDER_SUMMARY' table. You can move, or remove it, as needed.
-        Me.ORDER_SUMMARYTableAdapter.Fill(Me.Media_MinistryDataSet.ORDER_SUMMARY)
+        Me.ORDER_SUMMARYTableAdapter.Fill(Me.MediaMinistryDataSet.ORDER_SUMMARY)
         For index As Integer = 0 To (dgv_Orders.Rows.Count - 1)
             dgv_Orders.Rows(index).Cells(0).Value = False
         Next
     End Sub
 
-    Private Sub frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+    Private Sub Frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
     End Sub
 
-    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+    Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
     End Sub
 
-    Private Sub btn_Fulfil_Click(sender As Object, e As EventArgs) Handles btn_Fulfil.Click
+    Private Sub Btn_Fulfil_Click(sender As Object, e As EventArgs) Handles btn_Fulfil.Click
         Dim phoneNumber As String
         Dim itemIndex, orderNumber, quantity, index As Integer
         index = 0
@@ -50,7 +51,7 @@ Public Class frm_DisplayOrders
                     Try
                         db.FulfilOrder(orderNumber, phoneNumber, itemIndex, quantity)
                         dgv_Orders.Rows.RemoveAt(index)
-                    Catch
+                    Catch ex As SqlException
 
                     End Try
                 End If
@@ -59,7 +60,7 @@ Public Class frm_DisplayOrders
         End If
     End Sub
 
-    Private Sub btn_UpdateOrder_Click(sender As Object, e As EventArgs) Handles btn_UpdateOrder.Click
+    Private Sub Btn_UpdateOrder_Click(sender As Object, e As EventArgs) Handles btn_UpdateOrder.Click
         Dim orderNumber, quantity, index As Integer
         index = 0
         If dgv_Orders.SelectedCells().Count > 0 Then
@@ -75,7 +76,7 @@ Public Class frm_DisplayOrders
                     quantity = CInt(dgv_Orders.Rows(index).Cells(4).Value.ToString)
                     Try
                         db.UpdateOrder(orderNumber, quantity)
-                    Catch
+                    Catch ex As SqlException
 
                     End Try
                 End If
@@ -84,7 +85,7 @@ Public Class frm_DisplayOrders
         End If
     End Sub
 
-    Private Sub btn_CancelOrder_Click(sender As Object, e As EventArgs) Handles btn_CancelOrder.Click
+    Private Sub Btn_CancelOrder_Click(sender As Object, e As EventArgs) Handles btn_CancelOrder.Click
         Dim orderNumber, index As Integer
         index = 0
         If dgv_Orders.SelectedCells().Count > 0 Then
@@ -100,7 +101,7 @@ Public Class frm_DisplayOrders
                     Try
                         db.CancelOrder(orderNumber)
                         dgv_Orders.Rows.RemoveAt(index)
-                    Catch
+                    Catch ex As SqlException
 
                     End Try
                 End If

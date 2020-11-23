@@ -6,12 +6,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Media_Ministry.My.MyApplication</StartupObject>
-    <RootNamespace>Media_Ministry</RootNamespace>
+    <StartupObject>MediaMinistry.My.MyApplication</StartupObject>
+    <RootNamespace>MediaMinistry</RootNamespace>
     <AssemblyName>Media Ministry Manager</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
@@ -54,6 +54,7 @@
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -68,6 +69,7 @@
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
     <Prefer32Bit>false</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -85,7 +87,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C4245753C6C3D6B43073ABCA00DCA1D3E930D552</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2C65B6D1F04FC8DB231A4E1D13B4E8F797D73A80</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>Media Ministry Manager_TemporaryKey.pfx</ManifestKeyFile>
@@ -94,7 +96,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\App Icon.ico</ApplicationIcon>
@@ -103,7 +105,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>MediaMinistryManagerSignKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>MediaMinistryManager.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -127,43 +129,49 @@
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
-      <HintPath>..\packages\Portable.BouncyCastle.1.8.6.7\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.8.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.8\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.45.0\lib\net45\Google.Apis.dll</HintPath>
+    <Reference Include="Google.Apis, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Auth, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Auth.1.45.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+    <Reference Include="Google.Apis.Auth, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.49.0\lib\net45\Google.Apis.Auth.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Auth.1.45.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.49.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Core, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Core.1.45.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    <Reference Include="Google.Apis.Core, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.49.0\lib\net45\Google.Apis.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Drive.v3, Version=1.45.0.1911, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Drive.v3.1.45.0.1911\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
+    <Reference Include="Google.Apis.Drive.v3, Version=1.49.0.2145, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v3.1.49.0.2145\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Gmail.v1, Version=1.45.0.1859, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Gmail.v1.1.45.0.1859\lib\net45\Google.Apis.Gmail.v1.dll</HintPath>
+    <Reference Include="Google.Apis.Gmail.v1, Version=1.49.0.2146, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Gmail.v1.1.49.0.2146\lib\net45\Google.Apis.Gmail.v1.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.PlatformServices, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.45.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MimeKit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
-      <HintPath>..\packages\MimeKit.2.6.0\lib\net46\MimeKit.dll</HintPath>
+    <Reference Include="MimeKit, Version=2.10.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.10.0\lib\net46\MimeKit.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SqlClient, Version=4.6.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SqlClient.4.8.1\lib\net461\System.Data.SqlClient.dll</HintPath>
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.2\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.DirectoryServices" />
@@ -177,6 +185,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="UrlBase64, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UrlBase64.0.1.2\lib\net40\UrlBase64.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -195,10 +205,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Assets\Media Ministry Splash.Designer.vb">
-      <DependentUpon>Media Ministry Splash.vb</DependentUpon>
+    <Compile Include="Assets\MediaMinistrySplash.Designer.vb">
+      <DependentUpon>MediaMinistrySplash.vb</DependentUpon>
     </Compile>
-    <Compile Include="Assets\Media Ministry Splash.vb">
+    <Compile Include="Assets\MediaMinistrySplash.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Email Listeners\EmailListeners.Designer.vb">
@@ -270,7 +280,9 @@
     <Compile Include="Forms\Inventory\UpdateInventory.Designer.vb">
       <DependentUpon>UpdateInventory.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Inventory\UpdateInventory.vb" />
+    <Compile Include="Forms\Inventory\UpdateInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Customer\UpdatePhoneNumber.Designer.vb">
       <DependentUpon>UpdatePhoneNumber.vb</DependentUpon>
     </Compile>
@@ -289,13 +301,11 @@
     <Compile Include="Forms\Orders\PlaceOrder.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Media_MinistryDataSet.Designer.vb">
+    <Compile Include="GlobalSuppressions.vb" />
+    <Compile Include="MediaMinistryDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Media_MinistryDataSet.vb">
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
+      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -328,11 +338,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Objects\DriveUploader.vb" />
+    <Compile Include="Objects\Exceptions\FormClosedException.vb" />
+    <Compile Include="Objects\Exceptions\PasswordException.vb" />
     <Compile Include="Objects\Listener.vb" />
+    <Compile Include="Objects\Utils.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Media Ministry Splash.resx">
-      <DependentUpon>Media Ministry Splash.vb</DependentUpon>
+    <EmbeddedResource Include="Assets\MediaMinistrySplash.resx">
+      <DependentUpon>MediaMinistrySplash.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\EmailListeners.resx">
@@ -394,19 +407,18 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="Media Ministry Manager_TemporaryKey.pfx" />
-    <None Include="MediaMinistryManagerSignKey.pfx" />
-    <None Include="Media_MinistryDataSet.xsc">
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
+    <None Include="Media Ministry Manager.snk" />
+    <None Include="MediaMinistryManager.pfx" />
+    <None Include="MediaMinistryDataSet.xsc">
+      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Media_MinistryDataSet.xsd">
+    <None Include="MediaMinistryDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Media_MinistryDataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>MediaMinistryDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Media_MinistryDataSet.xss">
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
+    <None Include="MediaMinistryDataSet.xss">
+      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
@@ -418,79 +430,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <None Include="Resources\credentials.json" />
-    <None Include="sender\.git\COMMIT_EDITMSG" />
-    <None Include="sender\.git\config" />
-    <None Include="sender\.git\description" />
-    <None Include="sender\.git\HEAD" />
-    <None Include="sender\.git\hooks\applypatch-msg.sample" />
-    <None Include="sender\.git\hooks\commit-msg.sample" />
-    <None Include="sender\.git\hooks\fsmonitor-watchman.sample" />
-    <None Include="sender\.git\hooks\post-update.sample" />
-    <None Include="sender\.git\hooks\pre-applypatch.sample" />
-    <None Include="sender\.git\hooks\pre-commit.sample" />
-    <None Include="sender\.git\hooks\pre-merge-commit.sample" />
-    <None Include="sender\.git\hooks\pre-push.sample" />
-    <None Include="sender\.git\hooks\pre-rebase.sample" />
-    <None Include="sender\.git\hooks\pre-receive.sample" />
-    <None Include="sender\.git\hooks\prepare-commit-msg.sample" />
-    <None Include="sender\.git\hooks\update.sample" />
-    <None Include="sender\.git\index" />
-    <None Include="sender\.git\info\exclude" />
-    <None Include="sender\.git\logs\HEAD" />
-    <None Include="sender\.git\logs\refs\heads\master" />
-    <None Include="sender\.git\logs\refs\remotes\origin\master" />
-    <None Include="sender\.git\objects\05\19e4a4e16c207f18527175c6a4425b2b1bacbd" />
-    <None Include="sender\.git\objects\0d\c1872e17f64bcd48f9f0d968e49e9bbbba189e" />
-    <None Include="sender\.git\objects\11\92781dc476baa973d5bcbe163fa9eb6b6af9fe" />
-    <None Include="sender\.git\objects\11\ddc732d5943fa642c185b25a6210d8334c1fed" />
-    <None Include="sender\.git\objects\21\d80e0ed3b5e20aa787087247a006398cda7679" />
-    <None Include="sender\.git\objects\2c\87f298c87674b250e784295f3b58a524b25942" />
-    <None Include="sender\.git\objects\2c\c843b6e2fac4ac41cf83c0c7f264c87dfe2fbb" />
-    <None Include="sender\.git\objects\32\414488b0cb9f9509f3f68fae9343f1c5ebf423" />
-    <None Include="sender\.git\objects\37\d4d779682d2cda4403dd0e5b8712773d42a808" />
-    <None Include="sender\.git\objects\38\b7396427f1c88e6bad66696b3a153ac67b4251" />
-    <None Include="sender\.git\objects\3f\18bca3e7e748926fb84461120994f4e21cb08f" />
-    <None Include="sender\.git\objects\4c\f9feeffebabbbbcb2fb7e6879e56a8fe6fc288" />
-    <None Include="sender\.git\objects\4e\3f81541ed0e3a423824cddf4e9a5effda12564" />
-    <None Include="sender\.git\objects\4e\bf5ecd4c9ab83540ef206f6c5a1906db008098" />
-    <None Include="sender\.git\objects\52\dca7f561c5d579ca764cb25b96d3f539cf242a" />
-    <None Include="sender\.git\objects\57\2fbdd30bc185d180412897157393c31f914b25" />
-    <None Include="sender\.git\objects\57\326139363c1fa64f3a427f336d02d1e46e6f07" />
-    <None Include="sender\.git\objects\5c\98b428844d9f7d529e2b6fb918d15bf072f3df" />
-    <None Include="sender\.git\objects\5d\e6f682026f2bd9eaa4418a39c7e2185bdf278c" />
-    <None Include="sender\.git\objects\66\0610bc75f5ccf366ba74f45865ca84873febe4" />
-    <None Include="sender\.git\objects\69\6a2345878907025784d2e6e49c6e6b41d1cfac" />
-    <None Include="sender\.git\objects\71\e337bfa0e8d8afbb002f09135bd85c882eee69" />
-    <None Include="sender\.git\objects\72\9c6952389cd4769d5d840b3d1a7941b3c0f63e" />
-    <None Include="sender\.git\objects\78\b2cc53b203f0b97534bb1184cdc7b474339fb4" />
-    <None Include="sender\.git\objects\7b\e17cc742fde5e957696dd98f6d0cf6520ed294" />
-    <None Include="sender\.git\objects\87\8bbe364eab07156d9f3b6ef72a65d8fb9a0109" />
-    <None Include="sender\.git\objects\94\a25f7f4cb416c083d265558da75d457237d671" />
-    <None Include="sender\.git\objects\9c\0631cea0fd56031db19fc3edbb4db4bfbb923a" />
-    <None Include="sender\.git\objects\a3\1c9f400a46ca0d07029411dc87a7711138dce7" />
-    <None Include="sender\.git\objects\a4\9347afef10a9b5f95305e1058ba36adec7d6dd" />
-    <None Include="sender\.git\objects\a4\979622118a3eafc0fac76ae54169cfd747fcf2" />
-    <None Include="sender\.git\objects\ab\2634a19673696a59a6f44a0863ccd0621abab1" />
-    <None Include="sender\.git\objects\ae\3379a2a39ece679005e81fd49c1db3983df7a9" />
-    <None Include="sender\.git\objects\b3\5fedc8e6b5b2a2a54a035d895ed6e7c4e34b63" />
-    <None Include="sender\.git\objects\b7\882bd6d00f8b6a1d62f014bc267f00a40760d7" />
-    <None Include="sender\.git\objects\bc\ec597f8927ea2b30cca215a895a93f115c13ff" />
-    <None Include="sender\.git\objects\c8\a535d59e81dc490934f11a0f1e835a423a219c" />
-    <None Include="sender\.git\objects\d1\8bceab34cf9508b8aa078f46719e5fde902a22" />
-    <None Include="sender\.git\objects\d3\1451ada1ad9a4471d9bae383df647c9b4b5235" />
-    <None Include="sender\.git\objects\d8\b38fff3be6ec36850437a3dde6d12d583a7348" />
-    <None Include="sender\.git\objects\ee\8f7f61d2fe51ebb090649bea0e1fb7828ff9a3" />
-    <None Include="sender\.git\refs\heads\master" />
-    <None Include="sender\.git\refs\remotes\origin\master" />
-    <None Include="sender\sender.iml" />
-    <None Include="sender\src\main\resources\credentials.json" />
-    <None Include="sender\target\classes\api%241.class" />
-    <None Include="sender\target\classes\api.class" />
-    <None Include="sender\target\classes\credentials.json" />
-    <None Include="sender\target\classes\Listener.class" />
-    <None Include="sender\target\classes\META-INF\sender.kotlin_module" />
-    <None Include="sender\target\classes\sender.class" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -510,7 +451,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <Resource Include="Resources\Media Ministry Manage Image.JPG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -533,35 +473,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\version.txt" />
-    <Content Include="sender\.idea\.gitignore" />
-    <Content Include="sender\.idea\artifacts\sender_jar.xml" />
-    <Content Include="sender\.idea\compiler.xml" />
-    <Content Include="sender\.idea\libraries\Java_EE_6_Java_EE_6.xml" />
-    <Content Include="sender\.idea\misc.xml" />
-    <Content Include="sender\.idea\vcs.xml" />
-    <Content Include="sender\.idea\workspace.xml" />
-    <Content Include="sender\lib\javax.annotation.jar" />
-    <Content Include="sender\lib\javax.ejb.jar" />
-    <Content Include="sender\lib\javax.jms.jar" />
-    <Content Include="sender\lib\javax.persistence.jar" />
-    <Content Include="sender\lib\javax.resource.jar" />
-    <Content Include="sender\lib\javax.servlet.jar" />
-    <Content Include="sender\lib\javax.servlet.jsp.jar" />
-    <Content Include="sender\lib\javax.servlet.jsp.jstl.jar" />
-    <Content Include="sender\lib\javax.transaction.jar" />
-    <Content Include="sender\pom.xml" />
-    <Content Include="sender\src\main\java\api.java" />
-    <Content Include="sender\src\main\java\Listener.java" />
-    <Content Include="sender\src\main\java\sender.java" />
-    <Content Include="sender\src\main\resources\message.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="sender\.git\objects\info\" />
-    <Folder Include="sender\.git\objects\pack\" />
-    <Folder Include="sender\.git\refs\tags\" />
-    <Folder Include="sender\src\test\java\" />
-    <Folder Include="sender\target\generated-sources\annotations\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>

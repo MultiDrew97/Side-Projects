@@ -1,9 +1,11 @@
 ﻿Option Strict On
 
+Imports System.Data.SqlClient
+Imports System.Globalization
 Imports System.Text.RegularExpressions.Regex
 
 Public Class frm_AddNewCustomer
-    Private db As Database
+    Private _db As Database
     Private sendingForm As Form
     Private phonePattern As String = "(\d{3})-\d{3}-\d{4}"
     'Private phoneParenPattern As String = "(\d{3})-\d{3}-\d{4}"
@@ -13,7 +15,7 @@ Public Class frm_AddNewCustomer
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        db = database
+        _db = database
         sendingForm = parentForm
     End Sub
 
@@ -21,7 +23,7 @@ Public Class frm_AddNewCustomer
         reset()
     End Sub
 
-    Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
+    Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
         Dim fName, lName, addrStreet, addrCity, addrState, addrZip, phone, paymentPreference, email As String
 
         If (validText()) Then
@@ -55,20 +57,20 @@ Public Class frm_AddNewCustomer
             End If
 
             Try
-                addNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email, paymentPreference)
+                AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email, paymentPreference)
                 Me.Close()
-            Catch
+            Catch ex As SqlException
                 tss_AddCustomer.ForeColor = Color.Red
                 tss_AddCustomer.Text = "This person might already be in the system. Please try again."
             End Try
         End If
     End Sub
 
-    Private Sub addNewCustomer(fName As String, lName As String,
+    Private Sub AddNewCustomer(fName As String, lName As String,
                          addrStreet As String, addrCity As String, addrState As String, addrZip As String,
                          phoneNumber As String, email As String, paymentPreference As String)
 
-        db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference)
+        _db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference)
     End Sub
 
     Private Sub reset()
@@ -94,7 +96,7 @@ Public Class frm_AddNewCustomer
 
         Try
             CType(sendingForm, frm_DisplayCustomers).refresh()
-        Catch
+        Catch ex As ApplicationException
         Finally
             sendingForm.Show()
         End Try
@@ -109,7 +111,7 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub txt_FirstName_LostFocus(sender As Object, e As EventArgs) Handles txt_FirstName.LostFocus
-        If (txt_FirstName.Text.Equals("") Or txt_FirstName.Text.Equals(" ")) Then
+        If (String.IsNullOrEmpty(txt_FirstName.Text)) Then
             ep_EmptyFields.SetError(txt_FirstName, "Enter a First Name for the person")
             txt_FirstName.Text = "First Name"
             txt_FirstName.ForeColor = SystemColors.ControlLight
@@ -125,7 +127,7 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub txt_LastName_LostFocus(sender As Object, e As EventArgs) Handles txt_LastName.LostFocus
-        If (txt_LastName.Text.Equals("") Or txt_LastName.Text.Equals(" ")) Then
+        If (String.IsNullOrEmpty(txt_LastName.Text)) Then
             ep_EmptyFields.SetError(txt_LastName, "Enter a Last Name for the person")
             txt_LastName.Text = "Last Name"
             txt_LastName.ForeColor = SystemColors.ControlLight
@@ -140,7 +142,7 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub txt_Street_LostFocus(sender As Object, e As EventArgs) Handles txt_Street.LostFocus
-        If (txt_Street.Text.Equals("") Or txt_Street.Text.Equals(" ")) Then
+        If (String.IsNullOrEmpty(txt_Street.Text)) Then
             txt_Street.Text = "Street"
             txt_Street.ForeColor = SystemColors.ControlLight
         End If
@@ -154,7 +156,7 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub txt_City_LostFocus(sender As Object, e As EventArgs) Handles txt_City.LostFocus
-        If (txt_City.Text.Equals("") Or txt_City.Text.Equals(" ")) Then
+        If (String.IsNullOrEmpty(txt_City.Text)) Then
             txt_City.Text = "City"
             txt_City.ForeColor = SystemColors.ControlLight
         End If
@@ -168,7 +170,7 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub txt_Zip_LostFocus(sender As Object, e As EventArgs) Handles txt_Zip.LostFocus
-        If (txt_Zip.Text.Equals("") Or txt_Zip.Text.Equals(" ")) Then
+        If (String.IsNullOrEmpty(txt_Zip.Text)) Then
             txt_Zip.Text = "Zip"
             txt_Zip.ForeColor = SystemColors.ControlLight
         End If
@@ -183,7 +185,7 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub txt_PhoneNumber_LostFocus(sender As Object, e As EventArgs) Handles txt_PhoneNumber.LostFocus
-        If (txt_PhoneNumber.Text.Equals("") Or txt_PhoneNumber.Text.Equals(" ")) Then
+        If (String.IsNullOrEmpty(txt_PhoneNumber.Text)) Then
             ep_EmptyFields.SetError(txt_PhoneNumber, "Enter a phone number for the person")
             txt_PhoneNumber.Text = "Phone Number"
             txt_PhoneNumber.ForeColor = SystemColors.ControlLight
@@ -198,7 +200,7 @@ Public Class frm_AddNewCustomer
     End Sub
 
     Private Sub txt_Email_LostFocus(sender As Object, e As EventArgs) Handles txt_Email.LostFocus
-        If (txt_Email.Text.Equals("") Or txt_Email.Text.Equals(" ")) Then
+        If (String.IsNullOrEmpty(txt_Email.Text)) Then
             txt_Email.Text = "E-Mail"
             txt_Email.ForeColor = SystemColors.ControlLight
         End If
@@ -225,28 +227,28 @@ Public Class frm_AddNewCustomer
 
     Private Sub txt_FirstName_TextChanged(sender As Object, e As EventArgs) Handles txt_FirstName.TextChanged
         If (Not txt_FirstName.Text.Equals("First Name")) Then
-            txt_FirstName.Text = txt_FirstName.Text.ToUpper
+            txt_FirstName.Text = txt_FirstName.Text.ToUpper(CultureInfo.CurrentCulture)
             txt_FirstName.SelectionStart = txt_FirstName.Text.Length + 1
         End If
     End Sub
 
     Private Sub txt_LastName_TextChanged(sender As Object, e As EventArgs) Handles txt_LastName.TextChanged
         If (Not txt_LastName.Text.Equals("Last Name")) Then
-            txt_LastName.Text = txt_LastName.Text.ToUpper
+            txt_LastName.Text = txt_LastName.Text.ToUpper(CultureInfo.CurrentCulture)
             txt_LastName.SelectionStart = txt_LastName.Text.Length + 1
         End If
     End Sub
 
     Private Sub txt_Street_TextChanged(sender As Object, e As EventArgs) Handles txt_Street.TextChanged
         If (Not txt_Street.Text.Equals("Street")) Then
-            txt_Street.Text = txt_Street.Text.ToUpper
+            txt_Street.Text = txt_Street.Text.ToUpper(CultureInfo.CurrentCulture)
             txt_Street.SelectionStart = txt_Street.Text.Length + 1
         End If
     End Sub
 
     Private Sub txt_City_TextChanged(sender As Object, e As EventArgs) Handles txt_City.TextChanged
         If (Not txt_City.Text.Equals("City")) Then
-            txt_City.Text = txt_City.Text.ToUpper
+            txt_City.Text = txt_City.Text.ToUpper(CultureInfo.CurrentCulture)
             txt_City.SelectionStart = txt_City.Text.Length + 1
         End If
     End Sub
@@ -258,7 +260,7 @@ Public Class frm_AddNewCustomer
 
     Private Sub txt_Email_TextChanged(sender As Object, e As EventArgs) Handles txt_Email.TextChanged
         If (Not txt_Email.Text.Equals("E-Mail")) Then
-            txt_Email.Text = txt_Email.Text.ToUpper
+            txt_Email.Text = txt_Email.Text.ToUpper(CultureInfo.CurrentCulture)
             txt_Email.SelectionStart = txt_Email.Text.Length + 1
         End If
     End Sub

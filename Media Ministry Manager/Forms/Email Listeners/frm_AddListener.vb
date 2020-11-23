@@ -2,16 +2,17 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text.RegularExpressions.Regex
+Imports MediaMinistry.Helpers
 Imports Microsoft.VisualBasic.FileIO
 
 Public Class frm_AddListener
-    Public frm_Emails As frm_ViewListeners
+    Property Frm_Emails() As Frm_ViewListeners
 
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails
     ReadOnly emailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
 
-    Private Sub reset()
+    Private Sub Reset()
         rdo_Single.Checked = True
 
         lbl_Name.Visible = True
@@ -40,15 +41,15 @@ Public Class frm_AddListener
         txt_Name.Focus()
     End Sub
 
-    Private Sub rdo_Single_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Single.CheckedChanged
+    Private Sub Rdo_Single_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Single.CheckedChanged
         If rdo_Single.Checked Then
             rdo_Multiple.Checked = False
 
-            reset()
+            Reset()
         End If
     End Sub
 
-    Private Sub rdo_Multiple_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Multiple.CheckedChanged
+    Private Sub Rdo_Multiple_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Multiple.CheckedChanged
         If rdo_Multiple.Checked Then
             rdo_Single.Checked = False
 
@@ -73,15 +74,15 @@ Public Class frm_AddListener
         End If
     End Sub
 
-    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+    Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
         Try
-            frm_Emails.Show()
-        Catch
+            Frm_Emails.Show()
+        Catch ex As ApplicationException
         End Try
     End Sub
 
-    Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
+    Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
         Dim db As Database = New Database(My.Settings.Username, My.Settings.Password)
 
         If rdo_Single.Checked Then
@@ -91,7 +92,7 @@ Public Class frm_AddListener
                         db.AddListener(txt_Name.Text, txt_Email.Text)
                         tss_Feedback.ForeColor = Color.Black
                         tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
-                        frm_Emails.customLoad()
+                        Frm_Emails.CustomLoad()
                     Catch ex As SqlException
                         tss_Feedback.ForeColor = Color.Red
                         tss_Feedback.Text = "Listener might already be in the system. Please try again."
@@ -143,10 +144,10 @@ Public Class frm_AddListener
 
                 tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
                 Try
-                    frm_Emails.customLoad()
-                Catch
+                    Frm_Emails.CustomLoad()
+                Catch ex As SqlException
                 Finally
-                    wait(2)
+                    Utils.Wait(2)
                 End Try
 
                 If (failCount > 0) Then
@@ -163,36 +164,27 @@ Public Class frm_AddListener
         End If
     End Sub
 
-    Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
+    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
         ofd_ListenerList.ShowDialog()
     End Sub
 
-    Private Sub ofd_ListenerList_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ofd_ListenerList.FileOk
+    Private Sub Ofd_ListenerList_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ofd_ListenerList.FileOk
         txt_FilePath.Text = ofd_ListenerList.SafeFileName
     End Sub
 
-    Private Sub wait(ByVal seconds As Integer)
-        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
-
-        For i As Integer = 0 To seconds * 100
-            Threading.Thread.Sleep(10)
-            Application.DoEvents()
-        Next
-    End Sub
-
-    Private Sub frm_AddListener_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
+    Private Sub Frm_AddListener_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
         End If
     End Sub
 
-    Private Sub frm_AddListener_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
+    Private Sub Frm_AddListener_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
             ofd_ListenerList.FileName = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
             If ofd_ListenerList.CheckFileExists And CorrectExtension(ofd_ListenerList.FileName) Then
-                ofd_ListenerList_FileOk(sender, New CancelEventArgs)
+                Ofd_ListenerList_FileOk(sender, New CancelEventArgs)
                 'txt_FilePath.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
             Else
                 tss_Feedback.Text = "The file you selected does not have the correct extension. You need a file with the .csv extension"
@@ -200,7 +192,7 @@ Public Class frm_AddListener
         End If
     End Sub
 
-    Private Function CorrectExtension(filename As String) As Boolean
+    Shared Function CorrectExtension(filename As String) As Boolean
         Return filename.Split({"."c})(1).Equals("csv")
     End Function
 

@@ -2,9 +2,9 @@
 
 Public Class frm_ViewInventory
     Private db As Database
-    Private mainForm As frm_Main
+    Private mainForm As Frm_Main
 
-    Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
+    Public Sub New(ByRef database As Database, ByRef mainForm As Frm_Main)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -63,7 +63,7 @@ Public Class frm_ViewInventory
 
     Public Sub customLoad()
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
-        Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
+        Me.INVENTORYTableAdapter.Fill(Me.MediaMinistryDataSet.INVENTORY)
     End Sub
 
     Private Sub dgv_Inventory_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Inventory.CellEndEdit

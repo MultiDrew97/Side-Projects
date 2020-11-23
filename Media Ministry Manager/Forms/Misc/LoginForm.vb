@@ -3,26 +3,26 @@
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 
-Public Class frm_Login
+Public Class Frm_Login
     Dim _dbConnection As SqlConnectionStringBuilder
 
-    Private Sub frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _dbConnection = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
-        reset()
+        Reset()
     End Sub
 
-    Private Sub frm_Login_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+    Private Sub Frm_Login_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         If My.Settings.KeepLoggedIn Then
             _dbConnection.UserID = My.Settings.Username
             _dbConnection.Password = My.Settings.Password
 
             btn_LogIn.PerformClick()
         Else
-            reset()
+            Reset()
         End If
     End Sub
 
-    Private Sub btn_LogIn_Click(sender As Object, e As EventArgs) Handles btn_LogIn.Click
+    Private Sub Btn_LogIn_Click(sender As Object, e As EventArgs) Handles btn_LogIn.Click
         If My.Settings.KeepLoggedIn Then
             _dbConnection.UserID = My.Settings.Username
             _dbConnection.Password = My.Settings.Password
@@ -31,11 +31,12 @@ Public Class frm_Login
             _dbConnection.UserID = txt_Username.Text
         End If
 
-        If checkCreds(txt_Username.Text, txt_Password.Text) Then
+        If CheckCreds(txt_Username.Text, txt_Password.Text) Then
             Try
                 Dim db = New Database(_dbConnection)
 
-                Dim mainForm = New frm_Main(db)
+                db.GetCustomerInfo("512-828-2827")
+                Dim mainForm = New Frm_Main(db)
                 mainForm.Show()
                 bw_SaveSettings.RunWorkerAsync()
             Catch exception As SqlException
@@ -47,7 +48,7 @@ Public Class frm_Login
 
     End Sub
 
-    Private Sub reset()
+    Private Sub Reset()
         chk_KeepLoggedIn.Checked = False
         txt_Username.Clear()
         txt_Password.Clear()
@@ -56,7 +57,7 @@ Public Class frm_Login
         txt_Username.Focus()
     End Sub
 
-    Private Sub bw_SaveSettings_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_SaveSettings.DoWork
+    Private Sub Bw_SaveSettings_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_SaveSettings.DoWork
         My.Settings.KeepLoggedIn = chk_KeepLoggedIn.Checked
         My.Settings.Username = txt_Username.Text
         My.Settings.Password = txt_Password.Text
@@ -64,33 +65,33 @@ Public Class frm_Login
         My.Settings.Save()
     End Sub
 
-    Private Sub bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted
+    Private Sub Bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted
         Me.Hide()
-        reset()
+        Reset()
     End Sub
 
-    Private Sub txt_Password_GotFocus(sender As Object, e As EventArgs) Handles txt_Password.GotFocus
+    Private Sub Txt_Password_GotFocus(sender As Object, e As EventArgs) Handles txt_Password.GotFocus
         txt_Password.Select(0, txt_Password.TextLength)
     End Sub
 
-    Private Sub btn_CreateUser_Click(sender As Object, e As EventArgs) Handles btn_CreateUser.Click
-        Dim createForm = New frm_CreateUser()
+    Private Sub Btn_CreateUser_Click(sender As Object, e As EventArgs) Handles btn_CreateUser.Click
+        Dim createForm = New Frm_CreateUser()
         createForm.Show()
         Me.Hide()
-        reset()
+        Reset()
     End Sub
 
-    Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
-        Dim password = New frm_ChangePassword()
+    Private Sub Btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
+        Dim password = New Frm_ChangePassword()
         password.Show()
         Me.Hide()
-        reset()
+        Reset()
     End Sub
 
-    Private Function checkCreds(username As String, password As String) As Boolean
+    Private Function CheckCreds(username As String, password As String) As Boolean
         Try
             Dim db As Database = New Database(username, password)
-            db.Close()
+            db.Dispose()
             Return True
         Catch e As SqlException
             tss_UserFeedback.Text = "Username/Password was inccorect. Please try again."

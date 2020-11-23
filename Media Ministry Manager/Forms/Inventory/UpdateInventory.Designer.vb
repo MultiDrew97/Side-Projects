@@ -28,15 +28,15 @@ Partial Class frm_UpdateInventory
         Me.lbl_ItemSelect = New System.Windows.Forms.Label()
         Me.cbx_Items = New System.Windows.Forms.ComboBox()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_Stock = New System.Windows.Forms.Label()
         Me.nud_Stock = New System.Windows.Forms.NumericUpDown()
         Me.ss_AddStock = New System.Windows.Forms.StatusStrip()
         Me.tss_AddStock = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tt_Help = New System.Windows.Forms.ToolTip(Me.components)
-        Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
+        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nud_Stock, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_AddStock.SuspendLayout()
         Me.SuspendLayout()
@@ -91,12 +91,12 @@ Partial Class frm_UpdateInventory
         'INVENTORYBindingSource
         '
         Me.INVENTORYBindingSource.DataMember = "INVENTORY"
-        Me.INVENTORYBindingSource.DataSource = Me.Media_MinistryDataSet
+        Me.INVENTORYBindingSource.DataSource = Me.MediaMinistryDataSet
         '
         'Media_MinistryDataSet
         '
-        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbl_Stock
         '
@@ -152,7 +152,7 @@ Partial Class frm_UpdateInventory
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry"
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nud_Stock, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_AddStock.ResumeLayout(False)
         Me.ss_AddStock.PerformLayout()
@@ -170,7 +170,7 @@ Partial Class frm_UpdateInventory
     Friend WithEvents nud_Stock As NumericUpDown
     Friend WithEvents ss_AddStock As StatusStrip
     Friend WithEvents tss_AddStock As ToolStripStatusLabel
-    Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
     Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
 End Class

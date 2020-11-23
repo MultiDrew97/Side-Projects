@@ -1,5 +1,6 @@
 ﻿Option Strict On
 
+Imports System.Collections.ObjectModel
 Imports System.IO
 Imports System.Text
 Imports System.Threading
@@ -9,21 +10,21 @@ Imports Google.Apis.Drive.v3.Data
 Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
 Imports MimeKit
-Imports NeoSmart.Utils
+Imports Org.BouncyCastle.Utilities.Encoders
 
 Namespace SendingEmails
-
+    <CLSCompliant(False)>
     Public Class DriveUploader
+        Implements IDisposable
 
         'If modifying these scopes, delete your previously saved credentials
         'at ~/.credentials/drive-dotnet-quickstart.json
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
 
         Private ReadOnly ApplicationName As String = "Drive Uploader"
-        Private permissions As New List(Of Permission)()
+        'Private permissions As New List(Of Permission)()
         Private tss As ToolStripStatusLabel
-        Private Property service() As DriveService
-        Private db As Database
+        Private Property Service() As DriveService
 
         Sub New()
             Dim credential As UserCredential
@@ -46,17 +47,27 @@ Namespace SendingEmails
             'End Using
 
             'Create Drive API service.
-            service = New DriveService(New BaseClientService.Initializer() With {
+            Service = New DriveService(New BaseClientService.Initializer() With {
                     .HttpClientInitializer = credential,
                     .ApplicationName = ApplicationName
                         }
                     )
         End Sub
 
-        Function upload(fileName As String, ByVal folderName As String, tss As ToolStripStatusLabel) As String
-            Me.tss = tss
-            Dim parents As IList(Of String) = New List(Of String)
-            parents.Add(getFolderID(folderName))
+        Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
+
+        Protected Overridable Sub Dispose(ByVal disposing As Boolean)
+
+        End Sub
+
+        Function Upload(fileName As String, ByVal folderName As String, toolStrip As ToolStripStatusLabel) As String
+            Me.tss = toolStrip
+            Dim parents As New List(Of String) From {
+                GetFolderID(folderName)
+            }
 
             Dim uploadName As String = fileName.Split(CType("\\", Char()))(fileName.Split(CType("\\", Char())).Length - 1).Split(CType(".", Char()))(0) + " " + DateTime.UtcNow.ToString("MM/dd/yyyy")
 
@@ -68,38 +79,39 @@ Namespace SendingEmails
             Dim request As FilesResource.CreateMediaUpload
 
             Using reader As New FileStream(fileName, FileMode.Open)
-                request = service.Files.Create(fileMetadata, reader, MimeTypes.GetMimeType(fileName))
+                request = Service.Files.Create(fileMetadata, reader, MimeTypes.GetMimeType(fileName))
                 request.Fields = "id"
-                tss.Text = String.Format("Uploading the file to the drive in folder: {0}...", folderName)
+                toolStrip.Text = String.Format("Uploading the file to the drive in folder: {0}...", folderName)
                 request.Upload()
             End Using
 
             Dim file = request.ResponseBody
 
             If (file IsNot Nothing) Then
-                tss.Text = String.Format("File Uploaded:\n\tID: {0}\n\tName: {1}", file.Id, file.Name)
-                setPermissions(file.Id)
+                toolStrip.Text = String.Format("File Uploaded:\n\tID: {0}\n\tName: {1}", file.Id, file.Name)
+                SetPermissions(file.Id)
                 Console.WriteLine("ID: {0}", file.Id)
                 Return file.Id
             Else
-                tss.Text = "Upload failed"
-                tss.ForeColor = Color.Red
+                toolStrip.Text = "Upload failed"
+                toolStrip.ForeColor = Color.Red
                 Return Nothing
             End If
         End Function
 
-        Function createFolder(folderName As String) As String
-            Dim folderID = getFolderID(folderName)
+        Function CreateFolder(folderName As String) As String
+            Dim folderID = GetFolderID(folderName)
 
             If (Not String.IsNullOrEmpty(folderID)) Then
                 Return folderID
             Else
                 Console.WriteLine("No folder found with that name")
-                Dim fileMetadata As New Data.File
-                fileMetadata.Name = folderName
-                fileMetadata.MimeType = "application/vnd.google-apps.folder"
+                Dim fileMetadata As New Data.File With {
+                    .Name = folderName,
+                    .MimeType = "application/vnd.google-apps.folder"
+                }
 
-                Dim request = service.Files.Create(fileMetadata)
+                Dim request = Service.Files.Create(fileMetadata)
 
                 request.Fields = "id"
                 Dim folder As Data.File = request.Execute()
@@ -109,17 +121,17 @@ Namespace SendingEmails
             End If
         End Function
 
-        Function getFolderID(ByVal name As String) As String
+        Function GetFolderID(ByVal name As String) As String
 
             Dim pageToken As String = Nothing
             Do
 
-                service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
-                service.Files.List().Spaces = "drive"
-                service.Files.List().Fields = "nextPageToken, files(id, name)"
-                service.Files.List().PageToken = pageToken
+                Service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
+                Service.Files.List().Spaces = "drive"
+                Service.Files.List().Fields = "nextPageToken, files(id, name)"
+                Service.Files.List().PageToken = pageToken
 
-                Dim result As FileList = service.Files.List().Execute()
+                Dim result As FileList = Service.Files.List().Execute()
 
                 For Each files As Data.File In result.Files
                     If (files.Name.Equals(name)) Then
@@ -132,16 +144,16 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
-        Function findFile(ByVal fileName As String) As String
+        Function FindFile(ByVal fileName As String) As String
             Dim pageToken As String = Nothing
             Do
 
-                service.Files.List().Q = "mimeType='text/plain'"
-                service.Files.List().Spaces = "drive"
-                service.Files.List().Fields = "nextPageToken, files(id, name)"
-                service.Files.List().PageToken = pageToken
+                Service.Files.List().Q = "mimeType='text/plain'"
+                Service.Files.List().Spaces = "drive"
+                Service.Files.List().Fields = "nextPageToken, files(id, name)"
+                Service.Files.List().PageToken = pageToken
 
-                Dim result As FileList = service.Files.List().Execute()
+                Dim result As FileList = Service.Files.List().Execute()
 
                 For Each files As Data.File In result.Files
                     If (files.Name.Equals(fileName)) Then
@@ -154,63 +166,62 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
-        Sub setPermissions(ByVal fileID As String)
+        Sub SetPermissions(ByVal fileID As String)
 
             Dim request As PermissionsResource.CreateRequest
 
             tss.Text = String.Format("Setting permissions for FileID: {0}", fileID)
 
-            request = service.Permissions.Create(createPermission(), fileID)
+            request = Service.Permissions.Create(CreatePermission(), fileID)
             'request.EmailMessage = String.Format(message, listener.name)
             request.Execute()
         End Sub
 
-        Function createPermission() As Permission
-
-            Dim temp As New Permission()
-
-            'temp.EmailAddress = email
-            temp.Role = "reader"
-            temp.Type = "anyone"
-
-            Return temp
+        Shared Function CreatePermission() As Permission
+            Return New Permission With {
+                .Role = "reader",
+                .Type = "anyone"
+            }
         End Function
 
-        Function retrieveEmails() As List(Of Listener)
-            Dim listeners As New List(Of Listener)
+        Shared Function RetrieveEmails() As Collection(Of Listener)
+            Dim listeners As New Collection(Of Listener)
 
-            db = New Database(My.Settings.Username, My.Settings.Password)
-            listeners = db.RetrieveListeners()
+            Using db = New Database(My.Settings.Username, My.Settings.Password)
+                listeners = db.RetrieveListeners()
+            End Using
 
             Return listeners
         End Function
 
-        Public Function getFolders() As List(Of String)
-            Dim folders As List(Of String) = New List(Of String)
-            Dim pageToken As String = Nothing
+        Public ReadOnly Property GetFolders As Collection(Of String)
+            Get
+                Dim folders As New Collection(Of String)
+                Dim pageToken As String = Nothing
 
-            Do
+                Do
 
-                service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
-                service.Files.List().Spaces = "drive"
-                service.Files.List().Fields = "nextPageToken, files(id, name)"
-                service.Files.List().PageToken = pageToken
+                    Service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
+                    Service.Files.List().Spaces = "drive"
+                    Service.Files.List().Fields = "nextPageToken, files(id, name)"
+                    Service.Files.List().PageToken = pageToken
 
-                Dim result As FileList = service.Files.List().Execute()
+                    Dim result As FileList = Service.Files.List().Execute()
 
-                For Each folder As Data.File In result.Files
-                    If folder.MimeType.Equals("application/vnd.google-apps.folder") Then
-                        folders.Add(folder.Name)
-                    End If
-                Next
+                    For Each folder As Data.File In result.Files
+                        If folder.MimeType.Equals("application/vnd.google-apps.folder") Then
+                            folders.Add(folder.Name)
+                        End If
+                    Next
 
-                pageToken = result.NextPageToken
-            Loop While (pageToken IsNot Nothing)
+                    pageToken = result.NextPageToken
+                Loop While (pageToken IsNot Nothing)
 
-            folders.Sort()
+                'folders.Sort()
 
-            Return folders
-        End Function
+                Return folders
+            End Get
+        End Property
 
     End Class
 
