@@ -13,13 +13,13 @@ Public Class Frm_Main
         Shared max As New Size(1382, 744)
     End Structure
 
-    Public Sub New(ByRef database As Database)
+    Public Sub New() 'ByRef database As Database)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        db = database
+        'db = Database
         If Not bw_UpdateJar.IsBusy Then
             bw_UpdateJar.RunWorkerAsync(emailerLocation)
         End If
@@ -30,12 +30,12 @@ Public Class Frm_Main
     End Sub
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
-        db.Dispose()
-        If My.Settings.KeepLoggedIn Then
-            Frm_Login.Close()
-        Else
-            Frm_Login.Show()
-        End If
+        'db.Dispose()
+        'If My.Settings.KeepLoggedIn Then
+        '    Frm_Login.Close()
+        'Else
+        '    Frm_Login.Show()
+        'End If
     End Sub
 
     Private Sub Btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
@@ -208,5 +208,10 @@ Public Class Frm_Main
     Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenersToolStripMenuItem.Click
         Dim listeners As New Frm_ViewListeners(db) With {.SentFrom = Me}
         listeners.Show()
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        Dim frm_Settings As New frm_Settings()
+        frm_Settings.Show()
     End Sub
 End Class

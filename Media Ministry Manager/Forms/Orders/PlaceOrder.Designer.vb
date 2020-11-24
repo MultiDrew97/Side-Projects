@@ -26,7 +26,7 @@ Partial Class Frm_PlaceOrder
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_PlaceOrder))
         Me.cbx_ItemName = New System.Windows.Forms.ComboBox()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
         Me.lbl_ItemName = New System.Windows.Forms.Label()
         Me.ss_AddOrder = New System.Windows.Forms.StatusStrip()
         Me.tss_AddOrder = New System.Windows.Forms.ToolStripStatusLabel()
@@ -39,8 +39,8 @@ Partial Class Frm_PlaceOrder
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.cbx_PhoneNumber = New System.Windows.Forms.ComboBox()
         Me.lbl_PhoneNumber = New System.Windows.Forms.Label()
-        Me.CUSTOMERSTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
-        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
+        Me.CUSTOMERSTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.INVENTORYTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.bw_LoadingData = New System.ComponentModel.BackgroundWorker()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,7 +65,7 @@ Partial Class Frm_PlaceOrder
         Me.INVENTORYBindingSource.DataMember = "INVENTORY"
         Me.INVENTORYBindingSource.DataSource = Me.MediaMinistryDataSet
         '
-        'Media_MinistryDataSet
+        'MediaMinistryDataSet
         '
         Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
         Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
@@ -239,9 +239,9 @@ Partial Class Frm_PlaceOrder
     Friend WithEvents cbx_PhoneNumber As ComboBox
     Friend WithEvents lbl_PhoneNumber As Label
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
-    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents bw_LoadingData As System.ComponentModel.BackgroundWorker
-    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
 End Class

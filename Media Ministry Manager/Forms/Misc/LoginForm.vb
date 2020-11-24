@@ -36,7 +36,7 @@ Public Class Frm_Login
                 Dim db = New Database(_dbConnection)
 
                 db.GetCustomerInfo("512-828-2827")
-                Dim mainForm = New Frm_Main(db)
+                Dim mainForm = New Frm_Main() 'db)
                 mainForm.Show()
                 bw_SaveSettings.RunWorkerAsync()
             Catch exception As SqlException

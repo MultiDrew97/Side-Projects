@@ -24,7 +24,7 @@ Partial Class frm_DisplayCustomers
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DisplayCustomers))
-        Me.CustomersTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.CustomersTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
         Me.FIRSTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LASTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -37,7 +37,7 @@ Partial Class frm_DisplayCustomers
         Me.PREFERREDPAYMENTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.JOINDATEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_UpdatePhone = New System.Windows.Forms.Button()
@@ -203,7 +203,7 @@ Partial Class frm_DisplayCustomers
 
     End Sub
 
-    Friend WithEvents CustomersTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents CustomersTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents dgv_Customers As DataGridView
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
     Friend WithEvents ss_CustomerView As StatusStrip
@@ -220,5 +220,5 @@ Partial Class frm_DisplayCustomers
     Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PREFERREDPAYMENTDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents JOINDATEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
 End Class
