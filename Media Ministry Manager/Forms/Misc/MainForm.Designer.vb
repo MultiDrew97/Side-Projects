@@ -322,11 +322,11 @@ Partial Class Frm_Main
     Friend WithEvents btn_CustomerManagement As Button
     Friend WithEvents ss_Queries As StatusStrip
     Friend WithEvents tss_Feedback As ToolStripStatusLabel
-    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
-    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents bw_CreateUploader As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_EmailMinistry As Button
     Friend WithEvents bw_UpdateJar As System.ComponentModel.BackgroundWorker

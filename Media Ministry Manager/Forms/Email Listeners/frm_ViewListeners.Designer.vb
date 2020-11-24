@@ -30,7 +30,7 @@ Partial Class Frm_ViewListeners
         Me.NAMEDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_Total = New System.Windows.Forms.Label()
         Me.btn_Search = New System.Windows.Forms.Button()
         Me.lbl_SearchLabel = New System.Windows.Forms.Label()
@@ -46,7 +46,7 @@ Partial Class Frm_ViewListeners
         Me.btn_AdvancedCancel = New System.Windows.Forms.Button()
         Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmaiL_LISTENERSTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
+        Me.EmaiL_LISTENERSTableAdapter = New MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -300,9 +300,9 @@ Partial Class Frm_ViewListeners
     Friend WithEvents gbx_AdvancedSearch As GroupBox
     Friend WithEvents btn_AdvancedSearch As Button
     Friend WithEvents btn_AdvancedCancel As Button
-    Friend WithEvents EmaiL_LISTENERSTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
+    Friend WithEvents EmaiL_LISTENERSTableAdapter As MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
     Friend WithEvents EMAILLISTENERSBindingSource As BindingSource
-    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents NAMEDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents EMAILDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
 End Class

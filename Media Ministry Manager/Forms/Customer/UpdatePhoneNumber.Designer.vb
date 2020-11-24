@@ -26,12 +26,12 @@ Partial Class frm_UpdatePhoneNumber
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_UpdatePhoneNumber))
         Me.cbx_FirstName = New System.Windows.Forms.ComboBox()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_FirstName = New System.Windows.Forms.Label()
         Me.txt_NewNumber = New System.Windows.Forms.TextBox()
         Me.btn_UpdatePhone = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.CUSTOMERSTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.CUSTOMERSTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.ss_UpdatePhone = New System.Windows.Forms.StatusStrip()
         Me.tss_UpdatePhone = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_OldNumber = New System.Windows.Forms.Label()
@@ -185,10 +185,10 @@ Partial Class frm_UpdatePhoneNumber
     Friend WithEvents btn_UpdatePhone As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
-    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents ss_UpdatePhone As StatusStrip
     Friend WithEvents tss_UpdatePhone As ToolStripStatusLabel
     Friend WithEvents lbl_OldNumber As Label
     Friend WithEvents cbx_OldNumber As ComboBox
-    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
 End Class

@@ -31,8 +31,8 @@ Partial Class Frm_DisplayOrders
         Me.ITEMDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.QUANTITYDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ORDERSUMMARYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
-        Me.ORDER_SUMMARYTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.ORDER_SUMMARYTableAdapter = New MediaMinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter()
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.btn_Fulfil = New System.Windows.Forms.Button()
         Me.btn_UpdateOrder = New System.Windows.Forms.Button()
@@ -176,13 +176,13 @@ Partial Class Frm_DisplayOrders
 
     Friend WithEvents dgv_Orders As DataGridView
     Friend WithEvents ORDERSUMMARYBindingSource As BindingSource
-    Friend WithEvents ORDER_SUMMARYTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter
+    Friend WithEvents ORDER_SUMMARYTableAdapter As MediaMinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents btn_Fulfil As Button
     Friend WithEvents btn_UpdateOrder As Button
     Friend WithEvents btn_CancelOrder As Button
     Friend WithEvents Selection As DataGridViewCheckBoxColumn
-    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents ORDERNUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PHONENUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ITEMDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

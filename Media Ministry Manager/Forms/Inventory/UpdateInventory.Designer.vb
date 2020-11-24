@@ -28,13 +28,13 @@ Partial Class frm_UpdateInventory
         Me.lbl_ItemSelect = New System.Windows.Forms.Label()
         Me.cbx_Items = New System.Windows.Forms.ComboBox()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_Stock = New System.Windows.Forms.Label()
         Me.nud_Stock = New System.Windows.Forms.NumericUpDown()
         Me.ss_AddStock = New System.Windows.Forms.StatusStrip()
         Me.tss_AddStock = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tt_Help = New System.Windows.Forms.ToolTip(Me.components)
-        Me.INVENTORYTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
+        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nud_Stock, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -171,6 +171,6 @@ Partial Class frm_UpdateInventory
     Friend WithEvents ss_AddStock As StatusStrip
     Friend WithEvents tss_AddStock As ToolStripStatusLabel
     Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
-    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
 End Class

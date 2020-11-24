@@ -25,8 +25,8 @@ Partial Class frm_ViewInventory
         Me.components = New System.ComponentModel.Container()
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
-        Me.INVENTORYTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.btn_AddProduct = New System.Windows.Forms.Button()
         Me.ITEMINDEXDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ITEMDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -121,9 +121,9 @@ Partial Class frm_ViewInventory
 
     Friend WithEvents dgv_Inventory As DataGridView
     Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents btn_AddProduct As Button
-    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents ITEMINDEXDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ITEMDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents INSTOCKDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

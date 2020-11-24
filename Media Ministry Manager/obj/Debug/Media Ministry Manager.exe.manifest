@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7364096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7415296">
       <assemblyIdentity name="Media Ministry Manager" version="2.0.0.9" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iMwgkHVwmTX8gBwjDVOiLPPpuEWwzQKTebJOeXnHceA=</dsig:DigestValue>
+        <dsig:DigestValue>hdFVZDIXcVB49++fLnrVYCzY+km97SIVLCXCFSdxxVs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,15 +210,6 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Media Ministry Manager.exe.config" size="4196">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0wBbvQk1lguAYiI6QKC7VYNKrQFblSxrDO4ff4I/nDc=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Resources\App Icon.ico" size="45451">
     <hash>
       <dsig:Transforms>
