@@ -4,19 +4,8 @@ Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
 
 Public Class frm_UpdatePhoneNumber
-    Private db As Database
     Private validNumberFormat As String = "\d{3}-\d{3}-\d{4}"
-    Private display As frm_DisplayCustomers
-
-    Public Sub New(ByRef database As Database, ByRef displayForm As frm_DisplayCustomers)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        db = database
-        display = displayForm
-    End Sub
+    Property display As frm_DisplayCustomers
 
     Private Sub UpdatePhoneNumber_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
@@ -30,8 +19,10 @@ Public Class frm_UpdatePhoneNumber
             Dim oldNumber = cbx_FirstName.Text
 
             Try
-                db.UpdatePhone(newNumber, oldNumber)
-                tss_UpdatePhone.Text = String.Format("{0}'s number has been updated", cbx_FirstName.SelectedItem)
+                Using db = New Database(My.Settings.Username, My.Settings.Password)
+                    db.UpdatePhone(newNumber, oldNumber)
+                    tss_UpdatePhone.Text = String.Format("{0}'s number has been updated", cbx_FirstName.SelectedItem)
+                End Using
             Catch exception As SqlException
                 tss_UpdatePhone.ForeColor = Color.Red
                 tss_UpdatePhone.Text = "Number could not be updated. Please try again."

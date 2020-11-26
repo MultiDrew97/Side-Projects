@@ -3,8 +3,7 @@
 Imports System.ComponentModel
 
 Public Class frm_ViewListeners
-    Public sendingForm As Form
-    Dim db As Database
+    Property sendingForm As Form
     ReadOnly totalListeners As String = "Total Listeners: {0}"
 
     Structure Sizes
@@ -53,16 +52,6 @@ Public Class frm_ViewListeners
         Shared SearchMax As New Point(1093, 151)
     End Structure
 
-    Public Sub New(ByRef db As Database)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        Me.db = db
-        cbx_Column.SelectedIndex = 0
-    End Sub
-
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         customLoad()
     End Sub
@@ -70,6 +59,7 @@ Public Class frm_ViewListeners
     Public Sub customLoad()
         Me.EMAIL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
+        cbx_Column.SelectedIndex = 0
         updateTotal()
     End Sub
 
@@ -88,15 +78,18 @@ Public Class frm_ViewListeners
     End Sub
 
     Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
-        db.removeListener(CType(e.Row.Cells(0).Value, String), CType(e.Row.Cells(1).Value, String))
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.removeListener(CType(e.Row.Cells(0).Value, String), CType(e.Row.Cells(1).Value, String))
+        End Using
     End Sub
 
     Private Sub dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
         Dim changed As Integer = e.RowIndex
         Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
-
-        db.updateListener(name, email)
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.updateListener(name, email)
+        End Using
     End Sub
 
     Private Sub updateTotal()

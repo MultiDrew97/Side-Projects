@@ -33,9 +33,7 @@ Public Class frm_Login
 
         If checkCreds(txt_Username.Text, txt_Password.Text) Then
             Try
-                Dim db = New Database(_dbConnection)
-
-                Dim mainForm = New frm_Main(db)
+                Dim mainForm = New frm_Main
                 mainForm.Show()
                 bw_SaveSettings.RunWorkerAsync()
             Catch exception As SqlException
@@ -89,8 +87,9 @@ Public Class frm_Login
 
     Private Function checkCreds(username As String, password As String) As Boolean
         Try
-            Dim db As Database = New Database(username, password)
-            db.Close()
+            Using db As New Database(username, password)
+            End Using
+
             Return True
         Catch e As SqlException
             tss_UserFeedback.Text = "Username/Password was inccorect. Please try again."

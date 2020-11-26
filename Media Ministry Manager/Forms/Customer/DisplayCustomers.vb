@@ -3,18 +3,7 @@
 Imports System.Data.SqlClient
 
 Public Class frm_DisplayCustomers
-    Private db As Database
-    Private mainForm As frm_Main
-
-    Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        db = database
-        Me.mainForm = mainForm
-    End Sub
+    Property mainForm() As frm_Main
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
@@ -38,20 +27,22 @@ Public Class frm_DisplayCustomers
 
             Do
                 If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
-                    street = dgv_Customers.Rows(index).Cells(4).Value.ToString
-                    city = dgv_Customers.Rows(index).Cells(5).Value.ToString
-                    state = dgv_Customers.Rows(index).Cells(6).Value.ToString
-                    zip = dgv_Customers.Rows(index).Cells(7).Value.ToString
-                    phone = dgv_Customers.Rows(index).Cells(3).Value.ToString
-                    email = dgv_Customers.Rows(index).Cells(8).Value.ToString
-                    payment = dgv_Customers.Rows(index).Cells(9).Value.ToString
+                    Using db = New Database(My.Settings.Username, My.Settings.Password)
+                        street = dgv_Customers.Rows(index).Cells(4).Value.ToString
+                        city = dgv_Customers.Rows(index).Cells(5).Value.ToString
+                        state = dgv_Customers.Rows(index).Cells(6).Value.ToString
+                        zip = dgv_Customers.Rows(index).Cells(7).Value.ToString
+                        phone = dgv_Customers.Rows(index).Cells(3).Value.ToString
+                        email = dgv_Customers.Rows(index).Cells(8).Value.ToString
+                        payment = dgv_Customers.Rows(index).Cells(9).Value.ToString
 
-                    Try
-                        db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
-                        updateCount += 1
-                    Catch ex As SqlException
-                        failedUpdate = True
-                    End Try
+                        Try
+                            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+                            updateCount += 1
+                        Catch ex As SqlException
+                            failedUpdate = True
+                        End Try
+                    End Using
                 End If
 
                 index += 1
@@ -75,19 +66,21 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
-        Dim updateNumber = New frm_UpdatePhoneNumber(db, Me)
+        Dim updateNumber = New frm_UpdatePhoneNumber With {.display = Me}
         updateNumber.Show()
         Me.Hide()
     End Sub
 
     Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
-        Dim addForm = New frm_AddNewCustomer(db, Me)
+        Dim addForm = New frm_AddNewCustomer With {.sendingForm = Me}
         addForm.Show()
         Me.Hide()
     End Sub
 
     Private Sub dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
-        db.RemovePerson(CType(e.Row.Cells(2).Value, String))
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.RemovePerson(CType(e.Row.Cells(2).Value, String))
+        End Using
     End Sub
 
     Public Overrides Sub refresh()
@@ -106,7 +99,9 @@ Public Class frm_DisplayCustomers
         Dim email As String = CType(dgv_Customers.Rows(changedRow).Cells(7).Value, String)
         Dim payment As String = CType(dgv_Customers.Rows(changedRow).Cells(8).Value, String)
 
-        db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+        End Using
     End Sub
 
 End Class

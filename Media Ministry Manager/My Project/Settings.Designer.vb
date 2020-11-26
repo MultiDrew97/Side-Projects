@@ -14,7 +14,7 @@ Option Explicit On
 
 
 <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
- Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0"),  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0"),  _
  Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
 Partial Friend NotInheritable Class MySettings
     Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -128,8 +128,9 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P"& _ 
-        "ersist Security Info=True;User ID=arandlemiller97;Password=AMrw2697")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
+        "ser ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication=""Sql Passw"& _ 
+        "ord""")>  _
     Public ReadOnly Property masterConnectionString() As String
         Get
             Return CType(Me("masterConnectionString"),String)

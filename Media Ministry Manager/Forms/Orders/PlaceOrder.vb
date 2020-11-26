@@ -1,17 +1,8 @@
 ﻿Option Strict On
+Imports System.Data.SqlClient
 
 Public Class frm_PlaceOrder
-    Private _db As Database
-    Private mainForm As frm_Main
-
-    Public Sub New(database As Database, ByRef mainForm As frm_Main)
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        _db = database
-        Me.mainForm = mainForm
-    End Sub
+    Property mainForm() As frm_Main
 
     Private Sub frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
@@ -30,10 +21,12 @@ Public Class frm_PlaceOrder
 
     Private Sub btn_AddOrder_Click(sender As Object, e As EventArgs) Handles btn_AddOrder.Click
         Try
-            _db.AddOrder(cbx_PhoneNumber.Text, cbx_ItemName.SelectedIndex, CType(nud_Quantity.Value, Integer))
-            tss_AddOrder.ForeColor = SystemColors.WindowText
-            tss_AddOrder.Text = "The order was successfully added for " & cbx_FirstName.Text
-        Catch
+            Using db = New Database(My.Settings.Username, My.Settings.Password)
+                db.AddOrder(cbx_PhoneNumber.Text, cbx_ItemName.SelectedIndex, CType(nud_Quantity.Value, Integer))
+                tss_AddOrder.ForeColor = SystemColors.WindowText
+                tss_AddOrder.Text = "The order was successfully added for " & cbx_FirstName.Text
+            End Using
+        Catch ex As SqlException
             tss_AddOrder.Text = "The order could not be added. Please try again"
             tss_AddOrder.ForeColor = Color.Red
         End Try

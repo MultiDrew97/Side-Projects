@@ -1,18 +1,8 @@
 ﻿Option Strict On
+Imports System.Data.SqlClient
 
 Public Class frm_DisplayOrders
-    Private db As Database
-    Private mainForm As frm_Main
-
-    Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        db = database
-        Me.mainForm = mainForm
-    End Sub
+    Property mainForm() As frm_Main
 
     Private Sub frm_DisplayOrders_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.ORDER_SUMMARY' table. You can move, or remove it, as needed.
@@ -43,16 +33,18 @@ Public Class frm_DisplayOrders
             'https://stackoverflow.com/questions/19721984/how-to-get-cell-value-from-datagridview-in-vb-net
             Do
                 If dgv_Orders.Rows(index).Cells(0).Value.Equals("true") Then
-                    orderNumber = CInt(dgv_Orders.Rows(index).Cells(1).Value.ToString)
-                    phoneNumber = dgv_Orders.Rows(index).Cells(2).Value.ToString
-                    itemIndex = db.GetIndexNumber(orderNumber) 'update this to get the item_index number
-                    quantity = CInt(dgv_Orders.Rows(index).Cells(4).Value.ToString)
-                    Try
-                        db.FulfilOrder(orderNumber, phoneNumber, itemIndex, quantity)
-                        dgv_Orders.Rows.RemoveAt(index)
-                    Catch
+                    Using db = New Database(My.Settings.Username, My.Settings.Password)
+                        orderNumber = CInt(dgv_Orders.Rows(index).Cells(1).Value.ToString)
+                        phoneNumber = dgv_Orders.Rows(index).Cells(2).Value.ToString
+                        itemIndex = db.GetIndexNumber(orderNumber) 'update this to get the item_index number
+                        quantity = CInt(dgv_Orders.Rows(index).Cells(4).Value.ToString)
+                        Try
+                            db.FulfilOrder(orderNumber, phoneNumber, itemIndex, quantity)
+                            dgv_Orders.Rows.RemoveAt(index)
+                        Catch ex As SqlException
 
-                    End Try
+                        End Try
+                    End Using
                 End If
                 index += 1
             Loop Until (index >= dgv_Orders.Rows.Count)
@@ -71,13 +63,15 @@ Public Class frm_DisplayOrders
             'https://stackoverflow.com/questions/19721984/how-to-get-cell-value-from-datagridview-in-vb-net
             Do
                 If dgv_Orders.Rows(index).Cells(0).Value.Equals(True) Then
-                    orderNumber = CInt(dgv_Orders.Rows(index).Cells(1).Value.ToString)
-                    quantity = CInt(dgv_Orders.Rows(index).Cells(4).Value.ToString)
-                    Try
-                        db.UpdateOrder(orderNumber, quantity)
-                    Catch
+                    Using db As New Database(My.Settings.Username, My.Settings.Password)
+                        orderNumber = CInt(dgv_Orders.Rows(index).Cells(1).Value.ToString)
+                        quantity = CInt(dgv_Orders.Rows(index).Cells(4).Value.ToString)
+                        Try
+                            db.UpdateOrder(orderNumber, quantity)
+                        Catch
 
-                    End Try
+                        End Try
+                    End Using
                 End If
                 index += 1
             Loop Until (index >= dgv_Orders.Rows.Count)
@@ -96,13 +90,15 @@ Public Class frm_DisplayOrders
             'https://stackoverflow.com/questions/19721984/how-to-get-cell-value-from-datagridview-in-vb-net
             Do
                 If dgv_Orders.Rows(index).Cells(0).Value.Equals(True) Then
-                    orderNumber = CInt(dgv_Orders.Rows(index).Cells(1).Value.ToString)
-                    Try
-                        db.CancelOrder(orderNumber)
-                        dgv_Orders.Rows.RemoveAt(index)
-                    Catch
+                    Using db = New Database(My.Settings.Username, My.Settings.Password)
+                        orderNumber = CInt(dgv_Orders.Rows(index).Cells(1).Value.ToString)
+                        Try
+                            db.CancelOrder(orderNumber)
+                            dgv_Orders.Rows.RemoveAt(index)
+                        Catch
 
-                    End Try
+                        End Try
+                    End Using
                 End If
                 index += 1
             Loop Until (index >= dgv_Orders.Rows.Count)

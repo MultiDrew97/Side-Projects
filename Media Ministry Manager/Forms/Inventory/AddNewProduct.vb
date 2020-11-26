@@ -3,18 +3,7 @@
 Imports System.Text.RegularExpressions.Regex
 
 Public Class frm_AddNewProduct
-    Private db As Database
-    Private sendingForm As Form
-
-    Public Sub New(ByRef database As Database, ByRef inventoryView As Form)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        db = database
-        sendingForm = inventoryView
-    End Sub
+    Property sendingForm() As Form
 
     Private Sub frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
@@ -46,9 +35,11 @@ Public Class frm_AddNewProduct
         price = Decimal.Parse("0" & Format(txt_Price.Text, "Standard"))
 
         Try
-            db.AddNewProduct(name, stock, price)
-            tss_AddProduct.ForeColor = SystemColors.WindowText
-            tss_AddProduct.Text = "Product was successfully added."
+            Using db = New Database(My.Settings.Username, My.Settings.Password)
+                db.AddNewProduct(name, stock, price)
+                tss_AddProduct.ForeColor = SystemColors.WindowText
+                tss_AddProduct.Text = "Product was successfully added."
+            End Using
         Catch
             tss_AddProduct.ForeColor = Color.Red
             tss_AddProduct.Text = "Product could not be added. Try again."

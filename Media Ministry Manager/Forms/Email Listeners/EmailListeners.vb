@@ -173,7 +173,7 @@ Public Class frm_EmailListeners
     End Sub
 
     Private Sub btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
-        Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners(New Database(My.Settings.Username, My.Settings.Password)) With {.sendingForm = Me}
+        Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners With {.sendingForm = Me}
         frm_ViewListeners.Show()
         Me.Hide()
     End Sub

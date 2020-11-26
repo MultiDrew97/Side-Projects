@@ -7,6 +7,7 @@ Imports System.Data.SqlClient
 Imports Media_Ministry.SendingEmails
 
 Public Class Database
+    Implements IDisposable
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
@@ -38,7 +39,7 @@ Public Class Database
         myConn.Open()
     End Sub
 
-    Public Sub Close()
+    Public Sub Close() Implements IDisposable.Dispose
         'close connection
         If (myReader IsNot Nothing) Then
             'if the reader is still open, close it
