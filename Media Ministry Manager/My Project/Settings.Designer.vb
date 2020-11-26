@@ -135,6 +135,27 @@ Partial Friend NotInheritable Class MySettings
             Return CType(Me("masterConnectionString"),String)
         End Get
     End Property
+
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+     Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>
+    Public ReadOnly Property DefaultFont() As Global.System.Drawing.Font
+        Get
+            Return CType(Me("DefaultFont"), Global.System.Drawing.Font)
+        End Get
+    End Property
+
+    <Global.System.Configuration.UserScopedSettingAttribute(),
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+     Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>
+    Public Property CurrentFont() As Global.System.Drawing.Font
+        Get
+            Return CType(Me("CurrentFont"), Global.System.Drawing.Font)
+        End Get
+        Set
+            Me("CurrentFont") = Value
+        End Set
+    End Property
 End Class
 
 Namespace My

@@ -19,7 +19,7 @@ Public Class frm_UpdatePhoneNumber
     End Sub
 
     Private Sub UpdatePhoneNumber_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
+        'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         Me.CUSTOMERSTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
 
     End Sub

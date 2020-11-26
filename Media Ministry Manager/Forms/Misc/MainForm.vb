@@ -211,7 +211,7 @@ Public Class Frm_Main
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
-        Dim frm_Settings As New frm_Settings()
+        Dim frm_Settings As New Frm_Settings()
         frm_Settings.Show()
     End Sub
 End Class

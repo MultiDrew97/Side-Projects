@@ -162,7 +162,6 @@ Partial Class Frm_Main
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.mnstr_Strip.Size = New System.Drawing.Size(397, 24)
         Me.mnstr_Strip.TabIndex = 0
-        Me.mnstr_Strip.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '

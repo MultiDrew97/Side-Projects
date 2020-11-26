@@ -17,7 +17,7 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
+        'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 

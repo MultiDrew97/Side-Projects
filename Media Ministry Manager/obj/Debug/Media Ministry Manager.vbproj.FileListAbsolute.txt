@@ -211,3 +211,4 @@ C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Ma
 C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
 C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\UrlBase64.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Settings.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.config

@@ -36,7 +36,7 @@ Public Class frm_UpdateInventory
     End Sub
 
     Private Sub frm_UpdateInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        'This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
         Me.INVENTORYTableAdapter.Fill(Me.MediaMinistryDataSet.INVENTORY)
         cbx_Items.SelectedIndex = selectedIndex
     End Sub

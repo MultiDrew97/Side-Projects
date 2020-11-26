@@ -62,7 +62,7 @@ Public Class frm_ViewInventory
     End Sub
 
     Public Sub customLoad()
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        'This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
         Me.INVENTORYTableAdapter.Fill(Me.MediaMinistryDataSet.INVENTORY)
     End Sub
 

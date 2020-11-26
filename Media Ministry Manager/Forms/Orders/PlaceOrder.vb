@@ -19,9 +19,8 @@ Public Class Frm_PlaceOrder
     End Sub
 
     Private Sub Frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        'These lines of code loads data into the 'Media_MinistryDataSet.INVENTORY' table and 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         INVENTORYTableAdapter.Fill(MediaMinistryDataSet.INVENTORY)
-        'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         CUSTOMERSTableAdapter.Fill(MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
