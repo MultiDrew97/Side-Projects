@@ -95,14 +95,6 @@ Public Class frm_AddNewProduct
         Me.Close()
     End Sub
 
-    Private Sub Txt_ProductName_TextChanged(sender As Object, e As EventArgs) Handles txt_ProductName.TextChanged
-        If (Not txt_ProductName.Text.Equals("Product Name")) Then
-            txt_ProductName.ForeColor = SystemColors.WindowText
-            txt_ProductName.Text = txt_ProductName.Text.ToUpper
-            txt_ProductName.SelectionStart = txt_ProductName.Text.Length + 1
-        End If
-    End Sub
-
     Private Sub Nud_Stock_GotFocus(sender As Object, e As EventArgs) Handles nud_Stock.GotFocus
         nud_Stock.Select()
         nud_Stock.Select(0, nud_Stock.Text.Length)

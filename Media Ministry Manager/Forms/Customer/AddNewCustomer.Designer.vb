@@ -64,6 +64,7 @@ Partial Class frm_AddNewCustomer
         'txt_FirstName
         '
         Me.txt_FirstName.BackColor = System.Drawing.SystemColors.Window
+        Me.txt_FirstName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_FirstName.Cursor = System.Windows.Forms.Cursors.Default
         Me.txt_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FirstName.ForeColor = System.Drawing.SystemColors.ControlLight
@@ -71,27 +72,29 @@ Partial Class frm_AddNewCustomer
         Me.txt_FirstName.Name = "txt_FirstName"
         Me.txt_FirstName.Size = New System.Drawing.Size(213, 31)
         Me.txt_FirstName.TabIndex = 1
-        Me.txt_FirstName.Text = "First Name"
+        Me.txt_FirstName.Text = "FIRST NAME"
         '
         'txt_LastName
         '
+        Me.txt_LastName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_LastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_LastName.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.txt_LastName.Location = New System.Drawing.Point(428, 40)
         Me.txt_LastName.Name = "txt_LastName"
         Me.txt_LastName.Size = New System.Drawing.Size(213, 31)
         Me.txt_LastName.TabIndex = 3
-        Me.txt_LastName.Text = "Last Name"
+        Me.txt_LastName.Text = "LAST NAME"
         '
         'txt_Street
         '
+        Me.txt_Street.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_Street.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Street.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.txt_Street.Location = New System.Drawing.Point(43, 115)
         Me.txt_Street.Name = "txt_Street"
         Me.txt_Street.Size = New System.Drawing.Size(213, 31)
         Me.txt_Street.TabIndex = 5
-        Me.txt_Street.Text = "Street"
+        Me.txt_Street.Text = "STREET"
         '
         'txt_PhoneNumber
         '
@@ -188,13 +191,14 @@ Partial Class frm_AddNewCustomer
         '
         'txt_City
         '
+        Me.txt_City.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_City.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_City.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.txt_City.Location = New System.Drawing.Point(262, 115)
         Me.txt_City.Name = "txt_City"
         Me.txt_City.Size = New System.Drawing.Size(213, 31)
         Me.txt_City.TabIndex = 7
-        Me.txt_City.Text = "City"
+        Me.txt_City.Text = "CITY"
         '
         'lbl_City
         '
@@ -211,6 +215,7 @@ Partial Class frm_AddNewCustomer
         Me.txt_Zip.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Zip.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.txt_Zip.Location = New System.Drawing.Point(572, 115)
+        Me.txt_Zip.MaxLength = 5
         Me.txt_Zip.Name = "txt_Zip"
         Me.txt_Zip.Size = New System.Drawing.Size(213, 31)
         Me.txt_Zip.TabIndex = 11
@@ -254,13 +259,14 @@ Partial Class frm_AddNewCustomer
         '
         'txt_Email
         '
+        Me.txt_Email.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Email.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.txt_Email.Location = New System.Drawing.Point(329, 194)
         Me.txt_Email.Name = "txt_Email"
         Me.txt_Email.Size = New System.Drawing.Size(389, 31)
         Me.txt_Email.TabIndex = 15
-        Me.txt_Email.Text = "E-Mail"
+        Me.txt_Email.Text = "E-MAIL"
         '
         'lbl_Email
         '

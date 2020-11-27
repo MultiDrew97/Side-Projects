@@ -30,5 +30,4 @@ Public Class frm_Folder
         My.Settings.AdminInfoRecieved = True
         Me.Close()
     End Sub
-
 End Class

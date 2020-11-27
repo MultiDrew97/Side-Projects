@@ -129,6 +129,7 @@ Partial Class frm_AddListener
         '
         'txt_FilePath
         '
+        Me.txt_FilePath.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_FilePath.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.txt_FilePath.Location = New System.Drawing.Point(396, 110)
         Me.txt_FilePath.Name = "txt_FilePath"

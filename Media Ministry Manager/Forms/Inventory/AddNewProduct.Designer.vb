@@ -83,13 +83,14 @@ Partial Class frm_AddNewProduct
         '
         'txt_ProductName
         '
+        Me.txt_ProductName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_ProductName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
         Me.txt_ProductName.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.txt_ProductName.Location = New System.Drawing.Point(83, 24)
         Me.txt_ProductName.Name = "txt_ProductName"
         Me.txt_ProductName.Size = New System.Drawing.Size(213, 32)
         Me.txt_ProductName.TabIndex = 1
-        Me.txt_ProductName.Text = "Product Name"
+        Me.txt_ProductName.Text = "PRODUCT NAME"
         '
         'txt_Price
         '

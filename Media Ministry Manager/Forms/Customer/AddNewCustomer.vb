@@ -225,44 +225,8 @@ Public Class frm_AddNewCustomer
     '    Return table.Equals("")
     'End Function
 
-    Private Sub txt_FirstName_TextChanged(sender As Object, e As EventArgs) Handles txt_FirstName.TextChanged
-        If (Not txt_FirstName.Text.Equals("First Name")) Then
-            txt_FirstName.Text = txt_FirstName.Text.ToUpper(CultureInfo.CurrentCulture)
-            txt_FirstName.SelectionStart = txt_FirstName.Text.Length + 1
-        End If
-    End Sub
-
-    Private Sub txt_LastName_TextChanged(sender As Object, e As EventArgs) Handles txt_LastName.TextChanged
-        If (Not txt_LastName.Text.Equals("Last Name")) Then
-            txt_LastName.Text = txt_LastName.Text.ToUpper(CultureInfo.CurrentCulture)
-            txt_LastName.SelectionStart = txt_LastName.Text.Length + 1
-        End If
-    End Sub
-
-    Private Sub txt_Street_TextChanged(sender As Object, e As EventArgs) Handles txt_Street.TextChanged
-        If (Not txt_Street.Text.Equals("Street")) Then
-            txt_Street.Text = txt_Street.Text.ToUpper(CultureInfo.CurrentCulture)
-            txt_Street.SelectionStart = txt_Street.Text.Length + 1
-        End If
-    End Sub
-
-    Private Sub txt_City_TextChanged(sender As Object, e As EventArgs) Handles txt_City.TextChanged
-        If (Not txt_City.Text.Equals("City")) Then
-            txt_City.Text = txt_City.Text.ToUpper(CultureInfo.CurrentCulture)
-            txt_City.SelectionStart = txt_City.Text.Length + 1
-        End If
-    End Sub
-
-    Private Sub cbx_State_TextChanged(sender As Object, e As EventArgs) Handles cbx_State.TextChanged
-        cbx_State.Text = cbx_State.Text.ToUpper
-        cbx_State.SelectionStart = cbx_State.Text.Length + 1
-    End Sub
-
-    Private Sub txt_Email_TextChanged(sender As Object, e As EventArgs) Handles txt_Email.TextChanged
-        If (Not txt_Email.Text.Equals("E-Mail")) Then
-            txt_Email.Text = txt_Email.Text.ToUpper(CultureInfo.CurrentCulture)
-            txt_Email.SelectionStart = txt_Email.Text.Length + 1
-        End If
-    End Sub
-
+    'Private Sub cbx_State_TextChanged(sender As Object, e As EventArgs) Handles cbx_State.TextChanged
+    '    cbx_State.Text = cbx_State.Text.ToUpper
+    '    cbx_State.SelectionStart = cbx_State.Text.Length + 1
+    'End Sub
 End Class

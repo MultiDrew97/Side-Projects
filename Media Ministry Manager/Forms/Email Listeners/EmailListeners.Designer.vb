@@ -92,6 +92,7 @@ Partial Class Frm_EmailListeners
         '
         'txt_FileLocation
         '
+        Me.txt_FileLocation.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txt_FileLocation.Location = New System.Drawing.Point(389, 127)
@@ -173,7 +174,7 @@ Partial Class Frm_EmailListeners
         Me.rdo_EmailMinistry.Size = New System.Drawing.Size(104, 24)
         Me.rdo_EmailMinistry.TabIndex = 0
         '
-        'frm_EmailListeners
+        'Frm_EmailListeners
         '
         Me.AcceptButton = Me.btn_Upload
         Me.AllowDrop = True
@@ -193,7 +194,7 @@ Partial Class Frm_EmailListeners
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "frm_EmailListeners"
+        Me.Name = "Frm_EmailListeners"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)
