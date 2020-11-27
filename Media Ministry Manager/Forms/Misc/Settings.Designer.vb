@@ -36,7 +36,7 @@ Partial Class Frm_Settings
         Me.lbl_FontSize = New System.Windows.Forms.Label()
         Me.nud_FontSize = New System.Windows.Forms.NumericUpDown()
         Me.tp_LinkedAccounts = New System.Windows.Forms.TabPage()
-        Me.lbl_Gmail = New System.Windows.Forms.Label()
+        Me.lbl_CurrentGmail = New System.Windows.Forms.Label()
         Me.lbl_CurrentDrive = New System.Windows.Forms.Label()
         Me.btn_Gmail = New System.Windows.Forms.Button()
         Me.btn_GoogleDrive = New System.Windows.Forms.Button()
@@ -65,6 +65,7 @@ Partial Class Frm_Settings
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CancelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bw_Uploader = New System.ComponentModel.BackgroundWorker()
+        Me.bw_Gmail = New System.ComponentModel.BackgroundWorker()
         Me.tc_Settings.SuspendLayout()
         Me.tp_Fonts.SuspendLayout()
         CType(Me.nud_FontSize, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,7 +194,7 @@ Partial Class Frm_Settings
         'tp_LinkedAccounts
         '
         Me.tp_LinkedAccounts.BackColor = System.Drawing.Color.Transparent
-        Me.tp_LinkedAccounts.Controls.Add(Me.lbl_Gmail)
+        Me.tp_LinkedAccounts.Controls.Add(Me.lbl_CurrentGmail)
         Me.tp_LinkedAccounts.Controls.Add(Me.lbl_CurrentDrive)
         Me.tp_LinkedAccounts.Controls.Add(Me.btn_Gmail)
         Me.tp_LinkedAccounts.Controls.Add(Me.btn_GoogleDrive)
@@ -204,14 +205,14 @@ Partial Class Frm_Settings
         Me.tp_LinkedAccounts.TabIndex = 1
         Me.tp_LinkedAccounts.Text = "Linked Accounts"
         '
-        'lbl_Gmail
+        'lbl_CurrentGmail
         '
-        Me.lbl_Gmail.AutoSize = True
-        Me.lbl_Gmail.Location = New System.Drawing.Point(36, 198)
-        Me.lbl_Gmail.Name = "lbl_Gmail"
-        Me.lbl_Gmail.Size = New System.Drawing.Size(142, 26)
-        Me.lbl_Gmail.TabIndex = 3
-        Me.lbl_Gmail.Text = "Current User:"
+        Me.lbl_CurrentGmail.AutoSize = True
+        Me.lbl_CurrentGmail.Location = New System.Drawing.Point(36, 198)
+        Me.lbl_CurrentGmail.Name = "lbl_CurrentGmail"
+        Me.lbl_CurrentGmail.Size = New System.Drawing.Size(142, 26)
+        Me.lbl_CurrentGmail.TabIndex = 3
+        Me.lbl_CurrentGmail.Text = "Current User:"
         '
         'lbl_CurrentDrive
         '
@@ -401,6 +402,10 @@ Partial Class Frm_Settings
         '
         Me.bw_Uploader.WorkerSupportsCancellation = True
         '
+        'bw_Gmail
+        '
+        Me.bw_Gmail.WorkerSupportsCancellation = True
+        '
         'Frm_Settings
         '
         Me.AcceptButton = Me.btn_Save
@@ -476,6 +481,7 @@ Partial Class Frm_Settings
     Friend WithEvents lbl_CurrentDrive As Label
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents CancelToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents lbl_Gmail As Label
+    Friend WithEvents lbl_CurrentGmail As Label
     Friend WithEvents bw_Uploader As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bw_Gmail As System.ComponentModel.BackgroundWorker
 End Class

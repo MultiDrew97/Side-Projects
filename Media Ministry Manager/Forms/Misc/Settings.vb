@@ -22,6 +22,11 @@ Public Class Frm_Settings
             lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
             btn_GoogleDrive.Text = "Link Google Drive"
         End If
+
+        'TODO: Figure out how to access Sender Token folder
+        lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
+
+        File.Exists(Application.StartupPath & "\Resources\sender.jar")
     End Sub
 
     Private Sub Btn_Default_Click(sender As Object, e As EventArgs) Handles btn_Default.Click
@@ -110,6 +115,48 @@ Public Class Frm_Settings
                 Sub()
                     btn_GoogleDrive.Text = "Unlink Google Drive"
                     lbl_CurrentDrive.Text = String.Format(currentUser, uploader.Info.EmailAddress)
+                End Sub
+            )
+        Catch ex As OperationCanceledException
+            Console.WriteLine("Canceled Exception")
+        Catch ex As AggregateException
+            Console.WriteLine("Aggregate Exception")
+        End Try
+    End Sub
+
+    Private Sub btn_Gmail_Click(sender As Object, e As EventArgs) Handles btn_Gmail.Click
+        If btn_Gmail.Text = "Unlink Google Drive" Then
+            Try
+                Directory.Delete(Application.StartupPath & "\Drive Token", True)
+                btn_Gmail.Text = "Link Google Drive"
+                lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
+            Catch ex As DirectoryNotFoundException
+
+            Catch ex As UnauthorizedAccessException
+
+            Catch ex As PathTooLongException
+
+            End Try
+        ElseIf btn_Gmail.Text = "Cancel" Then
+            If cts IsNot Nothing Then
+                cts.Cancel()
+                bw_Gmail.CancelAsync()
+                btn_Gmail.Text = "Link Google Drive"
+            End If
+        ElseIf btn_GoogleDrive.Text = "Link Google Drive" Then
+            btn_Gmail.Text = "Cancel"
+            bw_Gmail.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub bw_Gmail_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Gmail.DoWork
+        cts = New CancellationTokenSource()
+        Try
+            Dim emailer As New Sender(cts.Token)
+            Invoke(
+                Sub()
+                    btn_Gmail.Text = "Unlink Google Drive"
+                    lbl_CurrentGmail.Text = String.Format(currentUser, emailer.Info.EmailAddress)
                 End Sub
             )
         Catch ex As OperationCanceledException
