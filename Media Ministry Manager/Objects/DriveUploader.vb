@@ -13,7 +13,6 @@ Imports MimeKit
 Imports Org.BouncyCastle.Utilities.Encoders
 
 Namespace SendingEmails
-    <CLSCompliant(False)>
     Public Class DriveUploader
         Implements IDisposable
 
@@ -24,9 +23,17 @@ Namespace SendingEmails
         Private ReadOnly ApplicationName As String = "Drive Uploader"
         'Private permissions As New List(Of Permission)()
         Private tss As ToolStripStatusLabel
-        Private Property Service() As DriveService
+        Private Property Service As DriveService
 
-        Sub New()
+        ReadOnly Property Info As User
+            Get
+                Dim getAbout = Service.About.Get()
+                getAbout.Fields = "user(displayName, emailAddress)"
+                Return getAbout.Execute().User
+            End Get
+        End Property
+
+        Sub New(ct As CancellationToken)
             Dim credential As UserCredential
 
             'Using reader As New MemoryStream(My.Resources.credentials)
@@ -37,12 +44,8 @@ Namespace SendingEmails
                 .ClientId = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff1"))),
                 .ClientSecret = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff2")))
             }
-            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                            secrets,
-                            Scopes,
-                            "user",
-                            CancellationToken.None,
-                            New FileDataStore(credPath, True)).Result
+
+            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
 
             'End Using
 
@@ -50,8 +53,8 @@ Namespace SendingEmails
             Service = New DriveService(New BaseClientService.Initializer() With {
                     .HttpClientInitializer = credential,
                     .ApplicationName = ApplicationName
-                        }
-                    )
+                }
+            )
         End Sub
 
         Sub Dispose() Implements IDisposable.Dispose
@@ -222,7 +225,6 @@ Namespace SendingEmails
                 Return folders
             End Get
         End Property
-
     End Class
 
 End Namespace

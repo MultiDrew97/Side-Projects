@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Media Ministry Manager" version="2.0.3.11" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Media Ministry Manager" version="2.0.39.11" language="neutral" processorArchitecture="msil" />
     <commandLine file="Media Ministry Manager.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7421952">
-      <assemblyIdentity name="Media Ministry Manager" version="2.0.3.11" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7426560">
+      <assemblyIdentity name="Media Ministry Manager" version="2.0.39.11" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8F5zbRGdFQDwTlEnam8SANYw4+Z4UC6mSWxcc1MmUnM=</dsig:DigestValue>
+        <dsig:DigestValue>aR4p0/UYATsYg0OZu0sGwNs6TKLrmyW08xMHHOaQ3qM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

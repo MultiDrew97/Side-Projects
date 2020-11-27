@@ -8,6 +8,7 @@ Partial Class Frm_Settings
         Try
             If disposing AndAlso components IsNot Nothing Then
                 components.Dispose()
+                cts.Dispose()
             End If
         Finally
             MyBase.Dispose(disposing)
@@ -22,6 +23,7 @@ Partial Class Frm_Settings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Settings))
         Me.btn_Save = New System.Windows.Forms.Button()
         Me.btn_Default = New System.Windows.Forms.Button()
@@ -33,7 +35,11 @@ Partial Class Frm_Settings
         Me.lbl_CurrentFont = New System.Windows.Forms.Label()
         Me.lbl_FontSize = New System.Windows.Forms.Label()
         Me.nud_FontSize = New System.Windows.Forms.NumericUpDown()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.tp_LinkedAccounts = New System.Windows.Forms.TabPage()
+        Me.lbl_Gmail = New System.Windows.Forms.Label()
+        Me.lbl_CurrentDrive = New System.Windows.Forms.Label()
+        Me.btn_Gmail = New System.Windows.Forms.Button()
+        Me.btn_GoogleDrive = New System.Windows.Forms.Button()
         Me.fd_FontSelector = New System.Windows.Forms.FontDialog()
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -56,10 +62,15 @@ Partial Class Frm_Settings
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bw_Settings = New System.ComponentModel.BackgroundWorker()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.CancelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.bw_Uploader = New System.ComponentModel.BackgroundWorker()
         Me.tc_Settings.SuspendLayout()
         Me.tp_Fonts.SuspendLayout()
         CType(Me.nud_FontSize, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tp_LinkedAccounts.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_Save
@@ -92,7 +103,7 @@ Partial Class Frm_Settings
         'tc_Settings
         '
         Me.tc_Settings.Controls.Add(Me.tp_Fonts)
-        Me.tc_Settings.Controls.Add(Me.TabPage2)
+        Me.tc_Settings.Controls.Add(Me.tp_LinkedAccounts)
         Me.tc_Settings.HotTrack = True
         Me.tc_Settings.Location = New System.Drawing.Point(0, 27)
         Me.tc_Settings.Name = "tc_Settings"
@@ -120,7 +131,7 @@ Partial Class Frm_Settings
         '
         Me.chk_Bold.AutoSize = True
         Me.chk_Bold.Enabled = False
-        Me.chk_Bold.Location = New System.Drawing.Point(283, 138)
+        Me.chk_Bold.Location = New System.Drawing.Point(282, 138)
         Me.chk_Bold.Name = "chk_Bold"
         Me.chk_Bold.Size = New System.Drawing.Size(75, 30)
         Me.chk_Bold.TabIndex = 5
@@ -161,7 +172,7 @@ Partial Class Frm_Settings
         'lbl_FontSize
         '
         Me.lbl_FontSize.AutoSize = True
-        Me.lbl_FontSize.Location = New System.Drawing.Point(120, 109)
+        Me.lbl_FontSize.Location = New System.Drawing.Point(119, 109)
         Me.lbl_FontSize.Name = "lbl_FontSize"
         Me.lbl_FontSize.Size = New System.Drawing.Size(110, 26)
         Me.lbl_FontSize.TabIndex = 1
@@ -172,22 +183,66 @@ Partial Class Frm_Settings
         Me.nud_FontSize.AutoSize = True
         Me.nud_FontSize.Enabled = False
         Me.nud_FontSize.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
-        Me.nud_FontSize.Location = New System.Drawing.Point(125, 138)
+        Me.nud_FontSize.Location = New System.Drawing.Point(124, 138)
         Me.nud_FontSize.Name = "nud_FontSize"
         Me.nud_FontSize.ReadOnly = True
         Me.nud_FontSize.Size = New System.Drawing.Size(120, 32)
         Me.nud_FontSize.TabIndex = 0
         Me.nud_FontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TabPage2
+        'tp_LinkedAccounts
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 34)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(392, 293)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.tp_LinkedAccounts.BackColor = System.Drawing.Color.Transparent
+        Me.tp_LinkedAccounts.Controls.Add(Me.lbl_Gmail)
+        Me.tp_LinkedAccounts.Controls.Add(Me.lbl_CurrentDrive)
+        Me.tp_LinkedAccounts.Controls.Add(Me.btn_Gmail)
+        Me.tp_LinkedAccounts.Controls.Add(Me.btn_GoogleDrive)
+        Me.tp_LinkedAccounts.Location = New System.Drawing.Point(4, 34)
+        Me.tp_LinkedAccounts.Name = "tp_LinkedAccounts"
+        Me.tp_LinkedAccounts.Padding = New System.Windows.Forms.Padding(3)
+        Me.tp_LinkedAccounts.Size = New System.Drawing.Size(476, 312)
+        Me.tp_LinkedAccounts.TabIndex = 1
+        Me.tp_LinkedAccounts.Text = "Linked Accounts"
+        '
+        'lbl_Gmail
+        '
+        Me.lbl_Gmail.AutoSize = True
+        Me.lbl_Gmail.Location = New System.Drawing.Point(36, 198)
+        Me.lbl_Gmail.Name = "lbl_Gmail"
+        Me.lbl_Gmail.Size = New System.Drawing.Size(142, 26)
+        Me.lbl_Gmail.TabIndex = 3
+        Me.lbl_Gmail.Text = "Current User:"
+        '
+        'lbl_CurrentDrive
+        '
+        Me.lbl_CurrentDrive.AutoSize = True
+        Me.lbl_CurrentDrive.Location = New System.Drawing.Point(31, 32)
+        Me.lbl_CurrentDrive.Name = "lbl_CurrentDrive"
+        Me.lbl_CurrentDrive.Size = New System.Drawing.Size(142, 26)
+        Me.lbl_CurrentDrive.TabIndex = 2
+        Me.lbl_CurrentDrive.Text = "Current User:"
+        '
+        'btn_Gmail
+        '
+        Me.btn_Gmail.AutoSize = True
+        Me.btn_Gmail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Gmail.Location = New System.Drawing.Point(36, 227)
+        Me.btn_Gmail.Name = "btn_Gmail"
+        Me.btn_Gmail.Size = New System.Drawing.Size(126, 36)
+        Me.btn_Gmail.TabIndex = 1
+        Me.btn_Gmail.Text = "Link Gmail"
+        Me.btn_Gmail.UseVisualStyleBackColor = True
+        '
+        'btn_GoogleDrive
+        '
+        Me.btn_GoogleDrive.AutoSize = True
+        Me.btn_GoogleDrive.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_GoogleDrive.Location = New System.Drawing.Point(36, 75)
+        Me.btn_GoogleDrive.Name = "btn_GoogleDrive"
+        Me.btn_GoogleDrive.Size = New System.Drawing.Size(195, 36)
+        Me.btn_GoogleDrive.TabIndex = 0
+        Me.btn_GoogleDrive.Text = "Link Google Drive"
+        Me.btn_GoogleDrive.UseVisualStyleBackColor = True
         '
         'fd_FontSelector
         '
@@ -219,7 +274,7 @@ Partial Class Frm_Settings
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'CustomerToolStripMenuItem
@@ -243,19 +298,19 @@ Partial Class Frm_Settings
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(113, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(109, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -330,6 +385,22 @@ Partial Class Frm_Settings
         'bw_Settings
         '
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CancelToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(111, 26)
+        '
+        'CancelToolStripMenuItem
+        '
+        Me.CancelToolStripMenuItem.Name = "CancelToolStripMenuItem"
+        Me.CancelToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
+        Me.CancelToolStripMenuItem.Text = "Cancel"
+        '
+        'bw_Uploader
+        '
+        Me.bw_Uploader.WorkerSupportsCancellation = True
+        '
         'Frm_Settings
         '
         Me.AcceptButton = Me.btn_Save
@@ -338,6 +409,7 @@ Partial Class Frm_Settings
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(484, 461)
+        Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.mnstr_Strip)
         Me.Controls.Add(Me.tc_Settings)
         Me.Controls.Add(Me.btn_Default)
@@ -350,13 +422,17 @@ Partial Class Frm_Settings
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(500, 500)
         Me.Name = "Frm_Settings"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.tc_Settings.ResumeLayout(False)
         Me.tp_Fonts.ResumeLayout(False)
         Me.tp_Fonts.PerformLayout()
         CType(Me.nud_FontSize, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tp_LinkedAccounts.ResumeLayout(False)
+        Me.tp_LinkedAccounts.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -366,7 +442,7 @@ Partial Class Frm_Settings
     Friend WithEvents btn_Default As Button
     Friend WithEvents tc_Settings As TabControl
     Friend WithEvents tp_Fonts As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents tp_LinkedAccounts As TabPage
     Friend WithEvents fd_FontSelector As FontDialog
     Friend WithEvents nud_FontSize As NumericUpDown
     Friend WithEvents btn_ChangeFont As Button
@@ -395,4 +471,11 @@ Partial Class Frm_Settings
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents chk_Bold As CheckBox
     Friend WithEvents bw_Settings As System.ComponentModel.BackgroundWorker
+    Friend WithEvents btn_Gmail As Button
+    Friend WithEvents btn_GoogleDrive As Button
+    Friend WithEvents lbl_CurrentDrive As Label
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents CancelToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents lbl_Gmail As Label
+    Friend WithEvents bw_Uploader As System.ComponentModel.BackgroundWorker
 End Class

@@ -78,7 +78,7 @@ Public Class Frm_Main
     Private Sub Btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
         'create a email listeners form in the background
         tss_Feedback.Text = "Initializing Google Drive Uploader..."
-        Dim emailListeners As New Frm_EmailListeners() With {.Frm_Main = Me, .Uploader = New DriveUploader()}
+        Dim emailListeners As New Frm_EmailListeners() With {.Frm_Main = Me, .Uploader = New DriveUploader(Nothing)}
         emailListeners.Show()
         Me.Hide()
         Reset()
@@ -213,5 +213,9 @@ Public Class Frm_Main
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Dim frm_Settings As New Frm_Settings()
         frm_Settings.Show()
+    End Sub
+
+    Private Sub btn_Cancel_Click_1(sender As Object, e As EventArgs) 
+
     End Sub
 End Class

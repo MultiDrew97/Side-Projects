@@ -10,6 +10,18 @@
             Next
         End Sub
 
+        Shared Sub CloseOpenForms()
+            'Close all open windows. Figuring this out will allow me to change from only clearing when primary form closes to when all forms close.
+            'improving efficiency in memory management
+            Do
+                Try
+                    My.Application.OpenForms(0).Close()
+                Catch ex As InvalidOperationException
+                    Console.WriteLine("Form not open")
+                End Try
+            Loop While My.Application.OpenForms.Count > 0
+        End Sub
+
         Public Overrides Function Equals(obj As Object) As Boolean
             Return False
         End Function

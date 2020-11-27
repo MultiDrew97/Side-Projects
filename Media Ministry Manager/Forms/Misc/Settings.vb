@@ -1,6 +1,27 @@
-﻿Public Class Frm_Settings
+﻿Imports System.IO
+Imports System.Threading
+Imports MediaMinistry.Helpers
+Imports MediaMinistry.SendingEmails
+
+Public Class Frm_Settings
+    Private Const currentUser = "Current User: {0}"
+    Private cts As CancellationTokenSource
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Load settings from settings file to display to user
         bw_Settings.RunWorkerAsync("l")
+
+        cts = New CancellationTokenSource()
+
+        'Retrieve the Google Drive Info being used by the user
+        If Directory.Exists(Application.StartupPath & "\Drive Token") Then
+            Using uploader As New DriveUploader(cts.Token)
+                lbl_CurrentDrive.Text = String.Format(currentUser, uploader.Info.EmailAddress)
+                btn_GoogleDrive.Text = "Unlink Google Drive"
+            End Using
+        Else
+            lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
+            btn_GoogleDrive.Text = "Link Google Drive"
+        End If
     End Sub
 
     Private Sub Btn_Default_Click(sender As Object, e As EventArgs) Handles btn_Default.Click
@@ -49,13 +70,52 @@
     End Sub
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
-        'TODO: Close the entire application
-        For Each form As Form In My.Application.OpenForms
+        Utils.CloseOpenForms()
+    End Sub
+
+    Private Sub btn_GoogleDrive_Click(sender As Object, e As EventArgs) Handles btn_GoogleDrive.Click
+        If btn_GoogleDrive.Text = "Unlink Google Drive" Then
             Try
-                form.Close()
-            Catch ex As Exception
-                Console.WriteLine("Form not open")
+                Directory.Delete(Application.StartupPath & "\Drive Token", True)
+                btn_GoogleDrive.Text = "Link Google Drive"
+                lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
+            Catch ex As DirectoryNotFoundException
+
+            Catch ex As UnauthorizedAccessException
+
+            Catch ex As PathTooLongException
+
             End Try
-        Next
+        ElseIf btn_GoogleDrive.Text = "Cancel" Then
+            If cts IsNot Nothing Then
+                cts.Cancel()
+                bw_Uploader.CancelAsync()
+                btn_GoogleDrive.Text = "Link Google Drive"
+            End If
+        ElseIf btn_GoogleDrive.Text = "Link Google Drive" Then
+            btn_GoogleDrive.Text = "Cancel"
+            bw_Uploader.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub CancelToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub bw_Uploader_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Uploader.DoWork
+        cts = New CancellationTokenSource()
+        Try
+            Dim uploader As New DriveUploader(cts.Token)
+            Invoke(
+                Sub()
+                    btn_GoogleDrive.Text = "Unlink Google Drive"
+                    lbl_CurrentDrive.Text = String.Format(currentUser, uploader.Info.EmailAddress)
+                End Sub
+            )
+        Catch ex As OperationCanceledException
+            Console.WriteLine("Canceled Exception")
+        Catch ex As AggregateException
+            Console.WriteLine("Aggregate Exception")
+        End Try
     End Sub
 End Class
