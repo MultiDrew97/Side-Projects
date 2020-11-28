@@ -2,12 +2,14 @@
 
 Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports MediaMinistry.SendingEmails
 
 Public Class Frm_Login
     Dim _dbConnection As SqlConnectionStringBuilder
-
+    Dim emailer As Sender
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _dbConnection = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+        emailer = New Sender()
         Reset()
     End Sub
 
@@ -23,29 +25,30 @@ Public Class Frm_Login
     End Sub
 
     Private Sub Btn_LogIn_Click(sender As Object, e As EventArgs) Handles btn_LogIn.Click
-        If My.Settings.KeepLoggedIn Then
-            _dbConnection.UserID = My.Settings.Username
-            _dbConnection.Password = My.Settings.Password
-        Else
-            _dbConnection.Password = txt_Password.Text
-            _dbConnection.UserID = txt_Username.Text
-        End If
+        'If My.Settings.KeepLoggedIn Then
+        '    _dbConnection.UserID = My.Settings.Username
+        '    _dbConnection.Password = My.Settings.Password
+        'Else
+        '    _dbConnection.Password = txt_Password.Text
+        '    _dbConnection.UserID = txt_Username.Text
+        'End If
 
-        If CheckCreds(txt_Username.Text, txt_Password.Text) Then
-            Try
-                Dim db = New Database(_dbConnection)
+        'If CheckCreds(txt_Username.Text, txt_Password.Text) Then
+        '    Try
+        '        Dim db = New Database(_dbConnection)
 
-                db.GetCustomerInfo("512-828-2827")
-                Dim mainForm = New Frm_Main() 'db)
-                mainForm.Show()
-                bw_SaveSettings.RunWorkerAsync()
-            Catch exception As SqlException
-                tss_UserFeedback.Text = "Unknown Error. Please try again."
-                tss_UserFeedback.ForeColor = Color.Red
-                Console.WriteLine("Failed to connect to database: " & exception.Message)
-            End Try
-        End If
-
+        '        db.GetCustomerInfo("512-828-2827")
+        '        Dim mainForm = New Frm_Main() 'db)
+        '        mainForm.Show()
+        '        bw_SaveSettings.RunWorkerAsync()
+        '    Catch exception As SqlException
+        '        tss_UserFeedback.Text = "Unknown Error. Please try again."
+        '        tss_UserFeedback.ForeColor = Color.Red
+        '        Console.WriteLine("Failed to connect to database: " & exception.Message)
+        '    End Try
+        'End If
+        Const name As String = "Andrew Randle-Warren"
+        emailer.Send(emailer.Create(New MimeKit.MailboxAddress(name, "arandlemiller97@yahoo.com"), "Test Email Again", String.Format(My.Resources.newSermon, name, "https://google.com")))
     End Sub
 
     Private Sub Reset()

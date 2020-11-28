@@ -40,12 +40,20 @@ Namespace SendingEmails
             End Using
         End Sub
 
-        Function Create([to] As String, subject As String, body As String, Optional from As String = "me") As MimeMessage
+        Function Create([to] As MailboxAddress, subject As String, body As String, Optional from As String = "me") As MimeMessage
             Dim sender, recipient As New Collection(Of InternetAddress)
-            sender.Add(New MailboxAddress(from))
-            recipient.Add(New MailboxAddress([to]))
 
-            Return New MimeMessage(sender, recipient, subject, New TextPart() With {.Text = body})
+            Dim email As New MimeMessage() With {
+                .Sender = New MailboxAddress(from, from),
+                .Subject = subject,
+                .Body = New TextPart("html") With {
+                    .Text = body
+                }
+            }
+
+            email.To.Add([to])
+
+            Return email
         End Function
 
         Function CreateWithEmail(emailContent As MimeMessage) As Message
@@ -58,18 +66,15 @@ Namespace SendingEmails
             Return message
         End Function
 
-        Function CreateWithAttachment([to] As String, subject As String, body As String, fileNames As String, Optional from As String = "me") As MimeMessage
+        Function CreateWithAttachment([to] As MailboxAddress, subject As String, body As String, files As String(), Optional from As String = "me") As MimeMessage
             Dim email As New MimeMessage() With {
-                .Sender = New MailboxAddress(from),
-                .Subject = subject,
-                .Body = New TextPart() With {
-                    .Text = body
-                }
+                .Sender = New MailboxAddress(from, from),
+                .Subject = subject
             }
 
-            email.To.Add(New MailboxAddress([to]))
+            email.To.Add([to])
 
-            Dim mimeBodyPart As MimePart = New TextPart() With {
+            Dim mimeBodyPart As MimePart = New TextPart("html") With {
                 .Text = body
             }
 
@@ -78,7 +83,6 @@ Namespace SendingEmails
             Dim multipart As New Multipart()
             multipart.Add(mimeBodyPart)
 
-            Dim files As String() = fileNames.Split(";"c)
             Dim attachments As New AttachmentCollection()
 
             For Each file In files
