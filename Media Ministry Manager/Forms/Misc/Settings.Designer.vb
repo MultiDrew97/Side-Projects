@@ -23,7 +23,6 @@ Partial Class Frm_Settings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Settings))
         Me.btn_Save = New System.Windows.Forms.Button()
         Me.btn_Default = New System.Windows.Forms.Button()
@@ -36,7 +35,7 @@ Partial Class Frm_Settings
         Me.lbl_FontSize = New System.Windows.Forms.Label()
         Me.nud_FontSize = New System.Windows.Forms.NumericUpDown()
         Me.tp_LinkedAccounts = New System.Windows.Forms.TabPage()
-        Me.lbl_Gmail = New System.Windows.Forms.Label()
+        Me.lbl_CurrentGmail = New System.Windows.Forms.Label()
         Me.lbl_CurrentDrive = New System.Windows.Forms.Label()
         Me.btn_Gmail = New System.Windows.Forms.Button()
         Me.btn_GoogleDrive = New System.Windows.Forms.Button()
@@ -62,15 +61,12 @@ Partial Class Frm_Settings
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bw_Settings = New System.ComponentModel.BackgroundWorker()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.CancelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.bw_Uploader = New System.ComponentModel.BackgroundWorker()
+        Me.bw_Service = New System.ComponentModel.BackgroundWorker()
         Me.tc_Settings.SuspendLayout()
         Me.tp_Fonts.SuspendLayout()
         CType(Me.nud_FontSize, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tp_LinkedAccounts.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_Save
@@ -193,7 +189,7 @@ Partial Class Frm_Settings
         'tp_LinkedAccounts
         '
         Me.tp_LinkedAccounts.BackColor = System.Drawing.Color.Transparent
-        Me.tp_LinkedAccounts.Controls.Add(Me.lbl_Gmail)
+        Me.tp_LinkedAccounts.Controls.Add(Me.lbl_CurrentGmail)
         Me.tp_LinkedAccounts.Controls.Add(Me.lbl_CurrentDrive)
         Me.tp_LinkedAccounts.Controls.Add(Me.btn_Gmail)
         Me.tp_LinkedAccounts.Controls.Add(Me.btn_GoogleDrive)
@@ -204,14 +200,14 @@ Partial Class Frm_Settings
         Me.tp_LinkedAccounts.TabIndex = 1
         Me.tp_LinkedAccounts.Text = "Linked Accounts"
         '
-        'lbl_Gmail
+        'lbl_CurrentGmail
         '
-        Me.lbl_Gmail.AutoSize = True
-        Me.lbl_Gmail.Location = New System.Drawing.Point(36, 198)
-        Me.lbl_Gmail.Name = "lbl_Gmail"
-        Me.lbl_Gmail.Size = New System.Drawing.Size(142, 26)
-        Me.lbl_Gmail.TabIndex = 3
-        Me.lbl_Gmail.Text = "Current User:"
+        Me.lbl_CurrentGmail.AutoSize = True
+        Me.lbl_CurrentGmail.Location = New System.Drawing.Point(36, 198)
+        Me.lbl_CurrentGmail.Name = "lbl_CurrentGmail"
+        Me.lbl_CurrentGmail.Size = New System.Drawing.Size(142, 26)
+        Me.lbl_CurrentGmail.TabIndex = 3
+        Me.lbl_CurrentGmail.Text = "Current User:"
         '
         'lbl_CurrentDrive
         '
@@ -274,43 +270,51 @@ Partial Class Frm_Settings
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'CustomerToolStripMenuItem
         '
         Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
-        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.CustomerToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.CustomerToolStripMenuItem.Text = "Customer"
         '
         'ProductToolStripMenuItem
         '
         Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
-        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.ProductToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.ProductToolStripMenuItem.Text = "Product"
         '
         'ListenerToolStripMenuItem
         '
         Me.ListenerToolStripMenuItem.Name = "ListenerToolStripMenuItem"
-        Me.ListenerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.ListenerToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
+        Me.ListenerToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.ListenerToolStripMenuItem.Text = "Listener"
         '
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(109, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(132, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
+        Me.ExitToolStripMenuItem1.ShortcutKeyDisplayString = ""
+        Me.ExitToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(135, 22)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -324,7 +328,8 @@ Partial Class Frm_Settings
         '
         Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem1, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.CustomizeToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.CustomizeToolStripMenuItem.Text = "Find..."
         '
         'CustomerToolStripMenuItem1
@@ -348,7 +353,7 @@ Partial Class Frm_Settings
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.OptionsToolStripMenuItem.Text = "Update"
         '
         'ViewToolStripMenuItem
@@ -385,21 +390,9 @@ Partial Class Frm_Settings
         'bw_Settings
         '
         '
-        'ContextMenuStrip1
+        'bw_Service
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CancelToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(111, 26)
-        '
-        'CancelToolStripMenuItem
-        '
-        Me.CancelToolStripMenuItem.Name = "CancelToolStripMenuItem"
-        Me.CancelToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
-        Me.CancelToolStripMenuItem.Text = "Cancel"
-        '
-        'bw_Uploader
-        '
-        Me.bw_Uploader.WorkerSupportsCancellation = True
+        Me.bw_Service.WorkerSupportsCancellation = True
         '
         'Frm_Settings
         '
@@ -409,7 +402,6 @@ Partial Class Frm_Settings
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(484, 461)
-        Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.mnstr_Strip)
         Me.Controls.Add(Me.tc_Settings)
         Me.Controls.Add(Me.btn_Default)
@@ -432,7 +424,6 @@ Partial Class Frm_Settings
         Me.tp_LinkedAccounts.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -474,8 +465,6 @@ Partial Class Frm_Settings
     Friend WithEvents btn_Gmail As Button
     Friend WithEvents btn_GoogleDrive As Button
     Friend WithEvents lbl_CurrentDrive As Label
-    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
-    Friend WithEvents CancelToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents lbl_Gmail As Label
-    Friend WithEvents bw_Uploader As System.ComponentModel.BackgroundWorker
+    Friend WithEvents lbl_CurrentGmail As Label
+    Friend WithEvents bw_Service As System.ComponentModel.BackgroundWorker
 End Class

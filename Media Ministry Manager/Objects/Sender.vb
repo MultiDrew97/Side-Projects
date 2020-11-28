@@ -5,10 +5,8 @@ Imports Google.Apis.Gmail.v1
 Imports Google.Apis.Gmail.v1.Data
 Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
-Imports javax.activation
 Imports MimeKit
 Imports NeoSmart.Utils
-Imports NPOI.POIFS.NIO
 Imports NPOI.Util
 Imports System
 Imports System.Collections.Generic
@@ -22,22 +20,29 @@ Imports System.Threading.Tasks
 
 Namespace SendingEmails
     Public Class Sender
-        Private Scopes As String() = {GmailService.Scope.GmailSend}
+        Implements IDisposable
+        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend}
         Private ReadOnly ApplicationName As String = "Gmail API .NET Quickstart"
-        Private Property credential As UserCredential
+        Private Property Credential As UserCredential
         Private Property Service As GmailService
 
-        Sub New()
+        ReadOnly Property Info As Profile
+            Get
+                Return Service.Users.GetProfile("me").Execute()
+            End Get
+        End Property
+
+        Sub New(ct As CancellationToken)
             Dim credPath As String = "Gmail Token"
-            Using stream As New FileStream("C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\Resources\credentials.json", FileMode.Open, FileAccess.Read)
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CancellationToken.None, New FileDataStore(credPath, True)).Result
+            Using stream As New MemoryStream(My.Resources.credentials)
+                Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
                 Console.WriteLine("Credential file saved to: " + credPath)
-                Service = New GmailService(New BaseClientService.Initializer() With {
-                                           .HttpClientInitializer = credential,
-                                           .ApplicationName = ApplicationName
-                                           }
-                                          )
+                Service = New GmailService(New BaseClientService.Initializer() With {.HttpClientInitializer = Credential, .ApplicationName = ApplicationName})
             End Using
+        End Sub
+
+        Sub Dispose() Implements IDisposable.Dispose
+
         End Sub
 
         Function Create([to] As MailboxAddress, subject As String, body As String, Optional from As String = "me") As MimeMessage
