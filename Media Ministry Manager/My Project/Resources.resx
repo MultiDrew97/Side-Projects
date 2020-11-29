@@ -248,4 +248,34 @@
 &lt;/html&gt;</value>
     <comment>The html format of the email for a new sermon</comment>
   </data>
+  <data name="receipt" xml:space="preserve">
+    <value>&lt;!Doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link rel="stylesheet" href="https://sppbc.hopto.org/css/emails.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Thank you for your blessing of {0:C} for {1}.&lt;/p&gt;
+
+		&lt;p&gt;Thank You For Your Support.&lt;/p&gt;
+
+		&lt;p&gt;Be Blessed.&lt;/p&gt;
+
+		&lt;p class="center"&gt;&lt;strong&gt;WE LOVE YOU AND AIN'T NOTHING YOU CAN DO ABOUT IT!&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+		&lt;hr&gt;
+		
+		&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
+		St. Paul Primitive Baptist Church&lt;br&gt;
+		Email Listening Ministry&lt;br&gt;
+		2209 East 14th Street&lt;br&gt;
+		Austin, TX. 78702&lt;/p&gt;
+		
+		&lt;div class="center-image"&gt;
+			&lt;img class="center" id="logo" alt="St. Paul Primitive Baptist Church" src="https://sppbc.hopto.org/res/imgs/Media%20Ministry%20Logo.png" /&gt;
+		&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</value>
+    <comment>The html format for a receipt email</comment>
+  </data>
 </root>

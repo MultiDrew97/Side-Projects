@@ -9,7 +9,7 @@ Public Class Frm_Login
     Dim emailer As Sender
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _dbConnection = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
-        emailer = New Sender()
+        'emailer = New Sender()
         Reset()
     End Sub
 
