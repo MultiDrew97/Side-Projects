@@ -20,23 +20,24 @@ Imports System.Threading.Tasks
 
 Namespace SendingEmails
     Public Class Sender
+        Inherits Service
         Implements IDisposable
-        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend}
+        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend, GmailService.Scope.GmailModify}
         Private ReadOnly ApplicationName As String = "Gmail API .NET Quickstart"
         Private Property Credential As UserCredential
         Private Property Service As GmailService
 
-        ReadOnly Property Info As Profile
+        Overrides ReadOnly Property Info As Object
             Get
                 Return Service.Users.GetProfile("me").Execute()
             End Get
         End Property
 
-        Sub New(ct As CancellationToken)
+        Sub New(Optional ct As CancellationToken = Nothing)
             Dim credPath As String = "Gmail Token"
             Using stream As New MemoryStream(My.Resources.credentials)
                 Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
-                Console.WriteLine("Credential file saved to: " + credPath)
+
                 Service = New GmailService(New BaseClientService.Initializer() With {.HttpClientInitializer = Credential, .ApplicationName = ApplicationName})
             End Using
         End Sub
@@ -111,10 +112,8 @@ Namespace SendingEmails
         End Function
         Function Send(emailContent As MimeMessage, Optional userId As String = "me") As Message
             Dim message As Message = CreateWithEmail(emailContent)
-            message = Service.Users().Messages().Send(message, userId).Execute()
 
-            Console.WriteLine("Message id: " + message.Id)
-            Return message
+            Return Service.Users().Messages().Send(message, userId).Execute()
         End Function
     End Class
 End Namespace

@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Imports System.Threading
+Imports Google.Apis.Drive.v3.Data
+Imports Google.Apis.Gmail.v1.Data
 Imports MediaMinistry.Helpers
 Imports MediaMinistry.SendingEmails
 
@@ -10,30 +12,7 @@ Public Class Frm_Settings
         'Load settings from settings file to display to user
         Me.Font = My.Settings.CurrentFont
         bw_Settings.RunWorkerAsync("l")
-
-        cts = New CancellationTokenSource()
-
-        'Retrieve the Google Drive Info being used by the user
-        If Directory.Exists(Application.StartupPath & "\Drive Token") Then
-            Using uploader As New DriveUploader(cts.Token)
-                lbl_CurrentDrive.Text = String.Format(currentUser, uploader.Info.EmailAddress)
-                btn_GoogleDrive.Text = "Unlink Google Drive"
-            End Using
-        Else
-            lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
-            btn_GoogleDrive.Text = "Link Google Drive"
-        End If
-
-        'Retrieve the Google Drive Info being used by the user
-        If Directory.Exists(Application.StartupPath & "\Gmail Token") Then
-            Using emailer As New Sender(cts.Token)
-                lbl_CurrentGmail.Text = String.Format(currentUser, emailer.Info.EmailAddress)
-                btn_Gmail.Text = "Unlink Google Drive"
-            End Using
-        Else
-            lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
-            btn_Gmail.Text = "Link Google Drive"
-        End If
+        bw_CheckServices.RunWorkerAsync()
     End Sub
 
     Private Sub Btn_Default_Click(sender As Object, e As EventArgs) Handles btn_Default.Click
@@ -123,13 +102,13 @@ Public Class Frm_Settings
             Catch ex As PathTooLongException
 
             End Try
-        ElseIf btn_GoogleDrive.Text = "Cancel" Then
+        ElseIf btn_Gmail.Text = "Cancel" Then
             If cts IsNot Nothing Then
                 cts.Cancel()
                 bw_Service.CancelAsync()
                 btn_Gmail.Text = "Link Gmail"
             End If
-        ElseIf btn_GoogleDrive.Text = "Link Gmail" Then
+        ElseIf btn_Gmail.Text = "Link Gmail" Then
             btn_Gmail.Text = "Cancel"
             bw_Service.RunWorkerAsync("m")
         End If
@@ -145,7 +124,7 @@ Public Class Frm_Settings
                     Invoke(
                         Sub()
                             btn_GoogleDrive.Text = "Unlink Google Drive"
-                            lbl_CurrentDrive.Text = String.Format(currentUser, service.Info.EmailAddress)
+                            lbl_CurrentDrive.Text = String.Format(currentUser, CType(service.Info, User).EmailAddress)
                         End Sub
                     )
                 Catch ex As OperationCanceledException
@@ -160,7 +139,7 @@ Public Class Frm_Settings
                     Invoke(
                         Sub()
                             btn_Gmail.Text = "Unlink Gmail"
-                            lbl_CurrentGmail.Text = String.Format(currentUser, service.Info.EmailAddress)
+                            lbl_CurrentGmail.Text = String.Format(currentUser, CType(service.Info, Profile).EmailAddress)
                         End Sub
                     )
                 Catch ex As OperationCanceledException
@@ -169,5 +148,29 @@ Public Class Frm_Settings
                     Console.WriteLine("Aggregate Exception")
                 End Try
         End Select
+    End Sub
+
+    Private Sub Bw_CheckServices_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_CheckServices.DoWork
+        'Retrieve the Google Drive Info being used by the user
+        If Directory.Exists(Application.StartupPath & "\Drive Token") Then
+            Using uploader As New DriveUploader()
+                lbl_CurrentDrive.Text = String.Format(currentUser, CType(uploader.Info, User).EmailAddress)
+                btn_GoogleDrive.Text = "Unlink Google Drive"
+            End Using
+        Else
+            lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
+            btn_GoogleDrive.Text = "Link Google Drive"
+        End If
+
+        'Retrieve the Google Drive Info being used by the user
+        If Directory.Exists(Application.StartupPath & "\Gmail Token") Then
+            Using emailer As New Sender()
+                lbl_CurrentGmail.Text = String.Format(currentUser, CType(emailer.Info, Profile).EmailAddress)
+                btn_Gmail.Text = "Unlink Google Drive"
+            End Using
+        Else
+            lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
+            btn_Gmail.Text = "Link Gmail"
+        End If
     End Sub
 End Class

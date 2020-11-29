@@ -62,6 +62,7 @@ Partial Class Frm_Settings
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bw_Settings = New System.ComponentModel.BackgroundWorker()
         Me.bw_Service = New System.ComponentModel.BackgroundWorker()
+        Me.bw_CheckServices = New System.ComponentModel.BackgroundWorker()
         Me.tc_Settings.SuspendLayout()
         Me.tp_Fonts.SuspendLayout()
         CType(Me.nud_FontSize, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -394,6 +395,9 @@ Partial Class Frm_Settings
         '
         Me.bw_Service.WorkerSupportsCancellation = True
         '
+        'bw_CheckServices
+        '
+        '
         'Frm_Settings
         '
         Me.AcceptButton = Me.btn_Save
@@ -467,4 +471,5 @@ Partial Class Frm_Settings
     Friend WithEvents lbl_CurrentDrive As Label
     Friend WithEvents lbl_CurrentGmail As Label
     Friend WithEvents bw_Service As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bw_CheckServices As System.ComponentModel.BackgroundWorker
 End Class

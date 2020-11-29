@@ -363,6 +363,7 @@
     <Compile Include="Objects\Exceptions\PasswordException.vb" />
     <Compile Include="Objects\Listener.vb" />
     <Compile Include="Objects\Sender.vb" />
+    <Compile Include="Objects\Service.vb" />
     <Compile Include="Objects\Utils.vb" />
   </ItemGroup>
   <ItemGroup>

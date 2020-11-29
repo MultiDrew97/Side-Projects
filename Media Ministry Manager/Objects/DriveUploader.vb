@@ -14,18 +14,16 @@ Imports Org.BouncyCastle.Utilities.Encoders
 
 Namespace SendingEmails
     Public Class DriveUploader
+        Inherits Service
         Implements IDisposable
 
-        'If modifying these scopes, delete your previously saved credentials
-        'at ~/.credentials/drive-dotnet-quickstart.json
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
-
         Private ReadOnly ApplicationName As String = "Drive Uploader"
         'Private permissions As New List(Of Permission)()
         Private tss As ToolStripStatusLabel
         Private Property Service As DriveService
-
-        ReadOnly Property Info As User
+        Private Property Credential As UserCredential
+        Overrides ReadOnly Property Info As Object
             Get
                 Dim getAbout = Service.About.Get()
                 getAbout.Fields = "user(displayName, emailAddress)"
@@ -33,25 +31,24 @@ Namespace SendingEmails
             End Get
         End Property
 
-        Sub New(ct As CancellationToken)
-            Dim credential As UserCredential
-
-            'Using reader As New MemoryStream(My.Resources.credentials)
-            'The file token.json stores the user's access and refresh tokens, and is created
-            'automatically when the authorization flow completes for the first time.
+        Sub New(Optional ct As CancellationToken = Nothing)
             Dim credPath = "Drive Token"
-            Dim secrets As New ClientSecrets() With {
-                .ClientId = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff1"))),
-                .ClientSecret = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff2")))
-            }
 
-            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
+            Using stream As New MemoryStream(My.Resources.credentials)
+                'The file token.json stores the user's access and refresh tokens, and is created
+                'automatically when the authorization flow completes for the first time.
 
-            'End Using
+                '    Dim secrets As New ClientSecrets() With {
+                '    .ClientId = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff1"))),
+                '    .ClientSecret = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff2")))
+                '}
+
+                Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
+            End Using
 
             'Create Drive API service.
             Service = New DriveService(New BaseClientService.Initializer() With {
-                    .HttpClientInitializer = credential,
+                    .HttpClientInitializer = Credential,
                     .ApplicationName = ApplicationName
                 }
             )
