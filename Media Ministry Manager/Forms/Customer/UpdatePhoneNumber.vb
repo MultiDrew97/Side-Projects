@@ -44,8 +44,7 @@ Public Class frm_UpdatePhoneNumber
     End Sub
 
     Private Sub UpdatePhoneNumber_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        display.refresh()
-        display.Show()
+        RefreshCustomers()
     End Sub
 
     Private Sub Txt_NewNumber_GotFocus(sender As Object, e As EventArgs) Handles txt_NewNumber.GotFocus
@@ -78,4 +77,12 @@ Public Class frm_UpdatePhoneNumber
         End If
     End Sub
 
+    Private Sub RefreshCustomers()
+        For Each form As Form In My.Application.OpenForms
+            If form.Name.Equals("frm_viewcustomers", StringComparison.OrdinalIgnoreCase) Then
+                CType(form, frm_DisplayCustomers).refresh()
+                Exit For
+            End If
+        Next
+    End Sub
 End Class

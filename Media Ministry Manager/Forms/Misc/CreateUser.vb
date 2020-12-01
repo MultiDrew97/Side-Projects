@@ -16,10 +16,9 @@ Public Class Frm_CreateUser
     Private Sub Btn_Create_Click(sender As Object, e As EventArgs) Handles btn_Create.Click
         Try
             If PasswordCheck() Then
-                'Dim adminUser = InputBox("Enter admin username", "Enter admin password")
-
                 'Console.WriteLine(adminUser)
-                'Dim adminPassword = InputBox("Enter admin")
+                Dim username As String = InputBox("Enter admin username", "Admin Login")
+                Dim password As String = InputBox("Enter admin password", "Admin Login")
                 Dim adminInfo As AdminSignIn = New AdminSignIn()
                 adminInfo.Show()
 
@@ -30,11 +29,14 @@ Public Class Frm_CreateUser
 
                 _connection.UserID = My.Settings.AdminUser
                 _connection.Password = My.Settings.AdminPass
-                db.CreateUser(txt_Username.Text, txt_Password.Text)
+
+                Using db As New Database(_connection)
+                    db.CreateUser(txt_Username.Text, txt_Password.Text)
+                End Using
 
                 bw_ClearAdminInfo.RunWorkerAsync()
             Else
-                Throw New FormatException(String.Format("Password: {0}\nConfirm{1}", txt_Password.Text, txt_ConfirmPassword.Text))
+                Throw New PasswordMisMatchException(String.Format("Password: {0}\nConfirm{1}", txt_Password.Text, txt_ConfirmPassword.Text))
             End If
         Catch exception As SqlException
             Console.WriteLine("Could not create user: " & exception.Message)
@@ -61,12 +63,19 @@ Public Class Frm_CreateUser
     End Function
 
     Private Sub Frm_CreateUser_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If db IsNot Nothing Then
-            'if there is a connection open, then close it
-            db.Dispose()
-        End If
+        Dim opened As Boolean = False
 
-        Frm_Login.Show()
+        For Each form As Form In My.Application.OpenForms
+            If form.Name.Equals("frm_login", StringComparison.OrdinalIgnoreCase) Then
+                form.Show()
+                opened = True
+                Exit For
+            End If
+        Next
+        If Not opened Then
+            Dim frm As New Frm_Login()
+            frm.Show()
+        End If
     End Sub
 
     Private Sub Bw_LoadDatabase_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_ClearAdminInfo.RunWorkerCompleted

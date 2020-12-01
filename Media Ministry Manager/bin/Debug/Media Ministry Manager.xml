@@ -70,11 +70,6 @@ Media Ministry Manager
         &lt;p&gt;You may give [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:MediaMinistry.My.Resources.Resources.sender">
-<summary>
-  Looks up a localized resource of type System.Byte[].
-</summary>
-</member>
 <member name="T:MediaMinistry.MediaMinistryDataSet">
 <summary>
 Represents a strongly typed in-memory cache of data.

@@ -17,8 +17,7 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
-        Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
+        refresh()
     End Sub
 
     Private Sub Btn_Update_Click(sender As Object, e As EventArgs)
@@ -72,19 +71,18 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        mainForm.Show()
+        Dim main As New Frm_Main()
+        main.Show()
     End Sub
 
     Private Sub Btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
         Dim updateNumber = New frm_UpdatePhoneNumber(db, Me)
         updateNumber.Show()
-        Me.Hide()
     End Sub
 
     Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
         Dim addForm = New frm_AddNewCustomer(db, Me)
         addForm.Show()
-        Me.Hide()
     End Sub
 
     Private Sub Dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
@@ -92,6 +90,7 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Public Overrides Sub refresh()
+        'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 

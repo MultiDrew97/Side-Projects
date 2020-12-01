@@ -41,9 +41,9 @@ Public Class AdminSignIn
 
     Shared Function CheckCreds(username As String, password As String) As Boolean
         Try
-            Dim db As Database = New Database(username, password)
-            db.Dispose()
-            Return True
+            Using db As New Database(username, password)
+                Return True
+            End Using
         Catch e As SqlException
             Console.WriteLine(e.Message)
             Return False

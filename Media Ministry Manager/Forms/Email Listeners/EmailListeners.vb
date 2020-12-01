@@ -117,14 +117,12 @@ Public Class Frm_EmailListeners
     End Sub
 
     Private Sub Btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
-        Dim frm_Folder As frm_Folder = New frm_Folder(Uploader)
+        Dim frm_Folder As frm_Folder = New frm_Folder()
         frm_Folder.Show()
 
         Do Until My.Settings.AdminInfoRecieved
             Utils.Wait(1)
         Loop
-
-        cbx_Folders.DataSource = Uploader.GetFolders()
 
         My.Settings.AdminInfoRecieved = False
         My.Settings.Save()
@@ -211,5 +209,9 @@ Public Class Frm_EmailListeners
         txt_FileLocation.Location = Locations.FileDefault
         btn_Browse.Location = Locations.BrowseDefault
 
+    End Sub
+
+    Sub LoadFolders()
+        cbx_Folders.DataSource = Uploader.GetFolders()
     End Sub
 End Class

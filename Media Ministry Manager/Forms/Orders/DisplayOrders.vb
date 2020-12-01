@@ -24,7 +24,8 @@ Public Class Frm_DisplayOrders
     End Sub
 
     Private Sub Frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        mainForm.Show()
+        Dim frm As New Frm_Main()
+        frm.Show()
     End Sub
 
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click

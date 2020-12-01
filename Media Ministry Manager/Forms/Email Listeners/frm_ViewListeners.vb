@@ -77,17 +77,14 @@ Public Class Frm_ViewListeners
 
     Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
         Dim frm_AddListeners As frm_AddListener = New frm_AddListener With {
-            .Frm_Emails = Me
+            .Opener = Me
         }
         frm_AddListeners.Show()
     End Sub
 
     Private Sub Frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Try
-            SentFrom.Show()
-        Catch ex As FormClosedException
-
-        End Try
+        Dim frm As New Frm_Main()
+        frm.Show()
     End Sub
 
     Private Sub Dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow

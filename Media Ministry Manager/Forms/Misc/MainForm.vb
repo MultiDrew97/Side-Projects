@@ -2,6 +2,7 @@
 
 Imports System.ComponentModel
 Imports System.IO
+Imports MediaMinistry.Helpers
 Imports MediaMinistry.SendingEmails
 
 Public Class Frm_Main
@@ -13,61 +14,50 @@ Public Class Frm_Main
         Shared max As New Size(1382, 744)
     End Structure
 
-    Public Sub New() 'ByRef database As Database)
+    'Public Sub New() 'ByRef database As Database)
 
-        ' This call is required by the designer.
-        InitializeComponent()
+    '    ' This call is required by the designer.
+    '    InitializeComponent()
 
-        ' Add any initialization after the InitializeComponent() call.
-        'db = Database
-        If Not bw_UpdateJar.IsBusy Then
-            bw_UpdateJar.RunWorkerAsync(emailerLocation)
-        End If
-    End Sub
+    '    ' Add any initialization after the InitializeComponent() call.
+    '    'db = Database
+    '    If Not bw_UpdateJar.IsBusy Then
+    '        bw_UpdateJar.RunWorkerAsync(emailerLocation)
+    '    End If
+    'End Sub
 
     Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reset()
     End Sub
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
-        'db.Dispose()
-        'If My.Settings.KeepLoggedIn Then
-        '    Frm_Login.Close()
-        'Else
-        '    Frm_Login.Show()
-        'End If
+        If My.Application.OpenForms.Count = 1 And Not My.Settings.KeepLoggedIn Then
+            Dim login As New Frm_Login()
+            login.Show()
+        End If
     End Sub
 
     Private Sub Btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
         Dim frm_PlaceOrder As Frm_PlaceOrder = New Frm_PlaceOrder(db, Me)
         frm_PlaceOrder.Show()
-        Me.Hide()
     End Sub
 
     Private Sub Btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
-        Dim inventory As frm_ViewInventory = New frm_ViewInventory(db, Me)
+        Dim inventory As frm_ViewInventory = New frm_ViewInventory(Me)
         inventory.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub Btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
         Dim ordersView = New Frm_DisplayOrders(db, Me)
         ordersView.Show()
-        Me.Hide()
-    End Sub
-
-    Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs)
-        Reset()
-    End Sub
-
-    Private Sub Btn_CancelUpdate_Click(sender As Object, e As EventArgs)
-        Reset()
+        Me.Close()
     End Sub
 
     Private Sub Btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
         Dim displayCustomers = New frm_DisplayCustomers(db, Me)
         displayCustomers.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub Reset()
@@ -80,18 +70,17 @@ Public Class Frm_Main
         tss_Feedback.Text = "Initializing Google Drive Uploader..."
         Dim emailListeners As New Frm_EmailListeners() With {.Frm_Main = Me, .Uploader = New DriveUploader(Nothing)}
         emailListeners.Show()
-        Me.Hide()
-        Reset()
+        Me.Close()
     End Sub
 
     Private Sub Bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-        Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
-            out.Write(My.Resources.sender)
-        End Using
+        'Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
+        '    out.Write(My.Resources.sender)
+        'End Using
 
-        If Not ValidateSender(CType(e.Argument, String)) Then
-            Throw New FileNotFoundException("Sender was not found or was not copied correctly. Contact your developer.")
-        End If
+        'If Not ValidateSender(CType(e.Argument, String)) Then
+        '    Throw New FileNotFoundException("Sender was not found or was not copied correctly. Contact your developer.")
+        'End If
     End Sub
 
     Private Sub Frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -138,23 +127,25 @@ Public Class Frm_Main
     End Sub
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
-        Me.Close()
-        Frm_Login.Close()
+        Utils.CloseOpenForms()
     End Sub
 
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
         Dim frm_AddCustomer As New frm_AddNewCustomer(db, Me)
         frm_AddCustomer.Show()
+        Me.Hide()
     End Sub
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-        Dim frm_AddProduct As New frm_AddNewProduct(db, Me)
+        Dim frm_AddProduct As New frm_AddNewProduct()
         frm_AddProduct.Show()
+        Me.Hide()
     End Sub
 
     Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem.Click
         Dim frm_AddListener As New frm_AddListener()
         frm_AddListener.Show()
+        Me.Hide()
     End Sub
 
     Private Sub CustomerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem1.Click
@@ -193,29 +184,30 @@ Public Class Frm_Main
     Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomersToolStripMenuItem.Click
         Dim customers As New frm_DisplayCustomers(db, Me)
         customers.Show()
+        Me.Close()
     End Sub
 
     Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsToolStripMenuItem.Click
-        Dim products As New frm_ViewInventory(db, Me)
+        Dim products As New frm_ViewInventory(Me)
         products.Show()
+        Me.Close()
     End Sub
 
     Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrdersToolStripMenuItem.Click
         Dim orders As New Frm_DisplayOrders(db, Me)
         orders.Show()
+        Me.Close()
     End Sub
 
     Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenersToolStripMenuItem.Click
         Dim listeners As New Frm_ViewListeners(db) With {.SentFrom = Me}
         listeners.Show()
+        Me.Close()
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Dim frm_Settings As New Frm_Settings()
         frm_Settings.Show()
-    End Sub
-
-    Private Sub btn_Cancel_Click_1(sender As Object, e As EventArgs) 
-
+        Me.Hide()
     End Sub
 End Class

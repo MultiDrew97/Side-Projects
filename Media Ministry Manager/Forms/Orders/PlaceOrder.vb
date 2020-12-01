@@ -15,7 +15,8 @@ Public Class Frm_PlaceOrder
     End Sub
 
     Private Sub Frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        mainForm.Show()
+        'Dim frm As New Frm_Main()
+        'frm.Show()
     End Sub
 
     Private Sub Frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load

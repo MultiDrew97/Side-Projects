@@ -5,18 +5,7 @@ Imports System.Globalization
 Imports System.Text.RegularExpressions.Regex
 
 Public Class frm_AddNewProduct
-    Private ReadOnly db As Database
-    Private Property SendingForm() As Form
-
-    Public Sub New(ByRef database As Database, ByRef inventoryView As Form)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        db = database
-        SendingForm = inventoryView
-    End Sub
+    Property Opener() As Form
 
     Private Sub Frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Reset()
@@ -24,10 +13,10 @@ Public Class frm_AddNewProduct
 
     Private Sub Frm_AddNewProduct_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Try
-            CType(SendingForm, frm_ViewInventory).customLoad()
+            CType(Opener, frm_ViewInventory).customLoad()
         Catch ex As ApplicationException
         Finally
-            SendingForm.Show()
+            Opener.Show()
         End Try
     End Sub
 
@@ -48,7 +37,9 @@ Public Class frm_AddNewProduct
         price = Decimal.Parse("0" & Format(txt_Price.Text, "Standard"), CultureInfo.CurrentCulture)
 
         Try
-            db.AddNewProduct(name, stock, price)
+            Using db As New Database(My.Settings.Username, My.Settings.Password)
+                db.AddNewProduct(name, stock, price)
+            End Using
             tss_AddProduct.ForeColor = SystemColors.WindowText
             tss_AddProduct.Text = "Product was successfully added."
         Catch ex As SqlException

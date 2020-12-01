@@ -3,27 +3,16 @@
 Imports MediaMinistry.SendingEmails
 
 Public Class frm_Folder
-    Dim uploader As DriveUploader
-
-    Public Sub New(uploader As DriveUploader)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        Me.uploader = uploader
-    End Sub
-
     Private Sub btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
-        Dim temp As String = uploader.CreateFolder(txt_FolderName.Text)
-
-        If temp IsNot Nothing Then
-            My.Settings.AdminInfoRecieved = True
-            Me.Close()
-        Else
-            tss_Feedback.Text = "Failed to create folder. Try Again."
-            tss_Feedback.ForeColor = Color.Red
-        End If
+        Using uploader As New DriveUploader()
+            If uploader.CreateFolder(txt_FolderName.Text) IsNot Nothing Then
+                ReloadFolders()
+                Me.Close()
+            Else
+                tss_Feedback.Text = "Failed to create folder. Try Again."
+                tss_Feedback.ForeColor = Color.Red
+            End If
+        End Using
     End Sub
 
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
@@ -31,4 +20,12 @@ Public Class frm_Folder
         Me.Close()
     End Sub
 
+    Private Sub ReloadFolders()
+        For Each form As Form In My.Application.OpenForms
+            If form.Name.Equals("frm_emaillisteners", StringComparison.OrdinalIgnoreCase) Then
+                CType(form, Frm_EmailListeners).LoadFolders()
+                Exit For
+            End If
+        Next
+    End Sub
 End Class

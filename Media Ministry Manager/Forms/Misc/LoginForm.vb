@@ -67,8 +67,7 @@ Public Class Frm_Login
     End Sub
 
     Private Sub Bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted
-        Me.Hide()
-        Reset()
+        Me.Close()
     End Sub
 
     Private Sub Txt_Password_GotFocus(sender As Object, e As EventArgs) Handles txt_Password.GotFocus

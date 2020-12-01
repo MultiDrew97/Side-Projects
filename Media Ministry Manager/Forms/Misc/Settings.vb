@@ -173,4 +173,13 @@ Public Class Frm_Settings
             btn_Gmail.Text = "Link Gmail"
         End If
     End Sub
+
+    Private Sub Frm_Settings_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        For index = 0 To My.Application.OpenForms.Count
+            If My.Application.OpenForms(index).Name = "Frm_Main" Then
+                My.Application.OpenForms(index).Show()
+                Exit For
+            End If
+        Next
+    End Sub
 End Class
