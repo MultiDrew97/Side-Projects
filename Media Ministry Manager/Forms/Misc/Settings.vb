@@ -151,35 +151,41 @@ Public Class Frm_Settings
     End Sub
 
     Private Sub Bw_CheckServices_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_CheckServices.DoWork
-        'Retrieve the Google Drive Info being used by the user
-        If Directory.Exists(Application.StartupPath & "\Drive Token") Then
-            Using uploader As New DriveUploader()
-                lbl_CurrentDrive.Text = String.Format(currentUser, CType(uploader.Info, User).EmailAddress)
-                btn_GoogleDrive.Text = "Unlink Google Drive"
-            End Using
-        Else
-            lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
-            btn_GoogleDrive.Text = "Link Google Drive"
-        End If
+        Invoke(
+            Sub()
+                'Retrieve the Google Drive Info being used by the user
+                If Directory.Exists(Application.StartupPath & "\Drive Token") Then
+                    Using uploader As New DriveUploader()
+                        lbl_CurrentDrive.Text = String.Format(currentUser, CType(uploader.Info, User).EmailAddress)
+                        btn_GoogleDrive.Text = "Unlink Google Drive"
+                    End Using
+                Else
+                    lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
+                    btn_GoogleDrive.Text = "Link Google Drive"
+                End If
 
-        'Retrieve the Google Drive Info being used by the user
-        If Directory.Exists(Application.StartupPath & "\Gmail Token") Then
-            Using emailer As New Sender()
-                lbl_CurrentGmail.Text = String.Format(currentUser, CType(emailer.Info, Profile).EmailAddress)
-                btn_Gmail.Text = "Unlink Google Drive"
-            End Using
-        Else
-            lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
-            btn_Gmail.Text = "Link Gmail"
-        End If
+                'Retrieve the Google Drive Info being used by the user
+                If Directory.Exists(Application.StartupPath & "\Gmail Token") Then
+                    Using emailer As New Sender()
+                        lbl_CurrentGmail.Text = String.Format(currentUser, CType(emailer.Info, Profile).EmailAddress)
+                        btn_Gmail.Text = "Unlink Google Drive"
+                    End Using
+                Else
+                    lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
+                    btn_Gmail.Text = "Link Gmail"
+                End If
+            End Sub
+            )
     End Sub
 
     Private Sub Frm_Settings_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        For index = 0 To My.Application.OpenForms.Count
-            If My.Application.OpenForms(index).Name = "Frm_Main" Then
-                My.Application.OpenForms(index).Show()
-                Exit For
-            End If
-        Next
+        If My.Application.OpenForms.Count > 1 Then
+            For Each form As Form In My.Application.OpenForms
+                If form.Name = "Frm_Main" Then
+                    form.Show()
+                    Exit For
+                End If
+            Next
+        End If
     End Sub
 End Class

@@ -1217,8 +1217,6 @@ Partial Public Class MediaMinistryDataSet
         
         Private columnEMAIL As Global.System.Data.DataColumn
         
-        Private columnPREFERRED_PAYMENT As Global.System.Data.DataColumn
-        
         Private columnJOIN_DATE As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1322,14 +1320,6 @@ Partial Public Class MediaMinistryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property PREFERRED_PAYMENTColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPREFERRED_PAYMENT
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property JOIN_DATEColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnJOIN_DATE
@@ -1373,9 +1363,9 @@ Partial Public Class MediaMinistryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddCUSTOMERSRow(ByVal FIRST_NAME As String, ByVal LAST_NAME As String, ByVal SHIPPING_STREET As String, ByVal SHIPPING_CITY As String, ByVal SHIPPING_STATE As String, ByVal SHIPPING_ZIP As String, ByVal PHONE_NUMBER As String, ByVal EMAIL As String, ByVal PREFERRED_PAYMENT As String, ByVal JOIN_DATE As String) As CUSTOMERSRow
+        Public Overloads Function AddCUSTOMERSRow(ByVal FIRST_NAME As String, ByVal LAST_NAME As String, ByVal SHIPPING_STREET As String, ByVal SHIPPING_CITY As String, ByVal SHIPPING_STATE As String, ByVal SHIPPING_ZIP As String, ByVal PHONE_NUMBER As String, ByVal EMAIL As String, ByVal JOIN_DATE As String) As CUSTOMERSRow
             Dim rowCUSTOMERSRow As CUSTOMERSRow = CType(Me.NewRow,CUSTOMERSRow)
-            Dim columnValuesArray() As Object = New Object() {FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRED_PAYMENT, JOIN_DATE}
+            Dim columnValuesArray() As Object = New Object() {FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, JOIN_DATE}
             rowCUSTOMERSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCUSTOMERSRow)
             Return rowCUSTOMERSRow
@@ -1412,7 +1402,6 @@ Partial Public Class MediaMinistryDataSet
             Me.columnSHIPPING_ZIP = MyBase.Columns("SHIPPING_ZIP")
             Me.columnPHONE_NUMBER = MyBase.Columns("PHONE_NUMBER")
             Me.columnEMAIL = MyBase.Columns("EMAIL")
-            Me.columnPREFERRED_PAYMENT = MyBase.Columns("PREFERRED_PAYMENT")
             Me.columnJOIN_DATE = MyBase.Columns("JOIN_DATE")
         End Sub
         
@@ -1435,8 +1424,6 @@ Partial Public Class MediaMinistryDataSet
             MyBase.Columns.Add(Me.columnPHONE_NUMBER)
             Me.columnEMAIL = New Global.System.Data.DataColumn("EMAIL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEMAIL)
-            Me.columnPREFERRED_PAYMENT = New Global.System.Data.DataColumn("PREFERRED_PAYMENT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPREFERRED_PAYMENT)
             Me.columnJOIN_DATE = New Global.System.Data.DataColumn("JOIN_DATE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnJOIN_DATE)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnPHONE_NUMBER}, true))
@@ -1452,7 +1439,6 @@ Partial Public Class MediaMinistryDataSet
             Me.columnPHONE_NUMBER.Unique = true
             Me.columnPHONE_NUMBER.MaxLength = 14
             Me.columnEMAIL.MaxLength = 100
-            Me.columnPREFERRED_PAYMENT.MaxLength = 4
             Me.columnJOIN_DATE.AllowDBNull = false
             Me.columnJOIN_DATE.MaxLength = 10
         End Sub
@@ -3951,21 +3937,6 @@ Partial Public Class MediaMinistryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property PREFERRED_PAYMENT() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableCUSTOMERS.PREFERRED_PAYMENTColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PREFERRED_PAYMENT' in table 'CUSTOMERS' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCUSTOMERS.PREFERRED_PAYMENTColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property JOIN_DATE() As String
             Get
                 Return CType(Me(Me.tableCUSTOMERS.JOIN_DATEColumn),String)
@@ -4033,18 +4004,6 @@ Partial Public Class MediaMinistryDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetEMAILNull()
             Me(Me.tableCUSTOMERS.EMAILColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsPREFERRED_PAYMENTNull() As Boolean
-            Return Me.IsNull(Me.tableCUSTOMERS.PREFERRED_PAYMENTColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetPREFERRED_PAYMENTNull()
-            Me(Me.tableCUSTOMERS.PREFERRED_PAYMENTColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5782,7 +5741,6 @@ Namespace MediaMinistryDataSetTableAdapters
             tableMapping.ColumnMappings.Add("SHIPPING_ZIP", "SHIPPING_ZIP")
             tableMapping.ColumnMappings.Add("PHONE_NUMBER", "PHONE_NUMBER")
             tableMapping.ColumnMappings.Add("EMAIL", "EMAIL")
-            tableMapping.ColumnMappings.Add("PREFERRED_PAYMENT", "PREFERRED_PAYMENT")
             tableMapping.ColumnMappings.Add("JOIN_DATE", "JOIN_DATE")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
@@ -5795,9 +5753,8 @@ Namespace MediaMinistryDataSetTableAdapters
                 "L) OR ([SHIPPING_STATE] = @Original_SHIPPING_STATE)) AND ((@IsNull_SHIPPING_ZIP "& _ 
                 "= 1 AND [SHIPPING_ZIP] IS NULL) OR ([SHIPPING_ZIP] = @Original_SHIPPING_ZIP)) AN"& _ 
                 "D ([PHONE_NUMBER] = @Original_PHONE_NUMBER) AND ((@IsNull_EMAIL = 1 AND [EMAIL] "& _ 
-                "IS NULL) OR ([EMAIL] = @Original_EMAIL)) AND ((@IsNull_PREFERRED_PAYMENT = 1 AND"& _ 
-                " [PREFERRED_PAYMENT] IS NULL) OR ([PREFERRED_PAYMENT] = @Original_PREFERRED_PAYM"& _ 
-                "ENT)) AND ([JOIN_DATE] = @Original_JOIN_DATE))"
+                "IS NULL) OR ([EMAIL] = @Original_EMAIL)) AND ([JOIN_DATE] = @Original_JOIN_DATE)"& _ 
+                ")"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LAST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LAST_NAME", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -5812,18 +5769,15 @@ Namespace MediaMinistryDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PHONE_NUMBER", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PHONE_NUMBER", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EMAIL", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EMAIL", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PREFERRED_PAYMENT", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PREFERRED_PAYMENT", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PREFERRED_PAYMENT", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PREFERRED_PAYMENT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_JOIN_DATE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "JOIN_DATE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[CUSTOMERS] ([FIRST_NAME], [LAST_NAME], [SHIPPING_STREET], [SHI"& _ 
-                "PPING_CITY], [SHIPPING_STATE], [SHIPPING_ZIP], [PHONE_NUMBER], [EMAIL], [PREFERR"& _ 
-                "ED_PAYMENT], [JOIN_DATE]) VALUES (@FIRST_NAME, @LAST_NAME, @SHIPPING_STREET, @SH"& _ 
-                "IPPING_CITY, @SHIPPING_STATE, @SHIPPING_ZIP, @PHONE_NUMBER, @EMAIL, @PREFERRED_P"& _ 
-                "AYMENT, @JOIN_DATE);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CI"& _ 
-                "TY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRED_PAYMENT, JOIN_D"& _ 
-                "ATE FROM CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
+                "PPING_CITY], [SHIPPING_STATE], [SHIPPING_ZIP], [PHONE_NUMBER], [EMAIL], [JOIN_DA"& _ 
+                "TE]) VALUES (@FIRST_NAME, @LAST_NAME, @SHIPPING_STREET, @SHIPPING_CITY, @SHIPPIN"& _ 
+                "G_STATE, @SHIPPING_ZIP, @PHONE_NUMBER, @EMAIL, @JOIN_DATE);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, "& _ 
+                "LAST_NAME, SHIPPING_STREET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_N"& _ 
+                "UMBER, EMAIL, JOIN_DATE FROM CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LAST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LAST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5833,27 +5787,24 @@ Namespace MediaMinistryDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SHIPPING_ZIP", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SHIPPING_ZIP", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PHONE_NUMBER", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PHONE_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EMAIL", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PREFERRED_PAYMENT", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PREFERRED_PAYMENT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@JOIN_DATE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "JOIN_DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[CUSTOMERS] SET [FIRST_NAME] = @FIRST_NAME, [LAST_NAME] = @LAST_NAME"& _ 
                 ", [SHIPPING_STREET] = @SHIPPING_STREET, [SHIPPING_CITY] = @SHIPPING_CITY, [SHIPP"& _ 
                 "ING_STATE] = @SHIPPING_STATE, [SHIPPING_ZIP] = @SHIPPING_ZIP, [PHONE_NUMBER] = @"& _ 
-                "PHONE_NUMBER, [EMAIL] = @EMAIL, [PREFERRED_PAYMENT] = @PREFERRED_PAYMENT, [JOIN_"& _ 
-                "DATE] = @JOIN_DATE WHERE (([FIRST_NAME] = @Original_FIRST_NAME) AND ([LAST_NAME]"& _ 
-                " = @Original_LAST_NAME) AND ((@IsNull_SHIPPING_STREET = 1 AND [SHIPPING_STREET] "& _ 
-                "IS NULL) OR ([SHIPPING_STREET] = @Original_SHIPPING_STREET)) AND ((@IsNull_SHIPP"& _ 
-                "ING_CITY = 1 AND [SHIPPING_CITY] IS NULL) OR ([SHIPPING_CITY] = @Original_SHIPPI"& _ 
-                "NG_CITY)) AND ((@IsNull_SHIPPING_STATE = 1 AND [SHIPPING_STATE] IS NULL) OR ([SH"& _ 
-                "IPPING_STATE] = @Original_SHIPPING_STATE)) AND ((@IsNull_SHIPPING_ZIP = 1 AND [S"& _ 
-                "HIPPING_ZIP] IS NULL) OR ([SHIPPING_ZIP] = @Original_SHIPPING_ZIP)) AND ([PHONE_"& _ 
-                "NUMBER] = @Original_PHONE_NUMBER) AND ((@IsNull_EMAIL = 1 AND [EMAIL] IS NULL) O"& _ 
-                "R ([EMAIL] = @Original_EMAIL)) AND ((@IsNull_PREFERRED_PAYMENT = 1 AND [PREFERRE"& _ 
-                "D_PAYMENT] IS NULL) OR ([PREFERRED_PAYMENT] = @Original_PREFERRED_PAYMENT)) AND "& _ 
-                "([JOIN_DATE] = @Original_JOIN_DATE));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, LAST_NAME, SHIPPING_ST"& _ 
-                "REET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRE"& _ 
-                "D_PAYMENT, JOIN_DATE FROM CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
+                "PHONE_NUMBER, [EMAIL] = @EMAIL, [JOIN_DATE] = @JOIN_DATE WHERE (([FIRST_NAME] = "& _ 
+                "@Original_FIRST_NAME) AND ([LAST_NAME] = @Original_LAST_NAME) AND ((@IsNull_SHIP"& _ 
+                "PING_STREET = 1 AND [SHIPPING_STREET] IS NULL) OR ([SHIPPING_STREET] = @Original"& _ 
+                "_SHIPPING_STREET)) AND ((@IsNull_SHIPPING_CITY = 1 AND [SHIPPING_CITY] IS NULL) "& _ 
+                "OR ([SHIPPING_CITY] = @Original_SHIPPING_CITY)) AND ((@IsNull_SHIPPING_STATE = 1"& _ 
+                " AND [SHIPPING_STATE] IS NULL) OR ([SHIPPING_STATE] = @Original_SHIPPING_STATE))"& _ 
+                " AND ((@IsNull_SHIPPING_ZIP = 1 AND [SHIPPING_ZIP] IS NULL) OR ([SHIPPING_ZIP] ="& _ 
+                " @Original_SHIPPING_ZIP)) AND ([PHONE_NUMBER] = @Original_PHONE_NUMBER) AND ((@I"& _ 
+                "sNull_EMAIL = 1 AND [EMAIL] IS NULL) OR ([EMAIL] = @Original_EMAIL)) AND ([JOIN_"& _ 
+                "DATE] = @Original_JOIN_DATE));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT FIRST_NAME, LAST_NAME, SHIPPING_STREET, S"& _ 
+                "HIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, PHONE_NUMBER, EMAIL, JOIN_DATE FROM "& _ 
+                "CUSTOMERS WHERE (PHONE_NUMBER = @PHONE_NUMBER)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LAST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LAST_NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5863,7 +5814,6 @@ Namespace MediaMinistryDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SHIPPING_ZIP", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SHIPPING_ZIP", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PHONE_NUMBER", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PHONE_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EMAIL", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PREFERRED_PAYMENT", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PREFERRED_PAYMENT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@JOIN_DATE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "JOIN_DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FIRST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FIRST_NAME", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LAST_NAME", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LAST_NAME", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -5878,8 +5828,6 @@ Namespace MediaMinistryDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PHONE_NUMBER", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PHONE_NUMBER", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EMAIL", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EMAIL", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PREFERRED_PAYMENT", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PREFERRED_PAYMENT", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PREFERRED_PAYMENT", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PREFERRED_PAYMENT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_JOIN_DATE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "JOIN_DATE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -5897,7 +5845,7 @@ Namespace MediaMinistryDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CITY, SHIPPING_STATE, SHI"& _ 
-                "PPING_ZIP, PHONE_NUMBER, EMAIL, PREFERRED_PAYMENT, JOIN_DATE FROM dbo.CUSTOMERS"
+                "PPING_ZIP, PHONE_NUMBER, EMAIL, JOIN_DATE FROM dbo.CUSTOMERS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -5957,7 +5905,7 @@ Namespace MediaMinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_FIRST_NAME As String, ByVal Original_LAST_NAME As String, ByVal Original_SHIPPING_STREET As String, ByVal Original_SHIPPING_CITY As String, ByVal Original_SHIPPING_STATE As String, ByVal Original_SHIPPING_ZIP As String, ByVal Original_PHONE_NUMBER As String, ByVal Original_EMAIL As String, ByVal Original_PREFERRED_PAYMENT As String, ByVal Original_JOIN_DATE As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_FIRST_NAME As String, ByVal Original_LAST_NAME As String, ByVal Original_SHIPPING_STREET As String, ByVal Original_SHIPPING_CITY As String, ByVal Original_SHIPPING_STATE As String, ByVal Original_SHIPPING_ZIP As String, ByVal Original_PHONE_NUMBER As String, ByVal Original_EMAIL As String, ByVal Original_JOIN_DATE As String) As Integer
             If (Original_FIRST_NAME Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_FIRST_NAME")
             Else
@@ -6008,17 +5956,10 @@ Namespace MediaMinistryDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_EMAIL,String)
             End If
-            If (Original_PREFERRED_PAYMENT Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_PREFERRED_PAYMENT,String)
-            End If
             If (Original_JOIN_DATE Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_JOIN_DATE")
             Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_JOIN_DATE,String)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_JOIN_DATE,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6039,7 +5980,7 @@ Namespace MediaMinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal FIRST_NAME As String, ByVal LAST_NAME As String, ByVal SHIPPING_STREET As String, ByVal SHIPPING_CITY As String, ByVal SHIPPING_STATE As String, ByVal SHIPPING_ZIP As String, ByVal PHONE_NUMBER As String, ByVal EMAIL As String, ByVal PREFERRED_PAYMENT As String, ByVal JOIN_DATE As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal FIRST_NAME As String, ByVal LAST_NAME As String, ByVal SHIPPING_STREET As String, ByVal SHIPPING_CITY As String, ByVal SHIPPING_STATE As String, ByVal SHIPPING_ZIP As String, ByVal PHONE_NUMBER As String, ByVal EMAIL As String, ByVal JOIN_DATE As String) As Integer
             If (FIRST_NAME Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("FIRST_NAME")
             Else
@@ -6080,15 +6021,10 @@ Namespace MediaMinistryDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(EMAIL,String)
             End If
-            If (PREFERRED_PAYMENT Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(PREFERRED_PAYMENT,String)
-            End If
             If (JOIN_DATE Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("JOIN_DATE")
             Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(JOIN_DATE,String)
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(JOIN_DATE,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6118,7 +6054,6 @@ Namespace MediaMinistryDataSetTableAdapters
                     ByVal SHIPPING_ZIP As String,  _
                     ByVal PHONE_NUMBER As String,  _
                     ByVal EMAIL As String,  _
-                    ByVal PREFERRED_PAYMENT As String,  _
                     ByVal JOIN_DATE As String,  _
                     ByVal Original_FIRST_NAME As String,  _
                     ByVal Original_LAST_NAME As String,  _
@@ -6128,7 +6063,6 @@ Namespace MediaMinistryDataSetTableAdapters
                     ByVal Original_SHIPPING_ZIP As String,  _
                     ByVal Original_PHONE_NUMBER As String,  _
                     ByVal Original_EMAIL As String,  _
-                    ByVal Original_PREFERRED_PAYMENT As String,  _
                     ByVal Original_JOIN_DATE As String) As Integer
             If (FIRST_NAME Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("FIRST_NAME")
@@ -6170,77 +6104,65 @@ Namespace MediaMinistryDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(EMAIL,String)
             End If
-            If (PREFERRED_PAYMENT Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(PREFERRED_PAYMENT,String)
-            End If
             If (JOIN_DATE Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("JOIN_DATE")
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(JOIN_DATE,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(JOIN_DATE,String)
             End If
             If (Original_FIRST_NAME Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_FIRST_NAME")
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_FIRST_NAME,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_FIRST_NAME,String)
             End If
             If (Original_LAST_NAME Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_LAST_NAME")
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_LAST_NAME,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_LAST_NAME,String)
             End If
             If (Original_SHIPPING_STREET Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_SHIPPING_STREET,String)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_SHIPPING_STREET,String)
             End If
             If (Original_SHIPPING_CITY Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_SHIPPING_CITY,String)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_SHIPPING_CITY,String)
             End If
             If (Original_SHIPPING_STATE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_SHIPPING_STATE,String)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_SHIPPING_STATE,String)
             End If
             If (Original_SHIPPING_ZIP Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_SHIPPING_ZIP,String)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_SHIPPING_ZIP,String)
             End If
             If (Original_PHONE_NUMBER Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_PHONE_NUMBER")
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_PHONE_NUMBER,String)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_PHONE_NUMBER,String)
             End If
             If (Original_EMAIL Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_EMAIL,String)
-            End If
-            If (Original_PREFERRED_PAYMENT Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_PREFERRED_PAYMENT,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_EMAIL,String)
             End If
             If (Original_JOIN_DATE Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_JOIN_DATE")
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_JOIN_DATE,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_JOIN_DATE,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6269,7 +6191,6 @@ Namespace MediaMinistryDataSetTableAdapters
                     ByVal SHIPPING_STATE As String,  _
                     ByVal SHIPPING_ZIP As String,  _
                     ByVal EMAIL As String,  _
-                    ByVal PREFERRED_PAYMENT As String,  _
                     ByVal JOIN_DATE As String,  _
                     ByVal Original_FIRST_NAME As String,  _
                     ByVal Original_LAST_NAME As String,  _
@@ -6279,9 +6200,8 @@ Namespace MediaMinistryDataSetTableAdapters
                     ByVal Original_SHIPPING_ZIP As String,  _
                     ByVal Original_PHONE_NUMBER As String,  _
                     ByVal Original_EMAIL As String,  _
-                    ByVal Original_PREFERRED_PAYMENT As String,  _
                     ByVal Original_JOIN_DATE As String) As Integer
-            Return Me.Update(FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, Original_PHONE_NUMBER, EMAIL, PREFERRED_PAYMENT, JOIN_DATE, Original_FIRST_NAME, Original_LAST_NAME, Original_SHIPPING_STREET, Original_SHIPPING_CITY, Original_SHIPPING_STATE, Original_SHIPPING_ZIP, Original_PHONE_NUMBER, Original_EMAIL, Original_PREFERRED_PAYMENT, Original_JOIN_DATE)
+            Return Me.Update(FIRST_NAME, LAST_NAME, SHIPPING_STREET, SHIPPING_CITY, SHIPPING_STATE, SHIPPING_ZIP, Original_PHONE_NUMBER, EMAIL, JOIN_DATE, Original_FIRST_NAME, Original_LAST_NAME, Original_SHIPPING_STREET, Original_SHIPPING_CITY, Original_SHIPPING_STATE, Original_SHIPPING_ZIP, Original_PHONE_NUMBER, Original_EMAIL, Original_JOIN_DATE)
         End Function
     End Class
     

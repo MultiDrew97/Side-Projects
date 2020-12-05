@@ -66,6 +66,8 @@ Public Class Frm_ViewListeners
     End Sub
 
     Private Sub Frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
+        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         CustomLoad()
     End Sub
 

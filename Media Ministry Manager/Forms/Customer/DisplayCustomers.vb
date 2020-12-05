@@ -12,7 +12,6 @@ Public Class frm_DisplayCustomers
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        db = database
         Me.mainForm = mainForm
     End Sub
 
@@ -76,17 +75,19 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
-        Dim updateNumber = New frm_UpdatePhoneNumber(db, Me)
+        Dim updateNumber = New frm_UpdatePhoneNumber
         updateNumber.Show()
     End Sub
 
     Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
-        Dim addForm = New frm_AddNewCustomer(db, Me)
+        Dim addForm = New frm_AddNewCustomer With {.Opener = Me}
         addForm.Show()
     End Sub
 
     Private Sub Dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
-        db.RemovePerson(CType(e.Row.Cells(2).Value, String))
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            db.RemovePerson(CType(e.Row.Cells(2).Value, String))
+        End Using
     End Sub
 
     Public Overrides Sub refresh()

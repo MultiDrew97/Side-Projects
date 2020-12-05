@@ -8,16 +8,6 @@ Public Class frm_UpdatePhoneNumber
     Private ReadOnly validNumberFormat As String = "\d{3}-\d{3}-\d{4}"
     Private ReadOnly display As frm_DisplayCustomers
 
-    Public Sub New(ByRef database As Database, ByRef displayForm As frm_DisplayCustomers)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        db = database
-        display = displayForm
-    End Sub
-
     Private Sub UpdatePhoneNumber_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
         Me.CUSTOMERSTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)

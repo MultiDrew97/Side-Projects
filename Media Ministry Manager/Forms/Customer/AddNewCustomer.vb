@@ -45,6 +45,7 @@ Public Class frm_AddNewCustomer
 
                 Me.Close()
             Catch ex As SqlException
+                Console.WriteLine(ex.Message)
                 tss_AddCustomer.ForeColor = Color.Red
                 tss_AddCustomer.Text = "This person might already be in the system. Please try again."
             End Try

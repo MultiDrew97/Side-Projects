@@ -17,7 +17,7 @@
                 Try
                     My.Application.OpenForms(0).Close()
                 Catch ex As InvalidOperationException
-                    Console.WriteLine("Form not open")
+                    Console.WriteLine("Form of name {0} falied to close", My.Application.OpenForms(0).Name)
                 End Try
             Loop While My.Application.OpenForms.Count > 0
         End Sub

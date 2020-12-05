@@ -131,7 +131,7 @@ Public Class Frm_Main
     End Sub
 
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
-        Dim frm_AddCustomer As New frm_AddNewCustomer(db, Me)
+        Dim frm_AddCustomer As New frm_AddNewCustomer With {.Opener = Me}
         frm_AddCustomer.Show()
         Me.Hide()
     End Sub

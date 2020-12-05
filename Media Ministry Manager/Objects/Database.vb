@@ -101,9 +101,14 @@ Public Class Database
 
         'date string that holds the command to get the date for when the person joined
         'Dim dateString = "SELECT CONVERT(VARCHAR(10), GETDATE(), 111)"
-        myCmd.Parameters.AddRange({New SqlParameter("FirstName", fName), New SqlParameter("LastName", lName), New SqlParameter("Street", addrStreet), New SqlParameter("City", addrCity), New SqlParameter("State", addrState), New SqlParameter("Zip", addrZip), New SqlParameter("Email", email), New SqlParameter("Payment", paymentPreference), New SqlParameter("PhoneNumber", phoneNumber), New SqlParameter("JoinDate", "SELECT CONVERT(VARCHAR(10), GETDATE(), 111)")})
+        AddCustomer({New SqlParameter("FirstName", fName), New SqlParameter("LastName", lName), New SqlParameter("Street", addrStreet), New SqlParameter("City", addrCity), New SqlParameter("State", addrState), New SqlParameter("Zip", addrZip), New SqlParameter("Phone", phoneNumber), New SqlParameter("Email", email)})
+    End Sub
 
-        myCmd.CommandText = "INSERT INTO CUSTOMERS VALUES (@FirstName, @LastName, @Street, @City, @State, @Zip, @PhoneNumber, @Email, @Payment, (@JoinDate))"
+    Private Sub AddCustomer(parameters As SqlParameter())
+        myCmd.Parameters.AddRange(parameters)
+
+        myCmd.CommandType = CommandType.StoredProcedure
+        myCmd.CommandText = "AddCustomer"
 
         myCmd.ExecuteNonQuery()
     End Sub
@@ -112,7 +117,7 @@ Public Class Database
         AddListener({New SqlParameter("Name", name), New SqlParameter("Email", email)})
     End Sub
 
-    Public Sub AddListener(paramerters As SqlParameter())
+    Private Sub AddListener(paramerters As SqlParameter())
         myCmd.Parameters.AddRange(paramerters)
         myCmd.CommandText = "INSERT INTO EMAIL_LISTENERS VALUES (@Name, @Email)"
 
@@ -245,7 +250,7 @@ Public Class Database
                                 myReader.GetString(2) & vbTab & myReader.GetString(3) &
                                 myReader.GetString(4) & vbTab & myReader.GetString(5) &
                                 myReader.GetString(6) & vbTab & myReader.GetString(7) &
-                                myReader.GetString(8) & vbTab & myReader.GetString(9) & vbLf
+                                vbTab & myReader.GetString(8) & vbLf
         Loop
 
         myReader.Close()
