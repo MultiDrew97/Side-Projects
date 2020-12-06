@@ -340,6 +340,6 @@ ASALocalRun/
 healthchecksdb
 
 #Security
-Media Ministry Manager.exe
-credentials.json
-[Aa]pp.config
+*Media Ministry Manager.exe
+*credentials.json
+*[Aa]pp.config

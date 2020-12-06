@@ -125,18 +125,6 @@ Partial Friend NotInheritable Class MySettings
         End Set
     End Property
     
-    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
-        "ser ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication=""Sql Passw"& _ 
-        "ord""")>  _
-    Public ReadOnly Property masterConnectionString() As String
-        Get
-            Return CType(Me("masterConnectionString"),String)
-        End Get
-    End Property
-    
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>  _
@@ -155,6 +143,18 @@ Partial Friend NotInheritable Class MySettings
     Public ReadOnly Property DefaultFont() As Global.System.Drawing.Font
         Get
             Return CType(Me("DefaultFont"),Global.System.Drawing.Font)
+        End Get
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
+        "ser ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication=""Sql Passw"& _ 
+        "ord""")>  _
+    Public ReadOnly Property masterConnectionString() As String
+        Get
+            Return CType(Me("masterConnectionString"),String)
         End Get
     End Property
 End Class

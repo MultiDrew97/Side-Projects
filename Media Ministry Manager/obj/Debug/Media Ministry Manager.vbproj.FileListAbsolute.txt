@@ -1,173 +1,3 @@
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.config
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.manifest
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.application
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.pdb
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.xml
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_Main.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdateInventory.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_ViewInventory.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Resources.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe.manifest
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.application
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.xml
-C:\Users\arand\Desktop\Side Projects\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.pdb
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.config
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.manifest
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.application
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.pdb
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.xml
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
-C:\Old Man's Media Ministry\Old Man's Media Ministry\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_Main.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdateInventory.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_ViewInventory.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.Resources.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe.manifest
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.application
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.exe
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.xml
-C:\Old Man's Media Ministry\Old Man's Media Ministry\obj\Debug\Media Ministry Manager.pdb
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.config
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.manifest
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.application
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.pdb
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.xml
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Main.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_UpdateInventory.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ViewInventory.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.Resources.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe.manifest
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.application
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Login.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ChangePassword.resources
-C:\Users\arand\OneDrive\Documents\Side_Projects\Media Ministry Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_CreateUser.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.g.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_EmailListeners.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ChangePassword.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_CreateUser.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.AdminSignIn.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Login.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Main.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.UpdateInventory.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ViewInventory.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.Resources.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.config
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.manifest
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.application
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.PlatformServices.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Core.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.PlatformServices.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\MimeKit.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\System.Data.SqlClient.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\UrlBase64.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Auth.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Core.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Core.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\MimeKit.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\Newtonsoft.Json.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\System.Data.SqlClient.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe.manifest
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.application
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CopyComplete
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.xml
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddListener.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Folder.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ViewListeners.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
-C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
-<<<<<<< HEAD
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.g.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.MediaMinistrySplash.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_EmailListeners.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Folder.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddListener.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ViewListeners.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewProduct.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayCustomers.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ChangePassword.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_CreateUser.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminSignIn.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Login.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Settings.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_DisplayOrders.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Main.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_PlaceOrder.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdateInventory.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdatePhoneNumber.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewInventory.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Resources.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewCustomer.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.config
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.manifest
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.application
@@ -189,9 +19,9 @@ C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Ma
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OOXML.dll
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXml4Net.dll
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXmlFormats.dll
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Buffers.dll
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Data.SqlClient.dll
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\UrlBase64.dll
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Buffers.dll
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.xml
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.pdb
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.xml
@@ -208,38 +38,34 @@ C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Ma
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\MimeKit.pdb
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\MimeKit.xml
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Newtonsoft.Json.xml
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Buffers.xml
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.xml
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OOXML.xml
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXml4Net.xml
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Data.SqlClient.xml
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.g.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_EmailListeners.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Folder.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_AddListener.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewListeners.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewProduct.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayCustomers.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ChangePassword.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_CreateUser.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminSignIn.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Login.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayOrders.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Main.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_PlaceOrder.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdateInventory.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdatePhoneNumber.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewInventory.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Resources.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewCustomer.resources
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
+C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe.manifest
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.application
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CopyComplete
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
 C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
-=======
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.Media_Ministry_Splash.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_EmailListeners.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Folder.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddListener.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ViewListeners.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewProduct.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayCustomers.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ChangePassword.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_CreateUser.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.AdminSignIn.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Login.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_DisplayOrders.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_Main.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_PlaceOrder.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.UpdateInventory.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_UpdatePhoneNumber.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_ViewInventory.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.Resources.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_AddNewCustomer.resources
-C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Resources\sender.jar
->>>>>>> master
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media_Ministry.frm_UpdateInventory.resources
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.xml
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OOXML.xml
-C:\Users\arand\source\repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXml4Net.xml
