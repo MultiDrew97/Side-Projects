@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frm_PlaceOrder
+Partial Class Frm_PlaceOrder
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,10 +23,10 @@ Partial Class frm_PlaceOrder
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_PlaceOrder))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_PlaceOrder))
         Me.cbx_ItemName = New System.Windows.Forms.ComboBox()
         Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_ItemName = New System.Windows.Forms.Label()
         Me.ss_AddOrder = New System.Windows.Forms.StatusStrip()
         Me.tss_AddOrder = New System.Windows.Forms.ToolStripStatusLabel()
@@ -39,11 +39,11 @@ Partial Class frm_PlaceOrder
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.cbx_PhoneNumber = New System.Windows.Forms.ComboBox()
         Me.lbl_PhoneNumber = New System.Windows.Forms.Label()
-        Me.CUSTOMERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
-        Me.INVENTORYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter()
+        Me.CUSTOMERSTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.bw_LoadingData = New System.ComponentModel.BackgroundWorker()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_AddOrder.SuspendLayout()
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nud_Quantity, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,12 +63,12 @@ Partial Class frm_PlaceOrder
         'INVENTORYBindingSource
         '
         Me.INVENTORYBindingSource.DataMember = "INVENTORY"
-        Me.INVENTORYBindingSource.DataSource = Me.Media_MinistryDataSet
+        Me.INVENTORYBindingSource.DataSource = Me.MediaMinistryDataSet
         '
-        'Media_MinistryDataSet
+        'MediaMinistryDataSet
         '
-        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbl_ItemName
         '
@@ -108,7 +108,7 @@ Partial Class frm_PlaceOrder
         'CUSTOMERSBindingSource
         '
         Me.CUSTOMERSBindingSource.DataMember = "CUSTOMERS"
-        Me.CUSTOMERSBindingSource.DataSource = Me.Media_MinistryDataSet
+        Me.CUSTOMERSBindingSource.DataSource = Me.MediaMinistryDataSet
         '
         'lbl_FirstName
         '
@@ -216,7 +216,7 @@ Partial Class frm_PlaceOrder
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_AddOrder.ResumeLayout(False)
         Me.ss_AddOrder.PerformLayout()
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -238,10 +238,10 @@ Partial Class frm_PlaceOrder
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents cbx_PhoneNumber As ComboBox
     Friend WithEvents lbl_PhoneNumber As Label
-    Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
-    Friend WithEvents CUSTOMERSTableAdapter As Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As Media_MinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents bw_LoadingData As System.ComponentModel.BackgroundWorker
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
 End Class

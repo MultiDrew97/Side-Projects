@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_DisplayCustomers
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,11 @@ Partial Class frm_DisplayCustomers
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DisplayCustomers))
-        Me.CustomersTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.CustomersTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
         Me.FIRSTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LASTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -37,14 +37,14 @@ Partial Class frm_DisplayCustomers
         Me.PREFERREDPAYMENTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.JOINDATEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_UpdatePhone = New System.Windows.Forms.Button()
         Me.btn_AddNewCustomer = New System.Windows.Forms.Button()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_CustomerView.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -133,12 +133,12 @@ Partial Class frm_DisplayCustomers
         'CUSTOMERSBindingSource
         '
         Me.CUSTOMERSBindingSource.DataMember = "CUSTOMERS"
-        Me.CUSTOMERSBindingSource.DataSource = Me.Media_MinistryDataSet
+        Me.CUSTOMERSBindingSource.DataSource = Me.MediaMinistryDataSet
         '
         'Media_MinistryDataSet
         '
-        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ss_CustomerView
         '
@@ -195,7 +195,7 @@ Partial Class frm_DisplayCustomers
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_CustomerView.ResumeLayout(False)
         Me.ss_CustomerView.PerformLayout()
         Me.ResumeLayout(False)
@@ -203,10 +203,9 @@ Partial Class frm_DisplayCustomers
 
     End Sub
 
-    Friend WithEvents CustomersTableAdapter As Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents CustomersTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents dgv_Customers As DataGridView
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
-    Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
     Friend WithEvents ss_CustomerView As StatusStrip
     Friend WithEvents tss_CustomersView As ToolStripStatusLabel
     Friend WithEvents btn_UpdatePhone As Button
@@ -221,4 +220,5 @@ Partial Class frm_DisplayCustomers
     Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PREFERREDPAYMENTDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents JOINDATEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
 End Class

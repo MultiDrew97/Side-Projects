@@ -14,8 +14,6 @@
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferencePath>
-    </ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>

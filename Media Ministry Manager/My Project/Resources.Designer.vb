@@ -39,7 +39,7 @@ Namespace My.Resources
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Media_Ministry.Resources", GetType(Resources).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("MediaMinistry.Resources", GetType(Resources).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -97,6 +97,70 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("Media Ministry Logo", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;!Doctype html&gt;
+        '''&lt;html&gt;
+        '''    &lt;head&gt;
+        '''        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;&gt;
+        '''    &lt;/head&gt;
+        '''    &lt;body&gt;
+        '''        &lt;p&gt;Blessings To You {0},&lt;/p&gt;
+        '''
+        '''		&lt;p&gt;Welcome to the St. Paul Primitive Baptist Church Email Listening Ministry. Thank you for becoming a Subscriber. You will receive Sunday&apos;s Messages from the St. Paul Primitive Baptist Church, Austin, TX. Morning Service each week; where Elder Bryon K. Miller is the Pastor. You will Receive your Sunday Morning Message within 2 [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property newListener() As String
+            Get
+                Return ResourceManager.GetString("newListener", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;!Doctype html&gt;
+        '''&lt;html&gt;
+        '''    &lt;head&gt;
+        '''        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;&gt;
+        '''    &lt;/head&gt;
+        '''    &lt;body&gt;
+        '''        &lt;p&gt;Good Afternoon {0},&lt;/p&gt;
+        '''
+        '''        &lt;p&gt;&lt;em&gt;Watch all our sermons on &lt;a href=&quot;https://www.youtube.com/channel/UCJ2c3QAAYu2KneiTvjRJEKg/videos&quot;&gt;YouTube&lt;/a&gt; and subscribe for easier access.&lt;/em&gt;&lt;/p&gt;
+        '''        &lt;p&gt;Also, give us a follow on &lt;a href=&quot;https://facebook.com/bryon.miller436&quot;&gt;Facebook&lt;/a&gt;, where we host our weekly live streams&lt;/p&gt;
+        '''        &lt;p&gt;You may give [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property newSermon() As String
+            Get
+                Return ResourceManager.GetString("newSermon", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;!Doctype html&gt;
+        '''&lt;html&gt;
+        '''    &lt;head&gt;
+        '''        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;&gt;
+        '''    &lt;/head&gt;
+        '''    &lt;body&gt;
+        '''        &lt;p&gt;Thank you for your blessing of {0:C} for {1}.&lt;/p&gt;
+        '''
+        '''		&lt;p&gt;Thank You For Your Support.&lt;/p&gt;
+        '''
+        '''		&lt;p&gt;Be Blessed.&lt;/p&gt;
+        '''
+        '''		&lt;p class=&quot;center&quot;&gt;&lt;strong&gt;WE LOVE YOU AND AIN&apos;T NOTHING YOU CAN DO ABOUT IT!&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+        '''
+        '''		&lt;hr&gt;
+        '''		
+        '''		&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
+        '''		St. Paul Primitive Baptist Church&lt;br&gt;
+        '''		Email Listening Ministry&lt;br&gt;
+        '''		2 [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property receipt() As String
+            Get
+                Return ResourceManager.GetString("receipt", resourceCulture)
             End Get
         End Property
         

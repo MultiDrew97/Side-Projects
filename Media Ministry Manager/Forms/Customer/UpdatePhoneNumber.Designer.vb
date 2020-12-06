@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_UpdatePhoneNumber
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,24 +20,24 @@ Partial Class frm_UpdatePhoneNumber
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_UpdatePhoneNumber))
         Me.cbx_FirstName = New System.Windows.Forms.ComboBox()
         Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_FirstName = New System.Windows.Forms.Label()
         Me.txt_NewNumber = New System.Windows.Forms.TextBox()
         Me.btn_UpdatePhone = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.CUSTOMERSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.CUSTOMERSTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.ss_UpdatePhone = New System.Windows.Forms.StatusStrip()
         Me.tss_UpdatePhone = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_OldNumber = New System.Windows.Forms.Label()
         Me.cbx_OldNumber = New System.Windows.Forms.ComboBox()
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_UpdatePhone.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,12 +58,12 @@ Partial Class frm_UpdatePhoneNumber
         'CUSTOMERSBindingSource
         '
         Me.CUSTOMERSBindingSource.DataMember = "CUSTOMERS"
-        Me.CUSTOMERSBindingSource.DataSource = Me.Media_MinistryDataSet
+        Me.CUSTOMERSBindingSource.DataSource = Me.MediaMinistryDataSet
         '
         'Media_MinistryDataSet
         '
-        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbl_FirstName
         '
@@ -171,7 +171,7 @@ Partial Class frm_UpdatePhoneNumber
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_UpdatePhone.ResumeLayout(False)
         Me.ss_UpdatePhone.PerformLayout()
         Me.ResumeLayout(False)
@@ -184,11 +184,11 @@ Partial Class frm_UpdatePhoneNumber
     Friend WithEvents txt_NewNumber As TextBox
     Friend WithEvents btn_UpdatePhone As Button
     Friend WithEvents Label2 As Label
-    Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
-    Friend WithEvents CUSTOMERSTableAdapter As Media_MinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents ss_UpdatePhone As StatusStrip
     Friend WithEvents tss_UpdatePhone As ToolStripStatusLabel
     Friend WithEvents lbl_OldNumber As Label
     Friend WithEvents cbx_OldNumber As ComboBox
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
 End Class

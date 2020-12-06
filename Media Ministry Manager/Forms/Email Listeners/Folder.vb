@@ -1,6 +1,6 @@
 ﻿Option Strict On
 
-Imports Media_Ministry.SendingEmails
+Imports MediaMinistry.SendingEmails
 
 Public Class frm_Folder
     Dim uploader As DriveUploader
@@ -15,7 +15,7 @@ Public Class frm_Folder
     End Sub
 
     Private Sub btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
-        Dim temp As String = uploader.createFolder(txt_FolderName.Text)
+        Dim temp As String = uploader.CreateFolder(txt_FolderName.Text)
 
         If temp IsNot Nothing Then
             My.Settings.AdminInfoRecieved = True

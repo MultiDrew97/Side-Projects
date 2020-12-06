@@ -2,12 +2,14 @@
 
 Imports System.ComponentModel
 
-Public Class frm_ViewListeners
-    Public sendingForm As Form
-    Dim db As Database
-    ReadOnly totalListeners As String = "Total Listeners: {0}"
+Public Class Frm_ViewListeners
+    Property SentFrom() As Form
 
-    Structure Sizes
+    ReadOnly db As Database
+    ReadOnly totalListeners As String = "Total Listeners: {0}"
+    Private oldEmail As String = ""
+
+    Private Structure Sizes
 
         'window sizes
         Shared max As New Size(1382, 744)
@@ -20,7 +22,7 @@ Public Class frm_ViewListeners
         Shared dgvMax As New Size(957, 705)
     End Structure
 
-    Structure Locations
+    Private Structure Locations
 
         'add button locations
         Shared AddDefault As New Point(712, 319)
@@ -63,51 +65,51 @@ Public Class frm_ViewListeners
         cbx_Column.SelectedIndex = 0
     End Sub
 
-    Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
-        customLoad()
+    Private Sub Frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+        CustomLoad()
     End Sub
 
-    Public Sub customLoad()
-        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
+    Public Sub CustomLoad()
+        Me.EmaiL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
-        updateTotal()
+        UpdateTotal()
     End Sub
 
-    Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        Dim frm_AddListeners As frm_AddListener = New frm_AddListener()
-        frm_AddListeners.frm_Emails = Me
+    Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
+        Dim frm_AddListeners As frm_AddListener = New frm_AddListener With {
+            .Frm_Emails = Me
+        }
         frm_AddListeners.Show()
     End Sub
 
-    Private Sub frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+    Private Sub Frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Try
-            sendingForm.Show()
-        Catch
+            SentFrom.Show()
+        Catch ex As FormClosedException
 
         End Try
     End Sub
 
-    Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
-        db.removeListener(CType(e.Row.Cells(0).Value, String), CType(e.Row.Cells(1).Value, String))
+    Private Sub Dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
+        db.RemoveListener(CType(e.Row.Cells(0).Value, String), CType(e.Row.Cells(1).Value, String))
     End Sub
-
-    Private Sub dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
+    Private Sub Dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
         Dim changed As Integer = e.RowIndex
         Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
-        Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
+        Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(1).Value, String)
 
-        db.updateListener(name, email)
+        db.UpdateListener(name, email, oldEmail)
     End Sub
 
-    Private Sub updateTotal()
+    Private Sub UpdateTotal()
         lbl_Total.Text = String.Format(totalListeners, dgv_Listeners.RowCount())
     End Sub
 
-    Private Sub dgv_Listeners_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgv_Listeners.UserDeletedRow
-        updateTotal()
+    Private Sub Dgv_Listeners_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgv_Listeners.UserDeletedRow
+        UpdateTotal()
     End Sub
 
-    Private Sub frm_ViewListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+    Private Sub Frm_ViewListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.Size = Sizes.max Then
             MaxChanges()
         Else
@@ -115,10 +117,10 @@ Public Class frm_ViewListeners
         End If
     End Sub
 
-    Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
-        Dim criteria = txt_SearchBox.Text
-        Dim column = cbx_Column.SelectedText
-        Dim queryString As String = String.Format("SELECT * FROM EMAIL_LISTENERS WHERE {0} LIKE '%{1}%", column, criteria)
+    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
+        'Dim criteria = txt_SearchBox.Text
+        'Dim column = cbx_Column.SelectedText
+        'Dim queryString As String = String.Format("SELECT * FROM EMAIL_LISTENERS WHERE {0} LIKE '%{1}%", column, criteria)
 
         'db.search(queryString)
         'If cbx_Column.SelectedText = "Email" Then
@@ -130,7 +132,7 @@ Public Class frm_ViewListeners
         'End If
     End Sub
 
-    Private Sub btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click
+    Private Sub Btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click
         'lbl_EmailSearch.Show()
         'lbl_NameSearch.Show()
         'txt_NameSearch.Show()
@@ -177,7 +179,7 @@ Public Class frm_ViewListeners
         dgv_Listeners.Size = Sizes.DefaultDGV
     End Sub
 
-    Private Sub btn_AdvancedCancel_Click(sender As Object, e As EventArgs) Handles btn_AdvancedCancel.Click
+    Private Sub Btn_AdvancedCancel_Click(sender As Object, e As EventArgs) Handles btn_AdvancedCancel.Click
         gbx_AdvancedSearch.Hide()
         txt_SearchBox.Show()
         lbl_SearchLabel.Show()
@@ -186,4 +188,10 @@ Public Class frm_ViewListeners
         btn_Search.Show()
     End Sub
 
+    Private Sub Dgv_Listeners_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgv_Listeners.CellBeginEdit
+        Dim changed As Integer = e.RowIndex
+        oldEmail = CType(dgv_Listeners.Rows(changed).Cells(1).Value, String)
+
+        Console.WriteLine(oldEmail)
+    End Sub
 End Class

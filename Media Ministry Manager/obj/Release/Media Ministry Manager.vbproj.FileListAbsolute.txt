@@ -84,3 +84,69 @@ C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin
 C:\Users\arand\source\repos\MultiDrew97\Side-Projects\Media Ministry Manager\obj\Release\Media Ministry Manager.vbproj.CoreCompileInputs.cache
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.dll
 C:\Users\arand\Source\Repos\MultiDrew97\Side-Projects\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Resources\sender.jar
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.exe.config
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.exe.manifest
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.application
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.exe
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Auth.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Auth.PlatformServices.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Core.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Drive.v3.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Gmail.v1.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.PlatformServices.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\MimeKit.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Newtonsoft.Json.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\System.Buffers.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\System.Data.SqlClient.dll
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\BouncyCastle.Crypto.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Auth.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Auth.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Core.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Core.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Drive.v3.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Drive.v3.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Gmail.v1.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Google.Apis.Gmail.v1.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\MimeKit.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\MimeKit.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Newtonsoft.Json.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\System.Buffers.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\System.Data.SqlClient.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.vbprojAssemblyReference.cache
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.g.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.MediaMinistrySplash.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_EmailListeners.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_Folder.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_AddListener.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_ViewListeners.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_AddNewProduct.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_DisplayCustomers.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_ChangePassword.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_CreateUser.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.AdminSignIn.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_Login.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_DisplayOrders.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_Main.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_PlaceOrder.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_UpdateInventory.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_UpdatePhoneNumber.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_ViewInventory.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.Resources.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\MediaMinistry.frm_AddNewCustomer.resources
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.vbproj.GenerateResource.cache
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.vbproj.CoreCompileInputs.cache
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.exe.manifest
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.application
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.vbproj.CopyComplete
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.exe
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\obj\Release\Media Ministry Manager.pdb
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.exe.CodeAnalysisLog.xml
+C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Release\Media Ministry Manager.exe.lastcodeanalysissucceeded

@@ -14,7 +14,7 @@ Option Explicit On
 
 
 <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
- Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0"),  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0"),  _
  Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
 Partial Friend NotInheritable Class MySettings
     Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -129,11 +129,32 @@ Partial Friend NotInheritable Class MySettings
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P"& _ 
-        "ersist Security Info=True;User ID=arandlemiller97;Password=AMrw2697")>  _
+        "ersist Security Info=True;User ID=arandlemiller97;Password=JasmineLove2697")>  _
     Public ReadOnly Property masterConnectionString() As String
         Get
             Return CType(Me("masterConnectionString"),String)
         End Get
+    End Property
+
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+     Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>
+    Public ReadOnly Property DefaultFont() As Global.System.Drawing.Font
+        Get
+            Return CType(Me("DefaultFont"), Global.System.Drawing.Font)
+        End Get
+    End Property
+
+    <Global.System.Configuration.UserScopedSettingAttribute(),
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+     Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>
+    Public Property CurrentFont() As Global.System.Drawing.Font
+        Get
+            Return CType(Me("CurrentFont"), Global.System.Drawing.Font)
+        End Get
+        Set
+            Me("CurrentFont") = Value
+        End Set
     End Property
 End Class
 
@@ -145,9 +166,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Media_Ministry.MySettings
+        Friend ReadOnly Property Settings() As Global.MediaMinistry.MySettings
             Get
-                Return Global.Media_Ministry.MySettings.Default
+                Return Global.MediaMinistry.MySettings.Default
             End Get
         End Property
     End Module

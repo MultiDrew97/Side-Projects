@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frm_DisplayOrders
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class Frm_DisplayOrders
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,10 @@ Partial Class frm_DisplayOrders
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DisplayOrders))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayOrders))
         Me.dgv_Orders = New System.Windows.Forms.DataGridView()
         Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ORDERNUMBERDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -31,16 +31,15 @@ Partial Class frm_DisplayOrders
         Me.ITEMDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.QUANTITYDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ORDERSUMMARYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Media_MinistryDataSet = New Media_Ministry.Media_MinistryDataSet()
-        Me.ORDER_SUMMARYTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.ORDER_SUMMARYTableAdapter = New MediaMinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter()
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.btn_Fulfil = New System.Windows.Forms.Button()
-        Me.ORDER_COUNTSTableAdapter = New Media_Ministry.Media_MinistryDataSetTableAdapters.ORDER_COUNTSTableAdapter()
         Me.btn_UpdateOrder = New System.Windows.Forms.Button()
         Me.btn_CancelOrder = New System.Windows.Forms.Button()
         CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDERSUMMARYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgv_Orders
@@ -71,46 +70,36 @@ Partial Class frm_DisplayOrders
         'ORDERNUMBERDataGridViewTextBoxColumn
         '
         Me.ORDERNUMBERDataGridViewTextBoxColumn.DataPropertyName = "ORDER_NUMBER"
-        Me.ORDERNUMBERDataGridViewTextBoxColumn.FillWeight = 93.27411!
-        Me.ORDERNUMBERDataGridViewTextBoxColumn.HeaderText = "Order Number"
+        Me.ORDERNUMBERDataGridViewTextBoxColumn.HeaderText = "ORDER_NUMBER"
         Me.ORDERNUMBERDataGridViewTextBoxColumn.Name = "ORDERNUMBERDataGridViewTextBoxColumn"
-        Me.ORDERNUMBERDataGridViewTextBoxColumn.ReadOnly = True
         '
         'PHONENUMBERDataGridViewTextBoxColumn
         '
         Me.PHONENUMBERDataGridViewTextBoxColumn.DataPropertyName = "PHONE_NUMBER"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.FillWeight = 93.27411!
-        Me.PHONENUMBERDataGridViewTextBoxColumn.HeaderText = "Phone Number"
+        Me.PHONENUMBERDataGridViewTextBoxColumn.HeaderText = "PHONE_NUMBER"
         Me.PHONENUMBERDataGridViewTextBoxColumn.Name = "PHONENUMBERDataGridViewTextBoxColumn"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PHONENUMBERDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'ITEMDataGridViewTextBoxColumn
         '
         Me.ITEMDataGridViewTextBoxColumn.DataPropertyName = "ITEM"
-        Me.ITEMDataGridViewTextBoxColumn.FillWeight = 93.27411!
-        Me.ITEMDataGridViewTextBoxColumn.HeaderText = "Product Name"
+        Me.ITEMDataGridViewTextBoxColumn.HeaderText = "ITEM"
         Me.ITEMDataGridViewTextBoxColumn.Name = "ITEMDataGridViewTextBoxColumn"
-        Me.ITEMDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ITEMDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'QUANTITYDataGridViewTextBoxColumn
         '
         Me.QUANTITYDataGridViewTextBoxColumn.DataPropertyName = "QUANTITY"
-        Me.QUANTITYDataGridViewTextBoxColumn.FillWeight = 93.27411!
-        Me.QUANTITYDataGridViewTextBoxColumn.HeaderText = "Quantity"
+        Me.QUANTITYDataGridViewTextBoxColumn.HeaderText = "QUANTITY"
         Me.QUANTITYDataGridViewTextBoxColumn.Name = "QUANTITYDataGridViewTextBoxColumn"
-        Me.QUANTITYDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'ORDERSUMMARYBindingSource
         '
         Me.ORDERSUMMARYBindingSource.DataMember = "ORDER_SUMMARY"
-        Me.ORDERSUMMARYBindingSource.DataSource = Me.Media_MinistryDataSet
+        Me.ORDERSUMMARYBindingSource.DataSource = Me.MediaMinistryDataSet
         '
         'Media_MinistryDataSet
         '
-        Me.Media_MinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.Media_MinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ORDER_SUMMARYTableAdapter
         '
@@ -136,10 +125,6 @@ Partial Class frm_DisplayOrders
         Me.btn_Fulfil.TabIndex = 1
         Me.btn_Fulfil.Text = "Complete Order(s)"
         Me.btn_Fulfil.UseVisualStyleBackColor = True
-        '
-        'ORDER_COUNTSTableAdapter
-        '
-        Me.ORDER_COUNTSTableAdapter.ClearBeforeFill = True
         '
         'btn_UpdateOrder
         '
@@ -184,21 +169,20 @@ Partial Class frm_DisplayOrders
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDERSUMMARYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Media_MinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents dgv_Orders As DataGridView
-    Friend WithEvents Media_MinistryDataSet As Media_MinistryDataSet
     Friend WithEvents ORDERSUMMARYBindingSource As BindingSource
-    Friend WithEvents ORDER_SUMMARYTableAdapter As Media_MinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter
+    Friend WithEvents ORDER_SUMMARYTableAdapter As MediaMinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents btn_Fulfil As Button
-    Friend WithEvents ORDER_COUNTSTableAdapter As Media_MinistryDataSetTableAdapters.ORDER_COUNTSTableAdapter
     Friend WithEvents btn_UpdateOrder As Button
     Friend WithEvents btn_CancelOrder As Button
     Friend WithEvents Selection As DataGridViewCheckBoxColumn
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents ORDERNUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PHONENUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ITEMDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

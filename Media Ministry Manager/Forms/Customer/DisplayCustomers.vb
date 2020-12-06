@@ -4,9 +4,9 @@ Imports System.Data.SqlClient
 
 Public Class frm_DisplayCustomers
     Private db As Database
-    Private mainForm As frm_Main
+    Private ReadOnly mainForm As Frm_Main
 
-    Public Sub New(ByRef database As Database, ByRef mainForm As frm_Main)
+    Public Sub New(ByRef database As Database, ByRef mainForm As Frm_Main)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -17,10 +17,11 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
+        'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
+        Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
-    Private Sub btn_Update_Click(sender As Object, e As EventArgs)
+    Private Sub Btn_Update_Click(sender As Object, e As EventArgs)
         'update customer information that was entered
         Dim index, updateCount As Integer
         Dim street, city, state, zip, phone, email, payment As String
@@ -70,31 +71,31 @@ Public Class frm_DisplayCustomers
         End If
     End Sub
 
-    Private Sub frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+    Private Sub Frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
     End Sub
 
-    Private Sub btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
+    Private Sub Btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
         Dim updateNumber = New frm_UpdatePhoneNumber(db, Me)
         updateNumber.Show()
         Me.Hide()
     End Sub
 
-    Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
+    Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
         Dim addForm = New frm_AddNewCustomer(db, Me)
         addForm.Show()
         Me.Hide()
     End Sub
 
-    Private Sub dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
+    Private Sub Dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
         db.RemovePerson(CType(e.Row.Cells(2).Value, String))
     End Sub
 
     Public Overrides Sub refresh()
-        Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
+        Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
-    Private Sub dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
+    Private Sub Dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
         Dim changedRow As Integer = e.RowIndex
 
         'get values from table

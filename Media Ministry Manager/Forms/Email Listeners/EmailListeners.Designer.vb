@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frm_EmailListeners
+Partial Class Frm_EmailListeners
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class frm_EmailListeners
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_EmailListeners))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_EmailListeners))
         Me.btn_Upload = New System.Windows.Forms.Button()
         Me.ofd_SelectAudio = New System.Windows.Forms.OpenFileDialog()
         Me.cbx_Folders = New System.Windows.Forms.ComboBox()
