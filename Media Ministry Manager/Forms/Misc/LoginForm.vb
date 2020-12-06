@@ -2,13 +2,22 @@
 
 Imports System.ComponentModel
 Imports System.Data.SqlClient
+<<<<<<< HEAD
+Imports System.Threading
+Imports MediaMinistry.SendingEmails
+=======
+>>>>>>> master
 
 Public Class frm_Login
     Dim _dbConnection As SqlConnectionStringBuilder
 
     Private Sub frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _dbConnection = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+<<<<<<< HEAD
+        Reset()
+=======
         reset()
+>>>>>>> master
     End Sub
 
     Private Sub frm_Login_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -22,7 +31,11 @@ Public Class frm_Login
         End If
     End Sub
 
+<<<<<<< HEAD
+    Private Sub Btn_LogIn_Click(sender As Object, e As EventArgs) Handles btn_LogIn.Click
+=======
     Private Sub btn_LogIn_Click(sender As Object, e As EventArgs) Handles btn_LogIn.Click
+>>>>>>> master
         If My.Settings.KeepLoggedIn Then
             _dbConnection.UserID = My.Settings.Username
             _dbConnection.Password = My.Settings.Password
@@ -31,9 +44,18 @@ Public Class frm_Login
             _dbConnection.UserID = txt_Username.Text
         End If
 
+<<<<<<< HEAD
+        If CheckCreds(txt_Username.Text, txt_Password.Text) Then
+            Try
+                Dim db = New Database(_dbConnection)
+
+                db.GetCustomerInfo("512-828-2827")
+                Dim mainForm = New Frm_Main() 'db)
+=======
         If checkCreds(txt_Username.Text, txt_Password.Text) Then
             Try
                 Dim mainForm = New frm_Main
+>>>>>>> master
                 mainForm.Show()
                 bw_SaveSettings.RunWorkerAsync()
             Catch exception As SqlException
@@ -42,7 +64,10 @@ Public Class frm_Login
                 Console.WriteLine("Failed to connect to database: " & exception.Message)
             End Try
         End If
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
     End Sub
 
     Private Sub reset()
@@ -62,9 +87,14 @@ Public Class frm_Login
         My.Settings.Save()
     End Sub
 
+<<<<<<< HEAD
+    Private Sub Bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted
+        Me.Close()
+=======
     Private Sub bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted
         Me.Hide()
         reset()
+>>>>>>> master
     End Sub
 
     Private Sub txt_Password_GotFocus(sender As Object, e As EventArgs) Handles txt_Password.GotFocus

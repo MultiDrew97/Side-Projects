@@ -3,10 +3,20 @@
 Imports System.Data.SqlClient
 
 Public Class frm_DisplayCustomers
-    Property mainForm() As frm_Main
+    Private db As Database
+    Private ReadOnly mainForm As Frm_Main
+
+    Public Sub New(ByRef database As Database, ByRef mainForm As Frm_Main)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.mainForm = mainForm
+    End Sub
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
+        refresh()
     End Sub
 
     Private Sub btn_Update_Click(sender As Object, e As EventArgs)
@@ -61,30 +71,30 @@ Public Class frm_DisplayCustomers
         End If
     End Sub
 
-    Private Sub frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        mainForm.Show()
+    Private Sub Frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        Dim main As New Frm_Main()
+        main.Show()
     End Sub
 
-    Private Sub btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
-        Dim updateNumber = New frm_UpdatePhoneNumber With {.display = Me}
+    Private Sub Btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
+        Dim updateNumber = New frm_UpdatePhoneNumber
         updateNumber.Show()
-        Me.Hide()
     End Sub
 
-    Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
-        Dim addForm = New frm_AddNewCustomer With {.sendingForm = Me}
+    Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
+        Dim addForm = New frm_AddNewCustomer With {.Opener = Me}
         addForm.Show()
-        Me.Hide()
     End Sub
 
-    Private Sub dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
-        Using db = New Database(My.Settings.Username, My.Settings.Password)
+    Private Sub Dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
             db.RemovePerson(CType(e.Row.Cells(2).Value, String))
         End Using
     End Sub
 
     Public Overrides Sub refresh()
-        Me.CustomersTableAdapter.Fill(Me.Media_MinistryDataSet.CUSTOMERS)
+        'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
+        Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
     Private Sub dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit

@@ -3,18 +3,32 @@
 Imports System.Text.RegularExpressions.Regex
 
 Public Class frm_AddNewProduct
+<<<<<<< HEAD
+    Property Opener() As Form
+
+    Private Sub Frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Reset()
+=======
     Property sendingForm() As Form
 
     Private Sub frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
+>>>>>>> master
     End Sub
 
     Private Sub frm_AddNewProduct_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Try
+<<<<<<< HEAD
+            CType(Opener, frm_ViewInventory).customLoad()
+        Catch ex As ApplicationException
+        Finally
+            Opener.Show()
+=======
             CType(sendingForm, frm_ViewInventory).customLoad()
         Catch
         Finally
             sendingForm.Show()
+>>>>>>> master
         End Try
     End Sub
 
@@ -35,12 +49,21 @@ Public Class frm_AddNewProduct
         price = Decimal.Parse("0" & Format(txt_Price.Text, "Standard"))
 
         Try
+<<<<<<< HEAD
+            Using db As New Database(My.Settings.Username, My.Settings.Password)
+                db.AddNewProduct(name, stock, price)
+            End Using
+            tss_AddProduct.ForeColor = SystemColors.WindowText
+            tss_AddProduct.Text = "Product was successfully added."
+        Catch ex As SqlException
+=======
             Using db = New Database(My.Settings.Username, My.Settings.Password)
                 db.AddNewProduct(name, stock, price)
                 tss_AddProduct.ForeColor = SystemColors.WindowText
                 tss_AddProduct.Text = "Product was successfully added."
             End Using
         Catch
+>>>>>>> master
             tss_AddProduct.ForeColor = Color.Red
             tss_AddProduct.Text = "Product could not be added. Try again."
         End Try

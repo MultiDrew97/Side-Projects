@@ -4,7 +4,11 @@
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
+<<<<<<< HEAD
+    <assemblyIdentity name="Media Ministry Manager" version="2.0.86.12" language="neutral" processorArchitecture="msil" />
+=======
     <assemblyIdentity name="Media Ministry Manager" version="2.0.0.9" language="neutral" processorArchitecture="msil" />
+>>>>>>> master
     <commandLine file="Media Ministry Manager.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -151,14 +155,35 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< HEAD
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1313280">
+      <assemblyIdentity name="Media Ministry Manager" version="2.0.86.12" language="neutral" processorArchitecture="msil" />
+=======
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MimeKit.dll" size="994304">
       <assemblyIdentity name="MimeKit" version="2.6.0.0" publicKeyToken="BEDE1C8A46C66814" language="neutral" processorArchitecture="msil" />
+>>>>>>> master
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
+        <dsig:DigestValue>5h9WLfSiHWxNUeZOPCyyxwdQLvPF5XrwFuBV7Ae3UQE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MimeKit.dll" size="1013760">
+      <assemblyIdentity name="MimeKit" version="2.10.0.0" publicKeyToken="BEDE1C8A46C66814" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nQDltx0zaX+Q75yvn29J3X0wPwjigB5bDGVY4UvXksc=</dsig:DigestValue>
+=======
         <dsig:DigestValue>eNTygiaa+6B7qJ0UNNwcP5xICX/CUuk8+U5JOsjBCf0=</dsig:DigestValue>
+>>>>>>> master
       </hash>
     </dependentAssembly>
   </dependency>

@@ -4,8 +4,23 @@ Imports System.Data.SqlClient
 Public Class frm_PlaceOrder
     Property mainForm() As frm_Main
 
+<<<<<<< HEAD
+    Public Sub New(database As Database, ByRef mainForm As Frm_Main)
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        _db = database
+        Me.mainForm = mainForm
+    End Sub
+
+    Private Sub Frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        'Dim frm As New Frm_Main()
+        'frm.Show()
+=======
     Private Sub frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
+>>>>>>> master
     End Sub
 
     Private Sub frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load

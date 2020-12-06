@@ -28,12 +28,10 @@ Partial Class Frm_Settings
         Me.btn_Default = New System.Windows.Forms.Button()
         Me.tc_Settings = New System.Windows.Forms.TabControl()
         Me.tp_Fonts = New System.Windows.Forms.TabPage()
-        Me.chk_Bold = New System.Windows.Forms.CheckBox()
+        Me.lbl_Bold = New System.Windows.Forms.Label()
         Me.btn_ChangeFont = New System.Windows.Forms.Button()
-        Me.txt_CurrentFont = New System.Windows.Forms.TextBox()
         Me.lbl_CurrentFont = New System.Windows.Forms.Label()
         Me.lbl_FontSize = New System.Windows.Forms.Label()
-        Me.nud_FontSize = New System.Windows.Forms.NumericUpDown()
         Me.tp_LinkedAccounts = New System.Windows.Forms.TabPage()
         Me.lbl_CurrentGmail = New System.Windows.Forms.Label()
         Me.lbl_CurrentDrive = New System.Windows.Forms.Label()
@@ -62,9 +60,9 @@ Partial Class Frm_Settings
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bw_Settings = New System.ComponentModel.BackgroundWorker()
         Me.bw_Service = New System.ComponentModel.BackgroundWorker()
+        Me.bw_CheckServices = New System.ComponentModel.BackgroundWorker()
         Me.tc_Settings.SuspendLayout()
         Me.tp_Fonts.SuspendLayout()
-        CType(Me.nud_FontSize, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tp_LinkedAccounts.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
@@ -110,12 +108,10 @@ Partial Class Frm_Settings
         'tp_Fonts
         '
         Me.tp_Fonts.BackColor = System.Drawing.Color.Transparent
-        Me.tp_Fonts.Controls.Add(Me.chk_Bold)
+        Me.tp_Fonts.Controls.Add(Me.lbl_Bold)
         Me.tp_Fonts.Controls.Add(Me.btn_ChangeFont)
-        Me.tp_Fonts.Controls.Add(Me.txt_CurrentFont)
         Me.tp_Fonts.Controls.Add(Me.lbl_CurrentFont)
         Me.tp_Fonts.Controls.Add(Me.lbl_FontSize)
-        Me.tp_Fonts.Controls.Add(Me.nud_FontSize)
         Me.tp_Fonts.Location = New System.Drawing.Point(4, 34)
         Me.tp_Fonts.Name = "tp_Fonts"
         Me.tp_Fonts.Padding = New System.Windows.Forms.Padding(3)
@@ -123,23 +119,21 @@ Partial Class Frm_Settings
         Me.tp_Fonts.TabIndex = 0
         Me.tp_Fonts.Text = "Font Selection"
         '
-        'chk_Bold
+        'lbl_Bold
         '
-        Me.chk_Bold.AutoSize = True
-        Me.chk_Bold.Enabled = False
-        Me.chk_Bold.Location = New System.Drawing.Point(282, 138)
-        Me.chk_Bold.Name = "chk_Bold"
-        Me.chk_Bold.Size = New System.Drawing.Size(75, 30)
-        Me.chk_Bold.TabIndex = 5
-        Me.chk_Bold.Text = "Bold"
-        Me.chk_Bold.UseVisualStyleBackColor = True
+        Me.lbl_Bold.AutoSize = True
+        Me.lbl_Bold.Location = New System.Drawing.Point(316, 131)
+        Me.lbl_Bold.Name = "lbl_Bold"
+        Me.lbl_Bold.Size = New System.Drawing.Size(92, 26)
+        Me.lbl_Bold.TabIndex = 5
+        Me.lbl_Bold.Text = "Bolded?"
         '
         'btn_ChangeFont
         '
         Me.btn_ChangeFont.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btn_ChangeFont.AutoSize = True
         Me.btn_ChangeFont.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_ChangeFont.Location = New System.Drawing.Point(122, 230)
+        Me.btn_ChangeFont.Location = New System.Drawing.Point(122, 235)
         Me.btn_ChangeFont.Margin = New System.Windows.Forms.Padding(0)
         Me.btn_ChangeFont.Name = "btn_ChangeFont"
         Me.btn_ChangeFont.Size = New System.Drawing.Size(232, 36)
@@ -148,18 +142,10 @@ Partial Class Frm_Settings
         Me.btn_ChangeFont.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btn_ChangeFont.UseVisualStyleBackColor = True
         '
-        'txt_CurrentFont
-        '
-        Me.txt_CurrentFont.Location = New System.Drawing.Point(93, 59)
-        Me.txt_CurrentFont.Name = "txt_CurrentFont"
-        Me.txt_CurrentFont.ReadOnly = True
-        Me.txt_CurrentFont.Size = New System.Drawing.Size(296, 32)
-        Me.txt_CurrentFont.TabIndex = 3
-        '
         'lbl_CurrentFont
         '
         Me.lbl_CurrentFont.AutoSize = True
-        Me.lbl_CurrentFont.Location = New System.Drawing.Point(88, 29)
+        Me.lbl_CurrentFont.Location = New System.Drawing.Point(69, 42)
         Me.lbl_CurrentFont.Name = "lbl_CurrentFont"
         Me.lbl_CurrentFont.Size = New System.Drawing.Size(61, 26)
         Me.lbl_CurrentFont.TabIndex = 2
@@ -168,23 +154,11 @@ Partial Class Frm_Settings
         'lbl_FontSize
         '
         Me.lbl_FontSize.AutoSize = True
-        Me.lbl_FontSize.Location = New System.Drawing.Point(119, 109)
+        Me.lbl_FontSize.Location = New System.Drawing.Point(69, 131)
         Me.lbl_FontSize.Name = "lbl_FontSize"
         Me.lbl_FontSize.Size = New System.Drawing.Size(110, 26)
         Me.lbl_FontSize.TabIndex = 1
         Me.lbl_FontSize.Text = "Font Size:"
-        '
-        'nud_FontSize
-        '
-        Me.nud_FontSize.AutoSize = True
-        Me.nud_FontSize.Enabled = False
-        Me.nud_FontSize.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
-        Me.nud_FontSize.Location = New System.Drawing.Point(124, 138)
-        Me.nud_FontSize.Name = "nud_FontSize"
-        Me.nud_FontSize.ReadOnly = True
-        Me.nud_FontSize.Size = New System.Drawing.Size(120, 32)
-        Me.nud_FontSize.TabIndex = 0
-        Me.nud_FontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'tp_LinkedAccounts
         '
@@ -245,8 +219,9 @@ Partial Class Frm_Settings
         Me.fd_FontSelector.AllowVerticalFonts = False
         Me.fd_FontSelector.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.fd_FontSelector.FontMustExist = True
+        Me.fd_FontSelector.MaxSize = 24
+        Me.fd_FontSelector.MinSize = 12
         Me.fd_FontSelector.ScriptsOnly = True
-        Me.fd_FontSelector.ShowApply = True
         '
         'mnstr_Strip
         '
@@ -394,6 +369,9 @@ Partial Class Frm_Settings
         '
         Me.bw_Service.WorkerSupportsCancellation = True
         '
+        'bw_CheckServices
+        '
+        '
         'Frm_Settings
         '
         Me.AcceptButton = Me.btn_Save
@@ -419,7 +397,6 @@ Partial Class Frm_Settings
         Me.tc_Settings.ResumeLayout(False)
         Me.tp_Fonts.ResumeLayout(False)
         Me.tp_Fonts.PerformLayout()
-        CType(Me.nud_FontSize, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tp_LinkedAccounts.ResumeLayout(False)
         Me.tp_LinkedAccounts.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
@@ -435,9 +412,7 @@ Partial Class Frm_Settings
     Friend WithEvents tp_Fonts As TabPage
     Friend WithEvents tp_LinkedAccounts As TabPage
     Friend WithEvents fd_FontSelector As FontDialog
-    Friend WithEvents nud_FontSize As NumericUpDown
     Friend WithEvents btn_ChangeFont As Button
-    Friend WithEvents txt_CurrentFont As TextBox
     Friend WithEvents lbl_CurrentFont As Label
     Friend WithEvents lbl_FontSize As Label
     Friend WithEvents mnstr_Strip As MenuStrip
@@ -460,11 +435,12 @@ Partial Class Frm_Settings
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents chk_Bold As CheckBox
     Friend WithEvents bw_Settings As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_Gmail As Button
     Friend WithEvents btn_GoogleDrive As Button
     Friend WithEvents lbl_CurrentDrive As Label
     Friend WithEvents lbl_CurrentGmail As Label
     Friend WithEvents bw_Service As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bw_CheckServices As System.ComponentModel.BackgroundWorker
+    Friend WithEvents lbl_Bold As Label
 End Class

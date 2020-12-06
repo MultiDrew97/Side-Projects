@@ -135,6 +135,8 @@ Namespace My.Resources
                 Return ResourceManager.GetString("newSermon", resourceCulture)
             End Get
         End Property
+<<<<<<< HEAD
+=======
         
         '''<summary>
         '''  Looks up a localized string similar to &lt;!Doctype html&gt;
@@ -173,5 +175,6 @@ Namespace My.Resources
                 Return CType(obj,Byte())
             End Get
         End Property
+>>>>>>> master
     End Module
 End Namespace

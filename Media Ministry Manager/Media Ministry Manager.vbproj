@@ -332,6 +332,12 @@
     </Compile>
     <Compile Include="Objects\DriveUploader.vb" />
     <Compile Include="Objects\Listener.vb" />
+<<<<<<< HEAD
+    <Compile Include="Objects\Sender.vb" />
+    <Compile Include="Objects\Service.vb" />
+    <Compile Include="Objects\Utils.vb" />
+=======
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Media Ministry Splash.resx">
@@ -453,11 +459,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AdditionalFiles Include="Resources\sender.jar">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\version.txt" />

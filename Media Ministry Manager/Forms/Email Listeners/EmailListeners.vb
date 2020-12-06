@@ -3,9 +3,8 @@
 Imports System.ComponentModel
 Imports Media_Ministry.SendingEmails
 
-Public Class frm_EmailListeners
-    Public uploader As DriveUploader
-    Public frm_main As frm_Main
+Public Class Frm_EmailListeners
+    Property Uploader() As DriveUploader
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
@@ -116,33 +115,21 @@ Public Class frm_EmailListeners
         End If
     End Sub
 
-    Private Sub btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
-        Dim frm_Folder As frm_Folder = New frm_Folder(uploader)
+    Private Sub Btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
+        Dim frm_Folder As frm_Folder = New frm_Folder()
         frm_Folder.Show()
 
         Do Until My.Settings.AdminInfoRecieved
             wait(1)
         Loop
-
-        cbx_Folders.DataSource = uploader.getFolders()
-
+		
         My.Settings.AdminInfoRecieved = False
         My.Settings.Save()
     End Sub
 
-    Private Sub wait(ByVal seconds As Integer)
-        'found this here https://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
-
-        For i As Integer = 0 To seconds * 100
-            Threading.Thread.Sleep(10)
-            Application.DoEvents()
-        Next
-    End Sub
-
-    Private Sub frm_EmailListeners_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If Not frm_main.IsDisposed Then
-            frm_main.Show()
-        End If
+    Private Sub Frm_EmailListeners_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Dim main As New Frm_Main()
+        main.Show()
     End Sub
 
     Private Sub frm_EmailListeners_Leave(sender As Object, e As EventArgs) Handles Me.Leave
@@ -220,5 +207,9 @@ Public Class frm_EmailListeners
         txt_FileLocation.Location = Locations.FileDefault
         btn_Browse.Location = Locations.BrowseDefault
 
+    End Sub
+
+    Sub LoadFolders()
+        cbx_Folders.DataSource = Uploader.GetFolders()
     End Sub
 End Class

@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports MediaMinistry.MediaMinistry
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_UpdateInventory
     Inherits System.Windows.Forms.Form
 
@@ -34,7 +36,9 @@ Partial Class frm_UpdateInventory
         Me.ss_AddStock = New System.Windows.Forms.StatusStrip()
         Me.tss_AddStock = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tt_Help = New System.Windows.Forms.ToolTip(Me.components)
+        Me.txt_Price = New System.Windows.Forms.TextBox()
         Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
+        Me.lbl_Price = New System.Windows.Forms.Label()
         CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nud_Stock, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -43,20 +47,24 @@ Partial Class frm_UpdateInventory
         '
         'btn_CancelUpdate
         '
+        Me.btn_CancelUpdate.AutoSize = True
+        Me.btn_CancelUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_CancelUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_CancelUpdate.Location = New System.Drawing.Point(96, 231)
+        Me.btn_CancelUpdate.Location = New System.Drawing.Point(220, 258)
         Me.btn_CancelUpdate.Name = "btn_CancelUpdate"
-        Me.btn_CancelUpdate.Size = New System.Drawing.Size(162, 45)
+        Me.btn_CancelUpdate.Size = New System.Drawing.Size(95, 35)
         Me.btn_CancelUpdate.TabIndex = 20
         Me.btn_CancelUpdate.Text = "Cancel"
         Me.btn_CancelUpdate.UseVisualStyleBackColor = True
         '
         'btn_ConfirmUpdate
         '
+        Me.btn_ConfirmUpdate.AutoSize = True
+        Me.btn_ConfirmUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_ConfirmUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ConfirmUpdate.Location = New System.Drawing.Point(96, 151)
+        Me.btn_ConfirmUpdate.Location = New System.Drawing.Point(35, 258)
         Me.btn_ConfirmUpdate.Name = "btn_ConfirmUpdate"
-        Me.btn_ConfirmUpdate.Size = New System.Drawing.Size(162, 45)
+        Me.btn_ConfirmUpdate.Size = New System.Drawing.Size(163, 35)
         Me.btn_ConfirmUpdate.TabIndex = 19
         Me.btn_ConfirmUpdate.Text = "Update Stock"
         Me.btn_ConfirmUpdate.UseVisualStyleBackColor = True
@@ -93,7 +101,7 @@ Partial Class frm_UpdateInventory
         Me.INVENTORYBindingSource.DataMember = "INVENTORY"
         Me.INVENTORYBindingSource.DataSource = Me.MediaMinistryDataSet
         '
-        'Media_MinistryDataSet
+        'MediaMinistryDataSet
         '
         Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
         Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
@@ -103,19 +111,21 @@ Partial Class frm_UpdateInventory
         Me.lbl_Stock.AutoSize = True
         Me.lbl_Stock.BackColor = System.Drawing.Color.Transparent
         Me.lbl_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Stock.Location = New System.Drawing.Point(93, 75)
+        Me.lbl_Stock.Location = New System.Drawing.Point(93, 94)
         Me.lbl_Stock.Name = "lbl_Stock"
-        Me.lbl_Stock.Size = New System.Drawing.Size(93, 15)
+        Me.lbl_Stock.Size = New System.Drawing.Size(97, 15)
         Me.lbl_Stock.TabIndex = 17
-        Me.lbl_Stock.Text = "Current Stock"
+        Me.lbl_Stock.Text = "Current Stock:"
         '
         'nud_Stock
         '
+        Me.nud_Stock.AutoSize = True
         Me.nud_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
-        Me.nud_Stock.Location = New System.Drawing.Point(96, 93)
+        Me.nud_Stock.Location = New System.Drawing.Point(96, 112)
         Me.nud_Stock.Name = "nud_Stock"
         Me.nud_Stock.Size = New System.Drawing.Size(162, 32)
         Me.nud_Stock.TabIndex = 18
+        Me.nud_Stock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.tt_Help.SetToolTip(Me.nud_Stock, "Enter the current stock of product")
         '
         'ss_AddStock
@@ -132,15 +142,39 @@ Partial Class frm_UpdateInventory
         Me.tss_AddStock.Size = New System.Drawing.Size(126, 17)
         Me.tss_AddStock.Text = "How many was made?"
         '
+        'txt_Price
+        '
+        Me.txt_Price.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_Price.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.txt_Price.Location = New System.Drawing.Point(104, 182)
+        Me.txt_Price.Name = "txt_Price"
+        Me.txt_Price.Size = New System.Drawing.Size(145, 31)
+        Me.txt_Price.TabIndex = 22
+        Me.txt_Price.Text = "$0.00"
+        Me.txt_Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.tt_Help.SetToolTip(Me.txt_Price, "The Current price of the item")
+        '
         'INVENTORYTableAdapter
         '
         Me.INVENTORYTableAdapter.ClearBeforeFill = True
+        '
+        'lbl_Price
+        '
+        Me.lbl_Price.AutoSize = True
+        Me.lbl_Price.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Price.Location = New System.Drawing.Point(101, 164)
+        Me.lbl_Price.Name = "lbl_Price"
+        Me.lbl_Price.Size = New System.Drawing.Size(44, 15)
+        Me.lbl_Price.TabIndex = 23
+        Me.lbl_Price.Text = "Price:"
         '
         'frm_UpdateInventory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(350, 333)
+        Me.Controls.Add(Me.lbl_Price)
+        Me.Controls.Add(Me.txt_Price)
         Me.Controls.Add(Me.ss_AddStock)
         Me.Controls.Add(Me.btn_CancelUpdate)
         Me.Controls.Add(Me.btn_ConfirmUpdate)
@@ -173,4 +207,6 @@ Partial Class frm_UpdateInventory
     Friend WithEvents INVENTORYBindingSource As BindingSource
     Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
+    Friend WithEvents txt_Price As TextBox
+    Friend WithEvents lbl_Price As Label
 End Class

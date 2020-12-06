@@ -13,15 +13,13 @@ Public Class Frm_ChangePassword
             If PasswordCheck() Then
                 Dim adminInfo As AdminSignIn = New AdminSignIn()
                 adminInfo.Show()
-                'Dim adminPassword = InputBox("Enter admin password")
 
                 Do Until My.Settings.AdminInfoRecieved
                     Console.WriteLine("Waiting for admin information")
                     Utils.Wait(1)
                 Loop
 
-                _connection.UserID = My.Settings.AdminUser
-                _connection.Password = My.Settings.AdminPass
+                bw_LoadDatabase.RunWorkerAsync()
 
                 Using db As New Database(_connection)
                     db.ChangePassword(txt_Username.Text, txt_Password.Text)
@@ -41,12 +39,10 @@ Public Class Frm_ChangePassword
         End Try
     End Sub
 
-    Private Sub Frm_ChangePassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        bw_LoadDatabase.RunWorkerAsync()
-    End Sub
-
     Private Sub Bw_LoadDatabase_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_LoadDatabase.DoWork
         _connection.InitialCatalog = "master"
+        _connection.UserID = My.Settings.AdminUser
+        _connection.Password = My.Settings.AdminPass
     End Sub
 
     Private Function PasswordCheck() As Boolean

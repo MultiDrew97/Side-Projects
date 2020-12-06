@@ -13,17 +13,20 @@ Public Class frm_UpdateInventory
     End Sub
 
     Private Sub btn_ConfirmUpdate_Click(sender As Object, e As EventArgs) Handles btn_ConfirmUpdate.Click
-        'Dim itemIndex = cbx_Items.SelectedIndex
-        'Dim additional = CInt(nud_Stock.Value)
-
-        'Try
-        '    db.UpdateInventory(itemIndex, additional)
-        '    tss_AddStock.ForeColor = SystemColors.WindowText
-        '    tss_AddStock.Text = "Stock has been updated for the product"
-        'Catch
-        '    tss_AddStock.ForeColor = Color.Red
-        '    tss_AddStock.Text = "Could not update the stock for that product. Please try again."
-        'End Try
+        Dim item = cbx_Items.SelectedText
+        Dim additional = CInt(nud_Stock.Value)
+        Dim price As Decimal
+        Decimal.TryParse("0" & txt_Price.Text.Substring(1), price)
+        Try
+            Using db As New Database(My.Settings.Username, My.Settings.Password)
+                db.UpdateInventory(item, additional, price, cbx_Items.SelectedIndex)
+            End Using
+            tss_AddStock.ForeColor = SystemColors.WindowText
+            tss_AddStock.Text = "Stock has been updated for the product"
+        Catch
+            tss_AddStock.ForeColor = Color.Red
+            tss_AddStock.Text = "Could not update the stock for that product. Please try again."
+        End Try
     End Sub
 
     Private Sub btn_CancelUpdate_Click(sender As Object, e As EventArgs) Handles btn_CancelUpdate.Click
@@ -46,6 +49,24 @@ Public Class frm_UpdateInventory
 
         If cbx_Items.SelectedIndex > 0 Then
             nud_Stock.Value = CType(inventory.Rows.Item(cbx_Items.SelectedIndex).Item(2), Int32)
+        End If
+    End Sub
+
+    Private Sub txt_Price_GotFocus(sender As Object, e As EventArgs) Handles txt_Price.GotFocus
+        If txt_Price.Text.Equals("$0.00") Then
+            txt_Price.Text = ""
+            txt_Price.ForeColor = SystemColors.WindowText
+        Else
+            txt_Price.SelectAll()
+        End If
+    End Sub
+
+    Private Sub txt_Price_LostFocus(sender As Object, e As EventArgs) Handles txt_Price.LostFocus
+        If String.IsNullOrEmpty(txt_Price.Text) Then
+            txt_Price.Text = "$0.00"
+            txt_Price.ForeColor = SystemColors.ControlLight
+        Else
+            txt_Price.Text = String.Format("0" & txt_Price.Text, "Currency")
         End If
     End Sub
 End Class

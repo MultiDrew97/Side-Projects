@@ -4,8 +4,9 @@ Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
 
 Public Class frm_UpdatePhoneNumber
-    Private validNumberFormat As String = "\d{3}-\d{3}-\d{4}"
-    Property display As frm_DisplayCustomers
+    Private ReadOnly db As Database
+    Private ReadOnly validNumberFormat As String = "\d{3}-\d{3}-\d{4}"
+    Private ReadOnly display As frm_DisplayCustomers
 
     Private Sub UpdatePhoneNumber_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
@@ -35,8 +36,7 @@ Public Class frm_UpdatePhoneNumber
     End Sub
 
     Private Sub UpdatePhoneNumber_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        display.refresh()
-        display.Show()
+        RefreshCustomers()
     End Sub
 
     Private Sub txt_NewNumber_GotFocus(sender As Object, e As EventArgs) Handles txt_NewNumber.GotFocus
@@ -69,4 +69,12 @@ Public Class frm_UpdatePhoneNumber
         End If
     End Sub
 
+    Private Sub RefreshCustomers()
+        For Each form As Form In My.Application.OpenForms
+            If form.Name.Equals("frm_viewcustomers", StringComparison.OrdinalIgnoreCase) Then
+                CType(form, frm_DisplayCustomers).refresh()
+                Exit For
+            End If
+        Next
+    End Sub
 End Class

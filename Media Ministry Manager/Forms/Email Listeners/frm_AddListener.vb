@@ -6,7 +6,7 @@ Imports MediaMinistry.Helpers
 Imports Microsoft.VisualBasic.FileIO
 
 Public Class frm_AddListener
-    Property Frm_Emails() As Frm_ViewListeners
+    Property Opener() As Form
 
     'this regex came from here: https://howtodoinjava.com/regex/java-regex-validate-email-address/
     'any stricter than this and the program won't add emails
@@ -77,8 +77,11 @@ Public Class frm_AddListener
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
         Try
-            Frm_Emails.Show()
+            CType(Opener, Frm_ViewListeners).CustomLoad()
         Catch ex As ApplicationException
+
+        Finally
+            Opener.Show()
         End Try
     End Sub
 
@@ -92,7 +95,7 @@ Public Class frm_AddListener
                         db.AddListener(txt_Name.Text, txt_Email.Text)
                         tss_Feedback.ForeColor = Color.Black
                         tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
-                        Frm_Emails.CustomLoad()
+                        CType(Opener, Frm_ViewListeners).CustomLoad()
                     Catch ex As SqlException
                         tss_Feedback.ForeColor = Color.Red
                         tss_Feedback.Text = "Listener might already be in the system. Please try again."
@@ -144,7 +147,7 @@ Public Class frm_AddListener
 
                 tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
                 Try
-                    Frm_Emails.CustomLoad()
+                    CType(Opener, Frm_ViewListeners).CustomLoad()
                 Catch ex As SqlException
                 Finally
                     Utils.Wait(2)

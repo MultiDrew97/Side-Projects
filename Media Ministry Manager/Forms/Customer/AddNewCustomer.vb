@@ -3,7 +3,7 @@
 Imports System.Text.RegularExpressions.Regex
 
 Public Class frm_AddNewCustomer
-    Property sendingForm As Form
+    Property Opener As Form
     Private phonePattern As String = "(\d{3})-\d{3}-\d{4}"
     'Private phoneParenPattern As String = "(\d{3})-\d{3}-\d{4}"
 
@@ -11,8 +11,8 @@ Public Class frm_AddNewCustomer
         reset()
     End Sub
 
-    Private Sub btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
-        Dim fName, lName, addrStreet, addrCity, addrState, addrZip, phone, paymentPreference, email As String
+    Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
+        Dim fName, lName, addrStreet, addrCity, addrState, addrZip, phone, payment, email As String
 
         If (validText()) Then
             'Get the required text fields
@@ -32,34 +32,21 @@ Public Class frm_AddNewCustomer
                 addrZip = txt_Zip.Text
             End If
 
-            If (txt_Email.Text.Equals("E-Mail")) Then
-                email = ""
-            Else
-                email = txt_Email.Text
-            End If
-
-            If (cbx_PaymentType.Text.Equals("Select One...")) Then
-                paymentPreference = ""
-            Else
-                paymentPreference = cbx_PaymentType.Text
-            End If
+            email = If(txt_Email.Text.Equals("E-Mail"), "", txt_Email.Text)
+            payment = If(cbx_PaymentType.SelectedText.Equals("Select One..."), "", cbx_PaymentType.SelectedText)
 
             Try
-                addNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email, paymentPreference)
+                Using db As New Database(My.Settings.Username, My.Settings.Password)
+                    db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email, payment)
+                End Using
+
                 Me.Close()
-            Catch
+            Catch ex As SqlException
+                Console.WriteLine(ex.Message)
                 tss_AddCustomer.ForeColor = Color.Red
                 tss_AddCustomer.Text = "This person might already be in the system. Please try again."
             End Try
         End If
-    End Sub
-
-    Private Sub addNewCustomer(fName As String, lName As String,
-                         addrStreet As String, addrCity As String, addrState As String, addrZip As String,
-                         phoneNumber As String, email As String, paymentPreference As String)
-        Using db = New Database(My.Settings.Username, My.Settings.Password)
-            db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference)
-        End Using
     End Sub
 
     Private Sub reset()
@@ -84,10 +71,10 @@ Public Class frm_AddNewCustomer
     Private Sub frm_AddNewCustomer_Closed(sender As Object, e As EventArgs) Handles Me.Closed
 
         Try
-            CType(sendingForm, frm_DisplayCustomers).refresh()
-        Catch
+            CType(Opener, frm_DisplayCustomers).refresh()
+        Catch ex As ApplicationException
         Finally
-            sendingForm.Show()
+            Opener.Show()
         End Try
     End Sub
 
