@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Media Ministry Manager" version="2.0.98.12" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Media Ministry Manager" version="2.0.100.12" language="neutral" processorArchitecture="msil" />
     <commandLine file="Media Ministry Manager.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -152,13 +152,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1268736">
-      <assemblyIdentity name="Media Ministry Manager" version="2.0.98.12" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Media Ministry Manager" version="2.0.100.12" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aXLF5+DmiUd6PBZbM7uluccx/Vl4VMtjMb2hM5uvslg=</dsig:DigestValue>
+        <dsig:DigestValue>PlDlEkM+kw/5w6tp7GUHlEgEwZi8cMfMP3qpHQpanqw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -270,13 +270,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Media Ministry Manager.exe.config" size="5045">
+  <file name="Media Ministry Manager.exe.config" size="5110">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>dZhxscSviBSB+rrOLy0zsN3oQg8qVaUKJAxfJEhRI94=</dsig:DigestValue>
+      <dsig:DigestValue>fSfgiAFNFLfOHpGiTvaJaXpzBjd4oGjZrk+s5fp5fWY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\App Icon.ico" size="45451">

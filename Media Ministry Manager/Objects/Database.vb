@@ -109,27 +109,32 @@ Public Class Database
 
     Private Sub AddListener(paramerters As SqlParameter())
         myCmd.Parameters.AddRange(paramerters)
-        myCmd.CommandText = "INSERT INTO EMAIL_LISTENERS VALUES (@Name, @Email)"
+
+        myCmd.CommandType = CommandType.StoredProcedure
+        myCmd.CommandText = "AddListener"
 
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub RemoveListener(name As String, email As String)
-        RemoveListener(New Listener(name, email))
+    Public Sub RemoveListener(email As String)
+        RemoveListener(New SqlParameter("Email", email))
     End Sub
 
-    Public Sub RemoveListener(listener As Listener)
-        myCmd.CommandText = String.Format("delete from email_listeners where email = '{0}'", listener.Email)
+    Public Sub RemoveListener(parameter As SqlParameter)
+        myCmd.Parameters.Add(parameter)
+
+        myCmd.CommandType = CommandType.StoredProcedure
+        myCmd.CommandText = "RemoveListener"
 
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateListener(name As String, email As String)
-        UpdateListener(New Listener(name, email))
+    Public Sub UpdateListener(name As String, newEmail As String, currentEmail As String)
+        UpdateListener(New Listener(name, newEmail), currentEmail)
     End Sub
 
-    Public Sub UpdateListener(listener As Listener)
-        myCmd.CommandText = String.Format("update email_listeners set name='{0}', email='{1}' where email='{1}'", listener.Name, listener.Email)
+    Public Sub UpdateListener(listener As Listener, current As String)
+        myCmd.CommandText = String.Format("update email_listeners set name='{0}', email='{1}' where email='{2}'", listener.Name, listener.Email, current)
 
         myCmd.ExecuteNonQuery()
     End Sub
