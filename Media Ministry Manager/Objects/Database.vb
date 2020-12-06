@@ -3,13 +3,14 @@
 'needed for database work
 'got the database set up information from here
 'https://support.microsoft.com/en-us/help/308656/how-to-open-a-sql-server-database-by-using-the-sql-server-net-data-pro
+Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
-Imports Media_Ministry.SendingEmails
+Imports MediaMinistry.SendingEmails
 
 Public Class Database
     Implements IDisposable
-    Private myConn As SqlConnection
-    Private myCmd As SqlCommand
+    Private ReadOnly myConn As SqlConnection
+    Private ReadOnly myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
 
@@ -30,9 +31,10 @@ Public Class Database
     End Sub
 
     Public Sub New(username As String, password As String)
-        Dim connectionString As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
-        connectionString.UserID = username
-        connectionString.Password = password
+        Dim connectionString As New SqlConnectionStringBuilder(My.Settings.masterConnectionString) With {
+            .UserID = username,
+            .Password = password
+        }
 
         myConn = New SqlConnection(connectionString.ConnectionString)
         myCmd = myConn.CreateCommand
@@ -70,7 +72,7 @@ Public Class Database
     Public Sub AddNewCustomer(
                        fName As String, lName As String,
                        addrStreet As String, addrCity As String, addrState As String, addrZip As String,
-                       phoneNumber As String, email As String, paymentPreference As String)
+                       phoneNumber As String, email As String)
 
         'used string.format due to enormous query strings and concatination, allowing for easy expansion
         'SELECT CONVERT(VARCHAR(10), getdate(), 101) is a query found online that gets just the date of getdate().
@@ -88,7 +90,6 @@ Public Class Database
         '107    Mon dd, yyyy
 
         'date string that holds the command to get the date for when the person joined
-<<<<<<< HEAD
         'Dim dateString = "SELECT CONVERT(VARCHAR(10), GETDATE(), 111)"
         AddCustomer({New SqlParameter("FirstName", fName), New SqlParameter("LastName", lName), New SqlParameter("Street", addrStreet), New SqlParameter("City", addrCity), New SqlParameter("State", addrState), New SqlParameter("Zip", addrZip), New SqlParameter("Phone", phoneNumber), New SqlParameter("Email", email)})
     End Sub
@@ -98,49 +99,37 @@ Public Class Database
 
         myCmd.CommandType = CommandType.StoredProcedure
         myCmd.CommandText = "AddCustomer"
-=======
-        Dim dateString = "SELECT CONVERT(VARCHAR(10), GETDATE(), 111)"
-
-        myCmd.CommandText = String.Format("INSERT INTO CUSTOMERS
-                                                VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', ({9}))",
-                                                fName, lName, addrStreet, addrCity, addrState, addrZip, phoneNumber, email, paymentPreference, dateString)
->>>>>>> master
 
         myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub AddListener(name As String, email As String)
-        AddListener(New Listener(name, email))
+        AddListener({New SqlParameter("Name", name), New SqlParameter("Email", email)})
     End Sub
 
-<<<<<<< HEAD
     Private Sub AddListener(paramerters As SqlParameter())
         myCmd.Parameters.AddRange(paramerters)
         myCmd.CommandText = "INSERT INTO EMAIL_LISTENERS VALUES (@Name, @Email)"
-=======
-    Public Sub AddListener(listener As Listener)
-        myCmd.CommandText = String.Format("insert into email_listeners values ('{0}', '{1}')", listener.name, listener.email)
->>>>>>> master
 
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub removeListener(name As String, email As String)
-        removeListener(New Listener(name, email))
+    Public Sub RemoveListener(name As String, email As String)
+        RemoveListener(New Listener(name, email))
     End Sub
 
-    Public Sub removeListener(listener As Listener)
-        myCmd.CommandText = String.Format("delete from email_listeners where email = '{0}'", listener.email)
+    Public Sub RemoveListener(listener As Listener)
+        myCmd.CommandText = String.Format("delete from email_listeners where email = '{0}'", listener.Email)
 
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub updateListener(name As String, email As String)
-        updateListener(New Listener(name, email))
+    Public Sub UpdateListener(name As String, email As String)
+        UpdateListener(New Listener(name, email))
     End Sub
 
-    Public Sub updateListener(listener As Listener)
-        myCmd.CommandText = String.Format("update email_listeners set name='{0}', email='{1}' where email='{1}'", listener.name, listener.email)
+    Public Sub UpdateListener(listener As Listener)
+        myCmd.CommandText = String.Format("update email_listeners set name='{0}', email='{1}' where email='{1}'", listener.Name, listener.Email)
 
         myCmd.ExecuteNonQuery()
     End Sub
@@ -428,8 +417,8 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Function RetrieveListeners() As List(Of Listener)
-        Dim listeners As List(Of Listener) = New List(Of Listener)
+    Public Function RetrieveListeners() As Collection(Of Listener)
+        Dim listeners As Collection(Of Listener) = New Collection(Of Listener)
 
         myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
 
@@ -443,7 +432,7 @@ Public Class Database
         Return listeners
     End Function
 
-    Public Function search(queryString As String) As String()
+    Public Function Search(queryString As String) As String()
         myCmd.CommandText = queryString
         myReader = myCmd.ExecuteReader()
         Dim result As String()

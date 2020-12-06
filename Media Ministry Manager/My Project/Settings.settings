@@ -28,5 +28,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=mediaministry.database.windows.net;Initial Catalog="Media Ministry";User ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication="Sql Password"</Value>
     </Setting>
+    <Setting Name="CurrentFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 15.75pt, style=Bold</Value>
+    </Setting>
+    <Setting Name="DefaultFont" Type="System.Drawing.Font" Scope="Application">
+      <Value Profile="(Default)">Microsoft Sans Serif, 15.75pt, style=Bold</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

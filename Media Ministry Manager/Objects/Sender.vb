@@ -67,8 +67,9 @@ Namespace SendingEmails
             emailContent.WriteTo(buffer)
             Dim bytes As Byte() = buffer.ToByteArray()
             Dim encodedEmail As String = UrlBase64.Encode(bytes)
-            Dim message As New Message()
-            message.Raw = encodedEmail
+            Dim message As New Message With {
+                .Raw = encodedEmail
+            }
             Return message
         End Function
 
@@ -86,8 +87,9 @@ Namespace SendingEmails
 
             'mimeBodyPart.setContent(bodyText, "text/plain")
 
-            Dim multipart As New Multipart()
-            multipart.Add(mimeBodyPart)
+            Dim multipart As New Multipart From {
+                mimeBodyPart
+            }
 
             Dim attachments As New AttachmentCollection()
 

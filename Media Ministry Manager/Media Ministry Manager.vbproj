@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F19EA4B2-87F9-4520-9C59-8B87DDD59B05}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Media_Ministry.My.MyApplication</StartupObject>
-    <RootNamespace>Media_Ministry</RootNamespace>
+    <StartupObject>MediaMinistry.My.MyApplication</StartupObject>
+    <RootNamespace>MediaMinistry</RootNamespace>
     <AssemblyName>Media Ministry Manager</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -54,8 +54,7 @@
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <Prefer32Bit>false</Prefer32Bit>
-    <CodeAnalysisRuleSet>
-    </CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -134,33 +133,48 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.8.6.7\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.45.0\lib\net45\Google.Apis.dll</HintPath>
+    <Reference Include="Google.Apis, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Auth, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Auth.1.45.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+    <Reference Include="Google.Apis.Auth, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.49.0\lib\net45\Google.Apis.Auth.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Auth.1.45.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.49.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Core, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Core.1.45.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    <Reference Include="Google.Apis.Core, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.49.0\lib\net45\Google.Apis.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Drive.v3, Version=1.45.0.1911, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Drive.v3.1.45.0.1911\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
+    <Reference Include="Google.Apis.Drive.v3, Version=1.49.0.2160, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v3.1.49.0.2160\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Gmail.v1, Version=1.45.0.1859, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Gmail.v1.1.45.0.1859\lib\net45\Google.Apis.Gmail.v1.dll</HintPath>
+    <Reference Include="Google.Apis.Gmail.v1, Version=1.49.0.2160, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Gmail.v1.1.49.0.2160\lib\net45\Google.Apis.Gmail.v1.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.PlatformServices, Version=1.45.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.45.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.1.9, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.1\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MimeKit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
-      <HintPath>..\packages\MimeKit.2.6.0\lib\net46\MimeKit.dll</HintPath>
+    <Reference Include="MimeKit, Version=2.10.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.10.1\lib\net46\MimeKit.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -198,10 +212,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Assets\Media Ministry Splash.Designer.vb">
-      <DependentUpon>Media Ministry Splash.vb</DependentUpon>
+    <Compile Include="Assets\MediaMinistrySplash.Designer.vb">
+      <DependentUpon>MediaMinistrySplash.vb</DependentUpon>
     </Compile>
-    <Compile Include="Assets\Media Ministry Splash.vb">
+    <Compile Include="Assets\MediaMinistrySplash.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Email Listeners\EmailListeners.Designer.vb">
@@ -264,6 +278,12 @@
     <Compile Include="Forms\Misc\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Misc\Settings.Designer.vb">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Misc\Settings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Orders\DisplayOrders.Designer.vb">
       <DependentUpon>DisplayOrders.vb</DependentUpon>
     </Compile>
@@ -273,7 +293,9 @@
     <Compile Include="Forms\Inventory\UpdateInventory.Designer.vb">
       <DependentUpon>UpdateInventory.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Inventory\UpdateInventory.vb" />
+    <Compile Include="Forms\Inventory\UpdateInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Customer\UpdatePhoneNumber.Designer.vb">
       <DependentUpon>UpdatePhoneNumber.vb</DependentUpon>
     </Compile>
@@ -292,13 +314,10 @@
     <Compile Include="Forms\Orders\PlaceOrder.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Media_MinistryDataSet.Designer.vb">
+    <Compile Include="MediaMinistryDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Media_MinistryDataSet.vb">
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
+      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -331,19 +350,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Objects\DriveUploader.vb" />
+    <Compile Include="Objects\Exceptions\FormClosedException.vb" />
+    <Compile Include="Objects\Exceptions\PasswordException.vb" />
     <Compile Include="Objects\Listener.vb" />
-<<<<<<< HEAD
     <Compile Include="Objects\Sender.vb" />
     <Compile Include="Objects\Service.vb" />
     <Compile Include="Objects\Utils.vb" />
-=======
->>>>>>> master
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Media Ministry Splash.resx">
-      <DependentUpon>Media Ministry Splash.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\EmailListeners.resx">
       <DependentUpon>EmailListeners.vb</DependentUpon>
     </EmbeddedResource>
@@ -403,16 +417,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Media_MinistryDataSet.xsc">
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
+    <None Include="MediaMinistryDataSet.xsc">
+      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Media_MinistryDataSet.xsd">
+    <None Include="MediaMinistryDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Media_MinistryDataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>MediaMinistryDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Media_MinistryDataSet.xss">
-      <DependentUpon>Media_MinistryDataSet.xsd</DependentUpon>
+    <None Include="MediaMinistryDataSet.xss">
+      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">

@@ -3,23 +3,13 @@
 Imports System.Data.SqlClient
 
 Public Class frm_DisplayCustomers
-    Private db As Database
-    Private ReadOnly mainForm As Frm_Main
-
-    Public Sub New(ByRef database As Database, ByRef mainForm As Frm_Main)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        Me.mainForm = mainForm
-    End Sub
+    Property MainForm As frm_Main
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
         refresh()
     End Sub
 
-    Private Sub btn_Update_Click(sender As Object, e As EventArgs)
+    Private Sub Btn_Update_Click(sender As Object, e As EventArgs)
         'update customer information that was entered
         Dim index, updateCount As Integer
         Dim street, city, state, zip, phone, email, payment As String
@@ -72,7 +62,7 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim main As New Frm_Main()
+        Dim main As New frm_Main()
         main.Show()
     End Sub
 
@@ -97,7 +87,7 @@ Public Class frm_DisplayCustomers
         Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
-    Private Sub dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
+    Private Sub Dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
         Dim changedRow As Integer = e.RowIndex
 
         'get values from table

@@ -52,37 +52,19 @@ Public Class frm_ViewListeners
         Shared SearchMax As New Point(1093, 151)
     End Structure
 
-<<<<<<< HEAD
-    Public Sub New(ByRef db As Database)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        Me.db = db
-        cbx_Column.SelectedIndex = 0
-    End Sub
-
-    Private Sub Frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
-        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
-        CustomLoad()
-=======
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         customLoad()
->>>>>>> master
     End Sub
 
     Public Sub customLoad()
-        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.Media_MinistryDataSet.EMAIL_LISTENERS)
+        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
         cbx_Column.SelectedIndex = 0
         updateTotal()
     End Sub
 
-<<<<<<< HEAD
     Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        Dim frm_AddListeners As frm_AddListener = New frm_AddListener With {
+        Dim frm_AddListeners As Frm_AddListener = New Frm_AddListener With {
             .Opener = Me
         }
         frm_AddListeners.Show()
@@ -91,20 +73,6 @@ Public Class frm_ViewListeners
     Private Sub Frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Dim frm As New Frm_Main()
         frm.Show()
-=======
-    Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        Dim frm_AddListeners As frm_AddListener = New frm_AddListener()
-        frm_AddListeners.frm_Emails = Me
-        frm_AddListeners.Show()
-    End Sub
-
-    Private Sub frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Try
-            sendingForm.Show()
-        Catch
-
-        End Try
->>>>>>> master
     End Sub
 
     Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow

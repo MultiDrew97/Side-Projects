@@ -2,8 +2,8 @@
 Imports System.Threading
 Imports Google.Apis.Drive.v3.Data
 Imports Google.Apis.Gmail.v1.Data
-Imports MediaMinistry.Helpers
 Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.Helpers
 
 Public Class Frm_Settings
     Private Const currentUser = "Current User: {0}"
@@ -127,7 +127,6 @@ Public Class Frm_Settings
 
     Private Sub bw_Service_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Service.DoWork
         cts = New CancellationTokenSource()
-<<<<<<< HEAD
         Dim service As Service
         Select Case CType(e.Argument, String)
             Case "d"
@@ -160,40 +159,6 @@ Public Class Frm_Settings
                     Console.WriteLine("Aggregate Exception")
                 End Try
         End Select
-=======
-        'Dim service As Service
-        'Select Case CType(e.Argument, String)
-        '    Case "d"
-        '        Try
-        '            service = New DriveUploader(cts.Token)
-        '            Invoke(
-        '                Sub()
-        '                    btn_GoogleDrive.Text = "Unlink Google Drive"
-        '                    lbl_CurrentDrive.Text = String.Format(currentUser, service.Info.EmailAddress)
-        '                End Sub
-        '            )
-        '        Catch ex As OperationCanceledException
-        '            Console.WriteLine("Canceled Exception")
-        '        Catch ex As AggregateException
-        '            Console.WriteLine("Aggregate Exception")
-        '        End Try
-
-        '    Case "m"
-        '        Try
-        '            service = New Sender(cts.Token)
-        '            Invoke(
-        '                Sub()
-        '                    btn_Gmail.Text = "Unlink Gmail"
-        '                    lbl_CurrentGmail.Text = String.Format(currentUser, service.Info.EmailAddress)
-        '                End Sub
-        '            )
-        '        Catch ex As OperationCanceledException
-        '            Console.WriteLine("Canceled Exception")
-        '        Catch ex As AggregateException
-        '            Console.WriteLine("Aggregate Exception")
-        '        End Try
-        'End Select
->>>>>>> master
     End Sub
 
     Private Sub Bw_CheckServices_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_CheckServices.DoWork

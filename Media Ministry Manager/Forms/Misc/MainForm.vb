@@ -2,12 +2,8 @@
 
 Imports System.ComponentModel
 Imports System.IO
-<<<<<<< HEAD
 Imports MediaMinistry.Helpers
 Imports MediaMinistry.SendingEmails
-=======
-Imports Media_Ministry.SendingEmails
->>>>>>> master
 
 Public Class frm_Main
     Dim uploader As DriveUploader
@@ -18,7 +14,6 @@ Public Class frm_Main
         Shared max As New Size(1382, 744)
     End Structure
 
-<<<<<<< HEAD
     'Public Sub New() 'ByRef database As Database)
 
     '    ' This call is required by the designer.
@@ -30,27 +25,11 @@ Public Class frm_Main
     '        bw_UpdateJar.RunWorkerAsync(emailerLocation)
     '    End If
     'End Sub
-=======
-    Private Sub MediaMinistry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        reset()
-
-        If Not bw_UpdateJar.IsBusy Then
-            bw_UpdateJar.RunWorkerAsync(emailerLocation)
-        End If
-    End Sub
->>>>>>> master
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
-<<<<<<< HEAD
         If My.Application.OpenForms.Count = 1 And Not My.Settings.KeepLoggedIn Then
             Dim login As New Frm_Login()
             login.Show()
-=======
-        If My.Settings.KeepLoggedIn Then
-            frm_Login.Close()
-        Else
-            frm_Login.Show()
->>>>>>> master
         End If
     End Sub
 
@@ -59,13 +38,8 @@ Public Class frm_Main
         frm_PlaceOrder.Show()
     End Sub
 
-<<<<<<< HEAD
-    Private Sub Btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
-        Dim inventory As frm_ViewInventory = New frm_ViewInventory(Me)
-=======
     Private Sub btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
         Dim inventory As frm_ViewInventory = New frm_ViewInventory With {.mainForm = Me}
->>>>>>> master
         inventory.Show()
         Me.Close()
     End Sub
@@ -73,19 +47,7 @@ Public Class frm_Main
     Private Sub btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
         Dim ordersView = New frm_DisplayOrders With {.mainForm = Me}
         ordersView.Show()
-<<<<<<< HEAD
         Me.Close()
-=======
-        Me.Hide()
-    End Sub
-
-    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs)
-        reset()
-    End Sub
-
-    Private Sub btn_CancelUpdate_Click(sender As Object, e As EventArgs)
-        reset()
->>>>>>> master
     End Sub
 
     Private Sub btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
@@ -101,8 +63,6 @@ Public Class frm_Main
 
     Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
         'create a email listeners form in the background
-        tss_Feedback.Text = "Initializing Google Drive Uploader..."
-<<<<<<< HEAD
         Dim emailListeners As New Frm_EmailListeners()
         emailListeners.Show()
         Me.Close()
@@ -116,22 +76,6 @@ Public Class frm_Main
         'If Not ValidateSender(CType(e.Argument, String)) Then
         '    Throw New FileNotFoundException("Sender was not found or was not copied correctly. Contact your developer.")
         'End If
-=======
-        Dim emailListeners As New frm_EmailListeners() With {.frm_main = Me, .uploader = New DriveUploader()}
-        emailListeners.Show()
-        Me.Hide()
-        reset()
-    End Sub
-
-    Private Sub bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-        Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
-            out.Write(My.Resources.sender)
-        End Using
-
-        If Not validateSender(CType(e.Argument, String)) Then
-            Throw New Exception("Sender was not found or was not copied correctly. Contact your developer.")
-        End If
->>>>>>> master
     End Sub
 
     Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -178,36 +122,23 @@ Public Class frm_Main
     End Sub
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
-<<<<<<< HEAD
         Utils.CloseOpenForms()
     End Sub
 
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
         Dim frm_AddCustomer As New frm_AddNewCustomer With {.Opener = Me}
-=======
-        Me.Close()
-        frm_Login.Close()
-    End Sub
-
-    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
-        Dim frm_AddCustomer As New frm_AddNewCustomer With {.sendingForm = Me}
->>>>>>> master
         frm_AddCustomer.Show()
         Me.Hide()
     End Sub
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-<<<<<<< HEAD
         Dim frm_AddProduct As New frm_AddNewProduct()
-=======
-        Dim frm_AddProduct As New frm_AddNewProduct With {.sendingForm = Me}
->>>>>>> master
         frm_AddProduct.Show()
         Me.Hide()
     End Sub
 
     Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem.Click
-        Dim frm_AddListener As New frm_AddListener()
+        Dim frm_AddListener As New Frm_AddListener()
         frm_AddListener.Show()
         Me.Hide()
     End Sub
@@ -252,11 +183,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsToolStripMenuItem.Click
-<<<<<<< HEAD
-        Dim products As New frm_ViewInventory(Me)
-=======
         Dim products As New frm_ViewInventory With {.mainForm = Me}
->>>>>>> master
         products.Show()
         Me.Close()
     End Sub
@@ -272,13 +199,10 @@ Public Class frm_Main
         listeners.Show()
         Me.Close()
     End Sub
-<<<<<<< HEAD
 
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Dim frm_Settings As New Frm_Settings()
         frm_Settings.Show()
         Me.Hide()
     End Sub
-=======
->>>>>>> master
 End Class

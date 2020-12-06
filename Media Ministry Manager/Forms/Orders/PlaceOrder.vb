@@ -4,30 +4,15 @@ Imports System.Data.SqlClient
 Public Class frm_PlaceOrder
     Property mainForm() As frm_Main
 
-<<<<<<< HEAD
-    Public Sub New(database As Database, ByRef mainForm As Frm_Main)
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        _db = database
-        Me.mainForm = mainForm
-    End Sub
-
-    Private Sub Frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        'Dim frm As New Frm_Main()
-        'frm.Show()
-=======
     Private Sub frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
->>>>>>> master
     End Sub
 
     Private Sub frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
-        INVENTORYTableAdapter.Fill(Media_MinistryDataSet.INVENTORY)
+        INVENTORYTableAdapter.Fill(MediaMinistryDataSet.INVENTORY)
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
-        CUSTOMERSTableAdapter.Fill(Media_MinistryDataSet.CUSTOMERS)
+        CUSTOMERSTableAdapter.Fill(MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click

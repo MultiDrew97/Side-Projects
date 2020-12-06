@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_ViewListeners
+Partial Class frm_ViewListeners
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,7 +24,7 @@ Partial Class Frm_ViewListeners
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_ViewListeners))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_ViewListeners))
         Me.btn_Add = New System.Windows.Forms.Button()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
         Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)

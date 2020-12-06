@@ -6,20 +6,15 @@ Public Class frm_DisplayOrders
 
     Private Sub frm_DisplayOrders_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.ORDER_SUMMARY' table. You can move, or remove it, as needed.
-        Me.ORDER_SUMMARYTableAdapter.Fill(Me.Media_MinistryDataSet.ORDER_SUMMARY)
+        Me.ORDER_SUMMARYTableAdapter.Fill(Me.MediaMinistryDataSet.ORDER_SUMMARY)
         For index As Integer = 0 To (dgv_Orders.Rows.Count - 1)
             dgv_Orders.Rows(index).Cells(0).Value = False
         Next
     End Sub
 
-<<<<<<< HEAD
     Private Sub Frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Dim frm As New Frm_Main()
         frm.Show()
-=======
-    Private Sub frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        mainForm.Show()
->>>>>>> master
     End Sub
 
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click

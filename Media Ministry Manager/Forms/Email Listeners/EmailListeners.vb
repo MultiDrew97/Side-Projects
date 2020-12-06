@@ -1,7 +1,8 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
-Imports Media_Ministry.SendingEmails
+Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.Helpers
 
 Public Class Frm_EmailListeners
     Property Uploader() As DriveUploader
@@ -78,37 +79,37 @@ Public Class Frm_EmailListeners
         Shared form As New Size(900, 800)
     End Structure
 
-    Private Sub btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
+    Private Sub Btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
         tss_Feedback.ForeColor = Color.Black
         bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
     End Sub
 
-    Private Sub ofd_SelectAudio_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_SelectAudio.FileOk
+    Private Sub Ofd_SelectAudio_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_SelectAudio.FileOk
         txt_FileLocation.Text = ofd_SelectAudio.SafeFileName
     End Sub
 
-    Private Sub frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub Frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
-            cbx_Folders.DataSource = uploader.getFolders()
+            cbx_Folders.DataSource = Uploader.GetFolders()
         Catch ex As NullReferenceException
             If cbx_Folders Is Nothing Then
                 MessageBox.Show("Combo Box was null.")
-            ElseIf uploader Is Nothing Then
+            ElseIf Uploader Is Nothing Then
                 MessageBox.Show("Drive uploader was null.")
             End If
         End Try
     End Sub
 
-    Private Sub btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
+    Private Sub Btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
         ofd_SelectAudio.ShowDialog()
     End Sub
 
-    Private Sub bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
+    Private Sub Bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
         If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
             Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
             Dim folderName As String = CType(CType(e.Argument, Object())(0), String)
 
-            fileID = uploader.upload(ofd_SelectAudio.FileName, folderName, tss)
+            fileID = Uploader.Upload(ofd_SelectAudio.FileName, folderName, tss)
             tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to or Send the last one to your listeners"
         Else
             tss_Feedback.Text = "You have to select a file first..."
@@ -120,7 +121,7 @@ Public Class Frm_EmailListeners
         frm_Folder.Show()
 
         Do Until My.Settings.AdminInfoRecieved
-            wait(1)
+            Utils.wait(1)
         Loop
 		
         My.Settings.AdminInfoRecieved = False
@@ -132,13 +133,13 @@ Public Class Frm_EmailListeners
         main.Show()
     End Sub
 
-    Private Sub frm_EmailListeners_Leave(sender As Object, e As EventArgs) Handles Me.Leave
-        If frm_main.IsDisposed Then
+    Private Sub Frm_EmailListeners_Leave(sender As Object, e As EventArgs) Handles Me.Leave
+        If frm_Main.IsDisposed Then
             Close()
         End If
     End Sub
 
-    Private Sub btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
+    Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
         tss_Feedback.ForeColor = Color.Black
         If fileID IsNot Nothing Then
             tss_Feedback.Text = "Sending emails to listeners..."
@@ -159,31 +160,31 @@ Public Class Frm_EmailListeners
         End If
     End Sub
 
-    Private Sub btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
+    Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
         Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners With {.sendingForm = Me}
         frm_ViewListeners.Show()
         Me.Hide()
     End Sub
 
-    Private Sub frm_EmailListeners_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
+    Private Sub Frm_EmailListeners_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
             ofd_SelectAudio.FileName = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
             If ofd_SelectAudio.CheckFileExists Then
-                ofd_SelectAudio_FileOk(sender, New CancelEventArgs)
+                Ofd_SelectAudio_FileOk(sender, New CancelEventArgs)
                 'txt_FileLocation.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
             End If
         End If
     End Sub
 
-    Private Sub frm_EmailListeners_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
+    Private Sub Frm_EmailListeners_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
         End If
     End Sub
-    
-    Private Sub frm_EmailListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+
+    Private Sub Frm_EmailListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.Size = Sizes.Max Then
             MaxChanges()
         Else

@@ -4,11 +4,7 @@
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-<<<<<<< HEAD
-    <assemblyIdentity name="Media Ministry Manager" version="2.0.86.12" language="neutral" processorArchitecture="msil" />
-=======
-    <assemblyIdentity name="Media Ministry Manager" version="2.0.0.9" language="neutral" processorArchitecture="msil" />
->>>>>>> master
+    <assemblyIdentity name="Media Ministry Manager" version="2.0.96.12" language="neutral" processorArchitecture="msil" />
     <commandLine file="Media Ministry Manager.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -60,115 +56,109 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.dll" size="79360">
-      <assemblyIdentity name="Google.Apis" version="1.45.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Google.Apis" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Jpq+yDu7rPMbJFLSXeSR8NnZ8L0b72AyjD47ZRd5G9E=</dsig:DigestValue>
+        <dsig:DigestValue>JGpnBEVmOgImtbW1afMu+UmoohPd+uSyI4YJFm68Ysg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.dll" size="124928">
-      <assemblyIdentity name="Google.Apis.Auth" version="1.45.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.dll" size="141312">
+      <assemblyIdentity name="Google.Apis.Auth" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cgT9tXpuXWZ+mL2mDbvGS1B8EKZyRX/10tbh4GtoBkA=</dsig:DigestValue>
+        <dsig:DigestValue>ucaPpOK+wXqxbKrM5KN36s8Oy7Cc8uuf2ibFNUzjs4Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.PlatformServices.dll" size="5120">
-      <assemblyIdentity name="Google.Apis.Auth.PlatformServices" version="1.45.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Google.Apis.Auth.PlatformServices" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JDXrSAYwf/gLzlTR/pcin42mgQwKvXtePbbH4zrZ+PU=</dsig:DigestValue>
+        <dsig:DigestValue>nzh2LwV44QD62xm2oSa5sVMqQICPd90LkNAVpgwKKa0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Core.dll" size="73216">
-      <assemblyIdentity name="Google.Apis.Core" version="1.45.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Core.dll" size="73728">
+      <assemblyIdentity name="Google.Apis.Core" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DWLMTiaRq1P8jSRfoh85hjApVEuSF9CicH1fy2ZrsWs=</dsig:DigestValue>
+        <dsig:DigestValue>vJAEOarA4ZFCSSMqklhFi8zzSSRnsdtBQYmfrZ6A/3M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Drive.v3.dll" size="129024">
-      <assemblyIdentity name="Google.Apis.Drive.v3" version="1.45.0.1911" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Drive.v3.dll" size="133632">
+      <assemblyIdentity name="Google.Apis.Drive.v3" version="1.49.0.2160" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9D1dHCD82joPtvpmy55gXKZRc696avcoWfeYIU3BagU=</dsig:DigestValue>
+        <dsig:DigestValue>KNrjiFyArVCuy1Ykn8rc89iSZDlf/sR99WWBxl3TZg4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Gmail.v1.dll" size="105984">
-      <assemblyIdentity name="Google.Apis.Gmail.v1" version="1.45.0.1859" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Gmail.v1.dll" size="111616">
+      <assemblyIdentity name="Google.Apis.Gmail.v1" version="1.49.0.2160" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>emkfsGNMvD+27QBv+RcyHJN1OCLx7aVyQuuw/4k1qCI=</dsig:DigestValue>
+        <dsig:DigestValue>4/tLSiQ5XovP/YR/5H3Sy4NRtb32cqvszEJv0BkC7q8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.PlatformServices.dll" size="4608">
-      <assemblyIdentity name="Google.Apis.PlatformServices" version="1.45.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Google.Apis.PlatformServices" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rMIqXKSh7xiB+4hWQMqSMiSlHjVTC4Bvt1DdrW3GX7Y=</dsig:DigestValue>
+        <dsig:DigestValue>VsGPXZOZzhYRYFObcu3rbi5Agc+PZHtqjHWGpMmKDqA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="7341568">
-      <assemblyIdentity name="Media Ministry Manager" version="2.0.0.9" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ICSharpCode.SharpZipLib.dll" size="202240">
+      <assemblyIdentity name="ICSharpCode.SharpZipLib" version="1.3.1.9" publicKeyToken="1B03E6ACF1164F73" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>L9e24E0OE2ixIoUJyF7JpcgCuqXQ8j0ekeSMxGaGyXA=</dsig:DigestValue>
+        <dsig:DigestValue>hf8znR4LhTsPVEUw+wIqMCVPOY2M7PzfqePAMQw/R5E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< HEAD
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1313280">
-      <assemblyIdentity name="Media Ministry Manager" version="2.0.86.12" language="neutral" processorArchitecture="msil" />
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MimeKit.dll" size="994304">
-      <assemblyIdentity name="MimeKit" version="2.6.0.0" publicKeyToken="BEDE1C8A46C66814" language="neutral" processorArchitecture="msil" />
->>>>>>> master
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1268736">
+      <assemblyIdentity name="Media Ministry Manager" version="2.0.96.12" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-        <dsig:DigestValue>5h9WLfSiHWxNUeZOPCyyxwdQLvPF5XrwFuBV7Ae3UQE=</dsig:DigestValue>
+        <dsig:DigestValue>Y7iqlRM5MtkWEJL1H2VIYGNmKxowAwDuUxjiMGO/hgc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -180,10 +170,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nQDltx0zaX+Q75yvn29J3X0wPwjigB5bDGVY4UvXksc=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>eNTygiaa+6B7qJ0UNNwcP5xICX/CUuk8+U5JOsjBCf0=</dsig:DigestValue>
->>>>>>> master
+        <dsig:DigestValue>dpP3nmlCe+vqNL07cblAH5gnoFQz4947NW1nC5n/2b0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -196,6 +183,66 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>f5ErKKB8Im4L46z7L1fwUFOKugEA+h8L8sOfGh8dqBQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NPOI.dll" size="2104320">
+      <assemblyIdentity name="NPOI" version="2.5.2.0" publicKeyToken="0DF73EC7942B34E1" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>r2fRnbCWagI/HF0DP1Z9XybIMZf/KobHRvn1C3MlVFw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NPOI.OOXML.dll" size="724992">
+      <assemblyIdentity name="NPOI.OOXML" version="2.5.2.0" publicKeyToken="0DF73EC7942B34E1" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>guMBlH3qT6zgQZX8LR3OlQO+5zk/xEXnTF4qjmtTkcE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NPOI.OpenXml4Net.dll" size="108032">
+      <assemblyIdentity name="NPOI.OpenXml4Net" version="2.5.2.0" publicKeyToken="0DF73EC7942B34E1" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>4NhrZCZatFr0Qr4fPPD6a0ZjiGeWzycabZkaqeNnMCU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NPOI.OpenXmlFormats.dll" size="2431488">
+      <assemblyIdentity name="NPOI.OpenXmlFormats" version="2.5.2.0" publicKeyToken="0DF73EC7942B34E1" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>JemonuRnzkKDLbHQNA45E4AHLQU0Y9ty0BgAT8Pe4SU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Buffers.dll" size="28304">
+      <assemblyIdentity name="System.Buffers" version="4.0.3.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>crEKfUBHeP7UYPP/AgTPfoGopaecmRMoIZKLY/aumcs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -223,13 +270,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Media Ministry Manager.exe.config" size="3844">
+  <file name="Media Ministry Manager.exe.config" size="5045">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>aNn4CGg2LZl0rfEioCHcCAu/y/5wNJiJrWvcdThrxa0=</dsig:DigestValue>
+      <dsig:DigestValue>dZhxscSviBSB+rrOLy0zsN3oQg8qVaUKJAxfJEhRI94=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\App Icon.ico" size="45451">

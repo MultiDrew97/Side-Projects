@@ -136,6 +136,27 @@ Partial Friend NotInheritable Class MySettings
             Return CType(Me("masterConnectionString"),String)
         End Get
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>  _
+    Public Property CurrentFont() As Global.System.Drawing.Font
+        Get
+            Return CType(Me("CurrentFont"),Global.System.Drawing.Font)
+        End Get
+        Set
+            Me("CurrentFont") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>  _
+    Public ReadOnly Property DefaultFont() As Global.System.Drawing.Font
+        Get
+            Return CType(Me("DefaultFont"),Global.System.Drawing.Font)
+        End Get
+    End Property
 End Class
 
 Namespace My
@@ -146,9 +167,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Media_Ministry.MySettings
+        Friend ReadOnly Property Settings() As Global.MediaMinistry.MySettings
             Get
-                Return Global.Media_Ministry.MySettings.Default
+                Return Global.MediaMinistry.MySettings.Default
             End Get
         End Property
     End Module

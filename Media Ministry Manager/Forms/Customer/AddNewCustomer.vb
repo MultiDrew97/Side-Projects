@@ -1,5 +1,6 @@
 ﻿Option Strict On
 
+Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions.Regex
 
 Public Class frm_AddNewCustomer
@@ -37,7 +38,7 @@ Public Class frm_AddNewCustomer
 
             Try
                 Using db As New Database(My.Settings.Username, My.Settings.Password)
-                    db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email, payment)
+                    db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email)
                 End Using
 
                 Me.Close()
