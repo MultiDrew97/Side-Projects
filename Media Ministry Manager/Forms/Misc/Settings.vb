@@ -13,6 +13,7 @@ Public Class Frm_Settings
     ReadOnly textFont As String = "Font: {0}"
     Dim result As DialogResult
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Console.WriteLine(String.Format("{0:C}", 10.568))
         'Load settings from settings file to display to user
         Me.Font = My.Settings.CurrentFont
         bw_Settings.RunWorkerAsync("l")
@@ -126,6 +127,7 @@ Public Class Frm_Settings
 
     Private Sub bw_Service_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Service.DoWork
         cts = New CancellationTokenSource()
+<<<<<<< HEAD
         Dim service As Service
         Select Case CType(e.Argument, String)
             Case "d"
@@ -158,6 +160,40 @@ Public Class Frm_Settings
                     Console.WriteLine("Aggregate Exception")
                 End Try
         End Select
+=======
+        'Dim service As Service
+        'Select Case CType(e.Argument, String)
+        '    Case "d"
+        '        Try
+        '            service = New DriveUploader(cts.Token)
+        '            Invoke(
+        '                Sub()
+        '                    btn_GoogleDrive.Text = "Unlink Google Drive"
+        '                    lbl_CurrentDrive.Text = String.Format(currentUser, service.Info.EmailAddress)
+        '                End Sub
+        '            )
+        '        Catch ex As OperationCanceledException
+        '            Console.WriteLine("Canceled Exception")
+        '        Catch ex As AggregateException
+        '            Console.WriteLine("Aggregate Exception")
+        '        End Try
+
+        '    Case "m"
+        '        Try
+        '            service = New Sender(cts.Token)
+        '            Invoke(
+        '                Sub()
+        '                    btn_Gmail.Text = "Unlink Gmail"
+        '                    lbl_CurrentGmail.Text = String.Format(currentUser, service.Info.EmailAddress)
+        '                End Sub
+        '            )
+        '        Catch ex As OperationCanceledException
+        '            Console.WriteLine("Canceled Exception")
+        '        Catch ex As AggregateException
+        '            Console.WriteLine("Aggregate Exception")
+        '        End Try
+        'End Select
+>>>>>>> master
     End Sub
 
     Private Sub Bw_CheckServices_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_CheckServices.DoWork

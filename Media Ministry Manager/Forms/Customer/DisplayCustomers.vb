@@ -19,7 +19,7 @@ Public Class frm_DisplayCustomers
         refresh()
     End Sub
 
-    Private Sub Btn_Update_Click(sender As Object, e As EventArgs)
+    Private Sub btn_Update_Click(sender As Object, e As EventArgs)
         'update customer information that was entered
         Dim index, updateCount As Integer
         Dim street, city, state, zip, phone, email, payment As String
@@ -37,20 +37,22 @@ Public Class frm_DisplayCustomers
 
             Do
                 If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
-                    street = dgv_Customers.Rows(index).Cells(4).Value.ToString
-                    city = dgv_Customers.Rows(index).Cells(5).Value.ToString
-                    state = dgv_Customers.Rows(index).Cells(6).Value.ToString
-                    zip = dgv_Customers.Rows(index).Cells(7).Value.ToString
-                    phone = dgv_Customers.Rows(index).Cells(3).Value.ToString
-                    email = dgv_Customers.Rows(index).Cells(8).Value.ToString
-                    payment = dgv_Customers.Rows(index).Cells(9).Value.ToString
+                    Using db = New Database(My.Settings.Username, My.Settings.Password)
+                        street = dgv_Customers.Rows(index).Cells(4).Value.ToString
+                        city = dgv_Customers.Rows(index).Cells(5).Value.ToString
+                        state = dgv_Customers.Rows(index).Cells(6).Value.ToString
+                        zip = dgv_Customers.Rows(index).Cells(7).Value.ToString
+                        phone = dgv_Customers.Rows(index).Cells(3).Value.ToString
+                        email = dgv_Customers.Rows(index).Cells(8).Value.ToString
+                        payment = dgv_Customers.Rows(index).Cells(9).Value.ToString
 
-                    Try
-                        db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
-                        updateCount += 1
-                    Catch ex As SqlException
-                        failedUpdate = True
-                    End Try
+                        Try
+                            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+                            updateCount += 1
+                        Catch ex As SqlException
+                            failedUpdate = True
+                        End Try
+                    End Using
                 End If
 
                 index += 1
@@ -95,7 +97,7 @@ Public Class frm_DisplayCustomers
         Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
-    Private Sub Dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
+    Private Sub dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
         Dim changedRow As Integer = e.RowIndex
 
         'get values from table
@@ -107,7 +109,9 @@ Public Class frm_DisplayCustomers
         Dim email As String = CType(dgv_Customers.Rows(changedRow).Cells(7).Value, String)
         Dim payment As String = CType(dgv_Customers.Rows(changedRow).Cells(8).Value, String)
 
-        db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
+        End Using
     End Sub
 
 End Class
