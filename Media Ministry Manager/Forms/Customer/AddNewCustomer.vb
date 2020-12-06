@@ -73,7 +73,7 @@ Public Class frm_AddNewCustomer
 
         Try
             CType(Opener, frm_DisplayCustomers).refresh()
-        Catch ex As ApplicationException
+        Catch ex As InvalidCastException
         Finally
             Opener.Show()
         End Try
