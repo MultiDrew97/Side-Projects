@@ -6,7 +6,6 @@ Imports MediaMinistry.SendingEmails
 
 Public Class Frm_EmailListeners
     Property Uploader() As DriveUploader
-    Property Frm_Main() As Frm_Main
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
@@ -129,9 +128,8 @@ Public Class Frm_EmailListeners
     End Sub
 
     Private Sub Frm_EmailListeners_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If Not Frm_Main.IsDisposed Then
-            Call Frm_Main.Show()
-        End If
+        Dim main As New Frm_Main()
+        main.Show()
     End Sub
 
     Private Sub Frm_EmailListeners_Leave(sender As Object, e As EventArgs) Handles Me.Leave

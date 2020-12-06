@@ -68,7 +68,7 @@ Public Class Frm_Main
     Private Sub Btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
         'create a email listeners form in the background
         tss_Feedback.Text = "Initializing Google Drive Uploader..."
-        Dim emailListeners As New Frm_EmailListeners() With {.Frm_Main = Me, .Uploader = New DriveUploader(Nothing)}
+        Dim emailListeners As New Frm_EmailListeners()
         emailListeners.Show()
         Me.Close()
     End Sub

@@ -8,6 +8,10 @@ Imports MediaMinistry.SendingEmails
 Public Class Frm_Settings
     Private Const currentUser = "Current User: {0}"
     Private cts As CancellationTokenSource
+    ReadOnly bold As String = "Bolded? {0}"
+    ReadOnly fontSize As String = "Font Size: {0}pt"
+    ReadOnly textFont As String = "Font: {0}"
+    Dim result As DialogResult
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Load settings from settings file to display to user
         Me.Font = My.Settings.CurrentFont
@@ -24,13 +28,19 @@ Public Class Frm_Settings
     End Sub
 
     Private Sub Btn_SelectFont_Click(sender As Object, e As EventArgs) Handles btn_ChangeFont.Click
-        fd_FontSelector.ShowDialog()
+        result = fd_FontSelector.ShowDialog()
+
+        If result = DialogResult.OK Then
+            ChangeFont()
+        Else
+            fd_FontSelector.Font = My.Settings.CurrentFont
+        End If
     End Sub
 
-    Private Sub Fd_FontSelector_Apply(sender As Object, e As EventArgs) Handles fd_FontSelector.Apply
-        txt_CurrentFont.Text = fd_FontSelector.Font.Name
-        nud_FontSize.Value = CDec(fd_FontSelector.Font.Size)
-        chk_Bold.Checked = fd_FontSelector.Font.Bold
+    Private Sub ChangeFont()
+        lbl_CurrentFont.Text = String.Format(textFont, fd_FontSelector.Font.Name)
+        lbl_FontSize.Text = String.Format(fontSize, fd_FontSelector.Font.Size)
+        lbl_Bold.Text = String.Format(bold, IIf(fd_FontSelector.Font.Bold, "Yes", "No"))
     End Sub
 
     Private Sub Bw_Settings_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Settings.DoWork
@@ -40,7 +50,7 @@ Public Class Frm_Settings
                 Me.Invoke(
                     Sub()
                         fd_FontSelector.Font = My.Settings.CurrentFont
-                        Fd_FontSelector_Apply(sender, e)
+                        ChangeFont()
                     End Sub
                 )
             Case "s"
@@ -49,11 +59,11 @@ Public Class Frm_Settings
                 My.Settings.Save()
             Case "d"
                 'Restore the defaults of the application
-                My.Settings.CurrentFont = MySettings.Default.DefaultFont
+                My.Settings.CurrentFont = My.Settings.DefaultFont
                 Invoke(
                     Sub()
                         fd_FontSelector.Font = My.Settings.CurrentFont
-                        Fd_FontSelector_Apply(sender, e)
+                        ChangeFont()
                     End Sub
                 )
                 My.Settings.Save()
