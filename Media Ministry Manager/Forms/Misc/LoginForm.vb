@@ -2,56 +2,50 @@
 
 Imports System.ComponentModel
 Imports System.Data.SqlClient
-Imports MediaMinistry.SendingEmails
 
-Public Class Frm_Login
+Public Class frm_Login
     Dim _dbConnection As SqlConnectionStringBuilder
-    Dim emailer As Sender
-    Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Private Sub frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _dbConnection = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
-        'emailer = New Sender()
-        Reset()
+        reset()
     End Sub
 
-    Private Sub Frm_Login_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+    Private Sub frm_Login_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         If My.Settings.KeepLoggedIn Then
             _dbConnection.UserID = My.Settings.Username
             _dbConnection.Password = My.Settings.Password
 
             btn_LogIn.PerformClick()
         Else
-            Reset()
+            reset()
         End If
     End Sub
 
-    Private Sub Btn_LogIn_Click(sender As Object, e As EventArgs) Handles btn_LogIn.Click
-        'If My.Settings.KeepLoggedIn Then
-        '    _dbConnection.UserID = My.Settings.Username
-        '    _dbConnection.Password = My.Settings.Password
-        'Else
-        '    _dbConnection.Password = txt_Password.Text
-        '    _dbConnection.UserID = txt_Username.Text
-        'End If
+    Private Sub btn_LogIn_Click(sender As Object, e As EventArgs) Handles btn_LogIn.Click
+        If My.Settings.KeepLoggedIn Then
+            _dbConnection.UserID = My.Settings.Username
+            _dbConnection.Password = My.Settings.Password
+        Else
+            _dbConnection.Password = txt_Password.Text
+            _dbConnection.UserID = txt_Username.Text
+        End If
 
-        'If CheckCreds(txt_Username.Text, txt_Password.Text) Then
-        '    Try
-        '        Dim db = New Database(_dbConnection)
+        If checkCreds(txt_Username.Text, txt_Password.Text) Then
+            Try
+                Dim mainForm = New frm_Main
+                mainForm.Show()
+                bw_SaveSettings.RunWorkerAsync()
+            Catch exception As SqlException
+                tss_UserFeedback.Text = "Unknown Error. Please try again."
+                tss_UserFeedback.ForeColor = Color.Red
+                Console.WriteLine("Failed to connect to database: " & exception.Message)
+            End Try
+        End If
 
-        '        db.GetCustomerInfo("512-828-2827")
-        '        Dim mainForm = New Frm_Main() 'db)
-        '        mainForm.Show()
-        '        bw_SaveSettings.RunWorkerAsync()
-        '    Catch exception As SqlException
-        '        tss_UserFeedback.Text = "Unknown Error. Please try again."
-        '        tss_UserFeedback.ForeColor = Color.Red
-        '        Console.WriteLine("Failed to connect to database: " & exception.Message)
-        '    End Try
-        'End If
-        Const name As String = "Andrew Randle-Warren"
-        emailer.Send(emailer.Create(New MimeKit.MailboxAddress(name, "arandlemiller97@yahoo.com"), "Test Email Again", String.Format(My.Resources.newSermon, name, "https://google.com")))
     End Sub
 
-    Private Sub Reset()
+    Private Sub reset()
         chk_KeepLoggedIn.Checked = False
         txt_Username.Clear()
         txt_Password.Clear()
@@ -60,7 +54,7 @@ Public Class Frm_Login
         txt_Username.Focus()
     End Sub
 
-    Private Sub Bw_SaveSettings_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_SaveSettings.DoWork
+    Private Sub bw_SaveSettings_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_SaveSettings.DoWork
         My.Settings.KeepLoggedIn = chk_KeepLoggedIn.Checked
         My.Settings.Username = txt_Username.Text
         My.Settings.Password = txt_Password.Text
@@ -68,33 +62,34 @@ Public Class Frm_Login
         My.Settings.Save()
     End Sub
 
-    Private Sub Bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted
+    Private Sub bw_SaveSettings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SaveSettings.RunWorkerCompleted
         Me.Hide()
-        Reset()
+        reset()
     End Sub
 
-    Private Sub Txt_Password_GotFocus(sender As Object, e As EventArgs) Handles txt_Password.GotFocus
+    Private Sub txt_Password_GotFocus(sender As Object, e As EventArgs) Handles txt_Password.GotFocus
         txt_Password.Select(0, txt_Password.TextLength)
     End Sub
 
-    Private Sub Btn_CreateUser_Click(sender As Object, e As EventArgs) Handles btn_CreateUser.Click
-        Dim createForm = New Frm_CreateUser()
+    Private Sub btn_CreateUser_Click(sender As Object, e As EventArgs) Handles btn_CreateUser.Click
+        Dim createForm = New frm_CreateUser()
         createForm.Show()
         Me.Hide()
-        Reset()
+        reset()
     End Sub
 
-    Private Sub Btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
-        Dim password = New Frm_ChangePassword()
+    Private Sub btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
+        Dim password = New frm_ChangePassword()
         password.Show()
         Me.Hide()
-        Reset()
+        reset()
     End Sub
 
-    Private Function CheckCreds(username As String, password As String) As Boolean
+    Private Function checkCreds(username As String, password As String) As Boolean
         Try
-            Dim db As Database = New Database(username, password)
-            db.Dispose()
+            Using db As New Database(username, password)
+            End Using
+
             Return True
         Catch e As SqlException
             tss_UserFeedback.Text = "Username/Password was inccorect. Please try again."

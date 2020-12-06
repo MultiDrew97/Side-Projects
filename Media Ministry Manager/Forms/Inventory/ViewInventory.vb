@@ -1,18 +1,7 @@
 ﻿Option Strict On
 
 Public Class frm_ViewInventory
-    Private db As Database
-    Private mainForm As Frm_Main
-
-    Public Sub New(ByRef database As Database, ByRef mainForm As Frm_Main)
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        db = database
-        Me.mainForm = mainForm
-    End Sub
+    Property mainForm() As frm_Main
 
     Private Sub ViewInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         customLoad()
@@ -52,7 +41,7 @@ Public Class frm_ViewInventory
     'End Sub
 
     Private Sub btn_AddProduct_Click(sender As Object, e As EventArgs) Handles btn_AddProduct.Click
-        Dim addNewProduct = New frm_AddNewProduct(db, Me)
+        Dim addNewProduct = New frm_AddNewProduct With {.sendingForm = Me}
         addNewProduct.Show()
         Me.Hide()
     End Sub
@@ -62,8 +51,8 @@ Public Class frm_ViewInventory
     End Sub
 
     Public Sub customLoad()
-        'This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
-        Me.INVENTORYTableAdapter.Fill(Me.MediaMinistryDataSet.INVENTORY)
+        'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        Me.INVENTORYTableAdapter.Fill(Me.Media_MinistryDataSet.INVENTORY)
     End Sub
 
     Private Sub dgv_Inventory_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Inventory.CellEndEdit
@@ -72,11 +61,15 @@ Public Class frm_ViewInventory
         Dim stock As Integer = CType(dgv_Inventory.Rows(editedRow).Cells(1).Value, Integer)
         Dim price As Decimal = CType(dgv_Inventory.Rows(editedRow).Cells(2).Value, Decimal)
 
-        db.UpdateInventory(name, stock, price, editedRow)
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.UpdateInventory(name, stock, price, editedRow)
+        End Using
     End Sub
 
     Private Sub dgv_Inventory_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Inventory.UserDeletingRow
-        db.RemoveProduct(e.Row.Index)
+        Using db = New Database(My.Settings.Username, My.Settings.Password)
+            db.RemoveProduct(e.Row.Index)
+        End Using
     End Sub
 
 End Class
