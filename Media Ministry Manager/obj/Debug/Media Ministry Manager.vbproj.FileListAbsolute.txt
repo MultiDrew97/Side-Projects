@@ -211,3 +211,78 @@ C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Ma
 C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.CodeAnalysisLog.xml
 C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.lastcodeanalysissucceeded
 C:\Users\arand\Source\Repos\MultiDrew97\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\UrlBase64.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.g.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.MediaMinistrySplash.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_CustomMessage.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_EmailListeners.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Folder.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddListener.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ViewListeners.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewProduct.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayCustomers.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ChangePassword.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_CreateUser.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminSignIn.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Login.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_DisplayOrders.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Main.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_PlaceOrder.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdateInventory.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdatePhoneNumber.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewInventory.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Resources.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewCustomer.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.config
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe.manifest
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.application
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Auth.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Core.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.PlatformServices.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\MimeKit.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Newtonsoft.Json.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OOXML.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXml4Net.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Buffers.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Data.SqlClient.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\UrlBase64.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Auth.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Auth.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Core.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Core.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Drive.v3.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Gmail.v1.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\ICSharpCode.SharpZipLib.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\ICSharpCode.SharpZipLib.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\MimeKit.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\MimeKit.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Newtonsoft.Json.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OOXML.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXml4Net.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Buffers.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Data.SqlClient.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe.manifest
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.application
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CopyComplete
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe

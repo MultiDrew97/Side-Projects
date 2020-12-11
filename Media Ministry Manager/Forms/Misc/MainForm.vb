@@ -85,9 +85,6 @@ Public Class Frm_Main
     End Sub
 
     Private Sub Bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-        Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
-            out.Write(My.Resources.sender)
-        End Using
 
         If Not ValidateSender(CType(e.Argument, String)) Then
             Throw New FileNotFoundException("Sender was not found or was not copied correctly. Contact your developer.")
