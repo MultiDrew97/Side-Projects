@@ -28,5 +28,19 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=mediaministry.database.windows.net;Initial Catalog="Media Ministry";Persist Security Info=True;User ID=arandlemiller97;Password=JasmineLove2697</Value>
     </Setting>
+    <Setting Name="customMessageSubject" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;link rel="stylesheet" href="https://sppbc.hopto.org/css/emails.css"
+&lt;/head&gt;
+&lt;body&gt;
+{0}
+&lt;/body&gt;
+&lt;/html&gt;</Value>
+    </Setting>
+    <Setting Name="customMessageBody" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

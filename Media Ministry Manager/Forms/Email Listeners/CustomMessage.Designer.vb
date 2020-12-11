@@ -24,7 +24,7 @@ Partial Class frm_CustomMessage
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_CustomMessage))
-        Me.btn_Save = New System.Windows.Forms.Button()
+        Me.btn_Send = New System.Windows.Forms.Button()
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.lbl_MessageSubject = New System.Windows.Forms.Label()
         Me.lbl_MessageBody = New System.Windows.Forms.Label()
@@ -32,26 +32,26 @@ Partial Class frm_CustomMessage
         Me.rtb_MessageBody = New System.Windows.Forms.RichTextBox()
         Me.ms_Menu = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tt_HelperInfo = New System.Windows.Forms.ToolTip(Me.components)
         Me.ms_Menu.SuspendLayout()
         Me.SuspendLayout()
         '
-        'btn_Save
+        'btn_Send
         '
-        Me.btn_Save.AutoSize = True
-        Me.btn_Save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Save.Location = New System.Drawing.Point(423, 384)
-        Me.btn_Save.MaximumSize = New System.Drawing.Size(200, 200)
-        Me.btn_Save.MinimumSize = New System.Drawing.Size(100, 50)
-        Me.btn_Save.Name = "btn_Save"
-        Me.btn_Save.Size = New System.Drawing.Size(100, 50)
-        Me.btn_Save.TabIndex = 0
-        Me.btn_Save.Text = "Save"
-        Me.btn_Save.UseVisualStyleBackColor = True
+        Me.btn_Send.AutoSize = True
+        Me.btn_Send.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Send.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Send.Location = New System.Drawing.Point(423, 384)
+        Me.btn_Send.MaximumSize = New System.Drawing.Size(200, 200)
+        Me.btn_Send.MinimumSize = New System.Drawing.Size(100, 50)
+        Me.btn_Send.Name = "btn_Send"
+        Me.btn_Send.Size = New System.Drawing.Size(100, 50)
+        Me.btn_Send.TabIndex = 0
+        Me.btn_Send.Text = "Send"
+        Me.btn_Send.UseVisualStyleBackColor = True
         '
         'btn_Cancel
         '
@@ -124,25 +124,25 @@ Partial Class frm_CustomMessage
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
-        'EditToolStripMenuItem
-        '
-        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
-        Me.EditToolStripMenuItem.Text = "Edit"
-        '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         Me.SaveToolStripMenuItem.ToolTipText = "Save the custom message currently shown"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         Me.ExitToolStripMenuItem.ToolTipText = "Cancel the creation of a custom message"
+        '
+        'EditToolStripMenuItem
+        '
+        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
+        Me.EditToolStripMenuItem.Text = "Edit"
         '
         'frm_CustomMessage
         '
@@ -152,13 +152,13 @@ Partial Class frm_CustomMessage
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.CancelButton = Me.btn_Cancel
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(684, 457)
+        Me.ClientSize = New System.Drawing.Size(684, 461)
         Me.Controls.Add(Me.rtb_MessageBody)
         Me.Controls.Add(Me.txt_MessageSubject)
         Me.Controls.Add(Me.lbl_MessageBody)
         Me.Controls.Add(Me.lbl_MessageSubject)
         Me.Controls.Add(Me.btn_Cancel)
-        Me.Controls.Add(Me.btn_Save)
+        Me.Controls.Add(Me.btn_Send)
         Me.Controls.Add(Me.ms_Menu)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.ms_Menu
@@ -174,7 +174,7 @@ Partial Class frm_CustomMessage
 
     End Sub
 
-    Friend WithEvents btn_Save As Button
+    Friend WithEvents btn_Send As Button
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents lbl_MessageSubject As Label
     Friend WithEvents lbl_MessageBody As Label
