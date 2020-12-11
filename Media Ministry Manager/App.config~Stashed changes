@@ -10,7 +10,11 @@
         <add name="Media_Ministry.My.MySettings.masterConnectionString"
             connectionString="Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Persist Security Info=True;User ID=arandlemiller97;"
             providerName="System.Data.SqlClient" />
+<<<<<<<< HEAD:Media Ministry Manager/App.config~Stashed changes
         <add name="MediaMinistry.MySettings.masterConnectionString" connectionString="Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Persist Security Info=True;User ID=arandlemiller97;"
+========
+        <add name="MediaMinistry.MySettings.masterConnectionString" connectionString="Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Persist Security Info=True;User ID=arandlemiller97;Password=JasmineLove2697"
+>>>>>>>> Added the beginnings of the custom messages functionality:Media Ministry Manager/bin/Debug/Media Ministry Manager.exe.config
             providerName="System.Data.SqlClient" />
     </connectionStrings>
     <startup>
@@ -49,8 +53,11 @@
             </setting>
             <setting name="customMessageBody" serializeAs="String">
 <<<<<<<< HEAD:Media Ministry Manager/App.config~Stashed changes
+<<<<<<<< HEAD:Media Ministry Manager/App.config~Stashed changes
                 <value/>
 ========
+========
+>>>>>>>> Added the beginnings of the custom messages functionality:Media Ministry Manager/bin/Debug/Media Ministry Manager.exe.config
                 <value />
             </setting>
             <setting name="TempColle" serializeAs="Xml">
@@ -60,6 +67,9 @@
                         <string>{Andrew, arandlemiller97@yahoo.com}</string>
                     </ArrayOfString>
                 </value>
+<<<<<<<< HEAD:Media Ministry Manager/App.config~Stashed changes
+>>>>>>>> Added the beginnings of the custom messages functionality:Media Ministry Manager/bin/Debug/Media Ministry Manager.exe.config
+========
 >>>>>>>> Added the beginnings of the custom messages functionality:Media Ministry Manager/bin/Debug/Media Ministry Manager.exe.config
             </setting>
         </MediaMinistry.MySettings>
