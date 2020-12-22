@@ -263,6 +263,18 @@
     <Compile Include="Forms\Email Listeners\frm_ViewListeners.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Email Listeners\SendEmails.Designer.vb">
+      <DependentUpon>SendEmails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\SendEmails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\Upload.Designer.vb">
+      <DependentUpon>Upload.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Email Listeners\Upload.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Inventory\AddNewProduct.Designer.vb">
       <DependentUpon>AddNewProduct.vb</DependentUpon>
     </Compile>
@@ -402,6 +414,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
       <DependentUpon>frm_ViewListeners.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Email Listeners\SendEmails.resx">
+      <DependentUpon>SendEmails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Email Listeners\Upload.resx">
+      <DependentUpon>Upload.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory\AddNewProduct.resx">
       <DependentUpon>AddNewProduct.vb</DependentUpon>
