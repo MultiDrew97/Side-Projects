@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.GoogleAPI
+Imports MediaMinistry.Types
 Imports MediaMinistry.Helpers
 Imports System.Threading
 Imports MimeKit
@@ -12,16 +13,9 @@ Public Class frm_SendEmails
     Private closable As Boolean = False
 
     Private Sub Frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Try
-            Using uploader As New DriveUploader()
-                cbx_Folders.DataSource = uploader.GetFolders()
-            End Using
-        Catch ex As NullReferenceException
-            If cbx_Folders Is Nothing Then
-                MessageBox.Show("Combo Box was null.")
-            End If
-            Console.WriteLine(ex.StackTrace)
-        End Try
+        Using uploader As New DriveUploader()
+            cbx_Folders.DataSource = uploader.GetFolders()
+        End Using
     End Sub
 
     Private Sub Btn_AddFolder_Click(sender As Object, e As EventArgs)
@@ -37,7 +31,6 @@ Public Class frm_SendEmails
         End Using
 
         My.Settings.AdminInfoRecieved = False
-        My.Settings.Save()
     End Sub
 
     Private Sub Btn_UploadFile_Click(sender As Object, e As EventArgs) Handles btn_UploadFile.Click
@@ -105,8 +98,8 @@ Public Class frm_SendEmails
                         body = String.Format(My.Settings.customMessageBody, listener.Name)
                     End If
 
-                    If listener.Email.Equals("arandlemiller97@yahoo.com") Then
-                        content = emailer.Create(New MailboxAddress(listener.Name, listener.Email), subject, body)
+                    If listener.EmailAddress.Address.Equals("arandlemiller97@yahoo.com") Then
+                        content = emailer.Create(listener.EmailAddress, subject, body)
                         emailer.Send(content)
                     End If
                 Next

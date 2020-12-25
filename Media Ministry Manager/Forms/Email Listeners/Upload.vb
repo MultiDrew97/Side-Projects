@@ -1,5 +1,5 @@
 ﻿Imports System.ComponentModel
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.GoogleAPI
 
 Public Class Frm_Upload
     Private Sub Frm_EmailListeners_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
@@ -46,11 +46,18 @@ Public Class Frm_Upload
     End Sub
 
     Private Sub Chk_Custom_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Custom.CheckedChanged
+        'TODO: Make it so that the form changes the locations of the combo box and txt field pairs when changed
         txt_CustomName.Visible = chk_Custom.Checked
         lbl_CustomName.Visible = chk_Custom.Checked
     End Sub
 
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
+    End Sub
+
+    Private Sub Frm_Upload_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Using uploader As New DriveUploader
+            cbx_Folders.DataSource = uploader.GetFolders()
+        End Using
     End Sub
 End Class

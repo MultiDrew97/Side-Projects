@@ -382,11 +382,18 @@
     <Compile Include="Forms\Customer\AddNewCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Objects\DriveUploader.vb" />
+    <Compile Include="Objects\Google\DriveUploader.vb" />
     <Compile Include="Objects\Exceptions\FormClosedException.vb" />
     <Compile Include="Objects\Exceptions\PasswordException.vb" />
-    <Compile Include="Objects\Listener.vb" />
-    <Compile Include="Objects\Sender.vb" />
+    <Compile Include="Objects\Types\Orders\CompletedOrder.vb" />
+    <Compile Include="Objects\Types\Orders\Order.vb" />
+    <Compile Include="Objects\Types\People\Address.vb" />
+    <Compile Include="Objects\Types\People\Customer.vb" />
+    <Compile Include="Objects\Types\Inventory\Item.vb" />
+    <Compile Include="Objects\Types\People\Listener.vb" />
+    <Compile Include="Objects\Google\Sender.vb" />
+    <Compile Include="Objects\Types\People\Person.vb" />
+    <Compile Include="Objects\Types\Inventory\Product.vb" />
     <Compile Include="Objects\Utils.vb" />
   </ItemGroup>
   <ItemGroup>

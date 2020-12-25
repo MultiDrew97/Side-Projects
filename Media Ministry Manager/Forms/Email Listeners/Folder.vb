@@ -1,9 +1,10 @@
 ﻿Option Strict On
 
-Imports MediaMinistry.SendingEmails
+Imports System.ComponentModel
+Imports MediaMinistry.GoogleAPI
 
 Public Class frm_Folder
-    Private Sub btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
+    Private Sub Btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
         Using uploader As New DriveUploader()
             If uploader.CreateFolder(txt_FolderName.Text) IsNot Nothing Then
                 ReloadFolders()
@@ -15,9 +16,12 @@ Public Class frm_Folder
         End Using
     End Sub
 
-    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
-        My.Settings.AdminInfoRecieved = True
+    Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
+    End Sub
+
+    Private Sub Frm_Folder_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        My.Settings.AdminInfoRecieved = True
     End Sub
 
     Private Sub ReloadFolders()

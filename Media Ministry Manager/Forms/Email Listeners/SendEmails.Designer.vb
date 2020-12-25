@@ -28,6 +28,7 @@ Partial Class frm_SendEmails
         Me.cbx_Folders = New System.Windows.Forms.ComboBox()
         Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
         Me.tss_Feedback = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tsp_Progress = New System.Windows.Forms.ToolStripProgressBar()
         Me.cbx_Files = New System.Windows.Forms.ComboBox()
         Me.btn_AddFolder = New System.Windows.Forms.Button()
         Me.btn_UploadFile = New System.Windows.Forms.Button()
@@ -37,7 +38,6 @@ Partial Class frm_SendEmails
         Me.bw_LoadListeners = New System.ComponentModel.BackgroundWorker()
         Me.bw_SendEmails = New System.ComponentModel.BackgroundWorker()
         Me.bw_GetFileID = New System.ComponentModel.BackgroundWorker()
-        Me.tsp_Progress = New System.Windows.Forms.ToolStripProgressBar()
         Me.ss_Feedback.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -92,6 +92,13 @@ Partial Class frm_SendEmails
         Me.tss_Feedback.Name = "tss_Feedback"
         Me.tss_Feedback.Size = New System.Drawing.Size(104, 17)
         Me.tss_Feedback.Text = "Please select a file."
+        '
+        'tsp_Progress
+        '
+        Me.tsp_Progress.Margin = New System.Windows.Forms.Padding(650, 3, 1, 3)
+        Me.tsp_Progress.Name = "tsp_Progress"
+        Me.tsp_Progress.Size = New System.Drawing.Size(100, 16)
+        Me.tsp_Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
         'cbx_Files
         '
@@ -174,13 +181,6 @@ Partial Class frm_SendEmails
         '
         'bw_GetFileID
         '
-        '
-        'tsp_Progress
-        '
-        Me.tsp_Progress.Margin = New System.Windows.Forms.Padding(650, 3, 1, 3)
-        Me.tsp_Progress.Name = "tsp_Progress"
-        Me.tsp_Progress.Size = New System.Drawing.Size(100, 16)
-        Me.tsp_Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
         'frm_SendEmails
         '

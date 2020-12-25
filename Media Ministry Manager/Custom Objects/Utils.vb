@@ -10,6 +10,16 @@
             Next
         End Sub
 
+        Shared Function ConvertStateAbbr(abbr As String) As String
+            'TODO: Add the other states to this list
+            Select Case abbr
+                Case "tx", "TX"
+                    Return "Texas"
+                Case Else
+                    Return Nothing
+            End Select
+        End Function
+
         Shared Sub CloseOpenForms()
             'Close all open windows. Figuring this out will allow me to change from only clearing when primary form closes to when all forms close.
             'improving efficiency in memory management

@@ -18,7 +18,7 @@ Imports System.Threading
 Imports System.Threading.Tasks
 
 
-Namespace SendingEmails
+Namespace GoogleAPI
     Public Class Sender
         Implements IDisposable
         Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend}

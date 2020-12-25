@@ -5,7 +5,7 @@
 'https://support.microsoft.com/en-us/help/308656/how-to-open-a-sql-server-database-by-using-the-sql-server-net-data-pro
 Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.Types
 
 Public Class Database
     Implements IDisposable
@@ -423,13 +423,15 @@ Public Class Database
 
     Public Function GetListeners() As Collection(Of Listener)
         Dim listeners As New Collection(Of Listener)
-
+        Dim listener As Listener
         myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
 
         myReader = myCmd.ExecuteReader()
 
         Do While myReader.Read()
-            listeners.Add(New Listener(myReader.GetString(0), myReader.GetString(1)))
+            listener = Listener.Parse(myReader.GetString(0))
+            listener.EmailAddress = MimeKit.MailboxAddress.Parse(myReader.GetString(1))
+            listeners.Add(listener)
         Loop
 
         Return listeners
