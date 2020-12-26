@@ -15,20 +15,20 @@ Public Class Frm_AddListener
     Private Sub Reset()
         rdo_Single.Checked = True
 
-        lbl_Name.Visible = True
-        txt_Name.Visible = True
+        lbl_FirstName.Visible = True
+        txt_FirstName.Visible = True
 
         lbl_Email.Visible = True
         txt_Email.Visible = True
 
         lbl_FilePath.Visible = False
         txt_FilePath.Visible = False
-        btn_Search.Visible = False
+        btn_Browse.Visible = False
 
         btn_Add.Text = "Add Listener"
 
         txt_Email.Text = ""
-        txt_Name.Text = ""
+        txt_FirstName.Text = ""
         txt_FilePath.Text = ""
 
         btn_Add.Size = New Size() With {.Width = 187, .Height = 53}
@@ -38,7 +38,7 @@ Public Class Frm_AddListener
 
         Me.AllowDrop = False
 
-        txt_Name.Focus()
+        txt_FirstName.Focus()
     End Sub
 
     Private Sub Rdo_Single_CheckedChanged(sender As Object, e As EventArgs) Handles rdo_Single.CheckedChanged
@@ -53,15 +53,17 @@ Public Class Frm_AddListener
         If rdo_Multiple.Checked Then
             rdo_Single.Checked = False
 
-            lbl_Name.Visible = False
-            txt_Name.Visible = False
+            lbl_FirstName.Visible = False
+            txt_FirstName.Visible = False
+            lbl_LastName.Visible = False
+            txt_LastName.Visible = False
 
             lbl_Email.Visible = False
             txt_Email.Visible = False
 
             lbl_FilePath.Visible = True
             txt_FilePath.Visible = True
-            btn_Search.Visible = True
+            btn_Browse.Visible = True
 
             txt_FilePath.Text = ""
 
@@ -88,10 +90,16 @@ Public Class Frm_AddListener
     Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
 
         If rdo_Single.Checked Then
-            If Not String.IsNullOrWhiteSpace(txt_Email.Text) And Not String.IsNullOrWhiteSpace(txt_Name.Text) Then
+            If Not String.IsNullOrWhiteSpace(txt_Email.Text) And Not String.IsNullOrWhiteSpace(txt_FirstName.Text) Then
                 If IsMatch(txt_Email.Text, emailPattern) Then
                     Try
-                        db.AddListener(txt_Name.Text, txt_Email.Text)
+                        Dim name As String = txt_FirstName.Text
+
+                        If Not String.IsNullOrWhiteSpace(txt_LastName.Text) Then
+                            name &= txt_LastName.Text
+                        End If
+
+                        db.AddListener(name, txt_Email.Text)
                         tss_Feedback.ForeColor = Color.Black
                         tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
                         CType(Opener, frm_ViewListeners).customLoad()
@@ -105,9 +113,9 @@ Public Class Frm_AddListener
                 End If
             Else
                 tss_Feedback.Text = "No name or email was present"
-                txt_Name.Focus()
+                txt_FirstName.Focus()
             End If
-        ElseIf rdo_Multiple.Checked Then
+        Else
             If Not String.IsNullOrWhiteSpace(txt_FilePath.Text) And Path.GetExtension(txt_FilePath.Text).Equals(".csv") Then
                 Dim fields(2) As String
                 Dim counter As Integer = 0
@@ -166,7 +174,7 @@ Public Class Frm_AddListener
         End If
     End Sub
 
-    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
+    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
         ofd_ListenerList.ShowDialog()
     End Sub
 

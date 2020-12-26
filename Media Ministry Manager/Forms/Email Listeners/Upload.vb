@@ -2,6 +2,19 @@
 Imports MediaMinistry.GoogleAPI
 
 Public Class Frm_Upload
+    Private Structure Locations
+        Shared CustomNameFolder As Point() = {New Point(328, 38), New Point(338, 68)}
+        Shared CustomNameFile As Point() = {New Point(328, 180), New Point(338, 211)}
+        Shared CustomNameCheck As New Point(518, 294)
+        Shared CustomNameAdd As New Point(818, 68)
+        Shared CustomNameBrowse As New Point(818, 211)
+        Shared DefaultNameFolder As Point() = {New Point(328, 71), New Point(338, 101)}
+        Shared DefaultNameFile As Point() = {New Point(328, 213), New Point(338, 244)}
+        Shared DefaultNameCheck As New Point(518, 327)
+        Shared DefaultNameAdd As New Point(818, 101)
+        Shared DefaultNameBrowse As New Point(818, 244)
+    End Structure
+
     Private Sub Frm_EmailListeners_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         'found how to add this here: https://stackoverflow.com/questions/11686631/drag-drop-and-get-file-path-in-vb-net
         If e.Data.GetDataPresent("FileDrop", True) Then
@@ -46,7 +59,8 @@ Public Class Frm_Upload
     End Sub
 
     Private Sub Chk_Custom_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Custom.CheckedChanged
-        'TODO: Make it so that the form changes the locations of the combo box and txt field pairs when changed
+        bw_MovePairs.RunWorkerAsync()
+
         txt_CustomName.Visible = chk_Custom.Checked
         lbl_CustomName.Visible = chk_Custom.Checked
     End Sub
@@ -59,5 +73,30 @@ Public Class Frm_Upload
         Using uploader As New DriveUploader
             cbx_Folders.DataSource = uploader.GetFolders()
         End Using
+    End Sub
+
+    Private Sub bw_MovePairs_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_MovePairs.DoWork
+        'move the pairs according to the status of the custom name check box
+        Invoke(
+            Sub()
+                If chk_Custom.Checked Then
+                    lbl_Folder.Location = Locations.CustomNameFolder(0)
+                    cbx_Folders.Location = Locations.CustomNameFolder(1)
+                    chk_Custom.Location = Locations.CustomNameCheck
+                    btn_AddFolder.Location = Locations.CustomNameAdd
+                    lbl_FileLocation.Location = Locations.CustomNameFile(0)
+                    txt_FileLocation.Location = Locations.CustomNameFile(1)
+                    btn_Browse.Location = Locations.CustomNameBrowse
+                Else
+                    lbl_Folder.Location = Locations.DefaultNameFolder(0)
+                    cbx_Folders.Location = Locations.DefaultNameFolder(1)
+                    chk_Custom.Location = Locations.DefaultNameCheck
+                    btn_AddFolder.Location = Locations.DefaultNameAdd
+                    lbl_FileLocation.Location = Locations.DefaultNameFile(0)
+                    txt_FileLocation.Location = Locations.DefaultNameFile(1)
+                    btn_Browse.Location = Locations.DefaultNameBrowse
+                End If
+            End Sub
+        )
     End Sub
 End Class

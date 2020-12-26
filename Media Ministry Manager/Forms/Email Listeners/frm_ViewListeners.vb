@@ -178,4 +178,7 @@ Public Class frm_ViewListeners
         btn_Search.Show()
     End Sub
 
+    Private Sub Dgv_Listeners_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgv_Listeners.CellBeginEdit
+        oldEmail = CType(dgv_Listeners.Rows(e.RowIndex).Cells(1).Value, String)
+    End Sub
 End Class

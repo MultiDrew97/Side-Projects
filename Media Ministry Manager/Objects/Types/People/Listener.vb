@@ -22,12 +22,18 @@ Namespace Types
             Dim nameParts As String()
             nameParts = name.Split(" "c)
 
-            If nameParts.Length > 2 Then
-                Return Nothing
+            If nameParts.Length = 3 Then
+                'TODO: Clean this up later
+                nameParts(1) &= " " & nameParts(2)
+                Return New Listener(nameParts(0), nameParts(1))
             ElseIf nameParts.Length = 2 Then
                 Return New Listener(nameParts(0), nameParts(1))
+            ElseIf nameParts.Length = 1 Then
+                Return New Listener(nameParts(0), Nothing)
+            ElseIf nameParts.Length = 0 Then
+                Return New Listener(Nothing, Nothing)
             Else
-                Return CType(IIf(nameParts.Length = 1, New Listener(nameParts(0), Nothing), New Listener(Nothing, Nothing)), Listener)
+                Return Nothing
             End If
         End Function
     End Class

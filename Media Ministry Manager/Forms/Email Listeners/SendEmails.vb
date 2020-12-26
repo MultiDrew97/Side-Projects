@@ -2,7 +2,6 @@
 Imports MediaMinistry.GoogleAPI
 Imports MediaMinistry.Types
 Imports MediaMinistry.Helpers
-Imports System.Threading
 Imports MimeKit
 Imports System.Collections.ObjectModel
 

@@ -37,6 +37,7 @@ Partial Class Frm_Upload
         Me.txt_CustomName = New System.Windows.Forms.TextBox()
         Me.tt_Info = New System.Windows.Forms.ToolTip(Me.components)
         Me.lbl_CustomName = New System.Windows.Forms.Label()
+        Me.bw_MovePairs = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'ofd_SelectAudio
@@ -46,7 +47,7 @@ Partial Class Frm_Upload
         'btn_AddFolder
         '
         Me.btn_AddFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_AddFolder.Location = New System.Drawing.Point(818, 68)
+        Me.btn_AddFolder.Location = New System.Drawing.Point(818, 101)
         Me.btn_AddFolder.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.btn_AddFolder.Name = "btn_AddFolder"
         Me.btn_AddFolder.Size = New System.Drawing.Size(55, 33)
@@ -58,7 +59,7 @@ Partial Class Frm_Upload
         '
         Me.btn_Browse.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Browse.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btn_Browse.Location = New System.Drawing.Point(818, 211)
+        Me.btn_Browse.Location = New System.Drawing.Point(818, 244)
         Me.btn_Browse.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.btn_Browse.Name = "btn_Browse"
         Me.btn_Browse.Size = New System.Drawing.Size(55, 33)
@@ -70,7 +71,7 @@ Partial Class Frm_Upload
         '
         Me.txt_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txt_FileLocation.Location = New System.Drawing.Point(338, 211)
+        Me.txt_FileLocation.Location = New System.Drawing.Point(338, 244)
         Me.txt_FileLocation.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.txt_FileLocation.Name = "txt_FileLocation"
         Me.txt_FileLocation.ReadOnly = True
@@ -83,7 +84,7 @@ Partial Class Frm_Upload
         Me.lbl_FileLocation.AutoSize = True
         Me.lbl_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_FileLocation.Location = New System.Drawing.Point(328, 180)
+        Me.lbl_FileLocation.Location = New System.Drawing.Point(328, 213)
         Me.lbl_FileLocation.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.lbl_FileLocation.Name = "lbl_FileLocation"
         Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 26)
@@ -95,7 +96,7 @@ Partial Class Frm_Upload
         Me.lbl_Folder.AutoSize = True
         Me.lbl_Folder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_Folder.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_Folder.Location = New System.Drawing.Point(328, 38)
+        Me.lbl_Folder.Location = New System.Drawing.Point(328, 71)
         Me.lbl_Folder.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.lbl_Folder.Name = "lbl_Folder"
         Me.lbl_Folder.Size = New System.Drawing.Size(79, 26)
@@ -107,7 +108,7 @@ Partial Class Frm_Upload
         Me.cbx_Folders.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbx_Folders.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbx_Folders.FormattingEnabled = True
-        Me.cbx_Folders.Location = New System.Drawing.Point(338, 68)
+        Me.cbx_Folders.Location = New System.Drawing.Point(338, 101)
         Me.cbx_Folders.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.cbx_Folders.Name = "cbx_Folders"
         Me.cbx_Folders.Size = New System.Drawing.Size(466, 33)
@@ -137,7 +138,7 @@ Partial Class Frm_Upload
         'chk_Custom
         '
         Me.chk_Custom.AutoSize = True
-        Me.chk_Custom.Location = New System.Drawing.Point(518, 294)
+        Me.chk_Custom.Location = New System.Drawing.Point(518, 327)
         Me.chk_Custom.Name = "chk_Custom"
         Me.chk_Custom.Size = New System.Drawing.Size(177, 29)
         Me.chk_Custom.TabIndex = 20
@@ -171,6 +172,9 @@ Partial Class Frm_Upload
         Me.lbl_CustomName.TabIndex = 15
         Me.lbl_CustomName.Text = "Name:"
         Me.lbl_CustomName.Visible = False
+        '
+        'bw_MovePairs
+        '
         '
         'Frm_Upload
         '
@@ -212,4 +216,5 @@ Partial Class Frm_Upload
     Friend WithEvents txt_CustomName As TextBox
     Friend WithEvents tt_Info As ToolTip
     Friend WithEvents lbl_CustomName As Label
+    Friend WithEvents bw_MovePairs As System.ComponentModel.BackgroundWorker
 End Class

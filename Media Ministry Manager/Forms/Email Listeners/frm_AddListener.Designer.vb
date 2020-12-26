@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm_AddListener
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,23 +20,23 @@ Partial Class Frm_AddListener
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_AddListener))
         Me.gbx_Options = New System.Windows.Forms.GroupBox()
         Me.rdo_Single = New System.Windows.Forms.RadioButton()
         Me.rdo_Multiple = New System.Windows.Forms.RadioButton()
         Me.ofd_ListenerList = New System.Windows.Forms.OpenFileDialog()
-        Me.txt_Name = New System.Windows.Forms.TextBox()
+        Me.txt_FirstName = New System.Windows.Forms.TextBox()
         Me.txt_Email = New System.Windows.Forms.TextBox()
-        Me.lbl_Name = New System.Windows.Forms.Label()
+        Me.lbl_FirstName = New System.Windows.Forms.Label()
         Me.lbl_Email = New System.Windows.Forms.Label()
         Me.lbl_FilePath = New System.Windows.Forms.Label()
         Me.txt_FilePath = New System.Windows.Forms.TextBox()
         Me.btn_Add = New System.Windows.Forms.Button()
         Me.btn_Cancel = New System.Windows.Forms.Button()
-        Me.btn_Search = New System.Windows.Forms.Button()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.btn_Browse = New System.Windows.Forms.Button()
+        Me.ss_FeedbackStrip = New System.Windows.Forms.StatusStrip()
         Me.tss_Feedback = New System.Windows.Forms.ToolStripStatusLabel()
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -102,47 +102,47 @@ Partial Class Frm_AddListener
         Me.ofd_ListenerList.Filter = "List (*.csv)|*.csv"
         Me.ofd_ListenerList.Title = "List of Listeners (.csv)"
         '
-        'txt_Name
+        'txt_FirstName
         '
-        Me.txt_Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.txt_Name.Location = New System.Drawing.Point(371, 81)
-        Me.txt_Name.Name = "txt_Name"
-        Me.txt_Name.Size = New System.Drawing.Size(449, 32)
-        Me.txt_Name.TabIndex = 1
+        Me.txt_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.txt_FirstName.Location = New System.Drawing.Point(299, 62)
+        Me.txt_FirstName.Name = "txt_FirstName"
+        Me.txt_FirstName.Size = New System.Drawing.Size(249, 32)
+        Me.txt_FirstName.TabIndex = 1
         '
         'txt_Email
         '
         Me.txt_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.txt_Email.Location = New System.Drawing.Point(371, 129)
+        Me.txt_Email.Location = New System.Drawing.Point(342, 175)
         Me.txt_Email.Name = "txt_Email"
         Me.txt_Email.Size = New System.Drawing.Size(449, 32)
         Me.txt_Email.TabIndex = 2
         '
-        'lbl_Name
+        'lbl_FirstName
         '
-        Me.lbl_Name.AutoSize = True
-        Me.lbl_Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_Name.Location = New System.Drawing.Point(282, 81)
-        Me.lbl_Name.Name = "lbl_Name"
-        Me.lbl_Name.Size = New System.Drawing.Size(82, 26)
-        Me.lbl_Name.TabIndex = 3
-        Me.lbl_Name.Text = "Name:"
+        Me.lbl_FirstName.AutoSize = True
+        Me.lbl_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.lbl_FirstName.Location = New System.Drawing.Point(294, 33)
+        Me.lbl_FirstName.Name = "lbl_FirstName"
+        Me.lbl_FirstName.Size = New System.Drawing.Size(136, 26)
+        Me.lbl_FirstName.TabIndex = 3
+        Me.lbl_FirstName.Text = "First Name:"
         '
         'lbl_Email
         '
         Me.lbl_Email.AutoSize = True
         Me.lbl_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_Email.Location = New System.Drawing.Point(282, 129)
+        Me.lbl_Email.Location = New System.Drawing.Point(337, 146)
         Me.lbl_Email.Name = "lbl_Email"
-        Me.lbl_Email.Size = New System.Drawing.Size(80, 26)
+        Me.lbl_Email.Size = New System.Drawing.Size(174, 26)
         Me.lbl_Email.TabIndex = 4
-        Me.lbl_Email.Text = "Email:"
+        Me.lbl_Email.Text = "Email Address:"
         '
         'lbl_FilePath
         '
         Me.lbl_FilePath.AutoSize = True
         Me.lbl_FilePath.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_FilePath.Location = New System.Drawing.Point(276, 114)
+        Me.lbl_FilePath.Location = New System.Drawing.Point(358, 85)
         Me.lbl_FilePath.Name = "lbl_FilePath"
         Me.lbl_FilePath.Size = New System.Drawing.Size(114, 26)
         Me.lbl_FilePath.TabIndex = 5
@@ -151,7 +151,7 @@ Partial Class Frm_AddListener
         'txt_FilePath
         '
         Me.txt_FilePath.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.txt_FilePath.Location = New System.Drawing.Point(396, 110)
+        Me.txt_FilePath.Location = New System.Drawing.Point(363, 111)
         Me.txt_FilePath.Name = "txt_FilePath"
         Me.txt_FilePath.ReadOnly = True
         Me.txt_FilePath.Size = New System.Drawing.Size(417, 32)
@@ -161,7 +161,7 @@ Partial Class Frm_AddListener
         '
         Me.btn_Add.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btn_Add.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_Add.Location = New System.Drawing.Point(503, 223)
+        Me.btn_Add.Location = New System.Drawing.Point(495, 232)
         Me.btn_Add.Name = "btn_Add"
         Me.btn_Add.Size = New System.Drawing.Size(187, 53)
         Me.btn_Add.TabIndex = 7
@@ -172,31 +172,31 @@ Partial Class Frm_AddListener
         '
         Me.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btn_Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_Cancel.Location = New System.Drawing.Point(233, 223)
+        Me.btn_Cancel.Location = New System.Drawing.Point(225, 232)
         Me.btn_Cancel.Name = "btn_Cancel"
         Me.btn_Cancel.Size = New System.Drawing.Size(187, 53)
         Me.btn_Cancel.TabIndex = 8
         Me.btn_Cancel.Text = "Cancel"
         Me.btn_Cancel.UseVisualStyleBackColor = True
         '
-        'btn_Search
+        'btn_Browse
         '
-        Me.btn_Search.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_Search.Location = New System.Drawing.Point(819, 110)
-        Me.btn_Search.Name = "btn_Search"
-        Me.btn_Search.Size = New System.Drawing.Size(43, 32)
-        Me.btn_Search.TabIndex = 9
-        Me.btn_Search.Text = "..."
-        Me.btn_Search.UseVisualStyleBackColor = True
+        Me.btn_Browse.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_Browse.Location = New System.Drawing.Point(787, 111)
+        Me.btn_Browse.Name = "btn_Browse"
+        Me.btn_Browse.Size = New System.Drawing.Size(43, 32)
+        Me.btn_Browse.TabIndex = 9
+        Me.btn_Browse.Text = "..."
+        Me.btn_Browse.UseVisualStyleBackColor = True
         '
-        'StatusStrip1
+        'ss_FeedbackStrip
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 312)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(880, 22)
-        Me.StatusStrip1.TabIndex = 10
-        Me.StatusStrip1.Text = "StatusStrip1"
+        Me.ss_FeedbackStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
+        Me.ss_FeedbackStrip.Location = New System.Drawing.Point(0, 312)
+        Me.ss_FeedbackStrip.Name = "ss_FeedbackStrip"
+        Me.ss_FeedbackStrip.Size = New System.Drawing.Size(880, 22)
+        Me.ss_FeedbackStrip.TabIndex = 10
+        Me.ss_FeedbackStrip.Text = "StatusStrip1"
         '
         'tss_Feedback
         '
@@ -350,9 +350,11 @@ Partial Class Frm_AddListener
         Me.Controls.Add(Me.txt_FilePath)
         Me.Controls.Add(Me.lbl_FilePath)
         Me.Controls.Add(Me.lbl_Email)
-        Me.Controls.Add(Me.lbl_Name)
+        Me.Controls.Add(Me.lbl_LastName)
+        Me.Controls.Add(Me.lbl_FirstName)
         Me.Controls.Add(Me.txt_Email)
-        Me.Controls.Add(Me.txt_Name)
+        Me.Controls.Add(Me.txt_LastName)
+        Me.Controls.Add(Me.txt_FirstName)
         Me.Controls.Add(Me.gbx_Options)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -374,16 +376,16 @@ Partial Class Frm_AddListener
     Friend WithEvents rdo_Multiple As RadioButton
     Friend WithEvents rdo_Single As RadioButton
     Friend WithEvents ofd_ListenerList As OpenFileDialog
-    Friend WithEvents txt_Name As TextBox
+    Friend WithEvents txt_FirstName As TextBox
     Friend WithEvents txt_Email As TextBox
-    Friend WithEvents lbl_Name As Label
+    Friend WithEvents lbl_FirstName As Label
     Friend WithEvents lbl_Email As Label
     Friend WithEvents lbl_FilePath As Label
     Friend WithEvents txt_FilePath As TextBox
     Friend WithEvents btn_Add As Button
     Friend WithEvents btn_Cancel As Button
-    Friend WithEvents btn_Search As Button
-    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents btn_Browse As Button
+    Friend WithEvents ss_FeedbackStrip As StatusStrip
     Friend WithEvents tss_Feedback As ToolStripStatusLabel
     Friend WithEvents mnstr_Strip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
