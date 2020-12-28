@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text.RegularExpressions.Regex
 Imports MediaMinistry.Helpers
+Imports MediaMinistry.Types
 Imports Microsoft.VisualBasic.FileIO
 
 Public Class Frm_AddListener
@@ -24,6 +25,7 @@ Public Class Frm_AddListener
         lbl_FilePath.Visible = False
         txt_FilePath.Visible = False
         btn_Browse.Visible = False
+        chk_Headers.Visible = False
 
         btn_Add.Text = "Add Listener"
 
@@ -31,8 +33,8 @@ Public Class Frm_AddListener
         txt_FirstName.Text = ""
         txt_FilePath.Text = ""
 
-        btn_Add.Size = New Size() With {.Width = 187, .Height = 53}
-        btn_Cancel.Size = New Size() With {.Width = 187, .Height = 53}
+        btn_Add.Size = New Size(187, 53)
+        btn_Cancel.Size = btn_Add.Size
 
         tss_Feedback.Text = "Enter the name and email of the new listener"
 
@@ -64,12 +66,13 @@ Public Class Frm_AddListener
             lbl_FilePath.Visible = True
             txt_FilePath.Visible = True
             btn_Browse.Visible = True
+            chk_Headers.Visible = True
 
             txt_FilePath.Text = ""
 
             btn_Add.Text = "Import Listeners"
-            btn_Add.Size = New Size() With {.Height = 62, .Width = 187}
-            btn_Cancel.Size = New Size() With {.Height = 62, .Width = 187}
+            btn_Add.Size = New Size(187, 62)
+            btn_Cancel.Size = btn_Add.Size 'New Size(187, 62)
             tss_Feedback.Text = "Please select the .csv file that has the new listeners"
 
             Me.AllowDrop = True
@@ -99,7 +102,7 @@ Public Class Frm_AddListener
                             name &= txt_LastName.Text
                         End If
 
-                        db.AddListener(name, txt_Email.Text)
+                        db.AddListener(New Listener(txt_FirstName.Text, CType(IIf(String.IsNullOrWhiteSpace(txt_LastName.Text), Nothing, txt_LastName.Text), String), txt_Email.Text))
                         tss_Feedback.ForeColor = Color.Black
                         tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
                         CType(Opener, frm_ViewListeners).customLoad()
@@ -108,37 +111,48 @@ Public Class Frm_AddListener
                         tss_Feedback.Text = "Listener might already be in the system. Please try again."
                     End Try
                 Else
+                    ep_Required.SetError(txt_Email, "Must be in username@domain.ext format (i.e johndoe@gmail.com)")
                     tss_Feedback.Text = "The email is not in a supported format (username@domain.com)..."
                     tss_Feedback.ForeColor = Color.Red
                 End If
             Else
-                tss_Feedback.Text = "No name or email was present"
+                If String.IsNullOrWhiteSpace(txt_FirstName.Text) Then
+                    ep_Required.SetError(txt_FirstName, "A first name is required for a listener")
+                End If
+
+                If String.IsNullOrWhiteSpace(txt_Email.Text) Then
+                    ep_Required.SetError(txt_Email, "An email is required for a listener")
+                End If
+
+                tss_Feedback.Text = "There were required fields missing"
+                tss_Feedback.ForeColor = Color.Red
                 txt_FirstName.Focus()
             End If
         Else
+            'Adding listeners from a csv file
             If Not String.IsNullOrWhiteSpace(txt_FilePath.Text) And Path.GetExtension(txt_FilePath.Text).Equals(".csv") Then
-                Dim fields(2) As String
-                Dim counter As Integer = 0
+                Dim fields(1) As String
                 Dim successCount As Integer = 0
                 Dim failCount As Integer = 0
-                'Dim fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
+                Dim currentLine As String()
 
                 Using fin As TextFieldParser = New TextFieldParser(ofd_ListenerList.FileName)
                     fin.TextFieldType = FieldType.Delimited
                     fin.SetDelimiters(",")
 
                     Using fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
-
+                        Dim listener As Listener
                         While (Not fin.EndOfData)
-                            counter = 0
-                            For Each field As String In fin.ReadFields()
-                                fields(counter) = field
-                                counter += 1
+                            currentLine = fin.ReadFields()
+                            For i = 0 To 1
+                                fields(i) = currentLine(i)
                             Next
 
                             If IsMatch(fields(1), emailPattern) Then
                                 Try
-                                    db.AddListener(fields(0), fields(1))
+                                    listener = Listener.Parse(fields(0))
+                                    listener.EmailAddress = MimeKit.MailboxAddress.Parse(fields(1))
+                                    db.AddListener(listener)
                                     successCount += 1
                                 Catch ex As SqlException
                                     fout.WriteLineAsync(String.Format("{0},{1} #{2}", fields(0), fields(1), ex.Message))

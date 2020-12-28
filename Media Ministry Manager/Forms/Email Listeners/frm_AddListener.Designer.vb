@@ -142,7 +142,7 @@ Partial Class Frm_AddListener
         '
         Me.lbl_FilePath.AutoSize = True
         Me.lbl_FilePath.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_FilePath.Location = New System.Drawing.Point(358, 85)
+        Me.lbl_FilePath.Location = New System.Drawing.Point(358, 67)
         Me.lbl_FilePath.Name = "lbl_FilePath"
         Me.lbl_FilePath.Size = New System.Drawing.Size(114, 26)
         Me.lbl_FilePath.TabIndex = 5
@@ -151,7 +151,7 @@ Partial Class Frm_AddListener
         'txt_FilePath
         '
         Me.txt_FilePath.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.txt_FilePath.Location = New System.Drawing.Point(363, 111)
+        Me.txt_FilePath.Location = New System.Drawing.Point(363, 93)
         Me.txt_FilePath.Name = "txt_FilePath"
         Me.txt_FilePath.ReadOnly = True
         Me.txt_FilePath.Size = New System.Drawing.Size(417, 32)
@@ -182,7 +182,7 @@ Partial Class Frm_AddListener
         'btn_Browse
         '
         Me.btn_Browse.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_Browse.Location = New System.Drawing.Point(787, 111)
+        Me.btn_Browse.Location = New System.Drawing.Point(787, 93)
         Me.btn_Browse.Name = "btn_Browse"
         Me.btn_Browse.Size = New System.Drawing.Size(43, 32)
         Me.btn_Browse.TabIndex = 9
@@ -335,13 +335,32 @@ Partial Class Frm_AddListener
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'Frm_AddListener
+        'ep_Required
+        '
+        Me.ep_Required.ContainerControl = Me
+        '
+        'chk_Headers
+        '
+        Me.chk_Headers.AutoSize = True
+        Me.chk_Headers.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chk_Headers.Location = New System.Drawing.Point(509, 143)
+        Me.chk_Headers.Name = "chk_Headers"
+        Me.chk_Headers.Size = New System.Drawing.Size(219, 29)
+        Me.chk_Headers.TabIndex = 11
+        Me.chk_Headers.Text = "Contains Headers"
+        Me.chk_Headers.UseVisualStyleBackColor = True
+        Me.chk_Headers.Visible = False
+        '
+        'frm_AddListener
         '
         Me.AcceptButton = Me.btn_Add
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btn_Cancel
         Me.ClientSize = New System.Drawing.Size(880, 334)
+        Me.Controls.Add(Me.chk_Headers)
+        Me.Controls.Add(Me.ss_FeedbackStrip)
+        Me.Controls.Add(Me.btn_Browse)
         Me.Controls.Add(Me.mnstr_Strip)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btn_Search)
@@ -363,6 +382,9 @@ Partial Class Frm_AddListener
         Me.Text = "Media Ministry Manager"
         Me.gbx_Options.ResumeLayout(False)
         Me.gbx_Options.PerformLayout()
+        Me.ss_FeedbackStrip.ResumeLayout(False)
+        Me.ss_FeedbackStrip.PerformLayout()
+        CType(Me.ep_Required, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
@@ -407,4 +429,8 @@ Partial Class Frm_AddListener
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents txt_LastName As TextBox
+    Friend WithEvents lbl_LastName As Label
+    Friend WithEvents ep_Required As ErrorProvider
+    Friend WithEvents chk_Headers As CheckBox
 End Class

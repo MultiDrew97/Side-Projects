@@ -6,7 +6,7 @@ Namespace Types
 
         Public ReadOnly Property Name() As String
             Get
-                Return Me.FirstName & " " & Me.LastName
+                Return CType(IIf(IsNothing(LastName), FirstName, FirstName & " " & LastName), String)
             End Get
         End Property
 

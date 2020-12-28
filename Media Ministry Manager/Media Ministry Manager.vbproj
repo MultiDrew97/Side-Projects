@@ -382,19 +382,19 @@
     <Compile Include="Forms\Customer\AddNewCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Objects\Google\DriveUploader.vb" />
-    <Compile Include="Objects\Exceptions\FormClosedException.vb" />
-    <Compile Include="Objects\Exceptions\PasswordException.vb" />
-    <Compile Include="Objects\Types\Orders\CompletedOrder.vb" />
-    <Compile Include="Objects\Types\Orders\Order.vb" />
-    <Compile Include="Objects\Types\People\Address.vb" />
-    <Compile Include="Objects\Types\People\Customer.vb" />
-    <Compile Include="Objects\Types\Inventory\Item.vb" />
-    <Compile Include="Objects\Types\People\Listener.vb" />
-    <Compile Include="Objects\Google\Sender.vb" />
-    <Compile Include="Objects\Types\People\Person.vb" />
-    <Compile Include="Objects\Types\Inventory\Product.vb" />
-    <Compile Include="Objects\Utils.vb" />
+    <Compile Include="Customs\Google\DriveUploader.vb" />
+    <Compile Include="Customs\Exceptions\FormClosedException.vb" />
+    <Compile Include="Customs\Exceptions\PasswordException.vb" />
+    <Compile Include="Customs\Types\Orders\CompletedOrder.vb" />
+    <Compile Include="Customs\Types\Orders\Order.vb" />
+    <Compile Include="Customs\Types\People\Address.vb" />
+    <Compile Include="Customs\Types\People\Customer.vb" />
+    <Compile Include="Customs\Types\Inventory\Item.vb" />
+    <Compile Include="Customs\Types\People\Listener.vb" />
+    <Compile Include="Customs\Google\Sender.vb" />
+    <Compile Include="Customs\Types\People\Person.vb" />
+    <Compile Include="Customs\Types\Inventory\Product.vb" />
+    <Compile Include="Customs\Utils.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\MediaMinistrySplash.resx">
