@@ -77,7 +77,8 @@ Public Class frm_ViewListeners
 
     Private Sub dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
         Using db = New Database(My.Settings.Username, My.Settings.Password)
-            db.removeListener(CType(e.Row.Cells(0).Value, String), CType(e.Row.Cells(1).Value, String))
+            'db.removeListener(CType(e.Row.Cells(0).Value, String), CType(e.Row.Cells(1).Value, String))
+            db.RemoveListener(CType(e.Row.Cells(1).Value, String))
         End Using
     End Sub
 
@@ -86,7 +87,7 @@ Public Class frm_ViewListeners
         Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Using db = New Database(My.Settings.Username, My.Settings.Password)
-            db.updateListener(name, email)
+            db.UpdateListener(New SendingEmails.Listener(name, email), email)
         End Using
     End Sub
 

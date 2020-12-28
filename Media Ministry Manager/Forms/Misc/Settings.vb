@@ -10,8 +10,9 @@ Public Class Frm_Settings
     Private cts As CancellationTokenSource
     ReadOnly bold As String = "Bolded? {0}"
     ReadOnly fontSize As String = "Font Size: {0}pt"
-    ReadOnly textFont As String = "Font: {0}"
-    Dim result As DialogResult
+    Private textFont As String = "Font: {0}"
+    Private result As DialogResult
+
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Console.WriteLine(String.Format("{0:C}", 10.568))
         'Load settings from settings file to display to user
@@ -104,7 +105,7 @@ Public Class Frm_Settings
         If btn_Gmail.Text = "Unlink Gmail" Then
             Try
                 Directory.Delete(Application.StartupPath & "\Gmail Token", True)
-                btn_Gmail.Text = "Link Google Drive"
+                btn_Gmail.Text = "Link Gmail"
                 lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
             Catch ex As DirectoryNotFoundException
 
@@ -178,8 +179,15 @@ Public Class Frm_Settings
                 'Retrieve the Google Drive Info being used by the user
                 If Directory.Exists(Application.StartupPath & "\Gmail Token") Then
                     Using emailer As New Sender()
-                        lbl_CurrentGmail.Text = String.Format(currentUser, CType(emailer.Info, Profile).EmailAddress)
-                        btn_Gmail.Text = "Unlink Google Drive"
+                        Dim profile As Profile = CType(emailer.Info, Profile)
+
+                        If profile IsNot Nothing Then
+                            lbl_CurrentGmail.Text = String.Format(currentUser, profile.EmailAddress)
+                            btn_Gmail.Text = "Unlink Gmail"
+                        Else
+                            lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
+                            btn_Gmail.Text = "Unlink Gmail"
+                        End If
                     End Using
                 Else
                     lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")

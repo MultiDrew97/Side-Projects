@@ -194,6 +194,50 @@ Namespace SendingEmails
             Return listeners
         End Function
 
+        Public Function GetFiles(folderID As String) As Collection(Of String)
+            Dim request As FilesResource.ListRequest = Service.Files.List()
+            Dim files As New Collection(Of String)
+            Dim pageToken As String = Nothing
+
+            Do
+                request.Q = String.Format("mimeType!='application/vnd.google-apps.folder' and '{0}' in parents", folderID)
+                request.Spaces = "drive"
+                request.Fields = "nextPageToken, files(name)"
+                request.PageToken = pageToken
+
+                Dim results As FileList = request.Execute()
+
+                For Each file As Data.File In results.Files
+                    files.Add(file.Name)
+                Next
+            Loop While pageToken IsNot Nothing
+
+            Return files
+        End Function
+
+        Public Function GetFileID(fileName As String) As String
+            Dim request As FilesResource.ListRequest = Service.Files.List()
+            Dim pageToken As String = Nothing
+
+            Do
+                request.Q = "mimeType!='application/vnd.google-apps.folder'"
+                request.Spaces = "drive"
+                request.Fields = "nextPageToken, files(id, name)"
+                request.PageToken = pageToken
+
+                Dim results As FileList = request.Execute()
+
+                For Each file As Data.File In results.Files
+                    If file.Name = fileName Then
+                        Return file.Id
+                    End If
+                Next
+            Loop While pageToken IsNot Nothing
+
+            Return Nothing
+        End Function
+
+
         Public ReadOnly Property GetFolders As Collection(Of String)
             Get
                 Dim folders As New Collection(Of String)

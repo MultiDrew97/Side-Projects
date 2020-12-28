@@ -5,7 +5,6 @@ Imports MediaMinistry.SendingEmails
 Imports MediaMinistry.Helpers
 
 Public Class Frm_EmailListeners
-    Property Uploader() As DriveUploader
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
@@ -90,17 +89,19 @@ Public Class Frm_EmailListeners
 
     Private Sub Frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
-            cbx_Folders.DataSource = Uploader.GetFolders()
+            Using uploader As New DriveUploader()
+                cbx_Folders.DataSource = uploader.GetFolders()
+            End Using
         Catch ex As NullReferenceException
             If cbx_Folders Is Nothing Then
                 MessageBox.Show("Combo Box was null.")
-            ElseIf Uploader Is Nothing Then
-                MessageBox.Show("Drive uploader was null.")
             End If
         End Try
     End Sub
 
     Private Sub Btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
+        txt_FileLocation.Visible = True
+        cbx_Files.Visible = False
         ofd_SelectAudio.ShowDialog()
     End Sub
 
@@ -108,8 +109,9 @@ Public Class Frm_EmailListeners
         If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
             Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
             Dim folderName As String = CType(CType(e.Argument, Object())(0), String)
-
-            fileID = Uploader.Upload(ofd_SelectAudio.FileName, folderName, tss)
+            Using uploader As New DriveUploader()
+                fileID = uploader.Upload(ofd_SelectAudio.FileName, folderName, tss)
+            End Using
             tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to or Send the last one to your listeners"
         Else
             tss_Feedback.Text = "You have to select a file first..."
@@ -121,15 +123,15 @@ Public Class Frm_EmailListeners
         frm_Folder.Show()
 
         Do Until My.Settings.AdminInfoRecieved
-            Utils.wait(1)
+            Utils.Wait(1)
         Loop
-		
+
         My.Settings.AdminInfoRecieved = False
         My.Settings.Save()
     End Sub
 
     Private Sub Frm_EmailListeners_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Dim main As New Frm_Main()
+        Dim main As New frm_Main()
         main.Show()
     End Sub
 
@@ -141,22 +143,32 @@ Public Class Frm_EmailListeners
 
     Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
         tss_Feedback.ForeColor = Color.Black
-        If fileID IsNot Nothing Then
-            tss_Feedback.Text = "Sending emails to listeners..."
-            Dim sending As Process = Process.Start(emailerLocation, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
+        'If fileID IsNot Nothing Then
+        '    tss_Feedback.Text = "Sending emails to listeners..."
+        '    Dim sending As Process = Process.Start(emailerLocation, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
 
-            sending.WaitForExit()
+        '    sending.WaitForExit()
 
-            If sending.ExitCode = 0 Then
-                txt_FileLocation.Text = ""
-                tss_Feedback.Text = "All emails sent successfully..."
-            Else
-                tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact you developer..."
-                tss_Feedback.ForeColor = Color.Red
+        '    If sending.ExitCode = 0 Then
+        '        txt_FileLocation.Text = ""
+        '        tss_Feedback.Text = "All emails sent successfully..."
+        '    Else
+        '        tss_Feedback.Text = "Something went wrong. Try again and if problem persists, contact you developer..."
+        '        tss_Feedback.ForeColor = Color.Red
+        '    End If
+        'Else
+        '    tss_Feedback.Text = "You have to upload something first..."
+        '    tss_Feedback.ForeColor = Color.Red
+        'End If
+        If cbx_Files.SelectedItem IsNot Nothing Then
+            Using uploader As New DriveUploader()
+                fileID = uploader.getFileID(CType(cbx_Files.SelectedItem, String))
+            End Using
+            If fileID IsNot Nothing Then
+                Using emailer As New Sender()
+                    emailer.Send(emailer.Create(New MimeKit.MailboxAddress("arandlemiller97@yahoo.com"), "Test Email", String.Format(My.Resources.newSermon, "Andrew Randle-Warren", String.Format(shareLink, fileID))))
+                End Using
             End If
-        Else
-            tss_Feedback.Text = "You have to upload something first..."
-            tss_Feedback.ForeColor = Color.Red
         End If
     End Sub
 
@@ -211,6 +223,14 @@ Public Class Frm_EmailListeners
     End Sub
 
     Sub LoadFolders()
-        cbx_Folders.DataSource = Uploader.GetFolders()
+        Using uploader As New DriveUploader()
+            cbx_Folders.DataSource = uploader.GetFolders()
+        End Using
+    End Sub
+
+    Private Sub cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Folders.SelectedIndexChanged
+        Using uploader As New DriveUploader
+            cbx_Files.DataSource = uploader.getFiles(uploader.GetFolderID(CType(cbx_Folders.SelectedItem, String)))
+        End Using
     End Sub
 End Class

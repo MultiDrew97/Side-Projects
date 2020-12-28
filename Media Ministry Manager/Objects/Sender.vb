@@ -23,13 +23,19 @@ Namespace SendingEmails
         Inherits Service
         Implements IDisposable
         Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend, GmailService.Scope.GmailModify}
-        Private ReadOnly ApplicationName As String = "Gmail API .NET Quickstart"
+        Private ReadOnly ApplicationName As String = "Media Ministry Manager"
         Private Property Credential As UserCredential
         Private Property Service As GmailService
 
         Overrides ReadOnly Property Info As Object
             Get
-                Return Service.Users.GetProfile("me").Execute()
+                Try
+                    Return Service.Users.GetProfile("me").Execute()
+                Catch ex As Google.GoogleApiException
+                    Console.WriteLine(ex.StackTrace)
+                End Try
+
+                Return Nothing
             End Get
         End Property
 
