@@ -122,20 +122,20 @@ Namespace SendingEmails
         End Function
 
         Function GetFolderID(ByVal name As String) As String
-
+            Dim request As FilesResource.ListRequest = Service.Files.List()
             Dim pageToken As String = Nothing
             Do
 
-                Service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
-                Service.Files.List().Spaces = "drive"
-                Service.Files.List().Fields = "nextPageToken, files(id, name)"
-                Service.Files.List().PageToken = pageToken
+                request.Q = "mimeType='application/vnd.google-apps.folder'"
+                request.Spaces = "drive"
+                request.Fields = "nextPageToken, files(id, name)"
+                request.PageToken = pageToken
 
-                Dim result As FileList = Service.Files.List().Execute()
+                Dim result As FileList = request.Execute()
 
-                For Each files As Data.File In result.Files
-                    If (files.Name.Equals(name)) Then
-                        Return files.Id
+                For Each folder As Data.File In result.Files
+                    If (folder.Name.Equals(name)) Then
+                        Return folder.Id
                     End If
                 Next
                 pageToken = result.NextPageToken
@@ -242,20 +242,19 @@ Namespace SendingEmails
             Get
                 Dim folders As New Collection(Of String)
                 Dim pageToken As String = Nothing
+                Dim request As FilesResource.ListRequest = Service.Files.List()
 
                 Do
 
-                    Service.Files.List().Q = "mimeType='application/vnd.google-apps.folder'"
-                    Service.Files.List().Spaces = "drive"
-                    Service.Files.List().Fields = "nextPageToken, files(id, name)"
-                    Service.Files.List().PageToken = pageToken
+                    request.Q = "mimeType='application/vnd.google-apps.folder'"
+                    request.Spaces = "drive"
+                    request.Fields = "nextPageToken, files(id, name)"
+                    request.PageToken = pageToken
 
-                    Dim result As FileList = Service.Files.List().Execute()
+                    Dim result As FileList = request.Execute()
 
                     For Each folder As Data.File In result.Files
-                        If folder.MimeType.Equals("application/vnd.google-apps.folder") Then
-                            folders.Add(folder.Name)
-                        End If
+                        folders.Add(folder.Name)
                     Next
 
                     pageToken = result.NextPageToken

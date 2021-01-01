@@ -23,7 +23,6 @@ Partial Class Frm_EmailListeners
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_EmailListeners))
-        Me.btn_Upload = New System.Windows.Forms.Button()
         Me.ofd_SelectAudio = New System.Windows.Forms.OpenFileDialog()
         Me.cbx_Folders = New System.Windows.Forms.ComboBox()
         Me.lbl_Folder = New System.Windows.Forms.Label()
@@ -42,17 +41,6 @@ Partial Class Frm_EmailListeners
         Me.cbx_Files = New System.Windows.Forms.ComboBox()
         Me.ss_Feedback.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btn_Upload
-        '
-        Me.btn_Upload.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Upload.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btn_Upload.Location = New System.Drawing.Point(20, 13)
-        Me.btn_Upload.Name = "btn_Upload"
-        Me.btn_Upload.Size = New System.Drawing.Size(238, 36)
-        Me.btn_Upload.TabIndex = 0
-        Me.btn_Upload.Text = "Upload to Drive"
-        Me.btn_Upload.UseVisualStyleBackColor = True
         '
         'ofd_SelectAudio
         '
@@ -144,7 +132,7 @@ Partial Class Frm_EmailListeners
         'btn_SendEmails
         '
         Me.btn_SendEmails.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_SendEmails.Location = New System.Drawing.Point(20, 71)
+        Me.btn_SendEmails.Location = New System.Drawing.Point(20, 53)
         Me.btn_SendEmails.Name = "btn_SendEmails"
         Me.btn_SendEmails.Size = New System.Drawing.Size(238, 36)
         Me.btn_SendEmails.TabIndex = 8
@@ -154,7 +142,7 @@ Partial Class Frm_EmailListeners
         'btn_ViewListeners
         '
         Me.btn_ViewListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_ViewListeners.Location = New System.Drawing.Point(20, 129)
+        Me.btn_ViewListeners.Location = New System.Drawing.Point(20, 111)
         Me.btn_ViewListeners.Name = "btn_ViewListeners"
         Me.btn_ViewListeners.Size = New System.Drawing.Size(238, 36)
         Me.btn_ViewListeners.TabIndex = 10
@@ -187,7 +175,6 @@ Partial Class Frm_EmailListeners
         '
         'Frm_EmailListeners
         '
-        Me.AcceptButton = Me.btn_Upload
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -202,7 +189,6 @@ Partial Class Frm_EmailListeners
         Me.Controls.Add(Me.lbl_Folder)
         Me.Controls.Add(Me.cbx_Files)
         Me.Controls.Add(Me.cbx_Folders)
-        Me.Controls.Add(Me.btn_Upload)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -215,8 +201,6 @@ Partial Class Frm_EmailListeners
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btn_Upload As Button
     Friend WithEvents ofd_SelectAudio As OpenFileDialog
     Friend WithEvents cbx_Folders As ComboBox
     Friend WithEvents lbl_Folder As Label

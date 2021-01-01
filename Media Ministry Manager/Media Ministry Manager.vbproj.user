@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>C:\Users\arand\OneDrive\Desktop\Media Ministry Manager\|sftp://sppbc.hopto.org/|sftp://sppbc.hopto.org/Manager/|sftp://sppbc.hopto.org/Media Ministry Manager/|sftp://sppbc.hopto.org/Temp/</PublishUrlHistory>
-    <InstallUrlHistory>http://sppbc.hopto.org/Manager/|https://sppbc.hopto.org/Manager/|http://sppbc.hopto.org/|http://sppbc.hopto.org/Media Ministry Manager/|http://192.168.1.62/Media Ministry Manager/</InstallUrlHistory>
+    <PublishUrlHistory>ftp://sysadmin%40192.168.1.13/../../var/www/sppbc/Manager/|C:\Users\Andrew Randle-Warren\OneDrive\Desktop\Media Ministry Manager\|ftp://192.168.1.13/var/www/sppbc/Manager/|C:\Users\arand\OneDrive\Desktop\Media Ministry Manager\|sftp://sppbc.hopto.org/</PublishUrlHistory>
+    <InstallUrlHistory>https://sppbc.hopto.org/Manager/|http://sppbc.hopto.org/Manager/|http://sppbc.hopto.org/|http://sppbc.hopto.org/Media Ministry Manager/|http://192.168.1.62/Media Ministry Manager/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory>http://sppbc.hopto.org/Manager/|https://sppbc.hopto.org/Manager/|http://192.168.1.62/Media Ministry Manager/|http://192.168.56.1/Media Ministry Manager/|\\192.168.1.63\Media_Ministry_Manager\</UpdateUrlHistory>
     <BootstrapperUrlHistory />

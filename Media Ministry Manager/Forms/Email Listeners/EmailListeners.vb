@@ -78,7 +78,7 @@ Public Class Frm_EmailListeners
         Shared form As New Size(900, 800)
     End Structure
 
-    Private Sub Btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
+    Private Sub Btn_Upload_Click(sender As Object, e As EventArgs)
         tss_Feedback.ForeColor = Color.Black
         bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
     End Sub
@@ -160,13 +160,21 @@ Public Class Frm_EmailListeners
         '    tss_Feedback.Text = "You have to upload something first..."
         '    tss_Feedback.ForeColor = Color.Red
         'End If
+        Dim listeners As ObjectModel.Collection(Of Listener)
         If cbx_Files.SelectedItem IsNot Nothing Then
             Using uploader As New DriveUploader()
                 fileID = uploader.getFileID(CType(cbx_Files.SelectedItem, String))
             End Using
             If fileID IsNot Nothing Then
-                Using emailer As New Sender()
-                    emailer.Send(emailer.Create(New MimeKit.MailboxAddress("arandlemiller97@yahoo.com"), "Test Email", String.Format(My.Resources.newSermon, "Andrew Randle-Warren", String.Format(shareLink, fileID))))
+                Using db As New Database(My.Settings.Username, My.Settings.Password)
+                    listeners = db.RetrieveListeners()
+                    Using emailer As New Sender()
+                        tss_Feedback.Text = "Sending Emails..."
+                        For Each listener As Listener In listeners
+                            emailer.Send(emailer.Create(MimeKit.MailboxAddress.Parse(listener.Email), "Sunday Morning Message", String.Format(My.Resources.newSermon, listener.Name, String.Format(shareLink, fileID))))
+                        Next
+                    End Using
+                    tss_Feedback.Text = "All emails have been sent"
                 End Using
             End If
         End If
@@ -210,7 +218,7 @@ Public Class Frm_EmailListeners
 
     Private Sub DefaultChanges()
         'Locations
-        btn_Upload.Location = Locations.UploadDefault
+        'btn_Upload.Location = Locations.UploadDefault
         btn_SendEmails.Location = Locations.SendDefault
         btn_ViewListeners.Location = Locations.ViewDefault
         lbl_Folder.Location = Locations.FolderLabelDefault
