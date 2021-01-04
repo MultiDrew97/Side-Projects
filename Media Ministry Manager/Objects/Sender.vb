@@ -56,9 +56,9 @@ Namespace SendingEmails
             Dim sender, recipient As New Collection(Of InternetAddress)
 
             Dim email As New MimeMessage() With {
-                .Sender = New MailboxAddress(from, from),
-                .Subject = subject,
-                .Body = New TextPart("html") With {
+                .sender = New MailboxAddress(from, from),
+                .subject = subject,
+                .body = New TextPart("html") With {
                     .Text = body
                 }
             }
@@ -82,7 +82,7 @@ Namespace SendingEmails
         Function CreateWithAttachment([to] As MailboxAddress, subject As String, body As String, files As String(), Optional from As String = "me") As MimeMessage
             Dim email As New MimeMessage() With {
                 .Sender = New MailboxAddress(from, from),
-                .Subject = subject
+                .subject = subject
             }
 
             email.To.Add([to])

@@ -6,25 +6,12 @@ Imports MediaMinistry.Helpers
 Imports MediaMinistry.SendingEmails
 
 Public Class frm_Main
-    Dim uploader As DriveUploader
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
 
     Structure WindowSizes
         Shared normal As New Size(413, 452)
         Shared max As New Size(1382, 744)
     End Structure
-
-    'Public Sub New() 'ByRef database As Database)
-
-    '    ' This call is required by the designer.
-    '    InitializeComponent()
-
-    '    ' Add any initialization after the InitializeComponent() call.
-    '    'db = Database
-    '    If Not bw_UpdateJar.IsBusy Then
-    '        bw_UpdateJar.RunWorkerAsync(emailerLocation)
-    '    End If
-    'End Sub
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
         If My.Application.OpenForms.Count = 1 And Not My.Settings.KeepLoggedIn Then
@@ -62,7 +49,6 @@ Public Class frm_Main
     End Sub
 
     Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
-        'create a email listeners form in the background
         Dim emailListeners As New Frm_EmailListeners()
         emailListeners.Show()
         Me.Close()
@@ -154,10 +140,6 @@ Public Class frm_Main
     Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
         'TODO: Add Find Listener Functionality
     End Sub
-
-    Private Function validateSender(path As String) As Boolean
-        Return File.Exists(path)
-    End Function
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
         'Dim updateLocation As String = "https://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
