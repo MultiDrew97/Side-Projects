@@ -130,7 +130,7 @@ Public Class Frm_EmailListeners
         My.Settings.Save()
     End Sub
 
-    Private Sub Frm_EmailListeners_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    Private Sub Frm_EmailListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Dim main As New frm_Main()
         main.Show()
     End Sub
@@ -160,6 +160,9 @@ Public Class Frm_EmailListeners
         '    tss_Feedback.Text = "You have to upload something first..."
         '    tss_Feedback.ForeColor = Color.Red
         'End If
+
+        'TODO: Move this into a background worker to not freeze the app while sending
+
         Dim listeners As ObjectModel.Collection(Of Listener)
         If cbx_Files.SelectedItem IsNot Nothing Then
             Using uploader As New DriveUploader()

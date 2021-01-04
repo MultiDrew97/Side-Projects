@@ -431,7 +431,6 @@ Public Class Database
         myReader = myCmd.ExecuteReader()
 
         Do While myReader.Read()
-            Console.WriteLine("Name: {0}\nEmail: {1}", myReader.GetString(0), myReader.GetString(1))
             listeners.Add(New Listener(myReader.GetString(0), myReader.GetString(1)))
         Loop
 
