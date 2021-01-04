@@ -43,13 +43,31 @@ Partial Class frm_ViewListeners
         Me.btn_AdvancedCancel = New System.Windows.Forms.Button()
         Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
-        Me.NAMEDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAIL_LISTENERSTableAdapter = New MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
+        Me.EmaiL_LISTENERSTableAdapter = New MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
+        Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListenerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListenerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbx_AdvancedSearch.SuspendLayout()
+        Me.mnstr_Strip.SuspendLayout()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -66,31 +84,35 @@ Partial Class frm_ViewListeners
         'dgv_Listeners
         '
         Me.dgv_Listeners.AllowUserToAddRows = False
-        Me.dgv_Listeners.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.dgv_Listeners.AutoGenerateColumns = False
         Me.dgv_Listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Listeners.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.dgv_Listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv_Listeners.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NAMEDataGridViewTextBoxColumn1, Me.EMAILDataGridViewTextBoxColumn1})
         Me.dgv_Listeners.DataSource = Me.EMAILLISTENERSBindingSource
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_Listeners.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgv_Listeners.Location = New System.Drawing.Point(0, 0)
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_Listeners.DefaultCellStyle = DataGridViewCellStyle1
+        Me.dgv_Listeners.Dock = System.Windows.Forms.DockStyle.Left
+        Me.dgv_Listeners.Location = New System.Drawing.Point(0, 24)
         Me.dgv_Listeners.Name = "dgv_Listeners"
-        Me.dgv_Listeners.Size = New System.Drawing.Size(613, 450)
+        Me.dgv_Listeners.Size = New System.Drawing.Size(613, 426)
         Me.dgv_Listeners.TabIndex = 0
         '
         'EMAILLISTENERSBindingSource
         '
         Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
         Me.EMAILLISTENERSBindingSource.DataSource = Me.MediaMinistryDataSet
+        '
+        'MediaMinistryDataSet
+        '
+        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbl_Total
         '
@@ -148,7 +170,7 @@ Partial Class frm_ViewListeners
         Me.cbx_Column.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.cbx_Column.FormattingEnabled = True
         Me.cbx_Column.Items.AddRange(New Object() {"NAME", "EMAIL", "Name", "Email Address"})
-        Me.cbx_Column.Location = New System.Drawing.Point(730, 12)
+        Me.cbx_Column.Location = New System.Drawing.Point(745, 36)
         Me.cbx_Column.Name = "cbx_Column"
         Me.cbx_Column.Size = New System.Drawing.Size(192, 33)
         Me.cbx_Column.TabIndex = 7
@@ -254,6 +276,137 @@ Partial Class frm_ViewListeners
         '
         Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
         '
+        'mnstr_Strip
+        '
+        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
+        Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
+        Me.mnstr_Strip.Name = "mnstr_Strip"
+        Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.mnstr_Strip.Size = New System.Drawing.Size(998, 24)
+        Me.mnstr_Strip.TabIndex = 13
+        Me.mnstr_Strip.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.toolStripSeparator1, Me.LogoutToolStripMenuItem, Me.ExitToolStripMenuItem1})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "&File"
+        '
+        'NewToolStripMenuItem
+        '
+        Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem, Me.ProductToolStripMenuItem, Me.ListenerToolStripMenuItem})
+        Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.NewToolStripMenuItem.Text = "&New..."
+        '
+        'CustomerToolStripMenuItem
+        '
+        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
+        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.CustomerToolStripMenuItem.Text = "Customer"
+        '
+        'ProductToolStripMenuItem
+        '
+        Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
+        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.ProductToolStripMenuItem.Text = "Product"
+        '
+        'ListenerToolStripMenuItem
+        '
+        Me.ListenerToolStripMenuItem.Name = "ListenerToolStripMenuItem"
+        Me.ListenerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.ListenerToolStripMenuItem.Text = "Listener"
+        '
+        'toolStripSeparator1
+        '
+        Me.toolStripSeparator1.Name = "toolStripSeparator1"
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(109, 6)
+        '
+        'LogoutToolStripMenuItem
+        '
+        Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
+        Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.LogoutToolStripMenuItem.Text = "&Logout"
+        '
+        'ExitToolStripMenuItem1
+        '
+        Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
+        Me.ExitToolStripMenuItem1.Text = "E&xit"
+        '
+        'ToolsToolStripMenuItem
+        '
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
+        Me.ToolsToolStripMenuItem.Text = "&Tools"
+        '
+        'CustomizeToolStripMenuItem
+        '
+        Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem1, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
+        Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.CustomizeToolStripMenuItem.Text = "Find..."
+        '
+        'CustomerToolStripMenuItem1
+        '
+        Me.CustomerToolStripMenuItem1.Name = "CustomerToolStripMenuItem1"
+        Me.CustomerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
+        Me.CustomerToolStripMenuItem1.Text = "Customer"
+        '
+        'ProductToolStripMenuItem1
+        '
+        Me.ProductToolStripMenuItem1.Name = "ProductToolStripMenuItem1"
+        Me.ProductToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
+        Me.ProductToolStripMenuItem1.Text = "Product"
+        '
+        'ListenerToolStripMenuItem1
+        '
+        Me.ListenerToolStripMenuItem1.Name = "ListenerToolStripMenuItem1"
+        Me.ListenerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
+        Me.ListenerToolStripMenuItem1.Text = "Listener"
+        '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.OptionsToolStripMenuItem.Text = "Update"
+        '
+        'ViewToolStripMenuItem
+        '
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomersToolStripMenuItem, Me.OrdersToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.ListenersToolStripMenuItem})
+        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ViewToolStripMenuItem.Text = "&View"
+        '
+        'CustomersToolStripMenuItem
+        '
+        Me.CustomersToolStripMenuItem.Name = "CustomersToolStripMenuItem"
+        Me.CustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.CustomersToolStripMenuItem.Text = "Customers"
+        '
+        'OrdersToolStripMenuItem
+        '
+        Me.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem"
+        Me.OrdersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.OrdersToolStripMenuItem.Text = "Orders"
+        '
+        'ProductsToolStripMenuItem
+        '
+        Me.ProductsToolStripMenuItem.Name = "ProductsToolStripMenuItem"
+        Me.ProductsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ProductsToolStripMenuItem.Text = "Products"
+        '
+        'ListenersToolStripMenuItem
+        '
+        Me.ListenersToolStripMenuItem.Name = "ListenersToolStripMenuItem"
+        Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ListenersToolStripMenuItem.Text = "Listeners"
+        '
         'Frm_ViewListeners
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -270,6 +423,7 @@ Partial Class frm_ViewListeners
         Me.Controls.Add(Me.btn_Add)
         Me.Controls.Add(Me.dgv_Listeners)
         Me.Controls.Add(Me.gbx_AdvancedSearch)
+        Me.Controls.Add(Me.mnstr_Strip)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Frm_ViewListeners"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -278,6 +432,8 @@ Partial Class frm_ViewListeners
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbx_AdvancedSearch.ResumeLayout(False)
         Me.gbx_AdvancedSearch.PerformLayout()
+        Me.mnstr_Strip.ResumeLayout(False)
+        Me.mnstr_Strip.PerformLayout()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -303,6 +459,24 @@ Partial Class frm_ViewListeners
     Friend WithEvents EMAILLISTENERSBindingSource As BindingSource
     Friend WithEvents NAMEDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents EMAILDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
-    Friend WithEvents EMAIL_LISTENERSTableAdapter As MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
+    Friend WithEvents mnstr_Strip As MenuStrip
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListenerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents toolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomizeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomerToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ProductToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ListenerToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -47,16 +47,39 @@ Partial Class frm_AddNewCustomer
         Me.txt_Email = New System.Windows.Forms.TextBox()
         Me.lbl_Email = New System.Windows.Forms.Label()
         Me.lbl_Required = New System.Windows.Forms.Label()
+        Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListenerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListenerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ss_Status.SuspendLayout()
         CType(Me.ep_EmptyFields, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_AddNewCustomer
         '
+        Me.btn_AddNewCustomer.AutoSize = True
+        Me.btn_AddNewCustomer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_AddNewCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(330, 322)
+        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(308, 344)
         Me.btn_AddNewCustomer.Name = "btn_AddNewCustomer"
-        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(169, 63)
+        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(206, 35)
         Me.btn_AddNewCustomer.TabIndex = 18
         Me.btn_AddNewCustomer.Text = "Add New Customer"
         Me.btn_AddNewCustomer.UseVisualStyleBackColor = True
@@ -67,7 +90,7 @@ Partial Class frm_AddNewCustomer
         Me.txt_FirstName.Cursor = System.Windows.Forms.Cursors.Default
         Me.txt_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FirstName.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_FirstName.Location = New System.Drawing.Point(187, 40)
+        Me.txt_FirstName.Location = New System.Drawing.Point(189, 53)
         Me.txt_FirstName.Name = "txt_FirstName"
         Me.txt_FirstName.Size = New System.Drawing.Size(213, 31)
         Me.txt_FirstName.TabIndex = 1
@@ -77,7 +100,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_LastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_LastName.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_LastName.Location = New System.Drawing.Point(428, 40)
+        Me.txt_LastName.Location = New System.Drawing.Point(430, 53)
         Me.txt_LastName.Name = "txt_LastName"
         Me.txt_LastName.Size = New System.Drawing.Size(213, 31)
         Me.txt_LastName.TabIndex = 3
@@ -87,7 +110,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_Street.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Street.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_Street.Location = New System.Drawing.Point(43, 115)
+        Me.txt_Street.Location = New System.Drawing.Point(45, 128)
         Me.txt_Street.Name = "txt_Street"
         Me.txt_Street.Size = New System.Drawing.Size(213, 31)
         Me.txt_Street.TabIndex = 5
@@ -97,7 +120,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_PhoneNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_PhoneNumber.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_PhoneNumber.Location = New System.Drawing.Point(113, 194)
+        Me.txt_PhoneNumber.Location = New System.Drawing.Point(115, 207)
         Me.txt_PhoneNumber.Name = "txt_PhoneNumber"
         Me.txt_PhoneNumber.Size = New System.Drawing.Size(156, 31)
         Me.txt_PhoneNumber.TabIndex = 13
@@ -122,7 +145,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_FirstName.AutoSize = True
         Me.lbl_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_FirstName.Location = New System.Drawing.Point(177, 22)
+        Me.lbl_FirstName.Location = New System.Drawing.Point(179, 35)
         Me.lbl_FirstName.Name = "lbl_FirstName"
         Me.lbl_FirstName.Size = New System.Drawing.Size(75, 15)
         Me.lbl_FirstName.TabIndex = 0
@@ -132,7 +155,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_LastName.AutoSize = True
         Me.lbl_LastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_LastName.Location = New System.Drawing.Point(417, 22)
+        Me.lbl_LastName.Location = New System.Drawing.Point(419, 35)
         Me.lbl_LastName.Name = "lbl_LastName"
         Me.lbl_LastName.Size = New System.Drawing.Size(75, 15)
         Me.lbl_LastName.TabIndex = 2
@@ -142,7 +165,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_Street.AutoSize = True
         Me.lbl_Street.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Street.Location = New System.Drawing.Point(40, 98)
+        Me.lbl_Street.Location = New System.Drawing.Point(42, 111)
         Me.lbl_Street.Name = "lbl_Street"
         Me.lbl_Street.Size = New System.Drawing.Size(39, 15)
         Me.lbl_Street.TabIndex = 4
@@ -152,7 +175,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_PhoneNumber.AutoSize = True
         Me.lbl_PhoneNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_PhoneNumber.Location = New System.Drawing.Point(103, 176)
+        Me.lbl_PhoneNumber.Location = New System.Drawing.Point(105, 189)
         Me.lbl_PhoneNumber.Name = "lbl_PhoneNumber"
         Me.lbl_PhoneNumber.Size = New System.Drawing.Size(99, 15)
         Me.lbl_PhoneNumber.TabIndex = 12
@@ -167,7 +190,7 @@ Partial Class frm_AddNewCustomer
         Me.cbx_PaymentType.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cbx_PaymentType.FormattingEnabled = True
         Me.cbx_PaymentType.Items.AddRange(New Object() {"Cash", "Card"})
-        Me.cbx_PaymentType.Location = New System.Drawing.Point(339, 265)
+        Me.cbx_PaymentType.Location = New System.Drawing.Point(341, 278)
         Me.cbx_PaymentType.Name = "cbx_PaymentType"
         Me.cbx_PaymentType.Size = New System.Drawing.Size(150, 33)
         Me.cbx_PaymentType.TabIndex = 17
@@ -176,7 +199,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_PaymentType.AutoSize = True
         Me.lbl_PaymentType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.lbl_PaymentType.Location = New System.Drawing.Point(339, 247)
+        Me.lbl_PaymentType.Location = New System.Drawing.Point(341, 260)
         Me.lbl_PaymentType.Name = "lbl_PaymentType"
         Me.lbl_PaymentType.Size = New System.Drawing.Size(100, 15)
         Me.lbl_PaymentType.TabIndex = 16
@@ -190,7 +213,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_City.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_City.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_City.Location = New System.Drawing.Point(262, 115)
+        Me.txt_City.Location = New System.Drawing.Point(264, 128)
         Me.txt_City.Name = "txt_City"
         Me.txt_City.Size = New System.Drawing.Size(213, 31)
         Me.txt_City.TabIndex = 7
@@ -200,7 +223,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_City.AutoSize = True
         Me.lbl_City.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_City.Location = New System.Drawing.Point(262, 98)
+        Me.lbl_City.Location = New System.Drawing.Point(264, 111)
         Me.lbl_City.Name = "lbl_City"
         Me.lbl_City.Size = New System.Drawing.Size(26, 15)
         Me.lbl_City.TabIndex = 6
@@ -210,7 +233,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_Zip.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Zip.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_Zip.Location = New System.Drawing.Point(572, 115)
+        Me.txt_Zip.Location = New System.Drawing.Point(574, 128)
         Me.txt_Zip.Name = "txt_Zip"
         Me.txt_Zip.Size = New System.Drawing.Size(213, 31)
         Me.txt_Zip.TabIndex = 11
@@ -220,7 +243,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_Zip.AutoSize = True
         Me.lbl_Zip.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Zip.Location = New System.Drawing.Point(572, 98)
+        Me.lbl_Zip.Location = New System.Drawing.Point(574, 111)
         Me.lbl_Zip.Name = "lbl_Zip"
         Me.lbl_Zip.Size = New System.Drawing.Size(24, 15)
         Me.lbl_Zip.TabIndex = 10
@@ -235,7 +258,7 @@ Partial Class frm_AddNewCustomer
         Me.cbx_State.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cbx_State.FormattingEnabled = True
         Me.cbx_State.Items.AddRange(New Object() {"AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"})
-        Me.cbx_State.Location = New System.Drawing.Point(491, 114)
+        Me.cbx_State.Location = New System.Drawing.Point(493, 127)
         Me.cbx_State.MaxLength = 2
         Me.cbx_State.Name = "cbx_State"
         Me.cbx_State.Size = New System.Drawing.Size(64, 33)
@@ -246,7 +269,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_State.AutoSize = True
         Me.lbl_State.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.lbl_State.Location = New System.Drawing.Point(488, 96)
+        Me.lbl_State.Location = New System.Drawing.Point(490, 109)
         Me.lbl_State.Name = "lbl_State"
         Me.lbl_State.Size = New System.Drawing.Size(35, 15)
         Me.lbl_State.TabIndex = 8
@@ -256,7 +279,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Email.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_Email.Location = New System.Drawing.Point(329, 194)
+        Me.txt_Email.Location = New System.Drawing.Point(331, 207)
         Me.txt_Email.Name = "txt_Email"
         Me.txt_Email.Size = New System.Drawing.Size(389, 31)
         Me.txt_Email.TabIndex = 15
@@ -266,7 +289,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_Email.AutoSize = True
         Me.lbl_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Email.Location = New System.Drawing.Point(326, 176)
+        Me.lbl_Email.Location = New System.Drawing.Point(328, 189)
         Me.lbl_Email.Name = "lbl_Email"
         Me.lbl_Email.Size = New System.Drawing.Size(43, 15)
         Me.lbl_Email.TabIndex = 14
@@ -276,11 +299,142 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_Required.AutoSize = True
         Me.lbl_Required.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.lbl_Required.Location = New System.Drawing.Point(686, 9)
+        Me.lbl_Required.Location = New System.Drawing.Point(12, 383)
         Me.lbl_Required.Name = "lbl_Required"
-        Me.lbl_Required.Size = New System.Drawing.Size(130, 15)
+        Me.lbl_Required.Size = New System.Drawing.Size(66, 15)
         Me.lbl_Required.TabIndex = 20
-        Me.lbl_Required.Text = "* Marks required fields"
+        Me.lbl_Required.Text = "* Required"
+        '
+        'mnstr_Strip
+        '
+        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
+        Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
+        Me.mnstr_Strip.Name = "mnstr_Strip"
+        Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.mnstr_Strip.Size = New System.Drawing.Size(828, 24)
+        Me.mnstr_Strip.TabIndex = 21
+        Me.mnstr_Strip.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.toolStripSeparator1, Me.LogoutToolStripMenuItem, Me.ExitToolStripMenuItem1})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "&File"
+        '
+        'NewToolStripMenuItem
+        '
+        Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem, Me.ProductToolStripMenuItem, Me.ListenerToolStripMenuItem})
+        Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.NewToolStripMenuItem.Text = "&New..."
+        '
+        'CustomerToolStripMenuItem
+        '
+        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
+        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.CustomerToolStripMenuItem.Text = "Customer"
+        '
+        'ProductToolStripMenuItem
+        '
+        Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
+        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.ProductToolStripMenuItem.Text = "Product"
+        '
+        'ListenerToolStripMenuItem
+        '
+        Me.ListenerToolStripMenuItem.Name = "ListenerToolStripMenuItem"
+        Me.ListenerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.ListenerToolStripMenuItem.Text = "Listener"
+        '
+        'toolStripSeparator1
+        '
+        Me.toolStripSeparator1.Name = "toolStripSeparator1"
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(109, 6)
+        '
+        'LogoutToolStripMenuItem
+        '
+        Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
+        Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.LogoutToolStripMenuItem.Text = "&Logout"
+        '
+        'ExitToolStripMenuItem1
+        '
+        Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
+        Me.ExitToolStripMenuItem1.Text = "E&xit"
+        '
+        'ToolsToolStripMenuItem
+        '
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
+        Me.ToolsToolStripMenuItem.Text = "&Tools"
+        '
+        'CustomizeToolStripMenuItem
+        '
+        Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem1, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
+        Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.CustomizeToolStripMenuItem.Text = "Find..."
+        '
+        'CustomerToolStripMenuItem1
+        '
+        Me.CustomerToolStripMenuItem1.Name = "CustomerToolStripMenuItem1"
+        Me.CustomerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
+        Me.CustomerToolStripMenuItem1.Text = "Customer"
+        '
+        'ProductToolStripMenuItem1
+        '
+        Me.ProductToolStripMenuItem1.Name = "ProductToolStripMenuItem1"
+        Me.ProductToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
+        Me.ProductToolStripMenuItem1.Text = "Product"
+        '
+        'ListenerToolStripMenuItem1
+        '
+        Me.ListenerToolStripMenuItem1.Name = "ListenerToolStripMenuItem1"
+        Me.ListenerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
+        Me.ListenerToolStripMenuItem1.Text = "Listener"
+        '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.OptionsToolStripMenuItem.Text = "Update"
+        '
+        'ViewToolStripMenuItem
+        '
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomersToolStripMenuItem, Me.OrdersToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.ListenersToolStripMenuItem})
+        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ViewToolStripMenuItem.Text = "&View"
+        '
+        'CustomersToolStripMenuItem
+        '
+        Me.CustomersToolStripMenuItem.Name = "CustomersToolStripMenuItem"
+        Me.CustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.CustomersToolStripMenuItem.Text = "Customers"
+        '
+        'OrdersToolStripMenuItem
+        '
+        Me.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem"
+        Me.OrdersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.OrdersToolStripMenuItem.Text = "Orders"
+        '
+        'ProductsToolStripMenuItem
+        '
+        Me.ProductsToolStripMenuItem.Name = "ProductsToolStripMenuItem"
+        Me.ProductsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ProductsToolStripMenuItem.Text = "Products"
+        '
+        'ListenersToolStripMenuItem
+        '
+        Me.ListenersToolStripMenuItem.Name = "ListenersToolStripMenuItem"
+        Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
         'frm_AddNewCustomer
         '
@@ -310,6 +464,7 @@ Partial Class frm_AddNewCustomer
         Me.Controls.Add(Me.txt_LastName)
         Me.Controls.Add(Me.txt_FirstName)
         Me.Controls.Add(Me.btn_AddNewCustomer)
+        Me.Controls.Add(Me.mnstr_Strip)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -319,6 +474,8 @@ Partial Class frm_AddNewCustomer
         Me.ss_Status.ResumeLayout(False)
         Me.ss_Status.PerformLayout()
         CType(Me.ep_EmptyFields, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.mnstr_Strip.ResumeLayout(False)
+        Me.mnstr_Strip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -347,4 +504,24 @@ Partial Class frm_AddNewCustomer
     Friend WithEvents txt_Email As TextBox
     Friend WithEvents lbl_Required As Label
     Friend WithEvents tss_AddCustomer As ToolStripStatusLabel
+    Friend WithEvents mnstr_Strip As MenuStrip
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListenerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents toolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomizeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomerToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ProductToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ListenerToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
 End Class

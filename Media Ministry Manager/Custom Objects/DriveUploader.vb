@@ -73,7 +73,7 @@ Namespace SendingEmails
 
             Dim fileMetadata As New Data.File With {
                 .Name = uploadName,
-                .Parents = parents
+                .parents = parents
             }
 
             Dim request As FilesResource.CreateMediaUpload
@@ -122,26 +122,27 @@ Namespace SendingEmails
         End Function
 
         Function GetFolderID(ByVal name As String) As String
-            Dim request As FilesResource.ListRequest = Service.Files.List()
-            Dim pageToken As String = Nothing
-            Do
+            If name IsNot Nothing Then
+                Dim pageToken As String = Nothing
+                Dim request As FilesResource.ListRequest = Service.Files.List()
+                Do
 
-                request.Q = "mimeType='application/vnd.google-apps.folder'"
-                request.Spaces = "drive"
-                request.Fields = "nextPageToken, files(id, name)"
-                request.PageToken = pageToken
+                    request.Q = "mimeType='application/vnd.google-apps.folder'"
+                    request.Spaces = "drive"
+                    request.Fields = "nextPageToken, files(id, name)"
+                    request.PageToken = pageToken
 
-                Dim result As FileList = request.Execute()
+                    Dim result As FileList = request.Execute()
 
-                For Each folder As Data.File In result.Files
-                    If (folder.Name.Equals(name)) Then
-                        Return folder.Id
-                    End If
-                Next
-                pageToken = result.NextPageToken
-            Loop While (pageToken IsNot Nothing)
+                    For Each folder As Data.File In result.Files
+                        If (folder.Name.Equals(name)) Then
+                            Return folder.Id
+                        End If
+                    Next
+                    pageToken = result.NextPageToken
+                Loop While (pageToken IsNot Nothing)
 
-            Return Nothing
+                Return Nothing
         End Function
 
         Function FindFile(ByVal fileName As String) As String
@@ -237,34 +238,80 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
+        Friend Function GetFileInfo(fileName As String, Optional folder As String = Nothing) As Data.File
+            Dim request As FilesResource.ListRequest = Service.Files.List()
+            Dim pageToken As String = Nothing
+            Dim folderID As String = GetFolderID(folder)
 
-        Public ReadOnly Property GetFolders As Collection(Of String)
-            Get
-                Dim folders As New Collection(Of String)
-                Dim pageToken As String = Nothing
-                Dim request As FilesResource.ListRequest = Service.Files.List()
+            Do
+                request.Q = "mimeType!='application/vnd.google-apps.folder'"
+                If folderID IsNot Nothing Then
+                    request.Q &= String.Format(" and '{0}' in parents", folderID)
+                End If
 
-                Do
+                request.Spaces = "drive"
+                request.Fields = "nextPageToken, files(id, name, parents)"
+                request.PageToken = pageToken
 
-                    request.Q = "mimeType='application/vnd.google-apps.folder'"
-                    request.Spaces = "drive"
-                    request.Fields = "nextPageToken, files(id, name)"
-                    request.PageToken = pageToken
+                Dim results As FileList = request.Execute()
 
-                    Dim result As FileList = request.Execute()
+                For Each file As Data.File In results.Files
+                    If file.Name.Equals(fileName) Then
+                        Return file
+                    End If
+                Next
+            Loop While pageToken IsNot Nothing
 
-                    For Each folder As Data.File In result.Files
-                        folders.Add(folder.Name)
-                    Next
+            Throw New NotImplementedException()
+        End Function
 
-                    pageToken = result.NextPageToken
+        Public Function GetFiles(folderName As String) As Collection(Of String)
+            Dim request As FilesResource.ListRequest = Service.Files.List()
+            Dim pageToken As String = Nothing
+            Dim files As New Collection(Of String)
+            Dim folderID As String = GetFolderID(folderName)
+            Do
+                request.Q = String.Format("mimeType!='application/vnd.google-apps.folder' and '{0}' in parents", folderID)
+                request.Spaces = "drive"
+                request.Fields = "nextPageToken, files(name)"
+                request.PageToken = pageToken
+
+                Dim results As FileList = request.Execute()
+
+                For Each file As Data.File In results.Files
+                    files.Add(file.Name)
+                Next
+            Loop While pageToken IsNot Nothing
+
+            Return files
+        End Function
+
+        Public Function GetFolders() As Collection(Of String)
+            Dim folders As New Collection(Of String)
+            Dim pageToken As String = Nothing
+            Dim request As FilesResource.ListRequest = Service.Files.List()
+
+            Do
+
+                request.Q = "mimeType='application/vnd.google-apps.folder'"
+                request.Spaces = "drive"
+                request.Fields = "nextPageToken, files(id, name)"
+                request.PageToken = pageToken
+
+                Dim result As FileList = request.Execute()
+
+                For Each folder As Data.File In result.Files
+                    folders.Add(folder.Name)
+                Next
+
+                pageToken = result.NextPageToken
                 Loop While (pageToken IsNot Nothing)
 
-                'folders.Sort()
+            'folders.Sort()
 
-                Return folders
-            End Get
-        End Property
+            Return folders
+        End Function
+
     End Class
 
 End Namespace

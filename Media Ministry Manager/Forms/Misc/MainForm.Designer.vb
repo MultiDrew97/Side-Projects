@@ -29,7 +29,7 @@ Partial Class frm_Main
         Me.btn_CustomerManagement = New System.Windows.Forms.Button()
         Me.ss_Queries = New System.Windows.Forms.StatusStrip()
         Me.tss_Feedback = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.bw_CreateUploader = New System.ComponentModel.BackgroundWorker()
+        Me.bw_ChangedSizes = New System.ComponentModel.BackgroundWorker()
         Me.btn_EmailMinistry = New System.Windows.Forms.Button()
         Me.bw_UpdateJar = New System.ComponentModel.BackgroundWorker()
         Me.pnl_Controls = New System.Windows.Forms.Panel()
@@ -113,6 +113,9 @@ Partial Class frm_Main
         Me.tss_Feedback.Name = "tss_Feedback"
         Me.tss_Feedback.Size = New System.Drawing.Size(151, 17)
         Me.tss_Feedback.Text = "What would you like to do?"
+        '
+        'bw_ChangedSizes
+        '
         '
         'btn_EmailMinistry
         '
@@ -326,7 +329,7 @@ Partial Class frm_Main
     Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents CUSTOMERSBindingSource As BindingSource
     Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
-    Friend WithEvents bw_CreateUploader As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bw_ChangedSizes As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_EmailMinistry As Button
     Friend WithEvents bw_UpdateJar As System.ComponentModel.BackgroundWorker
     Friend WithEvents pnl_Controls As Panel

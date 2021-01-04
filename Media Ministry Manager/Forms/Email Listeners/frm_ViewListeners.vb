@@ -14,7 +14,7 @@ Public Class frm_ViewListeners
         Shared [Default] As New Size(1014, 489)
 
         'dgv sizes
-        Shared DefaultDGV As New Size(613, 450)
+        Shared DefaultDGV As New Size(613, 426)
 
         Shared dgvMax As New Size(957, 705)
     End Structure
@@ -42,7 +42,7 @@ Public Class frm_ViewListeners
         Shared SearchLabelMax As New Point(963, 85)
 
         'column combo box locations
-        Shared ColumnBoxDefault As New Point(730, 12)
+        Shared ColumnBoxDefault As New Point(745, 36)
 
         Shared ColumnBoxMax As New Point(1139, 21)
 

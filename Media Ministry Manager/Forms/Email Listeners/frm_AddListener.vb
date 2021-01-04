@@ -86,7 +86,6 @@ Public Class Frm_AddListener
     End Sub
 
     Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        Dim db As Database = New Database(My.Settings.Username, My.Settings.Password)
 
         If rdo_Single.Checked Then
             If Not String.IsNullOrWhiteSpace(txt_Email.Text) And Not String.IsNullOrWhiteSpace(txt_Name.Text) Then

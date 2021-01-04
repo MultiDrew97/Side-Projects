@@ -56,17 +56,18 @@ Public Class frm_Main
 
     Private Sub Bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
 
-        'If Not ValidateSender(CType(e.Argument, String)) Then
-        '    Throw New FileNotFoundException("Sender was not found or was not copied correctly. Contact your developer.")
-        'End If
     End Sub
 
-    Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+    Private Sub Frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        Dim size As String
+
         If Me.Size = WindowSizes.max Then
-            GrowToMax()
+            size = "b"
         Else
-            backToNormal()
+            size = "s"
         End If
+
+        bw_ChangedSizes.RunWorkerAsync(size)
     End Sub
 
     Private Sub GrowToMax()
@@ -128,14 +129,17 @@ Public Class frm_Main
 
     Private Sub CustomerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem1.Click
         'TODO: Add Find Customer Functionality
+        'TODO: Create a dialog that can be used to find a customer
     End Sub
 
     Private Sub ProductToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem1.Click
         'TODO: Add Find Product Functionality
+        'TODO: Create a dialog that can be used to find a product
     End Sub
 
     Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
         'TODO: Add Find Listener Functionality
+        'TODO: Create a dialog that can be used to find a listener
     End Sub
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
@@ -183,5 +187,24 @@ Public Class frm_Main
         Dim settings As New Frm_Settings()
         settings.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub Bw_ChangedSizes_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_ChangedSizes.DoWork
+        Select Case CStr(e.Argument)
+            Case "b"
+                Invoke(
+                    Sub()
+                        GrowToMax()
+                    End Sub
+                )
+            Case "s"
+                Invoke(
+                    Sub()
+                        BackToNormal()
+                    End Sub
+                )
+
+        End Select
+
     End Sub
 End Class

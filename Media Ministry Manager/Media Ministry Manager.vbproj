@@ -219,6 +219,18 @@
     <Compile Include="Assets\MediaMinistrySplash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Custom Objects\Dialogs\FileSelectionDialog.Designer.vb">
+      <DependentUpon>FileSelectionDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Objects\Dialogs\FileSelectionDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Custom Objects\Dialogs\ListenerSelectionDialog.Designer.vb">
+      <DependentUpon>ListenerSelectionDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Objects\Dialogs\ListenerSelectionDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Email Listeners\CustomMessage.Designer.vb">
       <DependentUpon>CustomMessage.vb</DependentUpon>
     </Compile>
@@ -336,7 +348,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Objects\Database.vb" />
+    <Compile Include="Custom Objects\Database.vb" />
     <Compile Include="Forms\Misc\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -368,6 +380,12 @@
     <EmbeddedResource Include="Assets\MediaMinistrySplash.resx">
       <DependentUpon>MediaMinistrySplash.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Objects\Dialogs\FileSelectionDialog.resx">
+      <DependentUpon>FileSelectionDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Objects\Dialogs\ListenerSelectionDialog.resx">
+      <DependentUpon>ListenerSelectionDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\CustomMessage.resx">
       <DependentUpon>CustomMessage.vb</DependentUpon>
@@ -496,7 +514,10 @@
     <None Include="Resources\NewToolStripMenuItem.Image.png" />
     <Content Include="Resources\version.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Custom Objects\Components\" />
+    <Folder Include="Custom Objects\Controls\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>

@@ -33,7 +33,7 @@ Public Class Database
     Public Sub New(username As String, password As String)
         Dim connectionString As New SqlConnectionStringBuilder(My.Settings.masterConnectionString) With {
             .UserID = username,
-            .Password = password
+            .password = password
         }
 
         myConn = New SqlConnection(connectionString.ConnectionString)
