@@ -254,6 +254,12 @@ Partial Class frm_CustomMessage
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
+        'EditToolStripMenuItem
+        '
+        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
+        Me.EditToolStripMenuItem.Text = "Edit"
+        '
         'frm_CustomMessage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)

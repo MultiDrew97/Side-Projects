@@ -160,7 +160,8 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property receipt() As String
             Get
-                Return ResourceManager.GetString("receipt", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("sender", resourceCulture)
+                Return CType(obj, Byte())
             End Get
         End Property
     End Module
