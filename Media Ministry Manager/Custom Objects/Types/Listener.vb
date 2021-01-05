@@ -1,7 +1,6 @@
 ﻿Option Strict On
 
-Namespace SendingEmails
-    <CLSCompliant(False)>
+Namespace Types
     Public Class Listener
         Public Property Name As String
         Public Property Email As String

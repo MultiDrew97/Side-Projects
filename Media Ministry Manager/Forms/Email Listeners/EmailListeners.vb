@@ -1,8 +1,9 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.GoogleAPI
 Imports MediaMinistry.Helpers
+Imports MediaMinistry.Types
 
 Public Class Frm_EmailListeners
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"

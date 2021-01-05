@@ -18,7 +18,7 @@ Imports System.Threading
 Imports System.Threading.Tasks
 
 
-Namespace SendingEmails
+Namespace GoogleAPI
     Public Class Sender
         Inherits Service
         Implements IDisposable
@@ -56,17 +56,17 @@ Namespace SendingEmails
             Dim sender, recipient As New Collection(Of InternetAddress)
 
             Dim email As New MimeMessage() With {
-                .sender = MailboxAddress.Parse(from),
-                .subject = subject
+                .Sender = MailboxAddress.Parse(from),
+                .Subject = subject
             }
 
             If text Then
                 email.Body = New TextPart("plain") With {
-                    .text = body
+                    .Text = body
                 }
             Else
-            email.Body = New TextPart("html") With {
-                .text = body
+                email.Body = New TextPart("html") With {
+                .Text = body
             }
             End If
 
@@ -92,18 +92,18 @@ Namespace SendingEmails
         Function CreateWithAttachment([to] As MailboxAddress, subject As String, body As String, files As String(), Optional from As String = "me", Optional text As Boolean = False) As MimeMessage
             Dim email As New MimeMessage() With {
                 .Sender = New MailboxAddress(from, from),
-                .subject = subject
+                .Subject = subject
             }
 
             email.To.Add([to])
             Dim mimeBodyPart As MimePart
             If text Then
                 mimeBodyPart = New TextPart("plain") With {
-                    .text = body
+                    .Text = body
                 }
             Else
                 mimeBodyPart = New TextPart("html") With {
-                    .text = body
+                    .Text = body
                 }
             End If
 

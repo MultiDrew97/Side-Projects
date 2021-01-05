@@ -11,8 +11,9 @@ Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
 Imports MimeKit
 Imports Org.BouncyCastle.Utilities.Encoders
+Imports MediaMinistry.Types
 
-Namespace SendingEmails
+Namespace GoogleAPI
     Public Class DriveUploader
         Inherits Service
         Implements IDisposable
@@ -73,7 +74,7 @@ Namespace SendingEmails
 
             Dim fileMetadata As New Data.File With {
                 .Name = uploadName,
-                .parents = parents
+                .Parents = parents
             }
 
             Dim request As FilesResource.CreateMediaUpload
@@ -285,7 +286,7 @@ Namespace SendingEmails
                 Next
 
                 pageToken = result.NextPageToken
-                Loop While (pageToken IsNot Nothing)
+            Loop While (pageToken IsNot Nothing)
 
             'folders.Sort()
 
