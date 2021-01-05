@@ -121,7 +121,7 @@ Namespace SendingEmails
             End If
         End Function
 
-        Function GetFolderID(ByVal name As String) As String
+        Function GetFolderID(name As String) As String
             If name IsNot Nothing Then
                 Dim pageToken As String = Nothing
                 Dim request As FilesResource.ListRequest = Service.Files.List()
@@ -141,11 +141,12 @@ Namespace SendingEmails
                     Next
                     pageToken = result.NextPageToken
                 Loop While (pageToken IsNot Nothing)
+            End If
 
-                Return Nothing
+            Return Nothing
         End Function
 
-        Function FindFile(ByVal fileName As String) As String
+        Function FindFile(fileName As String) As String
             Dim pageToken As String = Nothing
             Do
 
@@ -167,7 +168,7 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
-        Sub SetPermissions(ByVal fileID As String)
+        Sub SetPermissions(fileID As String)
 
             Dim request As PermissionsResource.CreateRequest
 
@@ -193,27 +194,6 @@ Namespace SendingEmails
             End Using
 
             Return listeners
-        End Function
-
-        Public Function GetFiles(folderID As String) As Collection(Of String)
-            Dim request As FilesResource.ListRequest = Service.Files.List()
-            Dim files As New Collection(Of String)
-            Dim pageToken As String = Nothing
-
-            Do
-                request.Q = String.Format("mimeType!='application/vnd.google-apps.folder' and '{0}' in parents", folderID)
-                request.Spaces = "drive"
-                request.Fields = "nextPageToken, files(name)"
-                request.PageToken = pageToken
-
-                Dim results As FileList = request.Execute()
-
-                For Each file As Data.File In results.Files
-                    files.Add(file.Name)
-                Next
-            Loop While pageToken IsNot Nothing
-
-            Return files
         End Function
 
         Public Function GetFileID(fileName As String) As String

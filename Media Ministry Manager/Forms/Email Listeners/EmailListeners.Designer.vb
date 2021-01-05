@@ -328,9 +328,9 @@ Partial Class Frm_EmailListeners
         Me.Controls.Add(Me.txt_FileLocation)
         Me.Controls.Add(Me.lbl_FileLocation)
         Me.Controls.Add(Me.lbl_Folder)
-        Me.Controls.Add(Me.cbx_Files)
+        'Me.Controls.Add(Me.cbx_Files)
         Me.Controls.Add(Me.cbx_Folders)
-        Me.Controls.Add(Me.btn_Upload)
+        'Me.Controls.Add(Me.btn_Upload)
         Me.Controls.Add(Me.mnstr_Strip)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

@@ -146,18 +146,6 @@ Partial Friend NotInheritable Class MySettings
         End Get
     End Property
     
-    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P"& _ 
-        "ersist Security Info=True;User ID=arandlemiller97;Password=JasmineLove2697;Conne"& _ 
-        "ct Timeout=30;Encrypt=True;Authentication=""Sql Password""")>  _
-    Public ReadOnly Property masterConnectionString() As String
-        Get
-            Return CType(Me("masterConnectionString"),String)
-        End Get
-    End Property
-    
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("<!DOCTYPE html>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<html>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<head>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<link rel=""stylesheet"" href=""https://sppbc.hopto"& _ 
@@ -181,6 +169,43 @@ Partial Friend NotInheritable Class MySettings
         Set
             Me("customMessageBody") = value
         End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("<!DOCTYPE html>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<html>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<head>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<link rel=""stylesheet"" href=""https://sppbc.hopto"& _ 
+        ".org/css/emails.css"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</head>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"{0}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</html>")>  _
+    Public Property customMessageSubject1() As String
+        Get
+            Return CType(Me("customMessageSubject1"),String)
+        End Get
+        Set
+            Me("customMessageSubject1") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property customMessageBody1() As String
+        Get
+            Return CType(Me("customMessageBody1"),String)
+        End Get
+        Set
+            Me("customMessageBody1") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
+        "ser ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication=""Sql Passw"& _ 
+        "ord""")>  _
+    Public ReadOnly Property masterConnectionString() As String
+        Get
+            Return CType(Me("masterConnectionString"),String)
+        End Get
     End Property
 End Class
 

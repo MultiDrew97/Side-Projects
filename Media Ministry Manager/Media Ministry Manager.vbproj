@@ -131,8 +131,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
-      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.dll</HintPath>
@@ -180,9 +180,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SqlClient, Version=4.6.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SqlClient.4.8.1\lib\net461\System.Data.SqlClient.dll</HintPath>
-    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
@@ -231,6 +228,11 @@
     <Compile Include="Custom Objects\Dialogs\ListenerSelectionDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Custom Objects\DriveUploader.vb" />
+    <Compile Include="Custom Objects\Listener.vb" />
+    <Compile Include="Custom Objects\Sender.vb" />
+    <Compile Include="Custom Objects\Service.vb" />
+    <Compile Include="Custom Objects\Utils.vb" />
     <Compile Include="Forms\Email Listeners\CustomMessage.Designer.vb">
       <DependentUpon>CustomMessage.vb</DependentUpon>
     </Compile>
@@ -368,13 +370,6 @@
     <Compile Include="Forms\Customer\AddNewCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Objects\DriveUploader.vb" />
-    <Compile Include="Objects\Exceptions\FormClosedException.vb" />
-    <Compile Include="Objects\Exceptions\PasswordException.vb" />
-    <Compile Include="Objects\Listener.vb" />
-    <Compile Include="Objects\Sender.vb" />
-    <Compile Include="Objects\Service.vb" />
-    <Compile Include="Objects\Utils.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\MediaMinistrySplash.resx">
@@ -521,7 +516,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_DetectChanges="True" BuildVersion_UseGlobalSettings="False" BuildVersion_StartDate="2019/5/8" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_ConfigurationName="Any" />
+      <UserProperties BuildVersion_ConfigurationName="Any" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_StartDate="2019/5/8" BuildVersion_UseGlobalSettings="False" BuildVersion_DetectChanges="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

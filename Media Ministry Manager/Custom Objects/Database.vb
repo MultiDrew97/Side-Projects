@@ -9,10 +9,15 @@ Imports MediaMinistry.SendingEmails
 
 Public Class Database
     Implements IDisposable
+
     Private ReadOnly myConn As SqlConnection
     Private ReadOnly myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
+
+    Public Sub New()
+        Me.New(My.Settings.Username, My.Settings.Password)
+    End Sub
 
     Public Sub New(connectionString As SqlConnectionStringBuilder)
         'Connect to the database that I have createed for Media Ministry
@@ -440,7 +445,7 @@ Public Class Database
     Public Function Search(queryString As String) As String()
         myCmd.CommandText = queryString
         myReader = myCmd.ExecuteReader()
-        Dim result As String()
+        Dim result(1) As String
 
         result(0) = myReader.GetString(0)
         result(1) = myReader.GetString(1)

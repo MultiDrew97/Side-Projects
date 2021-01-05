@@ -100,9 +100,7 @@ Public Class Frm_EmailListeners
     End Sub
 
     Private Sub Btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
-        txt_FileLocation.Visible = True
-        cbx_Files.Visible = False
-        ofd_SelectAudio.ShowDialog()
+
     End Sub
 
     Private Sub Bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
