@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <configuration>
     <configSections>
         <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-            <section name="MediaMinistry.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
-            <section name="Media_Ministry.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+            <section name="MediaMinistry.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+            <section name="Media_Ministry.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
         </sectionGroup>
     </configSections>
     <connectionStrings>
@@ -18,7 +18,7 @@
             providerName="System.Data.SqlClient" />
     </connectionStrings>
     <startup>
-        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8" />
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8"/>
     </startup>
     <userSettings>
         <MediaMinistry.MySettings>
@@ -40,16 +40,11 @@
             <setting name="AdminInfoRecieved" serializeAs="String">
                 <value>False</value>
             </setting>
+            <setting name="cancelled" serializeAs="String">
+                <value>False</value>
+            </setting>
             <setting name="customMessageSubject" serializeAs="String">
-                <value>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;link rel="stylesheet" href="https://sppbc.hopto.org/css/emails.css"
-&lt;/head&gt;
-&lt;body&gt;
-{0}
-&lt;/body&gt;
-&lt;/html&gt;</value>
+                <value />
             </setting>
             <setting name="customMessageBody" serializeAs="String">
 <<<<<<<< HEAD:Media Ministry Manager/App.config~Stashed changes
@@ -60,34 +55,22 @@
 >>>>>>>> Added the beginnings of the custom messages functionality:Media Ministry Manager/bin/Debug/Media Ministry Manager.exe.config
                 <value />
             </setting>
-            <setting name="TempColle" serializeAs="Xml">
-                <value>
-                    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <string>{Andrew, arandlemiller97@yahoo.com}</string>
-                    </ArrayOfString>
-                </value>
-<<<<<<<< HEAD:Media Ministry Manager/App.config~Stashed changes
->>>>>>>> Added the beginnings of the custom messages functionality:Media Ministry Manager/bin/Debug/Media Ministry Manager.exe.config
-========
->>>>>>>> Added the beginnings of the custom messages functionality:Media Ministry Manager/bin/Debug/Media Ministry Manager.exe.config
-            </setting>
         </MediaMinistry.MySettings>
         <Media_Ministry.My.MySettings>
             <setting name="Username" serializeAs="String">
-                <value />
+                <value/>
             </setting>
             <setting name="Password" serializeAs="String">
-                <value />
+                <value/>
             </setting>
             <setting name="KeepLoggedIn" serializeAs="String">
                 <value>False</value>
             </setting>
             <setting name="AdminUser" serializeAs="String">
-                <value />
+                <value/>
             </setting>
             <setting name="AdminPass" serializeAs="String">
-                <value />
+                <value/>
             </setting>
             <setting name="AdminInfoRecieved" serializeAs="String">
                 <value>False</value>
@@ -97,20 +80,24 @@
   <runtime>
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
       <dependentAssembly>
-        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0" />
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0"/>
       </dependentAssembly>
       <dependentAssembly>
-        <assemblyIdentity name="BouncyCastle.Crypto" publicKeyToken="0e99375e54769942" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-1.8.8.0" newVersion="1.8.8.0" />
+        <assemblyIdentity name="BouncyCastle.Crypto" publicKeyToken="0e99375e54769942" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.8.9.0" newVersion="1.8.9.0"/>
       </dependentAssembly>
       <dependentAssembly>
-        <assemblyIdentity name="Google.Apis" publicKeyToken="4b01fa6e34db77ab" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-1.49.0.0" newVersion="1.49.0.0" />
+        <assemblyIdentity name="Google.Apis" publicKeyToken="4b01fa6e34db77ab" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.49.0.0" newVersion="1.49.0.0"/>
       </dependentAssembly>
       <dependentAssembly>
-        <assemblyIdentity name="Google.Apis.Core" publicKeyToken="4b01fa6e34db77ab" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-1.49.0.0" newVersion="1.49.0.0" />
+        <assemblyIdentity name="Google.Apis.Core" publicKeyToken="4b01fa6e34db77ab" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.49.0.0" newVersion="1.49.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="ICSharpCode.SharpZipLib" publicKeyToken="1b03e6acf1164f73" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.3.1.9" newVersion="1.3.1.9"/>
       </dependentAssembly>
     </assemblyBinding>
   </runtime>

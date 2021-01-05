@@ -19,30 +19,23 @@ Public Class Database
         Me.New(My.Settings.Username, My.Settings.Password)
     End Sub
 
+    Public Sub New(username As String, password As String)
+        Me.New(New SqlConnectionStringBuilder(My.Settings.masterConnectionString) With {
+            .UserID = username,
+            .password = password
+        })
+    End Sub
+
     Public Sub New(connectionString As SqlConnectionStringBuilder)
-        'Connect to the database that I have createed for Media Ministry
-        myConn = New SqlConnection(connectionString.ConnectionString)
-        'create the command object that will be used for queriying the server
-        myCmd = myConn.CreateCommand
-        'open the connection
-        myConn.Open()
+        Me.New(New SqlConnection(connectionString.ConnectionString))
     End Sub
 
     Public Sub New(connection As SqlConnection)
-        'Connect to other database server with given connection
+        'Connect to the database that I have createed for Media Ministry
         myConn = connection
+        'create the command object that will be used for queriying the server
         myCmd = myConn.CreateCommand
-        myConn.Open()
-    End Sub
-
-    Public Sub New(username As String, password As String)
-        Dim connectionString As New SqlConnectionStringBuilder(My.Settings.masterConnectionString) With {
-            .UserID = username,
-            .password = password
-        }
-
-        myConn = New SqlConnection(connectionString.ConnectionString)
-        myCmd = myConn.CreateCommand
+        'open the connection
         myConn.Open()
     End Sub
 
@@ -238,7 +231,7 @@ Public Class Database
                                 myReader.GetString(2) & vbTab & myReader.GetString(3) &
                                 myReader.GetString(4) & vbTab & myReader.GetString(5) &
                                 myReader.GetString(6) & vbTab & myReader.GetString(7) &
-                                vbTab & myReader.GetString(8) & vbLf
+                                myReader.GetString(8) & vbTab & vbLf
         Loop
 
         myReader.Close()
@@ -428,8 +421,8 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Function RetrieveListeners() As Collection(Of Listener)
-        Dim listeners As Collection(Of Listener) = New Collection(Of Listener)
+    Public Function GetListeners() As Collection(Of Listener)
+        Dim listeners As New Collection(Of Listener)
 
         myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
 

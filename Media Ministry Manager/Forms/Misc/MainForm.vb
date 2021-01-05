@@ -54,10 +54,6 @@ Public Class frm_Main
         Me.Close()
     End Sub
 
-    Private Sub Bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-
-    End Sub
-
     Private Sub Frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         Dim size As String
 

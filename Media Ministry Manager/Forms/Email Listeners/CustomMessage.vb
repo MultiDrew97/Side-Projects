@@ -1,4 +1,5 @@
-﻿Imports System.Threading
+﻿Imports System.ComponentModel
+Imports System.Threading
 Imports MediaMinistry.SendingEmails
 Public Class frm_CustomMessage
 
@@ -14,6 +15,7 @@ Public Class frm_CustomMessage
     End Sub
 
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+        My.Settings.Cancelled = True
         Me.Close()
     End Sub
 

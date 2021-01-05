@@ -81,6 +81,26 @@ Namespace My.Resources
         End Property
 
         '''<summary>
+        '''  Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        '''&lt;html&gt;
+        '''&lt;head&gt;
+        '''&lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;
+        '''&lt;/head&gt;
+        '''&lt;body&gt;
+        '''
+        '''&lt;p&gt;Hello {0},&lt;/p&gt;&lt;br&gt;
+        '''
+        '''{1}
+        '''&lt;/body&gt;
+        '''&lt;/html&gt;.
+        '''</summary>
+        Friend ReadOnly Property customMessageTemplate() As String
+            Get
+                Return ResourceManager.GetString("customMessageTemplate", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property logout_button() As System.Drawing.Bitmap

@@ -61,9 +61,6 @@ Partial Class Frm_EmailListeners
         Me.ofd_SelectAudio.Multiselect = True
         Me.ofd_SelectAudio.Title = "Email Ministry"
         '
-        'bw_Upload
-        '
-        '
         'ss_Feedback
         '
         Me.ss_Feedback.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
@@ -76,7 +73,7 @@ Partial Class Frm_EmailListeners
         'tss_Feedback
         '
         Me.tss_Feedback.Name = "tss_Feedback"
-        Me.tss_Feedback.Size = New System.Drawing.Size(340, 17)
+        Me.tss_Feedback.Size = New System.Drawing.Size(340, 15)
         Me.tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to"
         '
         'btn_SendEmails

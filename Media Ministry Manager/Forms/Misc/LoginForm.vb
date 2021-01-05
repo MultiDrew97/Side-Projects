@@ -31,7 +31,7 @@ Public Class frm_Login
             _dbConnection.UserID = txt_Username.Text
         End If
 
-        If checkCreds(txt_Username.Text, txt_Password.Text) Then
+        If CheckCreds(txt_Username.Text, txt_Password.Text) Then
             Try
                 Dim mainForm = New frm_Main
                 mainForm.Show()

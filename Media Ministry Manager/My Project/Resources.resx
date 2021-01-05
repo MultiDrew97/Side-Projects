@@ -275,4 +275,19 @@
 &lt;/html&gt;</value>
     <comment>The html format for a receipt email</comment>
   </data>
+  <data name="customMessageTemplate" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;link rel="stylesheet" href="https://sppbc.hopto.org/css/emails.css"
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;Hello {0},&lt;/p&gt;&lt;br&gt;
+
+{1}
+&lt;/body&gt;
+&lt;/html&gt;</value>
+    <comment>Template for the custom message</comment>
+  </data>
 </root>

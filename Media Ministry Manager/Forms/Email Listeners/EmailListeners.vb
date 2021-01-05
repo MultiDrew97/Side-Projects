@@ -81,7 +81,7 @@ Public Class Frm_EmailListeners
     End Structure
 
     Private Sub Btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
-        Dim form As New frm_Upload
+        Dim form As New Frm_Upload
         form.show()
     End Sub
 
@@ -105,23 +105,23 @@ Public Class Frm_EmailListeners
         'TODO: Move this into a background worker to not freeze the app while sending
 
         Dim listeners As ObjectModel.Collection(Of Listener)
-            If cbx_Files.SelectedItem IsNot Nothing Then
-                Using uploader As New DriveUploader()
-                    fileID = uploader.getFileID(CType(cbx_Files.SelectedItem, String))
-                End Using
-                If fileID IsNot Nothing Then
-                    Using db As New Database(My.Settings.Username, My.Settings.Password)
-                        listeners = db.RetrieveListeners()
-                        Using emailer As New Sender()
-                            tss_Feedback.Text = "Sending Emails..."
-                            For Each listener As Listener In listeners
-                                emailer.Send(emailer.Create(MimeKit.MailboxAddress.Parse(listener.Email), "Sunday Morning Message", String.Format(My.Resources.newSermon, listener.Name, String.Format(shareLink, fileID))))
-                            Next
-                        End Using
-                        tss_Feedback.Text = "All emails have been sent"
+        If cbx_Files.SelectedItem IsNot Nothing Then
+            Using uploader As New DriveUploader()
+                fileID = uploader.getFileID(CType(cbx_Files.SelectedItem, String))
+            End Using
+            If fileID IsNot Nothing Then
+                Using db As New Database(My.Settings.Username, My.Settings.Password)
+                    listeners = db.RetrieveListeners()
+                    Using emailer As New Sender()
+                        tss_Feedback.Text = "Sending Emails..."
+                        For Each listener As Listener In listeners
+                            emailer.Send(emailer.Create(MimeKit.MailboxAddress.Parse(listener.Email), "Sunday Morning Message", String.Format(My.Resources.newSermon, listener.Name, String.Format(shareLink, fileID))))
+                        Next
                     End Using
-                End If
+                    tss_Feedback.Text = "All emails have been sent"
+                End Using
             End If
+        End If
     End Sub
 
     Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
@@ -149,24 +149,5 @@ Public Class Frm_EmailListeners
         'btn_Upload.Location = Locations.UploadDefault
         btn_SendEmails.Location = Locations.SendDefault
         btn_ViewListeners.Location = Locations.ViewDefault
-        lbl_Folder.Location = Locations.FolderLabelDefault
-        cbx_Folders.Location = Locations.FolderDefault
-        btn_AddFolder.Location = Locations.FolderAddDefault
-        lbl_FileLocation.Location = Locations.FileLabelDefault
-        txt_FileLocation.Location = Locations.FileDefault
-        btn_Browse.Location = Locations.BrowseDefault
-
-    End Sub
-
-    Sub LoadFolders()
-        Using uploader As New DriveUploader()
-            cbx_Folders.DataSource = uploader.GetFolders()
-        End Using
-    End Sub
-
-    Private Sub cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Folders.SelectedIndexChanged
-        Using uploader As New DriveUploader
-            cbx_Files.DataSource = uploader.getFiles(uploader.GetFolderID(CType(cbx_Folders.SelectedItem, String)))
-        End Using
     End Sub
 End Class

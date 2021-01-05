@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frm_CustomMessage
+Partial Class Frm_CustomMessage
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,7 +24,7 @@ Partial Class frm_CustomMessage
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_CustomMessage))
-        Me.btn_Send = New System.Windows.Forms.Button()
+        Me.btn_Save = New System.Windows.Forms.Button()
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.lbl_MessageSubject = New System.Windows.Forms.Label()
         Me.lbl_MessageBody = New System.Windows.Forms.Label()
@@ -54,19 +54,19 @@ Partial Class frm_CustomMessage
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
-        'btn_Send
+        'btn_Save
         '
-        Me.btn_Send.AutoSize = True
-        Me.btn_Send.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_Send.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Send.Location = New System.Drawing.Point(423, 384)
-        Me.btn_Send.MaximumSize = New System.Drawing.Size(200, 200)
-        Me.btn_Send.MinimumSize = New System.Drawing.Size(100, 50)
-        Me.btn_Send.Name = "btn_Send"
-        Me.btn_Send.Size = New System.Drawing.Size(100, 50)
-        Me.btn_Send.TabIndex = 0
-        Me.btn_Send.Text = "Send"
-        Me.btn_Send.UseVisualStyleBackColor = True
+        Me.btn_Save.AutoSize = True
+        Me.btn_Save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Save.Location = New System.Drawing.Point(423, 369)
+        Me.btn_Save.MaximumSize = New System.Drawing.Size(200, 200)
+        Me.btn_Save.MinimumSize = New System.Drawing.Size(100, 50)
+        Me.btn_Save.Name = "btn_Save"
+        Me.btn_Save.Size = New System.Drawing.Size(100, 50)
+        Me.btn_Save.TabIndex = 0
+        Me.btn_Save.Text = "Save"
+        Me.btn_Save.UseVisualStyleBackColor = True
         '
         'btn_Cancel
         '
@@ -74,7 +74,7 @@ Partial Class frm_CustomMessage
         Me.btn_Cancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btn_Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Cancel.Location = New System.Drawing.Point(136, 384)
+        Me.btn_Cancel.Location = New System.Drawing.Point(136, 369)
         Me.btn_Cancel.MaximumSize = New System.Drawing.Size(200, 200)
         Me.btn_Cancel.MinimumSize = New System.Drawing.Size(100, 50)
         Me.btn_Cancel.Name = "btn_Cancel"
@@ -86,29 +86,29 @@ Partial Class frm_CustomMessage
         'lbl_MessageSubject
         '
         Me.lbl_MessageSubject.AutoSize = True
-        Me.lbl_MessageSubject.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_MessageSubject.Location = New System.Drawing.Point(36, 55)
+        Me.lbl_MessageSubject.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_MessageSubject.Location = New System.Drawing.Point(36, 40)
         Me.lbl_MessageSubject.Name = "lbl_MessageSubject"
-        Me.lbl_MessageSubject.Size = New System.Drawing.Size(184, 25)
+        Me.lbl_MessageSubject.Size = New System.Drawing.Size(98, 25)
         Me.lbl_MessageSubject.TabIndex = 2
-        Me.lbl_MessageSubject.Text = "Message Subject:"
+        Me.lbl_MessageSubject.Text = "Subject:"
         '
         'lbl_MessageBody
         '
         Me.lbl_MessageBody.AutoSize = True
-        Me.lbl_MessageBody.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_MessageBody.Location = New System.Drawing.Point(34, 129)
+        Me.lbl_MessageBody.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_MessageBody.Location = New System.Drawing.Point(34, 114)
         Me.lbl_MessageBody.Name = "lbl_MessageBody"
-        Me.lbl_MessageBody.Size = New System.Drawing.Size(161, 25)
+        Me.lbl_MessageBody.Size = New System.Drawing.Size(114, 25)
         Me.lbl_MessageBody.TabIndex = 3
-        Me.lbl_MessageBody.Text = "Message Body:"
+        Me.lbl_MessageBody.Text = "Message:"
         '
         'txt_MessageSubject
         '
         Me.txt_MessageSubject.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_MessageSubject.Location = New System.Drawing.Point(39, 83)
+        Me.txt_MessageSubject.Location = New System.Drawing.Point(39, 68)
         Me.txt_MessageSubject.Name = "txt_MessageSubject"
-        Me.txt_MessageSubject.Size = New System.Drawing.Size(315, 31)
+        Me.txt_MessageSubject.Size = New System.Drawing.Size(417, 31)
         Me.txt_MessageSubject.TabIndex = 4
         '
         'rtb_MessageBody
@@ -116,7 +116,7 @@ Partial Class frm_CustomMessage
         Me.rtb_MessageBody.AcceptsTab = True
         Me.rtb_MessageBody.EnableAutoDragDrop = True
         Me.rtb_MessageBody.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rtb_MessageBody.Location = New System.Drawing.Point(37, 157)
+        Me.rtb_MessageBody.Location = New System.Drawing.Point(37, 142)
         Me.rtb_MessageBody.MinimumSize = New System.Drawing.Size(600, 200)
         Me.rtb_MessageBody.Name = "rtb_MessageBody"
         Me.rtb_MessageBody.Size = New System.Drawing.Size(611, 200)
@@ -278,7 +278,7 @@ Partial Class frm_CustomMessage
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(700, 500)
         Me.MinimumSize = New System.Drawing.Size(100, 100)
-        Me.Name = "frm_CustomMessage"
+        Me.Name = "Frm_CustomMessage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.mnstr_Strip.ResumeLayout(False)
@@ -288,7 +288,7 @@ Partial Class frm_CustomMessage
 
     End Sub
 
-    Friend WithEvents btn_Send As Button
+    Friend WithEvents btn_Save As Button
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents lbl_MessageSubject As Label
     Friend WithEvents lbl_MessageBody As Label

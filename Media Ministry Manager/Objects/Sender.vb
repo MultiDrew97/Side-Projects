@@ -32,10 +32,10 @@ Namespace SendingEmails
             End Get
         End Property
 
-        Sub New(ct As CancellationToken)
+        Sub New(Optional ct As CancellationToken = Nothing)
             Dim credPath As String = "Gmail Token"
             Using stream As New MemoryStream(My.Resources.credentials)
-                Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
+                Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CType(IIf(IsNothing(ct), CancellationToken.None, ct), CancellationToken), New FileDataStore(credPath, True)).Result
                 Console.WriteLine("Credential file saved to: " + credPath)
                 Service = New GmailService(New BaseClientService.Initializer() With {.HttpClientInitializer = Credential, .ApplicationName = ApplicationName})
             End Using
@@ -46,8 +46,6 @@ Namespace SendingEmails
         End Sub
 
         Function Create([to] As MailboxAddress, subject As String, body As String, Optional from As String = "me") As MimeMessage
-            Dim sender, recipient As New Collection(Of InternetAddress)
-
             Dim email As New MimeMessage() With {
                 .Sender = New MailboxAddress(from, from),
                 .Subject = subject,
@@ -66,8 +64,10 @@ Namespace SendingEmails
             emailContent.WriteTo(buffer)
             Dim bytes As Byte() = buffer.ToByteArray()
             Dim encodedEmail As String = UrlBase64.Encode(bytes)
-            Dim message As New Message()
-            message.Raw = encodedEmail
+            Dim message As New Message With {
+                .Raw = encodedEmail
+            }
+
             Return message
         End Function
 
@@ -85,8 +85,9 @@ Namespace SendingEmails
 
             'mimeBodyPart.setContent(bodyText, "text/plain")
 
-            Dim multipart As New Multipart()
-            multipart.Add(mimeBodyPart)
+            Dim multipart As New Multipart From {
+                mimeBodyPart
+            }
 
             Dim attachments As New AttachmentCollection()
 

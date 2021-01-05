@@ -20,16 +20,8 @@ Namespace SendingEmails
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
         Private ReadOnly ApplicationName As String = "Drive Uploader"
         'Private permissions As New List(Of Permission)()
-        Private tss As ToolStripStatusLabel
-        Private Property Service As DriveService
-        Private Property Credential As UserCredential
-        Overrides ReadOnly Property Info As Object
-            Get
-                Dim getAbout = Service.About.Get()
-                getAbout.Fields = "user(displayName, emailAddress)"
-                Return getAbout.Execute().User
-            End Get
-        End Property
+        Private ReadOnly tss As ToolStripStatusLabel
+        Private Property Service() As DriveService
 
         Sub New(Optional ct As CancellationToken = Nothing)
             Dim credPath = "Drive Token"
@@ -63,16 +55,9 @@ Namespace SendingEmails
 
         End Sub
 
-        Function Upload(fileName As String, ByVal folderName As String, toolStrip As ToolStripStatusLabel) As String
-            Me.tss = toolStrip
-            Dim parents As New List(Of String) From {
-                GetFolderID(folderName)
-            }
-
-            Dim uploadName As String = fileName.Split(CType("\\", Char()))(fileName.Split(CType("\\", Char())).Length - 1).Split(CType(".", Char()))(0) + " " + DateTime.UtcNow.ToString("MM/dd/yyyy")
-
-            Dim fileMetadata As New Data.File With {
-                .Name = uploadName,
+        Function Upload(fileName As String, parents As List(Of String), Optional uploadName As String = Nothing) As String
+            Dim fileMetadata As New Data.File() With {
+                .Name = CType(IIf(String.IsNullOrEmpty(uploadName), fileName.Split(CType("\\", Char()))(fileName.Split(CType("\\", Char())).Length - 1).Split(CType(".", Char()))(0) + " " + DateTime.UtcNow.ToString("MM/dd/yyyy"), uploadName), String),
                 .parents = parents
             }
 
@@ -81,20 +66,12 @@ Namespace SendingEmails
             Using reader As New FileStream(fileName, FileMode.Open)
                 request = Service.Files.Create(fileMetadata, reader, MimeTypes.GetMimeType(fileName))
                 request.Fields = "id"
-                toolStrip.Text = String.Format("Uploading the file to the drive in folder: {0}...", folderName)
                 request.Upload()
             End Using
 
-            Dim file = request.ResponseBody
-
-            If (file IsNot Nothing) Then
-                toolStrip.Text = String.Format("File Uploaded:\n\tID: {0}\n\tName: {1}", file.Id, file.Name)
-                SetPermissions(file.Id)
-                Console.WriteLine("ID: {0}", file.Id)
-                Return file.Id
+            If (request.ResponseBody IsNot Nothing) Then
+                Return request.ResponseBody.Id
             Else
-                toolStrip.Text = "Upload failed"
-                toolStrip.ForeColor = Color.Red
                 Return Nothing
             End If
         End Function
@@ -105,7 +82,6 @@ Namespace SendingEmails
             If (Not String.IsNullOrEmpty(folderID)) Then
                 Return folderID
             Else
-                Console.WriteLine("No folder found with that name")
                 Dim fileMetadata As New Data.File With {
                     .Name = folderName,
                     .MimeType = "application/vnd.google-apps.folder"
@@ -116,7 +92,6 @@ Namespace SendingEmails
                 request.Fields = "id"
                 Dim folder As Data.File = request.Execute()
 
-                Console.WriteLine("Folder ID: " + folder.Id)
                 Return folder.Id
             End If
         End Function
@@ -146,16 +121,17 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
-        Function FindFile(fileName As String) As String
+        Function FindFile(ByVal fileName As String) As String
+            Dim request As FilesResource.ListRequest = Service.Files.List()
             Dim pageToken As String = Nothing
             Do
 
-                Service.Files.List().Q = "mimeType='text/plain'"
-                Service.Files.List().Spaces = "drive"
-                Service.Files.List().Fields = "nextPageToken, files(id, name)"
-                Service.Files.List().PageToken = pageToken
+                request.Q = "mimeType!='application/vnd.google-apps.folder'"
+                request.Spaces = "drive"
+                request.Fields = "nextPageToken, files(id, name)"
+                request.PageToken = pageToken
 
-                Dim result As FileList = Service.Files.List().Execute()
+                Dim result As FileList = request.Execute()
 
                 For Each files As Data.File In result.Files
                     If (files.Name.Equals(fileName)) Then
@@ -190,7 +166,7 @@ Namespace SendingEmails
             Dim listeners As New Collection(Of Listener)
 
             Using db = New Database(My.Settings.Username, My.Settings.Password)
-                listeners = db.RetrieveListeners()
+                listeners = db.GetListeners()
             End Using
 
             Return listeners
@@ -285,7 +261,7 @@ Namespace SendingEmails
                 Next
 
                 pageToken = result.NextPageToken
-                Loop While (pageToken IsNot Nothing)
+            Loop While (pageToken IsNot Nothing)
 
             'folders.Sort()
 

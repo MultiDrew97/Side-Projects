@@ -103,5 +103,4 @@ Public Class frm_DisplayCustomers
             db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
         End Using
     End Sub
-
 End Class
