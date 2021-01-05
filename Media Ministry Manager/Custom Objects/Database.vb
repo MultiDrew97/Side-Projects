@@ -132,7 +132,7 @@ Public Class Database
     End Sub
 
     Public Sub UpdateListener(listener As Listener, current As String)
-        myCmd.CommandText = String.Format("update email_listeners set name='{0}', email='{1}' where email='{2}'", listener.Name, listener.Email, current)
+        myCmd.CommandText = String.Format("update email_listeners set name='{0}', email='{1}' where email='{2}'", listener.Name, listener.EmailAddress.Address, current)
 
         myCmd.ExecuteNonQuery()
     End Sub

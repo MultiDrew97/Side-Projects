@@ -81,8 +81,8 @@ Public Class Frm_EmailListeners
     End Structure
 
     Private Sub Btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
-        Dim form As New Frm_Upload
-        form.show()
+        Dim upload As New Frm_Upload
+        upload.Show()
     End Sub
 
     Private Sub Frm_EmailListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -104,24 +104,27 @@ Public Class Frm_EmailListeners
 
         'TODO: Move this into a background worker to not freeze the app while sending
 
-        Dim listeners As ObjectModel.Collection(Of Listener)
-        If cbx_Files.SelectedItem IsNot Nothing Then
-            Using uploader As New DriveUploader()
-                fileID = uploader.getFileID(CType(cbx_Files.SelectedItem, String))
-            End Using
-            If fileID IsNot Nothing Then
-                Using db As New Database(My.Settings.Username, My.Settings.Password)
-                    listeners = db.RetrieveListeners()
-                    Using emailer As New Sender()
-                        tss_Feedback.Text = "Sending Emails..."
-                        For Each listener As Listener In listeners
-                            emailer.Send(emailer.Create(MimeKit.MailboxAddress.Parse(listener.Email), "Sunday Morning Message", String.Format(My.Resources.newSermon, listener.Name, String.Format(shareLink, fileID))))
-                        Next
-                    End Using
-                    tss_Feedback.Text = "All emails have been sent"
-                End Using
-            End If
-        End If
+        'Dim listeners As ObjectModel.Collection(Of Listener)
+        'If cbx_Files.SelectedItem IsNot Nothing Then
+        '    Using uploader As New DriveUploader()
+        '        fileID = uploader.getFileID(CType(cbx_Files.SelectedItem, String))
+        '    End Using
+        '    If fileID IsNot Nothing Then
+        '        Using db As New Database(My.Settings.Username, My.Settings.Password)
+        '            listeners = db.RetrieveListeners()
+        '            Using emailer As New Sender()
+        '                tss_Feedback.Text = "Sending Emails..."
+        '                For Each listener As Listener In listeners
+        '                    emailer.Send(emailer.Create(MimeKit.MailboxAddress.Parse(listener.Email), "Sunday Morning Message", String.Format(My.Resources.newSermon, listener.Name, String.Format(shareLink, fileID))))
+        '                Next
+        '            End Using
+        '            tss_Feedback.Text = "All emails have been sent"
+        '        End Using
+        '    End If
+        'End If
+
+        Dim send As New frm_SendEmails()
+        send.Show()
     End Sub
 
     Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
