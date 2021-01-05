@@ -55,9 +55,6 @@ Public Class frm_Main
     End Sub
 
     Private Sub Bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-        'Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
-        '    out.Write(My.Resources.sender)
-        'End Using
 
         'If Not ValidateSender(CType(e.Argument, String)) Then
         '    Throw New FileNotFoundException("Sender was not found or was not copied correctly. Contact your developer.")
@@ -66,13 +63,13 @@ Public Class frm_Main
 
     Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.Size = WindowSizes.max Then
-            growToMax()
+            GrowToMax()
         Else
             backToNormal()
         End If
     End Sub
 
-    Private Sub growToMax()
+    Private Sub GrowToMax()
         'Hide normal size menu buttons
         btn_CustomerManagement.Hide()
         btn_placeOrder.Hide()
@@ -87,7 +84,7 @@ Public Class frm_Main
         '1366, 667
     End Sub
 
-    Private Sub backToNormal()
+    Private Sub BackToNormal()
         'show normal size menu buttons
         btn_CustomerManagement.Show()
         btn_placeOrder.Show()
