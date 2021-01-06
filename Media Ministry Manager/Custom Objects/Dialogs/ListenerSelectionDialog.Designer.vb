@@ -31,8 +31,8 @@ Partial Class ListenerSelectionDialog
         Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistry.MediaMinistryDataSet()
-        Me.EMAIL_LISTENERSTableAdapter = New MediaMinistry.MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.EMAIL_LISTENERSTableAdapter = New MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
         Me.bw_RetrieveListeners = New System.ComponentModel.BackgroundWorker()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -155,9 +155,9 @@ Partial Class ListenerSelectionDialog
     End Sub
 
     Friend WithEvents dgv_Listeners As DataGridView
-    Friend WithEvents MediaMinistryDataSet As MediaMinistry.MediaMinistryDataSet
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents EMAILLISTENERSBindingSource As BindingSource
-    Friend WithEvents EMAIL_LISTENERSTableAdapter As MediaMinistry.MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
+    Friend WithEvents EMAIL_LISTENERSTableAdapter As MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
     Friend WithEvents Selection As DataGridViewCheckBoxColumn
     Friend WithEvents NAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

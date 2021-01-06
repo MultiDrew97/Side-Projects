@@ -2,7 +2,7 @@
 
 Imports System.Collections.ObjectModel
 Imports System.ComponentModel
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.Types
 
 Public Class ListenerSelectionDialog
     Public Property Listeners As Collection(Of Listener)
@@ -13,7 +13,6 @@ Public Class ListenerSelectionDialog
     End Sub
 
     Private Sub btn_Finish_Click(sender As Object, e As EventArgs) Handles btn_Finish.Click
-        Dim listener As Listener
         For Each row As DataGridViewRow In dgv_Listeners.Rows
             If CBool(row.Cells(0).Value) = True Then
                 Listeners.Add(New Listener(CStr(row.Cells(1).Value), CStr(row.Cells(0).Value)))

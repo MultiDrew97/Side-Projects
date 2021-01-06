@@ -91,7 +91,8 @@ Public Class Frm_AddListener
             If Not String.IsNullOrWhiteSpace(txt_Email.Text) And Not String.IsNullOrWhiteSpace(txt_Name.Text) Then
                 If IsMatch(txt_Email.Text, emailPattern) Then
                     Try
-                        db.AddListener(txt_Name.Text, txt_Email.Text)
+                        'TODO: Change to be using instead of instance
+                        'db.AddListener(txt_Name.Text, txt_Email.Text)
                         tss_Feedback.ForeColor = Color.Black
                         tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
                         CType(Opener, frm_ViewListeners).customLoad()
@@ -130,7 +131,8 @@ Public Class Frm_AddListener
 
                             If IsMatch(fields(1), emailPattern) Then
                                 Try
-                                    db.AddListener(fields(0), fields(1))
+                                    'TODO: Change to be using instead of instance
+                                    'db.AddListener(fields(0), fields(1))
                                     successCount += 1
                                 Catch ex As SqlException
                                     fout.WriteLineAsync(String.Format("{0},{1} #{2}", fields(0), fields(1), ex.Message))

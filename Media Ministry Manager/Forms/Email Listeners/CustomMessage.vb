@@ -1,6 +1,9 @@
 ﻿Imports System.Threading
-Imports MediaMinistry.SendingEmails
-Public Class frm_CustomMessage
+Imports MediaMinistry.GoogleAPI
+
+'TODO: Convert to Dialog Box
+
+Public Class Frm_CustomMessage
 
     Dim fileSelector As FileSelectionDialog
     Dim listenerSelector As ListenerSelectionDialog

@@ -1,6 +1,6 @@
 ﻿Option Strict On
 
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.GoogleAPI
 
 Public Class frm_Folder
     Private Sub btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click

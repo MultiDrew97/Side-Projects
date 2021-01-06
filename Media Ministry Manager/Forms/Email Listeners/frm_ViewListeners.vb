@@ -53,6 +53,8 @@ Public Class frm_ViewListeners
     End Structure
 
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
+        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         customLoad()
     End Sub
 
@@ -87,7 +89,7 @@ Public Class frm_ViewListeners
         Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Using db = New Database(My.Settings.Username, My.Settings.Password)
-            db.UpdateListener(New SendingEmails.Listener(name, email), email)
+            db.UpdateListener(New Types.Listener(name, email), email)
         End Using
     End Sub
 

@@ -142,3 +142,4 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.FileSelectionDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.ListenerSelectionDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_CustomMessage.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.dll

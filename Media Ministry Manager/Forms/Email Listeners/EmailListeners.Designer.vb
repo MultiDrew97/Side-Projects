@@ -58,6 +58,7 @@ Partial Class Frm_EmailListeners
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btn_Upload = New System.Windows.Forms.Button()
         Me.ss_Feedback.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
@@ -152,7 +153,7 @@ Partial Class Frm_EmailListeners
         'btn_SendEmails
         '
         Me.btn_SendEmails.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_SendEmails.Location = New System.Drawing.Point(20, 53)
+        Me.btn_SendEmails.Location = New System.Drawing.Point(28, 103)
         Me.btn_SendEmails.Name = "btn_SendEmails"
         Me.btn_SendEmails.Size = New System.Drawing.Size(238, 36)
         Me.btn_SendEmails.TabIndex = 8
@@ -162,7 +163,7 @@ Partial Class Frm_EmailListeners
         'btn_ViewListeners
         '
         Me.btn_ViewListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_ViewListeners.Location = New System.Drawing.Point(20, 111)
+        Me.btn_ViewListeners.Location = New System.Drawing.Point(28, 161)
         Me.btn_ViewListeners.Name = "btn_ViewListeners"
         Me.btn_ViewListeners.Size = New System.Drawing.Size(238, 36)
         Me.btn_ViewListeners.TabIndex = 10
@@ -314,6 +315,16 @@ Partial Class Frm_EmailListeners
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
+        'btn_Upload
+        '
+        Me.btn_Upload.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_Upload.Location = New System.Drawing.Point(28, 45)
+        Me.btn_Upload.Name = "btn_Upload"
+        Me.btn_Upload.Size = New System.Drawing.Size(238, 36)
+        Me.btn_Upload.TabIndex = 8
+        Me.btn_Upload.Text = "Upload File"
+        Me.btn_Upload.UseVisualStyleBackColor = True
+        '
         'Frm_EmailListeners
         '
         Me.AllowDrop = True
@@ -321,6 +332,7 @@ Partial Class Frm_EmailListeners
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(826, 254)
         Me.Controls.Add(Me.btn_ViewListeners)
+        Me.Controls.Add(Me.btn_Upload)
         Me.Controls.Add(Me.btn_SendEmails)
         Me.Controls.Add(Me.ss_Feedback)
         Me.Controls.Add(Me.btn_AddFolder)
@@ -328,9 +340,7 @@ Partial Class Frm_EmailListeners
         Me.Controls.Add(Me.txt_FileLocation)
         Me.Controls.Add(Me.lbl_FileLocation)
         Me.Controls.Add(Me.lbl_Folder)
-        'Me.Controls.Add(Me.cbx_Files)
         Me.Controls.Add(Me.cbx_Folders)
-        'Me.Controls.Add(Me.btn_Upload)
         Me.Controls.Add(Me.mnstr_Strip)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -381,4 +391,5 @@ Partial Class Frm_EmailListeners
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btn_Upload As Button
 End Class
