@@ -7,9 +7,6 @@ Imports MediaMinistry.Helpers
 Public Class Frm_EmailListeners
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
-    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
-
-
 
     Private Structure Sizes
 
@@ -88,12 +85,6 @@ Public Class Frm_EmailListeners
     Private Sub Frm_EmailListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Dim main As New frm_Main()
         main.Show()
-    End Sub
-
-    Private Sub Frm_EmailListeners_Leave(sender As Object, e As EventArgs) Handles Me.Leave
-        If Frm_Main.IsDisposed Then
-            Close()
-        End If
     End Sub
 
     Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click

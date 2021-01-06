@@ -22,6 +22,7 @@ Partial Class Frm_AddListener
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_AddListener))
         Me.gbx_Options = New System.Windows.Forms.GroupBox()
         Me.rdo_Single = New System.Windows.Forms.RadioButton()
@@ -30,9 +31,11 @@ Partial Class Frm_AddListener
         Me.txt_FirstName = New System.Windows.Forms.TextBox()
         Me.txt_Email = New System.Windows.Forms.TextBox()
         Me.lbl_FirstName = New System.Windows.Forms.Label()
+        Me.lbl_LastName = New System.Windows.Forms.Label()
         Me.lbl_Email = New System.Windows.Forms.Label()
         Me.lbl_FilePath = New System.Windows.Forms.Label()
         Me.txt_FilePath = New System.Windows.Forms.TextBox()
+        Me.txt_LastName = New System.Windows.Forms.TextBox()
         Me.btn_Add = New System.Windows.Forms.Button()
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.btn_Browse = New System.Windows.Forms.Button()
@@ -58,9 +61,12 @@ Partial Class Frm_AddListener
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ep_Required = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.chk_Headers = New System.Windows.Forms.CheckBox()
         Me.gbx_Options.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
+        Me.ss_FeedbackStrip.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
+        CType(Me.ep_Required, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gbx_Options
@@ -128,6 +134,15 @@ Partial Class Frm_AddListener
         Me.lbl_FirstName.TabIndex = 3
         Me.lbl_FirstName.Text = "First Name:"
         '
+        'lbl_LastName
+        '
+        Me.lbl_LastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_LastName.Location = New System.Drawing.Point(597, 36)
+        Me.lbl_LastName.Name = "lbl_LastName"
+        Me.lbl_LastName.Size = New System.Drawing.Size(136, 26)
+        Me.lbl_LastName.TabIndex = 12
+        Me.lbl_LastName.Text = "Last Name:"
+        '
         'lbl_Email
         '
         Me.lbl_Email.AutoSize = True
@@ -156,6 +171,14 @@ Partial Class Frm_AddListener
         Me.txt_FilePath.ReadOnly = True
         Me.txt_FilePath.Size = New System.Drawing.Size(417, 32)
         Me.txt_FilePath.TabIndex = 6
+        '
+        'txt_LastName
+        '
+        Me.txt_LastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_LastName.Location = New System.Drawing.Point(600, 62)
+        Me.txt_LastName.Name = "txt_LastName"
+        Me.txt_LastName.Size = New System.Drawing.Size(249, 31)
+        Me.txt_LastName.TabIndex = 13
         '
         'btn_Add
         '
@@ -351,7 +374,7 @@ Partial Class Frm_AddListener
         Me.chk_Headers.UseVisualStyleBackColor = True
         Me.chk_Headers.Visible = False
         '
-        'frm_AddListener
+        'Frm_AddListener
         '
         Me.AcceptButton = Me.btn_Add
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -362,8 +385,6 @@ Partial Class Frm_AddListener
         Me.Controls.Add(Me.ss_FeedbackStrip)
         Me.Controls.Add(Me.btn_Browse)
         Me.Controls.Add(Me.mnstr_Strip)
-        Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.btn_Search)
         Me.Controls.Add(Me.btn_Cancel)
         Me.Controls.Add(Me.btn_Add)
         Me.Controls.Add(Me.txt_FilePath)
@@ -384,11 +405,9 @@ Partial Class Frm_AddListener
         Me.gbx_Options.PerformLayout()
         Me.ss_FeedbackStrip.ResumeLayout(False)
         Me.ss_FeedbackStrip.PerformLayout()
-        CType(Me.ep_Required, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
+        CType(Me.ep_Required, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -228,10 +228,9 @@
     <Compile Include="Custom Objects\Dialogs\ListenerSelectionDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\DriveUploader.vb" />
-    <Compile Include="Custom Objects\Listener.vb" />
-    <Compile Include="Custom Objects\Sender.vb" />
-    <Compile Include="Custom Objects\Service.vb" />
+    <Compile Include="Custom Objects\Exceptions\FormClosedException.vb" />
+    <Compile Include="Custom Objects\Exceptions\PasswordException.vb" />
+    <Compile Include="Custom Objects\Google\Service.vb" />
     <Compile Include="Custom Objects\Utils.vb" />
     <Compile Include="Forms\Email Listeners\CustomMessage.Designer.vb">
       <DependentUpon>CustomMessage.vb</DependentUpon>
@@ -382,19 +381,16 @@
     <Compile Include="Forms\Customer\AddNewCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customs\Google\DriveUploader.vb" />
-    <Compile Include="Customs\Exceptions\FormClosedException.vb" />
-    <Compile Include="Customs\Exceptions\PasswordException.vb" />
-    <Compile Include="Customs\Types\Orders\CompletedOrder.vb" />
-    <Compile Include="Customs\Types\Orders\Order.vb" />
-    <Compile Include="Customs\Types\People\Address.vb" />
-    <Compile Include="Customs\Types\People\Customer.vb" />
-    <Compile Include="Customs\Types\Inventory\Item.vb" />
-    <Compile Include="Customs\Types\People\Listener.vb" />
-    <Compile Include="Customs\Google\Sender.vb" />
-    <Compile Include="Customs\Types\People\Person.vb" />
-    <Compile Include="Customs\Types\Inventory\Product.vb" />
-    <Compile Include="Customs\Utils.vb" />
+    <Compile Include="Custom Objects\Google\DriveUploader.vb" />
+    <Compile Include="Custom Objects\Types\Orders\CompletedOrder.vb" />
+    <Compile Include="Custom Objects\Types\Orders\Order.vb" />
+    <Compile Include="Custom Objects\Types\People\Address.vb" />
+    <Compile Include="Custom Objects\Types\People\Customer.vb" />
+    <Compile Include="Custom Objects\Types\Inventory\Item.vb" />
+    <Compile Include="Custom Objects\Types\People\Listener.vb" />
+    <Compile Include="Custom Objects\Google\Sender.vb" />
+    <Compile Include="Custom Objects\Types\People\Person.vb" />
+    <Compile Include="Custom Objects\Types\Inventory\Product.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\MediaMinistrySplash.resx">
@@ -547,7 +543,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_ConfigurationName="Any" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_StartDate="2019/5/8" BuildVersion_UseGlobalSettings="False" BuildVersion_DetectChanges="True" />
+      <UserProperties BuildVersion_DetectChanges="True" BuildVersion_UseGlobalSettings="False" BuildVersion_StartDate="2019/5/8" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_ConfigurationName="Any" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

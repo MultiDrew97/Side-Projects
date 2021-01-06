@@ -7,6 +7,7 @@ Imports MediaMinistry.SendingEmails
 
 Public Class frm_Main
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
+    Dim firstTime As Boolean = True
 
     Structure WindowSizes
         Shared normal As New Size(413, 452)
@@ -63,7 +64,11 @@ Public Class frm_Main
             size = "s"
         End If
 
-        bw_ChangedSizes.RunWorkerAsync(size)
+        If Not firstTime Then
+            bw_ChangedSizes.RunWorkerAsync(size)
+        Else
+            firstTime = False
+        End If
     End Sub
 
     Private Sub GrowToMax()
@@ -199,7 +204,6 @@ Public Class frm_Main
                         BackToNormal()
                     End Sub
                 )
-
         End Select
 
     End Sub

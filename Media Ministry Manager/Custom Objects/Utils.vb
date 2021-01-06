@@ -15,6 +15,8 @@
             Select Case abbr
                 Case "tx", "TX"
                     Return "Texas"
+                Case "la", "LA"
+                    Return "Louisiana"
                 Case Else
                     Return Nothing
             End Select

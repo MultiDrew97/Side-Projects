@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_CustomMessage
+Partial Class frm_CustomMessage
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,7 +24,6 @@ Partial Class Frm_CustomMessage
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_CustomMessage))
-        Me.btn_Save = New System.Windows.Forms.Button()
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.lbl_MessageSubject = New System.Windows.Forms.Label()
         Me.lbl_MessageBody = New System.Windows.Forms.Label()
@@ -51,22 +50,9 @@ Partial Class Frm_CustomMessage
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btn_Send = New System.Windows.Forms.Button()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btn_Save
-        '
-        Me.btn_Save.AutoSize = True
-        Me.btn_Save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Save.Location = New System.Drawing.Point(423, 369)
-        Me.btn_Save.MaximumSize = New System.Drawing.Size(200, 200)
-        Me.btn_Save.MinimumSize = New System.Drawing.Size(100, 50)
-        Me.btn_Save.Name = "btn_Save"
-        Me.btn_Save.Size = New System.Drawing.Size(100, 50)
-        Me.btn_Save.TabIndex = 0
-        Me.btn_Save.Text = "Save"
-        Me.btn_Save.UseVisualStyleBackColor = True
         '
         'btn_Cancel
         '
@@ -254,14 +240,24 @@ Partial Class Frm_CustomMessage
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'EditToolStripMenuItem
+        'btn_Send
         '
-        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
-        Me.EditToolStripMenuItem.Text = "Edit"
+        Me.btn_Send.AutoSize = True
+        Me.btn_Send.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Send.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btn_Send.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Send.Location = New System.Drawing.Point(419, 369)
+        Me.btn_Send.MaximumSize = New System.Drawing.Size(200, 200)
+        Me.btn_Send.MinimumSize = New System.Drawing.Size(100, 50)
+        Me.btn_Send.Name = "btn_Send"
+        Me.btn_Send.Size = New System.Drawing.Size(100, 50)
+        Me.btn_Send.TabIndex = 1
+        Me.btn_Send.Text = "Send"
+        Me.btn_Send.UseVisualStyleBackColor = True
         '
         'frm_CustomMessage
         '
+        Me.AcceptButton = Me.btn_Send
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
@@ -273,12 +269,12 @@ Partial Class Frm_CustomMessage
         Me.Controls.Add(Me.txt_MessageSubject)
         Me.Controls.Add(Me.lbl_MessageBody)
         Me.Controls.Add(Me.lbl_MessageSubject)
-        Me.Controls.Add(Me.btn_Cancel)
         Me.Controls.Add(Me.btn_Send)
+        Me.Controls.Add(Me.btn_Cancel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(700, 500)
         Me.MinimumSize = New System.Drawing.Size(100, 100)
-        Me.Name = "Frm_CustomMessage"
+        Me.Name = "frm_CustomMessage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.mnstr_Strip.ResumeLayout(False)
@@ -287,8 +283,6 @@ Partial Class Frm_CustomMessage
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btn_Save As Button
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents lbl_MessageSubject As Label
     Friend WithEvents lbl_MessageBody As Label
@@ -315,4 +309,5 @@ Partial Class Frm_CustomMessage
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btn_Send As Button
 End Class

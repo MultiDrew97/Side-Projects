@@ -1,6 +1,6 @@
 ﻿Option Strict On
 
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.GoogleAPI
 
 Public Class FileSelectionDialog
     Public Property FileName As String

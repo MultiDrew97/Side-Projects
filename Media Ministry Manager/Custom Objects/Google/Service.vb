@@ -1,6 +1,6 @@
 ﻿Imports Google.Apis.Drive.v3.Data
 
-Namespace SendingEmails
+Namespace GoogleAPI
     Public MustInherit Class Service
         MustOverride ReadOnly Property Info As Object
     End Class

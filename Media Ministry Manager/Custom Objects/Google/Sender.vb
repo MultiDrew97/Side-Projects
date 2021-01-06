@@ -18,33 +18,28 @@ Imports System.Threading
 Imports System.Threading.Tasks
 
 
-Namespace SendingEmails
+Namespace GoogleAPI
     Public Class Sender
         Inherits Service
         Implements IDisposable
+
         Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend}
         Private ReadOnly ApplicationName As String = "Media Ministry Manager"
+        Private Property Credential As UserCredential
         Private Property Service As GmailService
 
         Overrides ReadOnly Property Info As Object
             Get
-                Try
-                    Return Service.Users.GetProfile("me").Execute()
-                Catch ex As Google.GoogleApiException
-                    Console.WriteLine(ex.StackTrace)
-                End Try
-
-                Return Nothing
+                Return Service.Users.GetProfile("me").Execute()
             End Get
         End Property
 
         Sub New(Optional ct As CancellationToken = Nothing)
             Dim credPath As String = "Gmail Token"
-            Dim credential As UserCredential
             Using stream As New MemoryStream(My.Resources.credentials)
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
-
-                Service = New GmailService(New BaseClientService.Initializer() With {.HttpClientInitializer = credential, .ApplicationName = ApplicationName})
+                Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CType(IIf(IsNothing(ct), CancellationToken.None, ct), CancellationToken), New FileDataStore(credPath, True)).Result
+                Console.WriteLine("Credential file saved to: " + credPath)
+                Service = New GmailService(New BaseClientService.Initializer() With {.HttpClientInitializer = Credential, .ApplicationName = ApplicationName})
             End Using
         End Sub
 
@@ -52,23 +47,14 @@ Namespace SendingEmails
 
         End Sub
 
-        Function Create([to] As MailboxAddress, subject As String, body As String, Optional from As String = "me", Optional text As Boolean = False) As MimeMessage
-            Dim sender, recipient As New Collection(Of InternetAddress)
-
+        Function Create([to] As MailboxAddress, subject As String, body As String, Optional from As String = "me") As MimeMessage
             Dim email As New MimeMessage() With {
-                .sender = MailboxAddress.Parse(from),
-                .subject = subject
-            }
-
-            If text Then
-                email.Body = New TextPart("plain") With {
-                    .text = body
+                .Sender = New MailboxAddress(from, from),
+                .Subject = subject,
+                .Body = New TextPart("html") With {
+                    .Text = body
                 }
-            Else
-            email.Body = New TextPart("html") With {
-                .text = body
             }
-            End If
 
             email.To.Add([to])
 
@@ -80,32 +66,24 @@ Namespace SendingEmails
             emailContent.WriteTo(buffer)
             Dim bytes As Byte() = buffer.ToByteArray()
             Dim encodedEmail As String = UrlBase64.Encode(bytes)
-            'Dim message As New Message With {
-            '    .Raw = encodedEmail
-            '}
-
-            Return New Message With {
+            Dim message As New Message With {
                 .Raw = encodedEmail
             }
+
+            Return message
         End Function
 
-        Function CreateWithAttachment([to] As MailboxAddress, subject As String, body As String, files As String(), Optional from As String = "me", Optional text As Boolean = False) As MimeMessage
+        Function CreateWithAttachment([to] As MailboxAddress, subject As String, body As String, files As String(), Optional from As String = "me") As MimeMessage
             Dim email As New MimeMessage() With {
                 .Sender = New MailboxAddress(from, from),
-                .subject = subject
+                .Subject = subject
             }
 
             email.To.Add([to])
-            Dim mimeBodyPart As MimePart
-            If text Then
-                mimeBodyPart = New TextPart("plain") With {
-                    .text = body
-                }
-            Else
-                mimeBodyPart = New TextPart("html") With {
-                    .text = body
-                }
-            End If
+
+            Dim mimeBodyPart As MimePart = New TextPart("html") With {
+                .Text = body
+            }
 
             'mimeBodyPart.setContent(bodyText, "text/plain")
 
@@ -115,7 +93,7 @@ Namespace SendingEmails
 
             Dim attachments As New AttachmentCollection()
 
-            For Each file As String In files
+            For Each file In files
                 attachments.Add(file)
             Next
 
@@ -124,7 +102,7 @@ Namespace SendingEmails
             'mimeBodyPart.setDataHandler(New DataHandler(source))
             'mimeBodyPart.setFileName(file.getName())
 
-            For Each attachment As MimeEntity In attachments
+            For Each attachment In attachments
                 multipart.Add(attachment)
             Next
 
@@ -136,8 +114,10 @@ Namespace SendingEmails
         End Function
         Function Send(emailContent As MimeMessage, Optional userId As String = "me") As Message
             Dim message As Message = CreateWithEmail(emailContent)
+            message = Service.Users().Messages().Send(message, userId).Execute()
 
-            Return Service.Users().Messages().Send(message, userId).Execute()
+            Console.WriteLine("Message id: " + message.Id)
+            Return message
         End Function
     End Class
 End Namespace

@@ -2,7 +2,7 @@
 Imports System.Threading
 Imports Google.Apis.Drive.v3.Data
 Imports Google.Apis.Gmail.v1.Data
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.GoogleAPI
 Imports MediaMinistry.Helpers
 
 Public Class Frm_Settings

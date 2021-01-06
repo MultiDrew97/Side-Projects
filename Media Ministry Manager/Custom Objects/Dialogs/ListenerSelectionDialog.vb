@@ -2,7 +2,7 @@
 
 Imports System.Collections.ObjectModel
 Imports System.ComponentModel
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.Types
 
 Public Class ListenerSelectionDialog
     Public Property Listeners As Collection(Of Listener)
@@ -10,13 +10,17 @@ Public Class ListenerSelectionDialog
     Private Sub ListenerSelectionDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
         Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
+        Listeners.Clear()
     End Sub
 
     Private Sub btn_Finish_Click(sender As Object, e As EventArgs) Handles btn_Finish.Click
         Dim listener As Listener
         For Each row As DataGridViewRow In dgv_Listeners.Rows
             If CBool(row.Cells(0).Value) = True Then
-                Listeners.Add(New Listener(CStr(row.Cells(1).Value), CStr(row.Cells(0).Value)))
+                listener = Listener.Parse(CStr(row.Cells(1).Value))
+                listener.EmailAddress = MimeKit.MailboxAddress.Parse(CStr(row.Cells(2).Value))
+
+                Listeners.Add(listener)
             End If
         Next
 
@@ -35,7 +39,7 @@ Public Class ListenerSelectionDialog
 
     Private Sub bw_RetrieveListeners_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_RetrieveListeners.DoWork
         Using db As New Database()
-            Listeners = db.RetrieveListeners()
+            Listeners = db.GetListeners()
         End Using
     End Sub
 End Class

@@ -102,9 +102,10 @@ Public Class Frm_AddListener
                             name &= txt_LastName.Text
                         End If
 
-                        db.AddListener(New Listener(txt_FirstName.Text, CType(IIf(String.IsNullOrWhiteSpace(txt_LastName.Text), Nothing, txt_LastName.Text), String), txt_Email.Text))
+                        'TODO: Convert to be using db instead of an instance of db
+                        'db.AddListener(New Listener(txt_FirstName.Text, CType(IIf(String.IsNullOrWhiteSpace(txt_LastName.Text), Nothing, txt_LastName.Text), String), txt_Email.Text))
                         tss_Feedback.ForeColor = Color.Black
-                        tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
+                        tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_FirstName.Text)
                         CType(Opener, frm_ViewListeners).customLoad()
                     Catch ex As SqlException
                         tss_Feedback.ForeColor = Color.Red
@@ -112,7 +113,7 @@ Public Class Frm_AddListener
                     End Try
                 Else
                     ep_Required.SetError(txt_Email, "Must be in username@domain.ext format (i.e johndoe@gmail.com)")
-                    tss_Feedback.Text = "The email is not in a supported format (username@domain.com)..."
+                    tss_Feedback.Text = "The email is not in a supported format (username@domain.ext)..."
                     tss_Feedback.ForeColor = Color.Red
                 End If
             Else
@@ -120,8 +121,8 @@ Public Class Frm_AddListener
                     ep_Required.SetError(txt_FirstName, "A first name is required for a listener")
                 End If
 
-                If String.IsNullOrWhiteSpace(txt_Email.Text) Then
-                    ep_Required.SetError(txt_Email, "An email is required for a listener")
+                If String.IsNullOrWhiteSpace(txt_LastName.Text) Then
+                    ep_Required.SetError(txt_LastName, "A last name is required for a listener")
                 End If
 
                 tss_Feedback.Text = "There were required fields missing"
@@ -152,7 +153,8 @@ Public Class Frm_AddListener
                                 Try
                                     listener = Listener.Parse(fields(0))
                                     listener.EmailAddress = MimeKit.MailboxAddress.Parse(fields(1))
-                                    db.AddListener(listener)
+                                    'TODO: Convert to be using db instead of an instance of db
+                                    'db.AddListener(listener)
                                     successCount += 1
                                 Catch ex As SqlException
                                     fout.WriteLineAsync(String.Format("{0},{1} #{2}", fields(0), fields(1), ex.Message))

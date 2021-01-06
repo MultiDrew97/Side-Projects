@@ -1,10 +1,12 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
+Imports MediaMinistry.Types
 
 Public Class frm_ViewListeners
     Property sendingForm As Form
     ReadOnly totalListeners As String = "Total Listeners: {0}"
+    Private oldEmail As String
 
     Structure Sizes
 
@@ -53,6 +55,9 @@ Public Class frm_ViewListeners
     End Structure
 
     Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Console.WriteLine(sender)
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
+        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         customLoad()
     End Sub
 
@@ -71,7 +76,7 @@ Public Class frm_ViewListeners
     End Sub
 
     Private Sub Frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim frm As New Frm_Main()
+        Dim frm As New frm_Main()
         frm.Show()
     End Sub
 
@@ -87,7 +92,9 @@ Public Class frm_ViewListeners
         Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Using db = New Database(My.Settings.Username, My.Settings.Password)
-            db.UpdateListener(New SendingEmails.Listener(name, email), email)
+            Dim listener As Listener = Listener.Parse(name)
+            listener.EmailAddress = MimeKit.MailboxAddress.Parse(email)
+            db.UpdateListener(listener, oldEmail)
         End Using
     End Sub
 

@@ -12,9 +12,7 @@ Public Class frm_SendEmails
     Private closable As Boolean = False
 
     Private Sub Frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Using uploader As New DriveUploader()
-            cbx_Folders.DataSource = uploader.GetFolders()
-        End Using
+        LoadFolders()
     End Sub
 
     Private Sub Btn_AddFolder_Click(sender As Object, e As EventArgs)
@@ -76,9 +74,7 @@ Public Class frm_SendEmails
                 Utils.Wait(1)
             End While
 
-            If My.Settings.cancelled Then
-                bw_SendEmails.CancelAsync()
-            End If
+            'TODO: Cancel running the background worker here if dialog box was cancelled out of
 
             subject = My.Settings.customMessageSubject
 
@@ -130,5 +126,11 @@ Public Class frm_SendEmails
                 End Using
             End Sub
         )
+    End Sub
+
+    Sub LoadFolders()
+        Using uploader As New DriveUploader()
+            cbx_Folders.DataSource = uploader.GetFolders()
+        End Using
     End Sub
 End Class

@@ -11,8 +11,9 @@ Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
 Imports MimeKit
 Imports Org.BouncyCastle.Utilities.Encoders
+Imports MediaMinistry.Types
 
-Namespace SendingEmails
+Namespace GoogleAPI
     Public Class DriveUploader
         Inherits Service
         Implements IDisposable
@@ -20,8 +21,16 @@ Namespace SendingEmails
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
         Private ReadOnly ApplicationName As String = "Drive Uploader"
         'Private permissions As New List(Of Permission)()
-        Private ReadOnly tss As ToolStripStatusLabel
-        Private Property Service() As DriveService
+        Private tss As ToolStripStatusLabel
+        Private Property Service As DriveService
+        Private Property Credential As UserCredential
+        Overrides ReadOnly Property Info As Object
+            Get
+                Dim getAbout = Service.About.Get()
+                getAbout.Fields = "user(displayName, emailAddress)"
+                Return getAbout.Execute().User
+            End Get
+        End Property
 
         Sub New(Optional ct As CancellationToken = Nothing)
             Dim credPath = "Drive Token"
@@ -58,7 +67,7 @@ Namespace SendingEmails
         Function Upload(fileName As String, parents As List(Of String), Optional uploadName As String = Nothing) As String
             Dim fileMetadata As New Data.File() With {
                 .Name = CType(IIf(String.IsNullOrEmpty(uploadName), fileName.Split(CType("\\", Char()))(fileName.Split(CType("\\", Char())).Length - 1).Split(CType(".", Char()))(0) + " " + DateTime.UtcNow.ToString("MM/dd/yyyy"), uploadName), String),
-                .parents = parents
+                .Parents = parents
             }
 
             Dim request As FilesResource.CreateMediaUpload
@@ -82,6 +91,7 @@ Namespace SendingEmails
             If (Not String.IsNullOrEmpty(folderID)) Then
                 Return folderID
             Else
+                Console.WriteLine("No folder found with that name")
                 Dim fileMetadata As New Data.File With {
                     .Name = folderName,
                     .MimeType = "application/vnd.google-apps.folder"
@@ -92,6 +102,7 @@ Namespace SendingEmails
                 request.Fields = "id"
                 Dim folder As Data.File = request.Execute()
 
+                Console.WriteLine("Folder ID: " + folder.Id)
                 Return folder.Id
             End If
         End Function
@@ -121,17 +132,16 @@ Namespace SendingEmails
             Return Nothing
         End Function
 
-        Function FindFile(ByVal fileName As String) As String
-            Dim request As FilesResource.ListRequest = Service.Files.List()
+        Function FindFile(fileName As String) As String
             Dim pageToken As String = Nothing
             Do
 
-                request.Q = "mimeType!='application/vnd.google-apps.folder'"
-                request.Spaces = "drive"
-                request.Fields = "nextPageToken, files(id, name)"
-                request.PageToken = pageToken
+                Service.Files.List().Q = "mimeType='text/plain'"
+                Service.Files.List().Spaces = "drive"
+                Service.Files.List().Fields = "nextPageToken, files(id, name)"
+                Service.Files.List().PageToken = pageToken
 
-                Dim result As FileList = request.Execute()
+                Dim result As FileList = Service.Files.List().Execute()
 
                 For Each files As Data.File In result.Files
                     If (files.Name.Equals(fileName)) Then
