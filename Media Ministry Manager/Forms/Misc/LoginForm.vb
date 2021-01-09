@@ -13,8 +13,9 @@ Public Class frm_Login
 
     Private Sub Frm_Login_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         If My.Settings.KeepLoggedIn Then
-            _dbConnection.UserID = My.Settings.Username
-            _dbConnection.Password = My.Settings.Password
+            txt_Username.Text = My.Settings.Username
+            txt_Password.Text = My.Settings.Password
+            chk_KeepLoggedIn.Checked = True
 
             btn_LogIn.PerformClick()
         Else

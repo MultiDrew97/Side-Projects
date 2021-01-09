@@ -149,9 +149,9 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";P"& _ 
-        "ersist Security Info=True;User ID=arandlemiller97;Password=JasmineLove2697;Conne"& _ 
-        "ct Timeout=30;Encrypt=True;Authentication=""Sql Password""")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
+        "ser ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication=""Sql Passw"& _ 
+        "ord""")>  _
     Public ReadOnly Property masterConnectionString() As String
         Get
             Return CType(Me("masterConnectionString"),String)

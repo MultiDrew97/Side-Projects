@@ -3,7 +3,7 @@
 Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions.Regex
 
-Public Class frm_AddNewProduct
+Public Class Frm_AddNewProduct
     Property Opener() As Form
 
     Private Sub Frm_AddNewProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -13,7 +13,7 @@ Public Class frm_AddNewProduct
     Private Sub frm_AddNewProduct_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Try
             CType(Opener, frm_ViewInventory).customLoad()
-        Catch ex As ApplicationException
+        Catch ex As InvalidCastException
         Finally
             Opener.Show()
         End Try
@@ -26,7 +26,6 @@ Public Class frm_AddNewProduct
     End Sub
 
     Private Sub btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        btn_Add.Focus()
         Dim name As String
         Dim stock As Integer
         Dim price As Decimal
