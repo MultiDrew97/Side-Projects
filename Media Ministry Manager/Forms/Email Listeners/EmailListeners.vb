@@ -5,11 +5,7 @@ Imports MediaMinistry.SendingEmails
 Imports MediaMinistry.Helpers
 
 Public Class Frm_EmailListeners
-    ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
-    Private fileID As String = Nothing
-    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
-
-    Structure Sizes
+    Private Structure Sizes
 
         'Window Sizes
         Shared [Default] As New Size(842, 240)
@@ -20,13 +16,13 @@ Public Class Frm_EmailListeners
     Structure Locations
 
         'upload button locations
-        Shared UploadDefault As New Point(20, 13)
+        Shared UploadDefault As New Point(60, 36)
 
         'Send button locations
-        Shared SendDefault As New Point(20, 71)
+        Shared SendDefault As New Point(60, 93)
 
         'View button Locations
-        Shared ViewDefault As New Point(20, 129)
+        Shared ViewDefault As New Point(60, 151)
 
         'Folder combo locations
         Shared FolderDefault As New Point(389, 55)
@@ -161,26 +157,8 @@ Public Class Frm_EmailListeners
         '    tss_Feedback.ForeColor = Color.Red
         'End If
 
-        'TODO: Move this into a background worker to not freeze the app while sending
-
-        Dim listeners As ObjectModel.Collection(Of Listener)
-        If cbx_Files.SelectedItem IsNot Nothing Then
-            Using uploader As New DriveUploader()
-                fileID = uploader.getFileID(CType(cbx_Files.SelectedItem, String))
-            End Using
-            If fileID IsNot Nothing Then
-                Using db As New Database(My.Settings.Username, My.Settings.Password)
-                    listeners = db.RetrieveListeners()
-                    Using emailer As New Sender()
-                        tss_Feedback.Text = "Sending Emails..."
-                        For Each listener As Listener In listeners
-                            emailer.Send(emailer.Create(MimeKit.MailboxAddress.Parse(listener.Email), "Sunday Morning Message", String.Format(My.Resources.newSermon, listener.Name, String.Format(shareLink, fileID))))
-                        Next
-                    End Using
-                    tss_Feedback.Text = "All emails have been sent"
-                End Using
-            End If
-        End If
+        Dim send As New Frm_SendEmails()
+        send.Show()
     End Sub
 
     Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
@@ -221,7 +199,7 @@ Public Class Frm_EmailListeners
 
     Private Sub DefaultChanges()
         'Locations
-        'btn_Upload.Location = Locations.UploadDefault
+        btn_Upload.Location = Locations.UploadDefault
         btn_SendEmails.Location = Locations.SendDefault
         btn_ViewListeners.Location = Locations.ViewDefault
         lbl_Folder.Location = Locations.FolderLabelDefault

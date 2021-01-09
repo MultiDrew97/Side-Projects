@@ -77,7 +77,7 @@ Public Class Frm_AddListener
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.Close()
         Try
-            CType(Opener, frm_ViewListeners).customLoad()
+            CType(Opener, frm_ViewListeners).CustomLoad()
         Catch ex As ApplicationException
 
         Finally
@@ -94,8 +94,8 @@ Public Class Frm_AddListener
                     Try
                         db.AddListener(txt_Name.Text, txt_Email.Text)
                         tss_Feedback.ForeColor = Color.Black
-                        tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text)
-                        CType(Opener, frm_ViewListeners).customLoad()
+                        tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_FirstName.Text)
+                        CType(Opener, frm_ViewListeners).CustomLoad()
                     Catch ex As SqlException
                         tss_Feedback.ForeColor = Color.Red
                         tss_Feedback.Text = "Listener might already be in the system. Please try again."
@@ -147,7 +147,7 @@ Public Class Frm_AddListener
 
                 tss_Feedback.Text = String.Format("{0} listeners were added successfully...", successCount)
                 Try
-                    CType(Opener, frm_ViewListeners).customLoad()
+                    CType(Opener, frm_ViewListeners).CustomLoad()
                 Catch ex As SqlException
                 Finally
                     Utils.Wait(2)

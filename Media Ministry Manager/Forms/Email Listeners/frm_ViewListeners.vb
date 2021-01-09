@@ -52,11 +52,12 @@ Public Class frm_ViewListeners
         Shared SearchMax As New Point(1093, 151)
     End Structure
 
-    Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
-        customLoad()
+    Private Sub Frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Console.WriteLine(sender)
+        CustomLoad()
     End Sub
 
-    Public Sub customLoad()
+    Public Sub CustomLoad()
         Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
         cbx_Column.SelectedIndex = 0

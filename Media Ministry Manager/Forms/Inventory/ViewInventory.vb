@@ -41,7 +41,7 @@ Public Class frm_ViewInventory
     'End Sub
 
     Private Sub btn_AddProduct_Click(sender As Object, e As EventArgs) Handles btn_AddProduct.Click
-        Dim addNewProduct = New frm_AddNewProduct() With {.Opener = Me}
+        Dim addNewProduct = New Frm_AddNewProduct() With {.Opener = Me}
         addNewProduct.Show()
         Me.Hide()
     End Sub

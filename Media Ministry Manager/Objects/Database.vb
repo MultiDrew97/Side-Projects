@@ -182,7 +182,7 @@ Public Class Database
     End Sub
 
     Public Sub AddNewProduct(itemName As String, stock As Integer, price As Decimal)
-        myCmd.CommandText = String.Format("INSERT INTO INVENTORY VALUES ({0}, '{1}', {2}, {3})", Count("ITEM_INDEX", "INVENTORY"), itemName, stock, price)
+        myCmd.CommandText = String.Format("INSERT INTO INVENTORY VALUES ('{0}', {1}, {2})", itemName, stock, price)
 
         myCmd.ExecuteNonQuery()
     End Sub

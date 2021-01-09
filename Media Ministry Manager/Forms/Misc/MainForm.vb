@@ -27,9 +27,20 @@ Public Class frm_Main
     'End Sub
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
-        If My.Application.OpenForms.Count = 1 And Not My.Settings.KeepLoggedIn Then
-            Dim login As New Frm_Login()
-            login.Show()
+        If My.Application.OpenForms.Count = 1 Then
+            If Not My.Settings.KeepLoggedIn Then
+                Dim login As New frm_Login()
+                login.Show()
+            Else
+                My.Settings.Save()
+            End If
+        Else
+            For Each form As Form In My.Application.OpenForms
+                If Not form.Name.Equals(Me.Name) Then
+                    form.Show()
+                    Exit For
+                End If
+            Next
         End If
     End Sub
 
@@ -113,7 +124,7 @@ Public Class frm_Main
         'tctl_MaxOption.Hide()
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+    Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         My.Settings.Username = ""
         My.Settings.Password = ""
         My.Settings.KeepLoggedIn = False
@@ -132,7 +143,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-        Dim frm_AddProduct As New frm_AddNewProduct()
+        Dim frm_AddProduct As New Frm_AddNewProduct() With {.Opener = Me}
         frm_AddProduct.Show()
         Me.Hide()
     End Sub

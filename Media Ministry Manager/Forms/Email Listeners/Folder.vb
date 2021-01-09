@@ -22,8 +22,8 @@ Public Class frm_Folder
 
     Private Sub ReloadFolders()
         For Each form As Form In My.Application.OpenForms
-            If form.Name.Equals("frm_emaillisteners", StringComparison.OrdinalIgnoreCase) Then
-                CType(form, Frm_EmailListeners).LoadFolders()
+            If form.Name.Equals("frm_sendemails", StringComparison.OrdinalIgnoreCase) Then
+                CType(form, Frm_SendEmails).LoadFolders()
                 Exit For
             End If
         Next

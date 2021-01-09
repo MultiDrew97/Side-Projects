@@ -22,7 +22,7 @@ Namespace SendingEmails
     Public Class Sender
         Inherits Service
         Implements IDisposable
-        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend, GmailService.Scope.GmailModify}
+        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailCompose}
         Private ReadOnly ApplicationName As String = "Media Ministry Manager"
         Private Property Credential As UserCredential
         Private Property Service As GmailService

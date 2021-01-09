@@ -22,7 +22,7 @@ Partial Class frm_Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Main))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Main))
         Me.btn_placeOrder = New System.Windows.Forms.Button()
         Me.btn_ShowOrders = New System.Windows.Forms.Button()
         Me.btn_ProductManagement = New System.Windows.Forms.Button()
@@ -176,7 +176,7 @@ Partial Class frm_Main
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'CustomerToolStripMenuItem
@@ -200,25 +200,25 @@ Partial Class frm_Main
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(113, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(116, 22)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -290,7 +290,7 @@ Partial Class frm_Main
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'Frm_Main
+        'frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -302,7 +302,7 @@ Partial Class frm_Main
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.mnstr_Strip
         Me.MaximizeBox = False
-        Me.Name = "Frm_Main"
+        Me.Name = "frm_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.ss_Queries.ResumeLayout(False)
