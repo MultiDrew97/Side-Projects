@@ -21,18 +21,11 @@ Public Class Frm_CustomMessage
     End Sub
 
     Private Sub SendEmail()
-        Console.WriteLine(fileSelector.FileName)
-        Console.WriteLine(fileSelector.FileID)
-        For Each item In fileSelector.Parents
-            Console.WriteLine(item)
-        Next
-        For Each listener In listenerSelector.Listeners
-            Console.WriteLine(listener.Name)
-            Console.WriteLine(listener.Email)
-        Next
-        'Using emailer As New Sender(CancellationToken.None)
-        '    emailer.Create(New MimeKit.MailboxAddress("Andrew Randle", "arandlemiller97@yahoo.com"), txt_MessageSubject.Text, rtb_MessageBody.Rtf)
-        'End Using
+        Using emailer As New Sender
+            For Each listener In listenerSelector.Listeners
+                emailer.Send(emailer.Create(New MimeKit.MailboxAddress(listener.Name, listener.Email), txt_MessageSubject.Text, rtb_MessageBody.Rtf))
+            Next
+        End Using
     End Sub
 
     Private Sub Frm_CustomMessage_Load(sender As Object, e As EventArgs) Handles MyBase.Load

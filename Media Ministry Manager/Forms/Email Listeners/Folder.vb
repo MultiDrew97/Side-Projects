@@ -2,8 +2,8 @@
 
 Imports MediaMinistry.GoogleAPI
 
-Public Class frm_Folder
-    Private Sub btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
+Public Class Frm_Folder
+    Private Sub Btn_CreateFolder_Click(sender As Object, e As EventArgs) Handles btn_CreateFolder.Click
         Using uploader As New DriveUploader()
             If uploader.CreateFolder(txt_FolderName.Text) IsNot Nothing Then
                 ReloadFolders()
@@ -15,7 +15,7 @@ Public Class frm_Folder
         End Using
     End Sub
 
-    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+    Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         My.Settings.AdminInfoRecieved = True
         Me.Close()
     End Sub

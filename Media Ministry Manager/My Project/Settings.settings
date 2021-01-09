@@ -27,9 +27,6 @@
       <Value Profile="(Default)">Microsoft Sans Serif, 15.75pt, style=Bold</Value>
     </Setting>
     <Setting Name="customMessageBody" Type="System.String" Scope="User">
-      <Value Profile="(Default)"/>
-    </Setting>
-    <Setting Name="customMessageSubject" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="masterConnectionString" Type="(Connection string)" Scope="Application">
@@ -39,6 +36,9 @@
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=mediaministry.database.windows.net;Initial Catalog="Media Ministry";User ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication="Sql Password"</Value>
+    </Setting>
+    <Setting Name="customMessageSubject" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

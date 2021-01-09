@@ -3,7 +3,6 @@
 Imports System.ComponentModel
 Imports System.IO
 Imports MediaMinistry.Helpers
-Imports MediaMinistry.SendingEmails
 
 Public Class frm_Main
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
@@ -20,35 +19,35 @@ Public Class frm_Main
         End If
     End Sub
 
-    Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
+    Private Sub Btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
         Dim frm_PlaceOrder As frm_PlaceOrder = New frm_PlaceOrder With {.mainForm = Me}
         frm_PlaceOrder.Show()
     End Sub
 
-    Private Sub btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
+    Private Sub Btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
         Dim inventory As frm_ViewInventory = New frm_ViewInventory With {.mainForm = Me}
         inventory.Show()
         Me.Close()
     End Sub
 
-    Private Sub btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
-        Dim ordersView = New frm_DisplayOrders With {.mainForm = Me}
+    Private Sub Btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
+        Dim ordersView = New Frm_DisplayOrders With {.mainForm = Me}
         ordersView.Show()
         Me.Close()
     End Sub
 
-    Private Sub btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
-        Dim displayCustomers = New frm_DisplayCustomers With {.mainForm = Me}
+    Private Sub Btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
+        Dim displayCustomers = New frm_DisplayCustomers With {.MainForm = Me}
         displayCustomers.Show()
         Me.Close()
     End Sub
 
-    Private Sub reset()
+    Private Sub Reset()
         tss_Feedback.Text = "What would you like to do?"
         tss_Feedback.ForeColor = SystemColors.WindowText
     End Sub
 
-    Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
+    Private Sub Btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
         Dim emailListeners As New Frm_EmailListeners()
         emailListeners.Show()
         Me.Close()

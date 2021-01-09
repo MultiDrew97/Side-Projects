@@ -24,16 +24,16 @@ Partial Class ListenerSelectionDialog
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
-        Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.chk_AllListeners = New System.Windows.Forms.CheckBox()
         Me.btn_Finish = New System.Windows.Forms.Button()
         Me.btn_Cancel = New System.Windows.Forms.Button()
-        Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.EMAIL_LISTENERSTableAdapter = New MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
         Me.bw_RetrieveListeners = New System.ComponentModel.BackgroundWorker()
+        Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,25 +53,27 @@ Partial Class ListenerSelectionDialog
         Me.dgv_Listeners.DataSource = Me.EMAILLISTENERSBindingSource
         Me.dgv_Listeners.Dock = System.Windows.Forms.DockStyle.Left
         Me.dgv_Listeners.Location = New System.Drawing.Point(0, 0)
-        Me.dgv_Listeners.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.dgv_Listeners.Margin = New System.Windows.Forms.Padding(6)
         Me.dgv_Listeners.Name = "dgv_Listeners"
-        Me.dgv_Listeners.ReadOnly = True
         Me.dgv_Listeners.Size = New System.Drawing.Size(470, 487)
         Me.dgv_Listeners.TabIndex = 0
         '
-        'Selection
+        'EMAILLISTENERSBindingSource
         '
-        Me.Selection.FillWeight = 50.0!
-        Me.Selection.HeaderText = ""
-        Me.Selection.Name = "Selection"
-        Me.Selection.ReadOnly = True
+        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
+        Me.EMAILLISTENERSBindingSource.DataSource = Me.MediaMinistryDataSet
+        '
+        'MediaMinistryDataSet
+        '
+        Me.MediaMinistryDataSet.DataSetName = "MediaMinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'chk_AllListeners
         '
         Me.chk_AllListeners.AutoSize = True
         Me.chk_AllListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chk_AllListeners.Location = New System.Drawing.Point(558, 417)
-        Me.chk_AllListeners.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.chk_AllListeners.Margin = New System.Windows.Forms.Padding(6)
         Me.chk_AllListeners.Name = "chk_AllListeners"
         Me.chk_AllListeners.Size = New System.Drawing.Size(146, 29)
         Me.chk_AllListeners.TabIndex = 1
@@ -100,6 +102,19 @@ Partial Class ListenerSelectionDialog
         Me.btn_Cancel.Text = "Cancel"
         Me.btn_Cancel.UseVisualStyleBackColor = True
         '
+        'EMAIL_LISTENERSTableAdapter
+        '
+        Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
+        '
+        'bw_RetrieveListeners
+        '
+        '
+        'Selection
+        '
+        Me.Selection.FillWeight = 50.0!
+        Me.Selection.HeaderText = ""
+        Me.Selection.Name = "Selection"
+        '
         'NAMEDataGridViewTextBoxColumn
         '
         Me.NAMEDataGridViewTextBoxColumn.DataPropertyName = "NAME"
@@ -114,20 +129,6 @@ Partial Class ListenerSelectionDialog
         Me.EMAILDataGridViewTextBoxColumn.Name = "EMAILDataGridViewTextBoxColumn"
         Me.EMAILDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'EMAILLISTENERSBindingSource
-        '
-        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
-        Me.EMAILLISTENERSBindingSource.DataSource = Me.MediaMinistryDataSet
-        '
-        'MediaMinistryDataSet
-        '
-        Me.MediaMinistryDataSet.DataSetName = "MediaMinistryDataSet"
-        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'EMAIL_LISTENERSTableAdapter
-        '
-        Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
-        '
         'ListenerSelectionDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
@@ -139,7 +140,7 @@ Partial Class ListenerSelectionDialog
         Me.Controls.Add(Me.dgv_Listeners)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.Margin = New System.Windows.Forms.Padding(6)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "ListenerSelectionDialog"
@@ -158,11 +159,11 @@ Partial Class ListenerSelectionDialog
     Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents EMAILLISTENERSBindingSource As BindingSource
     Friend WithEvents EMAIL_LISTENERSTableAdapter As MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
-    Friend WithEvents Selection As DataGridViewCheckBoxColumn
-    Friend WithEvents NAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents chk_AllListeners As CheckBox
     Friend WithEvents btn_Finish As Button
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents bw_RetrieveListeners As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Selection As DataGridViewCheckBoxColumn
+    Friend WithEvents NAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

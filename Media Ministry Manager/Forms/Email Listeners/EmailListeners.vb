@@ -8,7 +8,6 @@ Imports MediaMinistry.Types
 Public Class Frm_EmailListeners
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
-    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
 
     Structure Sizes
 
@@ -79,9 +78,9 @@ Public Class Frm_EmailListeners
         Shared form As New Size(900, 800)
     End Structure
 
-    Private Sub Btn_Upload_Click(sender As Object, e As EventArgs)
-        tss_Feedback.ForeColor = Color.Black
-        bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
+    Private Sub Btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
+        'tss_Feedback.ForeColor = Color.Black
+        'bw_Upload.RunWorkerAsync({cbx_Folders.SelectedItem, tss_Feedback})
     End Sub
 
     Private Sub Ofd_SelectAudio_FileOk(sender As Object, e As CancelEventArgs) Handles ofd_SelectAudio.FileOk
@@ -105,20 +104,20 @@ Public Class Frm_EmailListeners
     End Sub
 
     Private Sub Bw_Upload_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_Upload.DoWork
-        If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
-            Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
-            Dim folderName As String = CType(CType(e.Argument, Object())(0), String)
-            Using uploader As New DriveUploader()
-                fileID = uploader.Upload(ofd_SelectAudio.FileName, folderName, tss)
-            End Using
-            tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to or Send the last one to your listeners"
-        Else
-            tss_Feedback.Text = "You have to select a file first..."
-        End If
+        'If Not String.IsNullOrEmpty(txt_FileLocation.Text) Then
+        '    Dim tss As ToolStripStatusLabel = CType(CType(e.Argument, Object())(1), ToolStripStatusLabel)
+        '    Dim folderName As String = CType(CType(e.Argument, Object())(0), String)
+        '    Using uploader As New DriveUploader()
+        '        fileID = uploader.Upload(ofd_SelectAudio.FileName, folderName, tss)
+        '    End Using
+        '    tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to or Send the last one to your listeners"
+        'Else
+        '    tss_Feedback.Text = "You have to select a file first..."
+        'End If
     End Sub
 
     Private Sub Btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
-        Dim frm_Folder As frm_Folder = New frm_Folder()
+        Dim frm_Folder As Frm_Folder = New Frm_Folder()
         frm_Folder.Show()
 
         Do Until My.Settings.AdminInfoRecieved
@@ -239,9 +238,5 @@ Public Class Frm_EmailListeners
         Using uploader As New DriveUploader()
             cbx_Folders.DataSource = uploader.GetFolders()
         End Using
-    End Sub
-
-    Private Sub btn_Upload_Click_1(sender As Object, e As EventArgs)
-
     End Sub
 End Class

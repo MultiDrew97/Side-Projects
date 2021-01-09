@@ -111,7 +111,7 @@ Public Class Frm_AddListener
         ElseIf rdo_Multiple.Checked Then
             If Not String.IsNullOrWhiteSpace(txt_FilePath.Text) And Path.GetExtension(txt_FilePath.Text).Equals(".csv") Then
                 Dim fields(2) As String
-                Dim counter As Integer = 0
+                Dim counter As Integer
                 Dim successCount As Integer = 0
                 Dim failCount As Integer = 0
                 'Dim fout As StreamWriter = New StreamWriter(ofd_ListenerList.FileName & "\..\Failed Additions.csv")
@@ -139,7 +139,7 @@ Public Class Frm_AddListener
                                     failCount += 1
                                 End Try
                             Else
-                                fout.WriteLineAsync(String.Format("{0},{1} # Email does not match email pattern (johndoe@domain.ext)", fields(0), fields(1)))
+                                fout.WriteLineAsync(String.Format("{0},{1} #Email does not match email pattern (johndoe@domain.ext)", fields(0), fields(1)))
                                 failCount += 1
                             End If
                         End While

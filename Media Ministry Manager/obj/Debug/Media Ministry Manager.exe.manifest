@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Media Ministry Manager" version="2.0.222.10" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Media Ministry Manager" version="2.0.240.10" language="neutral" processorArchitecture="msil" />
     <commandLine file="Media Ministry Manager.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -151,14 +151,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1448448">
-      <assemblyIdentity name="Media Ministry Manager" version="2.0.222.10" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1447936">
+      <assemblyIdentity name="Media Ministry Manager" version="2.0.240.10" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8zo50T9h/wVWFGzlaJjlbVjBg28hHLW4XWWyTwNGpog=</dsig:DigestValue>
+        <dsig:DigestValue>lilx/64GT2rx9WbkhxEdRnpckkVpxAiXq3ms17mISd0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -258,13 +258,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Media Ministry Manager.exe.config" size="5810">
+  <file name="Media Ministry Manager.exe.config" size="5845">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>DBBLiXrcSvvEs1JttjEu2CqsSPJpry2jIy4f9hHeaH0=</dsig:DigestValue>
+      <dsig:DigestValue>c/o3aTLPxXObWetOB5Lgpb5gzKTLdxA84Vt/JKW9Ndo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\App Icon.ico" size="45451">

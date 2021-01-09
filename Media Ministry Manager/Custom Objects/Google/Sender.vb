@@ -22,7 +22,7 @@ Namespace GoogleAPI
     Public Class Sender
         Inherits Service
         Implements IDisposable
-        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend}
+        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailCompose}
         Private ReadOnly ApplicationName As String = "Media Ministry Manager"
         Private Property Service As GmailService
 
