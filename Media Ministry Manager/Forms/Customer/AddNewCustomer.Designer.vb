@@ -35,8 +35,6 @@ Partial Class frm_AddNewCustomer
         Me.lbl_LastName = New System.Windows.Forms.Label()
         Me.lbl_Street = New System.Windows.Forms.Label()
         Me.lbl_PhoneNumber = New System.Windows.Forms.Label()
-        Me.cbx_PaymentType = New System.Windows.Forms.ComboBox()
-        Me.lbl_PaymentType = New System.Windows.Forms.Label()
         Me.ep_EmptyFields = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.txt_City = New System.Windows.Forms.TextBox()
         Me.lbl_City = New System.Windows.Forms.Label()
@@ -77,7 +75,7 @@ Partial Class frm_AddNewCustomer
         Me.btn_AddNewCustomer.AutoSize = True
         Me.btn_AddNewCustomer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_AddNewCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(308, 344)
+        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(308, 338)
         Me.btn_AddNewCustomer.Name = "btn_AddNewCustomer"
         Me.btn_AddNewCustomer.Size = New System.Drawing.Size(206, 35)
         Me.btn_AddNewCustomer.TabIndex = 18
@@ -90,7 +88,7 @@ Partial Class frm_AddNewCustomer
         Me.txt_FirstName.Cursor = System.Windows.Forms.Cursors.Default
         Me.txt_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FirstName.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_FirstName.Location = New System.Drawing.Point(189, 53)
+        Me.txt_FirstName.Location = New System.Drawing.Point(189, 77)
         Me.txt_FirstName.Name = "txt_FirstName"
         Me.txt_FirstName.Size = New System.Drawing.Size(213, 31)
         Me.txt_FirstName.TabIndex = 1
@@ -100,7 +98,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_LastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_LastName.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_LastName.Location = New System.Drawing.Point(430, 53)
+        Me.txt_LastName.Location = New System.Drawing.Point(430, 77)
         Me.txt_LastName.Name = "txt_LastName"
         Me.txt_LastName.Size = New System.Drawing.Size(213, 31)
         Me.txt_LastName.TabIndex = 3
@@ -110,7 +108,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_Street.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Street.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_Street.Location = New System.Drawing.Point(45, 128)
+        Me.txt_Street.Location = New System.Drawing.Point(45, 152)
         Me.txt_Street.Name = "txt_Street"
         Me.txt_Street.Size = New System.Drawing.Size(213, 31)
         Me.txt_Street.TabIndex = 5
@@ -120,7 +118,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_PhoneNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_PhoneNumber.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_PhoneNumber.Location = New System.Drawing.Point(115, 207)
+        Me.txt_PhoneNumber.Location = New System.Drawing.Point(115, 231)
         Me.txt_PhoneNumber.Name = "txt_PhoneNumber"
         Me.txt_PhoneNumber.Size = New System.Drawing.Size(156, 31)
         Me.txt_PhoneNumber.TabIndex = 13
@@ -128,6 +126,7 @@ Partial Class frm_AddNewCustomer
         '
         'ss_Status
         '
+        Me.ss_Status.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ss_Status.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_AddCustomer})
         Me.ss_Status.Location = New System.Drawing.Point(0, 410)
         Me.ss_Status.Name = "ss_Status"
@@ -145,7 +144,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_FirstName.AutoSize = True
         Me.lbl_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_FirstName.Location = New System.Drawing.Point(179, 35)
+        Me.lbl_FirstName.Location = New System.Drawing.Point(179, 59)
         Me.lbl_FirstName.Name = "lbl_FirstName"
         Me.lbl_FirstName.Size = New System.Drawing.Size(75, 15)
         Me.lbl_FirstName.TabIndex = 0
@@ -155,7 +154,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_LastName.AutoSize = True
         Me.lbl_LastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_LastName.Location = New System.Drawing.Point(419, 35)
+        Me.lbl_LastName.Location = New System.Drawing.Point(419, 59)
         Me.lbl_LastName.Name = "lbl_LastName"
         Me.lbl_LastName.Size = New System.Drawing.Size(75, 15)
         Me.lbl_LastName.TabIndex = 2
@@ -165,7 +164,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_Street.AutoSize = True
         Me.lbl_Street.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Street.Location = New System.Drawing.Point(42, 111)
+        Me.lbl_Street.Location = New System.Drawing.Point(42, 135)
         Me.lbl_Street.Name = "lbl_Street"
         Me.lbl_Street.Size = New System.Drawing.Size(39, 15)
         Me.lbl_Street.TabIndex = 4
@@ -175,35 +174,11 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_PhoneNumber.AutoSize = True
         Me.lbl_PhoneNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_PhoneNumber.Location = New System.Drawing.Point(105, 189)
+        Me.lbl_PhoneNumber.Location = New System.Drawing.Point(105, 213)
         Me.lbl_PhoneNumber.Name = "lbl_PhoneNumber"
         Me.lbl_PhoneNumber.Size = New System.Drawing.Size(99, 15)
         Me.lbl_PhoneNumber.TabIndex = 12
         Me.lbl_PhoneNumber.Text = "* Phone Number"
-        '
-        'cbx_PaymentType
-        '
-        Me.cbx_PaymentType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.cbx_PaymentType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbx_PaymentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
-        Me.cbx_PaymentType.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
-        Me.cbx_PaymentType.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.cbx_PaymentType.FormattingEnabled = True
-        Me.cbx_PaymentType.Items.AddRange(New Object() {"Cash", "Card"})
-        Me.cbx_PaymentType.Location = New System.Drawing.Point(341, 278)
-        Me.cbx_PaymentType.Name = "cbx_PaymentType"
-        Me.cbx_PaymentType.Size = New System.Drawing.Size(150, 33)
-        Me.cbx_PaymentType.TabIndex = 17
-        '
-        'lbl_PaymentType
-        '
-        Me.lbl_PaymentType.AutoSize = True
-        Me.lbl_PaymentType.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.lbl_PaymentType.Location = New System.Drawing.Point(341, 260)
-        Me.lbl_PaymentType.Name = "lbl_PaymentType"
-        Me.lbl_PaymentType.Size = New System.Drawing.Size(100, 15)
-        Me.lbl_PaymentType.TabIndex = 16
-        Me.lbl_PaymentType.Text = "Payment Method"
         '
         'ep_EmptyFields
         '
@@ -213,7 +188,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_City.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_City.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_City.Location = New System.Drawing.Point(264, 128)
+        Me.txt_City.Location = New System.Drawing.Point(264, 152)
         Me.txt_City.Name = "txt_City"
         Me.txt_City.Size = New System.Drawing.Size(213, 31)
         Me.txt_City.TabIndex = 7
@@ -223,7 +198,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_City.AutoSize = True
         Me.lbl_City.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_City.Location = New System.Drawing.Point(264, 111)
+        Me.lbl_City.Location = New System.Drawing.Point(264, 135)
         Me.lbl_City.Name = "lbl_City"
         Me.lbl_City.Size = New System.Drawing.Size(26, 15)
         Me.lbl_City.TabIndex = 6
@@ -233,7 +208,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_Zip.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Zip.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_Zip.Location = New System.Drawing.Point(574, 128)
+        Me.txt_Zip.Location = New System.Drawing.Point(574, 152)
         Me.txt_Zip.Name = "txt_Zip"
         Me.txt_Zip.Size = New System.Drawing.Size(213, 31)
         Me.txt_Zip.TabIndex = 11
@@ -243,7 +218,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_Zip.AutoSize = True
         Me.lbl_Zip.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Zip.Location = New System.Drawing.Point(574, 111)
+        Me.lbl_Zip.Location = New System.Drawing.Point(574, 135)
         Me.lbl_Zip.Name = "lbl_Zip"
         Me.lbl_Zip.Size = New System.Drawing.Size(24, 15)
         Me.lbl_Zip.TabIndex = 10
@@ -258,7 +233,7 @@ Partial Class frm_AddNewCustomer
         Me.cbx_State.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cbx_State.FormattingEnabled = True
         Me.cbx_State.Items.AddRange(New Object() {"AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"})
-        Me.cbx_State.Location = New System.Drawing.Point(493, 127)
+        Me.cbx_State.Location = New System.Drawing.Point(493, 151)
         Me.cbx_State.MaxLength = 2
         Me.cbx_State.Name = "cbx_State"
         Me.cbx_State.Size = New System.Drawing.Size(64, 33)
@@ -269,7 +244,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_State.AutoSize = True
         Me.lbl_State.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.lbl_State.Location = New System.Drawing.Point(490, 109)
+        Me.lbl_State.Location = New System.Drawing.Point(490, 133)
         Me.lbl_State.Name = "lbl_State"
         Me.lbl_State.Size = New System.Drawing.Size(35, 15)
         Me.lbl_State.TabIndex = 8
@@ -279,7 +254,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.txt_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Email.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txt_Email.Location = New System.Drawing.Point(331, 207)
+        Me.txt_Email.Location = New System.Drawing.Point(331, 231)
         Me.txt_Email.Name = "txt_Email"
         Me.txt_Email.Size = New System.Drawing.Size(389, 31)
         Me.txt_Email.TabIndex = 15
@@ -289,7 +264,7 @@ Partial Class frm_AddNewCustomer
         '
         Me.lbl_Email.AutoSize = True
         Me.lbl_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Email.Location = New System.Drawing.Point(328, 189)
+        Me.lbl_Email.Location = New System.Drawing.Point(328, 213)
         Me.lbl_Email.Name = "lbl_Email"
         Me.lbl_Email.Size = New System.Drawing.Size(43, 15)
         Me.lbl_Email.TabIndex = 14
@@ -307,6 +282,7 @@ Partial Class frm_AddNewCustomer
         '
         'mnstr_Strip
         '
+        Me.mnstr_Strip.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
@@ -328,7 +304,7 @@ Partial Class frm_AddNewCustomer
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(120, 30)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'CustomerToolStripMenuItem
@@ -352,19 +328,19 @@ Partial Class frm_AddNewCustomer
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(109, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(117, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(120, 30)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(120, 30)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -445,9 +421,7 @@ Partial Class frm_AddNewCustomer
         Me.ClientSize = New System.Drawing.Size(828, 432)
         Me.Controls.Add(Me.lbl_Required)
         Me.Controls.Add(Me.lbl_State)
-        Me.Controls.Add(Me.lbl_PaymentType)
         Me.Controls.Add(Me.cbx_State)
-        Me.Controls.Add(Me.cbx_PaymentType)
         Me.Controls.Add(Me.lbl_Email)
         Me.Controls.Add(Me.lbl_PhoneNumber)
         Me.Controls.Add(Me.lbl_Zip)
@@ -491,8 +465,6 @@ Partial Class frm_AddNewCustomer
     Friend WithEvents lbl_LastName As Label
     Friend WithEvents lbl_Street As Label
     Friend WithEvents lbl_PhoneNumber As Label
-    Friend WithEvents cbx_PaymentType As ComboBox
-    Friend WithEvents lbl_PaymentType As Label
     Friend WithEvents ep_EmptyFields As ErrorProvider
     Friend WithEvents lbl_State As Label
     Friend WithEvents cbx_State As ComboBox

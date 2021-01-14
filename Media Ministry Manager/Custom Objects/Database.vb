@@ -137,20 +137,26 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateCustomerInfo(addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String, payment As String, phoneNumber As String)
+    Public Sub UpdateCustomerInfo(customer As Customer, oldPhone As String)
+        UpdateCustomerInfo(customer.FirstName, customer.LastName, customer.PhoneNumber, customer.Address.Street, customer.Address.City, customer.Address.State, customer.Address.ZipCode, customer.EmailAddress.Address, oldPhone)
+    End Sub
+
+    Public Sub UpdateCustomerInfo(firstName As String, lastName As String, newPhone As String, addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String, oldPhone As String)
         results = ""
         myCmd.CommandText = String.Format("UPDATE CUSTOMERS
-                                                SET SHIPPING_STREET = '{0}', SHIPPING_CITY = '{1}', SHIPPING_STATE = '{2}', SHIPPING_ZIP = '{3}', EMAIL = '{4}', PREFERRED_PAYMENT = '{5}'
-                                                WHERE PHONE_NUMBER = '{6}'",
-                                                addrStreet, addrCity, addrState, addrZip, email, payment, phoneNumber)
+                                                SET FIRST_NAME= '{0}', LAST_NAME = '{1}', PHONE_NUMBER = '{2}',
+                                                SHIPPING_STREET = '{3}', SHIPPING_CITY = '{4}', SHIPPING_STATE = '{5}', SHIPPING_ZIP = '{6}',
+                                                EMAIL = '{7}'
+                                                WHERE PHONE_NUMBER = '{8}'",
+                                                firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, oldPhone)
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdatePhone(newPhoneNumber As String, oldPhoneNumber As String)
+    Public Sub UpdatePhone(newPhone As String, oldPhone As String)
         myCmd.CommandText = String.Format("UPDATE CUSTOMERS
                                                 SET PHONE_NUMBER = '{0}'
                                                 WHERE PHONE_NUMBER = '{1}'",
-                                                newPhoneNumber, oldPhoneNumber)
+                                                newPhone, oldPhone)
         myCmd.ExecuteNonQuery()
     End Sub
 
@@ -221,22 +227,50 @@ Public Class Database
         Return results
     End Function
 
-    Public Function GetCustomerInfo(phoneNumber As String) As String
-        results = ""
+    'Public Function GetCustomerInfo(phoneNumber As String) As String
+    '    results = ""
+    '    myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phoneNumber)
+    '    myReader = myCmd.ExecuteReader()
+
+    '    Do While myReader.Read()
+    '        results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) &
+    '                            myReader.GetString(2) & vbTab & myReader.GetString(3) &
+    '                            myReader.GetString(4) & vbTab & myReader.GetString(5) &
+    '                            myReader.GetString(6) & vbTab & myReader.GetString(7) &
+    '                            myReader.GetString(8) & vbTab & vbLf
+    '    Loop
+
+    '    myReader.Close()
+
+    '    Return results
+    'End Function
+
+    Public Function GetCustomers() As Collection(Of Customer)
+        Dim customers As New Collection(Of Customer)
+
+        myCmd.CommandText = "SELECT * FROM CUSTOMERS"
+
+        Using myReader = myCmd.ExecuteReader
+            Do While myReader.Read()
+                customers.Add(New Customer(myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
+            Loop
+        End Using
+
+        Return customers
+    End Function
+
+    Public Function GetCustomerInfo(phoneNumber As String) As Collection(Of Customer)
+        Dim customers As New Collection(Of Customer)
         myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phoneNumber)
         myReader = myCmd.ExecuteReader()
 
-        Do While myReader.Read()
-            results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) &
-                                myReader.GetString(2) & vbTab & myReader.GetString(3) &
-                                myReader.GetString(4) & vbTab & myReader.GetString(5) &
-                                myReader.GetString(6) & vbTab & myReader.GetString(7) &
-                                myReader.GetString(8) & vbTab & vbLf
-        Loop
+        Using myReader = myCmd.ExecuteReader
+            Do While myReader.Read()
+                customers.Add(New Customer(myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
+            Loop
+        End Using
 
-        myReader.Close()
-
-        Return results
+        Return customers
     End Function
 
     Public Function GetOrders(phoneNumber As String) As String
@@ -423,15 +457,17 @@ Public Class Database
 
     Public Function GetListeners() As Collection(Of Listener)
         Dim listeners As New Collection(Of Listener)
-        Dim listener As Listener
+        Dim parts As String()
         myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
 
         myReader = myCmd.ExecuteReader()
 
         Do While myReader.Read()
-            listener = Listener.Parse(myReader.GetString(0))
-            listener.EmailAddress = MimeKit.MailboxAddress.Parse(myReader.GetString(1))
-            listeners.Add(listener)
+            parts = Listener.Parse(myReader.GetString(0))
+            listeners.Add(New Listener(parts(0), parts(1), myReader.GetString(1)))
+            'listener = Listener.Parse(myReader.GetString(0))
+            'listener.EmailAddress = MimeKit.MailboxAddress.Parse(myReader.GetString(1))
+            'listeners.Add(listener)
         Loop
 
         Return listeners

@@ -14,13 +14,12 @@ Public Class ListenerSelectionDialog
     End Sub
 
     Private Sub btn_Finish_Click(sender As Object, e As EventArgs) Handles btn_Finish.Click
-        Dim listener As Listener
+        Dim parts As String()
         For Each row As DataGridViewRow In dgv_Listeners.Rows
             If CBool(row.Cells(0).Value) = True Then
-                listener = Listener.Parse(CStr(row.Cells(1).Value))
-                listener.EmailAddress = MimeKit.MailboxAddress.Parse(CStr(row.Cells(2).Value))
+                parts = Listener.Parse(CStr(row.Cells(1).Value))
 
-                Listeners.Add(listener)
+                Listeners.Add(New Listener(parts(0), parts(1), CStr(row.Cells(2).Value)))
             End If
         Next
 

@@ -17,24 +17,21 @@ Namespace Types
             Me.EmailAddress = Nothing
         End Sub
 
-        Shared Function Parse(name As String) As Listener
-            'Parse the name given into seperate first and last name parts and return a new Listener object with supplied name
+        Shared Function Parse(name As String) As String()
+            'Parse the name given into seperate first and last name parts and return the string array with supplied name
             Dim nameParts As String()
             nameParts = name.Split(" "c)
 
             If nameParts.Length = 3 Then
-                'TODO: Clean this up later
                 nameParts(1) &= " " & nameParts(2)
-                Return New Listener(nameParts(0), nameParts(1))
-            ElseIf nameParts.Length = 2 Then
-                Return New Listener(nameParts(0), nameParts(1))
             ElseIf nameParts.Length = 1 Then
-                Return New Listener(nameParts(0), Nothing)
+                nameParts(1) = Nothing
             ElseIf nameParts.Length = 0 Then
-                Return New Listener(Nothing, Nothing)
-            Else
-                Return Nothing
+                nameParts(0) = Nothing
+                nameParts(1) = Nothing
             End If
+
+            Return nameParts
         End Function
     End Class
 End Namespace

@@ -92,9 +92,9 @@ Public Class frm_ViewListeners
         Dim name As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Dim email As String = CType(dgv_Listeners.Rows(changed).Cells(0).Value, String)
         Using db = New Database(My.Settings.Username, My.Settings.Password)
-            Dim listener As Listener = Listener.Parse(name)
-            listener.EmailAddress = MimeKit.MailboxAddress.Parse(email)
-            db.UpdateListener(listener, oldEmail)
+            'Dim listener As Listener = Listener.Parse(name)
+            'Listener.EmailAddress = MimeKit.MailboxAddress.Parse(email)
+            'db.UpdateListener(listener, oldEmail)
         End Using
     End Sub
 

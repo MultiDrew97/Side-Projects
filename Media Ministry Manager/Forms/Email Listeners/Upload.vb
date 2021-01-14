@@ -75,7 +75,7 @@ Public Class Frm_Upload
         End Using
     End Sub
 
-    Private Sub bw_MovePairs_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_MovePairs.DoWork
+    Private Sub Bw_MovePairs_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_MovePairs.DoWork
         'move the pairs according to the status of the custom name check box
         Invoke(
             Sub()

@@ -2,16 +2,12 @@
 
 Imports System.Collections.ObjectModel
 Imports System.IO
-Imports System.Text
 Imports System.Threading
 Imports Google.Apis.Auth.OAuth2
 Imports Google.Apis.Drive.v3
 Imports Google.Apis.Drive.v3.Data
 Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
-Imports MimeKit
-Imports Org.BouncyCastle.Utilities.Encoders
-Imports MediaMinistry.Types
 
 Namespace GoogleAPI
     Public Class DriveUploader
@@ -19,9 +15,7 @@ Namespace GoogleAPI
         Implements IDisposable
 
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
-        Private ReadOnly ApplicationName As String = "Drive Uploader"
-        'Private permissions As New List(Of Permission)()
-        Private tss As ToolStripStatusLabel
+        Private ReadOnly ApplicationName As String = "Media Ministry Manager"
         Private Property Service As DriveService
         Private Property Credential As UserCredential
         Overrides ReadOnly Property Info As Object
@@ -73,12 +67,13 @@ Namespace GoogleAPI
             Dim request As FilesResource.CreateMediaUpload
 
             Using reader As New FileStream(fileName, FileMode.Open)
-                request = Service.Files.Create(fileMetadata, reader, MimeTypes.GetMimeType(fileName))
+                request = Service.Files.Create(fileMetadata, reader, MimeKit.MimeTypes.GetMimeType(fileName))
                 request.Fields = "id"
                 request.Upload()
             End Using
 
             If (request.ResponseBody IsNot Nothing) Then
+                SetPermissions(request.ResponseBody.Id)
                 Return request.ResponseBody.Id
             Else
                 Return Nothing
@@ -155,13 +150,8 @@ Namespace GoogleAPI
         End Function
 
         Sub SetPermissions(fileID As String)
-
-            Dim request As PermissionsResource.CreateRequest
-
-            tss.Text = String.Format("Setting permissions for FileID: {0}", fileID)
-
-            request = Service.Permissions.Create(CreatePermission(), fileID)
-            'request.EmailMessage = String.Format(message, listener.name)
+            Dim request As PermissionsResource.CreateRequest = Service.Permissions.Create(CreatePermission(), fileID)
+            'request.EmailMessage = String.Format(Message, Listener.Name)
             request.Execute()
         End Sub
 
@@ -172,8 +162,8 @@ Namespace GoogleAPI
             }
         End Function
 
-        Shared Function RetrieveEmails() As Collection(Of Listener)
-            Dim listeners As New Collection(Of Listener)
+        Shared Function RetrieveEmails() As Collection(Of Types.Listener)
+            Dim listeners As New Collection(Of Types.Listener)
 
             Using db = New Database(My.Settings.Username, My.Settings.Password)
                 listeners = db.GetListeners()

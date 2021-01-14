@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frm_DisplayCustomers
+Partial Class Frm_DisplayCustomers
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,21 +23,12 @@ Partial Class frm_DisplayCustomers
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DisplayCustomers))
-        Me.CustomersTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayCustomers))
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
-        Me.FIRSTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LASTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PHONENUMBERDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.JOINDATEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.bsCustomers = New System.Windows.Forms.BindingSource(Me.components)
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_UpdatePhone = New System.Windows.Forms.Button()
@@ -45,121 +36,67 @@ Partial Class frm_DisplayCustomers
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FindCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Edit = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.First_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Last_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Phone_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Street = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.City = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.State = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ZipCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JoinDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_CustomerView.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
-        'CustomersTableAdapter
-        '
-        Me.CustomersTableAdapter.ClearBeforeFill = True
-        '
         'dgv_Customers
         '
-        Me.dgv_Customers.AllowUserToAddRows = False
+        Me.dgv_Customers.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
+        Me.dgv_Customers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_Customers.AutoGenerateColumns = False
         Me.dgv_Customers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FIRSTNAMEDataGridViewTextBoxColumn, Me.LASTNAMEDataGridViewTextBoxColumn, Me.PHONENUMBERDataGridViewTextBoxColumn, Me.SHIPPINGSTREETDataGridViewTextBoxColumn, Me.SHIPPINGCITYDataGridViewTextBoxColumn, Me.SHIPPINGSTATEDataGridViewTextBoxColumn, Me.SHIPPINGZIPDataGridViewTextBoxColumn, Me.EMAILDataGridViewTextBoxColumn, Me.PREFERREDPAYMENTDataGridViewTextBoxColumn, Me.JOINDATEDataGridViewTextBoxColumn})
-        Me.dgv_Customers.DataSource = Me.CUSTOMERSBindingSource
+        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Edit, Me.First_Name, Me.Last_Name, Me.Phone_Number, Me.Street, Me.City, Me.State, Me.ZipCode, Me.EmailAddress, Me.JoinDate})
+        Me.dgv_Customers.DataSource = Me.bsCustomers
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_Customers.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgv_Customers.Dock = System.Windows.Forms.DockStyle.Top
+        Me.dgv_Customers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgv_Customers.Location = New System.Drawing.Point(0, 24)
+        Me.dgv_Customers.MultiSelect = False
         Me.dgv_Customers.Name = "dgv_Customers"
-        Me.dgv_Customers.Size = New System.Drawing.Size(1109, 381)
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.dgv_Customers.RowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.dgv_Customers.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.dgv_Customers.Size = New System.Drawing.Size(888, 381)
         Me.dgv_Customers.TabIndex = 0
-        '
-        'FIRSTNAMEDataGridViewTextBoxColumn
-        '
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.DataPropertyName = "FIRST_NAME"
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.HeaderText = "First Name"
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.Name = "FIRSTNAMEDataGridViewTextBoxColumn"
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LASTNAMEDataGridViewTextBoxColumn
-        '
-        Me.LASTNAMEDataGridViewTextBoxColumn.DataPropertyName = "LAST_NAME"
-        Me.LASTNAMEDataGridViewTextBoxColumn.HeaderText = "Last Name"
-        Me.LASTNAMEDataGridViewTextBoxColumn.Name = "LASTNAMEDataGridViewTextBoxColumn"
-        Me.LASTNAMEDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PHONENUMBERDataGridViewTextBoxColumn
-        '
-        Me.PHONENUMBERDataGridViewTextBoxColumn.DataPropertyName = "PHONE_NUMBER"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.HeaderText = "Phone Number"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.Name = "PHONENUMBERDataGridViewTextBoxColumn"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SHIPPINGSTREETDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_STREET"
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn.HeaderText = "Street"
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn.Name = "SHIPPINGSTREETDataGridViewTextBoxColumn"
-        '
-        'SHIPPINGCITYDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_CITY"
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn.HeaderText = "City"
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn.Name = "SHIPPINGCITYDataGridViewTextBoxColumn"
-        '
-        'SHIPPINGSTATEDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_STATE"
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn.HeaderText = "ST"
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn.Name = "SHIPPINGSTATEDataGridViewTextBoxColumn"
-        '
-        'SHIPPINGZIPDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_ZIP"
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn.HeaderText = "Zip"
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn.Name = "SHIPPINGZIPDataGridViewTextBoxColumn"
-        '
-        'EMAILDataGridViewTextBoxColumn
-        '
-        Me.EMAILDataGridViewTextBoxColumn.DataPropertyName = "EMAIL"
-        Me.EMAILDataGridViewTextBoxColumn.HeaderText = "E-Mail"
-        Me.EMAILDataGridViewTextBoxColumn.Name = "EMAILDataGridViewTextBoxColumn"
-        '
-        'PREFERREDPAYMENTDataGridViewTextBoxColumn
-        '
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn.DataPropertyName = "PREFERRED_PAYMENT"
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn.HeaderText = "Payment Preference"
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn.Name = "PREFERREDPAYMENTDataGridViewTextBoxColumn"
-        '
-        'JOINDATEDataGridViewTextBoxColumn
-        '
-        Me.JOINDATEDataGridViewTextBoxColumn.DataPropertyName = "JOIN_DATE"
-        Me.JOINDATEDataGridViewTextBoxColumn.HeaderText = "Join Date"
-        Me.JOINDATEDataGridViewTextBoxColumn.Name = "JOINDATEDataGridViewTextBoxColumn"
-        Me.JOINDATEDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CUSTOMERSBindingSource
-        '
-        Me.CUSTOMERSBindingSource.DataMember = "CUSTOMERS"
-        Me.CUSTOMERSBindingSource.DataSource = Me.MediaMinistryDataSet
-        '
-        'MediaMinistryDataSet
-        '
-        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ss_CustomerView
         '
@@ -168,7 +105,7 @@ Partial Class frm_DisplayCustomers
         Me.ss_CustomerView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_CustomersView})
         Me.ss_CustomerView.Location = New System.Drawing.Point(0, 518)
         Me.ss_CustomerView.Name = "ss_CustomerView"
-        Me.ss_CustomerView.Size = New System.Drawing.Size(1109, 22)
+        Me.ss_CustomerView.Size = New System.Drawing.Size(888, 22)
         Me.ss_CustomerView.TabIndex = 3
         '
         'tss_CustomersView
@@ -180,20 +117,25 @@ Partial Class frm_DisplayCustomers
         '
         'btn_UpdatePhone
         '
+        Me.btn_UpdatePhone.AutoSize = True
+        Me.btn_UpdatePhone.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_UpdatePhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_UpdatePhone.Location = New System.Drawing.Point(156, 431)
+        Me.btn_UpdatePhone.Location = New System.Drawing.Point(35, 440)
         Me.btn_UpdatePhone.Name = "btn_UpdatePhone"
-        Me.btn_UpdatePhone.Size = New System.Drawing.Size(270, 65)
+        Me.btn_UpdatePhone.Size = New System.Drawing.Size(259, 35)
         Me.btn_UpdatePhone.TabIndex = 4
         Me.btn_UpdatePhone.Text = "Update Phone Number"
         Me.btn_UpdatePhone.UseVisualStyleBackColor = True
+        Me.btn_UpdatePhone.Visible = False
         '
         'btn_AddNewCustomer
         '
+        Me.btn_AddNewCustomer.AutoSize = True
+        Me.btn_AddNewCustomer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_AddNewCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(686, 431)
+        Me.btn_AddNewCustomer.Location = New System.Drawing.Point(333, 440)
         Me.btn_AddNewCustomer.Name = "btn_AddNewCustomer"
-        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(270, 65)
+        Me.btn_AddNewCustomer.Size = New System.Drawing.Size(222, 35)
         Me.btn_AddNewCustomer.TabIndex = 1
         Me.btn_AddNewCustomer.Text = "Add New Customer"
         Me.btn_AddNewCustomer.UseVisualStyleBackColor = True
@@ -204,31 +146,31 @@ Partial Class frm_DisplayCustomers
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mnstr_Strip.Size = New System.Drawing.Size(1109, 24)
+        Me.mnstr_Strip.Size = New System.Drawing.Size(888, 24)
         Me.mnstr_Strip.TabIndex = 5
         Me.mnstr_Strip.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.toolStripSeparator1, Me.LogoutToolStripMenuItem, Me.ExitToolStripMenuItem1})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.toolStripSeparator1, Me.LogoutToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'NewToolStripMenuItem
         '
-        Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem, Me.ProductToolStripMenuItem, Me.ListenerToolStripMenuItem})
+        Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewCustomerToolStripMenuItem, Me.ProductToolStripMenuItem, Me.ListenerToolStripMenuItem})
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
         Me.NewToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
-        'CustomerToolStripMenuItem
+        'NewCustomerToolStripMenuItem
         '
-        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
-        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
-        Me.CustomerToolStripMenuItem.Text = "Customer"
+        Me.NewCustomerToolStripMenuItem.Name = "NewCustomerToolStripMenuItem"
+        Me.NewCustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.NewCustomerToolStripMenuItem.Text = "Customer"
         '
         'ProductToolStripMenuItem
         '
@@ -254,11 +196,11 @@ Partial Class frm_DisplayCustomers
         Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
-        'ExitToolStripMenuItem1
+        'ExitToolStripMenuItem
         '
-        Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
-        Me.ExitToolStripMenuItem1.Text = "E&xit"
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
         '
@@ -269,16 +211,16 @@ Partial Class frm_DisplayCustomers
         '
         'CustomizeToolStripMenuItem
         '
-        Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem1, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
+        Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FindCustomerToolStripMenuItem, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
         Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.CustomizeToolStripMenuItem.Text = "Find..."
         '
-        'CustomerToolStripMenuItem1
+        'FindCustomerToolStripMenuItem
         '
-        Me.CustomerToolStripMenuItem1.Name = "CustomerToolStripMenuItem1"
-        Me.CustomerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
-        Me.CustomerToolStripMenuItem1.Text = "Customer"
+        Me.FindCustomerToolStripMenuItem.Name = "FindCustomerToolStripMenuItem"
+        Me.FindCustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.FindCustomerToolStripMenuItem.Text = "Customer"
         '
         'ProductToolStripMenuItem1
         '
@@ -300,16 +242,16 @@ Partial Class frm_DisplayCustomers
         '
         'ViewToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomersToolStripMenuItem, Me.OrdersToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.ListenersToolStripMenuItem})
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewCustomersToolStripMenuItem, Me.OrdersToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.ListenersToolStripMenuItem})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.ViewToolStripMenuItem.Text = "&View"
         '
-        'CustomersToolStripMenuItem
+        'ViewCustomersToolStripMenuItem
         '
-        Me.CustomersToolStripMenuItem.Name = "CustomersToolStripMenuItem"
-        Me.CustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.CustomersToolStripMenuItem.Text = "Customers"
+        Me.ViewCustomersToolStripMenuItem.Name = "ViewCustomersToolStripMenuItem"
+        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewCustomersToolStripMenuItem.Text = "Customers"
         '
         'OrdersToolStripMenuItem
         '
@@ -329,26 +271,96 @@ Partial Class frm_DisplayCustomers
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'frm_DisplayCustomers
+        'Edit
+        '
+        Me.Edit.HeaderText = ""
+        Me.Edit.Name = "Edit"
+        Me.Edit.Text = "Edit"
+        Me.Edit.UseColumnTextForButtonValue = True
+        '
+        'First_Name
+        '
+        Me.First_Name.DataPropertyName = "FirstName"
+        Me.First_Name.FillWeight = 163.3136!
+        Me.First_Name.HeaderText = "First Name"
+        Me.First_Name.Name = "First_Name"
+        '
+        'Last_Name
+        '
+        Me.Last_Name.DataPropertyName = "LastName"
+        Me.Last_Name.FillWeight = 142.877!
+        Me.Last_Name.HeaderText = "Last Name"
+        Me.Last_Name.Name = "Last_Name"
+        '
+        'Phone_Number
+        '
+        Me.Phone_Number.DataPropertyName = "PhoneNumber"
+        Me.Phone_Number.FillWeight = 164.83!
+        Me.Phone_Number.HeaderText = "Phone Number"
+        Me.Phone_Number.Name = "Phone_Number"
+        '
+        'Street
+        '
+        Me.Street.DataPropertyName = "Street"
+        Me.Street.FillWeight = 80.72257!
+        Me.Street.HeaderText = "Street"
+        Me.Street.Name = "Street"
+        '
+        'City
+        '
+        Me.City.DataPropertyName = "City"
+        Me.City.FillWeight = 60.22387!
+        Me.City.HeaderText = "City"
+        Me.City.Name = "City"
+        '
+        'State
+        '
+        Me.State.DataPropertyName = "State"
+        Me.State.FillWeight = 70.03362!
+        Me.State.HeaderText = "State"
+        Me.State.Name = "State"
+        '
+        'ZipCode
+        '
+        Me.ZipCode.DataPropertyName = "ZipCode"
+        Me.ZipCode.FillWeight = 89.38992!
+        Me.ZipCode.HeaderText = "Zip Code"
+        Me.ZipCode.Name = "ZipCode"
+        '
+        'EmailAddress
+        '
+        Me.EmailAddress.DataPropertyName = "Email"
+        Me.EmailAddress.FillWeight = 65.87088!
+        Me.EmailAddress.HeaderText = "Email"
+        Me.EmailAddress.Name = "EmailAddress"
+        '
+        'JoinDate
+        '
+        Me.JoinDate.DataPropertyName = "JoinDate"
+        Me.JoinDate.FillWeight = 84.47861!
+        Me.JoinDate.HeaderText = "Join Date"
+        Me.JoinDate.Name = "JoinDate"
+        Me.JoinDate.ReadOnly = True
+        '
+        'Frm_DisplayCustomers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(1109, 540)
-        Me.Controls.Add(Me.dgv_Customers)
+        Me.ClientSize = New System.Drawing.Size(888, 540)
         Me.Controls.Add(Me.btn_UpdatePhone)
-        Me.Controls.Add(Me.ss_CustomerView)
         Me.Controls.Add(Me.btn_AddNewCustomer)
+        Me.Controls.Add(Me.dgv_Customers)
+        Me.Controls.Add(Me.ss_CustomerView)
         Me.Controls.Add(Me.mnstr_Strip)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "frm_DisplayCustomers"
+        Me.Name = "Frm_DisplayCustomers"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsCustomers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_CustomerView.ResumeLayout(False)
         Me.ss_CustomerView.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
@@ -357,43 +369,41 @@ Partial Class frm_DisplayCustomers
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents CustomersTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents dgv_Customers As DataGridView
-    Friend WithEvents CUSTOMERSBindingSource As BindingSource
     Friend WithEvents ss_CustomerView As StatusStrip
     Friend WithEvents tss_CustomersView As ToolStripStatusLabel
     Friend WithEvents btn_UpdatePhone As Button
     Friend WithEvents btn_AddNewCustomer As Button
-    Friend WithEvents FIRSTNAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents LASTNAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PHONENUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGSTREETDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGCITYDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGSTATEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGZIPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PREFERREDPAYMENTDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents JOINDATEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents mnstr_Strip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NewCustomerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents toolStripSeparator1 As ToolStripSeparator
     Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CustomizeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomerToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents FindCustomerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ListenerToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewCustomersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents bsCustomers As BindingSource
+    Friend WithEvents Edit As DataGridViewButtonColumn
+    Friend WithEvents First_Name As DataGridViewTextBoxColumn
+    Friend WithEvents Last_Name As DataGridViewTextBoxColumn
+    Friend WithEvents Phone_Number As DataGridViewTextBoxColumn
+    Friend WithEvents Street As DataGridViewTextBoxColumn
+    Friend WithEvents City As DataGridViewTextBoxColumn
+    Friend WithEvents State As DataGridViewTextBoxColumn
+    Friend WithEvents ZipCode As DataGridViewTextBoxColumn
+    Friend WithEvents EmailAddress As DataGridViewTextBoxColumn
+    Friend WithEvents JoinDate As DataGridViewTextBoxColumn
 End Class

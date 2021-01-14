@@ -5,15 +5,16 @@ Imports System.Text.RegularExpressions.Regex
 
 Public Class frm_AddNewCustomer
     Property Opener As Form
-    Private phonePattern As String = "(\d{3})-\d{3}-\d{4}"
-    'Private phoneParenPattern As String = "(\d{3})-\d{3}-\d{4}"
+    Private Const phonePattern As String = "(\d{3})-\d{3}-\d{4}"
+    Private Const EmailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
+    Private Const phoneParenPattern As String = "(\d{3}) \d{3}-\d{4}"
 
     Private Sub frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reset()
     End Sub
 
     Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
-        Dim fName, lName, addrStreet, addrCity, addrState, addrZip, phone, payment, email As String
+        Dim fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email As String
 
         If (validText()) Then
             'Get the required text fields
@@ -33,21 +34,24 @@ Public Class frm_AddNewCustomer
                 addrZip = txt_Zip.Text
             End If
 
-            email = If(txt_Email.Text.Equals("E-Mail"), "", txt_Email.Text)
-            payment = If(cbx_PaymentType.SelectedText.Equals("Select One..."), "", cbx_PaymentType.SelectedText)
+            If IsMatch(txt_Email.Text, EmailPattern) Then
+                email = txt_Email.Text
+            Else
+                email = ""
+            End If
 
             Try
-                Using db As New Database(My.Settings.Username, My.Settings.Password)
-                    db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email)
-                End Using
+                    Using db As New Database(My.Settings.Username, My.Settings.Password)
+                        db.AddNewCustomer(fName, lName, addrStreet, addrCity, addrState, addrZip, phone, email)
+                    End Using
 
-                Me.Close()
-            Catch ex As SqlException
-                Console.WriteLine(ex.Message)
-                tss_AddCustomer.ForeColor = Color.Red
-                tss_AddCustomer.Text = "This person might already be in the system. Please try again."
-            End Try
-        End If
+                    Me.Close()
+                Catch ex As SqlException
+                    Console.WriteLine(ex.Message)
+                    tss_AddCustomer.ForeColor = Color.Red
+                    tss_AddCustomer.Text = "This person might already be in the system. Please try again."
+                End Try
+            End If
     End Sub
 
     Private Sub reset()
@@ -59,7 +63,6 @@ Public Class frm_AddNewCustomer
         txt_Zip.Text = "Zip"
         txt_PhoneNumber.Text = "Phone Number"
         txt_Email.Text = "E-Mail"
-        cbx_PaymentType.Text = "Select One..."
         txt_FirstName.ForeColor = SystemColors.ControlLight
         txt_LastName.ForeColor = SystemColors.ControlLight
         txt_Street.ForeColor = SystemColors.ControlLight
@@ -72,7 +75,7 @@ Public Class frm_AddNewCustomer
     Private Sub frm_AddNewCustomer_Closed(sender As Object, e As EventArgs) Handles Me.Closed
 
         Try
-            CType(Opener, frm_DisplayCustomers).refresh()
+            CType(Opener, Frm_DisplayCustomers).refresh()
         Catch ex As InvalidCastException
         Finally
             Opener.Show()
@@ -194,13 +197,6 @@ Public Class frm_AddNewCustomer
         End If
         '(IsMatch(txt_PhoneNumber.Text, phonePattern) Or IsMatch(txt_PhoneNumber.Text, phoneParenPattern))
     End Function
-
-    'Private Function isUniquePerson(phoneNumber As String, fName As String, lName As String) As Boolean
-    '    Dim table As String
-    '    table = db.GetOrders(phoneNumber, fName, lName)
-    '    Console.WriteLine(Not table.Equals(""))
-    '    Return table.Equals("")
-    'End Function
 
     Private Sub txt_FirstName_TextChanged(sender As Object, e As EventArgs) Handles txt_FirstName.TextChanged
         If (Not txt_FirstName.Text.Equals("First Name")) Then

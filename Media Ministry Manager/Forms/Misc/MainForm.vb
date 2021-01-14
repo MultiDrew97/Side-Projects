@@ -39,7 +39,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
-        Dim displayCustomers = New frm_DisplayCustomers With {.mainForm = Me}
+        Dim displayCustomers = New Frm_DisplayCustomers
         displayCustomers.Show()
         Me.Close()
     End Sub
@@ -161,7 +161,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomersToolStripMenuItem.Click
-        Dim customers As New frm_DisplayCustomers With {.mainForm = Me}
+        Dim customers As New Frm_DisplayCustomers
         customers.Show()
         Me.Close()
     End Sub

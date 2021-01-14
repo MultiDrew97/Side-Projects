@@ -151,7 +151,7 @@ Public Class Frm_AddListener
 
                             If IsMatch(fields(1), emailPattern) Then
                                 Try
-                                    listener = Listener.Parse(fields(0))
+                                    'listener = Listener.Parse(fields(0))
                                     listener.EmailAddress = MimeKit.MailboxAddress.Parse(fields(1))
                                     'TODO: Convert to be using db instead of an instance of db
                                     'db.AddListener(listener)
