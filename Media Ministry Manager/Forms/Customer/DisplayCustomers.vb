@@ -3,9 +3,9 @@
 Imports System.Data.SqlClient
 
 Public Class frm_DisplayCustomers
-    Property MainForm As frm_Main
-
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
+        Me.CUSTOMERSTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
         refresh()
     End Sub
 
@@ -62,7 +62,7 @@ Public Class frm_DisplayCustomers
     End Sub
 
     Private Sub Frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim main As New frm_Main()
+        Dim main As New Frm_Main()
         main.Show()
     End Sub
 
@@ -84,7 +84,7 @@ Public Class frm_DisplayCustomers
 
     Public Overrides Sub refresh()
         'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
-        Me.CustomersTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
+        Me.CUSTOMERSTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
     End Sub
 
     Private Sub Dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit

@@ -24,33 +24,28 @@ Partial Class frm_DisplayCustomers
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DisplayCustomers))
-        Me.CustomersTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
-        Me.FIRSTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LASTNAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PHONENUMBERDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.JOINDATEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_UpdatePhone = New System.Windows.Forms.Button()
         Me.btn_AddNewCustomer = New System.Windows.Forms.Button()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.CustomersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CUSTOMERSTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.FirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StreetDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CityDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ZipCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhoneNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JoinDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_CustomerView.SuspendLayout()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CustomersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'CustomersTableAdapter
-        '
-        Me.CustomersTableAdapter.ClearBeforeFill = True
         '
         'dgv_Customers
         '
@@ -58,87 +53,13 @@ Partial Class frm_DisplayCustomers
         Me.dgv_Customers.AutoGenerateColumns = False
         Me.dgv_Customers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FIRSTNAMEDataGridViewTextBoxColumn, Me.LASTNAMEDataGridViewTextBoxColumn, Me.PHONENUMBERDataGridViewTextBoxColumn, Me.SHIPPINGSTREETDataGridViewTextBoxColumn, Me.SHIPPINGCITYDataGridViewTextBoxColumn, Me.SHIPPINGSTATEDataGridViewTextBoxColumn, Me.SHIPPINGZIPDataGridViewTextBoxColumn, Me.EMAILDataGridViewTextBoxColumn, Me.PREFERREDPAYMENTDataGridViewTextBoxColumn, Me.JOINDATEDataGridViewTextBoxColumn})
-        Me.dgv_Customers.DataSource = Me.CUSTOMERSBindingSource
+        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FirstNameDataGridViewTextBoxColumn, Me.LastNameDataGridViewTextBoxColumn, Me.StreetDataGridViewTextBoxColumn, Me.CityDataGridViewTextBoxColumn, Me.StateDataGridViewTextBoxColumn, Me.ZipCodeDataGridViewTextBoxColumn, Me.PhoneNumberDataGridViewTextBoxColumn, Me.EmailAddressDataGridViewTextBoxColumn, Me.JoinDateDataGridViewTextBoxColumn})
+        Me.dgv_Customers.DataSource = Me.CustomersBindingSource
         Me.dgv_Customers.Dock = System.Windows.Forms.DockStyle.Top
         Me.dgv_Customers.Location = New System.Drawing.Point(0, 0)
         Me.dgv_Customers.Name = "dgv_Customers"
         Me.dgv_Customers.Size = New System.Drawing.Size(1013, 455)
         Me.dgv_Customers.TabIndex = 0
-        '
-        'FIRSTNAMEDataGridViewTextBoxColumn
-        '
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.DataPropertyName = "FIRST_NAME"
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.HeaderText = "First Name"
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.Name = "FIRSTNAMEDataGridViewTextBoxColumn"
-        Me.FIRSTNAMEDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LASTNAMEDataGridViewTextBoxColumn
-        '
-        Me.LASTNAMEDataGridViewTextBoxColumn.DataPropertyName = "LAST_NAME"
-        Me.LASTNAMEDataGridViewTextBoxColumn.HeaderText = "Last Name"
-        Me.LASTNAMEDataGridViewTextBoxColumn.Name = "LASTNAMEDataGridViewTextBoxColumn"
-        Me.LASTNAMEDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PHONENUMBERDataGridViewTextBoxColumn
-        '
-        Me.PHONENUMBERDataGridViewTextBoxColumn.DataPropertyName = "PHONE_NUMBER"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.HeaderText = "Phone Number"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.Name = "PHONENUMBERDataGridViewTextBoxColumn"
-        Me.PHONENUMBERDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SHIPPINGSTREETDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_STREET"
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn.HeaderText = "Street"
-        Me.SHIPPINGSTREETDataGridViewTextBoxColumn.Name = "SHIPPINGSTREETDataGridViewTextBoxColumn"
-        '
-        'SHIPPINGCITYDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_CITY"
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn.HeaderText = "City"
-        Me.SHIPPINGCITYDataGridViewTextBoxColumn.Name = "SHIPPINGCITYDataGridViewTextBoxColumn"
-        '
-        'SHIPPINGSTATEDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_STATE"
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn.HeaderText = "ST"
-        Me.SHIPPINGSTATEDataGridViewTextBoxColumn.Name = "SHIPPINGSTATEDataGridViewTextBoxColumn"
-        '
-        'SHIPPINGZIPDataGridViewTextBoxColumn
-        '
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn.DataPropertyName = "SHIPPING_ZIP"
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn.HeaderText = "Zip"
-        Me.SHIPPINGZIPDataGridViewTextBoxColumn.Name = "SHIPPINGZIPDataGridViewTextBoxColumn"
-        '
-        'EMAILDataGridViewTextBoxColumn
-        '
-        Me.EMAILDataGridViewTextBoxColumn.DataPropertyName = "EMAIL"
-        Me.EMAILDataGridViewTextBoxColumn.HeaderText = "E-Mail"
-        Me.EMAILDataGridViewTextBoxColumn.Name = "EMAILDataGridViewTextBoxColumn"
-        '
-        'PREFERREDPAYMENTDataGridViewTextBoxColumn
-        '
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn.DataPropertyName = "PREFERRED_PAYMENT"
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn.HeaderText = "Payment Preference"
-        Me.PREFERREDPAYMENTDataGridViewTextBoxColumn.Name = "PREFERREDPAYMENTDataGridViewTextBoxColumn"
-        '
-        'JOINDATEDataGridViewTextBoxColumn
-        '
-        Me.JOINDATEDataGridViewTextBoxColumn.DataPropertyName = "JOIN_DATE"
-        Me.JOINDATEDataGridViewTextBoxColumn.HeaderText = "Join Date"
-        Me.JOINDATEDataGridViewTextBoxColumn.Name = "JOINDATEDataGridViewTextBoxColumn"
-        Me.JOINDATEDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CUSTOMERSBindingSource
-        '
-        Me.CUSTOMERSBindingSource.DataMember = "CUSTOMERS"
-        Me.CUSTOMERSBindingSource.DataSource = Me.MediaMinistryDataSet
-        '
-        'Media_MinistryDataSet
-        '
-        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ss_CustomerView
         '
@@ -177,6 +98,74 @@ Partial Class frm_DisplayCustomers
         Me.btn_AddNewCustomer.Text = "Add New Customer"
         Me.btn_AddNewCustomer.UseVisualStyleBackColor = True
         '
+        'MediaMinistryDataSet
+        '
+        Me.MediaMinistryDataSet.DataSetName = "MediaMinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CustomersBindingSource
+        '
+        Me.CustomersBindingSource.DataMember = "Customers"
+        Me.CustomersBindingSource.DataSource = Me.MediaMinistryDataSet
+        '
+        'CUSTOMERSTableAdapter
+        '
+        Me.CUSTOMERSTableAdapter.ClearBeforeFill = True
+        '
+        'FirstNameDataGridViewTextBoxColumn
+        '
+        Me.FirstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName"
+        Me.FirstNameDataGridViewTextBoxColumn.HeaderText = "First Name"
+        Me.FirstNameDataGridViewTextBoxColumn.Name = "FirstNameDataGridViewTextBoxColumn"
+        '
+        'LastNameDataGridViewTextBoxColumn
+        '
+        Me.LastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName"
+        Me.LastNameDataGridViewTextBoxColumn.HeaderText = "Last Name"
+        Me.LastNameDataGridViewTextBoxColumn.Name = "LastNameDataGridViewTextBoxColumn"
+        '
+        'StreetDataGridViewTextBoxColumn
+        '
+        Me.StreetDataGridViewTextBoxColumn.DataPropertyName = "Street"
+        Me.StreetDataGridViewTextBoxColumn.HeaderText = "Street"
+        Me.StreetDataGridViewTextBoxColumn.Name = "StreetDataGridViewTextBoxColumn"
+        '
+        'CityDataGridViewTextBoxColumn
+        '
+        Me.CityDataGridViewTextBoxColumn.DataPropertyName = "City"
+        Me.CityDataGridViewTextBoxColumn.HeaderText = "City"
+        Me.CityDataGridViewTextBoxColumn.Name = "CityDataGridViewTextBoxColumn"
+        '
+        'StateDataGridViewTextBoxColumn
+        '
+        Me.StateDataGridViewTextBoxColumn.DataPropertyName = "State"
+        Me.StateDataGridViewTextBoxColumn.HeaderText = "State"
+        Me.StateDataGridViewTextBoxColumn.Name = "StateDataGridViewTextBoxColumn"
+        '
+        'ZipCodeDataGridViewTextBoxColumn
+        '
+        Me.ZipCodeDataGridViewTextBoxColumn.DataPropertyName = "ZipCode"
+        Me.ZipCodeDataGridViewTextBoxColumn.HeaderText = "Zip Code"
+        Me.ZipCodeDataGridViewTextBoxColumn.Name = "ZipCodeDataGridViewTextBoxColumn"
+        '
+        'PhoneNumberDataGridViewTextBoxColumn
+        '
+        Me.PhoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber"
+        Me.PhoneNumberDataGridViewTextBoxColumn.HeaderText = "Phone Number"
+        Me.PhoneNumberDataGridViewTextBoxColumn.Name = "PhoneNumberDataGridViewTextBoxColumn"
+        '
+        'EmailAddressDataGridViewTextBoxColumn
+        '
+        Me.EmailAddressDataGridViewTextBoxColumn.DataPropertyName = "EmailAddress"
+        Me.EmailAddressDataGridViewTextBoxColumn.HeaderText = "Email Address"
+        Me.EmailAddressDataGridViewTextBoxColumn.Name = "EmailAddressDataGridViewTextBoxColumn"
+        '
+        'JoinDateDataGridViewTextBoxColumn
+        '
+        Me.JoinDateDataGridViewTextBoxColumn.DataPropertyName = "JoinDate"
+        Me.JoinDateDataGridViewTextBoxColumn.HeaderText = "Join Date"
+        Me.JoinDateDataGridViewTextBoxColumn.Name = "JoinDateDataGridViewTextBoxColumn"
+        '
         'frm_DisplayCustomers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -194,31 +183,30 @@ Partial Class frm_DisplayCustomers
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_CustomerView.ResumeLayout(False)
         Me.ss_CustomerView.PerformLayout()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CustomersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents CustomersTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents dgv_Customers As DataGridView
-    Friend WithEvents CUSTOMERSBindingSource As BindingSource
     Friend WithEvents ss_CustomerView As StatusStrip
     Friend WithEvents tss_CustomersView As ToolStripStatusLabel
     Friend WithEvents btn_UpdatePhone As Button
     Friend WithEvents btn_AddNewCustomer As Button
-    Friend WithEvents FIRSTNAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents LASTNAMEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PHONENUMBERDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGSTREETDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGCITYDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGSTATEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SHIPPINGZIPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EMAILDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PREFERREDPAYMENTDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents JOINDATEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
+    Friend WithEvents CustomersBindingSource As BindingSource
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents FirstNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents LastNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StreetDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CityDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ZipCodeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PhoneNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EmailAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents JoinDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

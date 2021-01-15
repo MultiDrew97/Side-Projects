@@ -12,7 +12,7 @@ Public Class Frm_AddNewProduct
 
     Private Sub frm_AddNewProduct_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Try
-            CType(Opener, frm_ViewInventory).customLoad()
+            CType(Opener, Frm_ViewInventory).customLoad()
         Catch ex As InvalidCastException
         Finally
             Opener.Show()

@@ -23,11 +23,10 @@ Partial Class frm_ViewListeners
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_ViewListeners))
         Me.btn_Add = New System.Windows.Forms.Button()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
-        Me.EMAILLISTENERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lbl_Total = New System.Windows.Forms.Label()
         Me.btn_Search = New System.Windows.Forms.Button()
         Me.lbl_SearchLabel = New System.Windows.Forms.Label()
@@ -44,13 +43,14 @@ Partial Class frm_ViewListeners
         Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MediaMinistryDataSet = New MediaMinistryDataSet()
-        Me.NAMEDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAILDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EMAIL_LISTENERSTableAdapter = New MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter()
+        Me.EmailListenersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EmailListenersTableAdapter = New MediaMinistryDataSetTableAdapters.EmailListenersTableAdapter()
+        Me.NameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbx_AdvancedSearch.SuspendLayout()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmailListenersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_Add
@@ -72,25 +72,20 @@ Partial Class frm_ViewListeners
         Me.dgv_Listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Listeners.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.dgv_Listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Listeners.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NAMEDataGridViewTextBoxColumn1, Me.EMAILDataGridViewTextBoxColumn1})
-        Me.dgv_Listeners.DataSource = Me.EMAILLISTENERSBindingSource
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_Listeners.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgv_Listeners.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NameDataGridViewTextBoxColumn1, Me.EmailAddressDataGridViewTextBoxColumn})
+        Me.dgv_Listeners.DataSource = Me.EmailListenersBindingSource
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_Listeners.DefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_Listeners.Location = New System.Drawing.Point(0, 0)
         Me.dgv_Listeners.Name = "dgv_Listeners"
         Me.dgv_Listeners.Size = New System.Drawing.Size(613, 450)
         Me.dgv_Listeners.TabIndex = 0
-        '
-        'EMAILLISTENERSBindingSource
-        '
-        Me.EMAILLISTENERSBindingSource.DataMember = "EMAIL_LISTENERS"
-        Me.EMAILLISTENERSBindingSource.DataSource = Me.MediaMinistryDataSet
         '
         'lbl_Total
         '
@@ -238,23 +233,28 @@ Partial Class frm_ViewListeners
         Me.MediaMinistryDataSet.DataSetName = "MediaMinistryDataSet"
         Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'NAMEDataGridViewTextBoxColumn1
+        'EmailListenersBindingSource
         '
-        Me.NAMEDataGridViewTextBoxColumn1.DataPropertyName = "NAME"
-        Me.NAMEDataGridViewTextBoxColumn1.HeaderText = "NAME"
-        Me.NAMEDataGridViewTextBoxColumn1.Name = "NAMEDataGridViewTextBoxColumn1"
+        Me.EmailListenersBindingSource.DataMember = "EmailListeners"
+        Me.EmailListenersBindingSource.DataSource = Me.MediaMinistryDataSet
         '
-        'EMAILDataGridViewTextBoxColumn1
+        'EmailListenersTableAdapter
         '
-        Me.EMAILDataGridViewTextBoxColumn1.DataPropertyName = "EMAIL"
-        Me.EMAILDataGridViewTextBoxColumn1.HeaderText = "EMAIL"
-        Me.EMAILDataGridViewTextBoxColumn1.Name = "EMAILDataGridViewTextBoxColumn1"
+        Me.EmailListenersTableAdapter.ClearBeforeFill = True
         '
-        'EMAIL_LISTENERSTableAdapter
+        'NameDataGridViewTextBoxColumn1
         '
-        Me.EMAIL_LISTENERSTableAdapter.ClearBeforeFill = True
+        Me.NameDataGridViewTextBoxColumn1.DataPropertyName = "Name"
+        Me.NameDataGridViewTextBoxColumn1.HeaderText = "Name"
+        Me.NameDataGridViewTextBoxColumn1.Name = "NameDataGridViewTextBoxColumn1"
         '
-        'Frm_ViewListeners
+        'EmailAddressDataGridViewTextBoxColumn
+        '
+        Me.EmailAddressDataGridViewTextBoxColumn.DataPropertyName = "EmailAddress"
+        Me.EmailAddressDataGridViewTextBoxColumn.HeaderText = "Email Address"
+        Me.EmailAddressDataGridViewTextBoxColumn.Name = "EmailAddressDataGridViewTextBoxColumn"
+        '
+        'frm_ViewListeners
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -271,14 +271,14 @@ Partial Class frm_ViewListeners
         Me.Controls.Add(Me.dgv_Listeners)
         Me.Controls.Add(Me.gbx_AdvancedSearch)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Frm_ViewListeners"
+        Me.Name = "frm_ViewListeners"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EMAILLISTENERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbx_AdvancedSearch.ResumeLayout(False)
         Me.gbx_AdvancedSearch.PerformLayout()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmailListenersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -300,9 +300,9 @@ Partial Class frm_ViewListeners
     Friend WithEvents gbx_AdvancedSearch As GroupBox
     Friend WithEvents btn_AdvancedSearch As Button
     Friend WithEvents btn_AdvancedCancel As Button
-    Friend WithEvents EMAILLISTENERSBindingSource As BindingSource
-    Friend WithEvents NAMEDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents EMAILDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
-    Friend WithEvents EMAIL_LISTENERSTableAdapter As MediaMinistryDataSetTableAdapters.EMAIL_LISTENERSTableAdapter
+    Friend WithEvents EmailListenersBindingSource As BindingSource
+    Friend WithEvents EmailListenersTableAdapter As MediaMinistryDataSetTableAdapters.EmailListenersTableAdapter
+    Friend WithEvents NameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents EmailAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

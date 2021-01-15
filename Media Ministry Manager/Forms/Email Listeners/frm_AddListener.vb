@@ -94,7 +94,7 @@ Public Class Frm_AddListener
                     Try
                         db.AddListener(txt_Name.Text, txt_Email.Text)
                         tss_Feedback.ForeColor = Color.Black
-                        tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_FirstName.Text)
+                        tss_Feedback.Text = String.Format("{0} has been added successfully...", txt_Name.Text) 'txt_FirstName.Text)
                         CType(Opener, frm_ViewListeners).CustomLoad()
                     Catch ex As SqlException
                         tss_Feedback.ForeColor = Color.Red

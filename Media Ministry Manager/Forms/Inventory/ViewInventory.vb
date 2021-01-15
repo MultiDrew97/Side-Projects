@@ -1,9 +1,9 @@
 ﻿Option Strict On
 
-Public Class frm_ViewInventory
-    Property mainForm() As frm_Main
-
+Public Class Frm_ViewInventory
     Private Sub ViewInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        Me.INVENTORYTableAdapter.Fill(Me.MediaMinistryDataSet.INVENTORY)
         customLoad()
     End Sub
 
@@ -47,7 +47,7 @@ Public Class frm_ViewInventory
     End Sub
 
     Private Sub frm_ViewInventory_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim frm As New frm_Main()
+        Dim frm As New Frm_Main()
         frm.Show()
     End Sub
 

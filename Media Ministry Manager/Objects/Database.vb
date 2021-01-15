@@ -426,7 +426,7 @@ Public Class Database
     Public Function RetrieveListeners() As Collection(Of Listener)
         Dim listeners As Collection(Of Listener) = New Collection(Of Listener)
 
-        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
+        myCmd.CommandText = "SELECT * FROM EmailListeners"
 
         myReader = myCmd.ExecuteReader()
 

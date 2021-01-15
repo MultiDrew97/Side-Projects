@@ -14,7 +14,6 @@ Public Class Frm_Settings
     Private result As DialogResult
 
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Console.WriteLine(String.Format("{0:C}", 10.568))
         'Load settings from settings file to display to user
         Me.Font = My.Settings.CurrentFont
         bw_Settings.RunWorkerAsync("l")
@@ -200,7 +199,7 @@ Public Class Frm_Settings
     Private Sub Frm_Settings_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         If My.Application.OpenForms.Count > 1 Then
             For Each form As Form In My.Application.OpenForms
-                If form.Name = "Frm_Main" Then
+                If form.Name.Equals("Frm_Main", StringComparison.OrdinalIgnoreCase) Then
                     form.Show()
                     Exit For
                 End If

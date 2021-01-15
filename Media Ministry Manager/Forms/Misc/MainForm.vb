@@ -3,33 +3,17 @@
 Imports System.ComponentModel
 Imports System.IO
 Imports MediaMinistry.Helpers
-Imports MediaMinistry.SendingEmails
 
-Public Class frm_Main
-    Dim uploader As DriveUploader
-    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
-
+Public Class Frm_Main
     Structure WindowSizes
         Shared normal As New Size(413, 452)
         Shared max As New Size(1382, 744)
     End Structure
 
-    'Public Sub New() 'ByRef database As Database)
-
-    '    ' This call is required by the designer.
-    '    InitializeComponent()
-
-    '    ' Add any initialization after the InitializeComponent() call.
-    '    'db = Database
-    '    If Not bw_UpdateJar.IsBusy Then
-    '        bw_UpdateJar.RunWorkerAsync(emailerLocation)
-    '    End If
-    'End Sub
-
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
         If My.Application.OpenForms.Count = 1 Then
             If Not My.Settings.KeepLoggedIn Then
-                Dim login As New frm_Login()
+                Dim login As New Frm_Login()
                 login.Show()
             Else
                 My.Settings.Save()
@@ -45,24 +29,28 @@ Public Class frm_Main
     End Sub
 
     Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
-        Dim frm_PlaceOrder As frm_PlaceOrder = New frm_PlaceOrder With {.mainForm = Me}
-        frm_PlaceOrder.Show()
+        'TODO: Re-enable this area
+        MessageBox.Show("Sorry. This area is currently under reconstruction.", "Minor Inconveniance", MessageBoxButtons.OK)
+        'Dim frm_PlaceOrder As frm_PlaceOrder = New frm_PlaceOrder With {.mainForm = Me}
+        'frm_PlaceOrder.Show()
     End Sub
 
     Private Sub btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
-        Dim inventory As frm_ViewInventory = New frm_ViewInventory With {.mainForm = Me}
+        Dim inventory As Frm_ViewInventory = New Frm_ViewInventory
         inventory.Show()
         Me.Close()
     End Sub
 
     Private Sub btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
-        Dim ordersView = New frm_DisplayOrders With {.mainForm = Me}
-        ordersView.Show()
-        Me.Close()
+        'TODO: Re-enable this area
+        MessageBox.Show("Sorry. This area is currently under reconstruction.", "Minor Inconveniance", MessageBoxButtons.OK)
+        'Dim ordersView = New Frm_DisplayOrders
+        'ordersView.Show()
+        'Me.Close()
     End Sub
 
     Private Sub btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
-        Dim displayCustomers = New frm_DisplayCustomers With {.mainForm = Me}
+        Dim displayCustomers = New frm_DisplayCustomers
         displayCustomers.Show()
         Me.Close()
     End Sub
@@ -188,25 +176,25 @@ Public Class frm_Main
     End Sub
 
     Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomersToolStripMenuItem.Click
-        Dim customers As New frm_DisplayCustomers With {.mainForm = Me}
+        Dim customers As New frm_DisplayCustomers
         customers.Show()
         Me.Close()
     End Sub
 
     Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsToolStripMenuItem.Click
-        Dim products As New frm_ViewInventory With {.mainForm = Me}
+        Dim products As New Frm_ViewInventory
         products.Show()
         Me.Close()
     End Sub
 
     Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrdersToolStripMenuItem.Click
-        Dim orders As New frm_DisplayOrders With {.mainForm = Me}
+        Dim orders As New Frm_DisplayOrders
         orders.Show()
         Me.Close()
     End Sub
 
     Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenersToolStripMenuItem.Click
-        Dim listeners As New frm_ViewListeners With {.sendingForm = Me}
+        Dim listeners As New frm_ViewListeners
         listeners.Show()
         Me.Close()
     End Sub

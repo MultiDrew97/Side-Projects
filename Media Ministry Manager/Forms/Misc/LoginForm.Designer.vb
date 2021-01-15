@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frm_Login
+Partial Class Frm_Login
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.

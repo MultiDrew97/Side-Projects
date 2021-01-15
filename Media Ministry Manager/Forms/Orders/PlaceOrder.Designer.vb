@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_PlaceOrder
+Partial Class frm_PlaceOrder
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,15 +23,14 @@ Partial Class Frm_PlaceOrder
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_PlaceOrder))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_PlaceOrder))
         Me.cbx_ItemName = New System.Windows.Forms.ComboBox()
-        Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_ItemName = New System.Windows.Forms.Label()
         Me.ss_AddOrder = New System.Windows.Forms.StatusStrip()
         Me.tss_AddOrder = New System.Windows.Forms.ToolStripStatusLabel()
         Me.cbx_FirstName = New System.Windows.Forms.ComboBox()
-        Me.CUSTOMERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CustomersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
         Me.lbl_FirstName = New System.Windows.Forms.Label()
         Me.nud_Quantity = New System.Windows.Forms.NumericUpDown()
         Me.lbl_Quantity = New System.Windows.Forms.Label()
@@ -39,36 +38,29 @@ Partial Class Frm_PlaceOrder
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.cbx_PhoneNumber = New System.Windows.Forms.ComboBox()
         Me.lbl_PhoneNumber = New System.Windows.Forms.Label()
-        Me.CUSTOMERSTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
-        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.bw_LoadingData = New System.ComponentModel.BackgroundWorker()
-        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.CUSTOMERSTableAdapter = New MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter()
+        Me.InventoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.ss_AddOrder.SuspendLayout()
-        CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CustomersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nud_Quantity, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InventoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbx_ItemName
         '
-        Me.cbx_ItemName.DataSource = Me.INVENTORYBindingSource
-        Me.cbx_ItemName.DisplayMember = "ITEM"
+        Me.cbx_ItemName.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.InventoryBindingSource, "ItemID", True))
+        Me.cbx_ItemName.DataSource = Me.InventoryBindingSource
+        Me.cbx_ItemName.DisplayMember = "ItemName"
         Me.cbx_ItemName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
         Me.cbx_ItemName.FormattingEnabled = True
         Me.cbx_ItemName.Location = New System.Drawing.Point(69, 154)
         Me.cbx_ItemName.Name = "cbx_ItemName"
         Me.cbx_ItemName.Size = New System.Drawing.Size(226, 33)
         Me.cbx_ItemName.TabIndex = 5
-        '
-        'INVENTORYBindingSource
-        '
-        Me.INVENTORYBindingSource.DataMember = "INVENTORY"
-        Me.INVENTORYBindingSource.DataSource = Me.MediaMinistryDataSet
-        '
-        'MediaMinistryDataSet
-        '
-        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.cbx_ItemName.ValueMember = "ItemID"
         '
         'lbl_ItemName
         '
@@ -96,19 +88,26 @@ Partial Class Frm_PlaceOrder
         '
         'cbx_FirstName
         '
-        Me.cbx_FirstName.DataSource = Me.CUSTOMERSBindingSource
-        Me.cbx_FirstName.DisplayMember = "FIRST_NAME"
+        Me.cbx_FirstName.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CustomersBindingSource, "CustomerID", True))
+        Me.cbx_FirstName.DataSource = Me.CustomersBindingSource
+        Me.cbx_FirstName.DisplayMember = "FirstName"
         Me.cbx_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
         Me.cbx_FirstName.FormattingEnabled = True
         Me.cbx_FirstName.Location = New System.Drawing.Point(51, 66)
         Me.cbx_FirstName.Name = "cbx_FirstName"
         Me.cbx_FirstName.Size = New System.Drawing.Size(191, 33)
         Me.cbx_FirstName.TabIndex = 1
+        Me.cbx_FirstName.ValueMember = "CustomerID"
         '
-        'CUSTOMERSBindingSource
+        'CustomersBindingSource
         '
-        Me.CUSTOMERSBindingSource.DataMember = "CUSTOMERS"
-        Me.CUSTOMERSBindingSource.DataSource = Me.MediaMinistryDataSet
+        Me.CustomersBindingSource.DataMember = "Customers"
+        Me.CustomersBindingSource.DataSource = Me.MediaMinistryDataSet
+        '
+        'MediaMinistryDataSet
+        '
+        Me.MediaMinistryDataSet.DataSetName = "MediaMinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbl_FirstName
         '
@@ -164,14 +163,16 @@ Partial Class Frm_PlaceOrder
         '
         'cbx_PhoneNumber
         '
-        Me.cbx_PhoneNumber.DataSource = Me.CUSTOMERSBindingSource
-        Me.cbx_PhoneNumber.DisplayMember = "PHONE_NUMBER"
+        Me.cbx_PhoneNumber.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CustomersBindingSource, "CustomerID", True))
+        Me.cbx_PhoneNumber.DataSource = Me.CustomersBindingSource
+        Me.cbx_PhoneNumber.DisplayMember = "PhoneNumber"
         Me.cbx_PhoneNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
         Me.cbx_PhoneNumber.FormattingEnabled = True
         Me.cbx_PhoneNumber.Location = New System.Drawing.Point(264, 66)
         Me.cbx_PhoneNumber.Name = "cbx_PhoneNumber"
         Me.cbx_PhoneNumber.Size = New System.Drawing.Size(191, 33)
         Me.cbx_PhoneNumber.TabIndex = 3
+        Me.cbx_PhoneNumber.ValueMember = "CustomerID"
         '
         'lbl_PhoneNumber
         '
@@ -186,6 +187,11 @@ Partial Class Frm_PlaceOrder
         'CUSTOMERSTableAdapter
         '
         Me.CUSTOMERSTableAdapter.ClearBeforeFill = True
+        '
+        'InventoryBindingSource
+        '
+        Me.InventoryBindingSource.DataMember = "Inventory"
+        Me.InventoryBindingSource.DataSource = Me.MediaMinistryDataSet
         '
         'INVENTORYTableAdapter
         '
@@ -215,12 +221,12 @@ Partial Class Frm_PlaceOrder
         Me.Name = "frm_PlaceOrder"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
-        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_AddOrder.ResumeLayout(False)
         Me.ss_AddOrder.PerformLayout()
-        CType(Me.CUSTOMERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CustomersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nud_Quantity, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InventoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -238,10 +244,10 @@ Partial Class Frm_PlaceOrder
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents cbx_PhoneNumber As ComboBox
     Friend WithEvents lbl_PhoneNumber As Label
-    Friend WithEvents CUSTOMERSBindingSource As BindingSource
-    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
-    Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents bw_LoadingData As System.ComponentModel.BackgroundWorker
     Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
+    Friend WithEvents CustomersBindingSource As BindingSource
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
+    Friend WithEvents InventoryBindingSource As BindingSource
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
 End Class

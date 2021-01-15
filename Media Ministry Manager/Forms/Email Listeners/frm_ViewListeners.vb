@@ -3,7 +3,6 @@
 Imports System.ComponentModel
 
 Public Class frm_ViewListeners
-    Property sendingForm As Form
     ReadOnly totalListeners As String = "Total Listeners: {0}"
 
     Structure Sizes
@@ -58,7 +57,8 @@ Public Class frm_ViewListeners
     End Sub
 
     Public Sub CustomLoad()
-        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.EmailListeners' table. You can move, or remove it, as needed.
+        Me.EmailListenersTableAdapter.Fill(Me.MediaMinistryDataSet.EmailListeners)
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
         cbx_Column.SelectedIndex = 0
         updateTotal()

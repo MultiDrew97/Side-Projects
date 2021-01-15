@@ -1,9 +1,9 @@
 ﻿Option Strict On
 Public Class frm_UpdateInventory
-    Private inventoryViewForm As frm_ViewInventory
+    Private inventoryViewForm As Frm_ViewInventory
     Private selectedIndex As Integer
 
-    Public Sub New(ByRef viewForm As frm_ViewInventory)
+    Public Sub New(ByRef viewForm As Frm_ViewInventory)
 
         ' This call is required by the designer.
         InitializeComponent()

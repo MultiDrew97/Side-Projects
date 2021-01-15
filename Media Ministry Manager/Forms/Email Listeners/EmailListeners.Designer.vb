@@ -22,9 +22,11 @@ Partial Class Frm_EmailListeners
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_EmailListeners))
         Me.ofd_SelectAudio = New System.Windows.Forms.OpenFileDialog()
         Me.cbx_Folders = New System.Windows.Forms.ComboBox()
+        Me.FoldersSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lbl_Folder = New System.Windows.Forms.Label()
         Me.lbl_FileLocation = New System.Windows.Forms.Label()
         Me.txt_FileLocation = New System.Windows.Forms.TextBox()
@@ -39,7 +41,11 @@ Partial Class Frm_EmailListeners
         Me.rdo_GoingLive = New System.Windows.Forms.RadioButton()
         Me.rdo_EmailMinistry = New System.Windows.Forms.RadioButton()
         Me.cbx_Files = New System.Windows.Forms.ComboBox()
+        Me.FilesSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.bw_GetFolders = New System.ComponentModel.BackgroundWorker()
+        CType(Me.FoldersSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_Feedback.SuspendLayout()
+        CType(Me.FilesSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ofd_SelectAudio
@@ -52,7 +58,7 @@ Partial Class Frm_EmailListeners
         Me.cbx_Folders.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbx_Folders.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbx_Folders.FormattingEnabled = True
-        Me.cbx_Folders.Location = New System.Drawing.Point(388, 49)
+        Me.cbx_Folders.Location = New System.Drawing.Point(388, 51)
         Me.cbx_Folders.Name = "cbx_Folders"
         Me.cbx_Folders.Size = New System.Drawing.Size(367, 33)
         Me.cbx_Folders.TabIndex = 1
@@ -62,7 +68,7 @@ Partial Class Frm_EmailListeners
         Me.lbl_Folder.AutoSize = True
         Me.lbl_Folder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_Folder.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_Folder.Location = New System.Drawing.Point(292, 49)
+        Me.lbl_Folder.Location = New System.Drawing.Point(292, 51)
         Me.lbl_Folder.Name = "lbl_Folder"
         Me.lbl_Folder.Size = New System.Drawing.Size(79, 26)
         Me.lbl_Folder.TabIndex = 2
@@ -73,7 +79,7 @@ Partial Class Frm_EmailListeners
         Me.lbl_FileLocation.AutoSize = True
         Me.lbl_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_FileLocation.Location = New System.Drawing.Point(313, 108)
+        Me.lbl_FileLocation.Location = New System.Drawing.Point(313, 110)
         Me.lbl_FileLocation.Name = "lbl_FileLocation"
         Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 26)
         Me.lbl_FileLocation.TabIndex = 3
@@ -83,7 +89,7 @@ Partial Class Frm_EmailListeners
         '
         Me.txt_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txt_FileLocation.Location = New System.Drawing.Point(388, 108)
+        Me.txt_FileLocation.Location = New System.Drawing.Point(388, 110)
         Me.txt_FileLocation.Name = "txt_FileLocation"
         Me.txt_FileLocation.ReadOnly = True
         Me.txt_FileLocation.Size = New System.Drawing.Size(367, 32)
@@ -94,7 +100,7 @@ Partial Class Frm_EmailListeners
         '
         Me.btn_Browse.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Browse.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btn_Browse.Location = New System.Drawing.Point(761, 108)
+        Me.btn_Browse.Location = New System.Drawing.Point(761, 112)
         Me.btn_Browse.Name = "btn_Browse"
         Me.btn_Browse.Size = New System.Drawing.Size(44, 31)
         Me.btn_Browse.TabIndex = 5
@@ -132,7 +138,7 @@ Partial Class Frm_EmailListeners
         'btn_SendEmails
         '
         Me.btn_SendEmails.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_SendEmails.Location = New System.Drawing.Point(20, 53)
+        Me.btn_SendEmails.Location = New System.Drawing.Point(21, 53)
         Me.btn_SendEmails.Name = "btn_SendEmails"
         Me.btn_SendEmails.Size = New System.Drawing.Size(238, 36)
         Me.btn_SendEmails.TabIndex = 8
@@ -142,7 +148,7 @@ Partial Class Frm_EmailListeners
         'btn_ViewListeners
         '
         Me.btn_ViewListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_ViewListeners.Location = New System.Drawing.Point(20, 111)
+        Me.btn_ViewListeners.Location = New System.Drawing.Point(21, 111)
         Me.btn_ViewListeners.Name = "btn_ViewListeners"
         Me.btn_ViewListeners.Size = New System.Drawing.Size(238, 36)
         Me.btn_ViewListeners.TabIndex = 10
@@ -168,10 +174,13 @@ Partial Class Frm_EmailListeners
         Me.cbx_Files.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbx_Files.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbx_Files.FormattingEnabled = True
-        Me.cbx_Files.Location = New System.Drawing.Point(388, 108)
+        Me.cbx_Files.Location = New System.Drawing.Point(388, 110)
         Me.cbx_Files.Name = "cbx_Files"
         Me.cbx_Files.Size = New System.Drawing.Size(367, 33)
         Me.cbx_Files.TabIndex = 1
+        '
+        'bw_GetFolders
+        '
         '
         'Frm_EmailListeners
         '
@@ -184,19 +193,21 @@ Partial Class Frm_EmailListeners
         Me.Controls.Add(Me.ss_Feedback)
         Me.Controls.Add(Me.btn_AddFolder)
         Me.Controls.Add(Me.btn_Browse)
-        Me.Controls.Add(Me.txt_FileLocation)
         Me.Controls.Add(Me.lbl_FileLocation)
         Me.Controls.Add(Me.lbl_Folder)
         Me.Controls.Add(Me.cbx_Files)
         Me.Controls.Add(Me.cbx_Folders)
+        Me.Controls.Add(Me.txt_FileLocation)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Frm_EmailListeners"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
+        CType(Me.FoldersSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ss_Feedback.ResumeLayout(False)
         Me.ss_Feedback.PerformLayout()
+        CType(Me.FilesSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -217,4 +228,7 @@ Partial Class Frm_EmailListeners
     Friend WithEvents rdo_GoingLive As RadioButton
     Friend WithEvents rdo_EmailMinistry As RadioButton
     Friend WithEvents cbx_Files As ComboBox
+    Friend WithEvents bw_GetFolders As System.ComponentModel.BackgroundWorker
+    Friend WithEvents FoldersSource As BindingSource
+    Friend WithEvents FilesSource As BindingSource
 End Class

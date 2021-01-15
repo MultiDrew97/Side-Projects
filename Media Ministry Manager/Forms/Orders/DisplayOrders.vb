@@ -2,8 +2,6 @@
 Imports System.Data.SqlClient
 
 Public Class frm_DisplayOrders
-    Property mainForm() As frm_Main
-
     Private Sub frm_DisplayOrders_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.ORDER_SUMMARY' table. You can move, or remove it, as needed.
         Me.ORDER_SUMMARYTableAdapter.Fill(Me.MediaMinistryDataSet.ORDER_SUMMARY)

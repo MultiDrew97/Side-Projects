@@ -5,6 +5,8 @@ Imports MediaMinistry.SendingEmails
 Imports MediaMinistry.Helpers
 
 Public Class Frm_EmailListeners
+    Private Property FileID As String
+    Private ReadOnly ShareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private Structure Sizes
 
         'Window Sizes
@@ -19,16 +21,16 @@ Public Class Frm_EmailListeners
         Shared UploadDefault As New Point(60, 36)
 
         'Send button locations
-        Shared SendDefault As New Point(60, 93)
+        Shared SendDefault As New Point(21, 53)
 
         'View button Locations
-        Shared ViewDefault As New Point(60, 151)
+        Shared ViewDefault As New Point(21, 111)
 
         'Folder combo locations
-        Shared FolderDefault As New Point(389, 55)
+        Shared FolderDefault As New Point(388, 51)
 
         'File text locations
-        Shared FileDefault As New Point(389, 114)
+        Shared FileDefault As New Point(388, 110)
 
         'new folder button locations
         Shared FolderAddDefault As New Point(762, 57)
@@ -85,7 +87,7 @@ Public Class Frm_EmailListeners
 
     Private Sub Frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
-            Using uploader As New DriveUploader()
+            Using uploader As New DriveUploader
                 cbx_Folders.DataSource = uploader.GetFolders()
             End Using
         Catch ex As NullReferenceException
@@ -93,6 +95,8 @@ Public Class Frm_EmailListeners
                 MessageBox.Show("Combo Box was null.")
             End If
         End Try
+        'TODO: Figure out how to place in background worker without messing up the form
+        'bw_GetFolders.RunWorkerAsync()
     End Sub
 
     Private Sub Btn_Browse_Click(sender As Object, e As EventArgs) Handles btn_Browse.Click
@@ -127,12 +131,12 @@ Public Class Frm_EmailListeners
     End Sub
 
     Private Sub Frm_EmailListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim main As New frm_Main()
+        Dim main As New Frm_Main()
         main.Show()
     End Sub
 
     Private Sub Frm_EmailListeners_Leave(sender As Object, e As EventArgs) Handles Me.Leave
-        If frm_Main.IsDisposed Then
+        If Frm_Main.IsDisposed Then
             Close()
         End If
     End Sub
@@ -156,13 +160,22 @@ Public Class Frm_EmailListeners
         '    tss_Feedback.Text = "You have to upload something first..."
         '    tss_Feedback.ForeColor = Color.Red
         'End If
+        Dim listeners As ObjectModel.Collection(Of Listener)
+        Using db As New Database(My.Settings.Username, My.Settings.Password)
+            listeners = db.RetrieveListeners
+        End Using
 
-        Dim send As New Frm_SendEmails()
-        send.Show()
+        Using emailer As New Sender
+            For Each listener As Listener In listeners
+                emailer.Send(emailer.Create(New MimeKit.MailboxAddress(listener.Name, listener.Email), "Sunday Morning Message", String.Format(My.Resources.newSermon, listener.Name, String.Format(ShareLink, FileID))))
+            Next
+        End Using
+        'Dim send As New Frm_SendEmails()
+        'send.Show()
     End Sub
 
     Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
-        Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners With {.sendingForm = Me}
+        Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners
         frm_ViewListeners.Show()
         Me.Hide()
     End Sub
@@ -199,7 +212,6 @@ Public Class Frm_EmailListeners
 
     Private Sub DefaultChanges()
         'Locations
-        btn_Upload.Location = Locations.UploadDefault
         btn_SendEmails.Location = Locations.SendDefault
         btn_ViewListeners.Location = Locations.ViewDefault
         lbl_Folder.Location = Locations.FolderLabelDefault
@@ -219,7 +231,25 @@ Public Class Frm_EmailListeners
 
     Private Sub cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Folders.SelectedIndexChanged
         Using uploader As New DriveUploader
-            cbx_Files.DataSource = uploader.getFiles(uploader.GetFolderID(CType(cbx_Folders.SelectedItem, String)))
+            cbx_Files.DataSource = uploader.GetFiles(uploader.GetFolderID(CType(cbx_Folders.SelectedItem, String)))
         End Using
+    End Sub
+
+    Private Sub cbx_Files_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Files.SelectedIndexChanged
+        Using uploader As New DriveUploader
+            fileID = uploader.GetFileID(CStr(cbx_Files.SelectedItem))
+        End Using
+    End Sub
+
+    Private Sub bw_GetFolders_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_GetFolders.DoWork
+        Try
+            Using uploader As New DriveUploader
+                FoldersSource.DataSource = uploader.GetFolders()
+            End Using
+        Catch ex As NullReferenceException
+            If cbx_Folders Is Nothing Then
+                MessageBox.Show("Combo Box was null.")
+            End If
+        End Try
     End Sub
 End Class

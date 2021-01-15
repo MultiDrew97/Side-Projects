@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frm_ViewInventory
+Partial Class Frm_ViewInventory
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,17 +24,18 @@ Partial Class frm_ViewInventory
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
-        Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
-        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.btn_AddProduct = New System.Windows.Forms.Button()
-        Me.ITEMINDEXDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ITEMDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.INSTOCKDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRICEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.InventoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
+        Me.ItemNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InventoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgv_Inventory
@@ -43,27 +44,13 @@ Partial Class frm_ViewInventory
         Me.dgv_Inventory.AutoGenerateColumns = False
         Me.dgv_Inventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Inventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Inventory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ITEMINDEXDataGridViewTextBoxColumn, Me.ITEMDataGridViewTextBoxColumn, Me.INSTOCKDataGridViewTextBoxColumn, Me.PRICEDataGridViewTextBoxColumn})
-        Me.dgv_Inventory.DataSource = Me.INVENTORYBindingSource
+        Me.dgv_Inventory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemNameDataGridViewTextBoxColumn1, Me.StockDataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn1})
+        Me.dgv_Inventory.DataSource = Me.InventoryBindingSource
         Me.dgv_Inventory.Dock = System.Windows.Forms.DockStyle.Right
         Me.dgv_Inventory.Location = New System.Drawing.Point(162, 0)
         Me.dgv_Inventory.Name = "dgv_Inventory"
         Me.dgv_Inventory.Size = New System.Drawing.Size(443, 450)
         Me.dgv_Inventory.TabIndex = 0
-        '
-        'INVENTORYBindingSource
-        '
-        Me.INVENTORYBindingSource.DataMember = "INVENTORY"
-        Me.INVENTORYBindingSource.DataSource = Me.MediaMinistryDataSet
-        '
-        'Media_MinistryDataSet
-        '
-        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
-        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'INVENTORYTableAdapter
-        '
-        Me.INVENTORYTableAdapter.ClearBeforeFill = True
         '
         'btn_AddProduct
         '
@@ -75,30 +62,49 @@ Partial Class frm_ViewInventory
         Me.btn_AddProduct.Text = "Add New Product"
         Me.btn_AddProduct.UseVisualStyleBackColor = True
         '
-        'ITEMINDEXDataGridViewTextBoxColumn
+        'ItemNameDataGridViewTextBoxColumn
         '
-        Me.ITEMINDEXDataGridViewTextBoxColumn.DataPropertyName = "ITEM_INDEX"
-        Me.ITEMINDEXDataGridViewTextBoxColumn.HeaderText = "ITEM_INDEX"
-        Me.ITEMINDEXDataGridViewTextBoxColumn.Name = "ITEMINDEXDataGridViewTextBoxColumn"
-        Me.ITEMINDEXDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ItemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName"
+        Me.ItemNameDataGridViewTextBoxColumn.HeaderText = "Name"
+        Me.ItemNameDataGridViewTextBoxColumn.Name = "ItemNameDataGridViewTextBoxColumn"
         '
-        'ITEMDataGridViewTextBoxColumn
+        'StockDataGridViewTextBoxColumn
         '
-        Me.ITEMDataGridViewTextBoxColumn.DataPropertyName = "ITEM"
-        Me.ITEMDataGridViewTextBoxColumn.HeaderText = "ITEM"
-        Me.ITEMDataGridViewTextBoxColumn.Name = "ITEMDataGridViewTextBoxColumn"
+        Me.StockDataGridViewTextBoxColumn.DataPropertyName = "Stock"
+        Me.StockDataGridViewTextBoxColumn.HeaderText = "Current Stock"
+        Me.StockDataGridViewTextBoxColumn.Name = "StockDataGridViewTextBoxColumn"
         '
-        'INSTOCKDataGridViewTextBoxColumn
+        'MediaMinistryDataSet
         '
-        Me.INSTOCKDataGridViewTextBoxColumn.DataPropertyName = "IN_STOCK"
-        Me.INSTOCKDataGridViewTextBoxColumn.HeaderText = "IN_STOCK"
-        Me.INSTOCKDataGridViewTextBoxColumn.Name = "INSTOCKDataGridViewTextBoxColumn"
+        Me.MediaMinistryDataSet.DataSetName = "MediaMinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'PRICEDataGridViewTextBoxColumn
+        'InventoryBindingSource
         '
-        Me.PRICEDataGridViewTextBoxColumn.DataPropertyName = "PRICE"
-        Me.PRICEDataGridViewTextBoxColumn.HeaderText = "PRICE"
-        Me.PRICEDataGridViewTextBoxColumn.Name = "PRICEDataGridViewTextBoxColumn"
+        Me.InventoryBindingSource.DataMember = "Inventory"
+        Me.InventoryBindingSource.DataSource = Me.MediaMinistryDataSet
+        '
+        'INVENTORYTableAdapter
+        '
+        Me.INVENTORYTableAdapter.ClearBeforeFill = True
+        '
+        'ItemNameDataGridViewTextBoxColumn1
+        '
+        Me.ItemNameDataGridViewTextBoxColumn1.DataPropertyName = "ItemName"
+        Me.ItemNameDataGridViewTextBoxColumn1.HeaderText = "Name"
+        Me.ItemNameDataGridViewTextBoxColumn1.Name = "ItemNameDataGridViewTextBoxColumn1"
+        '
+        'StockDataGridViewTextBoxColumn1
+        '
+        Me.StockDataGridViewTextBoxColumn1.DataPropertyName = "Stock"
+        Me.StockDataGridViewTextBoxColumn1.HeaderText = "Current Stock"
+        Me.StockDataGridViewTextBoxColumn1.Name = "StockDataGridViewTextBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Price"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Current Price"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         '
         'frm_ViewInventory
         '
@@ -113,19 +119,24 @@ Partial Class frm_ViewInventory
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry"
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InventoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents dgv_Inventory As DataGridView
-    Friend WithEvents INVENTORYBindingSource As BindingSource
-    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
     Friend WithEvents btn_AddProduct As Button
-    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents ITEMINDEXDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ITEMDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents INSTOCKDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PRICEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ItemNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StockDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
+    Friend WithEvents InventoryBindingSource As BindingSource
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents ItemNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents StockDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
 End Class

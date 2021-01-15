@@ -3,7 +3,7 @@
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 
-Public Class frm_Login
+Public Class Frm_Login
     Dim _dbConnection As SqlConnectionStringBuilder
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -32,9 +32,9 @@ Public Class frm_Login
             _dbConnection.UserID = txt_Username.Text
         End If
 
-        If checkCreds(txt_Username.Text, txt_Password.Text) Then
+        If CheckCreds(txt_Username.Text, txt_Password.Text) Then
             Try
-                Dim mainForm = New frm_Main
+                Dim mainForm = New Frm_Main
                 mainForm.Show()
                 bw_SaveSettings.RunWorkerAsync()
             Catch exception As SqlException

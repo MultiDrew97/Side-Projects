@@ -2,13 +2,19 @@
 Imports System.Data.SqlClient
 
 Public Class frm_PlaceOrder
-    Property mainForm() As frm_Main
+    Property mainForm() As Frm_Main
 
     Private Sub frm_PlaceOrder_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         mainForm.Show()
     End Sub
 
     Private Sub frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        Me.INVENTORYTableAdapter.Fill(Me.MediaMinistryDataSet.INVENTORY)
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
+        Me.INVENTORYTableAdapter.Fill(Me.MediaMinistryDataSet.INVENTORY)
+        'TODO: This line of code loads data into the 'MediaMinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
+        Me.CUSTOMERSTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.INVENTORY' table. You can move, or remove it, as needed.
         INVENTORYTableAdapter.Fill(MediaMinistryDataSet.INVENTORY)
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
@@ -20,16 +26,17 @@ Public Class frm_PlaceOrder
     End Sub
 
     Private Sub btn_AddOrder_Click(sender As Object, e As EventArgs) Handles btn_AddOrder.Click
-        Try
-            Using db = New Database(My.Settings.Username, My.Settings.Password)
-                db.AddOrder(cbx_PhoneNumber.Text, cbx_ItemName.SelectedIndex, CType(nud_Quantity.Value, Integer))
-                tss_AddOrder.ForeColor = SystemColors.WindowText
-                tss_AddOrder.Text = "The order was successfully added for " & cbx_FirstName.Text
-            End Using
-        Catch ex As SqlException
-            tss_AddOrder.Text = "The order could not be added. Please try again"
-            tss_AddOrder.ForeColor = Color.Red
-        End Try
+        'TODO: Reimplement the Order placing form
+        'Try
+        '    Using db = New Database(My.Settings.Username, My.Settings.Password)
+        '        db.AddOrder(cbx_PhoneNumber.Text, cbx_ItemName.SelectedIndex, CType(nud_Quantity.Value, Integer))
+        '        tss_AddOrder.ForeColor = SystemColors.WindowText
+        '        tss_AddOrder.Text = "The order was successfully added for " & cbx_FirstName.Text
+        '    End Using
+        'Catch ex As SqlException
+        '    tss_AddOrder.Text = "The order could not be added. Please try again"
+        '    tss_AddOrder.ForeColor = Color.Red
+        'End Try
     End Sub
 
     Private Sub cbx_FirstName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_FirstName.SelectedIndexChanged
