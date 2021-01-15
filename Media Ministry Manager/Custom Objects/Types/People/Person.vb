@@ -1,8 +1,9 @@
 ﻿Option Strict On
 Namespace Types
     Public Class Person
-        Public Property FirstName() As String
-        Public Property LastName() As String
+        Public Property Id As Integer
+        Public Property FirstName As String
+        Public Property LastName As String
 
         Public ReadOnly Property Name() As String
             Get
@@ -10,7 +11,8 @@ Namespace Types
             End Get
         End Property
 
-        Public Sub New(firstName As String, lastName As String)
+        Public Sub New(id As Integer, firstName As String, lastName As String)
+            Me.Id = id
             Me.FirstName = firstName
             Me.LastName = lastName
         End Sub

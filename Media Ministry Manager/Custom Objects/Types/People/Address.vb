@@ -6,15 +6,19 @@ Namespace Types
         Public Property State As String
         Public Property ZipCode As String
 
-        Public Sub New(street As String, city As String, state As String, zip As String)
+        Public Sub New(street As String, city As String, state As String, zipCode As String)
             Me.Street = street
             Me.City = city
             Me.State = state
-            Me.ZipCode = zip
+            Me.ZipCode = zipCode
         End Sub
 
         Public Overrides Function ToString() As String
-            Return String.Format("{0}{4}{1}, {2} {3}", Me.Street, Me.City, Me.State, Me.ZipCode, vbLf)
+            'If there was not an address supplied, it doesn't apply the formating
+            Return If(
+                String.IsNullOrEmpty(Street) Or String.IsNullOrEmpty(City) Or String.IsNullOrEmpty(State) Or String.IsNullOrEmpty(ZipCode),
+                "",
+                String.Format("{0}{4}{1}, {2} {3}", Street, City, State, ZipCode, vbCrLf))
         End Function
     End Class
 End Namespace

@@ -10,6 +10,7 @@ Public Class ListenerSelectionDialog
     Private Sub ListenerSelectionDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
         Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
+        'TODO: Add same refactor as DisplayCustomers form
         Listeners.Clear()
     End Sub
 
@@ -17,9 +18,10 @@ Public Class ListenerSelectionDialog
         Dim parts As String()
         For Each row As DataGridViewRow In dgv_Listeners.Rows
             If CBool(row.Cells(0).Value) = True Then
-                parts = Listener.Parse(CStr(row.Cells(1).Value))
+                parts = Listener.ParseName(CStr(row.Cells(1).Value))
 
-                Listeners.Add(New Listener(parts(0), parts(1), CStr(row.Cells(2).Value)))
+                'TODO: Fix this later
+                Listeners.Add(New Listener(0, parts(0), parts(1), CStr(row.Cells(2).Value)))
             End If
         Next
 

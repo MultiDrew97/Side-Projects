@@ -127,8 +127,9 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateListener(name As String, newEmail As String, currentEmail As String)
-        UpdateListener(New Listener(name, newEmail), currentEmail)
+    Public Sub UpdateListener(id As Integer, name As String, newEmail As String, currentEmail As String)
+        Dim parts As String() = Listener.ParseName(name)
+        UpdateListener(New Listener(id, parts(0), parts(1), newEmail), currentEmail)
     End Sub
 
     Public Sub UpdateListener(listener As Listener, current As String)
@@ -137,19 +138,34 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateCustomerInfo(customer As Customer, oldPhone As String)
-        UpdateCustomerInfo(customer.FirstName, customer.LastName, customer.PhoneNumber, customer.Address.Street, customer.Address.City, customer.Address.State, customer.Address.ZipCode, customer.EmailAddress.Address, oldPhone)
+    Public Sub UpdateCustomerInfo(customer As Customer)
+        UpdateCustomerInfo(customer.Id, customer.FirstName, customer.LastName, customer.PhoneNumber, customer.Address.Street, customer.Address.City, customer.Address.State, customer.Address.ZipCode, customer.EmailAddress.Address)
     End Sub
 
-    Public Sub UpdateCustomerInfo(firstName As String, lastName As String, newPhone As String, addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String, oldPhone As String)
+    Public Sub UpdateCustomerInfo(id As Integer, firstName As String, lastName As String, newPhone As String, addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String)
         results = ""
         myCmd.CommandText = String.Format("UPDATE CUSTOMERS
-                                                SET FIRST_NAME= '{0}', LAST_NAME = '{1}', PHONE_NUMBER = '{2}',
+                                                SET FirstName= '{0}', LAST_NAME = '{1}', PHONE_NUMBER = '{2}',
                                                 SHIPPING_STREET = '{3}', SHIPPING_CITY = '{4}', SHIPPING_STATE = '{5}', SHIPPING_ZIP = '{6}',
                                                 EMAIL = '{7}'
-                                                WHERE PHONE_NUMBER = '{8}'",
-                                                firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, oldPhone)
+                                                WHERE CustomerID = {8}",
+                                                firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, id)
         myCmd.ExecuteNonQuery()
+    End Sub
+
+    Public Sub UpdateCustomer(id As Integer, columns As Collection(Of String), values As Collection(Of String))
+        Dim command As String = ""
+
+        For i = 0 To columns.Count - 1
+            command &= columns(i) & " = '" & values(i) & "'"
+            If Not i = columns.Count - 1 Then
+                command &= ", "
+            End If
+        Next
+
+        myCmd.CommandText = String.Format("UPDATE CUSTOMERS
+                                            SET {0}
+                                            WHERE CustomerID = {1}", command, id)
     End Sub
 
     Public Sub UpdatePhone(newPhone As String, oldPhone As String)
@@ -160,7 +176,7 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub RemovePerson(phone As String)
+    Public Sub RemoveCustomer(phone As String)
         myCmd.CommandText = String.Format("DELETE FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phone)
 
         myCmd.ExecuteNonQuery()
@@ -252,7 +268,7 @@ Public Class Database
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read()
-                customers.Add(New Customer(myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
+                customers.Add(New Customer(myReader.GetInt32(9), myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
             Loop
         End Using
 
@@ -266,7 +282,7 @@ Public Class Database
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read()
-                customers.Add(New Customer(myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
+                customers.Add(New Customer(myReader.GetInt32(9), myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
             Loop
         End Using
 
@@ -463,8 +479,8 @@ Public Class Database
         myReader = myCmd.ExecuteReader()
 
         Do While myReader.Read()
-            parts = Listener.Parse(myReader.GetString(0))
-            listeners.Add(New Listener(parts(0), parts(1), myReader.GetString(1)))
+            parts = Listener.ParseName(myReader.GetString(0))
+            listeners.Add(New Listener(myReader.GetInt32(2), parts(0), parts(1), myReader.GetString(1)))
             'listener = Listener.Parse(myReader.GetString(0))
             'listener.EmailAddress = MimeKit.MailboxAddress.Parse(myReader.GetString(1))
             'listeners.Add(listener)

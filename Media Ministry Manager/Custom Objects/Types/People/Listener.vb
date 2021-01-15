@@ -1,23 +1,16 @@
 ﻿Option Strict On
-Imports MimeKit
 
 Namespace Types
-    <CLSCompliant(False)>
     Public Class Listener
         Inherits Person
-        Public Property EmailAddress As MailboxAddress
+        Public Property EmailAddress As MimeKit.MailboxAddress
 
-        Public Sub New(firstName As String, lastName As String, email As String)
-            MyBase.New(firstName, lastName)
-            Me.EmailAddress = MailboxAddress.Parse(email)
+        Public Sub New(listenerID As Integer, firstName As String, lastName As String, Optional email As String = "")
+            MyBase.New(listenerID, firstName, lastName)
+            Me.EmailAddress = New MimeKit.MailboxAddress(Me.Name, email)
         End Sub
 
-        Public Sub New(firstName As String, lastName As String)
-            MyBase.New(firstName, lastName)
-            Me.EmailAddress = Nothing
-        End Sub
-
-        Shared Function Parse(name As String) As String()
+        Shared Function ParseName(name As String) As String()
             'Parse the name given into seperate first and last name parts and return the string array with supplied name
             Dim nameParts As String()
             nameParts = name.Split(" "c)
@@ -32,6 +25,11 @@ Namespace Types
             End If
 
             Return nameParts
+        End Function
+
+        Shared Function Parse(arr As Object()) As Listener
+            Dim parts As String() = ParseName(CStr(arr(1)))
+            Return New Listener(CInt(arr(0)), parts(0), parts(1), CStr(arr(2)))
         End Function
     End Class
 End Namespace
