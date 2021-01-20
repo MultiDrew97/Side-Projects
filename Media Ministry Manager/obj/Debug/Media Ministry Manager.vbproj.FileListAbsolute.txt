@@ -75,6 +75,7 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.exe
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.pdb
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Media Ministry Manager.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.dll
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Auth.dll
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Auth.PlatformServices.dll
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Apis.Core.dll
@@ -110,24 +111,28 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OOXML.xml
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\NPOI.OpenXml4Net.xml
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.g.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.MediaMinistrySplash.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.FileSelectionDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.ListenerSelectionDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_CustomMessage.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_EmailListeners.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Folder.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_AddListener.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewListeners.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewProduct.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayCustomers.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_SendEmails.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Upload.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_DisplayCustomers.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ChangePassword.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_CreateUser.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminSignIn.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Login.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Settings.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayOrders.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Main.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_PlaceOrder.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdateInventory.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdatePhoneNumber.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewInventory.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Resources.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_AddNewCustomer.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe.manifest
@@ -136,12 +141,7 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.exe
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.xml
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.pdb
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Settings.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.MediaMinistrySplash.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.FileSelectionDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.ListenerSelectionDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_CustomMessage.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_SendEmails.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Upload.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.dll
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AddCustomerDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AddProductDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.PlaceOrderDialog.resources

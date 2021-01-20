@@ -3,7 +3,6 @@
 Imports System.ComponentModel
 Imports System.IO
 Imports MediaMinistry.Helpers
-Imports MediaMinistry.SendingEmails
 
 Public Class frm_Main
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
@@ -22,18 +21,17 @@ Public Class frm_Main
     End Sub
 
     Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
-        Dim frm_PlaceOrder As frm_PlaceOrder = New frm_PlaceOrder With {.mainForm = Me}
-        frm_PlaceOrder.Show()
+        PlaceOrderDialog.ShowDialog()
     End Sub
 
     Private Sub btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
-        Dim inventory As frm_ViewInventory = New frm_ViewInventory With {.mainForm = Me}
+        Dim inventory As New Frm_ViewInventory
         inventory.Show()
         Me.Close()
     End Sub
 
     Private Sub btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
-        Dim ordersView = New frm_DisplayOrders With {.mainForm = Me}
+        Dim ordersView = New Frm_DisplayOrders With {.mainForm = Me}
         ordersView.Show()
         Me.Close()
     End Sub
@@ -111,19 +109,17 @@ Public Class frm_Main
     End Sub
 
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
-        Dim frm_AddCustomer As New frm_AddNewCustomer With {.Opener = Me}
-        frm_AddCustomer.Show()
-        Me.Hide()
+        AddCustomerDialog.ShowDialog()
     End Sub
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-        Dim frm_AddProduct As New frm_AddNewProduct()
+        Dim frm_AddProduct As New AddProductDialog()
         frm_AddProduct.Show()
         Me.Hide()
     End Sub
 
     Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem.Click
-        Dim frm_AddListener As New Frm_AddListener()
+        Dim frm_AddListener As New AddListenerDialog()
         frm_AddListener.Show()
         Me.Hide()
     End Sub
@@ -167,7 +163,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsToolStripMenuItem.Click
-        Dim products As New frm_ViewInventory With {.mainForm = Me}
+        Dim products As New Frm_ViewInventory
         products.Show()
         Me.Close()
     End Sub
@@ -179,7 +175,7 @@ Public Class frm_Main
     End Sub
 
     Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenersToolStripMenuItem.Click
-        Dim listeners As New frm_ViewListeners With {.sendingForm = Me}
+        Dim listeners As New Frm_ViewListeners With {.SendingForm = Me}
         listeners.Show()
         Me.Close()
     End Sub

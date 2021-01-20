@@ -37,6 +37,7 @@ Partial Class frm_UpdateInventory
         Me.ss_AddStock = New System.Windows.Forms.StatusStrip()
         Me.tss_AddStock = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tt_Help = New System.Windows.Forms.ToolTip(Me.components)
+        Me.lbl_Price = New System.Windows.Forms.Label
         Me.txt_Price = New System.Windows.Forms.TextBox()
         Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()

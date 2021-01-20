@@ -7,6 +7,7 @@ Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
 Imports MediaMinistry.Types
 
+'TODO: Potentially turn this into a proper component
 Public Class Database
     Implements IDisposable
 
@@ -20,10 +21,10 @@ Public Class Database
     End Sub
 
     Public Sub New(username As String, password As String)
-        Me.New(New SqlConnectionStringBuilder(My.Settings.masterConnectionString) With {
-            .UserID = username,
-            .password = password
-        })
+        Me.New(New SqlConnectionStringBuilder(My.Resources.databaseConnection) With {
+        .UserID = username,
+        .Password = password
+    })
     End Sub
 
     Public Sub New(connectionString As SqlConnectionStringBuilder)
@@ -39,7 +40,7 @@ Public Class Database
         myConn.Open()
     End Sub
 
-    Public Sub Close() Implements IDisposable.Dispose
+    Private Sub Close() Implements IDisposable.Dispose
         'close connection
         If (myReader IsNot Nothing) Then
             'if the reader is still open, close it
@@ -68,9 +69,9 @@ Public Class Database
     End Sub
 
     Public Sub AddNewCustomer(
-                       fName As String, lName As String,
-                       addrStreet As String, addrCity As String, addrState As String, addrZip As String,
-                       phoneNumber As String, email As String)
+                   fName As String, lName As String,
+                   addrStreet As String, addrCity As String, addrState As String, addrZip As String,
+                   phoneNumber As String, email As String)
 
         'used string.format due to enormous query strings and concatination, allowing for easy expansion
         'SELECT CONVERT(VARCHAR(10), getdate(), 101) is a query found online that gets just the date of getdate().
@@ -99,6 +100,10 @@ Public Class Database
         myCmd.CommandText = "AddCustomer"
 
         myCmd.ExecuteNonQuery()
+    End Sub
+
+    Public Sub AddListener(listener As Listener)
+        AddListener(listener.Name, listener.EmailAddress.Address)
     End Sub
 
     Public Sub AddListener(name As String, email As String)
@@ -149,7 +154,7 @@ Public Class Database
                                                 SHIPPING_STREET = '{3}', SHIPPING_CITY = '{4}', SHIPPING_STATE = '{5}', SHIPPING_ZIP = '{6}',
                                                 EMAIL = '{7}'
                                                 WHERE CustomerID = {8}",
-                                                firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, id)
+                                            firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, id)
         myCmd.ExecuteNonQuery()
     End Sub
 
@@ -166,18 +171,46 @@ Public Class Database
         myCmd.CommandText = String.Format("UPDATE CUSTOMERS
                                             SET {0}
                                             WHERE CustomerID = {1}", command, id)
+
+        myCmd.ExecuteNonQuery()
     End Sub
+
+    Public Function GetProductInfo(id As Integer) As Product
+        myCmd.CommandText = String.Format("SELECT * FROM INVENTORY WHERE ItemID = {0}", id)
+
+        Using myReader = myCmd.ExecuteReader
+            Do While myReader.Read
+                Return New Product(id, myReader.GetString(1), myReader.GetInt32(2), CDec(myReader.GetSqlMoney(3)))
+            Loop
+        End Using
+
+        Return Nothing
+    End Function
+
+    Public Function GetProducts() As Collection(Of Product)
+        Dim products As New Collection(Of Product)
+
+        myCmd.CommandText = "SELECT * FROM INVENTORY"
+
+        Using myReader = myCmd.ExecuteReader
+            Do While myReader.Read
+                products.Add(New Product(myReader.GetInt32(0), myReader.GetString(1), myReader.GetInt32(2), CDec(myReader.GetSqlMoney(3))))
+            Loop
+        End Using
+
+        Return products
+    End Function
 
     Public Sub UpdatePhone(newPhone As String, oldPhone As String)
         myCmd.CommandText = String.Format("UPDATE CUSTOMERS
                                                 SET PHONE_NUMBER = '{0}'
                                                 WHERE PHONE_NUMBER = '{1}'",
-                                                newPhone, oldPhone)
+                                            newPhone, oldPhone)
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub RemoveCustomer(phone As String)
-        myCmd.CommandText = String.Format("DELETE FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phone)
+    Public Sub RemoveCustomer(id As Integer)
+        myCmd.CommandText = String.Format("DELETE FROM CUSTOMERS WHERE CustomerID = {0}", id)
 
         myCmd.ExecuteNonQuery()
 
@@ -201,22 +234,40 @@ Public Class Database
         'Return results
     End Sub
 
-    Public Sub AddNewProduct(itemName As String, stock As Integer, price As Decimal)
-        myCmd.CommandText = String.Format("INSERT INTO INVENTORY VALUES ({0}, '{1}', {2}, {3})", Count("ITEM_INDEX", "INVENTORY"), itemName, stock, price)
+    Public Sub AddNewProduct(product As Product)
+        AddNewProduct(product.Name, product.Stock, product.Price)
+    End Sub
+
+    Public Sub AddNewProduct(itemName As String, stock As Integer, price As Double)
+        myCmd.CommandText = String.Format("INSERT INTO INVENTORY VALUES ('{1}', {2}, {3})", itemName, stock, price)
 
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateInventory(name As String, currentStock As Integer, price As Decimal, itemIndex As Integer)
-        myCmd.CommandText = String.Format("UPDATE INVENTORY SET item = '{0}', IN_STOCK = {1}, price = {2} WHERE ITEM_INDEX = {3}", name, currentStock, price, itemIndex)
+    Public Sub UpdateInventory(id As Integer, columns As Collection(Of String), values As Collection(Of String))
+        Dim command As String = ""
 
-        myCmd.ExecuteNonQuery()
+        For i = 0 To columns.Count - 1
+
+            If Not (columns(i).Equals("Stock") Or columns(i).Equals("Price")) Then
+                command &= columns(i) & " = '" & values(i) & "'"
+            Else
+                command &= columns(i) & " = " & values(i)
+            End If
+            If Not i = columns.Count - 1 Then
+                command &= ", "
+            End If
+        Next
+
+        myCmd.CommandText = String.Format("UPDATE INVENTORY SET {0} WHERE ItemID = {1}", command, id)
+
+        'myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub RemoveProduct(itemIndex As Integer)
         myCmd.CommandText = String.Format("DELETE FROM INVENTORY WHERE ITEM_INDEX = {0}{1}
                                            UPDATE INVENTORY SET ITEM_INDEX = ITEM_INDEX - 1 WHERE ITEM_INDEX > {0}",
-                                           itemIndex, vbLf)
+                                       itemIndex, vbLf)
         myCmd.ExecuteNonQuery()
     End Sub
 
@@ -275,18 +326,18 @@ Public Class Database
         Return customers
     End Function
 
-    Public Function GetCustomerInfo(phoneNumber As String) As Collection(Of Customer)
-        Dim customers As New Collection(Of Customer)
-        myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phoneNumber)
+    Public Function GetCustomerInfo(id As Integer) As Customer
+        myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE CustomerID = {0}", id)
         myReader = myCmd.ExecuteReader()
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read()
-                customers.Add(New Customer(myReader.GetInt32(9), myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
+                Return New Customer(id, myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8))
+                Exit Do
             Loop
         End Using
 
-        Return customers
+        Return Nothing
     End Function
 
     Public Function GetOrders(phoneNumber As String) As String
@@ -295,7 +346,7 @@ Public Class Database
         myCmd.CommandText = String.Format("SELECT ORDERS.ORDER_NUMBER, PHONE_NUMBER, ITEM, QUANTITY
                                             FROM ORDERS, ORDER_COUNTS, INVENTORY
                                             WHERE ORDERS.ORDER_NUMBER = ORDER_COUNTS.ORDER_NUMBER AND ORDER_COUNTS.ITEM_INDEX = INVENTORY.ITEM_INDEX AND PHONE_NUMBER = '{0}'",
-                                          phoneNumber)
+                                      phoneNumber)
         myReader = myCmd.ExecuteReader()
 
         Do While myReader.Read()
@@ -313,7 +364,7 @@ Public Class Database
         myCmd.CommandText = String.Format("SELECT ITEM_INDEX
                                            FROM ORDER_COUNTS
                                            WHERE ORDER_NUMBER = {0}",
-                                           orderNumber)
+                                       orderNumber)
         myReader = myCmd.ExecuteReader()
 
         Do While myReader.Read()
@@ -325,34 +376,10 @@ Public Class Database
         Return itemIndex
     End Function
 
-    Public Sub AddOrder(phoneNumber As String, itemIndex As Integer, quantity As Integer)
-        Dim maxOrder = FindMax("ORDER_NUMBER", "ORDERS", "COMPLETED_ORDERS")
-        Dim maxCount = FindMax("ORDER_INDEX", "ORDER_COUNTS", "COMPLETED_ORDER_COUNTS")
+    Public Sub AddOrder(customerID As Integer, itemID As Integer, quantity As Integer)
         'insert the order into the ORDERS table
-        'Dim orderNumber = Max("ORDER_NUMBER", "ORDERS")
-        'Dim completedNumber = Max("ORDER_NUMBER", "COMPLETED_ORDERS")
 
-        'If (orderNumber > completedNumber) Then
-        '    maxOrder = orderNumber
-        'Else
-        '    maxOrder = completedNumber
-        'End If
-
-        'Dim orderIndex = Max("ORDER_INDEX", "ORDER_COUNTS")
-        'Dim completedCounts = Max("ORDER_INDEX", "COMPLETED_ORDER_COUNTS")
-
-        'If (orderNumber > completedNumber) Then
-        '    maxCount = orderNumber
-        'Else
-        '    maxCount = completedNumber
-        'End If
-
-        'myCmd.CommandText = String.Format("INSERT INTO ORDERS VALUES ({0}, '{1}')",
-        '                                    orderNumber, phoneNumber)
-
-        myCmd.CommandText = String.Format("INSERT INTO ORDERS VALUES ({0}, '{1}'){2}
-                                           INSERT INTO ORDER_COUNTS VALUES ({3}, {0}, {4}, {5})",
-                                            maxOrder + 1, phoneNumber, vbLf, maxCount + 1, itemIndex, quantity)
+        myCmd.CommandText = String.Format("INSERT INTO ORDERS VALUES ({0}, {1}, {2})", customerID, itemID, quantity)
         myCmd.ExecuteNonQuery()
 
         ''insert the order counts into the ORDER_COUNTS table
@@ -367,21 +394,6 @@ Public Class Database
 
         'myReader.Close()
     End Sub
-
-    'Public Function AddShipment(phoneNumber As String, itemIndex As Integer, quantity As Integer) As String
-    '    results = ""
-    '    myCmd.CommandText = String.Format("INSERT INTO ORDER_COUNTS VALUES ('{0}', {1}, {2})", phoneNumber, itemIndex, quantity)
-
-    '    myReader = myCmd.ExecuteReader()
-
-    '    Do While myReader.Read()
-    '        results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) & vbLf
-    '    Loop
-
-    '    myReader.Close()
-
-    '    Return results
-    'End Function
 
     Public Sub UpdateOrder(orderNumber As Integer, quantity As Integer)
         myCmd.CommandText = String.Format("UPDATE ORDER_COUNTS SET QUANTITY = {0} WHERE ORDER_NUMBER = {1}", quantity, orderNumber)
@@ -459,22 +471,18 @@ Public Class Database
         Return maxNum
     End Function
 
-    Public Sub FulfilOrder(orderNumber As Integer, phoneNumber As String, itemIndex As Integer, quantity As Integer)
-        Dim orderIndex = FindOrderIndex(orderNumber)
+    Public Sub FulfilOrder(orderID As Integer)
         'TODO: Turn this into a stored procedure
-        myCmd.CommandText = String.Format("UPDATE INVENTORY SET IN_STOCK = IN_STOCK - {5} WHERE ITEM_INDEX = {4}{2}
-                                           INSERT INTO COMPLETED_ORDERS VALUES ({0}, {1}){2}
-                                           INSERT INTO COMPLETED_ORDER_COUNTS VALUES ({3}, {0}, {4}, {5}){2}
-                                           DELETE ORDER_COUNTS WHERE ORDER_NUMBER = {0}{2}
-                                           DELETE ORDERS WHERE ORDER_NUMBER = {0}",
-                                          orderNumber, phoneNumber, vbLf, orderIndex, itemIndex, quantity)
+        myCmd.CommandType = CommandType.StoredProcedure
+        myCmd.CommandText = "FulFillOrder"
+
         myCmd.ExecuteNonQuery()
     End Sub
 
     Public Function GetListeners() As Collection(Of Listener)
         Dim listeners As New Collection(Of Listener)
         Dim parts As String()
-        myCmd.CommandText = "SELECT * FROM EMAIL_LISTENERS"
+        myCmd.CommandText = "SELECT * FROM EmailListeners"
 
         myReader = myCmd.ExecuteReader()
 
@@ -499,6 +507,11 @@ Public Class Database
 
         Return result
     End Function
+
+    Private Sub Open()
+        'open the connection
+        myConn.Open()
+    End Sub
 
     'Public Function UniqueRecord(tableName As String, column As String, value As Integer) As Boolean
     '    results = ""
@@ -536,3 +549,4 @@ Public Class Database
     '    Return results.Equals("")
     'End Function
 End Class
+'End Namespace

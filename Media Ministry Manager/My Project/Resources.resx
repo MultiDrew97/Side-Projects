@@ -290,4 +290,8 @@
 &lt;/html&gt;</value>
     <comment>Template for the custom message</comment>
   </data>
+  <data name="databaseConnection" xml:space="preserve">
+    <value>Data Source=mediaministry.database.windows.net;Initial Catalog="Media Ministry";Connect Timeout=30;Encrypt=True;Authentication="Sql Password"</value>
+    <comment>SQL Database Connection</comment>
+  </data>
 </root>

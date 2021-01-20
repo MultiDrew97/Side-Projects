@@ -1,9 +1,9 @@
 ﻿Option Strict On
 Public Class frm_UpdateInventory
-    Private inventoryViewForm As frm_ViewInventory
+    Private inventoryViewForm As Frm_ViewInventory
     Private selectedIndex As Integer
 
-    Public Sub New(ByRef viewForm As frm_ViewInventory)
+    Public Sub New(ByRef viewForm As Frm_ViewInventory)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -18,9 +18,9 @@ Public Class frm_UpdateInventory
         Dim price As Decimal
         Decimal.TryParse("0" & txt_Price.Text.Substring(1), price)
         Try
-            Using db As New Database(My.Settings.Username, My.Settings.Password)
-                db.UpdateInventory(item, additional, price, cbx_Items.SelectedIndex)
-            End Using
+            'Using db As New Database(My.Settings.Username, My.Settings.Password)
+            '    db.UpdateInventory(item, additional, price, cbx_Items.SelectedIndex)
+            'End Using
             tss_AddStock.ForeColor = SystemColors.WindowText
             tss_AddStock.Text = "Stock has been updated for the product"
         Catch
@@ -34,7 +34,7 @@ Public Class frm_UpdateInventory
     End Sub
 
     Private Sub frm_UpdateInventory_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        inventoryViewForm.customLoad()
+        inventoryViewForm.Refresh()
         inventoryViewForm.Show()
     End Sub
 

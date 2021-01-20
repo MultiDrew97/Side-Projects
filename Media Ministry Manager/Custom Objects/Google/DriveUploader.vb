@@ -1,6 +1,7 @@
 ﻿Option Strict On
 
 Imports System.Collections.ObjectModel
+Imports System.ComponentModel
 Imports System.IO
 Imports System.Threading
 Imports Google.Apis.Auth.OAuth2
@@ -12,10 +13,11 @@ Imports Google.Apis.Util.Store
 Namespace GoogleAPI
     Public Class DriveUploader
         Inherits Service
-        Implements IDisposable
+        Implements IComponent
 
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
         Private ReadOnly ApplicationName As String = "Media Ministry Manager"
+        Public Event Disposed As EventHandler Implements IComponent.Disposed
         Private Property Service As DriveService
         Private Property Credential As UserCredential
         Overrides ReadOnly Property Info As Object
@@ -26,7 +28,13 @@ Namespace GoogleAPI
             End Get
         End Property
 
+        Public Property Site As ISite Implements IComponent.Site
+
         Sub New(Optional ct As CancellationToken = Nothing)
+            If IsNothing(ct) Then
+                ct = CancellationToken.None
+            End If
+
             Dim credPath = "Drive Token"
 
             Using stream As New MemoryStream(My.Resources.credentials)
@@ -162,16 +170,6 @@ Namespace GoogleAPI
             }
         End Function
 
-        Shared Function RetrieveEmails() As Collection(Of Types.Listener)
-            Dim listeners As New Collection(Of Types.Listener)
-
-            Using db = New Database(My.Settings.Username, My.Settings.Password)
-                listeners = db.GetListeners()
-            End Using
-
-            Return listeners
-        End Function
-
         Public Function GetFileID(fileName As String) As String
             Dim request As FilesResource.ListRequest = Service.Files.List()
             Dim pageToken As String = Nothing
@@ -218,7 +216,7 @@ Namespace GoogleAPI
                 Next
             Loop While pageToken IsNot Nothing
 
-            Throw New NotImplementedException()
+            Return Nothing
         End Function
 
         Public Function GetFiles(folderName As String) As Collection(Of String)

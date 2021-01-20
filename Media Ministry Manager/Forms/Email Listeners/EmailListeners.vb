@@ -1,8 +1,8 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
-Imports MediaMinistry.SendingEmails
 Imports MediaMinistry.Helpers
+Imports MediaMinistry.Types
 
 Public Class Frm_EmailListeners
     ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
@@ -90,7 +90,7 @@ Public Class Frm_EmailListeners
     Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
         'tss_Feedback.ForeColor = Color.Black
         'If fileID IsNot Nothing Then
-        '    tss_Feedback.Text = "Sending emails to listeners..."
+        '    tsck.Text = "Sending emails to listeners..."
         '    Dim sending As Process = Process.Start(emailerLocation, String.Format("{0} {1} {2}", My.Settings.Username, My.Settings.Password, String.Format(shareLink, fileID)))
 
         'TODO: Move this into a background worker to not freeze the app while sending
@@ -119,8 +119,8 @@ Public Class Frm_EmailListeners
     End Sub
 
     Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
-        Dim frm_ViewListeners As frm_ViewListeners = New frm_ViewListeners With {.sendingForm = Me}
-        frm_ViewListeners.Show()
+        Dim listeners As New Frm_ViewListeners With {.SendingForm = Me}
+        listeners.Show()
         Me.Hide()
     End Sub
 

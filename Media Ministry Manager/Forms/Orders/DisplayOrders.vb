@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class frm_DisplayOrders
     Property mainForm() As frm_Main
-
+    'TODO: Implement custom table filling for this form
     Private Sub frm_DisplayOrders_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.ORDER_SUMMARY' table. You can move, or remove it, as needed.
         Me.ORDER_SUMMARYTableAdapter.Fill(Me.MediaMinistryDataSet.ORDER_SUMMARY)
@@ -40,7 +40,7 @@ Public Class frm_DisplayOrders
                         itemIndex = db.GetIndexNumber(orderNumber) 'update this to get the item_index number
                         quantity = CInt(dgv_Orders.Rows(index).Cells(4).Value.ToString)
                         Try
-                            db.FulfilOrder(orderNumber, phoneNumber, itemIndex, quantity)
+                            db.FulfilOrder(orderNumber)
                             dgv_Orders.Rows.RemoveAt(index)
                         Catch ex As SqlException
 

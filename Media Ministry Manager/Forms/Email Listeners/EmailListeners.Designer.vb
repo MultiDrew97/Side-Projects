@@ -53,6 +53,7 @@ Partial Class Frm_EmailListeners
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btn_Upload = New System.Windows.Forms.Button()
+        Me.db = New Database()
         Me.ss_Feedback.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
@@ -306,4 +307,5 @@ Partial Class Frm_EmailListeners
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_Upload As Button
+    Friend WithEvents db As Database
 End Class

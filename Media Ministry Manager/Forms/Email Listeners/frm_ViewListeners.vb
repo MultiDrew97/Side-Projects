@@ -1,10 +1,10 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
-Imports MediaMinistry.Types
+Imports MediaMinistry.Types.Listener
 
-Public Class frm_ViewListeners
-    Property sendingForm As Form
+Public Class Frm_ViewListeners
+    Property SendingForm As Form
     ReadOnly totalListeners As String = "Total Listeners: {0}"
     Private oldEmail As String
 
@@ -54,14 +54,12 @@ Public Class frm_ViewListeners
         Shared SearchMax As New Point(1093, 151)
     End Structure
 
-    Private Sub frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub Frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         Console.WriteLine(sender)
-        'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
-        Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
-        customLoad()
+        Refresh()
     End Sub
 
-    Public Sub customLoad()
+    Private Shadows Sub Refresh()
         Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
         cbx_Column.SelectedIndex = 0
@@ -69,10 +67,9 @@ Public Class frm_ViewListeners
     End Sub
 
     Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
-        Dim frm_AddListeners As Frm_AddListener = New Frm_AddListener With {
-            .Opener = Me
-        }
-        frm_AddListeners.Show()
+        If AddListenerDialog.ShowDialog() = DialogResult.OK Then
+            Refresh()
+        End If
     End Sub
 
     Private Sub Frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed

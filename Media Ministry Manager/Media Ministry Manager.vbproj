@@ -216,16 +216,16 @@
     <Compile Include="Assets\MediaMinistrySplash.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\FileSelectionDialog.Designer.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\FileSelectionDialog.Designer.vb">
       <DependentUpon>FileSelectionDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\FileSelectionDialog.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\FileSelectionDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\ListenerSelectionDialog.Designer.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\ListenerSelectionDialog.Designer.vb">
       <DependentUpon>ListenerSelectionDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\ListenerSelectionDialog.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\ListenerSelectionDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Objects\Exceptions\FormClosedException.vb" />
@@ -250,10 +250,10 @@
     <Compile Include="Forms\Email Listeners\Folder.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\frm_AddListener.Designer.vb">
-      <DependentUpon>frm_AddListener.vb</DependentUpon>
+    <Compile Include="Forms\Email Listeners\AddListenerDialog.Designer.vb">
+      <DependentUpon>AddListenerDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\frm_AddListener.vb">
+    <Compile Include="Forms\Email Listeners\AddListenerDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Email Listeners\frm_ViewListeners.Designer.vb">
@@ -274,10 +274,10 @@
     <Compile Include="Forms\Email Listeners\Upload.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Inventory\AddNewProduct.Designer.vb">
-      <DependentUpon>AddNewProduct.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Products\AddProductDialog.Designer.vb">
+      <DependentUpon>AddProductDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Inventory\AddNewProduct.vb">
+    <Compile Include="Custom Objects\Dialogs\Products\AddProductDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Customer\DisplayCustomers.Designer.vb">
@@ -286,22 +286,22 @@
     <Compile Include="Forms\Customer\DisplayCustomers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Misc\ChangePassword.Designer.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\ChangePassword.Designer.vb">
       <DependentUpon>ChangePassword.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Misc\ChangePassword.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\ChangePassword.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Misc\CreateUser.Designer.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\CreateUser.Designer.vb">
       <DependentUpon>CreateUser.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Misc\CreateUser.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\CreateUser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Misc\AdminSignIn.Designer.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\AdminSignIn.Designer.vb">
       <DependentUpon>AdminSignIn.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Misc\AdminSignIn.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\AdminSignIn.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Misc\LoginForm.Designer.vb">
@@ -340,10 +340,10 @@
     <Compile Include="Forms\Inventory\ViewInventory.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Orders\PlaceOrder.Designer.vb">
-      <DependentUpon>PlaceOrder.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Orders\PlaceOrderDialog.Designer.vb">
+      <DependentUpon>PlaceOrderDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Orders\PlaceOrder.vb">
+    <Compile Include="Custom Objects\Dialogs\Orders\PlaceOrderDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MediaMinistryDataSet.Designer.vb">
@@ -378,10 +378,10 @@
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Forms\Customer\AddNewCustomer.Designer.vb">
-      <DependentUpon>AddNewCustomer.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Customers\AddCustomerDialog.Designer.vb">
+      <DependentUpon>AddCustomerDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customer\AddNewCustomer.vb">
+    <Compile Include="Custom Objects\Dialogs\Customers\AddCustomerDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Objects\Google\DriveUploader.vb" />
@@ -400,10 +400,10 @@
       <DependentUpon>MediaMinistrySplash.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Objects\Dialogs\FileSelectionDialog.resx">
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\FileSelectionDialog.resx">
       <DependentUpon>FileSelectionDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Objects\Dialogs\ListenerSelectionDialog.resx">
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\ListenerSelectionDialog.resx">
       <DependentUpon>ListenerSelectionDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\CustomMessage.resx">
@@ -415,8 +415,8 @@
     <EmbeddedResource Include="Forms\Email Listeners\Folder.resx">
       <DependentUpon>Folder.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\frm_AddListener.resx">
-      <DependentUpon>frm_AddListener.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Email Listeners\AddListenerDialog.resx">
+      <DependentUpon>AddListenerDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
       <DependentUpon>frm_ViewListeners.vb</DependentUpon>
@@ -427,19 +427,19 @@
     <EmbeddedResource Include="Forms\Email Listeners\Upload.resx">
       <DependentUpon>Upload.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Inventory\AddNewProduct.resx">
-      <DependentUpon>AddNewProduct.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Products\AddProductDialog.resx">
+      <DependentUpon>AddProductDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\DisplayCustomers.resx">
       <DependentUpon>DisplayCustomers.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Misc\ChangePassword.resx">
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\ChangePassword.resx">
       <DependentUpon>ChangePassword.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Misc\CreateUser.resx">
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\CreateUser.resx">
       <DependentUpon>CreateUser.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Misc\AdminSignIn.resx">
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\AdminSignIn.resx">
       <DependentUpon>AdminSignIn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Misc\LoginForm.resx">
@@ -454,8 +454,8 @@
     <EmbeddedResource Include="Forms\Misc\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Orders\PlaceOrder.resx">
-      <DependentUpon>PlaceOrder.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Orders\PlaceOrderDialog.resx">
+      <DependentUpon>PlaceOrderDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory\UpdateInventory.resx">
       <DependentUpon>UpdateInventory.vb</DependentUpon>
@@ -472,8 +472,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\AddNewCustomer.resx">
-      <DependentUpon>AddNewCustomer.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Customers\AddCustomerDialog.resx">
+      <DependentUpon>AddCustomerDialog.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

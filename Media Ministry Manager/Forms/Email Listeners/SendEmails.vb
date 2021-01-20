@@ -113,7 +113,7 @@ Public Class frm_SendEmails
 
     Private Sub Bw_SendEmails_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_SendEmails.RunWorkerCompleted
         If closable Then
-            MessageBox.Show("All emails have been sent.", "Email Ministry")
+            MessageBox.Show("All emails have been sent.", "Email Ministry", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Close()
         End If
     End Sub

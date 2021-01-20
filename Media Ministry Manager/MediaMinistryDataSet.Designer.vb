@@ -5787,6 +5787,7 @@ Namespace MediaMinistryDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SHIPPING_ZIP", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SHIPPING_ZIP", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PHONE_NUMBER", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PHONE_NUMBER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EMAIL", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EMAIL", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@JOIN_DATE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "JOIN_DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[CUSTOMERS] SET [FIRST_NAME] = @FIRST_NAME, [LAST_NAME] = @LAST_NAME"& _ 
@@ -5979,7 +5980,7 @@ Namespace MediaMinistryDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal FIRST_NAME As String, ByVal LAST_NAME As String, ByVal SHIPPING_STREET As String, ByVal SHIPPING_CITY As String, ByVal SHIPPING_STATE As String, ByVal SHIPPING_ZIP As String, ByVal PHONE_NUMBER As String, ByVal EMAIL As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal FIRST_NAME As String, ByVal LAST_NAME As String, ByVal SHIPPING_STREET As String, ByVal SHIPPING_CITY As String, ByVal SHIPPING_STATE As String, ByVal SHIPPING_ZIP As String, ByVal PHONE_NUMBER As String, ByVal EMAIL As String, ByVal JOIN_DATE As String) As Integer
             If (FIRST_NAME Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("FIRST_NAME")
             Else
@@ -6019,6 +6020,11 @@ Namespace MediaMinistryDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(EMAIL,String)
+            End If
+            If (JOIN_DATE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("JOIN_DATE")
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(JOIN_DATE,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

@@ -168,8 +168,15 @@ Public Class Frm_Settings
                 'Retrieve the Google Drive Info being used by the user
                 If Directory.Exists(Application.StartupPath & "\Drive Token") Then
                     Using uploader As New DriveUploader()
-                        lbl_CurrentDrive.Text = String.Format(currentUser, CType(uploader.Info, User).EmailAddress)
-                        btn_GoogleDrive.Text = "Unlink Google Drive"
+                        Dim user As User = CType(uploader.Info, User)
+
+                        If user IsNot Nothing Then
+                            lbl_CurrentDrive.Text = String.Format(currentUser, user.EmailAddress)
+                            btn_GoogleDrive.Text = "Unlink Google Drive"
+                        Else
+                            lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
+                            btn_GoogleDrive.Text = "Link Google Drive"
+                        End If
                     End Using
                 Else
                     lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
@@ -186,7 +193,7 @@ Public Class Frm_Settings
                             btn_Gmail.Text = "Unlink Gmail"
                         Else
                             lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
-                            btn_Gmail.Text = "Unlink Gmail"
+                            btn_Gmail.Text = "Link Gmail"
                         End If
                     End Using
                 Else

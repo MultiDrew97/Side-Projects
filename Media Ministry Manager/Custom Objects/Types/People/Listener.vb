@@ -16,12 +16,11 @@ Namespace Types
             nameParts = name.Split(" "c)
 
             If nameParts.Length = 3 Then
-                nameParts(1) &= " " & nameParts(2)
+                nameParts = {nameParts(0), nameParts(1) & " " & nameParts(2)}
             ElseIf nameParts.Length = 1 Then
-                nameParts(1) = Nothing
+                nameParts = {nameParts(0), ""}
             ElseIf nameParts.Length = 0 Then
-                nameParts(0) = Nothing
-                nameParts(1) = Nothing
+                nameParts = {"", ""}
             End If
 
             Return nameParts
