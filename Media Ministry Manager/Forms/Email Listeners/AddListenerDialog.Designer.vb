@@ -68,8 +68,7 @@ Partial Class AddListenerDialog
         Me.rdo_Single.Location = New System.Drawing.Point(28, 37)
         Me.rdo_Single.Name = "rdo_Single"
         Me.rdo_Single.Size = New System.Drawing.Size(156, 30)
-        Me.rdo_Single.TabIndex = 1
-        Me.rdo_Single.TabStop = True
+        Me.rdo_Single.TabIndex = 0
         Me.rdo_Single.Text = "One Person"
         Me.rdo_Single.UseVisualStyleBackColor = True
         '
@@ -79,7 +78,7 @@ Partial Class AddListenerDialog
         Me.rdo_Multiple.Location = New System.Drawing.Point(28, 88)
         Me.rdo_Multiple.Name = "rdo_Multiple"
         Me.rdo_Multiple.Size = New System.Drawing.Size(194, 30)
-        Me.rdo_Multiple.TabIndex = 2
+        Me.rdo_Multiple.TabIndex = 1
         Me.rdo_Multiple.Text = "Multiple People"
         Me.rdo_Multiple.UseVisualStyleBackColor = True
         '
@@ -94,7 +93,7 @@ Partial Class AddListenerDialog
         Me.txt_FirstName.Location = New System.Drawing.Point(304, 70)
         Me.txt_FirstName.Name = "txt_FirstName"
         Me.txt_FirstName.Size = New System.Drawing.Size(249, 32)
-        Me.txt_FirstName.TabIndex = 1
+        Me.txt_FirstName.TabIndex = 2
         '
         'txt_Email
         '
@@ -102,17 +101,17 @@ Partial Class AddListenerDialog
         Me.txt_Email.Location = New System.Drawing.Point(347, 183)
         Me.txt_Email.Name = "txt_Email"
         Me.txt_Email.Size = New System.Drawing.Size(449, 32)
-        Me.txt_Email.TabIndex = 2
+        Me.txt_Email.TabIndex = 6
         '
         'lbl_FirstName
         '
         Me.lbl_FirstName.AutoSize = True
         Me.lbl_FirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_FirstName.Location = New System.Drawing.Point(299, 41)
+        Me.lbl_FirstName.Location = New System.Drawing.Point(289, 41)
         Me.lbl_FirstName.Name = "lbl_FirstName"
-        Me.lbl_FirstName.Size = New System.Drawing.Size(136, 26)
-        Me.lbl_FirstName.TabIndex = 3
-        Me.lbl_FirstName.Text = "First Name:"
+        Me.lbl_FirstName.Size = New System.Drawing.Size(146, 26)
+        Me.lbl_FirstName.TabIndex = 1
+        Me.lbl_FirstName.Text = "*First Name:"
         '
         'lbl_LastName
         '
@@ -120,18 +119,18 @@ Partial Class AddListenerDialog
         Me.lbl_LastName.Location = New System.Drawing.Point(602, 44)
         Me.lbl_LastName.Name = "lbl_LastName"
         Me.lbl_LastName.Size = New System.Drawing.Size(136, 26)
-        Me.lbl_LastName.TabIndex = 12
+        Me.lbl_LastName.TabIndex = 3
         Me.lbl_LastName.Text = "Last Name:"
         '
         'lbl_Email
         '
         Me.lbl_Email.AutoSize = True
         Me.lbl_Email.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_Email.Location = New System.Drawing.Point(342, 154)
+        Me.lbl_Email.Location = New System.Drawing.Point(333, 154)
         Me.lbl_Email.Name = "lbl_Email"
-        Me.lbl_Email.Size = New System.Drawing.Size(174, 26)
-        Me.lbl_Email.TabIndex = 4
-        Me.lbl_Email.Text = "Email Address:"
+        Me.lbl_Email.Size = New System.Drawing.Size(184, 26)
+        Me.lbl_Email.TabIndex = 5
+        Me.lbl_Email.Text = "*Email Address:"
         '
         'lbl_FilePath
         '
@@ -140,7 +139,7 @@ Partial Class AddListenerDialog
         Me.lbl_FilePath.Location = New System.Drawing.Point(363, 75)
         Me.lbl_FilePath.Name = "lbl_FilePath"
         Me.lbl_FilePath.Size = New System.Drawing.Size(114, 26)
-        Me.lbl_FilePath.TabIndex = 5
+        Me.lbl_FilePath.TabIndex = 7
         Me.lbl_FilePath.Text = "File Path:"
         '
         'txt_FilePath
@@ -150,7 +149,7 @@ Partial Class AddListenerDialog
         Me.txt_FilePath.Name = "txt_FilePath"
         Me.txt_FilePath.ReadOnly = True
         Me.txt_FilePath.Size = New System.Drawing.Size(417, 32)
-        Me.txt_FilePath.TabIndex = 6
+        Me.txt_FilePath.TabIndex = 8
         '
         'txt_LastName
         '
@@ -158,27 +157,33 @@ Partial Class AddListenerDialog
         Me.txt_LastName.Location = New System.Drawing.Point(605, 70)
         Me.txt_LastName.Name = "txt_LastName"
         Me.txt_LastName.Size = New System.Drawing.Size(249, 31)
-        Me.txt_LastName.TabIndex = 13
+        Me.txt_LastName.TabIndex = 4
         '
         'btn_Add
         '
+        Me.btn_Add.AutoSize = True
+        Me.btn_Add.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Add.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btn_Add.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.btn_Add.Location = New System.Drawing.Point(500, 240)
+        Me.btn_Add.MinimumSize = New System.Drawing.Size(187, 53)
         Me.btn_Add.Name = "btn_Add"
         Me.btn_Add.Size = New System.Drawing.Size(187, 53)
-        Me.btn_Add.TabIndex = 7
+        Me.btn_Add.TabIndex = 11
         Me.btn_Add.Text = "Add Listener"
         Me.btn_Add.UseVisualStyleBackColor = True
         '
         'btn_Cancel
         '
+        Me.btn_Cancel.AutoSize = True
+        Me.btn_Cancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btn_Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.btn_Cancel.Location = New System.Drawing.Point(230, 240)
+        Me.btn_Cancel.MinimumSize = New System.Drawing.Size(187, 53)
         Me.btn_Cancel.Name = "btn_Cancel"
         Me.btn_Cancel.Size = New System.Drawing.Size(187, 53)
-        Me.btn_Cancel.TabIndex = 8
+        Me.btn_Cancel.TabIndex = 12
         Me.btn_Cancel.Text = "Cancel"
         Me.btn_Cancel.UseVisualStyleBackColor = True
         '
@@ -189,6 +194,7 @@ Partial Class AddListenerDialog
         Me.btn_Browse.Name = "btn_Browse"
         Me.btn_Browse.Size = New System.Drawing.Size(43, 32)
         Me.btn_Browse.TabIndex = 9
+        Me.btn_Browse.TabStop = False
         Me.btn_Browse.Text = "..."
         Me.btn_Browse.UseVisualStyleBackColor = True
         '
@@ -198,8 +204,7 @@ Partial Class AddListenerDialog
         Me.ss_FeedbackStrip.Location = New System.Drawing.Point(0, 312)
         Me.ss_FeedbackStrip.Name = "ss_FeedbackStrip"
         Me.ss_FeedbackStrip.Size = New System.Drawing.Size(880, 22)
-        Me.ss_FeedbackStrip.TabIndex = 10
-        Me.ss_FeedbackStrip.Text = "StatusStrip1"
+        Me.ss_FeedbackStrip.TabIndex = 13
         '
         'tss_Feedback
         '
@@ -218,7 +223,7 @@ Partial Class AddListenerDialog
         Me.chk_Headers.Location = New System.Drawing.Point(514, 151)
         Me.chk_Headers.Name = "chk_Headers"
         Me.chk_Headers.Size = New System.Drawing.Size(219, 29)
-        Me.chk_Headers.TabIndex = 11
+        Me.chk_Headers.TabIndex = 10
         Me.chk_Headers.Text = "Contains Headers"
         Me.chk_Headers.UseVisualStyleBackColor = True
         Me.chk_Headers.Visible = False

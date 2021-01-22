@@ -174,8 +174,8 @@ Partial Friend NotInheritable Class MySettings
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
-        "ser ID=arandlemiller97;Connect Timeout=30;Encrypt=True;Authentication=""Sql Passw"& _ 
-        "ord""")>  _
+        "ser ID={0};Password={1};Connect Timeout=30;Encrypt=True;Authentication=""Sql Pass"& _ 
+        "word""")>  _
     Public ReadOnly Property masterConnectionString() As String
         Get
             Return CType(Me("masterConnectionString"),String)

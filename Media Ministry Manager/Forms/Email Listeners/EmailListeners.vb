@@ -119,12 +119,9 @@ Public Class Frm_EmailListeners
     End Sub
 
     Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click
-        Dim listeners As New Frm_ViewListeners With {.SendingForm = Me}
+        Dim listeners As New Frm_ViewListeners
         listeners.Show()
-        Me.Hide()
     End Sub
-
-
 
     Private Sub Frm_EmailListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.Size = Sizes.Max Then

@@ -119,8 +119,8 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub RemoveListener(email As String)
-        RemoveListener(New SqlParameter("Email", email))
+    Public Sub RemoveListener(id As Integer)
+        RemoveListener(New SqlParameter("ListenerID", id))
     End Sub
 
     Public Sub RemoveListener(parameter As SqlParameter)
@@ -132,9 +132,10 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateListener(id As Integer, name As String, newEmail As String, currentEmail As String)
-        Dim parts As String() = Listener.ParseName(name)
-        UpdateListener(New Listener(id, parts(0), parts(1), newEmail), currentEmail)
+    Public Sub UpdateListener(id As Integer, column As String, value As String)
+        Dim command As String = String.Format("{0} = {1}", column, value)
+
+        myCmd.CommandText = String.Format("UPDATE EmailListeners SET {0} WHERE ListenerID = {0}", command, id)
     End Sub
 
     Public Sub UpdateListener(listener As Listener, current As String)
@@ -158,15 +159,8 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateCustomer(id As Integer, columns As Collection(Of String), values As Collection(Of String))
-        Dim command As String = ""
-
-        For i = 0 To columns.Count - 1
-            command &= columns(i) & " = '" & values(i) & "'"
-            If Not i = columns.Count - 1 Then
-                command &= ", "
-            End If
-        Next
+    Public Sub UpdateCustomer(id As Integer, column As String, value As String)
+        Dim command As String = String.Format("{0} = {1}", column, value)
 
         myCmd.CommandText = String.Format("UPDATE CUSTOMERS
                                             SET {0}
@@ -244,24 +238,18 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateInventory(id As Integer, columns As Collection(Of String), values As Collection(Of String))
-        Dim command As String = ""
+    Public Sub UpdateInventory(id As Integer, column As String, value As String)
+        Dim command As String
 
-        For i = 0 To columns.Count - 1
-
-            If Not (columns(i).Equals("Stock") Or columns(i).Equals("Price")) Then
-                command &= columns(i) & " = '" & values(i) & "'"
-            Else
-                command &= columns(i) & " = " & values(i)
-            End If
-            If Not i = columns.Count - 1 Then
-                command &= ", "
-            End If
-        Next
+        If Not (column.Equals("Stock") Or column.Equals("Price")) Then
+            command = String.Format("{0} = '{1}'", column, value)
+        Else
+            command = String.Format("{0} = {1}", column, value)
+        End If
 
         myCmd.CommandText = String.Format("UPDATE INVENTORY SET {0} WHERE ItemID = {1}", command, id)
 
-        'myCmd.ExecuteNonQuery()
+        myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub RemoveProduct(itemIndex As Integer)
@@ -489,9 +477,6 @@ Public Class Database
         Do While myReader.Read()
             parts = Listener.ParseName(myReader.GetString(0))
             listeners.Add(New Listener(myReader.GetInt32(2), parts(0), parts(1), myReader.GetString(1)))
-            'listener = Listener.Parse(myReader.GetString(0))
-            'listener.EmailAddress = MimeKit.MailboxAddress.Parse(myReader.GetString(1))
-            'listeners.Add(listener)
         Loop
 
         Return listeners
@@ -507,11 +492,6 @@ Public Class Database
 
         Return result
     End Function
-
-    Private Sub Open()
-        'open the connection
-        myConn.Open()
-    End Sub
 
     'Public Function UniqueRecord(tableName As String, column As String, value As Integer) As Boolean
     '    results = ""

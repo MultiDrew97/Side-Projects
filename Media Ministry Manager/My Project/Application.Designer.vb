@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.MediaMinistry.Frm_ViewInventory
+            Me.MainForm = Global.MediaMinistry.Frm_ViewListeners
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

@@ -27,7 +27,7 @@ Public Class Frm_DisplayCustomers
     Private Sub Dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
         If (Not e.Row.IsNewRow) Then
             If MessageBox.Show("Are you sure you want to delete this row?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                Dim id As Integer = CInt(CustomersTable.Rows(e.Row.Index)("CustomerID"))
+                Dim id As Integer = CInt(CType(dgv_Customers.Rows(e.Row.Index).DataBoundItem, DataRowView)("CustomerID"))
                 Console.WriteLine(id)
                 Using db As New Database
                     db.RemoveCustomer(id)
@@ -50,19 +50,17 @@ Public Class Frm_DisplayCustomers
 
     Private Sub Dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
         'get values from table
-        Dim columnNames, newValues As New ObjectModel.Collection(Of String)
+        Dim column As String = dgv_Customers.Columns(e.ColumnIndex).DataPropertyName
+        Dim value As String = CStr(dgv_Customers.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+        Dim customerID As Integer = CInt(CustomersTable.Rows(e.RowIndex)("CustomerID"))
 
-        columnNames.Add(dgv_Customers.Columns(e.ColumnIndex).DataPropertyName)
-        newValues.Add(CStr(dgv_Customers.Rows(e.RowIndex).Cells(e.ColumnIndex).Value))
-
-        'Dim customer As Types.Customer = Types.Customer.Parse(CustomersTable.Rows(e.RowIndex).ItemArray)
-        'Console.WriteLine(customer.ToString)
         Using db As New Database
-            db.UpdateCustomer(CInt(CustomersTable.Rows(e.RowIndex)("CustomerID")), columnNames, newValues)
+            db.UpdateCustomer(customerID, column, value)
         End Using
     End Sub
 
     Private Sub GenerateTable()
+        'Create Table Object like I did for email listeners
         CustomersTable = New DataTable("Customers")
 
         GenerateColumns()

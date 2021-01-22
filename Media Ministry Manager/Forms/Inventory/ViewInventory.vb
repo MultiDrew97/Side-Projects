@@ -28,20 +28,12 @@ Public Class Frm_ViewInventory
     End Sub
 
     Private Sub Dgv_Inventory_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Inventory.CellEndEdit
-        Dim columnNames, newValues As New ObjectModel.Collection(Of String)
-
-        columnNames.Add(dgv_Inventory.Columns(e.ColumnIndex).DataPropertyName)
-
-        'If Not (dgv_Inventory.Columns(e.ColumnIndex).DataPropertyName.Equals("Stock") Or dgv_Inventory.Columns(e.ColumnIndex).DataPropertyName.Equals("Price")) Then
-        newValues.Add(CStr(dgv_Inventory.Rows(e.RowIndex).Cells(e.ColumnIndex).Value))
-        'ElseIf dgv_Inventory.Columns(e.ColumnIndex).DataPropertyName.Equals("Stock") Then
-
-        'ElseIf dgv_Inventory.Columns(e.ColumnIndex).DataPropertyName.Equals("Price") Then
-
-        'End If
+        Dim column As String = dgv_Inventory.Columns(e.ColumnIndex).DataPropertyName
+        Dim value As String = CStr(dgv_Inventory.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+        Dim itemID As Integer = CInt(ProductsTable.Rows(e.RowIndex)("ItemID"))
 
         Using db As New Database(My.Settings.Username, My.Settings.Password)
-            db.UpdateInventory(CInt(ProductsTable.Rows(e.RowIndex)("ItemID")), columnNames, newValues)
+            db.UpdateInventory(itemID, column, value)
         End Using
     End Sub
 

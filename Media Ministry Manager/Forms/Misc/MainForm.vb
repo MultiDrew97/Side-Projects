@@ -104,42 +104,23 @@ Public Class frm_Main
         Me.Close()
     End Sub
 
-    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Utils.CloseOpenForms()
     End Sub
 
-    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
+    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewCustomerToolStripMenuItem.Click
         AddCustomerDialog.ShowDialog()
     End Sub
 
-    Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-        Dim frm_AddProduct As New AddProductDialog()
-        frm_AddProduct.Show()
-        Me.Hide()
+    Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewProductToolStripMenuItem.Click
+        AddProductDialog.ShowDialog()
     End Sub
 
-    Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem.Click
-        Dim frm_AddListener As New AddListenerDialog()
-        frm_AddListener.Show()
-        Me.Hide()
+    Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewListenerToolStripMenuItem.Click
+        AddListenerDialog.Show()
     End Sub
 
-    Private Sub CustomerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem1.Click
-        'TODO: Add Find Customer Functionality
-        'TODO: Create a dialog that can be used to find a customer
-    End Sub
-
-    Private Sub ProductToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem1.Click
-        'TODO: Add Find Product Functionality
-        'TODO: Create a dialog that can be used to find a product
-    End Sub
-
-    Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
-        'TODO: Add Find Listener Functionality
-        'TODO: Create a dialog that can be used to find a listener
-    End Sub
-
-    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem.Click
         'Dim updateLocation As String = "https://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
         'Dim updateCheck As String = "https://sppbc.hopto.org/Manager%20Installer/version.txt"
 
@@ -156,26 +137,26 @@ Public Class frm_Main
         'End If
     End Sub
 
-    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomersToolStripMenuItem.Click
+    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomersToolStripMenuItem.Click
         Dim customers As New Frm_DisplayCustomers
         customers.Show()
         Me.Close()
     End Sub
 
-    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsToolStripMenuItem.Click
+    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
         Dim products As New Frm_ViewInventory
         products.Show()
         Me.Close()
     End Sub
 
-    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrdersToolStripMenuItem.Click
-        Dim orders As New frm_DisplayOrders With {.mainForm = Me}
+    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
+        Dim orders As New Frm_DisplayOrders With {.mainForm = Me}
         orders.Show()
         Me.Close()
     End Sub
 
-    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenersToolStripMenuItem.Click
-        Dim listeners As New Frm_ViewListeners With {.SendingForm = Me}
+    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewListenersToolStripMenuItem.Click
+        Dim listeners As New Frm_ViewListeners
         listeners.Show()
         Me.Close()
     End Sub
