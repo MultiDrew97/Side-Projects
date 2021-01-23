@@ -2,7 +2,7 @@
 
 Imports System.Data.SqlClient
 
-Public Class AdminSignIn
+Public Class AdminDialog
 
     Private Sub Btn_ShowPassword_Click(sender As Object, e As EventArgs) Handles btn_ShowPassword.Click
         If txt_Password.UseSystemPasswordChar Then

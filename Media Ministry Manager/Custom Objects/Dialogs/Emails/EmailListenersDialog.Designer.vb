@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_EmailListeners
+Partial Class EmailListenersDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class Frm_EmailListeners
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_EmailListeners))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmailListenersDialog))
         Me.ofd_SelectAudio = New System.Windows.Forms.OpenFileDialog()
         Me.bw_Upload = New System.ComponentModel.BackgroundWorker()
         Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
@@ -53,7 +53,7 @@ Partial Class Frm_EmailListeners
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btn_Upload = New System.Windows.Forms.Button()
-        Me.db = New Database()
+        Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.ss_Feedback.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
@@ -80,8 +80,11 @@ Partial Class Frm_EmailListeners
         '
         'btn_SendEmails
         '
+        Me.btn_SendEmails.AutoSize = True
+        Me.btn_SendEmails.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_SendEmails.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_SendEmails.Location = New System.Drawing.Point(60, 93)
+        Me.btn_SendEmails.Location = New System.Drawing.Point(65, 68)
+        Me.btn_SendEmails.MinimumSize = New System.Drawing.Size(238, 36)
         Me.btn_SendEmails.Name = "btn_SendEmails"
         Me.btn_SendEmails.Size = New System.Drawing.Size(238, 36)
         Me.btn_SendEmails.TabIndex = 8
@@ -90,8 +93,11 @@ Partial Class Frm_EmailListeners
         '
         'btn_ViewListeners
         '
+        Me.btn_ViewListeners.AutoSize = True
+        Me.btn_ViewListeners.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_ViewListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_ViewListeners.Location = New System.Drawing.Point(60, 151)
+        Me.btn_ViewListeners.Location = New System.Drawing.Point(65, 124)
+        Me.btn_ViewListeners.MinimumSize = New System.Drawing.Size(238, 36)
         Me.btn_ViewListeners.Name = "btn_ViewListeners"
         Me.btn_ViewListeners.Size = New System.Drawing.Size(238, 36)
         Me.btn_ViewListeners.TabIndex = 10
@@ -245,20 +251,38 @@ Partial Class Frm_EmailListeners
         '
         'btn_Upload
         '
+        Me.btn_Upload.AutoSize = True
+        Me.btn_Upload.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Upload.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_Upload.Location = New System.Drawing.Point(60, 36)
+        Me.btn_Upload.Location = New System.Drawing.Point(65, 12)
+        Me.btn_Upload.MinimumSize = New System.Drawing.Size(238, 36)
         Me.btn_Upload.Name = "btn_Upload"
         Me.btn_Upload.Size = New System.Drawing.Size(238, 36)
         Me.btn_Upload.TabIndex = 8
         Me.btn_Upload.Text = "Upload New File"
         Me.btn_Upload.UseVisualStyleBackColor = True
         '
-        'Frm_EmailListeners
+        'btn_Cancel
+        '
+        Me.btn_Cancel.AutoSize = True
+        Me.btn_Cancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Cancel.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_Cancel.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_Cancel.Location = New System.Drawing.Point(65, 180)
+        Me.btn_Cancel.MinimumSize = New System.Drawing.Size(238, 36)
+        Me.btn_Cancel.Name = "btn_Cancel"
+        Me.btn_Cancel.Size = New System.Drawing.Size(238, 36)
+        Me.btn_Cancel.TabIndex = 11
+        Me.btn_Cancel.Text = "Cancel"
+        Me.btn_Cancel.UseVisualStyleBackColor = True
+        '
+        'EmailListenersDialog
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(369, 254)
+        Me.Controls.Add(Me.btn_Cancel)
         Me.Controls.Add(Me.btn_ViewListeners)
         Me.Controls.Add(Me.btn_Upload)
         Me.Controls.Add(Me.btn_SendEmails)
@@ -266,7 +290,7 @@ Partial Class Frm_EmailListeners
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "Frm_EmailListeners"
+        Me.Name = "EmailListenersDialog"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)
@@ -308,4 +332,5 @@ Partial Class Frm_EmailListeners
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_Upload As Button
     Friend WithEvents db As Database
+    Friend WithEvents btn_Cancel As Button
 End Class

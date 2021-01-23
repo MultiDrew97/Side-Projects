@@ -244,10 +244,10 @@
     <Compile Include="Forms\Email Listeners\CustomMessage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\EmailListeners.Designer.vb">
-      <DependentUpon>EmailListeners.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Emails\EmailListenersDialog.Designer.vb">
+      <DependentUpon>EmailListenersDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\EmailListeners.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\EmailListenersDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Email Listeners\Folder.Designer.vb">
@@ -256,10 +256,10 @@
     <Compile Include="Forms\Email Listeners\Folder.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\AddListenerDialog.Designer.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\AddListenerDialog.Designer.vb">
       <DependentUpon>AddListenerDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\AddListenerDialog.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\AddListenerDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Email Listeners\frm_ViewListeners.Designer.vb">
@@ -292,22 +292,22 @@
     <Compile Include="Forms\Customer\DisplayCustomers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\ChangePassword.Designer.vb">
-      <DependentUpon>ChangePassword.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Misc\ChangePasswordDialog.Designer.vb">
+      <DependentUpon>ChangePasswordDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\ChangePassword.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\ChangePasswordDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\CreateUser.Designer.vb">
-      <DependentUpon>CreateUser.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Misc\NewUserDialog.Designer.vb">
+      <DependentUpon>NewUserDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\CreateUser.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\NewUserDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\AdminSignIn.Designer.vb">
-      <DependentUpon>AdminSignIn.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Misc\AdminDialog.Designer.vb">
+      <DependentUpon>AdminDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\AdminSignIn.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\AdminDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Misc\LoginForm.Designer.vb">
@@ -332,12 +332,6 @@
       <DependentUpon>UpdateInventory.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Inventory\UpdateInventory.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer\UpdatePhoneNumber.Designer.vb">
-      <DependentUpon>UpdatePhoneNumber.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Customer\UpdatePhoneNumber.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Inventory\ViewInventory.Designer.vb">
@@ -415,13 +409,13 @@
     <EmbeddedResource Include="Forms\Email Listeners\CustomMessage.resx">
       <DependentUpon>CustomMessage.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\EmailListeners.resx">
-      <DependentUpon>EmailListeners.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\EmailListenersDialog.resx">
+      <DependentUpon>EmailListenersDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\Folder.resx">
       <DependentUpon>Folder.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\AddListenerDialog.resx">
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\AddListenerDialog.resx">
       <DependentUpon>AddListenerDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
@@ -439,14 +433,14 @@
     <EmbeddedResource Include="Forms\Customer\DisplayCustomers.resx">
       <DependentUpon>DisplayCustomers.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\ChangePassword.resx">
-      <DependentUpon>ChangePassword.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\ChangePasswordDialog.resx">
+      <DependentUpon>ChangePasswordDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\CreateUser.resx">
-      <DependentUpon>CreateUser.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\NewUserDialog.resx">
+      <DependentUpon>NewUserDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\AdminSignIn.resx">
-      <DependentUpon>AdminSignIn.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\AdminDialog.resx">
+      <DependentUpon>AdminDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Misc\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
@@ -465,9 +459,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory\UpdateInventory.resx">
       <DependentUpon>UpdateInventory.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\UpdatePhoneNumber.resx">
-      <DependentUpon>UpdatePhoneNumber.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory\ViewInventory.resx">
       <DependentUpon>ViewInventory.vb</DependentUpon>

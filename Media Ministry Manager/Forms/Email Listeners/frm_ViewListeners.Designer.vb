@@ -23,22 +23,20 @@ Partial Class Frm_ViewListeners
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_ViewListeners))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btn_Add = New System.Windows.Forms.Button()
-        Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
+        Me.ContextStripItem = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bsListeners = New System.Windows.Forms.BindingSource(Me.components)
         Me.lbl_Total = New System.Windows.Forms.Label()
-        Me.txt_SearchBox = New System.Windows.Forms.TextBox()
         Me.btn_Advanced = New System.Windows.Forms.Button()
-        Me.cbx_Column = New System.Windows.Forms.ComboBox()
         Me.bsFilters = New System.Windows.Forms.BindingSource(Me.components)
         Me.txt_NameSearch = New System.Windows.Forms.TextBox()
         Me.txt_EmailSearch = New System.Windows.Forms.TextBox()
         Me.lbl_NameSearch = New System.Windows.Forms.Label()
         Me.lbl_EmailSearch = New System.Windows.Forms.Label()
         Me.gbx_AdvancedSearch = New System.Windows.Forms.GroupBox()
-        Me.btn_AdvancedSearch = New System.Windows.Forms.Button()
         Me.btn_AdvancedCancel = New System.Windows.Forms.Button()
         Me.NAMEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EMAILDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -62,18 +60,19 @@ Partial Class Frm_ViewListeners
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContextStripItem = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbx_Search = New System.Windows.Forms.GroupBox()
+        Me.txt_SearchBox = New System.Windows.Forms.TextBox()
+        Me.cbx_Column = New System.Windows.Forms.ComboBox()
+        Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
         Me.ListenerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextStripItem.SuspendLayout()
         CType(Me.bsListeners, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsFilters, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbx_AdvancedSearch.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
-        Me.ContextStripItem.SuspendLayout()
         Me.gbx_Search.SuspendLayout()
+        CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_Add
@@ -86,26 +85,18 @@ Partial Class Frm_ViewListeners
         Me.btn_Add.Text = "Add Listener"
         Me.btn_Add.UseVisualStyleBackColor = True
         '
-        'dgv_Listeners
+        'ContextStripItem
         '
-        Me.dgv_Listeners.AllowUserToAddRows = False
-        Me.dgv_Listeners.AllowUserToOrderColumns = True
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
-        Me.dgv_Listeners.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgv_Listeners.AutoGenerateColumns = False
-        Me.dgv_Listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgv_Listeners.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
-        Me.dgv_Listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Listeners.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ListenerName, Me.EmailAddress})
-        Me.dgv_Listeners.ContextMenuStrip = Me.ContextStripItem
-        Me.dgv_Listeners.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.dgv_Listeners.DataSource = Me.bsListeners
-        Me.dgv_Listeners.Dock = System.Windows.Forms.DockStyle.Left
-        Me.dgv_Listeners.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.dgv_Listeners.Location = New System.Drawing.Point(0, 24)
-        Me.dgv_Listeners.Name = "dgv_Listeners"
-        Me.dgv_Listeners.Size = New System.Drawing.Size(737, 503)
-        Me.dgv_Listeners.TabIndex = 0
+        Me.ContextStripItem.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshToolStripMenuItem})
+        Me.ContextStripItem.Name = "ContextMenuStrip1"
+        Me.ContextStripItem.Size = New System.Drawing.Size(114, 26)
+        Me.ContextStripItem.Text = "Refresh"
+        '
+        'RefreshToolStripMenuItem
+        '
+        Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
+        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.RefreshToolStripMenuItem.Text = "Refresh"
         '
         'lbl_Total
         '
@@ -118,56 +109,39 @@ Partial Class Frm_ViewListeners
         Me.lbl_Total.TabIndex = 2
         Me.lbl_Total.Text = "Total Listeners: "
         '
-        'txt_SearchBox
-        '
-        Me.txt_SearchBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.txt_SearchBox.Location = New System.Drawing.Point(27, 72)
-        Me.txt_SearchBox.Name = "txt_SearchBox"
-        Me.txt_SearchBox.Size = New System.Drawing.Size(269, 31)
-        Me.txt_SearchBox.TabIndex = 5
-        '
         'btn_Advanced
         '
+        Me.btn_Advanced.AutoSize = True
+        Me.btn_Advanced.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Advanced.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_Advanced.Location = New System.Drawing.Point(1199, 151)
+        Me.btn_Advanced.Location = New System.Drawing.Point(100, 108)
         Me.btn_Advanced.Name = "btn_Advanced"
-        Me.btn_Advanced.Size = New System.Drawing.Size(132, 33)
+        Me.btn_Advanced.Size = New System.Drawing.Size(127, 36)
         Me.btn_Advanced.TabIndex = 6
         Me.btn_Advanced.Text = "Advanced"
         Me.btn_Advanced.UseVisualStyleBackColor = True
-        Me.btn_Advanced.Visible = False
-        '
-        'cbx_Column
-        '
-        Me.cbx_Column.DataSource = Me.bsFilters
-        Me.cbx_Column.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.cbx_Column.FormattingEnabled = True
-        Me.cbx_Column.Location = New System.Drawing.Point(60, 33)
-        Me.cbx_Column.Name = "cbx_Column"
-        Me.cbx_Column.Size = New System.Drawing.Size(192, 33)
-        Me.cbx_Column.TabIndex = 7
         '
         'txt_NameSearch
         '
         Me.txt_NameSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.txt_NameSearch.Location = New System.Drawing.Point(24, 60)
+        Me.txt_NameSearch.Location = New System.Drawing.Point(11, 61)
         Me.txt_NameSearch.Name = "txt_NameSearch"
-        Me.txt_NameSearch.Size = New System.Drawing.Size(356, 31)
+        Me.txt_NameSearch.Size = New System.Drawing.Size(306, 31)
         Me.txt_NameSearch.TabIndex = 8
         '
         'txt_EmailSearch
         '
         Me.txt_EmailSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.txt_EmailSearch.Location = New System.Drawing.Point(24, 140)
+        Me.txt_EmailSearch.Location = New System.Drawing.Point(11, 141)
         Me.txt_EmailSearch.Name = "txt_EmailSearch"
-        Me.txt_EmailSearch.Size = New System.Drawing.Size(356, 31)
+        Me.txt_EmailSearch.Size = New System.Drawing.Size(306, 31)
         Me.txt_EmailSearch.TabIndex = 9
         '
         'lbl_NameSearch
         '
         Me.lbl_NameSearch.AutoSize = True
         Me.lbl_NameSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.lbl_NameSearch.Location = New System.Drawing.Point(19, 32)
+        Me.lbl_NameSearch.Location = New System.Drawing.Point(6, 33)
         Me.lbl_NameSearch.Name = "lbl_NameSearch"
         Me.lbl_NameSearch.Size = New System.Drawing.Size(79, 25)
         Me.lbl_NameSearch.TabIndex = 10
@@ -177,7 +151,7 @@ Partial Class Frm_ViewListeners
         '
         Me.lbl_EmailSearch.AutoSize = True
         Me.lbl_EmailSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.lbl_EmailSearch.Location = New System.Drawing.Point(19, 112)
+        Me.lbl_EmailSearch.Location = New System.Drawing.Point(6, 113)
         Me.lbl_EmailSearch.Name = "lbl_EmailSearch"
         Me.lbl_EmailSearch.Size = New System.Drawing.Size(170, 25)
         Me.lbl_EmailSearch.TabIndex = 11
@@ -186,35 +160,27 @@ Partial Class Frm_ViewListeners
         'gbx_AdvancedSearch
         '
         Me.gbx_AdvancedSearch.BackColor = System.Drawing.Color.Gray
-        Me.gbx_AdvancedSearch.Controls.Add(Me.btn_AdvancedSearch)
         Me.gbx_AdvancedSearch.Controls.Add(Me.btn_AdvancedCancel)
         Me.gbx_AdvancedSearch.Controls.Add(Me.txt_EmailSearch)
         Me.gbx_AdvancedSearch.Controls.Add(Me.lbl_EmailSearch)
         Me.gbx_AdvancedSearch.Controls.Add(Me.txt_NameSearch)
         Me.gbx_AdvancedSearch.Controls.Add(Me.lbl_NameSearch)
         Me.gbx_AdvancedSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.gbx_AdvancedSearch.Location = New System.Drawing.Point(968, 63)
+        Me.gbx_AdvancedSearch.Location = New System.Drawing.Point(743, 47)
         Me.gbx_AdvancedSearch.Name = "gbx_AdvancedSearch"
-        Me.gbx_AdvancedSearch.Size = New System.Drawing.Size(386, 243)
+        Me.gbx_AdvancedSearch.Size = New System.Drawing.Size(323, 243)
         Me.gbx_AdvancedSearch.TabIndex = 12
         Me.gbx_AdvancedSearch.TabStop = False
         Me.gbx_AdvancedSearch.Text = "Advanced Search"
         Me.gbx_AdvancedSearch.Visible = False
         '
-        'btn_AdvancedSearch
-        '
-        Me.btn_AdvancedSearch.Location = New System.Drawing.Point(231, 187)
-        Me.btn_AdvancedSearch.Name = "btn_AdvancedSearch"
-        Me.btn_AdvancedSearch.Size = New System.Drawing.Size(95, 35)
-        Me.btn_AdvancedSearch.TabIndex = 13
-        Me.btn_AdvancedSearch.Text = "Search"
-        Me.btn_AdvancedSearch.UseVisualStyleBackColor = True
-        '
         'btn_AdvancedCancel
         '
-        Me.btn_AdvancedCancel.Location = New System.Drawing.Point(74, 187)
+        Me.btn_AdvancedCancel.AutoSize = True
+        Me.btn_AdvancedCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_AdvancedCancel.Location = New System.Drawing.Point(114, 196)
         Me.btn_AdvancedCancel.Name = "btn_AdvancedCancel"
-        Me.btn_AdvancedCancel.Size = New System.Drawing.Size(99, 35)
+        Me.btn_AdvancedCancel.Size = New System.Drawing.Size(94, 30)
         Me.btn_AdvancedCancel.TabIndex = 12
         Me.btn_AdvancedCancel.Text = "Cancel"
         Me.btn_AdvancedCancel.UseVisualStyleBackColor = True
@@ -358,32 +324,59 @@ Partial Class Frm_ViewListeners
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'ContextStripItem
-        '
-        Me.ContextStripItem.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshToolStripMenuItem})
-        Me.ContextStripItem.Name = "ContextMenuStrip1"
-        Me.ContextStripItem.Size = New System.Drawing.Size(114, 26)
-        Me.ContextStripItem.Text = "Refresh"
-        '
-        'RefreshToolStripMenuItem
-        '
-        Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
-        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
-        Me.RefreshToolStripMenuItem.Text = "Refresh"
-        '
         'gbx_Search
         '
         Me.gbx_Search.BackColor = System.Drawing.Color.Transparent
         Me.gbx_Search.Controls.Add(Me.txt_SearchBox)
         Me.gbx_Search.Controls.Add(Me.cbx_Column)
+        Me.gbx_Search.Controls.Add(Me.btn_Advanced)
         Me.gbx_Search.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.gbx_Search.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.gbx_Search.Location = New System.Drawing.Point(743, 47)
         Me.gbx_Search.Name = "gbx_Search"
-        Me.gbx_Search.Size = New System.Drawing.Size(323, 136)
+        Me.gbx_Search.Size = New System.Drawing.Size(323, 172)
         Me.gbx_Search.TabIndex = 15
         Me.gbx_Search.TabStop = False
         Me.gbx_Search.Text = "Search"
+        '
+        'txt_SearchBox
+        '
+        Me.txt_SearchBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.txt_SearchBox.Location = New System.Drawing.Point(27, 67)
+        Me.txt_SearchBox.Name = "txt_SearchBox"
+        Me.txt_SearchBox.Size = New System.Drawing.Size(269, 31)
+        Me.txt_SearchBox.TabIndex = 5
+        '
+        'cbx_Column
+        '
+        Me.cbx_Column.DataSource = Me.bsFilters
+        Me.cbx_Column.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.cbx_Column.FormattingEnabled = True
+        Me.cbx_Column.Location = New System.Drawing.Point(60, 28)
+        Me.cbx_Column.Name = "cbx_Column"
+        Me.cbx_Column.Size = New System.Drawing.Size(192, 33)
+        Me.cbx_Column.TabIndex = 7
+        '
+        'dgv_Listeners
+        '
+        Me.dgv_Listeners.AllowUserToAddRows = False
+        Me.dgv_Listeners.AllowUserToOrderColumns = True
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
+        Me.dgv_Listeners.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgv_Listeners.AutoGenerateColumns = False
+        Me.dgv_Listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgv_Listeners.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.dgv_Listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv_Listeners.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ListenerName, Me.EmailAddress})
+        Me.dgv_Listeners.ContextMenuStrip = Me.ContextStripItem
+        Me.dgv_Listeners.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.dgv_Listeners.DataSource = Me.bsListeners
+        Me.dgv_Listeners.Dock = System.Windows.Forms.DockStyle.Left
+        Me.dgv_Listeners.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.dgv_Listeners.Location = New System.Drawing.Point(0, 24)
+        Me.dgv_Listeners.Name = "dgv_Listeners"
+        Me.dgv_Listeners.Size = New System.Drawing.Size(737, 503)
+        Me.dgv_Listeners.TabIndex = 0
         '
         'ListenerName
         '
@@ -406,26 +399,26 @@ Partial Class Frm_ViewListeners
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1078, 527)
         Me.Controls.Add(Me.gbx_Search)
-        Me.Controls.Add(Me.btn_Advanced)
         Me.Controls.Add(Me.lbl_Total)
         Me.Controls.Add(Me.btn_Add)
         Me.Controls.Add(Me.dgv_Listeners)
-        Me.Controls.Add(Me.gbx_AdvancedSearch)
         Me.Controls.Add(Me.mnstr_Strip)
+        Me.Controls.Add(Me.gbx_AdvancedSearch)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Frm_ViewListeners"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
-        CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextStripItem.ResumeLayout(False)
         CType(Me.bsListeners, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsFilters, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbx_AdvancedSearch.ResumeLayout(False)
         Me.gbx_AdvancedSearch.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
-        Me.ContextStripItem.ResumeLayout(False)
         Me.gbx_Search.ResumeLayout(False)
         Me.gbx_Search.PerformLayout()
+        CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -443,7 +436,6 @@ Partial Class Frm_ViewListeners
     Friend WithEvents lbl_NameSearch As Label
     Friend WithEvents lbl_EmailSearch As Label
     Friend WithEvents gbx_AdvancedSearch As GroupBox
-    Friend WithEvents btn_AdvancedSearch As Button
     Friend WithEvents btn_AdvancedCancel As Button
     Friend WithEvents NAMEDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents EMAILDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn

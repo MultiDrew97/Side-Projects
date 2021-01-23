@@ -11,11 +11,8 @@ Public Class Frm_ViewListeners
     Private ListenersData As ObjectModel.Collection(Of Types.Listener)
 
     Structure Sizes
-
         'window sizes
-        Shared max As New Size(1382, 744)
-
-        Shared [Default] As New Size(1014, 489)
+        Shared normal As New Size(1094, 566)
 
         'dgv sizes
         Shared DefaultDGV As New Size(737, 503)
@@ -27,28 +24,15 @@ Public Class Frm_ViewListeners
 
         'add button locations
         Shared AddDefault As New Point(792, 344)
-
-        Shared maxAdd As New Point(1093, 555)
+        Shared AddMax As New Point(1093, 555)
 
         'count label locations
         Shared CountDefault As New Point(787, 386)
+        Shared CountMax As New Point(1088, 616)
 
-        Shared maxCount As New Point(1088, 616)
-
-        'search box locations
-        Shared SearchBoxDefault As New Point(27, 72)
-
-        Shared SearchBoxMax As New Point(1062, 82)
-
-        'column combo box locations
-        Shared ColumnBoxDefault As New Point(60, 33)
-
-        Shared ColumnBoxMax As New Point(1139, 21)
-
-        'search button locations
-        Shared SearchDefault As New Point(781, 123)
-
-        Shared SearchMax As New Point(1093, 151)
+        'Search Group box locations
+        Shared SearchNormal As New Point(743, 47)
+        Shared SearchMax As New Point(968, 64)
     End Structure
 
     Private Sub Frm_ViewListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -64,7 +48,7 @@ Public Class Frm_ViewListeners
         LoadData()
         dgv_Listeners.Sort(dgv_Listeners.Columns(0), ListSortDirection.Ascending)
         cbx_Column.SelectedIndex = 0
-        updateTotal()
+        UpdateTotal()
     End Sub
 
     Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles btn_Add.Click
@@ -84,65 +68,44 @@ Public Class Frm_ViewListeners
         End Using
     End Sub
 
-    Private Sub dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
+    Private Sub Dgv_Listeners_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Listeners.CellEndEdit
         Dim column As String = CStr(dgv_Listeners.Columns(e.ColumnIndex).DataPropertyName)
         Dim value As String = CStr(dgv_Listeners.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
         Dim listenerID As Integer = CInt(CType(dgv_Listeners.Rows(e.RowIndex).DataBoundItem, DataRowView)("ListenerID"))
 
         Using db As New Database
-            'db.UpdateListener(listenerID, column, value)
+            db.UpdateListener(listenerID, column, value)
         End Using
     End Sub
 
-    Private Sub updateTotal()
+    Private Sub UpdateTotal()
         lbl_Total.Text = String.Format(totalListeners, dgv_Listeners.RowCount())
     End Sub
 
-    Private Sub dgv_Listeners_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgv_Listeners.UserDeletedRow
-        updateTotal()
+    Private Sub Dgv_Listeners_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgv_Listeners.UserDeletedRow
+        UpdateTotal()
     End Sub
 
-    Private Sub frm_ViewListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
-        If Me.Size = Sizes.max Then
-            MaxChanges()
-        Else
-            DefaultChanges()
-        End If
-    End Sub
-
-    Private Sub btn_Search_Click(sender As Object, e As EventArgs)
-        Dim criteria = txt_SearchBox.Text
-        Dim column = cbx_Column.SelectedText
-        Dim queryString As String = String.Format("SELECT * FROM EMAIL_LISTENERS WHERE {0} LIKE '%{1}%", column, criteria)
-
-        'db.search(queryString)
-        'If cbx_Column.SelectedText = "Email" Then
-        '    Console.WriteLine("EMAIL")
-
-        '    'EMAIL_LISTENERSTableAdapter.Fill(Media_MinistryDataSet.EMAIL_LISTENERS.FindByEMAIL(criteria))
+    Private Sub Frm_ViewListeners_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        'If Not Me.Size.Equals(Sizes.normal) Then
+        '    MaxChanges()
         'Else
-        '    Console.WriteLine("NAME")
+        '    DefaultChanges()
         'End If
     End Sub
 
-    Private Sub btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click
-        'lbl_EmailSearch.Show()
-        'lbl_NameSearch.Show()
-        'txt_NameSearch.Show()
-        'txt_EmailSearch.Show()
+    Private Sub Btn_Advanced_Click(sender As Object, e As EventArgs) Handles btn_Advanced.Click
         gbx_AdvancedSearch.Show()
-        txt_SearchBox.Hide()
         gbx_Search.Hide()
-        btn_Advanced.Hide()
-        cbx_Column.Hide()
+
+        txt_SearchBox.Text = ""
     End Sub
 
     Private Sub MaxChanges()
         'Change Locations
-        txt_SearchBox.Location = Locations.SearchBoxMax
-        cbx_Column.Location = Locations.ColumnBoxMax
-        lbl_Total.Location = Locations.maxCount
-        btn_Add.Location = Locations.maxAdd
+        gbx_Search.Location = Locations.SearchMax
+        lbl_Total.Location = Locations.CountMax
+        btn_Add.Location = Locations.AddMax
 
         'Change Visibilities
         btn_Advanced.Show()
@@ -153,8 +116,7 @@ Public Class Frm_ViewListeners
 
     Private Sub DefaultChanges()
         'Change Locations
-        txt_SearchBox.Location = Locations.SearchBoxDefault
-        cbx_Column.Location = Locations.ColumnBoxDefault
+        gbx_Search.Location = Locations.SearchNormal
         lbl_Total.Location = Locations.CountDefault
         btn_Add.Location = Locations.AddDefault
 
@@ -168,12 +130,12 @@ Public Class Frm_ViewListeners
         dgv_Listeners.Size = Sizes.DefaultDGV
     End Sub
 
-    Private Sub btn_AdvancedCancel_Click(sender As Object, e As EventArgs) Handles btn_AdvancedCancel.Click
+    Private Sub Btn_AdvancedCancel_Click(sender As Object, e As EventArgs) Handles btn_AdvancedCancel.Click
         gbx_AdvancedSearch.Hide()
-        txt_SearchBox.Show()
         gbx_Search.Show()
-        btn_Advanced.Show()
-        cbx_Column.Show()
+
+        txt_NameSearch.Text = ""
+        txt_EmailSearch.Text = ""
     End Sub
 
     Private Sub GetData()
@@ -203,7 +165,29 @@ Public Class Frm_ViewListeners
         FiltersTable.Rows.Add(row)
     End Sub
 
-    Private Sub txt_SearchBox_TextChanged(sender As Object, e As EventArgs) Handles txt_SearchBox.TextChanged
-        bsListeners.Filter = String.Format("{0} like '%{1}%'", CType(cbx_Column.SelectedItem, DataRowView)("Column"), txt_SearchBox.Text)
+    Private Sub Txt_SearchBox_TextChanged(sender As Object, e As EventArgs) Handles txt_SearchBox.TextChanged
+        If Not String.IsNullOrWhiteSpace(txt_SearchBox.Text) Then
+            bsListeners.Filter = String.Format("{0} like '%{1}%'", CType(cbx_Column.SelectedItem, DataRowView)("Column"), txt_SearchBox.Text)
+        End If
+    End Sub
+
+    Private Sub Txt_NameSearch_TextChanged(sender As Object, e As EventArgs) Handles txt_NameSearch.TextChanged
+        If Not String.IsNullOrWhiteSpace(txt_NameSearch.Text) Then
+            If String.IsNullOrWhiteSpace(txt_EmailSearch.Text) Then
+                bsListeners.Filter = String.Format("Name like '%{1}%'", "Name", txt_NameSearch.Text)
+            Else
+                bsListeners.Filter = String.Format("Name like '%{1}%' AND EmailAddress like '%{1}%'", txt_NameSearch.Text, txt_EmailSearch.Text)
+            End If
+        End If
+    End Sub
+
+    Private Sub Txt_EmailSearch_TextChanged(sender As Object, e As EventArgs) Handles txt_EmailSearch.TextChanged
+        If Not String.IsNullOrWhiteSpace(txt_EmailSearch.Text) Then
+            If String.IsNullOrWhiteSpace(txt_NameSearch.Text) Then
+                bsListeners.Filter = String.Format("EmailAddress like '%{0}%'", txt_EmailSearch.Text)
+            Else
+                bsListeners.Filter = String.Format("Name like '%{0}%' AND EmailAddress like '%{1}%'", txt_NameSearch.Text, txt_EmailSearch.Text)
+            End If
+        End If
     End Sub
 End Class

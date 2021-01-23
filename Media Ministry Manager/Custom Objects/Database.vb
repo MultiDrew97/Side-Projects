@@ -144,20 +144,20 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateCustomerInfo(customer As Customer)
-        UpdateCustomerInfo(customer.Id, customer.FirstName, customer.LastName, customer.PhoneNumber, customer.Address.Street, customer.Address.City, customer.Address.State, customer.Address.ZipCode, customer.EmailAddress.Address)
-    End Sub
+    'Public Sub UpdateCustomerInfo(customer As Customer)
+    '    UpdateCustomerInfo(customer.Id, customer.FirstName, customer.LastName, customer.PhoneNumber, customer.Address.Street, customer.Address.City, customer.Address.State, customer.Address.ZipCode, customer.EmailAddress.Address)
+    'End Sub
 
-    Public Sub UpdateCustomerInfo(id As Integer, firstName As String, lastName As String, newPhone As String, addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String)
-        results = ""
-        myCmd.CommandText = String.Format("UPDATE CUSTOMERS
-                                                SET FirstName= '{0}', LAST_NAME = '{1}', PHONE_NUMBER = '{2}',
-                                                SHIPPING_STREET = '{3}', SHIPPING_CITY = '{4}', SHIPPING_STATE = '{5}', SHIPPING_ZIP = '{6}',
-                                                EMAIL = '{7}'
-                                                WHERE CustomerID = {8}",
-                                            firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, id)
-        myCmd.ExecuteNonQuery()
-    End Sub
+    'Public Sub UpdateCustomerInfo(id As Integer, firstName As String, lastName As String, newPhone As String, addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String)
+    '    results = ""
+    '    myCmd.CommandText = String.Format("UPDATE CUSTOMERS
+    '                                            SET FirstName= '{0}', LAST_NAME = '{1}', PHONE_NUMBER = '{2}',
+    '                                            SHIPPING_STREET = '{3}', SHIPPING_CITY = '{4}', SHIPPING_STATE = '{5}', SHIPPING_ZIP = '{6}',
+    '                                            EMAIL = '{7}'
+    '                                            WHERE CustomerID = {8}",
+    '                                        firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, id)
+    '    myCmd.ExecuteNonQuery()
+    'End Sub
 
     Public Sub UpdateCustomer(id As Integer, column As String, value As String)
         Dim command As String = String.Format("{0} = {1}", column, value)
@@ -170,7 +170,7 @@ Public Class Database
     End Sub
 
     Public Function GetProductInfo(id As Integer) As Product
-        myCmd.CommandText = String.Format("SELECT * FROM INVENTORY WHERE ItemID = {0}", id)
+        myCmd.CommandText = String.Format("SELECT ItemName, Stock, Price FROM INVENTORY WHERE ItemID = {0}", id)
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read
@@ -184,7 +184,7 @@ Public Class Database
     Public Function GetProducts() As Collection(Of Product)
         Dim products As New Collection(Of Product)
 
-        myCmd.CommandText = "SELECT * FROM INVENTORY"
+        myCmd.CommandText = "SELECT ItemID, ItemName, Stock, Price FROM INVENTORY"
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read
@@ -195,37 +195,10 @@ Public Class Database
         Return products
     End Function
 
-    Public Sub UpdatePhone(newPhone As String, oldPhone As String)
-        myCmd.CommandText = String.Format("UPDATE CUSTOMERS
-                                                SET PHONE_NUMBER = '{0}'
-                                                WHERE PHONE_NUMBER = '{1}'",
-                                            newPhone, oldPhone)
-        myCmd.ExecuteNonQuery()
-    End Sub
-
     Public Sub RemoveCustomer(id As Integer)
         myCmd.CommandText = String.Format("DELETE FROM CUSTOMERS WHERE CustomerID = {0}", id)
 
         myCmd.ExecuteNonQuery()
-
-        'Return results
-
-        'SUBSTRACT ORDER NUMBERS FROM INVENTORY
-        'myCmd.CommandText = String.Format("UPDATE INVENTORY
-        '                                    SET IN_STOCK = IN_STOCK - (SELECT SUM(ITEM_COUNT) FROM WHERE ITEM_INDEX = INVENTORY.ITEM_INDEX AND PHONE_NUMBER = '{0}')",
-        '                                    phone)
-
-        ''REMOVE THE ORDER FROM THE TABLES
-        'myCmd.CommandText = String.Format("DELETE FROM ORDERS WHERE PHONE_NUMBER = '{0}'", phone)
-        'myReader = myCmd.ExecuteReader()
-
-        'Do While myReader.Read()
-        '    results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) & vbLf
-        'Loop
-
-        'myReader.Close()
-
-        'Return results
     End Sub
 
     Public Sub AddNewProduct(product As Product)

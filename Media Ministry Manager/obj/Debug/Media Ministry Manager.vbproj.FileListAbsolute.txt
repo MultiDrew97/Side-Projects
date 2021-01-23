@@ -115,7 +115,6 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.FileSelectionDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.ListenerSelectionDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_CustomMessage.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_EmailListeners.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Folder.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewListeners.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_SendEmails.resources
@@ -123,13 +122,11 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_DisplayCustomers.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ChangePassword.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_CreateUser.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminSignIn.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Login.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Settings.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayOrders.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Main.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdateInventory.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdatePhoneNumber.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewInventory.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Resources.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
@@ -145,3 +142,5 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.PlaceOrderDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AddListenerDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.EmailListenersDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminDialog.resources

@@ -48,9 +48,20 @@ Public Class frm_Main
     End Sub
 
     Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
-        Dim emailListeners As New Frm_EmailListeners()
-        emailListeners.Show()
-        Me.Close()
+        If EmailListenersDialog.ShowDialog = DialogResult.OK Then
+            Dim form As Form
+            Select Case EmailListenersDialog.SelectedItem
+                Case "Send"
+                    form = New frm_SendEmails
+                Case "Upload"
+                    form = New Frm_Upload
+                Case "View"
+                    form = New Frm_ViewListeners
+            End Select
+
+            form.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged

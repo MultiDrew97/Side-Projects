@@ -4,12 +4,11 @@ Public Class Frm_CustomMessage
     'TODO: Add functionality to select wheter to send this to all listeners or specific listeners
     'TODO: Convert this to a DialogBox
     Private Sub Btn_Send_Click(sender As Object, e As EventArgs) Handles btn_Send.Click
-        PlaceOrderDialog.ShowDialog()
-        'If FileSelectionDialog.ShowDialog() = DialogResult.OK Then
-        '    If ListenerSelectionDialog.ShowDialog() = DialogResult.OK Then
-        '        SendEmail()
-        '    End If
-        'End If
+        If FileSelectionDialog.ShowDialog() = DialogResult.OK Then
+            If ListenerSelectionDialog.ShowDialog() = DialogResult.OK Then
+                SendEmail()
+            End If
+        End If
     End Sub
 
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click

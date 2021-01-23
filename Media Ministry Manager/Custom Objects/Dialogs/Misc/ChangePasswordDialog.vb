@@ -11,7 +11,7 @@ Public Class Frm_ChangePassword
     Private Sub Btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
         Try
             If PasswordCheck() Then
-                Dim adminInfo As AdminSignIn = New AdminSignIn()
+                Dim adminInfo As AdminDialog = New AdminDialog()
                 adminInfo.Show()
 
                 Do Until My.Settings.AdminInfoRecieved

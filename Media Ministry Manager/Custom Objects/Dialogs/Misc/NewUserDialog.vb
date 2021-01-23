@@ -19,7 +19,7 @@ Public Class Frm_CreateUser
                 'Console.WriteLine(adminUser)
                 Dim username As String = InputBox("Enter admin username", "Admin Login")
                 Dim password As String = InputBox("Enter admin password", "Admin Login")
-                Dim adminInfo As AdminSignIn = New AdminSignIn()
+                Dim adminInfo As AdminDialog = New AdminDialog()
                 adminInfo.Show()
 
                 Do Until My.Settings.AdminInfoRecieved

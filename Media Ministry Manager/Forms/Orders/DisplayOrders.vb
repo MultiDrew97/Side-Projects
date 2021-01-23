@@ -3,13 +3,14 @@ Imports System.Data.SqlClient
 
 Public Class frm_DisplayOrders
     Property mainForm() As frm_Main
+    Private OrdersTable As New DataTable
     'TODO: Implement custom table filling for this form
     Private Sub frm_DisplayOrders_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Media_MinistryDataSet.ORDER_SUMMARY' table. You can move, or remove it, as needed.
-        Me.ORDER_SUMMARYTableAdapter.Fill(Me.MediaMinistryDataSet.ORDER_SUMMARY)
-        For index As Integer = 0 To (dgv_Orders.Rows.Count - 1)
-            dgv_Orders.Rows(index).Cells(0).Value = False
-        Next
+        'Me.ORDER_SUMMARYTableAdapter.Fill(Me.MediaMinistryDataSet.ORDER_SUMMARY)
+        'For index As Integer = 0 To (dgv_Orders.Rows.Count - 1)
+        '    dgv_Orders.Rows(index).Cells(0).Value = False
+        'Next
     End Sub
 
     Private Sub Frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
