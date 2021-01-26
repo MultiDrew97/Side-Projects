@@ -1,18 +1,18 @@
 ﻿Namespace CustomData
-    Public Class ListenersRowChangeEvent
+    Public Class InventoryRowChangeEvent
         Inherits EventArgs
 
-        Private eventRow As ListenersDataRow
+        Private eventRow As InventoryDataRow
 
         Private eventAction As DataRowAction
 
-        Public Sub New(row As ListenersDataRow, action As DataRowAction)
+        Public Sub New(row As InventoryDataRow, action As DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
         End Sub
 
-        Public ReadOnly Property Row() As ListenersDataRow
+        Public ReadOnly Property Row() As InventoryDataRow
             Get
                 Return Me.eventRow
             End Get

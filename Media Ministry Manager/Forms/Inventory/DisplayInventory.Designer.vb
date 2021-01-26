@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_ViewInventory
+Partial Class Frm_DisplayInventory
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,9 +24,15 @@ Partial Class Frm_ViewInventory
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_ViewInventory))
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayInventory))
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
+        Me.ProductName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cms_ProductsTable = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AvailabilityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bsProducts = New System.Windows.Forms.BindingSource(Me.components)
         Me.btn_AddProduct = New System.Windows.Forms.Button()
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
@@ -49,10 +55,9 @@ Partial Class Frm_ViewInventory
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProductName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chk_ShowUnavailable = New System.Windows.Forms.CheckBox()
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cms_ProductsTable.SuspendLayout()
         CType(Me.bsProducts, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
@@ -66,17 +71,61 @@ Partial Class Frm_ViewInventory
         Me.dgv_Inventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Inventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv_Inventory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProductName, Me.Stock, Me.Price})
+        Me.dgv_Inventory.ContextMenuStrip = Me.cms_ProductsTable
         Me.dgv_Inventory.DataSource = Me.bsProducts
         Me.dgv_Inventory.Dock = System.Windows.Forms.DockStyle.Right
-        Me.dgv_Inventory.Location = New System.Drawing.Point(162, 24)
+        Me.dgv_Inventory.Location = New System.Drawing.Point(222, 24)
         Me.dgv_Inventory.Name = "dgv_Inventory"
-        Me.dgv_Inventory.Size = New System.Drawing.Size(443, 426)
+        Me.dgv_Inventory.Size = New System.Drawing.Size(443, 460)
         Me.dgv_Inventory.TabIndex = 0
+        '
+        'ProductName
+        '
+        Me.ProductName.DataPropertyName = "ItemName"
+        Me.ProductName.HeaderText = "Name"
+        Me.ProductName.Name = "ProductName"
+        '
+        'Stock
+        '
+        Me.Stock.DataPropertyName = "Stock"
+        Me.Stock.HeaderText = "Stock"
+        Me.Stock.Name = "Stock"
+        '
+        'Price
+        '
+        Me.Price.DataPropertyName = "Price"
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = "-"
+        Me.Price.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Price.HeaderText = "Price"
+        Me.Price.Name = "Price"
+        '
+        'cms_ProductsTable
+        '
+        Me.cms_ProductsTable.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshToolStripMenuItem, Me.AvailabilityToolStripMenuItem})
+        Me.cms_ProductsTable.Name = "cms_Products"
+        Me.cms_ProductsTable.Size = New System.Drawing.Size(177, 48)
+        '
+        'RefreshToolStripMenuItem
+        '
+        Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
+        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.RefreshToolStripMenuItem.Text = "Refresh"
+        '
+        'AvailabilityToolStripMenuItem
+        '
+        Me.AvailabilityToolStripMenuItem.Name = "AvailabilityToolStripMenuItem"
+        Me.AvailabilityToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.AvailabilityToolStripMenuItem.Text = "Change Availability"
+        '
+        'bsProducts
+        '
+        Me.bsProducts.Filter = "Available = True"
         '
         'btn_AddProduct
         '
         Me.btn_AddProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_AddProduct.Location = New System.Drawing.Point(23, 58)
+        Me.btn_AddProduct.Location = New System.Drawing.Point(45, 60)
         Me.btn_AddProduct.Name = "btn_AddProduct"
         Me.btn_AddProduct.Size = New System.Drawing.Size(119, 85)
         Me.btn_AddProduct.TabIndex = 3
@@ -89,7 +138,7 @@ Partial Class Frm_ViewInventory
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mnstr_Strip.Size = New System.Drawing.Size(605, 24)
+        Me.mnstr_Strip.Size = New System.Drawing.Size(665, 24)
         Me.mnstr_Strip.TabIndex = 4
         Me.mnstr_Strip.Text = "MenuStrip1"
         '
@@ -214,42 +263,37 @@ Partial Class Frm_ViewInventory
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'ProductName
+        'chk_ShowUnavailable
         '
-        Me.ProductName.DataPropertyName = "Name"
-        Me.ProductName.HeaderText = "Name"
-        Me.ProductName.Name = "ProductName"
+        Me.chk_ShowUnavailable.AutoSize = True
+        Me.chk_ShowUnavailable.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chk_ShowUnavailable.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.chk_ShowUnavailable.Location = New System.Drawing.Point(23, 211)
+        Me.chk_ShowUnavailable.MaximumSize = New System.Drawing.Size(200, 150)
+        Me.chk_ShowUnavailable.MinimumSize = New System.Drawing.Size(0, 100)
+        Me.chk_ShowUnavailable.Name = "chk_ShowUnavailable"
+        Me.chk_ShowUnavailable.Size = New System.Drawing.Size(200, 100)
+        Me.chk_ShowUnavailable.TabIndex = 5
+        Me.chk_ShowUnavailable.Text = "Show Unavailable Items"
+        Me.chk_ShowUnavailable.UseVisualStyleBackColor = True
         '
-        'Stock
-        '
-        Me.Stock.DataPropertyName = "Stock"
-        Me.Stock.HeaderText = "Stock"
-        Me.Stock.Name = "Stock"
-        '
-        'Price
-        '
-        Me.Price.DataPropertyName = "Price"
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = "-"
-        Me.Price.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Price.HeaderText = "Price"
-        Me.Price.Name = "Price"
-        '
-        'Frm_ViewInventory
+        'Frm_DisplayInventory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(605, 450)
+        Me.ClientSize = New System.Drawing.Size(665, 484)
         Me.Controls.Add(Me.btn_AddProduct)
         Me.Controls.Add(Me.dgv_Inventory)
         Me.Controls.Add(Me.mnstr_Strip)
+        Me.Controls.Add(Me.chk_ShowUnavailable)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "Frm_ViewInventory"
+        Me.Name = "Frm_DisplayInventory"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry"
+        Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cms_ProductsTable.ResumeLayout(False)
         CType(Me.bsProducts, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
@@ -281,6 +325,10 @@ Partial Class Frm_ViewInventory
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents bsProducts As BindingSource
+    Friend WithEvents chk_ShowUnavailable As CheckBox
+    Friend WithEvents cms_ProductsTable As ContextMenuStrip
+    Friend WithEvents RefreshToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AvailabilityToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductName As DataGridViewTextBoxColumn
     Friend WithEvents Stock As DataGridViewTextBoxColumn
     Friend WithEvents Price As DataGridViewTextBoxColumn

@@ -217,9 +217,19 @@
     <Compile Include="Assets\MediaMinistrySplash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Custom Objects\Data Tables\Events\InventoryRowChangeEvent.vb" />
     <Compile Include="Custom Objects\Data Tables\Events\ListenersRowChangeEvent.vb" />
+    <Compile Include="Custom Objects\Data Tables\Events\OrdersRowChangeEvent.vb" />
+    <Compile Include="Custom Objects\Data Tables\Rows\InventoryDataRow.vb" />
     <Compile Include="Custom Objects\Data Tables\Rows\ListenersDataRow.vb" />
+    <Compile Include="Custom Objects\Data Tables\Rows\OrdersDataRow.vb" />
+    <Compile Include="Custom Objects\Data Tables\Tables\InventoryDataTable.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Custom Objects\Data Tables\Tables\ListenersDataTable.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom Objects\Data Tables\Tables\OrdersDataTable.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Custom Objects\Dialogs\Emails\FileSelectionDialog.Designer.vb">
@@ -334,10 +344,10 @@
     <Compile Include="Forms\Inventory\UpdateInventory.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Inventory\ViewInventory.Designer.vb">
-      <DependentUpon>ViewInventory.vb</DependentUpon>
+    <Compile Include="Forms\Inventory\DisplayInventory.Designer.vb">
+      <DependentUpon>DisplayInventory.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Inventory\ViewInventory.vb">
+    <Compile Include="Forms\Inventory\DisplayInventory.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Objects\Dialogs\Orders\PlaceOrderDialog.Designer.vb">
@@ -386,7 +396,7 @@
     </Compile>
     <Compile Include="Custom Objects\Google\DriveUploader.vb" />
     <Compile Include="Custom Objects\Types\Orders\CompletedOrder.vb" />
-    <Compile Include="Custom Objects\Types\Orders\Order.vb" />
+    <Compile Include="Custom Objects\Types\Orders\CurrentOrder.vb" />
     <Compile Include="Custom Objects\Types\People\Address.vb" />
     <Compile Include="Custom Objects\Types\People\Customer.vb" />
     <Compile Include="Custom Objects\Types\Inventory\Item.vb" />
@@ -460,8 +470,8 @@
     <EmbeddedResource Include="Forms\Inventory\UpdateInventory.resx">
       <DependentUpon>UpdateInventory.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Inventory\ViewInventory.resx">
-      <DependentUpon>ViewInventory.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Inventory\DisplayInventory.resx">
+      <DependentUpon>DisplayInventory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

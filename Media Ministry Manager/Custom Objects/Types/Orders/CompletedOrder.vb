@@ -1,13 +1,13 @@
 ﻿Option Strict On
 Namespace Types
     Public Class CompletedOrder
-        Inherits Order
+        Inherits CurrentOrder
 
-        Public Property FulfilledDate() As Date
+        Public Property CompletedDate As Date
 
-        Public Sub New(customer As Customer, product As Product, ordered As Date, completed As Date)
-            MyBase.New(customer, product, ordered)
-            Me.FulfilledDate = completed
+        Public Sub New(orderID As Integer, customerID As Integer, itemID As Integer, quantity As Integer, orderTotal As Double, orderedDate As Date, completedDate As Date)
+            MyBase.New(orderID, customerID, itemID, quantity, orderTotal, orderedDate)
+            Me.CompletedDate = completedDate
         End Sub
     End Class
 End Namespace

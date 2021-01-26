@@ -25,13 +25,13 @@ Public Class frm_Main
     End Sub
 
     Private Sub btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
-        Dim inventory As New Frm_ViewInventory
+        Dim inventory As New Frm_DisplayInventory
         inventory.Show()
         Me.Close()
     End Sub
 
     Private Sub btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
-        Dim ordersView = New Frm_DisplayOrders With {.mainForm = Me}
+        Dim ordersView = New Frm_DisplayOrders
         ordersView.Show()
         Me.Close()
     End Sub
@@ -155,13 +155,13 @@ Public Class frm_Main
     End Sub
 
     Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
-        Dim products As New Frm_ViewInventory
+        Dim products As New Frm_DisplayInventory
         products.Show()
         Me.Close()
     End Sub
 
     Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
-        Dim orders As New Frm_DisplayOrders With {.mainForm = Me}
+        Dim orders As New Frm_DisplayOrders
         orders.Show()
         Me.Close()
     End Sub

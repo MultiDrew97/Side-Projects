@@ -1,16 +1,19 @@
 ﻿Namespace CustomData
-    Public Class ListenersDataTable
-        Inherits TypedTableBase(Of ListenersDataRow)
+    Public Class OrdersDataTable
+        Inherits TypedTableBase(Of OrdersDataRow)
 
-        Public Delegate Sub ListenersDataRowChangeEventHandler(ByVal sender As Object, ByVal e As ListenersRowChangeEvent)
+        Public Delegate Sub OrdersDataRowChangeEventHandler(ByVal sender As Object, ByVal e As OrdersRowChangeEvent)
 
-        Private ListenerID As DataColumn
-        Private Name As DataColumn
-        Private EmailAddress As DataColumn
+        Private OrderID As DataColumn
+        Private CustomerName As DataColumn
+        Private ItemName As DataColumn
+        Private Quantity As DataColumn
+        Private OrderTotal As DataColumn
+        Private OrderDate As DataColumn
 
         Public Sub New()
             MyBase.New
-            Me.TableName = "EmailListeners"
+            Me.TableName = "Orders"
             Me.BeginInit()
             Me.InitClass()
             Me.EndInit()
@@ -37,21 +40,39 @@
             Me.InitVars()
         End Sub
 
-        Public ReadOnly Property ListenerIdColumn() As DataColumn
+        Public ReadOnly Property OrderIdColumn() As DataColumn
             Get
-                Return Me.ListenerID
+                Return Me.OrderID
             End Get
         End Property
 
-        Public ReadOnly Property NameColumn() As DataColumn
+        Public ReadOnly Property CustomerNameColumn() As DataColumn
             Get
-                Return Me.Name
+                Return Me.CustomerName
             End Get
         End Property
 
-        Public ReadOnly Property EmailColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ItemNameColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.EmailAddress
+                Return Me.ItemName
+            End Get
+        End Property
+
+        Public ReadOnly Property QuantityColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.Quantity
+            End Get
+        End Property
+
+        Public ReadOnly Property OrderTotalColumn As DataColumn
+            Get
+                Return Me.OrderTotal
+            End Get
+        End Property
+
+        Public ReadOnly Property OrderDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.OrderDate
             End Get
         End Property
 
@@ -61,110 +82,123 @@
             End Get
         End Property
 
-        Default Public ReadOnly Property Item(ByVal index As Integer) As ListenersDataRow
+        Default Public ReadOnly Property Item(ByVal index As Integer) As OrdersDataRow
             Get
-                Return CType(Me.Rows(index), ListenersDataRow)
+                Return CType(Me.Rows(index), OrdersDataRow)
             End Get
         End Property
 
-        Public Event ListenersDataRowChanging As ListenersDataRowChangeEventHandler
+        Public Event OrdersDataRowChanging As OrdersDataRowChangeEventHandler
 
-        Public Event ListenersDataRowChanged As ListenersDataRowChangeEventHandler
+        Public Event OrdersDataRowChanged As OrdersDataRowChangeEventHandler
 
-        Public Event ListenersDataRowDeleting As ListenersDataRowChangeEventHandler
+        Public Event OrdersDataRowDeleting As OrdersDataRowChangeEventHandler
 
-        Public Event ListenersDataRowDeleted As ListenersDataRowChangeEventHandler
+        Public Event OrdersDataRowDeleted As OrdersDataRowChangeEventHandler
 
-        Public Overloads Sub AddEmailListenersRow(ByVal row As ListenersDataRow)
+        Public Overloads Sub AddOrdersRow(ByVal row As OrdersDataRow)
             Me.Rows.Add(row)
         End Sub
 
-        Public Overloads Function AddEmailListenersRow(ByVal NAME As String, ByVal EMAIL As String) As ListenersDataRow
-            Dim rowListenersDataRow As ListenersDataRow = CType(Me.NewRow, ListenersDataRow)
-            Dim columnValuesArray() As Object = New Object() {NAME, EMAIL}
-            rowListenersDataRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowListenersDataRow)
-            Return rowListenersDataRow
+        Public Overloads Function AddOrdersRow(ByVal CustomerName As Integer, ByVal ItemName As Integer, Quantity As Integer, OrderTotal As Double) As OrdersDataRow
+            Dim rowOrdersDataRow As OrdersDataRow = CType(Me.NewRow, OrdersDataRow)
+            Dim columnValuesArray() As Object = New Object() {CustomerName, ItemName, Quantity, OrderTotal}
+            rowOrdersDataRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowOrdersDataRow)
+            Return rowOrdersDataRow
         End Function
 
-        Public Function FindByID(ByVal ID As Integer) As ListenersDataRow
-            Return CType(Me.Rows.Find(New Object() {ID}), ListenersDataRow)
+        Public Function FindByID(ByVal ID As Integer) As OrdersDataRow
+            Return CType(Me.Rows.Find(New Object() {ID}), OrdersDataRow)
         End Function
 
         Public Overrides Function Clone() As DataTable
-            Dim cln As ListenersDataTable = CType(MyBase.Clone, ListenersDataTable)
+            Dim cln As OrdersDataTable = CType(MyBase.Clone, OrdersDataTable)
             cln.InitVars()
             Return cln
         End Function
 
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New ListenersDataTable()
+            Return New OrdersDataTable()
         End Function
 
         Friend Sub InitVars()
-            Me.ListenerID = MyBase.Columns("ListenerID")
-            Me.Name = MyBase.Columns("Name")
-            Me.EmailAddress = MyBase.Columns("EmailAddress")
+            Me.OrderID = MyBase.Columns("OrderID")
+            Me.CustomerName = MyBase.Columns("CustomerName")
+            Me.ItemName = MyBase.Columns("ItemName")
+            Me.Quantity = MyBase.Columns("Quantity")
+            Me.OrderTotal = MyBase.Columns("OrderTotal")
+            Me.OrderDate = MyBase.Columns("OrderDate")
         End Sub
 
         Private Sub InitClass()
-            Me.ListenerID = New DataColumn("ListenerID", GetType(Integer), Nothing, MappingType.Element)
-            MyBase.Columns.Add(Me.ListenerID)
-            Me.Name = New DataColumn("Name", GetType(String), Nothing, MappingType.Element)
-            MyBase.Columns.Add(Me.Name)
-            Me.EmailAddress = New DataColumn("EmailAddress", GetType(String), Nothing, MappingType.Element)
-            MyBase.Columns.Add(Me.EmailAddress)
-            Me.Constraints.Add(New UniqueConstraint("Constraint1", New DataColumn() {Me.ListenerID}, True))
-            Me.ListenerID.AllowDBNull = False
-            Me.ListenerID.ReadOnly = True
-            Me.ListenerID.Unique = True
-            Me.Name.AllowDBNull = False
-            Me.Name.MaxLength = 50
-            Me.EmailAddress.AllowDBNull = False
-            Me.EmailAddress.MaxLength = 100
+            Me.OrderID = New DataColumn("OrderID", GetType(Integer), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.OrderID)
+            Me.CustomerName = New DataColumn("CustomerName", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.CustomerName)
+            Me.ItemName = New DataColumn("ItemName", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.ItemName)
+            Me.Quantity = New DataColumn("Quantity", GetType(Integer), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.Quantity)
+            Me.OrderTotal = New DataColumn("OrderTotal", GetType(Double), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.OrderTotal)
+            Me.OrderDate = New DataColumn("OrderDate", GetType(Date), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.OrderDate)
+            Me.Constraints.Add(New UniqueConstraint("Constraint1", New DataColumn() {Me.OrderID}, True))
+            Me.OrderID.AllowDBNull = False
+            Me.OrderID.ReadOnly = True
+            Me.OrderID.Unique = True
+            Me.CustomerName.AllowDBNull = False
+            Me.CustomerName.MaxLength = 50
+            Me.ItemName.AllowDBNull = False
+            Me.ItemName.MaxLength = 100
+            Me.Quantity.AllowDBNull = False
+            Me.OrderTotal.ReadOnly = True
+            Me.OrderDate.AllowDBNull = False
+            Me.OrderDate.ReadOnly = True
         End Sub
 
-        Public Function NewListenersDataRow() As ListenersDataRow
-            Return CType(Me.NewRow, ListenersDataRow)
+        Public Function NewOrdersDataRow() As OrdersDataRow
+            Return CType(Me.NewRow, OrdersDataRow)
         End Function
 
         Protected Overrides Function NewRowFromBuilder(builder As DataRowBuilder) As DataRow
-            Return New ListenersDataRow(builder)
+            Return New OrdersDataRow(builder)
         End Function
 
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(ListenersDataRow)
+            Return GetType(OrdersDataRow)
         End Function
 
         Protected Overrides Sub OnRowChanged(ByVal e As DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If ((Me.ListenersDataRowChangedEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowChanged(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.OrdersDataRowChangedEvent) IsNot Nothing) Then
+                RaiseEvent OrdersDataRowChanged(Me, New OrdersRowChangeEvent(CType(e.Row, OrdersDataRow), e.Action))
             End If
         End Sub
 
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If ((Me.ListenersDataRowChangingEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowChanging(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.OrdersDataRowChangingEvent) IsNot Nothing) Then
+                RaiseEvent OrdersDataRowChanging(Me, New OrdersRowChangeEvent(CType(e.Row, OrdersDataRow), e.Action))
             End If
         End Sub
 
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If ((Me.ListenersDataRowDeletedEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowDeleted(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.OrdersDataRowDeletedEvent) IsNot Nothing) Then
+                RaiseEvent OrdersDataRowDeleted(Me, New OrdersRowChangeEvent(CType(e.Row, OrdersDataRow), e.Action))
             End If
         End Sub
 
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If ((Me.ListenersDataRowDeletingEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowDeleting(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.OrdersDataRowDeletingEvent) IsNot Nothing) Then
+                RaiseEvent OrdersDataRowDeleting(Me, New OrdersRowChangeEvent(CType(e.Row, OrdersDataRow), e.Action))
             End If
         End Sub
 
-        Public Sub RemoveEMAIL_LISTENERSRow(ByVal row As ListenersDataRow)
+        Public Sub RemoveOrdersRow(ByVal row As OrdersDataRow)
             Me.Rows.Remove(row)
         End Sub
 
@@ -189,7 +223,7 @@
         '    type.Attributes.Add(attribute1)
         '    Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
         '    attribute2.Name = "tableTypeName"
-        '    attribute2.FixedValue = "ListenersDataTable"
+        '    attribute2.FixedValue = "OrdersDataTable"
         '    type.Attributes.Add(attribute2)
         '    type.Particle = sequence
         '    Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
