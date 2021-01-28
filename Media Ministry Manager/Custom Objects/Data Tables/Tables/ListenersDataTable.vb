@@ -1,4 +1,5 @@
 ﻿Namespace CustomData
+    <Serializable>
     Public Class ListenersDataTable
         Inherits TypedTableBase(Of ListenersDataRow)
 
@@ -8,6 +9,7 @@
         Private Name As DataColumn
         Private EmailAddress As DataColumn
 
+        <CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")>
         Public Sub New()
             MyBase.New
             Me.TableName = "EmailListeners"
@@ -35,6 +37,10 @@
         Protected Sub New(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
             Me.InitVars()
+        End Sub
+
+        Public Overridable Shadows Sub GetObjectData(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
+            MyBase.GetObjectData(info, context)
         End Sub
 
         Public ReadOnly Property ListenerIdColumn() As DataColumn
@@ -75,16 +81,15 @@
 
         Public Event ListenersDataRowDeleted As ListenersDataRowChangeEventHandler
 
-        Public Overloads Sub AddEmailListenersRow(ByVal row As ListenersDataRow)
-            Me.Rows.Add(row)
+        Public Sub AddEmailListenersRow(ByVal row As ListenersDataRow)
+            AddEmailListenersRow(CInt(row("ListenerID")), CStr(row("Name")), CStr(row("EmailAddress")))
         End Sub
 
-        Public Overloads Function AddEmailListenersRow(ByVal NAME As String, ByVal EMAIL As String) As ListenersDataRow
-            Dim rowListenersDataRow As ListenersDataRow = CType(Me.NewRow, ListenersDataRow)
-            Dim columnValuesArray() As Object = New Object() {NAME, EMAIL}
-            rowListenersDataRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowListenersDataRow)
-            Return rowListenersDataRow
+        Public Function AddEmailListenersRow(ListenerID As Integer, ByVal Name As String, ByVal EmailAddress As String) As ListenersDataRow
+            Dim ListenersDataRow As ListenersDataRow = CType(Me.NewRow, ListenersDataRow)
+            ListenersDataRow.ItemArray = {ListenerID, Name, EmailAddress}
+            Me.Rows.Add(ListenersDataRow)
+            Return ListenersDataRow
         End Function
 
         Public Function FindByID(ByVal ID As Integer) As ListenersDataRow
@@ -114,7 +119,7 @@
             MyBase.Columns.Add(Me.Name)
             Me.EmailAddress = New DataColumn("EmailAddress", GetType(String), Nothing, MappingType.Element)
             MyBase.Columns.Add(Me.EmailAddress)
-            Me.Constraints.Add(New UniqueConstraint("Constraint1", New DataColumn() {Me.ListenerID}, True))
+            Me.Constraints.Add(New UniqueConstraint("ListenerID", New DataColumn() {Me.ListenerID}, True))
             Me.ListenerID.AllowDBNull = False
             Me.ListenerID.ReadOnly = True
             Me.ListenerID.Unique = True

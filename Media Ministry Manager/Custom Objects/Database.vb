@@ -13,7 +13,6 @@ Public Class Database
     Private ReadOnly myConn As SqlConnection
     Private ReadOnly myCmd As SqlCommand
     Private myReader As SqlDataReader
-    Private results As String
 
     Public Sub New()
         Me.New(My.Settings.Username, My.Settings.Password)
@@ -39,31 +38,44 @@ Public Class Database
         myConn.Open()
     End Sub
 
-    Private Sub Close() Implements IDisposable.Dispose
-        'close connection
-        If (myReader IsNot Nothing) Then
-            'if the reader is still open, close it
-            myReader.Close()
-        End If
+    Public Sub Dispose() Implements IDisposable.Dispose
+        Dispose(True)
+    End Sub
 
-        myConn.Close()
-        myConn.Dispose()
+    Private Sub Dispose(value As Boolean)
+        If value Then
+            'close connection
+            If (myReader IsNot Nothing) Then
+                'if the reader is still open, close it
+                myReader.Close()
+            End If
+
+            myConn.Close()
+            myConn.Dispose()
+        Else
+        End If
     End Sub
 
     Public Sub CreateUser(username As String, password As String)
-        myCmd.CommandText = String.Format("CREATE USER {0} WITH PASSWORD = '{1}'", username, password)
+        myCmd.Parameters.AddRange({New SqlParameter("Username", username), New SqlParameter("Password", password)})
+
+        myCmd.CommandText = "CREATE USER @Username WITH PASSWORD = @Password"
 
         myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub ChangePassword(username As String, password As String)
-        myCmd.CommandText = String.Format("ALTER LOGIN {0} WITH PASSWORD = '{1}'", username, password)
+        myCmd.Parameters.AddRange({New SqlParameter("Username", username), New SqlParameter("Password", password)})
+
+        myCmd.CommandText = "ALTER LOGIN @Username WITH PASSWORD = @Password"
 
         myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub DeleteUser(username As String)
-        myCmd.CommandText = String.Format("DROP USER {0}", username)
+        myCmd.Parameters.AddWithValue("Username", username)
+
+        myCmd.CommandText = "DROP USER @Username"
         'TODO: Implement removing logins
     End Sub
 
@@ -133,32 +145,32 @@ Public Class Database
 
     Public Sub UpdateListener(listenerID As Integer, column As String, value As String)
         Dim command As String = String.Format("{0} = '{1}'", column, value)
+        myCmd.Parameters.AddWithValue("ListenerID", listenerID)
 
-        myCmd.CommandText = String.Format("UPDATE EmailListeners SET {0} WHERE ListenerID = {0}", command, listenerID)
-    End Sub
-
-    Public Sub UpdateListener(listener As Listener, current As String)
-        myCmd.CommandText = String.Format("update email_listeners set name='{0}', email='{1}' where email='{2}'", listener.Name, listener.EmailAddress.Address, current)
+        myCmd.CommandText = String.Format("UPDATE EmailListeners SET {0} WHERE ListenerID = @ListenerID", command)
 
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateCustomer(id As Integer, column As String, value As String)
+    Public Sub UpdateCustomer(customerID As Integer, column As String, value As String)
         Dim command As String = String.Format("{0} = {1}", column, value)
+
+        myCmd.Parameters.AddWithValue("CustomerID", customerID)
 
         myCmd.CommandText = String.Format("UPDATE CUSTOMERS
                                             SET {0}
-                                            WHERE CustomerID = {1}", command, id)
+                                            WHERE CustomerID = @CustomerID", command)
 
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Function GetProductInfo(id As Integer) As Product
-        myCmd.CommandText = String.Format("SELECT ItemName, Stock, Price, Available FROM INVENTORY WHERE ItemID = {0}", id)
+    Public Function GetProductInfo(itemID As Integer) As Product
+        myCmd.Parameters.AddWithValue("ItemID", itemID)
+        myCmd.CommandText = "SELECT ItemName, Stock, Price, Available FROM INVENTORY WHERE ItemID = @ItemID"
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read
-                Return New Product(id, myReader.GetString(1), myReader.GetInt32(2), CDec(myReader.GetSqlMoney(3)), myReader.GetBoolean(4))
+                Return New Product(itemID, myReader.GetString(0), myReader.GetInt32(1), CDec(myReader.GetSqlMoney(2)), myReader.GetBoolean(3))
             Loop
         End Using
 
@@ -166,8 +178,10 @@ Public Class Database
     End Function
 
     Public Sub ChangeAvailability(itemID As Integer, value As Boolean)
-        Dim bitValue As Integer = If(value, 1, 0)
-        myCmd.CommandText = String.Format("UPDATE Inventory SET Available = {0} WHERE ItemID = {1}", bitValue, itemID)
+        myCmd.Parameters.AddRange({New SqlParameter("ItemID", itemID), New SqlParameter("Available", If(value, 1, 0))})
+
+        myCmd.CommandText = "UPDATE Inventory SET Available = @Available WHERE ItemID = @ItemID"
+
         myCmd.ExecuteNonQuery()
     End Sub
 
@@ -185,8 +199,10 @@ Public Class Database
         Return products
     End Function
 
-    Public Sub RemoveCustomer(id As Integer)
-        myCmd.CommandText = String.Format("DELETE FROM CUSTOMERS WHERE CustomerID = {0}", id)
+    Public Sub RemoveCustomer(customerID As Integer)
+        myCmd.Parameters.AddWithValue("CustomerID", customerID)
+
+        myCmd.CommandText = "DELETE FROM CUSTOMERS WHERE CustomerID = @CustomerID"
 
         myCmd.ExecuteNonQuery()
     End Sub
@@ -196,27 +212,32 @@ Public Class Database
     End Sub
 
     Public Sub AddNewProduct(itemName As String, stock As Integer, price As Double)
-        myCmd.CommandText = String.Format("INSERT INTO INVENTORY(ItemName, Stock, Price, Available) VALUES ('{0}', {1}, {2}, 1)", itemName, stock, price)
+        myCmd.Parameters.AddRange({New SqlParameter("ItemName", itemName), New SqlParameter("Stock", stock), New SqlParameter("Price", price)})
+
+        myCmd.CommandText = "INSERT INTO INVENTORY(ItemName, Stock, Price, Available) VALUES (@ItemName, @Stock, @Price, 1)"
 
         myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub UpdateInventory(itemID As Integer, column As String, value As String)
         Dim command As String
-
+        myCmd.Parameters.AddWithValue("ItemID", itemID)
         If Not (column.Equals("Stock") Or column.Equals("Price")) Then
             command = String.Format("{0} = '{1}'", column, value)
         Else
             command = String.Format("{0} = {1}", column, value)
         End If
 
-        myCmd.CommandText = String.Format("UPDATE INVENTORY SET {0} WHERE ItemID = {1}", command, itemID)
+        myCmd.CommandText = String.Format("UPDATE INVENTORY SET {0} WHERE ItemID = @ItemID", command)
 
         myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub RemoveProduct(itemID As Integer)
-        myCmd.CommandText = String.Format("UPDATE Inventory SET Available = 0 WHERE ItemID = {0}", itemID)
+        myCmd.Parameters.AddWithValue("ItemID", itemID)
+
+        myCmd.CommandText = "UPDATE Inventory SET Available = 0 WHERE ItemID = @ItemID"
+
         myCmd.ExecuteNonQuery()
     End Sub
 
@@ -305,36 +326,21 @@ Public Class Database
         Return customers
     End Function
 
-    Public Function GetCustomerInfo(id As Integer) As Customer
-        myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE CustomerID = {0}", id)
+    Public Function GetCustomerInfo(customerID As Integer) As Customer
+        myCmd.Parameters.AddWithValue("CustomerID", customerID)
+
+        myCmd.CommandText = "SELECT * FROM CUSTOMERS WHERE CustomerID = @CustomerID"
+
         myReader = myCmd.ExecuteReader()
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read()
-                Return New Customer(id, myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8))
+                Return New Customer(customerID, myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8))
                 Exit Do
             Loop
         End Using
 
         Return Nothing
-    End Function
-
-    Public Function GetOrders(phoneNumber As String) As String
-        results = ""
-
-        myCmd.CommandText = String.Format("SELECT ORDERS.ORDER_NUMBER, PHONE_NUMBER, ITEM, QUANTITY
-                                            FROM ORDERS, ORDER_COUNTS, INVENTORY
-                                            WHERE ORDERS.ORDER_NUMBER = ORDER_COUNTS.ORDER_NUMBER AND ORDER_COUNTS.ITEM_INDEX = INVENTORY.ITEM_INDEX AND PHONE_NUMBER = '{0}'",
-                                      phoneNumber)
-        myReader = myCmd.ExecuteReader()
-
-        Do While myReader.Read()
-            results = results & myReader.GetInt32(0) & vbTab & myReader.GetString(1) & vbTab & myReader.GetString(2) & vbTab & myReader.GetInt32(3) & vbLf
-        Loop
-
-        myReader.Close()
-
-        Return results
     End Function
 
     Public Sub AddOrder(customerID As Integer, itemID As Integer, quantity As Integer)
@@ -351,7 +357,10 @@ Public Class Database
     End Sub
 
     Public Sub UpdateOrder(orderID As Integer, quantity As Integer)
-        myCmd.CommandText = String.Format("UPDATE Orders SET QUANTITY = {0} WHERE OrderID = {1}", quantity, orderID)
+        myCmd.Parameters.AddWithValue("OrderID", orderID)
+        myCmd.Parameters.AddWithValue("Quantity", quantity)
+
+        myCmd.CommandText = "UPDATE Orders SET QUANTITY = @Quantity WHERE OrderID = @OrderID"
 
         myCmd.ExecuteNonQuery()
     End Sub

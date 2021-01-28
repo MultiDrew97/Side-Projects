@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Media Ministry Manager" version="3.0.588.10" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Media Ministry Manager" version="3.0.605.10" publicKeyToken="639B03656C07EE60" language="neutral" processorArchitecture="msil" />
     <commandLine file="Media Ministry Manager.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -151,14 +151,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1376256">
-      <assemblyIdentity name="Media Ministry Manager" version="3.0.588.10" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1382984">
+      <assemblyIdentity name="Media Ministry Manager" version="3.0.605.10" publicKeyToken="639B03656C07EE60" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oSDVdF7x0TKliA5oLYoAuH93ZsO6BCOz2gtmqDrEa4g=</dsig:DigestValue>
+        <dsig:DigestValue>a7Q2kPnm0l3xK7rG1pEwJO5hIKpltwadyrH/sW/e9iQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -258,13 +258,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Media Ministry Manager.exe.config" size="5214">
+  <file name="Media Ministry Manager.exe.config" size="5172">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>crToEr7A0N2NNDP79K0W569Xko2DRNV0sNNcULt/+W8=</dsig:DigestValue>
+      <dsig:DigestValue>E1eN/KPoIqhAkJ7Co8uNLLrcyZZp5mlRSmo6ZTBAfn8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\App Icon.ico" size="45451">

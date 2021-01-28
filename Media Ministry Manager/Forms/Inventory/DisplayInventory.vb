@@ -108,4 +108,75 @@ Public Class Frm_DisplayInventory
             Refresh()
         Next
     End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+        My.Settings.Username = ""
+        My.Settings.Password = ""
+        My.Settings.KeepLoggedIn = False
+        My.Settings.Save()
+        Me.Close()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Helpers.Utils.CloseOpenForms()
+    End Sub
+
+    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewCustomerToolStripMenuItem.Click
+        AddCustomerDialog.ShowDialog()
+    End Sub
+
+    Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewProductToolStripMenuItem.Click
+        AddProductDialog.ShowDialog()
+    End Sub
+
+    Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewListenerToolStripMenuItem.Click
+        AddListenerDialog.Show()
+    End Sub
+
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem.Click
+        'Dim updateLocation As String = "https://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
+        'Dim updateCheck As String = "https://sppbc.hopto.org/Manager%20Installer/version.txt"
+
+        'Dim request As HttpWebRequest = WebRequest.CreateHttp(updateCheck)
+        'Dim responce As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+
+        'Dim sr As StreamReader = New StreamReader(responce.GetResponseStream)
+
+        'Dim latestVersion As String = sr.ReadToEnd()
+        'Dim currentVersion As String = Application.ProductVersion
+
+        'If Not latestVersion.Contains(currentVersion) Then
+        '    wb_Updater.Navigate(updateLocation)
+        'End If
+    End Sub
+
+    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomersToolStripMenuItem.Click
+        Dim customers As New Frm_DisplayCustomers
+        customers.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
+        Dim products As New Frm_DisplayInventory
+        products.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
+        Dim orders As New Frm_DisplayOrders
+        orders.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewListenersToolStripMenuItem.Click
+        Dim listeners As New Frm_ViewListeners
+        listeners.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        Dim settings As New Frm_Settings()
+        settings.Show()
+        Me.Hide()
+    End Sub
 End Class

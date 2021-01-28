@@ -1,4 +1,5 @@
 ﻿Namespace CustomData
+    <Serializable>
     Public Class OrdersDataTable
         Inherits TypedTableBase(Of OrdersDataRow)
 
@@ -11,6 +12,7 @@
         Private OrderTotal As DataColumn
         Private OrderDate As DataColumn
 
+        <CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")>
         Public Sub New()
             MyBase.New
             Me.TableName = "Orders"
@@ -38,6 +40,10 @@
         Protected Sub New(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
             Me.InitVars()
+        End Sub
+
+        Public Overridable Shadows Sub GetObjectData(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
+            MyBase.GetObjectData(info, context)
         End Sub
 
         Public ReadOnly Property OrderIdColumn() As DataColumn
@@ -96,16 +102,15 @@
 
         Public Event OrdersDataRowDeleted As OrdersDataRowChangeEventHandler
 
-        Public Overloads Sub AddOrdersRow(ByVal row As OrdersDataRow)
-            Me.Rows.Add(row)
+        Public Sub AddOrdersRow(ByVal row As OrdersDataRow)
+            AddOrdersRow(CInt(row("OrderID")), CStr(row("CustomerName")), CStr(row("ItemName")), CInt(row("Quantity")), CDec(row("OrderTotal")), CDate(row("OrderDate")))
         End Sub
 
-        Public Overloads Function AddOrdersRow(ByVal CustomerName As Integer, ByVal ItemName As Integer, Quantity As Integer, OrderTotal As Double) As OrdersDataRow
-            Dim rowOrdersDataRow As OrdersDataRow = CType(Me.NewRow, OrdersDataRow)
-            Dim columnValuesArray() As Object = New Object() {CustomerName, ItemName, Quantity, OrderTotal}
-            rowOrdersDataRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowOrdersDataRow)
-            Return rowOrdersDataRow
+        Public Function AddOrdersRow(OrderID As Integer, CustomerName As String, ItemName As String, Quantity As Integer, OrderTotal As Double, OrderDate As Date) As OrdersDataRow
+            Dim OrdersDataRow As OrdersDataRow = CType(Me.NewRow, OrdersDataRow)
+            OrdersDataRow.ItemArray = {OrderID, CustomerName, ItemName, Quantity, OrderTotal, OrderDate}
+            Me.Rows.Add(OrdersDataRow)
+            Return OrdersDataRow
         End Function
 
         Public Function FindByID(ByVal ID As Integer) As OrdersDataRow

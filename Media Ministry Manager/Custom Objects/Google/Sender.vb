@@ -43,8 +43,14 @@ Namespace GoogleAPI
             End Using
         End Sub
 
-        Sub Dispose() Implements IDisposable.Dispose
+        Public Sub Dispose() Implements IDisposable.Dispose
+            Dispose(True)
+        End Sub
 
+        Private Sub Dispose(value As Boolean)
+            If value Then
+            Else
+            End If
         End Sub
 
         Function Create([to] As MailboxAddress, subject As String, body As String, Optional from As String = "me") As MimeMessage

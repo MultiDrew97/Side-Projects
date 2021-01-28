@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.Serialization
 
 Namespace Exceptions
+    <Serializable>
     Public Class FormClosedException
         Inherits Exception
 

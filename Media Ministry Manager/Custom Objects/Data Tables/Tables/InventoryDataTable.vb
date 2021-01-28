@@ -1,4 +1,5 @@
 ﻿Namespace CustomData
+    <Serializable>
     Public Class InventoryDataTable
         Inherits TypedTableBase(Of InventoryDataRow)
 
@@ -10,6 +11,7 @@
         Private Price As DataColumn
         Private Available As DataColumn
 
+        <CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")>
         Public Sub New()
             MyBase.New
             Me.TableName = "Inventory"
@@ -37,6 +39,10 @@
         Protected Sub New(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
             Me.InitVars()
+        End Sub
+
+        Public Overridable Shadows Sub GetObjectData(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
+            MyBase.GetObjectData(info, context)
         End Sub
 
         Public ReadOnly Property ItemIdColumn() As DataColumn
@@ -89,16 +95,15 @@
 
         Public Event InventoryDataRowDeleted As InventoryDataRowChangeEventHandler
 
-        Public Overloads Sub AddInventoryRow(ByVal row As InventoryDataRow)
-            Me.Rows.Add(row)
+        Public Sub AddInventoryRow(ByVal row As InventoryDataRow)
+            AddInventoryRow(CInt(row("ItemID")), CStr(row("ItemName")), CInt(row("Stock")), CDec(row("Price")), CBool(row("Available")))
         End Sub
 
-        Public Overloads Function AddInventoryRow(ItemName As String, Stock As Integer, Price As Double, Available As Boolean) As InventoryDataRow
-            Dim rowInventoryDataRow As InventoryDataRow = CType(Me.NewRow, InventoryDataRow)
-            Dim columnValuesArray() As Object = New Object() {ItemName, Stock, Price, Available}
-            rowInventoryDataRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowInventoryDataRow)
-            Return rowInventoryDataRow
+        Public Function AddInventoryRow(ItemID As Integer, ItemName As String, Stock As Integer, Price As Double, Available As Boolean) As InventoryDataRow
+            Dim InventoryDataRow As InventoryDataRow = CType(Me.NewRow, InventoryDataRow)
+            InventoryDataRow.ItemArray = {ItemID, ItemName, Stock, Price, Available}
+            Me.Rows.Add(InventoryDataRow)
+            Return InventoryDataRow
         End Function
 
         Public Function FindByID(ID As Integer) As InventoryDataRow

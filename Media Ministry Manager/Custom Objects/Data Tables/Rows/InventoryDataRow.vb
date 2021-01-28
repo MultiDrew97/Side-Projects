@@ -2,7 +2,7 @@
     Public Class InventoryDataRow
         Inherits DataRow
 
-        Private tableInventory As InventoryDataTable
+        Private ReadOnly tableInventory As InventoryDataTable
 
         Friend Sub New(ByVal rb As DataRowBuilder)
             MyBase.New(rb)

@@ -2,7 +2,7 @@
     Public Class ListenersDataRow
         Inherits DataRow
 
-        Private tableEmailListeners As ListenersDataTable
+        Private ReadOnly tableEmailListeners As ListenersDataTable
 
         Friend Sub New(ByVal rb As DataRowBuilder)
             MyBase.New(rb)

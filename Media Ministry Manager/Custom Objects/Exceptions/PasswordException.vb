@@ -1,10 +1,11 @@
 ﻿Imports System.Runtime.Serialization
 
 Namespace Exceptions
+    <Serializable>
     Public Class PasswordMisMatchException
         Inherits Exception
 
-        Sub New(ByVal message As String)
+        Sub New(message As String)
             MyBase.New(message)
         End Sub
 

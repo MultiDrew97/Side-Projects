@@ -2,7 +2,7 @@
     Public Class OrdersDataRow
         Inherits DataRow
 
-        Private tableOrders As OrdersDataTable
+        Private ReadOnly tableOrders As OrdersDataTable
 
         Friend Sub New(ByVal rb As DataRowBuilder)
             MyBase.New(rb)

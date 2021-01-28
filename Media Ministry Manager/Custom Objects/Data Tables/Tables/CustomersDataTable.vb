@@ -1,4 +1,5 @@
 ﻿Namespace CustomData
+    <Serializable>
     Public Class CustomersDataTable
         Inherits TypedTableBase(Of CustomersDataRow)
 
@@ -15,6 +16,7 @@
         Private EmailAddress As DataColumn
         Private JoinDate As DataColumn
 
+        <CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")>
         Public Sub New()
             MyBase.New
             Me.TableName = "Customers"
@@ -42,6 +44,10 @@
         Protected Sub New(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
             Me.InitVars()
+        End Sub
+
+        Public Overridable Shadows Sub GetObjectData(info As Runtime.Serialization.SerializationInfo, context As Runtime.Serialization.StreamingContext)
+            MyBase.GetObjectData(info, context)
         End Sub
 
         Public ReadOnly Property CustomerIdColumn() As DataColumn
@@ -124,16 +130,15 @@
 
         Public Event CustomersDataRowDeleted As CustomersDataRowChangeEventHandler
 
-        Public Overloads Sub AddCustomersRow(ByVal row As CustomersDataRow)
-            Me.Rows.Add(row)
+        Public Sub AddCustomersRow(ByVal row As CustomersDataRow)
+            AddCustomersRow(CInt(row("CustomerID")), CStr(row("FirstName")), CStr(row("LastName")), CStr(row("Street")), CStr(row("City")), CStr(row("State")), CStr(row("ZipCode")), CStr(row("PhoneNumber")), CStr(row("EmailAddress")), CDate(row("JoinDate")))
         End Sub
 
-        Public Overloads Function AddCustomersRow(ByVal NAME As String, ByVal EMAIL As String) As CustomersDataRow
-            Dim rowCustomersDataRow As CustomersDataRow = CType(Me.NewRow, CustomersDataRow)
-            Dim columnValuesArray() As Object = New Object() {NAME, EMAIL}
-            rowCustomersDataRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowCustomersDataRow)
-            Return rowCustomersDataRow
+        Public Function AddCustomersRow(CustomerID As Integer, FirstName As String, LastName As String, Street As String, City As String, State As String, ZipCode As String, PhoneNumber As String, EmailAddress As String, JoinDate As Date) As CustomersDataRow
+            Dim CustomersDataRow As CustomersDataRow = CType(Me.NewRow, CustomersDataRow)
+            CustomersDataRow.ItemArray = {CustomerID, FirstName, LastName, Street, City, State, ZipCode, PhoneNumber, EmailAddress, JoinDate}
+            Me.Rows.Add(CustomersDataRow)
+            Return CustomersDataRow
         End Function
 
         Public Function FindByID(ByVal ID As Integer) As CustomersDataRow
@@ -184,7 +189,7 @@
             MyBase.Columns.Add(Me.EmailAddress)
             Me.JoinDate = New DataColumn("JoinDate", GetType(Date), Nothing, MappingType.Element)
             MyBase.Columns.Add(Me.JoinDate)
-            Me.Constraints.Add(New UniqueConstraint("Constraint1", New DataColumn() {Me.CustomerID}, True))
+            Me.Constraints.Add(New UniqueConstraint("CustomerID", New DataColumn() {Me.CustomerID}, True))
             Me.CustomerID.AllowDBNull = False
             Me.CustomerID.ReadOnly = True
             Me.CustomerID.Unique = True

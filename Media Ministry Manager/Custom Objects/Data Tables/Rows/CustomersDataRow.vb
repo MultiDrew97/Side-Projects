@@ -2,7 +2,7 @@
     Public Class CustomersDataRow
         Inherits DataRow
 
-        Private tableCustomers As CustomersDataTable
+        Private ReadOnly tableCustomers As CustomersDataTable
 
         Friend Sub New(ByVal rb As DataRowBuilder)
             MyBase.New(rb)

@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Username" Type="System.String" Scope="User">
-      <Value Profile="(Default)">arandlemiller97</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">JasmineLove2697</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="KeepLoggedIn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

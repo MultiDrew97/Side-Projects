@@ -14,14 +14,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Media Ministry Manager.exe.manifest" size="17825">
+    <dependentAssembly dependencyType="install" codebase="Media Ministry Manager.exe.manifest" size="17893">
       <assemblyIdentity name="Media Ministry Manager.exe" version="3.0.580.13" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nsg8j2TY8MTytY71PvQYEBX2G8a3GYCyHQbhFLaOzN0=</dsig:DigestValue>
+        <dsig:DigestValue>iAAoVwRcXtg2CXomwmso1246mT7WcX4ygjyDqxKzkT4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
