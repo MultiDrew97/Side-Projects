@@ -23,12 +23,17 @@ Partial Class Frm_DisplayCustomers
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayCustomers))
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
-        Me.bsCustomers = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FirstNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhoneNumberColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailAddressColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JoinDateColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bsCustomers1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_AddNewCustomer = New System.Windows.Forms.Button()
@@ -52,55 +57,84 @@ Partial Class Frm_DisplayCustomers
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cms_Refresh = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.cms_TableFunctions = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tsm_Refresh = New System.Windows.Forms.ToolStripMenuItem()
-        Me.First_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Last_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Phone_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.JoinDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ss_CustomerView.SuspendLayout()
-        Me.mnstr_Strip.SuspendLayout()
-        Me.cms_Refresh.SuspendLayout()
+        CType(Me.bsCustomers1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cms_TableFunctions.SuspendLayout()
         Me.SuspendLayout()
         '
         'dgv_Customers
         '
         Me.dgv_Customers.AllowUserToAddRows = False
         Me.dgv_Customers.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
-        Me.dgv_Customers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGray
+        Me.dgv_Customers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgv_Customers.AutoGenerateColumns = False
         Me.dgv_Customers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.First_Name, Me.Last_Name, Me.Phone_Number, Me.EmailAddress, Me.JoinDate})
-        Me.dgv_Customers.DataSource = Me.bsCustomers
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_Customers.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FirstNameColumn, Me.LastNameColumn, Me.PhoneNumberColumn, Me.EmailAddressColumn, Me.JoinDateColumn})
+        Me.dgv_Customers.DataSource = Me.bsCustomers1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_Customers.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgv_Customers.Dock = System.Windows.Forms.DockStyle.Top
         Me.dgv_Customers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
         Me.dgv_Customers.Location = New System.Drawing.Point(0, 24)
         Me.dgv_Customers.MultiSelect = False
         Me.dgv_Customers.Name = "dgv_Customers"
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.dgv_Customers.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.dgv_Customers.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.dgv_Customers.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.dgv_Customers.Size = New System.Drawing.Size(888, 381)
         Me.dgv_Customers.TabIndex = 0
+        '
+        'FirstNameColumn
+        '
+        Me.FirstNameColumn.DataPropertyName = "FirstName"
+        Me.FirstNameColumn.FillWeight = 163.3136!
+        Me.FirstNameColumn.HeaderText = "First Name"
+        Me.FirstNameColumn.Name = "FirstNameColumn"
+        '
+        'LastNameColumn
+        '
+        Me.LastNameColumn.DataPropertyName = "LastName"
+        Me.LastNameColumn.FillWeight = 142.877!
+        Me.LastNameColumn.HeaderText = "Last Name"
+        Me.LastNameColumn.Name = "LastNameColumn"
+        '
+        'PhoneNumberColumn
+        '
+        Me.PhoneNumberColumn.DataPropertyName = "PhoneNumber"
+        Me.PhoneNumberColumn.FillWeight = 164.83!
+        Me.PhoneNumberColumn.HeaderText = "Phone Number"
+        Me.PhoneNumberColumn.Name = "PhoneNumberColumn"
+        '
+        'EmailAddressColumn
+        '
+        Me.EmailAddressColumn.DataPropertyName = "EmailAddress"
+        Me.EmailAddressColumn.FillWeight = 65.87088!
+        Me.EmailAddressColumn.HeaderText = "Email"
+        Me.EmailAddressColumn.Name = "EmailAddressColumn"
+        '
+        'JoinDateColumn
+        '
+        Me.JoinDateColumn.DataPropertyName = "JoinDate"
+        Me.JoinDateColumn.FillWeight = 84.47861!
+        Me.JoinDateColumn.HeaderText = "Join Date"
+        Me.JoinDateColumn.Name = "JoinDateColumn"
+        Me.JoinDateColumn.ReadOnly = True
         '
         'ss_CustomerView
         '
         Me.ss_CustomerView.BackColor = System.Drawing.SystemColors.Control
         Me.ss_CustomerView.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ss_CustomerView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_CustomersView})
         Me.ss_CustomerView.Location = New System.Drawing.Point(0, 518)
         Me.ss_CustomerView.Name = "ss_CustomerView"
         Me.ss_CustomerView.Size = New System.Drawing.Size(888, 22)
@@ -127,7 +161,6 @@ Partial Class Frm_DisplayCustomers
         '
         'mnstr_Strip
         '
-        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -256,53 +289,23 @@ Partial Class Frm_DisplayCustomers
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'cms_Refresh
+        'cms_TableFunctions
         '
-        Me.cms_Refresh.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm_Refresh})
-        Me.cms_Refresh.Name = "cms_Refresh"
-        Me.cms_Refresh.Size = New System.Drawing.Size(114, 26)
+        Me.cms_TableFunctions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsm_Refresh, Me.RemoveToolStripMenuItem})
+        Me.cms_TableFunctions.Name = "cms_Refresh"
+        Me.cms_TableFunctions.Size = New System.Drawing.Size(118, 48)
         '
         'tsm_Refresh
         '
         Me.tsm_Refresh.Name = "tsm_Refresh"
-        Me.tsm_Refresh.Size = New System.Drawing.Size(113, 22)
+        Me.tsm_Refresh.Size = New System.Drawing.Size(117, 22)
         Me.tsm_Refresh.Text = "Refresh"
         '
-        'First_Name
+        'RemoveToolStripMenuItem
         '
-        Me.First_Name.DataPropertyName = "FirstName"
-        Me.First_Name.FillWeight = 163.3136!
-        Me.First_Name.HeaderText = "First Name"
-        Me.First_Name.Name = "First_Name"
-        '
-        'Last_Name
-        '
-        Me.Last_Name.DataPropertyName = "LastName"
-        Me.Last_Name.FillWeight = 142.877!
-        Me.Last_Name.HeaderText = "Last Name"
-        Me.Last_Name.Name = "Last_Name"
-        '
-        'Phone_Number
-        '
-        Me.Phone_Number.DataPropertyName = "PhoneNumber"
-        Me.Phone_Number.FillWeight = 164.83!
-        Me.Phone_Number.HeaderText = "Phone Number"
-        Me.Phone_Number.Name = "Phone_Number"
-        '
-        'EmailAddress
-        '
-        Me.EmailAddress.DataPropertyName = "Email"
-        Me.EmailAddress.FillWeight = 65.87088!
-        Me.EmailAddress.HeaderText = "Email"
-        Me.EmailAddress.Name = "EmailAddress"
-        '
-        'JoinDate
-        '
-        Me.JoinDate.DataPropertyName = "JoinDate"
-        Me.JoinDate.FillWeight = 84.47861!
-        Me.JoinDate.HeaderText = "Join Date"
-        Me.JoinDate.Name = "JoinDate"
-        Me.JoinDate.ReadOnly = True
+        Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
+        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.RemoveToolStripMenuItem.Text = "Remove"
         '
         'Frm_DisplayCustomers
         '
@@ -310,7 +313,7 @@ Partial Class Frm_DisplayCustomers
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(888, 540)
-        Me.ContextMenuStrip = Me.cms_Refresh
+        Me.ContextMenuStrip = Me.cms_TableFunctions
         Me.Controls.Add(Me.btn_AddNewCustomer)
         Me.Controls.Add(Me.dgv_Customers)
         Me.Controls.Add(Me.ss_CustomerView)
@@ -322,12 +325,8 @@ Partial Class Frm_DisplayCustomers
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsCustomers, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ss_CustomerView.ResumeLayout(False)
-        Me.ss_CustomerView.PerformLayout()
-        Me.mnstr_Strip.ResumeLayout(False)
-        Me.mnstr_Strip.PerformLayout()
-        Me.cms_Refresh.ResumeLayout(False)
+        CType(Me.bsCustomers1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cms_TableFunctions.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -357,12 +356,13 @@ Partial Class Frm_DisplayCustomers
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents bsCustomers As BindingSource
-    Friend WithEvents cms_Refresh As ContextMenuStrip
+    Friend WithEvents cms_TableFunctions As ContextMenuStrip
     Friend WithEvents tsm_Refresh As ToolStripMenuItem
-    Friend WithEvents First_Name As DataGridViewTextBoxColumn
-    Friend WithEvents Last_Name As DataGridViewTextBoxColumn
-    Friend WithEvents Phone_Number As DataGridViewTextBoxColumn
-    Friend WithEvents EmailAddress As DataGridViewTextBoxColumn
-    Friend WithEvents JoinDate As DataGridViewTextBoxColumn
+    Friend WithEvents RemoveToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FirstNameColumn As DataGridViewTextBoxColumn
+    Friend WithEvents LastNameColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PhoneNumberColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EmailAddressColumn As DataGridViewTextBoxColumn
+    Friend WithEvents JoinDateColumn As DataGridViewTextBoxColumn
+    Friend WithEvents bsCustomers1 As BindingSource
 End Class

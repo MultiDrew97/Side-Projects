@@ -3,7 +3,7 @@
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 
-Public Class frm_Login
+Public Class Frm_Login
     Dim _dbConnection As SqlConnectionStringBuilder
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -70,17 +70,15 @@ Public Class frm_Login
     End Sub
 
     Private Sub Btn_CreateUser_Click(sender As Object, e As EventArgs) Handles btn_CreateUser.Click
-        Dim createForm = New Frm_CreateUser()
-        createForm.Show()
-        Me.Hide()
-        Reset()
+        If NewUserDialog.ShowDialog = DialogResult.OK Then
+            Reset()
+        End If
     End Sub
 
     Private Sub Btn_ChangePassword_Click(sender As Object, e As EventArgs) Handles btn_ChangePassword.Click
-        Dim password = New Frm_ChangePassword()
-        password.Show()
-        Me.Hide()
-        Reset()
+        If ChangePasswordDialog.ShowDialog = DialogResult.OK Then
+            Reset()
+        End If
     End Sub
 
     Private Function CheckCreds(username As String, password As String) As Boolean

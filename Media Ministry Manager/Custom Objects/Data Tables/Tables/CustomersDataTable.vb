@@ -1,16 +1,23 @@
 ﻿Namespace CustomData
-    Public Class ListenersDataTable
-        Inherits TypedTableBase(Of ListenersDataRow)
+    Public Class CustomersDataTable
+        Inherits TypedTableBase(Of CustomersDataRow)
 
-        Public Delegate Sub ListenersDataRowChangeEventHandler(ByVal sender As Object, ByVal e As ListenersRowChangeEvent)
+        Public Delegate Sub CustomersDataRowChangeEventHandler(ByVal sender As Object, ByVal e As CustomersRowChangeEvent)
 
-        Private ListenerID As DataColumn
-        Private Name As DataColumn
+        Private CustomerID As DataColumn
+        Private FirstName As DataColumn
+        Private LastName As DataColumn
+        Private Street As DataColumn
+        Private City As DataColumn
+        Private State As DataColumn
+        Private ZipCode As DataColumn
+        Private PhoneNumber As DataColumn
         Private EmailAddress As DataColumn
+        Private JoinDate As DataColumn
 
         Public Sub New()
             MyBase.New
-            Me.TableName = "EmailListeners"
+            Me.TableName = "Customers"
             Me.BeginInit()
             Me.InitClass()
             Me.EndInit()
@@ -37,15 +44,51 @@
             Me.InitVars()
         End Sub
 
-        Public ReadOnly Property ListenerIdColumn() As DataColumn
+        Public ReadOnly Property CustomerIdColumn() As DataColumn
             Get
-                Return Me.ListenerID
+                Return Me.CustomerID
             End Get
         End Property
 
-        Public ReadOnly Property NameColumn() As DataColumn
+        Public ReadOnly Property FirstNameColumn() As DataColumn
             Get
-                Return Me.Name
+                Return Me.FirstName
+            End Get
+        End Property
+
+        Public ReadOnly Property LastNameColumn() As DataColumn
+            Get
+                Return Me.LastName
+            End Get
+        End Property
+
+        Public ReadOnly Property StreetColumn() As DataColumn
+            Get
+                Return Me.Street
+            End Get
+        End Property
+
+        Public ReadOnly Property CityColumn() As DataColumn
+            Get
+                Return Me.City
+            End Get
+        End Property
+
+        Public ReadOnly Property StateColumn() As DataColumn
+            Get
+                Return Me.State
+            End Get
+        End Property
+
+        Public ReadOnly Property ZipCodeColumn() As DataColumn
+            Get
+                Return Me.ZipCode
+            End Get
+        End Property
+
+        Public ReadOnly Property PhoneNumberColumn() As DataColumn
+            Get
+                Return Me.PhoneNumber
             End Get
         End Property
 
@@ -55,116 +98,156 @@
             End Get
         End Property
 
+        Public ReadOnly Property JoinDateColumn() As DataColumn
+            Get
+                Return Me.JoinDate
+            End Get
+        End Property
+
         Public ReadOnly Property Count() As Integer
             Get
                 Return Me.Rows.Count
             End Get
         End Property
 
-        Default Public ReadOnly Property Item(ByVal index As Integer) As ListenersDataRow
+        Default Public ReadOnly Property Item(ByVal index As Integer) As CustomersDataRow
             Get
-                Return CType(Me.Rows(index), ListenersDataRow)
+                Return CType(Me.Rows(index), CustomersDataRow)
             End Get
         End Property
 
-        Public Event ListenersDataRowChanging As ListenersDataRowChangeEventHandler
+        Public Event CustomersDataRowChanging As CustomersDataRowChangeEventHandler
 
-        Public Event ListenersDataRowChanged As ListenersDataRowChangeEventHandler
+        Public Event CustomersDataRowChanged As CustomersDataRowChangeEventHandler
 
-        Public Event ListenersDataRowDeleting As ListenersDataRowChangeEventHandler
+        Public Event CustomersDataRowDeleting As CustomersDataRowChangeEventHandler
 
-        Public Event ListenersDataRowDeleted As ListenersDataRowChangeEventHandler
+        Public Event CustomersDataRowDeleted As CustomersDataRowChangeEventHandler
 
-        Public Overloads Sub AddEmailListenersRow(ByVal row As ListenersDataRow)
+        Public Overloads Sub AddCustomersRow(ByVal row As CustomersDataRow)
             Me.Rows.Add(row)
         End Sub
 
-        Public Overloads Function AddEmailListenersRow(ByVal NAME As String, ByVal EMAIL As String) As ListenersDataRow
-            Dim rowListenersDataRow As ListenersDataRow = CType(Me.NewRow, ListenersDataRow)
+        Public Overloads Function AddCustomersRow(ByVal NAME As String, ByVal EMAIL As String) As CustomersDataRow
+            Dim rowCustomersDataRow As CustomersDataRow = CType(Me.NewRow, CustomersDataRow)
             Dim columnValuesArray() As Object = New Object() {NAME, EMAIL}
-            rowListenersDataRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowListenersDataRow)
-            Return rowListenersDataRow
+            rowCustomersDataRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowCustomersDataRow)
+            Return rowCustomersDataRow
         End Function
 
-        Public Function FindByID(ByVal ID As Integer) As ListenersDataRow
-            Return CType(Me.Rows.Find(New Object() {ID}), ListenersDataRow)
+        Public Function FindByID(ByVal ID As Integer) As CustomersDataRow
+            Return CType(Me.Rows.Find(New Object() {ID}), CustomersDataRow)
         End Function
 
         Public Overrides Function Clone() As DataTable
-            Dim cln As ListenersDataTable = CType(MyBase.Clone, ListenersDataTable)
+            Dim cln As CustomersDataTable = CType(MyBase.Clone, CustomersDataTable)
             cln.InitVars()
             Return cln
         End Function
 
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New ListenersDataTable()
+            Return New CustomersDataTable()
         End Function
 
         Friend Sub InitVars()
-            Me.ListenerID = MyBase.Columns("ListenerID")
-            Me.Name = MyBase.Columns("Name")
+            Me.CustomerID = MyBase.Columns("CustomerID")
+            Me.FirstName = MyBase.Columns("FirstName")
+            Me.LastName = MyBase.Columns("LastName")
+            Me.Street = MyBase.Columns("Street")
+            Me.City = MyBase.Columns("City")
+            Me.State = MyBase.Columns("State")
+            Me.ZipCode = MyBase.Columns("ZipCode")
+            Me.PhoneNumber = MyBase.Columns("PhoneNumber")
             Me.EmailAddress = MyBase.Columns("EmailAddress")
+            Me.JoinDate = MyBase.Columns("JoinDate")
         End Sub
 
         Private Sub InitClass()
-            Me.ListenerID = New DataColumn("ListenerID", GetType(Integer), Nothing, MappingType.Element)
-            MyBase.Columns.Add(Me.ListenerID)
-            Me.Name = New DataColumn("Name", GetType(String), Nothing, MappingType.Element)
-            MyBase.Columns.Add(Me.Name)
+            Me.CustomerID = New DataColumn("CustomerID", GetType(Integer), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.CustomerID)
+            Me.FirstName = New DataColumn("FirstName", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.FirstName)
+            Me.LastName = New DataColumn("LastName", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.LastName)
+            Me.Street = New DataColumn("Street", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.Street)
+            Me.City = New DataColumn("City", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.City)
+            Me.State = New DataColumn("State", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.State)
+            Me.ZipCode = New DataColumn("ZipCode", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.ZipCode)
+            Me.PhoneNumber = New DataColumn("PhoneNumber", GetType(String), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.PhoneNumber)
             Me.EmailAddress = New DataColumn("EmailAddress", GetType(String), Nothing, MappingType.Element)
             MyBase.Columns.Add(Me.EmailAddress)
-            Me.Constraints.Add(New UniqueConstraint("Constraint1", New DataColumn() {Me.ListenerID}, True))
-            Me.ListenerID.AllowDBNull = False
-            Me.ListenerID.ReadOnly = True
-            Me.ListenerID.Unique = True
-            Me.Name.AllowDBNull = False
-            Me.Name.MaxLength = 50
+            Me.JoinDate = New DataColumn("JoinDate", GetType(Date), Nothing, MappingType.Element)
+            MyBase.Columns.Add(Me.JoinDate)
+            Me.Constraints.Add(New UniqueConstraint("Constraint1", New DataColumn() {Me.CustomerID}, True))
+            Me.CustomerID.AllowDBNull = False
+            Me.CustomerID.ReadOnly = True
+            Me.CustomerID.Unique = True
+            Me.FirstName.AllowDBNull = False
+            Me.FirstName.MaxLength = 50
+            Me.FirstName.AllowDBNull = False
+            Me.FirstName.MaxLength = 50
+            Me.LastName.AllowDBNull = False
+            Me.LastName.MaxLength = 50
+            Me.Street.AllowDBNull = False
+            Me.Street.MaxLength = 50
+            Me.City.AllowDBNull = False
+            Me.City.MaxLength = 50
+            Me.State.AllowDBNull = False
+            Me.State.MaxLength = 50
+            Me.ZipCode.AllowDBNull = False
+            Me.ZipCode.MaxLength = 50
             Me.EmailAddress.AllowDBNull = False
             Me.EmailAddress.MaxLength = 100
+            Me.JoinDate.AllowDBNull = False
         End Sub
 
-        Public Function NewListenersDataRow() As ListenersDataRow
-            Return CType(Me.NewRow, ListenersDataRow)
+        Public Function NewCustomersDataRow() As CustomersDataRow
+            Return CType(Me.NewRow, CustomersDataRow)
         End Function
 
         Protected Overrides Function NewRowFromBuilder(builder As DataRowBuilder) As DataRow
-            Return New ListenersDataRow(builder)
+            Return New CustomersDataRow(builder)
         End Function
 
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(ListenersDataRow)
+            Return GetType(CustomersDataRow)
         End Function
 
         Protected Overrides Sub OnRowChanged(ByVal e As DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If ((Me.ListenersDataRowChangedEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowChanged(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.CustomersDataRowChangedEvent) IsNot Nothing) Then
+                RaiseEvent CustomersDataRowChanged(Me, New CustomersRowChangeEvent(CType(e.Row, CustomersDataRow), e.Action))
             End If
         End Sub
 
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If ((Me.ListenersDataRowChangingEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowChanging(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.CustomersDataRowChangingEvent) IsNot Nothing) Then
+                RaiseEvent CustomersDataRowChanging(Me, New CustomersRowChangeEvent(CType(e.Row, CustomersDataRow), e.Action))
             End If
         End Sub
 
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If ((Me.ListenersDataRowDeletedEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowDeleted(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.CustomersDataRowDeletedEvent) IsNot Nothing) Then
+                RaiseEvent CustomersDataRowDeleted(Me, New CustomersRowChangeEvent(CType(e.Row, CustomersDataRow), e.Action))
             End If
         End Sub
 
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If ((Me.ListenersDataRowDeletingEvent) IsNot Nothing) Then
-                RaiseEvent ListenersDataRowDeleting(Me, New ListenersRowChangeEvent(CType(e.Row, ListenersDataRow), e.Action))
+            If ((Me.CustomersDataRowDeletingEvent) IsNot Nothing) Then
+                RaiseEvent CustomersDataRowDeleting(Me, New CustomersRowChangeEvent(CType(e.Row, CustomersDataRow), e.Action))
             End If
         End Sub
 
-        Public Sub RemoveEmailListenersRow(ByVal row As ListenersDataRow)
+        Public Sub RemoveCustomersRow(ByVal row As CustomersDataRow)
             Me.Rows.Remove(row)
         End Sub
 
@@ -189,7 +272,7 @@
         '    type.Attributes.Add(attribute1)
         '    Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
         '    attribute2.Name = "tableTypeName"
-        '    attribute2.FixedValue = "ListenersDataTable"
+        '    attribute2.FixedValue = "CustomersDataTable"
         '    type.Attributes.Add(attribute2)
         '    type.Particle = sequence
         '    Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable

@@ -11,7 +11,15 @@ Namespace Types
         Public Sub New(orderID As Integer, customerID As Integer, itemID As Integer, quantity As Integer, orderTotal As Double, ordered As Date)
             Me.Id = orderID
             Me.Customer = New Customer(customerID, "", "", "", "", "", "", "", "")
-            Me.Item = New Product(itemID, "", 0, 0, False)
+            Me.Item = New Product(itemID, "", 0, 0, True)
+            Me.Quantity = quantity
+            Me.OrderTotal = orderTotal
+            Me.OrderDate = ordered
+        End Sub
+        Public Sub New(orderID As Integer, customerID As Integer, customerName As String(), itemID As Integer, itemName As String, quantity As Integer, orderTotal As Double, ordered As Date)
+            Me.Id = orderID
+            Me.Customer = New Customer(customerID, customerName(0), customerName(1), "", "", "", "", "", "")
+            Me.Item = New Product(itemID, itemName, 0, 0, True)
             Me.Quantity = quantity
             Me.OrderTotal = orderTotal
             Me.OrderDate = ordered

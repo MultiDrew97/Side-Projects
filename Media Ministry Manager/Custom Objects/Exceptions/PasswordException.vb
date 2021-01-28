@@ -1,10 +1,9 @@
 ﻿Imports System.Runtime.Serialization
 
-Namespace MediaMinistry.Exceptions
-    <Serializable>
+Namespace Exceptions
     Public Class PasswordMisMatchException
         Inherits Exception
-        <CLSCompliant(False)>
+
         Sub New(ByVal message As String)
             MyBase.New(message)
         End Sub

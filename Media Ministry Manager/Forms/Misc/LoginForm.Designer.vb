@@ -110,7 +110,6 @@ Partial Class Frm_Login
         '
         'ss_Feedback
         '
-        Me.ss_Feedback.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_UserFeedback})
         Me.ss_Feedback.Location = New System.Drawing.Point(0, 265)
         Me.ss_Feedback.Name = "ss_Feedback"
         Me.ss_Feedback.Size = New System.Drawing.Size(297, 22)
@@ -149,7 +148,7 @@ Partial Class Frm_Login
         Me.tt_Info.SetToolTip(Me.btn_ChangePassword, "Change Password")
         Me.btn_ChangePassword.UseVisualStyleBackColor = True
         '
-        'Frm_Login
+        'frm_Login
         '
         Me.AcceptButton = Me.btn_LogIn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -168,7 +167,7 @@ Partial Class Frm_Login
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Frm_Login"
+        Me.Name = "frm_Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)

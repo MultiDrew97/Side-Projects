@@ -23,13 +23,14 @@ Partial Class Frm_DisplayInventory
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayInventory))
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgv_Inventory = New System.Windows.Forms.DataGridView()
-        Me.ProductName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Price = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cms_ProductsTable = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AvailabilityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -56,6 +57,10 @@ Partial Class Frm_DisplayInventory
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.chk_ShowUnavailable = New System.Windows.Forms.CheckBox()
+        Me.ProductNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PriceColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AvailableColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cms_ProductsTable.SuspendLayout()
         CType(Me.bsProducts, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,40 +70,43 @@ Partial Class Frm_DisplayInventory
         'dgv_Inventory
         '
         Me.dgv_Inventory.AllowUserToAddRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver
-        Me.dgv_Inventory.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver
+        Me.dgv_Inventory.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.dgv_Inventory.AutoGenerateColumns = False
         Me.dgv_Inventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_Inventory.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dgv_Inventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Inventory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProductName, Me.Stock, Me.Price})
+        Me.dgv_Inventory.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProductNameColumn, Me.StockColumn, Me.PriceColumn, Me.AvailableColumn})
         Me.dgv_Inventory.ContextMenuStrip = Me.cms_ProductsTable
         Me.dgv_Inventory.DataSource = Me.bsProducts
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_Inventory.DefaultCellStyle = DataGridViewCellStyle11
         Me.dgv_Inventory.Dock = System.Windows.Forms.DockStyle.Right
         Me.dgv_Inventory.Location = New System.Drawing.Point(222, 24)
         Me.dgv_Inventory.Name = "dgv_Inventory"
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_Inventory.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.dgv_Inventory.Size = New System.Drawing.Size(443, 460)
         Me.dgv_Inventory.TabIndex = 0
-        '
-        'ProductName
-        '
-        Me.ProductName.DataPropertyName = "ItemName"
-        Me.ProductName.HeaderText = "Name"
-        Me.ProductName.Name = "ProductName"
-        '
-        'Stock
-        '
-        Me.Stock.DataPropertyName = "Stock"
-        Me.Stock.HeaderText = "Stock"
-        Me.Stock.Name = "Stock"
-        '
-        'Price
-        '
-        Me.Price.DataPropertyName = "Price"
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = "-"
-        Me.Price.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Price.HeaderText = "Price"
-        Me.Price.Name = "Price"
         '
         'cms_ProductsTable
         '
@@ -134,7 +142,6 @@ Partial Class Frm_DisplayInventory
         '
         'mnstr_Strip
         '
-        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -277,6 +284,37 @@ Partial Class Frm_DisplayInventory
         Me.chk_ShowUnavailable.Text = "Show Unavailable Items"
         Me.chk_ShowUnavailable.UseVisualStyleBackColor = True
         '
+        'ProductNameColumn
+        '
+        Me.ProductNameColumn.DataPropertyName = "ItemName"
+        Me.ProductNameColumn.HeaderText = "Name"
+        Me.ProductNameColumn.Name = "ProductNameColumn"
+        '
+        'StockColumn
+        '
+        Me.StockColumn.DataPropertyName = "Stock"
+        Me.StockColumn.HeaderText = "Stock"
+        Me.StockColumn.Name = "StockColumn"
+        '
+        'PriceColumn
+        '
+        Me.PriceColumn.DataPropertyName = "Price"
+        DataGridViewCellStyle9.Format = "C2"
+        DataGridViewCellStyle9.NullValue = "-"
+        Me.PriceColumn.DefaultCellStyle = DataGridViewCellStyle9
+        Me.PriceColumn.HeaderText = "Price"
+        Me.PriceColumn.Name = "PriceColumn"
+        '
+        'AvailableColumn
+        '
+        Me.AvailableColumn.DataPropertyName = "Available"
+        DataGridViewCellStyle10.Format = "If(available, ""Yes"", ""No"")"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.AvailableColumn.DefaultCellStyle = DataGridViewCellStyle10
+        Me.AvailableColumn.HeaderText = "Available?"
+        Me.AvailableColumn.Name = "AvailableColumn"
+        Me.AvailableColumn.ReadOnly = True
+        '
         'Frm_DisplayInventory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -329,7 +367,8 @@ Partial Class Frm_DisplayInventory
     Friend WithEvents cms_ProductsTable As ContextMenuStrip
     Friend WithEvents RefreshToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AvailabilityToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProductName As DataGridViewTextBoxColumn
-    Friend WithEvents Stock As DataGridViewTextBoxColumn
-    Friend WithEvents Price As DataGridViewTextBoxColumn
+    Friend WithEvents ProductNameColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StockColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PriceColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AvailableColumn As DataGridViewTextBoxColumn
 End Class

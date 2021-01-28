@@ -7,18 +7,19 @@ Imports MediaMinistry.Types
 Public Class ListenerSelectionDialog
     Shared Property Listeners As New Collection(Of Listener)
     Private ListenerList As Collection(Of Listener)
-    Private ListenersTable As DataTable
+    Private ReadOnly ListenersTable As New CustomData.ListenersDataTable
+    Private column As String
 
     Private Sub ListenerSelectionDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'MediaMinistryDataSet.EMAIL_LISTENERS' table. You can move, or remove it, as needed.
-        'Me.EMAIL_LISTENERSTableAdapter.Fill(Me.MediaMinistryDataSet.EMAIL_LISTENERS)
         'TODO: Add a search function to easily find specific listeners
+        bsListeners.DataSource = ListenersTable
+        cbx_Column.SelectedIndex = 0
         bw_RetrieveListeners.RunWorkerAsync()
     End Sub
 
     Public Overrides Sub Refresh()
         Listeners.Clear()
-        CreateTable()
+        FillTable()
     End Sub
 
     Private Sub btn_Finish_Click(sender As Object, e As EventArgs) Handles btn_Finish.Click
@@ -28,8 +29,13 @@ Public Class ListenerSelectionDialog
             End If
         Next
 
-        Me.DialogResult = DialogResult.OK
-        Me.Close()
+        If Listeners.Count >= 1 Then
+            Me.DialogResult = DialogResult.OK
+            Me.Close()
+        Else
+            Me.DialogResult = DialogResult.Retry
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
@@ -47,34 +53,32 @@ Public Class ListenerSelectionDialog
         End Using
     End Sub
 
-    Private Sub LoadTable()
-        ListenersTable.Columns.AddRange({
-            New DataColumn("ListenerID", Type.GetType("System.Int32")),
-            New DataColumn("Name", Type.GetType("System.String")),
-            New DataColumn("EmailAddress", Type.GetType("System.String"))
-            })
-        FillTable()
-    End Sub
-
-    Private Sub CreateTable()
-        ListenersTable = New DataTable
-        LoadTable()
-    End Sub
-
     Private Sub FillTable()
-        Dim row As DataRow
+        Try
+            Dim row As DataRow
 
-        For Each listener In ListenerList
-            row = ListenersTable.NewRow
-            row("ListenerID") = listener.Id
-            row("Name") = listener.Name
-            row("EmailAddress") = listener.EmailAddress.Address
-            ListenersTable.Rows.Add(row)
-        Next
+            For Each listener In ListenerList
+                row = ListenersTable.NewRow
+                row("ListenerID") = listener.Id
+                row("Name") = listener.Name
+                row("EmailAddress") = listener.EmailAddress.Address
+                ListenersTable.Rows.Add(row)
+            Next
+        Catch ex As ConstraintException
+
+        End Try
     End Sub
 
     Private Sub bw_RetrieveListeners_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_RetrieveListeners.RunWorkerCompleted
         Refresh()
-        bsListeners.DataSource = ListenersTable
+    End Sub
+
+    Private Sub cbx_Column_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Column.SelectedIndexChanged
+        txt_Search.Text = ""
+        column = If(cbx_Column.SelectedItem.ToString.Equals("Email Address"), "EmailAddress", "Name")
+    End Sub
+
+    Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
+        bsListeners.Filter = String.Format("{0} like '%{1}%'", column, txt_Search.Text)
     End Sub
 End Class
