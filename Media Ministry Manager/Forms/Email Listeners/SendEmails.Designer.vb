@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frm_SendEmails
+Partial Class Frm_SendEmails
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class frm_SendEmails
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_SendEmails))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_SendEmails))
         Me.lbl_FileLocation = New System.Windows.Forms.Label()
         Me.lbl_Folder = New System.Windows.Forms.Label()
         Me.cbx_Folders = New System.Windows.Forms.ComboBox()
@@ -45,33 +45,36 @@ Partial Class frm_SendEmails
         'lbl_FileLocation
         '
         Me.lbl_FileLocation.AutoSize = True
-        Me.lbl_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_FileLocation.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.lbl_FileLocation.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.lbl_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_FileLocation.Location = New System.Drawing.Point(58, 132)
+        Me.lbl_FileLocation.Location = New System.Drawing.Point(58, 135)
         Me.lbl_FileLocation.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lbl_FileLocation.Name = "lbl_FileLocation"
-        Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 26)
+        Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 25)
         Me.lbl_FileLocation.TabIndex = 9
         Me.lbl_FileLocation.Text = "File:"
         '
         'lbl_Folder
         '
         Me.lbl_Folder.AutoSize = True
-        Me.lbl_Folder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Folder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.lbl_Folder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.lbl_Folder.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_Folder.Location = New System.Drawing.Point(58, 34)
+        Me.lbl_Folder.Location = New System.Drawing.Point(58, 37)
         Me.lbl_Folder.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lbl_Folder.Name = "lbl_Folder"
-        Me.lbl_Folder.Size = New System.Drawing.Size(79, 26)
+        Me.lbl_Folder.Size = New System.Drawing.Size(79, 25)
         Me.lbl_Folder.TabIndex = 8
         Me.lbl_Folder.Text = "Folder"
         '
         'cbx_Folders
         '
-        Me.cbx_Folders.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbx_Folders.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.cbx_Folders.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.cbx_Folders.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbx_Folders.FormattingEnabled = True
-        Me.cbx_Folders.Location = New System.Drawing.Point(68, 64)
+        Me.cbx_Folders.Location = New System.Drawing.Point(68, 67)
         Me.cbx_Folders.Margin = New System.Windows.Forms.Padding(6)
         Me.cbx_Folders.Name = "cbx_Folders"
         Me.cbx_Folders.Size = New System.Drawing.Size(480, 33)
@@ -102,10 +105,11 @@ Partial Class frm_SendEmails
         '
         'cbx_Files
         '
-        Me.cbx_Files.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbx_Files.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.cbx_Files.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.cbx_Files.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbx_Files.FormattingEnabled = True
-        Me.cbx_Files.Location = New System.Drawing.Point(68, 163)
+        Me.cbx_Files.Location = New System.Drawing.Point(68, 166)
         Me.cbx_Files.Margin = New System.Windows.Forms.Padding(6)
         Me.cbx_Files.Name = "cbx_Files"
         Me.cbx_Files.Size = New System.Drawing.Size(480, 33)
@@ -113,10 +117,14 @@ Partial Class frm_SendEmails
         '
         'btn_AddFolder
         '
+        Me.btn_AddFolder.AutoSize = True
         Me.btn_AddFolder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_AddFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_AddFolder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_AddFolder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.btn_AddFolder.Location = New System.Drawing.Point(54, 82)
         Me.btn_AddFolder.Margin = New System.Windows.Forms.Padding(6)
+        Me.btn_AddFolder.MaximumSize = New System.Drawing.Size(154, 80)
+        Me.btn_AddFolder.MinimumSize = New System.Drawing.Size(154, 80)
         Me.btn_AddFolder.Name = "btn_AddFolder"
         Me.btn_AddFolder.Size = New System.Drawing.Size(154, 80)
         Me.btn_AddFolder.TabIndex = 12
@@ -125,10 +133,14 @@ Partial Class frm_SendEmails
         '
         'btn_UploadFile
         '
+        Me.btn_UploadFile.AutoSize = True
         Me.btn_UploadFile.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_UploadFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_UploadFile.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_UploadFile.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.btn_UploadFile.Location = New System.Drawing.Point(54, 242)
         Me.btn_UploadFile.Margin = New System.Windows.Forms.Padding(6)
+        Me.btn_UploadFile.MaximumSize = New System.Drawing.Size(154, 80)
+        Me.btn_UploadFile.MinimumSize = New System.Drawing.Size(154, 80)
         Me.btn_UploadFile.Name = "btn_UploadFile"
         Me.btn_UploadFile.Size = New System.Drawing.Size(154, 80)
         Me.btn_UploadFile.TabIndex = 16
@@ -152,10 +164,13 @@ Partial Class frm_SendEmails
         '
         'btn_SendEmails
         '
-        Me.btn_SendEmails.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_SendEmails.Location = New System.Drawing.Point(177, 303)
+        Me.btn_SendEmails.AutoSize = True
+        Me.btn_SendEmails.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_SendEmails.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_SendEmails.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_SendEmails.Location = New System.Drawing.Point(214, 310)
         Me.btn_SendEmails.Name = "btn_SendEmails"
-        Me.btn_SendEmails.Size = New System.Drawing.Size(252, 45)
+        Me.btn_SendEmails.Size = New System.Drawing.Size(178, 35)
         Me.btn_SendEmails.TabIndex = 17
         Me.btn_SendEmails.Text = "Send Message"
         Me.btn_SendEmails.UseVisualStyleBackColor = True
@@ -163,10 +178,12 @@ Partial Class frm_SendEmails
         'chk_DefaultMessage
         '
         Me.chk_DefaultMessage.AutoSize = True
-        Me.chk_DefaultMessage.Location = New System.Drawing.Point(181, 226)
+        Me.chk_DefaultMessage.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chk_DefaultMessage.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.chk_DefaultMessage.Location = New System.Drawing.Point(181, 229)
         Me.chk_DefaultMessage.Margin = New System.Windows.Forms.Padding(6)
         Me.chk_DefaultMessage.Name = "chk_DefaultMessage"
-        Me.chk_DefaultMessage.Size = New System.Drawing.Size(237, 29)
+        Me.chk_DefaultMessage.Size = New System.Drawing.Size(256, 29)
         Me.chk_DefaultMessage.TabIndex = 16
         Me.chk_DefaultMessage.Text = "Use Default Message"
         Me.chk_DefaultMessage.UseVisualStyleBackColor = True
@@ -182,7 +199,7 @@ Partial Class frm_SendEmails
         'bw_GetFileID
         '
         '
-        'frm_SendEmails
+        'Frm_SendEmails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -195,7 +212,7 @@ Partial Class frm_SendEmails
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(6)
         Me.MaximizeBox = False
-        Me.Name = "frm_SendEmails"
+        Me.Name = "Frm_SendEmails"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Tag = "emails"
         Me.Text = "Media Ministry Manager"

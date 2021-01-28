@@ -1,7 +1,7 @@
 ﻿Option Strict On
 
 Public Class Frm_DisplayInventory
-    Private ProductsTable As New CustomData.InventoryDataTable
+    Private ReadOnly ProductsTable As New CustomData.InventoryDataTable
     Private Products As ObjectModel.Collection(Of Types.Product)
 
     Private Sub ViewInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -28,24 +28,25 @@ Public Class Frm_DisplayInventory
 
     Private Sub Dgv_Inventory_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Inventory.CellEndEdit
         Dim column As String = dgv_Inventory.Columns(e.ColumnIndex).DataPropertyName
-        If Not column.Equals("Available") Then
-            Dim value As String = CStr(dgv_Inventory.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
-        Else
-            Dim value As Integer = If(dgv_Inventory.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString.Equals("Yes"), 1, 0)
-        End If
+        Dim value As String = CStr(dgv_Inventory.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
 
         Dim itemID As Integer = CInt(ProductsTable.Rows(e.RowIndex)("ItemID"))
 
-        Using db As New Database(My.Settings.Username, My.Settings.Password)
-            'db.UpdateInventory(itemID, column, value)
+        Using db As New Database
+            db.UpdateInventory(itemID, column, value)
         End Using
     End Sub
 
     Private Sub Dgv_Inventory_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Inventory.UserDeletingRow
-        Using db As New Database(My.Settings.Username, My.Settings.Password)
-            db.RemoveProduct(e.Row.Index)
+        Dim itemID As Integer = CInt(CType(e.Row.DataBoundItem, DataRowView)("ItemID"))
+        Dim available As Boolean = CBool(CType(e.Row.DataBoundItem, DataRowView)("Availablity"))
+
+        Using db As New Database
+            db.ChangeAvailability(itemID, Not available)
         End Using
+
         e.Cancel = True
+        Refresh()
     End Sub
 
     Private Sub LoadData()
@@ -96,15 +97,15 @@ Public Class Frm_DisplayInventory
     End Sub
 
     Private Sub AvailabilityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AvailabilityToolStripMenuItem.Click
-        For Each row As DataGridViewRow In dgv_Inventory.Rows
-            If row.Selected Then
-                Using db As New Database
-                    db.ChangeAvailability(CInt(CType(row.DataBoundItem, DataRowView)("ItemID")), Not CBool(CType(row.DataBoundItem, DataRowView)("Available")))
-                End Using
+        For Each row As DataGridViewRow In dgv_Inventory.SelectedRows
+            Dim itemID As Integer = CInt(CType(row.DataBoundItem, DataRowView)("ItemID"))
+            Dim available As Boolean = CBool(CType(row.DataBoundItem, DataRowView)("Availablity"))
 
-                Refresh()
-                Exit For
-            End If
+            Using db As New Database
+                db.ChangeAvailability(itemID, Not available)
+            End Using
+
+            Refresh()
         Next
     End Sub
 End Class

@@ -1,7 +1,9 @@
 ﻿Imports System.ComponentModel
 Imports MediaMinistry.GoogleAPI
 
-Public Class Frm_Upload
+Public Class DriveUploadDialog
+    'TODO: Make this look better when uploading files
+
     Private Structure Locations
         Shared CustomNameFolder As Point() = {New Point(328, 38), New Point(338, 68)}
         Shared CustomNameFile As Point() = {New Point(328, 180), New Point(338, 211)}
@@ -21,7 +23,6 @@ Public Class Frm_Upload
             ofd_SelectAudio.FileName = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
             If ofd_SelectAudio.CheckFileExists Then
                 Ofd_SelectAudio_FileOk(sender, New CancelEventArgs)
-                'txt_FileLocation.Text = CType(e.Data.GetData(DataFormats.FileDrop), String())(0)
             End If
         End If
     End Sub
@@ -42,8 +43,9 @@ Public Class Frm_Upload
     End Sub
 
     Private Sub Btn_AddFolder_Click(sender As Object, e As EventArgs) Handles btn_AddFolder.Click
-        Dim form As New frm_Folder()
-        form.Show()
+        If FolderCreationDialog.ShowDialog() = DialogResult.OK Then
+            LoadFolders()
+        End If
     End Sub
 
     Private Sub Btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
@@ -56,6 +58,11 @@ Public Class Frm_Upload
                 uploader.Upload(ofd_SelectAudio.FileName, parents)
             End If
         End Using
+
+        MessageBox.Show("File has been uploaded.", "File Upload", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        DialogResult = DialogResult.OK
+        Me.Close()
     End Sub
 
     Private Sub Chk_Custom_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Custom.CheckedChanged
@@ -66,13 +73,12 @@ Public Class Frm_Upload
     End Sub
 
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+        DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
 
     Private Sub Frm_Upload_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Using uploader As New DriveUploader
-            cbx_Folders.DataSource = uploader.GetFolders()
-        End Using
+        LoadFolders()
     End Sub
 
     Private Sub Bw_MovePairs_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_MovePairs.DoWork
@@ -98,5 +104,11 @@ Public Class Frm_Upload
                 End If
             End Sub
         )
+    End Sub
+
+    Private Sub LoadFolders()
+        Using uploader As New DriveUploader
+            cbx_Folders.DataSource = uploader.GetFolders()
+        End Using
     End Sub
 End Class

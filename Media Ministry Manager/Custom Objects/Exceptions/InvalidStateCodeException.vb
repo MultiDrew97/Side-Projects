@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.Serialization
 
 Namespace Exceptions
-    Public Class FormClosedException
+    Public Class InvalidStateCodeException
         Inherits Exception
 
         Sub New()

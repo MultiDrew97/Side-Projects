@@ -1,6 +1,4 @@
-﻿Imports MediaMinistry.MediaMinistry
-
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm_DisplayOrders
     Inherits System.Windows.Forms.Form
 
@@ -25,12 +23,16 @@ Partial Class Frm_DisplayOrders
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayOrders))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgv_Orders = New System.Windows.Forms.DataGridView()
+        Me.CustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsOrders = New System.Windows.Forms.BindingSource(Me.components)
         Me.btn_Complete = New System.Windows.Forms.Button()
-        Me.btn_CancelOrder = New System.Windows.Forms.Button()
+        Me.btn_ShowCompleted = New System.Windows.Forms.Button()
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -51,10 +53,7 @@ Partial Class Frm_DisplayOrders
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OrderTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lbl_NoOrders = New System.Windows.Forms.Label()
         CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnstr_Strip.SuspendLayout()
@@ -72,10 +71,35 @@ Partial Class Frm_DisplayOrders
         Me.dgv_Orders.DataSource = Me.bsOrders
         Me.dgv_Orders.Dock = System.Windows.Forms.DockStyle.Right
         Me.dgv_Orders.Location = New System.Drawing.Point(157, 24)
-        Me.dgv_Orders.MultiSelect = False
         Me.dgv_Orders.Name = "dgv_Orders"
         Me.dgv_Orders.Size = New System.Drawing.Size(643, 426)
         Me.dgv_Orders.TabIndex = 0
+        '
+        'CustomerName
+        '
+        Me.CustomerName.DataPropertyName = "CustomerName"
+        Me.CustomerName.HeaderText = "Customer Name"
+        Me.CustomerName.Name = "CustomerName"
+        '
+        'ItemName
+        '
+        Me.ItemName.DataPropertyName = "ItemName"
+        Me.ItemName.HeaderText = "Item Name"
+        Me.ItemName.Name = "ItemName"
+        '
+        'Quantity
+        '
+        Me.Quantity.DataPropertyName = "Quantity"
+        Me.Quantity.HeaderText = "Quantity"
+        Me.Quantity.Name = "Quantity"
+        '
+        'OrderTotal
+        '
+        Me.OrderTotal.DataPropertyName = "OrderTotal"
+        DataGridViewCellStyle2.Format = "C2"
+        Me.OrderTotal.DefaultCellStyle = DataGridViewCellStyle2
+        Me.OrderTotal.HeaderText = "Total"
+        Me.OrderTotal.Name = "OrderTotal"
         '
         'btn_Complete
         '
@@ -88,17 +112,18 @@ Partial Class Frm_DisplayOrders
         Me.btn_Complete.Text = "Complete Order(s)"
         Me.btn_Complete.UseVisualStyleBackColor = True
         '
-        'btn_CancelOrder
+        'btn_ShowCompleted
         '
-        Me.btn_CancelOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_CancelOrder.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btn_CancelOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_CancelOrder.Location = New System.Drawing.Point(12, 188)
-        Me.btn_CancelOrder.Name = "btn_CancelOrder"
-        Me.btn_CancelOrder.Size = New System.Drawing.Size(128, 63)
-        Me.btn_CancelOrder.TabIndex = 1
-        Me.btn_CancelOrder.Text = "Cancel Order(s)"
-        Me.btn_CancelOrder.UseVisualStyleBackColor = True
+        Me.btn_ShowCompleted.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_ShowCompleted.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btn_ShowCompleted.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ShowCompleted.Location = New System.Drawing.Point(12, 188)
+        Me.btn_ShowCompleted.Name = "btn_ShowCompleted"
+        Me.btn_ShowCompleted.Size = New System.Drawing.Size(128, 87)
+        Me.btn_ShowCompleted.TabIndex = 1
+        Me.btn_ShowCompleted.Text = "View Completed Orders"
+        Me.btn_ShowCompleted.UseVisualStyleBackColor = True
+        Me.btn_ShowCompleted.Visible = False
         '
         'mnstr_Strip
         '
@@ -231,31 +256,17 @@ Partial Class Frm_DisplayOrders
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'CustomerName
+        'lbl_NoOrders
         '
-        Me.CustomerName.DataPropertyName = "CustomerName"
-        Me.CustomerName.HeaderText = "Customer Name"
-        Me.CustomerName.Name = "CustomerName"
-        '
-        'ItemName
-        '
-        Me.ItemName.DataPropertyName = "ItemName"
-        Me.ItemName.HeaderText = "Item Name"
-        Me.ItemName.Name = "ItemName"
-        '
-        'Quantity
-        '
-        Me.Quantity.DataPropertyName = "Quantity"
-        Me.Quantity.HeaderText = "Quantity"
-        Me.Quantity.Name = "Quantity"
-        '
-        'OrderTotal
-        '
-        Me.OrderTotal.DataPropertyName = "OrderTotal"
-        DataGridViewCellStyle1.Format = "C2"
-        Me.OrderTotal.DefaultCellStyle = DataGridViewCellStyle1
-        Me.OrderTotal.HeaderText = "Total"
-        Me.OrderTotal.Name = "OrderTotal"
+        Me.lbl_NoOrders.AutoSize = True
+        Me.lbl_NoOrders.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.lbl_NoOrders.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.lbl_NoOrders.Location = New System.Drawing.Point(274, 219)
+        Me.lbl_NoOrders.Name = "lbl_NoOrders"
+        Me.lbl_NoOrders.Size = New System.Drawing.Size(397, 25)
+        Me.lbl_NoOrders.TabIndex = 3
+        Me.lbl_NoOrders.Text = "There are currently no orders placed"
+        Me.lbl_NoOrders.Visible = False
         '
         'Frm_DisplayOrders
         '
@@ -264,10 +275,11 @@ Partial Class Frm_DisplayOrders
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.lbl_NoOrders)
         Me.Controls.Add(Me.dgv_Orders)
         Me.Controls.Add(Me.mnstr_Strip)
         Me.Controls.Add(Me.btn_Complete)
-        Me.Controls.Add(Me.btn_CancelOrder)
+        Me.Controls.Add(Me.btn_ShowCompleted)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -285,7 +297,7 @@ Partial Class Frm_DisplayOrders
 
     Friend WithEvents dgv_Orders As DataGridView
     Friend WithEvents btn_Complete As Button
-    Friend WithEvents btn_CancelOrder As Button
+    Friend WithEvents btn_ShowCompleted As Button
     Friend WithEvents mnstr_Strip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
@@ -311,4 +323,5 @@ Partial Class Frm_DisplayOrders
     Friend WithEvents ItemName As DataGridViewTextBoxColumn
     Friend WithEvents Quantity As DataGridViewTextBoxColumn
     Friend WithEvents OrderTotal As DataGridViewTextBoxColumn
+    Friend WithEvents lbl_NoOrders As Label
 End Class

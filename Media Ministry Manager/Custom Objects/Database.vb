@@ -7,7 +7,6 @@ Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
 Imports MediaMinistry.Types
 
-'TODO: Potentially turn this into a proper component
 Public Class Database
     Implements IDisposable
 
@@ -119,8 +118,8 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub RemoveListener(id As Integer)
-        RemoveListener(New SqlParameter("ListenerID", id))
+    Public Sub RemoveListener(listenerID As Integer)
+        RemoveListener(New SqlParameter("ListenerID", listenerID))
     End Sub
 
     Public Sub RemoveListener(parameter As SqlParameter)
@@ -132,10 +131,10 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateListener(id As Integer, column As String, value As String)
-        Dim command As String = String.Format("{0} = {1}", column, value)
+    Public Sub UpdateListener(listenerID As Integer, column As String, value As String)
+        Dim command As String = String.Format("{0} = '{1}'", column, value)
 
-        myCmd.CommandText = String.Format("UPDATE EmailListeners SET {0} WHERE ListenerID = {0}", command, id)
+        myCmd.CommandText = String.Format("UPDATE EmailListeners SET {0} WHERE ListenerID = {0}", command, listenerID)
     End Sub
 
     Public Sub UpdateListener(listener As Listener, current As String)
@@ -143,20 +142,6 @@ Public Class Database
 
         myCmd.ExecuteNonQuery()
     End Sub
-
-    'Public Sub UpdateCustomerInfo(customer As Customer)
-    '    UpdateCustomerInfo(customer.Id, customer.FirstName, customer.LastName, customer.PhoneNumber, customer.Address.Street, customer.Address.City, customer.Address.State, customer.Address.ZipCode, customer.EmailAddress.Address)
-    'End Sub
-
-    'Public Sub UpdateCustomerInfo(id As Integer, firstName As String, lastName As String, newPhone As String, addrStreet As String, addrCity As String, addrState As String, addrZip As String, email As String)
-    '    myCmd.CommandText = String.Format("UPDATE CUSTOMERS
-    '                                            SET FirstName= '{0}', LAST_NAME = '{1}', PHONE_NUMBER = '{2}',
-    '                                            SHIPPING_STREET = '{3}', SHIPPING_CITY = '{4}', SHIPPING_STATE = '{5}', SHIPPING_ZIP = '{6}',
-    '                                            EMAIL = '{7}'
-    '                                            WHERE CustomerID = {8}",
-    '                                        firstName, lastName, newPhone, addrStreet, addrCity, addrState, addrZip, email, id)
-    '    myCmd.ExecuteNonQuery()
-    'End Sub
 
     Public Sub UpdateCustomer(id As Integer, column As String, value As String)
         Dim command As String = String.Format("{0} = {1}", column, value)
@@ -216,7 +201,7 @@ Public Class Database
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateInventory(id As Integer, column As String, value As String)
+    Public Sub UpdateInventory(itemID As Integer, column As String, value As String)
         Dim command As String
 
         If Not (column.Equals("Stock") Or column.Equals("Price")) Then
@@ -225,7 +210,7 @@ Public Class Database
             command = String.Format("{0} = {1}", column, value)
         End If
 
-        myCmd.CommandText = String.Format("UPDATE INVENTORY SET {0} WHERE ItemID = {1}", command, id)
+        myCmd.CommandText = String.Format("UPDATE INVENTORY SET {0} WHERE ItemID = {1}", command, itemID)
 
         myCmd.ExecuteNonQuery()
     End Sub
@@ -237,42 +222,55 @@ Public Class Database
 
     Public Function GetCurrentOrders() As Collection(Of CurrentOrder)
         Dim orders As New Collection(Of CurrentOrder)
+        Dim customerName As String()
+        Dim itemName As String
+        Dim orderID, customerID, itemID, quantity As Integer
+        Dim orderDate As Date
+        Dim orderTotal As Double
 
         'create view to use with
-        myCmd.CommandText = "SELECT OrderID, CustomerID, ItemID, Quantity, OrderTotal, OrderDate
-                             FROM ORDERS"
+        myCmd.CommandText = "GetOrders"
+        myCmd.CommandType = CommandType.StoredProcedure
 
         Using myReader = myCmd.ExecuteReader()
             Do While myReader.Read()
-                orders.Add(New CurrentOrder(myReader.GetInt32(0), myReader.GetInt32(1), myReader.GetInt32(2), myReader.GetInt32(3), CDec(myReader.GetSqlMoney(4)), myReader.GetDateTime(5)))
+                orderID = myReader.GetInt32(0)
+                customerID = myReader.GetInt32(1)
+                customerName = {myReader.GetString(2), myReader.GetString(3)}
+                itemID = myReader.GetInt32(4)
+                itemName = myReader.GetString(5)
+                quantity = myReader.GetInt32(6)
+                orderTotal = CDec(myReader.GetSqlMoney(7))
+                orderDate = myReader.GetDateTime(8)
+                orders.Add(New CurrentOrder(orderID, customerID, customerName, itemID, itemName, quantity, orderTotal, orderDate))
             Loop
         End Using
 
-        For orderNumber As Integer = 0 To orders.Count - 1
-            myCmd.CommandText = String.Format("SELECT * FROM Customers WHERE CustomerID = {0}", orders(orderNumber).Customer.Id)
-            Using myReader = myCmd.ExecuteReader
-                Do While myReader.Read
-                    orders(orderNumber).Customer.FirstName = myReader.GetString(1)
-                    orders(orderNumber).Customer.LastName = myReader.GetString(2)
-                    orders(orderNumber).Customer.Address.Street = myReader.GetString(3)
-                    orders(orderNumber).Customer.Address.City = myReader.GetString(4)
-                    orders(orderNumber).Customer.Address.State = myReader.GetString(5)
-                    orders(orderNumber).Customer.Address.ZipCode = myReader.GetString(6)
-                    orders(orderNumber).Customer.PhoneNumber = myReader.GetString(7)
-                    orders(orderNumber).Customer.EmailAddress = New MimeKit.MailboxAddress(orders(orderNumber).Customer.Name, myReader.GetString(8))
-                    orders(orderNumber).Customer.JoinDate = Date.Parse(myReader.GetString(9))
-                Loop
-            End Using
+        'For orderNumber As Integer = 0 To orders.Count - 1
+        '    myCmd.CommandText = String.Format("SELECT * FROM Customers WHERE CustomerID = {0}", orders(orderNumber).Customer.Id)
+        '    Using myReader = myCmd.ExecuteReader
+        '        Do While myReader.Read
+        '            orders(orderNumber).Customer.FirstName = myReader.GetString(1)
+        '            orders(orderNumber).Customer.LastName = myReader.GetString(2)
+        '            orders(orderNumber).Customer.Address.Street = myReader.GetString(3)
+        '            orders(orderNumber).Customer.Address.City = myReader.GetString(4)
+        '            orders(orderNumber).Customer.Address.State = myReader.GetString(5)
+        '            orders(orderNumber).Customer.Address.ZipCode = myReader.GetString(6)
+        '            orders(orderNumber).Customer.PhoneNumber = myReader.GetString(7)
+        '            orders(orderNumber).Customer.EmailAddress = New MimeKit.MailboxAddress(orders(orderNumber).Customer.Name, myReader.GetString(8))
+        '            orders(orderNumber).Customer.JoinDate = Date.Parse(myReader.GetString(9))
+        '        Loop
+        '    End Using
 
-            myCmd.CommandText = String.Format("SELECT * FROM INVENTORY WHERE ItemID = {0}", orders(orderNumber).Item.Id)
-            Using myReader = myCmd.ExecuteReader
-                Do While myReader.Read
-                    orders(orderNumber).Item.Name = myReader.GetString(1)
-                    orders(orderNumber).Item.Stock = myReader.GetInt32(2)
-                    orders(orderNumber).Item.Price = CDec(myReader.GetSqlMoney(3))
-                Loop
-            End Using
-        Next
+        '    myCmd.CommandText = String.Format("SELECT * FROM INVENTORY WHERE ItemID = {0}", orders(orderNumber).Item.Id)
+        '    Using myReader = myCmd.ExecuteReader
+        '        Do While myReader.Read
+        '            orders(orderNumber).Item.Name = myReader.GetString(1)
+        '            orders(orderNumber).Item.Stock = myReader.GetInt32(2)
+        '            orders(orderNumber).Item.Price = CDec(myReader.GetSqlMoney(3))
+        '        Loop
+        '    End Using
+        'Next
 
         Return orders
     End Function
@@ -281,7 +279,7 @@ Public Class Database
         Dim orders As New Collection(Of CompletedOrder)
 
         'create view to use with
-        myCmd.CommandText = "SELECT OrderID, CustomerID, ItemID, Quantity, OrderTotal, OrderDate, CompletedDate
+        myCmd.CommandText = "SELECT *
                              FROM CompletedOrders"
 
         Using myReader = myCmd.ExecuteReader()
@@ -293,24 +291,6 @@ Public Class Database
         Return orders
     End Function
 
-    'Public Function GetCustomerInfo(phoneNumber As String) As String
-    '    results = ""
-    '    myCmd.CommandText = String.Format("SELECT * FROM CUSTOMERS WHERE PHONE_NUMBER = '{0}'", phoneNumber)
-    '    myReader = myCmd.ExecuteReader()
-
-    '    Do While myReader.Read()
-    '        results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) &
-    '                            myReader.GetString(2) & vbTab & myReader.GetString(3) &
-    '                            myReader.GetString(4) & vbTab & myReader.GetString(5) &
-    '                            myReader.GetString(6) & vbTab & myReader.GetString(7) &
-    '                            myReader.GetString(8) & vbTab & vbLf
-    '    Loop
-
-    '    myReader.Close()
-
-    '    Return results
-    'End Function
-
     Public Function GetCustomers() As Collection(Of Customer)
         Dim customers As New Collection(Of Customer)
 
@@ -318,7 +298,7 @@ Public Class Database
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read()
-                customers.Add(New Customer(myReader.GetInt32(9), myReader.GetString(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8)))
+                customers.Add(New Customer(myReader.GetInt32(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8), myReader.GetString(9)))
             Loop
         End Using
 
@@ -359,49 +339,22 @@ Public Class Database
 
     Public Sub AddOrder(customerID As Integer, itemID As Integer, quantity As Integer)
         'insert the order into the ORDERS table
+        AddOrder({New SqlParameter("CustomerID", customerID), New SqlParameter("ItemID", itemID), New SqlParameter("Quantity", quantity)})
+    End Sub
+
+    Public Sub AddOrder(parameters As SqlParameter())
         myCmd.CommandText = "AddOrder"
         myCmd.CommandType = CommandType.StoredProcedure
 
-        myCmd.Parameters.Item(0).Value = customerID
-        myCmd.Parameters.Item(1).Value = itemID
-        myCmd.Parameters.Item(2).Value = quantity
-
-        myCmd.ExecuteNonQuery()
-
-        ''insert the order counts into the ORDER_COUNTS table
-        'myCmd.CommandText = String.Format("INSERT INTO ORDER_COUNTS VALUES ({0}, {1}, {2}, {3})",
-        '                                  orderIndex, orderNumber, itemIndex, quantity)
-
-        'myReader = myCmd.ExecuteReader()
-
-        'Do While myReader.Read()
-        '    results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) & vbLf
-        'Loop
-
-        'myReader.Close()
-    End Sub
-
-    Public Sub UpdateOrder(orderNumber As Integer, quantity As Integer)
-        myCmd.CommandText = String.Format("UPDATE ORDER_COUNTS SET QUANTITY = {0} WHERE ORDER_NUMBER = {1}", quantity, orderNumber)
-
+        myCmd.Parameters.AddRange(parameters)
         myCmd.ExecuteNonQuery()
     End Sub
 
-    Private Function FindOrderIndex(orderNumber As Integer) As Integer
-        Dim index As Integer
+    Public Sub UpdateOrder(orderID As Integer, quantity As Integer)
+        myCmd.CommandText = String.Format("UPDATE Orders SET QUANTITY = {0} WHERE OrderID = {1}", quantity, orderID)
 
-        myCmd.CommandText = String.Format("SELECT ORDER_INDEX FROM ORDER_COUNTS WHERE ORDER_NUMBER = {0}", orderNumber)
-
-        myReader = myCmd.ExecuteReader()
-
-        Do While myReader.Read()
-            index = myReader.GetInt32(0)
-        Loop
-
-        myReader.Close()
-
-        Return index
-    End Function
+        myCmd.ExecuteNonQuery()
+    End Sub
 
     Public Sub CancelOrder(orderID As Integer)
         myCmd.CommandText = "CancelOrder"
@@ -413,9 +366,10 @@ Public Class Database
     End Sub
 
     Public Sub CompleteOrder(orderID As Integer)
-        'TODO: Turn this into a stored procedure
         myCmd.CommandType = CommandType.StoredProcedure
         myCmd.CommandText = "CompleteOrder"
+
+        myCmd.Parameters.AddWithValue("OrderID", orderID)
 
         myCmd.ExecuteNonQuery()
     End Sub
@@ -434,41 +388,5 @@ Public Class Database
 
         Return listeners
     End Function
-
-    'Public Function UniqueRecord(tableName As String, column As String, value As Integer) As Boolean
-    '    results = ""
-    '    myCmd.CommandText = String.Format("SELECT * FROM {0} WHERE {1} = {2}", tableName, column, value)
-    '    Try
-    '        myReader = myCmd.ExecuteReader()
-
-    '        Do While myReader.Read()
-    '            results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) & vbLf
-    '        Loop
-    '    Catch
-    '        MsgBox("Something went wrong. That information doesn't seem to exist.")
-    '    End Try
-
-    '    myReader.Close()
-
-    '    Return results.Equals("")
-    'End Function
-
-    'Public Function UniqueRecord(tableName As String, column As String, value As Integer, phoneNumber As String) As Boolean
-    '    results = ""
-    '    myCmd.CommandText = String.Format("SELECT * FROM {0} WHERE {1} = {2} AND PHONE_NUMBER = '{3}'", tableName, column, value, phoneNumber)
-    '    Try
-    '        myReader = myCmd.ExecuteReader()
-
-    '        Do While myReader.Read()
-    '            results = results & myReader.GetString(0) & vbTab & myReader.GetString(1) & vbLf
-    '        Loop
-    '    Catch
-    '        MsgBox("Something went wrong. That information doesn't seem to exist.")
-    '    Finally
-    '        myReader.Close()
-    '    End Try
-
-    '    Return results.Equals("")
-    'End Function
 End Class
 'End Namespace

@@ -31,11 +31,11 @@
     <ProductName>Media Ministry Manager</ProductName>
     <PublisherName>Andrew Randle-Warren</PublisherName>
     <SuiteName>Media Ministry</SuiteName>
-    <MinimumRequiredVersion>2.0.203.10</MinimumRequiredVersion>
+    <MinimumRequiredVersion>3.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>media_ministry_manager.htm</WebPage>
     <ApplicationRevision>13</ApplicationRevision>
-    <ApplicationVersion>2.0.203.%2a</ApplicationVersion>
+    <ApplicationVersion>3.0.580.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -217,12 +217,17 @@
     <Compile Include="Assets\MediaMinistrySplash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Custom Objects\Data Tables\Events\CustomersRowChangeEvent.vb" />
     <Compile Include="Custom Objects\Data Tables\Events\InventoryRowChangeEvent.vb" />
     <Compile Include="Custom Objects\Data Tables\Events\ListenersRowChangeEvent.vb" />
     <Compile Include="Custom Objects\Data Tables\Events\OrdersRowChangeEvent.vb" />
+    <Compile Include="Custom Objects\Data Tables\Rows\CustomersDataRow.vb" />
     <Compile Include="Custom Objects\Data Tables\Rows\InventoryDataRow.vb" />
     <Compile Include="Custom Objects\Data Tables\Rows\ListenersDataRow.vb" />
     <Compile Include="Custom Objects\Data Tables\Rows\OrdersDataRow.vb" />
+    <Compile Include="Custom Objects\Data Tables\Tables\CustomersDataTable.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Custom Objects\Data Tables\Tables\InventoryDataTable.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -245,25 +250,32 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Objects\Exceptions\FormClosedException.vb" />
+    <Compile Include="Custom Objects\Exceptions\InvalidStateCodeException.vb" />
     <Compile Include="Custom Objects\Exceptions\PasswordException.vb" />
     <Compile Include="Custom Objects\Google\Service.vb" />
+    <Compile Include="Custom Objects\Controls\PasswordField.Designer.vb">
+      <DependentUpon>PasswordField.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Objects\Controls\PasswordField.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Custom Objects\Utils.vb" />
-    <Compile Include="Forms\Email Listeners\CustomMessage.Designer.vb">
-      <DependentUpon>CustomMessage.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Emails\CustomMessageDialog.Designer.vb">
+      <DependentUpon>CustomMessageDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\CustomMessage.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\CustomMessageDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Emails\EmailListenersDialog.Designer.vb">
-      <DependentUpon>EmailListenersDialog.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Emails\EmailMinistryDialog.Designer.vb">
+      <DependentUpon>EmailMinistryDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Emails\EmailListenersDialog.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\EmailMinistryDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\Folder.Designer.vb">
-      <DependentUpon>Folder.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Emails\FolderCreationDialog.Designer.vb">
+      <DependentUpon>FolderCreationDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\Folder.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\FolderCreationDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Objects\Dialogs\Emails\AddListenerDialog.Designer.vb">
@@ -284,10 +296,10 @@
     <Compile Include="Forms\Email Listeners\SendEmails.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\Upload.Designer.vb">
-      <DependentUpon>Upload.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Emails\DriveUploadDialog.Designer.vb">
+      <DependentUpon>DriveUploadDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\Upload.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\DriveUploadDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Objects\Dialogs\Products\AddProductDialog.Designer.vb">
@@ -314,10 +326,10 @@
     <Compile Include="Custom Objects\Dialogs\Misc\NewUserDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\AdminDialog.Designer.vb">
-      <DependentUpon>AdminDialog.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Misc\AdminInfoDialog.Designer.vb">
+      <DependentUpon>AdminInfoDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Custom Objects\Dialogs\Misc\AdminDialog.vb">
+    <Compile Include="Custom Objects\Dialogs\Misc\AdminInfoDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Misc\LoginForm.Designer.vb">
@@ -338,12 +350,6 @@
     <Compile Include="Forms\Orders\DisplayOrders.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Inventory\UpdateInventory.Designer.vb">
-      <DependentUpon>UpdateInventory.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Inventory\UpdateInventory.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\Inventory\DisplayInventory.Designer.vb">
       <DependentUpon>DisplayInventory.vb</DependentUpon>
     </Compile>
@@ -355,14 +361,6 @@
     </Compile>
     <Compile Include="Custom Objects\Dialogs\Orders\PlaceOrderDialog.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MediaMinistryDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="MediaMinistryDataSet.vb">
-      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -416,17 +414,20 @@
     <EmbeddedResource Include="Custom Objects\Dialogs\Emails\ListenerSelectionDialog.resx">
       <DependentUpon>ListenerSelectionDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\CustomMessage.resx">
-      <DependentUpon>CustomMessage.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\CustomMessageDialog.resx">
+      <DependentUpon>CustomMessageDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\EmailListenersDialog.resx">
-      <DependentUpon>EmailListenersDialog.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\EmailMinistryDialog.resx">
+      <DependentUpon>EmailMinistryDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\Folder.resx">
-      <DependentUpon>Folder.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\FolderCreationDialog.resx">
+      <DependentUpon>FolderCreationDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Objects\Dialogs\Emails\AddListenerDialog.resx">
       <DependentUpon>AddListenerDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Objects\Controls\PasswordField.resx">
+      <DependentUpon>PasswordField.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
       <DependentUpon>frm_ViewListeners.vb</DependentUpon>
@@ -434,8 +435,8 @@
     <EmbeddedResource Include="Forms\Email Listeners\SendEmails.resx">
       <DependentUpon>SendEmails.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\Upload.resx">
-      <DependentUpon>Upload.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\DriveUploadDialog.resx">
+      <DependentUpon>DriveUploadDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Objects\Dialogs\Products\AddProductDialog.resx">
       <DependentUpon>AddProductDialog.vb</DependentUpon>
@@ -449,8 +450,8 @@
     <EmbeddedResource Include="Custom Objects\Dialogs\Misc\NewUserDialog.resx">
       <DependentUpon>NewUserDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\AdminDialog.resx">
-      <DependentUpon>AdminDialog.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\AdminInfoDialog.resx">
+      <DependentUpon>AdminInfoDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Misc\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
@@ -467,9 +468,6 @@
     <EmbeddedResource Include="Custom Objects\Dialogs\Orders\PlaceOrderDialog.resx">
       <DependentUpon>PlaceOrderDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Inventory\UpdateInventory.resx">
-      <DependentUpon>UpdateInventory.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory\DisplayInventory.resx">
       <DependentUpon>DisplayInventory.vb</DependentUpon>
     </EmbeddedResource>
@@ -485,17 +483,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MediaMinistryDataSet.xsc">
-      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="MediaMinistryDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MediaMinistryDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MediaMinistryDataSet.xss">
-      <DependentUpon>MediaMinistryDataSet.xsd</DependentUpon>
-    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -544,16 +531,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NewToolStripMenuItem.Image.png" />
+    <Content Include="Resources\HidePasswordIcon.png" />
+    <Content Include="Resources\ShowPasswordIcon.png" />
     <Content Include="Resources\version.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom Objects\Components\" />
-    <Folder Include="Custom Objects\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_ConfigurationName="Any" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_StartDate="2019/5/8" BuildVersion_UseGlobalSettings="False" BuildVersion_DetectChanges="True" />
+      <UserProperties BuildVersion_DetectChanges="True" BuildVersion_UseGlobalSettings="False" BuildVersion_StartDate="2019/5/8" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_ConfigurationName="Any" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

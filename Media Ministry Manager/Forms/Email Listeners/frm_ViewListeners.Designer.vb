@@ -24,7 +24,7 @@ Partial Class Frm_ViewListeners
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_ViewListeners))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btn_Add = New System.Windows.Forms.Button()
         Me.ContextStripItem = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -180,7 +180,7 @@ Partial Class Frm_ViewListeners
         Me.btn_AdvancedCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_AdvancedCancel.Location = New System.Drawing.Point(114, 196)
         Me.btn_AdvancedCancel.Name = "btn_AdvancedCancel"
-        Me.btn_AdvancedCancel.Size = New System.Drawing.Size(94, 30)
+        Me.btn_AdvancedCancel.Size = New System.Drawing.Size(95, 35)
         Me.btn_AdvancedCancel.TabIndex = 12
         Me.btn_AdvancedCancel.Text = "Cancel"
         Me.btn_AdvancedCancel.UseVisualStyleBackColor = True
@@ -195,7 +195,6 @@ Partial Class Frm_ViewListeners
         '
         'mnstr_Strip
         '
-        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -361,8 +360,8 @@ Partial Class Frm_ViewListeners
         '
         Me.dgv_Listeners.AllowUserToAddRows = False
         Me.dgv_Listeners.AllowUserToOrderColumns = True
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
-        Me.dgv_Listeners.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGray
+        Me.dgv_Listeners.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgv_Listeners.AutoGenerateColumns = False
         Me.dgv_Listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Listeners.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells

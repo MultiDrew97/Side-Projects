@@ -24,14 +24,16 @@ Partial Class ListenerSelectionDialog
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
-        Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ListenersName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ListenersEmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsListeners = New System.Windows.Forms.BindingSource(Me.components)
         Me.chk_AllListeners = New System.Windows.Forms.CheckBox()
         Me.btn_Finish = New System.Windows.Forms.Button()
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.bw_RetrieveListeners = New System.ComponentModel.BackgroundWorker()
+        Me.cbx_Column = New System.Windows.Forms.ComboBox()
+        Me.txt_Search = New System.Windows.Forms.TextBox()
+        Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ListenersName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ListenersEmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsListeners, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -40,8 +42,7 @@ Partial Class ListenerSelectionDialog
         '
         Me.dgv_Listeners.AllowUserToAddRows = False
         Me.dgv_Listeners.AllowUserToDeleteRows = False
-        Me.dgv_Listeners.AllowUserToResizeColumns = False
-        Me.dgv_Listeners.AllowUserToResizeRows = False
+        Me.dgv_Listeners.AllowUserToOrderColumns = True
         Me.dgv_Listeners.AutoGenerateColumns = False
         Me.dgv_Listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Listeners.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
@@ -52,14 +53,74 @@ Partial Class ListenerSelectionDialog
         Me.dgv_Listeners.Location = New System.Drawing.Point(0, 0)
         Me.dgv_Listeners.Margin = New System.Windows.Forms.Padding(6)
         Me.dgv_Listeners.Name = "dgv_Listeners"
-        Me.dgv_Listeners.Size = New System.Drawing.Size(546, 487)
+        Me.dgv_Listeners.Size = New System.Drawing.Size(671, 546)
         Me.dgv_Listeners.TabIndex = 0
+        '
+        'chk_AllListeners
+        '
+        Me.chk_AllListeners.AutoSize = True
+        Me.chk_AllListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chk_AllListeners.Location = New System.Drawing.Point(773, 487)
+        Me.chk_AllListeners.Margin = New System.Windows.Forms.Padding(6)
+        Me.chk_AllListeners.Name = "chk_AllListeners"
+        Me.chk_AllListeners.Size = New System.Drawing.Size(146, 29)
+        Me.chk_AllListeners.TabIndex = 1
+        Me.chk_AllListeners.Text = "Send to All"
+        Me.chk_AllListeners.UseVisualStyleBackColor = True
+        '
+        'btn_Finish
+        '
+        Me.btn_Finish.AutoSize = True
+        Me.btn_Finish.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Finish.Location = New System.Drawing.Point(773, 281)
+        Me.btn_Finish.Name = "btn_Finish"
+        Me.btn_Finish.Size = New System.Drawing.Size(138, 48)
+        Me.btn_Finish.TabIndex = 2
+        Me.btn_Finish.Text = "Finish"
+        Me.btn_Finish.UseVisualStyleBackColor = True
+        '
+        'btn_Cancel
+        '
+        Me.btn_Cancel.AutoSize = True
+        Me.btn_Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Cancel.Location = New System.Drawing.Point(773, 346)
+        Me.btn_Cancel.Name = "btn_Cancel"
+        Me.btn_Cancel.Size = New System.Drawing.Size(138, 48)
+        Me.btn_Cancel.TabIndex = 3
+        Me.btn_Cancel.Text = "Cancel"
+        Me.btn_Cancel.UseVisualStyleBackColor = True
+        '
+        'bw_RetrieveListeners
+        '
+        '
+        'cbx_Column
+        '
+        Me.cbx_Column.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.cbx_Column.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.cbx_Column.FormattingEnabled = True
+        Me.cbx_Column.Items.AddRange(New Object() {"Name", "Email Address"})
+        Me.cbx_Column.Location = New System.Drawing.Point(755, 31)
+        Me.cbx_Column.Name = "cbx_Column"
+        Me.cbx_Column.Size = New System.Drawing.Size(199, 33)
+        Me.cbx_Column.TabIndex = 4
+        '
+        'txt_Search
+        '
+        Me.txt_Search.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.txt_Search.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.txt_Search.Location = New System.Drawing.Point(695, 87)
+        Me.txt_Search.Name = "txt_Search"
+        Me.txt_Search.Size = New System.Drawing.Size(320, 31)
+        Me.txt_Search.TabIndex = 5
         '
         'Selection
         '
+        Me.Selection.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Selection.FillWeight = 50.0!
         Me.Selection.HeaderText = ""
+        Me.Selection.MinimumWidth = 50
         Me.Selection.Name = "Selection"
+        Me.Selection.Width = 50
         '
         'ListenersName
         '
@@ -75,51 +136,13 @@ Partial Class ListenerSelectionDialog
         Me.ListenersEmailAddress.Name = "ListenersEmailAddress"
         Me.ListenersEmailAddress.ReadOnly = True
         '
-        'bsListeners
-        '
-        '
-        'chk_AllListeners
-        '
-        Me.chk_AllListeners.AutoSize = True
-        Me.chk_AllListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chk_AllListeners.Location = New System.Drawing.Point(599, 413)
-        Me.chk_AllListeners.Margin = New System.Windows.Forms.Padding(6)
-        Me.chk_AllListeners.Name = "chk_AllListeners"
-        Me.chk_AllListeners.Size = New System.Drawing.Size(146, 29)
-        Me.chk_AllListeners.TabIndex = 1
-        Me.chk_AllListeners.Text = "Send to All"
-        Me.chk_AllListeners.UseVisualStyleBackColor = True
-        '
-        'btn_Finish
-        '
-        Me.btn_Finish.AutoSize = True
-        Me.btn_Finish.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Finish.Location = New System.Drawing.Point(599, 37)
-        Me.btn_Finish.Name = "btn_Finish"
-        Me.btn_Finish.Size = New System.Drawing.Size(138, 48)
-        Me.btn_Finish.TabIndex = 2
-        Me.btn_Finish.Text = "Finish"
-        Me.btn_Finish.UseVisualStyleBackColor = True
-        '
-        'btn_Cancel
-        '
-        Me.btn_Cancel.AutoSize = True
-        Me.btn_Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Cancel.Location = New System.Drawing.Point(599, 102)
-        Me.btn_Cancel.Name = "btn_Cancel"
-        Me.btn_Cancel.Size = New System.Drawing.Size(138, 48)
-        Me.btn_Cancel.TabIndex = 3
-        Me.btn_Cancel.Text = "Cancel"
-        Me.btn_Cancel.UseVisualStyleBackColor = True
-        '
-        'bw_RetrieveListeners
-        '
-        '
         'ListenerSelectionDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(783, 487)
+        Me.ClientSize = New System.Drawing.Size(1052, 546)
+        Me.Controls.Add(Me.txt_Search)
+        Me.Controls.Add(Me.cbx_Column)
         Me.Controls.Add(Me.btn_Cancel)
         Me.Controls.Add(Me.btn_Finish)
         Me.Controls.Add(Me.chk_AllListeners)
@@ -146,6 +169,8 @@ Partial Class ListenerSelectionDialog
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents bw_RetrieveListeners As System.ComponentModel.BackgroundWorker
     Friend WithEvents bsListeners As BindingSource
+    Friend WithEvents cbx_Column As ComboBox
+    Friend WithEvents txt_Search As TextBox
     Friend WithEvents Selection As DataGridViewCheckBoxColumn
     Friend WithEvents ListenersName As DataGridViewTextBoxColumn
     Friend WithEvents ListenersEmailAddress As DataGridViewTextBoxColumn
