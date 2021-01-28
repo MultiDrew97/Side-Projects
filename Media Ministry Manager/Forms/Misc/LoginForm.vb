@@ -33,7 +33,7 @@ Public Class Frm_Login
 
         If CheckCreds(txt_Username.Text, txt_Password.Text) Then
             Try
-                Dim mainForm = New frm_Main
+                Dim mainForm = New Frm_Main
                 mainForm.Show()
                 bw_SaveSettings.RunWorkerAsync()
             Catch exception As SqlException

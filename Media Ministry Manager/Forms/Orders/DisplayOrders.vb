@@ -11,7 +11,7 @@ Public Class Frm_DisplayOrders
     End Sub
 
     Private Sub Frm_DisplayOrders_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim frm As New frm_Main()
+        Dim frm As New Frm_Main()
         frm.Show()
     End Sub
 

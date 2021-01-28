@@ -5,12 +5,12 @@ Public Class Frm_DisplayCustomers
     Private Property CustomersTable As New CustomData.CustomersDataTable
 
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
-        bsCustomers1.DataSource = CustomersTable
+        bsCustomers.DataSource = CustomersTable
         Refresh()
     End Sub
 
     Private Sub Frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim main As New frm_Main()
+        Dim main As New Frm_Main()
         main.Show()
     End Sub
 
@@ -67,7 +67,7 @@ Public Class Frm_DisplayCustomers
             row("ZipCode") = customer.Address.ZipCode
             row("PhoneNumber") = customer.PhoneNumber
             row("EmailAddress") = customer.EmailAddress.Address
-            row("JoinDate") = customer.JoinDate.ToString().Substring(0, 9)
+            row("JoinDate") = customer.JoinDate
             CustomersTable.Rows.Add(row)
         Next
     End Sub

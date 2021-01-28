@@ -4,7 +4,7 @@ Imports System.ComponentModel
 Imports System.IO
 Imports MediaMinistry.Helpers
 
-Public Class frm_Main
+Public Class Frm_Main
     ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
     Dim firstTime As Boolean = True
 

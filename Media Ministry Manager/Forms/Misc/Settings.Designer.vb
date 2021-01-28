@@ -38,33 +38,12 @@ Partial Class Frm_Settings
         Me.btn_Gmail = New System.Windows.Forms.Button()
         Me.btn_GoogleDrive = New System.Windows.Forms.Button()
         Me.fd_FontSelector = New System.Windows.Forms.FontDialog()
-        Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListenerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProductToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListenerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.bw_Settings = New System.ComponentModel.BackgroundWorker()
         Me.bw_Service = New System.ComponentModel.BackgroundWorker()
         Me.bw_CheckServices = New System.ComponentModel.BackgroundWorker()
         Me.tc_Settings.SuspendLayout()
         Me.tp_Fonts.SuspendLayout()
         Me.tp_LinkedAccounts.SuspendLayout()
-        Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_Save
@@ -72,7 +51,7 @@ Partial Class Frm_Settings
         Me.btn_Save.AutoSize = True
         Me.btn_Save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Save.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Save.Location = New System.Drawing.Point(326, 410)
+        Me.btn_Save.Location = New System.Drawing.Point(325, 382)
         Me.btn_Save.Margin = New System.Windows.Forms.Padding(6)
         Me.btn_Save.Name = "btn_Save"
         Me.btn_Save.Size = New System.Drawing.Size(72, 36)
@@ -86,7 +65,7 @@ Partial Class Frm_Settings
         Me.btn_Default.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Default.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btn_Default.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Default.Location = New System.Drawing.Point(40, 410)
+        Me.btn_Default.Location = New System.Drawing.Point(39, 382)
         Me.btn_Default.Margin = New System.Windows.Forms.Padding(6)
         Me.btn_Default.Name = "btn_Default"
         Me.btn_Default.Size = New System.Drawing.Size(208, 36)
@@ -98,11 +77,12 @@ Partial Class Frm_Settings
         '
         Me.tc_Settings.Controls.Add(Me.tp_Fonts)
         Me.tc_Settings.Controls.Add(Me.tp_LinkedAccounts)
+        Me.tc_Settings.Dock = System.Windows.Forms.DockStyle.Top
         Me.tc_Settings.HotTrack = True
-        Me.tc_Settings.Location = New System.Drawing.Point(0, 27)
+        Me.tc_Settings.Location = New System.Drawing.Point(0, 0)
         Me.tc_Settings.Name = "tc_Settings"
         Me.tc_Settings.SelectedIndex = 0
-        Me.tc_Settings.Size = New System.Drawing.Size(484, 350)
+        Me.tc_Settings.Size = New System.Drawing.Size(484, 330)
         Me.tc_Settings.TabIndex = 2
         '
         'tp_Fonts
@@ -115,7 +95,7 @@ Partial Class Frm_Settings
         Me.tp_Fonts.Location = New System.Drawing.Point(4, 34)
         Me.tp_Fonts.Name = "tp_Fonts"
         Me.tp_Fonts.Padding = New System.Windows.Forms.Padding(3)
-        Me.tp_Fonts.Size = New System.Drawing.Size(476, 312)
+        Me.tp_Fonts.Size = New System.Drawing.Size(476, 292)
         Me.tp_Fonts.TabIndex = 0
         Me.tp_Fonts.Text = "Font Selection"
         '
@@ -133,7 +113,7 @@ Partial Class Frm_Settings
         Me.btn_ChangeFont.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btn_ChangeFont.AutoSize = True
         Me.btn_ChangeFont.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_ChangeFont.Location = New System.Drawing.Point(122, 235)
+        Me.btn_ChangeFont.Location = New System.Drawing.Point(122, 225)
         Me.btn_ChangeFont.Margin = New System.Windows.Forms.Padding(0)
         Me.btn_ChangeFont.Name = "btn_ChangeFont"
         Me.btn_ChangeFont.Size = New System.Drawing.Size(232, 36)
@@ -170,7 +150,7 @@ Partial Class Frm_Settings
         Me.tp_LinkedAccounts.Location = New System.Drawing.Point(4, 34)
         Me.tp_LinkedAccounts.Name = "tp_LinkedAccounts"
         Me.tp_LinkedAccounts.Padding = New System.Windows.Forms.Padding(3)
-        Me.tp_LinkedAccounts.Size = New System.Drawing.Size(476, 312)
+        Me.tp_LinkedAccounts.Size = New System.Drawing.Size(476, 292)
         Me.tp_LinkedAccounts.TabIndex = 1
         Me.tp_LinkedAccounts.Text = "Linked Accounts"
         '
@@ -223,145 +203,6 @@ Partial Class Frm_Settings
         Me.fd_FontSelector.MinSize = 12
         Me.fd_FontSelector.ScriptsOnly = True
         '
-        'mnstr_Strip
-        '
-        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
-        Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
-        Me.mnstr_Strip.Name = "mnstr_Strip"
-        Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mnstr_Strip.Size = New System.Drawing.Size(484, 24)
-        Me.mnstr_Strip.TabIndex = 3
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.toolStripSeparator1, Me.LogoutToolStripMenuItem, Me.ExitToolStripMenuItem1})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
-        Me.FileToolStripMenuItem.Text = "&File"
-        '
-        'NewToolStripMenuItem
-        '
-        Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem, Me.ProductToolStripMenuItem, Me.ListenerToolStripMenuItem})
-        Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
-        Me.NewToolStripMenuItem.Text = "&New..."
-        '
-        'CustomerToolStripMenuItem
-        '
-        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
-        Me.CustomerToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.CustomerToolStripMenuItem.Text = "Customer"
-        '
-        'ProductToolStripMenuItem
-        '
-        Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
-        Me.ProductToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.ProductToolStripMenuItem.Text = "Product"
-        '
-        'ListenerToolStripMenuItem
-        '
-        Me.ListenerToolStripMenuItem.Name = "ListenerToolStripMenuItem"
-        Me.ListenerToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.ListenerToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.ListenerToolStripMenuItem.Text = "Listener"
-        '
-        'toolStripSeparator1
-        '
-        Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(132, 6)
-        '
-        'LogoutToolStripMenuItem
-        '
-        Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
-        Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
-        Me.LogoutToolStripMenuItem.Text = "&Logout"
-        '
-        'ExitToolStripMenuItem1
-        '
-        Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.ShortcutKeyDisplayString = ""
-        Me.ExitToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(135, 22)
-        Me.ExitToolStripMenuItem1.Text = "E&xit"
-        '
-        'ToolsToolStripMenuItem
-        '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem})
-        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
-        Me.ToolsToolStripMenuItem.Text = "&Tools"
-        '
-        'CustomizeToolStripMenuItem
-        '
-        Me.CustomizeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerToolStripMenuItem1, Me.ProductToolStripMenuItem1, Me.ListenerToolStripMenuItem1})
-        Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
-        Me.CustomizeToolStripMenuItem.Text = "Find..."
-        '
-        'CustomerToolStripMenuItem1
-        '
-        Me.CustomerToolStripMenuItem1.Name = "CustomerToolStripMenuItem1"
-        Me.CustomerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
-        Me.CustomerToolStripMenuItem1.Text = "Customer"
-        '
-        'ProductToolStripMenuItem1
-        '
-        Me.ProductToolStripMenuItem1.Name = "ProductToolStripMenuItem1"
-        Me.ProductToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
-        Me.ProductToolStripMenuItem1.Text = "Product"
-        '
-        'ListenerToolStripMenuItem1
-        '
-        Me.ListenerToolStripMenuItem1.Name = "ListenerToolStripMenuItem1"
-        Me.ListenerToolStripMenuItem1.Size = New System.Drawing.Size(126, 22)
-        Me.ListenerToolStripMenuItem1.Text = "Listener"
-        '
-        'OptionsToolStripMenuItem
-        '
-        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
-        Me.OptionsToolStripMenuItem.Text = "Update"
-        '
-        'ViewToolStripMenuItem
-        '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomersToolStripMenuItem, Me.OrdersToolStripMenuItem, Me.ProductsToolStripMenuItem, Me.ListenersToolStripMenuItem})
-        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.ViewToolStripMenuItem.Text = "&View"
-        '
-        'CustomersToolStripMenuItem
-        '
-        Me.CustomersToolStripMenuItem.Name = "CustomersToolStripMenuItem"
-        Me.CustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.CustomersToolStripMenuItem.Text = "Customers"
-        '
-        'OrdersToolStripMenuItem
-        '
-        Me.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem"
-        Me.OrdersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.OrdersToolStripMenuItem.Text = "Orders"
-        '
-        'ProductsToolStripMenuItem
-        '
-        Me.ProductsToolStripMenuItem.Name = "ProductsToolStripMenuItem"
-        Me.ProductsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.ProductsToolStripMenuItem.Text = "Products"
-        '
-        'ListenersToolStripMenuItem
-        '
-        Me.ListenersToolStripMenuItem.Name = "ListenersToolStripMenuItem"
-        Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.ListenersToolStripMenuItem.Text = "Listeners"
-        '
         'bw_Settings
         '
         '
@@ -380,7 +221,6 @@ Partial Class Frm_Settings
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(484, 461)
-        Me.Controls.Add(Me.mnstr_Strip)
         Me.Controls.Add(Me.tc_Settings)
         Me.Controls.Add(Me.btn_Default)
         Me.Controls.Add(Me.btn_Save)
@@ -399,8 +239,6 @@ Partial Class Frm_Settings
         Me.tp_Fonts.PerformLayout()
         Me.tp_LinkedAccounts.ResumeLayout(False)
         Me.tp_LinkedAccounts.PerformLayout()
-        Me.mnstr_Strip.ResumeLayout(False)
-        Me.mnstr_Strip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -415,26 +253,6 @@ Partial Class Frm_Settings
     Friend WithEvents btn_ChangeFont As Button
     Friend WithEvents lbl_CurrentFont As Label
     Friend WithEvents lbl_FontSize As Label
-    Friend WithEvents mnstr_Strip As MenuStrip
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProductToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ListenerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents toolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomizeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomerToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ProductToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ListenerToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents bw_Settings As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_Gmail As Button
     Friend WithEvents btn_GoogleDrive As Button

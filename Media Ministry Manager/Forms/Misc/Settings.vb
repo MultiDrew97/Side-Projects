@@ -8,9 +8,9 @@ Imports MediaMinistry.Helpers
 Public Class Frm_Settings
     Private Const currentUser = "Current User: {0}"
     Private cts As CancellationTokenSource
-    ReadOnly bold As String = "Bolded? {0}"
-    ReadOnly fontSize As String = "Font Size: {0}pt"
-    Private textFont As String = "Font: {0}"
+    Private ReadOnly bold As String = "Bolded? {0}"
+    Private ReadOnly fontSize As String = "Font Size: {0}pt"
+    Private ReadOnly textFont As String = "Font: {0}"
     Private result As DialogResult
 
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -72,11 +72,11 @@ Public Class Frm_Settings
         End Select
     End Sub
 
-    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) 
         Utils.CloseOpenForms()
     End Sub
 
-    Private Sub btn_GoogleDrive_Click(sender As Object, e As EventArgs) Handles btn_GoogleDrive.Click
+    Private Sub Btn_GoogleDrive_Click(sender As Object, e As EventArgs) Handles btn_GoogleDrive.Click
         If btn_GoogleDrive.Text = "Unlink Google Drive" Then
             Try
                 Directory.Delete(Application.StartupPath & "\Drive Token", True)
@@ -101,7 +101,7 @@ Public Class Frm_Settings
         End If
     End Sub
 
-    Private Sub btn_Gmail_Click(sender As Object, e As EventArgs) Handles btn_Gmail.Click
+    Private Sub Btn_Gmail_Click(sender As Object, e As EventArgs) Handles btn_Gmail.Click
         If btn_Gmail.Text = "Unlink Gmail" Then
             Try
                 Directory.Delete(Application.StartupPath & "\Gmail Token", True)
@@ -126,7 +126,7 @@ Public Class Frm_Settings
         End If
     End Sub
 
-    Private Sub bw_Service_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Service.DoWork
+    Private Sub Bw_Service_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Service.DoWork
         cts = New CancellationTokenSource()
         Dim service As Service
         Select Case CType(e.Argument, String)

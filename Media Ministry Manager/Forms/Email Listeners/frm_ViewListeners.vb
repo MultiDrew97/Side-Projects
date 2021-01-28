@@ -58,7 +58,7 @@ Public Class Frm_ViewListeners
     End Sub
 
     Private Sub Frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim frm As New frm_Main
+        Dim frm As New Frm_Main
         frm.Show()
     End Sub
 
@@ -101,34 +101,34 @@ Public Class Frm_ViewListeners
         txt_SearchBox.Text = ""
     End Sub
 
-    Private Sub MaxChanges()
-        'Change Locations
-        gbx_Search.Location = Locations.SearchMax
-        lbl_Total.Location = Locations.CountMax
-        btn_Add.Location = Locations.AddMax
+    'Private Sub MaxChanges()
+    '    'Change Locations
+    '    gbx_Search.Location = Locations.SearchMax
+    '    lbl_Total.Location = Locations.CountMax
+    '    btn_Add.Location = Locations.AddMax
 
-        'Change Visibilities
-        btn_Advanced.Show()
+    '    'Change Visibilities
+    '    btn_Advanced.Show()
 
-        'Change Sizes
-        dgv_Listeners.Size = Sizes.dgvMax
-    End Sub
+    '    'Change Sizes
+    '    dgv_Listeners.Size = Sizes.dgvMax
+    'End Sub
 
-    Private Sub DefaultChanges()
-        'Change Locations
-        gbx_Search.Location = Locations.SearchNormal
-        lbl_Total.Location = Locations.CountDefault
-        btn_Add.Location = Locations.AddDefault
+    'Private Sub DefaultChanges()
+    '    'Change Locations
+    '    gbx_Search.Location = Locations.SearchNormal
+    '    lbl_Total.Location = Locations.CountDefault
+    '    btn_Add.Location = Locations.AddDefault
 
-        'Change Visibilities
-        txt_SearchBox.Show()
-        cbx_Column.Show()
-        btn_Advanced.Hide()
-        gbx_AdvancedSearch.Hide()
+    '    'Change Visibilities
+    '    txt_SearchBox.Show()
+    '    cbx_Column.Show()
+    '    btn_Advanced.Hide()
+    '    gbx_AdvancedSearch.Hide()
 
-        'Change Sizes
-        dgv_Listeners.Size = Sizes.DefaultDGV
-    End Sub
+    '    'Change Sizes
+    '    dgv_Listeners.Size = Sizes.DefaultDGV
+    'End Sub
 
     Private Sub Btn_AdvancedCancel_Click(sender As Object, e As EventArgs) Handles btn_AdvancedCancel.Click
         gbx_AdvancedSearch.Hide()
