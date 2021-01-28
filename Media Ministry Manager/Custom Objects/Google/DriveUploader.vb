@@ -66,17 +66,16 @@ Namespace GoogleAPI
 
         End Sub
 
-        Function Upload(fileLocation As String, parents As List(Of String), Optional uploadName As String = Nothing) As String
-            Dim fileName As String = CType(IIf(String.IsNullOrEmpty(uploadName), fileLocation.Split(CType("\\", Char()))(fileLocation.Split(CType("\\", Char())).Length - 1).Split(CType(".", Char()))(0) + " " + DateTime.UtcNow.ToString("MM/dd/yyyy"), uploadName), String)
+        Function Upload(fileName As String, parents As List(Of String), Optional uploadName As String = Nothing) As String
             Dim fileMetadata As New Data.File() With {
-                .Name = fileName,
+                .Name = CType(IIf(String.IsNullOrEmpty(uploadName), fileName.Split(CType("\\", Char()))(fileName.Split(CType("\\", Char())).Length - 1).Split(CType(".", Char()))(0) + " " + DateTime.UtcNow.ToString("MM/dd/yyyy"), uploadName), String),
                 .Parents = parents
             }
 
             Dim request As FilesResource.CreateMediaUpload
 
-            Using reader As New FileStream(fileLocation, FileMode.Open)
-                request = Service.Files.Create(fileMetadata, reader, MimeKit.MimeTypes.GetMimeType(fileLocation))
+            Using reader As New FileStream(fileName, FileMode.Open)
+                request = Service.Files.Create(fileMetadata, reader, MimeKit.MimeTypes.GetMimeType(fileName))
                 request.Fields = "id"
                 request.Upload()
             End Using
@@ -160,6 +159,7 @@ Namespace GoogleAPI
 
         Sub SetPermissions(fileID As String)
             Dim request As PermissionsResource.CreateRequest = Service.Permissions.Create(CreatePermission(), fileID)
+            'request.EmailMessage = String.Format(Message, Listener.Name)
             request.Execute()
         End Sub
 

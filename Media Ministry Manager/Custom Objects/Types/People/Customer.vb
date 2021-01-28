@@ -1,6 +1,4 @@
-﻿Option Strict On
-
-Namespace Types
+﻿Namespace Types
     Public Class Customer
         Inherits Person
         Private Const EmailPattern As String = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"
@@ -13,12 +11,12 @@ Namespace Types
             MyBase.New(customerID, firstName, lastName)
             Me.PhoneNumber = phone
             Me.Address = New Address(street, city, state, zip)
-
-            If ValidEmail(email) Then
-                Me.EmailAddress = New MimeKit.MailboxAddress(Name, email)
-            Else
-                Me.EmailAddress = New MimeKit.MailboxAddress(Name, "N/A")
-            End If
+            'If ValidEmail(email) Then
+            Me.EmailAddress = New MimeKit.MailboxAddress(Name, email)
+            'Else
+            'Me.EmailAddress = New MimeKit.MailboxAddress(Name, "")
+            'TODO: DO I throw an error here? Or let the customer be created without an email?
+            'End If
 
             If Not String.IsNullOrEmpty(joinDate) Then
                 Me.JoinDate = Date.Parse(joinDate)
@@ -38,7 +36,7 @@ Namespace Types
             'Street
             'City, ST ZipCode
             'Phone Number
-            Return String.Format("{0} ({1}){4}{2}{4}{3}", Me.Name, EmailAddress.Address, Me.Address.ToString, Me.PhoneNumber, vbCrLf)
+            Return String.Format("{0} ({1}){4}{2}{4}{3}", Me.Name, If(String.IsNullOrEmpty(EmailAddress.Address), "N/A", EmailAddress.Address), Me.Address.ToString, Me.PhoneNumber, vbCrLf)
         End Function
     End Class
 End Namespace

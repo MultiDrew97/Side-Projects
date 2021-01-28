@@ -14,8 +14,6 @@ Public Class AddListenerDialog
     Private Sub ResetSingle()
         lbl_FirstName.Visible = True
         txt_FirstName.Visible = True
-        lbl_LastName.Visible = True
-        txt_LastName.Visible = True
 
         lbl_Email.Visible = True
         txt_Email.Visible = True

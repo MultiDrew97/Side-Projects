@@ -1,8 +1,4 @@
-﻿Option Strict On
-
-Imports MediaMinistry.Exceptions
-
-Namespace Helpers
+﻿Namespace Helpers
     Public Structure Utils
         Private ReadOnly Property Value As Boolean
         Shared Sub Wait(ByVal seconds As Integer)
@@ -14,8 +10,8 @@ Namespace Helpers
             Next
         End Sub
 
-        Shared Function ConvertStateAbbr(stateCode As String) As String
-            Select Case stateCode
+        Shared Function ConvertStateAbbr(abbr As String) As String
+            Select Case abbr
                 Case "al", "AL"
                     Return "Alabama"
                 Case "ak", "AK"
@@ -117,7 +113,8 @@ Namespace Helpers
                 Case "wy", "WY"
                     Return "Wyoming"
                 Case Else
-                    Throw New InvalidStateCodeException("The provided state code is invalid.")
+                    'TODO: throw custom error
+                    Return Nothing
             End Select
         End Function
 
@@ -138,11 +135,11 @@ Namespace Helpers
         End Function
 
         Shared Operator =(ByVal fs As Utils, ByVal ss As Utils) As Boolean
-            Return False
+            Return fs.Value = ss.Value
         End Operator
 
         Shared Operator <>(ByVal fs As Utils, ByVal ss As Utils) As Boolean
-            Return False
+            Return fs.Value = ss.Value
         End Operator
     End Structure
 End Namespace

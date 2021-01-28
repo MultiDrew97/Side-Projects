@@ -1,7 +1,7 @@
 ﻿Imports MediaMinistry.MediaMinistry
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_DisplayOrders
+Partial Class frm_UpdateInventory
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,12 +25,21 @@ Partial Class Frm_DisplayOrders
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayOrders))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.dgv_Orders = New System.Windows.Forms.DataGridView()
-        Me.bsOrders = New System.Windows.Forms.BindingSource(Me.components)
-        Me.btn_Complete = New System.Windows.Forms.Button()
-        Me.btn_CancelOrder = New System.Windows.Forms.Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_UpdateInventory))
+        Me.btn_CancelUpdate = New System.Windows.Forms.Button()
+        Me.btn_ConfirmUpdate = New System.Windows.Forms.Button()
+        Me.lbl_ItemSelect = New System.Windows.Forms.Label()
+        Me.cbx_Items = New System.Windows.Forms.ComboBox()
+        Me.INVENTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MediaMinistryDataSet = New MediaMinistryDataSet()
+        Me.lbl_Stock = New System.Windows.Forms.Label()
+        Me.nud_Stock = New System.Windows.Forms.NumericUpDown()
+        Me.ss_AddStock = New System.Windows.Forms.StatusStrip()
+        Me.tss_AddStock = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tt_Help = New System.Windows.Forms.ToolTip(Me.components)
+        Me.lbl_Price = New System.Windows.Forms.Label
+        Me.txt_Price = New System.Windows.Forms.TextBox()
+        Me.INVENTORYTableAdapter = New MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter()
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -51,54 +60,125 @@ Partial Class Frm_DisplayOrders
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OrderTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsOrders, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nud_Stock, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ss_AddStock.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
-        'dgv_Orders
+        'btn_CancelUpdate
         '
-        Me.dgv_Orders.AllowUserToAddRows = False
-        Me.dgv_Orders.AllowUserToOrderColumns = True
-        Me.dgv_Orders.AutoGenerateColumns = False
-        Me.dgv_Orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgv_Orders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        Me.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Orders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CustomerName, Me.ItemName, Me.Quantity, Me.OrderTotal})
-        Me.dgv_Orders.DataSource = Me.bsOrders
-        Me.dgv_Orders.Dock = System.Windows.Forms.DockStyle.Right
-        Me.dgv_Orders.Location = New System.Drawing.Point(157, 24)
-        Me.dgv_Orders.MultiSelect = False
-        Me.dgv_Orders.Name = "dgv_Orders"
-        Me.dgv_Orders.Size = New System.Drawing.Size(643, 426)
-        Me.dgv_Orders.TabIndex = 0
+        Me.btn_CancelUpdate.AutoSize = True
+        Me.btn_CancelUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_CancelUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_CancelUpdate.Location = New System.Drawing.Point(220, 258)
+        Me.btn_CancelUpdate.Name = "btn_CancelUpdate"
+        Me.btn_CancelUpdate.Size = New System.Drawing.Size(95, 35)
+        Me.btn_CancelUpdate.TabIndex = 20
+        Me.btn_CancelUpdate.Text = "Cancel"
+        Me.btn_CancelUpdate.UseVisualStyleBackColor = True
         '
-        'btn_Complete
+        'btn_ConfirmUpdate
         '
-        Me.btn_Complete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_Complete.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Complete.Location = New System.Drawing.Point(12, 55)
-        Me.btn_Complete.Name = "btn_Complete"
-        Me.btn_Complete.Size = New System.Drawing.Size(128, 63)
-        Me.btn_Complete.TabIndex = 1
-        Me.btn_Complete.Text = "Complete Order(s)"
-        Me.btn_Complete.UseVisualStyleBackColor = True
+        Me.btn_ConfirmUpdate.AutoSize = True
+        Me.btn_ConfirmUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_ConfirmUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ConfirmUpdate.Location = New System.Drawing.Point(35, 258)
+        Me.btn_ConfirmUpdate.Name = "btn_ConfirmUpdate"
+        Me.btn_ConfirmUpdate.Size = New System.Drawing.Size(163, 35)
+        Me.btn_ConfirmUpdate.TabIndex = 19
+        Me.btn_ConfirmUpdate.Text = "Update Stock"
+        Me.btn_ConfirmUpdate.UseVisualStyleBackColor = True
         '
-        'btn_CancelOrder
+        'lbl_ItemSelect
         '
-        Me.btn_CancelOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_CancelOrder.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btn_CancelOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_CancelOrder.Location = New System.Drawing.Point(12, 188)
-        Me.btn_CancelOrder.Name = "btn_CancelOrder"
-        Me.btn_CancelOrder.Size = New System.Drawing.Size(128, 63)
-        Me.btn_CancelOrder.TabIndex = 1
-        Me.btn_CancelOrder.Text = "Cancel Order(s)"
-        Me.btn_CancelOrder.UseVisualStyleBackColor = True
+        Me.lbl_ItemSelect.AutoSize = True
+        Me.lbl_ItemSelect.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_ItemSelect.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_ItemSelect.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lbl_ItemSelect.Location = New System.Drawing.Point(58, 33)
+        Me.lbl_ItemSelect.Name = "lbl_ItemSelect"
+        Me.lbl_ItemSelect.Size = New System.Drawing.Size(60, 15)
+        Me.lbl_ItemSelect.TabIndex = 15
+        Me.lbl_ItemSelect.Text = "Product:"
+        '
+        'cbx_Items
+        '
+        Me.cbx_Items.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbx_Items.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbx_Items.DataSource = Me.INVENTORYBindingSource
+        Me.cbx_Items.DisplayMember = "ITEM"
+        Me.cbx_Items.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
+        Me.cbx_Items.FormattingEnabled = True
+        Me.cbx_Items.Location = New System.Drawing.Point(61, 51)
+        Me.cbx_Items.Name = "cbx_Items"
+        Me.cbx_Items.Size = New System.Drawing.Size(231, 33)
+        Me.cbx_Items.TabIndex = 16
+        Me.tt_Help.SetToolTip(Me.cbx_Items, "Select the product that was made")
+        Me.cbx_Items.ValueMember = "ITEM"
+        '
+        'INVENTORYBindingSource
+        '
+        Me.INVENTORYBindingSource.DataMember = "INVENTORY"
+        Me.INVENTORYBindingSource.DataSource = Me.MediaMinistryDataSet
+        '
+        'MediaMinistryDataSet
+        '
+        Me.MediaMinistryDataSet.DataSetName = "Media_MinistryDataSet"
+        Me.MediaMinistryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'lbl_Stock
+        '
+        Me.lbl_Stock.AutoSize = True
+        Me.lbl_Stock.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Stock.Location = New System.Drawing.Point(93, 94)
+        Me.lbl_Stock.Name = "lbl_Stock"
+        Me.lbl_Stock.Size = New System.Drawing.Size(97, 15)
+        Me.lbl_Stock.TabIndex = 17
+        Me.lbl_Stock.Text = "Current Stock:"
+        '
+        'nud_Stock
+        '
+        Me.nud_Stock.AutoSize = True
+        Me.nud_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
+        Me.nud_Stock.Location = New System.Drawing.Point(96, 112)
+        Me.nud_Stock.Name = "nud_Stock"
+        Me.nud_Stock.Size = New System.Drawing.Size(162, 32)
+        Me.nud_Stock.TabIndex = 18
+        Me.nud_Stock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.tt_Help.SetToolTip(Me.nud_Stock, "Enter the current stock of product")
+        '
+        'ss_AddStock
+        '
+        Me.ss_AddStock.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_AddStock})
+        Me.ss_AddStock.Location = New System.Drawing.Point(0, 311)
+        Me.ss_AddStock.Name = "ss_AddStock"
+        Me.ss_AddStock.Size = New System.Drawing.Size(350, 22)
+        Me.ss_AddStock.TabIndex = 21
+        '
+        'tss_AddStock
+        '
+        Me.tss_AddStock.Name = "tss_AddStock"
+        Me.tss_AddStock.Size = New System.Drawing.Size(126, 17)
+        Me.tss_AddStock.Text = "How many was made?"
+        '
+        'txt_Price
+        '
+        Me.txt_Price.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_Price.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.txt_Price.Location = New System.Drawing.Point(104, 182)
+        Me.txt_Price.Name = "txt_Price"
+        Me.txt_Price.Size = New System.Drawing.Size(145, 31)
+        Me.txt_Price.TabIndex = 22
+        Me.txt_Price.Text = "$0.00"
+        Me.txt_Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.tt_Help.SetToolTip(Me.txt_Price, "The Current price of the item")
+        '
+        'INVENTORYTableAdapter
+        '
+        Me.INVENTORYTableAdapter.ClearBeforeFill = True
         '
         'mnstr_Strip
         '
@@ -106,8 +186,8 @@ Partial Class Frm_DisplayOrders
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mnstr_Strip.Size = New System.Drawing.Size(800, 24)
-        Me.mnstr_Strip.TabIndex = 2
+        Me.mnstr_Strip.Size = New System.Drawing.Size(350, 24)
+        Me.mnstr_Strip.TabIndex = 22
         Me.mnstr_Strip.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
@@ -231,51 +311,39 @@ Partial Class Frm_DisplayOrders
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'CustomerName
+        'lbl_Price
         '
-        Me.CustomerName.DataPropertyName = "CustomerName"
-        Me.CustomerName.HeaderText = "Customer Name"
-        Me.CustomerName.Name = "CustomerName"
+        Me.lbl_Price.AutoSize = True
+        Me.lbl_Price.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Price.Location = New System.Drawing.Point(101, 164)
+        Me.lbl_Price.Name = "lbl_Price"
+        Me.lbl_Price.Size = New System.Drawing.Size(44, 15)
+        Me.lbl_Price.TabIndex = 23
+        Me.lbl_Price.Text = "Price:"
         '
-        'ItemName
+        'frm_UpdateInventory
         '
-        Me.ItemName.DataPropertyName = "ItemName"
-        Me.ItemName.HeaderText = "Item Name"
-        Me.ItemName.Name = "ItemName"
-        '
-        'Quantity
-        '
-        Me.Quantity.DataPropertyName = "Quantity"
-        Me.Quantity.HeaderText = "Quantity"
-        Me.Quantity.Name = "Quantity"
-        '
-        'OrderTotal
-        '
-        Me.OrderTotal.DataPropertyName = "OrderTotal"
-        DataGridViewCellStyle1.Format = "C2"
-        Me.OrderTotal.DefaultCellStyle = DataGridViewCellStyle1
-        Me.OrderTotal.HeaderText = "Total"
-        Me.OrderTotal.Name = "OrderTotal"
-        '
-        'Frm_DisplayOrders
-        '
-        Me.AcceptButton = Me.btn_Complete
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.dgv_Orders)
+        Me.ClientSize = New System.Drawing.Size(350, 333)
+        Me.Controls.Add(Me.lbl_Price)
+        Me.Controls.Add(Me.txt_Price)
+        Me.Controls.Add(Me.ss_AddStock)
+        Me.Controls.Add(Me.btn_CancelUpdate)
+        Me.Controls.Add(Me.btn_ConfirmUpdate)
+        Me.Controls.Add(Me.lbl_ItemSelect)
+        Me.Controls.Add(Me.cbx_Items)
+        Me.Controls.Add(Me.lbl_Stock)
+        Me.Controls.Add(Me.nud_Stock)
         Me.Controls.Add(Me.mnstr_Strip)
-        Me.Controls.Add(Me.btn_Complete)
-        Me.Controls.Add(Me.btn_CancelOrder)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.Name = "Frm_DisplayOrders"
+        Me.Name = "frm_UpdateInventory"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Media Ministry Manager"
-        CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsOrders, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Media Ministry"
+        CType(Me.INVENTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MediaMinistryDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nud_Stock, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ss_AddStock.ResumeLayout(False)
+        Me.ss_AddStock.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
         Me.ResumeLayout(False)
@@ -283,9 +351,18 @@ Partial Class Frm_DisplayOrders
 
     End Sub
 
-    Friend WithEvents dgv_Orders As DataGridView
-    Friend WithEvents btn_Complete As Button
-    Friend WithEvents btn_CancelOrder As Button
+    Friend WithEvents btn_CancelUpdate As Button
+    Friend WithEvents btn_ConfirmUpdate As Button
+    Friend WithEvents lbl_ItemSelect As Label
+    Friend WithEvents cbx_Items As ComboBox
+    Friend WithEvents tt_Help As ToolTip
+    Friend WithEvents lbl_Stock As Label
+    Friend WithEvents nud_Stock As NumericUpDown
+    Friend WithEvents ss_AddStock As StatusStrip
+    Friend WithEvents tss_AddStock As ToolStripStatusLabel
+    Friend WithEvents INVENTORYBindingSource As BindingSource
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
     Friend WithEvents mnstr_Strip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
@@ -306,9 +383,6 @@ Partial Class Frm_DisplayOrders
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents bsOrders As BindingSource
-    Friend WithEvents CustomerName As DataGridViewTextBoxColumn
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents OrderTotal As DataGridViewTextBoxColumn
+    Friend WithEvents txt_Price As TextBox
+    Friend WithEvents lbl_Price As Label
 End Class

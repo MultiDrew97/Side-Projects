@@ -114,13 +114,19 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.MediaMinistrySplash.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.FileSelectionDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.ListenerSelectionDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_CustomMessage.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Folder.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_ViewListeners.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_SendEmails.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Upload.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_DisplayCustomers.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_ChangePassword.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_CreateUser.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Login.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_Settings.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_DisplayOrders.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_Main.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.frm_UpdateInventory.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Resources.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.GenerateResource.cache
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbproj.CoreCompileInputs.cache
@@ -134,12 +140,7 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AddProductDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.PlaceOrderDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AddListenerDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.EmailListenersDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.Frm_DisplayInventory.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.CustomMessageDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.FolderCreationDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.DriveUploadDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.EmailMinistryDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.PasswordField.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.ChangePasswordDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.NewUserDialog.resources
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.AdminInfoDialog.resources

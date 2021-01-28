@@ -112,16 +112,6 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property HidePasswordIcon() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("HidePasswordIcon", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property logout_button() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("logout button", resourceCulture)
@@ -200,16 +190,6 @@ Namespace My.Resources
         Friend ReadOnly Property receipt() As String
             Get
                 Return ResourceManager.GetString("receipt", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property ShowPasswordIcon() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("ShowPasswordIcon", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
     End Module

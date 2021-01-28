@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class NewUserDialog
+Partial Class Frm_CreateUser
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,13 +22,14 @@ Partial Class NewUserDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewUserDialog))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_CreateUser))
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.btn_Create = New System.Windows.Forms.Button()
         Me.lbl_Username = New System.Windows.Forms.Label()
         Me.lbl_Password = New System.Windows.Forms.Label()
         Me.txt_Username = New System.Windows.Forms.TextBox()
         Me.txt_Password = New System.Windows.Forms.TextBox()
+        Me.bw_ClearAdminInfo = New System.ComponentModel.BackgroundWorker()
         Me.txt_ConfirmPassword = New System.Windows.Forms.TextBox()
         Me.lbl_ConfirmPassword = New System.Windows.Forms.Label()
         Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
@@ -93,6 +94,9 @@ Partial Class NewUserDialog
         Me.txt_Password.Size = New System.Drawing.Size(220, 26)
         Me.txt_Password.TabIndex = 3
         '
+        'bw_ClearAdminInfo
+        '
+        '
         'txt_ConfirmPassword
         '
         Me.txt_ConfirmPassword.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -126,7 +130,7 @@ Partial Class NewUserDialog
         Me.tss_UserFeedback.Size = New System.Drawing.Size(174, 17)
         Me.tss_UserFeedback.Text = "Enter a username and password"
         '
-        'NewUserDialog
+        'frm_CreateUser
         '
         Me.AcceptButton = Me.btn_Create
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -144,7 +148,7 @@ Partial Class NewUserDialog
         Me.Controls.Add(Me.btn_Cancel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "NewUserDialog"
+        Me.Name = "frm_CreateUser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)
@@ -160,6 +164,7 @@ Partial Class NewUserDialog
     Friend WithEvents lbl_Password As Label
     Friend WithEvents txt_Username As TextBox
     Friend WithEvents txt_Password As TextBox
+    Friend WithEvents bw_ClearAdminInfo As System.ComponentModel.BackgroundWorker
     Friend WithEvents txt_ConfirmPassword As TextBox
     Friend WithEvents lbl_ConfirmPassword As Label
     Friend WithEvents ss_Feedback As StatusStrip

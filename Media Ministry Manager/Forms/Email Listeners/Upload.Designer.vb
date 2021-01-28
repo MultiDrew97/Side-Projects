@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DriveUploadDialog
+Partial Class Frm_Upload
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class DriveUploadDialog
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DriveUploadDialog))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Upload))
         Me.ofd_SelectAudio = New System.Windows.Forms.OpenFileDialog()
         Me.btn_AddFolder = New System.Windows.Forms.Button()
         Me.btn_Browse = New System.Windows.Forms.Button()
@@ -46,8 +46,7 @@ Partial Class DriveUploadDialog
         '
         'btn_AddFolder
         '
-        Me.btn_AddFolder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.btn_AddFolder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_AddFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
         Me.btn_AddFolder.Location = New System.Drawing.Point(818, 101)
         Me.btn_AddFolder.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.btn_AddFolder.Name = "btn_AddFolder"
@@ -58,8 +57,7 @@ Partial Class DriveUploadDialog
         '
         'btn_Browse
         '
-        Me.btn_Browse.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.btn_Browse.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_Browse.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Browse.ForeColor = System.Drawing.SystemColors.ControlText
         Me.btn_Browse.Location = New System.Drawing.Point(818, 244)
         Me.btn_Browse.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
@@ -71,47 +69,43 @@ Partial Class DriveUploadDialog
         '
         'txt_FileLocation
         '
-        Me.txt_FileLocation.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.txt_FileLocation.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.txt_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txt_FileLocation.Location = New System.Drawing.Point(338, 244)
         Me.txt_FileLocation.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.txt_FileLocation.Name = "txt_FileLocation"
         Me.txt_FileLocation.ReadOnly = True
-        Me.txt_FileLocation.Size = New System.Drawing.Size(466, 31)
+        Me.txt_FileLocation.Size = New System.Drawing.Size(466, 32)
         Me.txt_FileLocation.TabIndex = 16
         Me.tt_Info.SetToolTip(Me.txt_FileLocation, "The file to be uploaded.")
         '
         'lbl_FileLocation
         '
         Me.lbl_FileLocation.AutoSize = True
-        Me.lbl_FileLocation.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.lbl_FileLocation.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.lbl_FileLocation.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lbl_FileLocation.Location = New System.Drawing.Point(328, 213)
         Me.lbl_FileLocation.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.lbl_FileLocation.Name = "lbl_FileLocation"
-        Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 25)
+        Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 26)
         Me.lbl_FileLocation.TabIndex = 15
         Me.lbl_FileLocation.Text = "File:"
         '
         'lbl_Folder
         '
         Me.lbl_Folder.AutoSize = True
-        Me.lbl_Folder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.lbl_Folder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.lbl_Folder.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_Folder.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lbl_Folder.Location = New System.Drawing.Point(328, 71)
         Me.lbl_Folder.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.lbl_Folder.Name = "lbl_Folder"
-        Me.lbl_Folder.Size = New System.Drawing.Size(79, 25)
+        Me.lbl_Folder.Size = New System.Drawing.Size(79, 26)
         Me.lbl_Folder.TabIndex = 14
         Me.lbl_Folder.Text = "Folder"
         '
         'cbx_Folders
         '
-        Me.cbx_Folders.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.cbx_Folders.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.cbx_Folders.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbx_Folders.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbx_Folders.FormattingEnabled = True
         Me.cbx_Folders.Location = New System.Drawing.Point(338, 101)
@@ -123,11 +117,8 @@ Partial Class DriveUploadDialog
         '
         'btn_Upload
         '
-        Me.btn_Upload.AutoSize = True
-        Me.btn_Upload.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Upload.Location = New System.Drawing.Point(68, 133)
         Me.btn_Upload.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
-        Me.btn_Upload.MinimumSize = New System.Drawing.Size(163, 44)
         Me.btn_Upload.Name = "btn_Upload"
         Me.btn_Upload.Size = New System.Drawing.Size(163, 44)
         Me.btn_Upload.TabIndex = 19
@@ -136,11 +127,8 @@ Partial Class DriveUploadDialog
         '
         'btn_Cancel
         '
-        Me.btn_Cancel.AutoSize = True
-        Me.btn_Cancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_Cancel.Location = New System.Drawing.Point(68, 250)
         Me.btn_Cancel.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
-        Me.btn_Cancel.MinimumSize = New System.Drawing.Size(163, 44)
         Me.btn_Cancel.Name = "btn_Cancel"
         Me.btn_Cancel.Size = New System.Drawing.Size(163, 44)
         Me.btn_Cancel.TabIndex = 19
@@ -150,8 +138,6 @@ Partial Class DriveUploadDialog
         'chk_Custom
         '
         Me.chk_Custom.AutoSize = True
-        Me.chk_Custom.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chk_Custom.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.chk_Custom.Location = New System.Drawing.Point(518, 327)
         Me.chk_Custom.Name = "chk_Custom"
         Me.chk_Custom.Size = New System.Drawing.Size(177, 29)
@@ -164,13 +150,12 @@ Partial Class DriveUploadDialog
         '
         'txt_CustomName
         '
-        Me.txt_CustomName.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.txt_CustomName.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.txt_CustomName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_CustomName.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txt_CustomName.Location = New System.Drawing.Point(338, 356)
         Me.txt_CustomName.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.txt_CustomName.Name = "txt_CustomName"
-        Me.txt_CustomName.Size = New System.Drawing.Size(466, 31)
+        Me.txt_CustomName.Size = New System.Drawing.Size(466, 32)
         Me.txt_CustomName.TabIndex = 16
         Me.tt_Info.SetToolTip(Me.txt_CustomName, "The name of the file when uploaded.")
         Me.txt_CustomName.Visible = False
@@ -178,13 +163,12 @@ Partial Class DriveUploadDialog
         'lbl_CustomName
         '
         Me.lbl_CustomName.AutoSize = True
-        Me.lbl_CustomName.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.lbl_CustomName.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.lbl_CustomName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_CustomName.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lbl_CustomName.Location = New System.Drawing.Point(333, 324)
         Me.lbl_CustomName.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.lbl_CustomName.Name = "lbl_CustomName"
-        Me.lbl_CustomName.Size = New System.Drawing.Size(79, 25)
+        Me.lbl_CustomName.Size = New System.Drawing.Size(82, 26)
         Me.lbl_CustomName.TabIndex = 15
         Me.lbl_CustomName.Text = "Name:"
         Me.lbl_CustomName.Visible = False
@@ -192,7 +176,7 @@ Partial Class DriveUploadDialog
         'bw_MovePairs
         '
         '
-        'DriveUploadDialog
+        'Frm_Upload
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 25.0!)
@@ -212,8 +196,7 @@ Partial Class DriveUploadDialog
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
-        Me.Name = "DriveUploadDialog"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Name = "Frm_Upload"
         Me.Text = "Media Ministry Manager"
         Me.ResumeLayout(False)
         Me.PerformLayout()

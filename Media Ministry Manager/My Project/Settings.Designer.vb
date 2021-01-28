@@ -91,6 +91,42 @@ Partial Friend NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property AdminUser() As String
+        Get
+            Return CType(Me("AdminUser"),String)
+        End Get
+        Set
+            Me("AdminUser") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property AdminPass() As String
+        Get
+            Return CType(Me("AdminPass"),String)
+        End Get
+        Set
+            Me("AdminPass") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+    Public Property AdminInfoRecieved() As Boolean
+        Get
+            Return CType(Me("AdminInfoRecieved"),Boolean)
+        End Get
+        Set
+            Me("AdminInfoRecieved") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>  _
     Public Property CurrentFont() As Global.System.Drawing.Font
         Get
@@ -110,11 +146,36 @@ Partial Friend NotInheritable Class MySettings
         End Get
     End Property
     
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property customMessageBody() As String
+        Get
+            Return CType(Me("customMessageBody"),String)
+        End Get
+        Set
+            Me("customMessageBody") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property customMessageSubject() As String
+        Get
+            Return CType(Me("customMessageSubject"),String)
+        End Get
+        Set
+            Me("customMessageSubject") = value
+        End Set
+    End Property
+    
     <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";C"& _ 
-        "onnect Timeout=30;Encrypt=True;Authentication=""Sql Password""")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";U"& _ 
+        "ser ID={0};Password={1};Connect Timeout=30;Encrypt=True;Authentication=""Sql Pass"& _ 
+        "word""")>  _
     Public ReadOnly Property masterConnectionString() As String
         Get
             Return CType(Me("masterConnectionString"),String)

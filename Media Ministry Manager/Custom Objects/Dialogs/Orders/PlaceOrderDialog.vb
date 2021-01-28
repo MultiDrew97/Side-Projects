@@ -1,5 +1,5 @@
 ﻿Option Strict On
-
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class PlaceOrderDialog
@@ -8,7 +8,7 @@ Public Class PlaceOrderDialog
     Private ProductsTable As DataTable
     Private Products As ObjectModel.Collection(Of Types.Product)
 
-    Private Sub Frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frm_PlaceOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadData()
 
         bsCustomers.DataSource = CustomersTable
@@ -18,12 +18,12 @@ Public Class PlaceOrderDialog
         cbx_ItemName.DisplayMember = "Name"
     End Sub
 
-    Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
 
-    Private Sub Btn_AddOrder_Click(sender As Object, e As EventArgs) Handles btn_AddOrder.Click
+    Private Sub btn_AddOrder_Click(sender As Object, e As EventArgs) Handles btn_AddOrder.Click
         Try
             Using db = New Database(My.Settings.Username, My.Settings.Password)
                 db.AddOrder(CInt(CustomersTable.Rows(cbx_Name.SelectedIndex)("CustomerID")), CInt(ProductsTable.Rows(cbx_ItemName.SelectedIndex)("ProductID")), CType(nud_Quantity.Value, Integer))
@@ -52,9 +52,9 @@ Public Class PlaceOrderDialog
     End Sub
 
     Private Sub GenerateColumns()
-        CustomersTable.Columns.AddRange({New DataColumn("CustomerID", GetType(Integer)), New DataColumn("Name", GetType(String))})
+        CustomersTable.Columns.AddRange({New DataColumn("CustomerID", Type.GetType("System.Int32")), New DataColumn("Name", Type.GetType("System.String"))})
 
-        ProductsTable.Columns.AddRange({New DataColumn("ProductID", GetType(Integer)), New DataColumn("Name", GetType(String))})
+        ProductsTable.Columns.AddRange({New DataColumn("ProductID", Type.GetType("System.Int32")), New DataColumn("Name", Type.GetType("System.String"))})
 
         FillTables()
     End Sub

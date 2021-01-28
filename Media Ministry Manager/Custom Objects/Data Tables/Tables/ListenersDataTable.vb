@@ -164,7 +164,7 @@
             End If
         End Sub
 
-        Public Sub RemoveEmailListenersRow(ByVal row As ListenersDataRow)
+        Public Sub RemoveEMAIL_LISTENERSRow(ByVal row As ListenersDataRow)
             Me.Rows.Remove(row)
         End Sub
 

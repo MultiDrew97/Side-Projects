@@ -1,7 +1,5 @@
-﻿Imports MediaMinistry.MediaMinistry
-
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_DisplayOrders
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class Frm_CustomMessage
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,12 +23,13 @@ Partial Class Frm_DisplayOrders
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayOrders))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.dgv_Orders = New System.Windows.Forms.DataGridView()
-        Me.bsOrders = New System.Windows.Forms.BindingSource(Me.components)
-        Me.btn_Complete = New System.Windows.Forms.Button()
-        Me.btn_CancelOrder = New System.Windows.Forms.Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_CustomMessage))
+        Me.btn_Cancel = New System.Windows.Forms.Button()
+        Me.lbl_MessageSubject = New System.Windows.Forms.Label()
+        Me.lbl_MessageBody = New System.Windows.Forms.Label()
+        Me.txt_MessageSubject = New System.Windows.Forms.TextBox()
+        Me.rtb_MessageBody = New System.Windows.Forms.RichTextBox()
+        Me.tt_HelperInfo = New System.Windows.Forms.ToolTip(Me.components)
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -51,54 +50,64 @@ Partial Class Frm_DisplayOrders
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OrderTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsOrders, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btn_Send = New System.Windows.Forms.Button()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
-        'dgv_Orders
+        'btn_Cancel
         '
-        Me.dgv_Orders.AllowUserToAddRows = False
-        Me.dgv_Orders.AllowUserToOrderColumns = True
-        Me.dgv_Orders.AutoGenerateColumns = False
-        Me.dgv_Orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgv_Orders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        Me.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Orders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CustomerName, Me.ItemName, Me.Quantity, Me.OrderTotal})
-        Me.dgv_Orders.DataSource = Me.bsOrders
-        Me.dgv_Orders.Dock = System.Windows.Forms.DockStyle.Right
-        Me.dgv_Orders.Location = New System.Drawing.Point(157, 24)
-        Me.dgv_Orders.MultiSelect = False
-        Me.dgv_Orders.Name = "dgv_Orders"
-        Me.dgv_Orders.Size = New System.Drawing.Size(643, 426)
-        Me.dgv_Orders.TabIndex = 0
+        Me.btn_Cancel.AutoSize = True
+        Me.btn_Cancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btn_Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Cancel.Location = New System.Drawing.Point(136, 369)
+        Me.btn_Cancel.MaximumSize = New System.Drawing.Size(200, 200)
+        Me.btn_Cancel.MinimumSize = New System.Drawing.Size(100, 50)
+        Me.btn_Cancel.Name = "btn_Cancel"
+        Me.btn_Cancel.Size = New System.Drawing.Size(100, 50)
+        Me.btn_Cancel.TabIndex = 1
+        Me.btn_Cancel.Text = "Cancel"
+        Me.btn_Cancel.UseVisualStyleBackColor = True
         '
-        'btn_Complete
+        'lbl_MessageSubject
         '
-        Me.btn_Complete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_Complete.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Complete.Location = New System.Drawing.Point(12, 55)
-        Me.btn_Complete.Name = "btn_Complete"
-        Me.btn_Complete.Size = New System.Drawing.Size(128, 63)
-        Me.btn_Complete.TabIndex = 1
-        Me.btn_Complete.Text = "Complete Order(s)"
-        Me.btn_Complete.UseVisualStyleBackColor = True
+        Me.lbl_MessageSubject.AutoSize = True
+        Me.lbl_MessageSubject.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_MessageSubject.Location = New System.Drawing.Point(36, 40)
+        Me.lbl_MessageSubject.Name = "lbl_MessageSubject"
+        Me.lbl_MessageSubject.Size = New System.Drawing.Size(98, 25)
+        Me.lbl_MessageSubject.TabIndex = 2
+        Me.lbl_MessageSubject.Text = "Subject:"
         '
-        'btn_CancelOrder
+        'lbl_MessageBody
         '
-        Me.btn_CancelOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_CancelOrder.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btn_CancelOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_CancelOrder.Location = New System.Drawing.Point(12, 188)
-        Me.btn_CancelOrder.Name = "btn_CancelOrder"
-        Me.btn_CancelOrder.Size = New System.Drawing.Size(128, 63)
-        Me.btn_CancelOrder.TabIndex = 1
-        Me.btn_CancelOrder.Text = "Cancel Order(s)"
-        Me.btn_CancelOrder.UseVisualStyleBackColor = True
+        Me.lbl_MessageBody.AutoSize = True
+        Me.lbl_MessageBody.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_MessageBody.Location = New System.Drawing.Point(34, 114)
+        Me.lbl_MessageBody.Name = "lbl_MessageBody"
+        Me.lbl_MessageBody.Size = New System.Drawing.Size(114, 25)
+        Me.lbl_MessageBody.TabIndex = 3
+        Me.lbl_MessageBody.Text = "Message:"
+        '
+        'txt_MessageSubject
+        '
+        Me.txt_MessageSubject.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_MessageSubject.Location = New System.Drawing.Point(39, 68)
+        Me.txt_MessageSubject.Name = "txt_MessageSubject"
+        Me.txt_MessageSubject.Size = New System.Drawing.Size(417, 31)
+        Me.txt_MessageSubject.TabIndex = 4
+        '
+        'rtb_MessageBody
+        '
+        Me.rtb_MessageBody.AcceptsTab = True
+        Me.rtb_MessageBody.EnableAutoDragDrop = True
+        Me.rtb_MessageBody.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtb_MessageBody.Location = New System.Drawing.Point(37, 142)
+        Me.rtb_MessageBody.MinimumSize = New System.Drawing.Size(600, 200)
+        Me.rtb_MessageBody.Name = "rtb_MessageBody"
+        Me.rtb_MessageBody.Size = New System.Drawing.Size(611, 200)
+        Me.rtb_MessageBody.TabIndex = 5
+        Me.rtb_MessageBody.Text = ""
         '
         'mnstr_Strip
         '
@@ -106,8 +115,8 @@ Partial Class Frm_DisplayOrders
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mnstr_Strip.Size = New System.Drawing.Size(800, 24)
-        Me.mnstr_Strip.TabIndex = 2
+        Me.mnstr_Strip.Size = New System.Drawing.Size(684, 24)
+        Me.mnstr_Strip.TabIndex = 6
         Me.mnstr_Strip.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
@@ -231,61 +240,55 @@ Partial Class Frm_DisplayOrders
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'CustomerName
+        'btn_Send
         '
-        Me.CustomerName.DataPropertyName = "CustomerName"
-        Me.CustomerName.HeaderText = "Customer Name"
-        Me.CustomerName.Name = "CustomerName"
+        Me.btn_Send.AutoSize = True
+        Me.btn_Send.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Send.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btn_Send.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Send.Location = New System.Drawing.Point(419, 369)
+        Me.btn_Send.MaximumSize = New System.Drawing.Size(200, 200)
+        Me.btn_Send.MinimumSize = New System.Drawing.Size(100, 50)
+        Me.btn_Send.Name = "btn_Send"
+        Me.btn_Send.Size = New System.Drawing.Size(100, 50)
+        Me.btn_Send.TabIndex = 1
+        Me.btn_Send.Text = "Send"
+        Me.btn_Send.UseVisualStyleBackColor = True
         '
-        'ItemName
+        'frm_CustomMessage
         '
-        Me.ItemName.DataPropertyName = "ItemName"
-        Me.ItemName.HeaderText = "Item Name"
-        Me.ItemName.Name = "ItemName"
-        '
-        'Quantity
-        '
-        Me.Quantity.DataPropertyName = "Quantity"
-        Me.Quantity.HeaderText = "Quantity"
-        Me.Quantity.Name = "Quantity"
-        '
-        'OrderTotal
-        '
-        Me.OrderTotal.DataPropertyName = "OrderTotal"
-        DataGridViewCellStyle1.Format = "C2"
-        Me.OrderTotal.DefaultCellStyle = DataGridViewCellStyle1
-        Me.OrderTotal.HeaderText = "Total"
-        Me.OrderTotal.Name = "OrderTotal"
-        '
-        'Frm_DisplayOrders
-        '
-        Me.AcceptButton = Me.btn_Complete
+        Me.AcceptButton = Me.btn_Send
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.dgv_Orders)
+        Me.AutoSize = True
+        Me.CancelButton = Me.btn_Cancel
+        Me.CausesValidation = False
+        Me.ClientSize = New System.Drawing.Size(684, 461)
         Me.Controls.Add(Me.mnstr_Strip)
-        Me.Controls.Add(Me.btn_Complete)
-        Me.Controls.Add(Me.btn_CancelOrder)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Controls.Add(Me.rtb_MessageBody)
+        Me.Controls.Add(Me.txt_MessageSubject)
+        Me.Controls.Add(Me.lbl_MessageBody)
+        Me.Controls.Add(Me.lbl_MessageSubject)
+        Me.Controls.Add(Me.btn_Send)
+        Me.Controls.Add(Me.btn_Cancel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.Name = "Frm_DisplayOrders"
+        Me.MaximumSize = New System.Drawing.Size(700, 500)
+        Me.MinimumSize = New System.Drawing.Size(100, 100)
+        Me.Name = "frm_CustomMessage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
-        CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsOrders, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents dgv_Orders As DataGridView
-    Friend WithEvents btn_Complete As Button
-    Friend WithEvents btn_CancelOrder As Button
+    Friend WithEvents btn_Cancel As Button
+    Friend WithEvents lbl_MessageSubject As Label
+    Friend WithEvents lbl_MessageBody As Label
+    Friend WithEvents txt_MessageSubject As TextBox
+    Friend WithEvents rtb_MessageBody As RichTextBox
+    Friend WithEvents tt_HelperInfo As ToolTip
     Friend WithEvents mnstr_Strip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
@@ -306,9 +309,5 @@ Partial Class Frm_DisplayOrders
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents bsOrders As BindingSource
-    Friend WithEvents CustomerName As DataGridViewTextBoxColumn
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents OrderTotal As DataGridViewTextBoxColumn
+    Friend WithEvents btn_Send As Button
 End Class

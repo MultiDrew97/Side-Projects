@@ -51,7 +51,9 @@ Partial Class frm_Main
         Me.ViewOrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ss_Queries.SuspendLayout()
         Me.pnl_Controls.SuspendLayout()
+        Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_placeOrder
@@ -96,6 +98,7 @@ Partial Class frm_Main
         '
         'ss_Queries
         '
+        Me.ss_Queries.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
         Me.ss_Queries.Location = New System.Drawing.Point(0, 391)
         Me.ss_Queries.Name = "ss_Queries"
         Me.ss_Queries.Size = New System.Drawing.Size(397, 22)
@@ -149,6 +152,7 @@ Partial Class frm_Main
         '
         'mnstr_Strip
         '
+        Me.mnstr_Strip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -168,49 +172,49 @@ Partial Class frm_Main
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'NewCustomerToolStripMenuItem
         '
         Me.NewCustomerToolStripMenuItem.Name = "NewCustomerToolStripMenuItem"
-        Me.NewCustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.NewCustomerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewCustomerToolStripMenuItem.Text = "Customer"
         '
         'NewProductToolStripMenuItem
         '
         Me.NewProductToolStripMenuItem.Name = "NewProductToolStripMenuItem"
-        Me.NewProductToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.NewProductToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewProductToolStripMenuItem.Text = "Product"
         '
         'NewListenerToolStripMenuItem
         '
         Me.NewListenerToolStripMenuItem.Name = "NewListenerToolStripMenuItem"
-        Me.NewListenerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.NewListenerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewListenerToolStripMenuItem.Text = "Listener"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(113, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -223,7 +227,7 @@ Partial Class frm_Main
         'UpdateToolStripMenuItem
         '
         Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UpdateToolStripMenuItem.Text = "Update"
         '
         'ViewToolStripMenuItem
@@ -236,25 +240,25 @@ Partial Class frm_Main
         'ViewCustomersToolStripMenuItem
         '
         Me.ViewCustomersToolStripMenuItem.Name = "ViewCustomersToolStripMenuItem"
-        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewCustomersToolStripMenuItem.Text = "Customers"
         '
         'ViewOrdersToolStripMenuItem
         '
         Me.ViewOrdersToolStripMenuItem.Name = "ViewOrdersToolStripMenuItem"
-        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewOrdersToolStripMenuItem.Text = "Orders"
         '
         'ViewProductsToolStripMenuItem
         '
         Me.ViewProductsToolStripMenuItem.Name = "ViewProductsToolStripMenuItem"
-        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewProductsToolStripMenuItem.Text = "Products"
         '
         'ViewListenersToolStripMenuItem
         '
         Me.ViewListenersToolStripMenuItem.Name = "ViewListenersToolStripMenuItem"
-        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewListenersToolStripMenuItem.Text = "Listeners"
         '
         'frm_Main
@@ -272,8 +276,12 @@ Partial Class frm_Main
         Me.Name = "frm_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
+        Me.ss_Queries.ResumeLayout(False)
+        Me.ss_Queries.PerformLayout()
         Me.pnl_Controls.ResumeLayout(False)
         Me.pnl_Controls.PerformLayout()
+        Me.mnstr_Strip.ResumeLayout(False)
+        Me.mnstr_Strip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -284,6 +292,11 @@ Partial Class frm_Main
     Friend WithEvents btn_CustomerManagement As Button
     Friend WithEvents ss_Queries As StatusStrip
     Friend WithEvents tss_Feedback As ToolStripStatusLabel
+    Friend WithEvents MediaMinistryDataSet As MediaMinistryDataSet
+    Friend WithEvents INVENTORYBindingSource As BindingSource
+    Friend WithEvents INVENTORYTableAdapter As MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter
+    Friend WithEvents CUSTOMERSBindingSource As BindingSource
+    Friend WithEvents CUSTOMERSTableAdapter As MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter
     Friend WithEvents bw_ChangedSizes As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_EmailMinistry As Button
     Friend WithEvents bw_UpdateJar As System.ComponentModel.BackgroundWorker

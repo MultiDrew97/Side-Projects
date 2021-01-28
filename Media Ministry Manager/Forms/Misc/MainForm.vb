@@ -20,48 +20,47 @@ Public Class frm_Main
         End If
     End Sub
 
-    Private Sub Btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
+    Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
         PlaceOrderDialog.ShowDialog()
     End Sub
 
-    Private Sub Btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
+    Private Sub btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
         Dim inventory As New Frm_DisplayInventory
         inventory.Show()
         Me.Close()
     End Sub
 
-    Private Sub Btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
+    Private Sub btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
         Dim ordersView = New Frm_DisplayOrders
         ordersView.Show()
         Me.Close()
     End Sub
 
-    Private Sub Btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
+    Private Sub btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
         Dim displayCustomers = New Frm_DisplayCustomers
         displayCustomers.Show()
         Me.Close()
     End Sub
 
-    Private Sub Reset()
+    Private Sub reset()
         tss_Feedback.Text = "What would you like to do?"
         tss_Feedback.ForeColor = SystemColors.WindowText
     End Sub
 
-    Private Sub Btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
-        If EmailMinistryDialog.ShowDialog = DialogResult.OK Then
+    Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
+        If EmailListenersDialog.ShowDialog = DialogResult.OK Then
             Dim form As Form
-            Select Case EmailMinistryDialog.SelectedItem
+            Select Case EmailListenersDialog.SelectedItem
                 Case "Send"
-                    form = New Frm_SendEmails
-                    form.Show()
-                    Me.Close()
+                    form = New frm_SendEmails
                 Case "Upload"
-                    DriveUploadDialog.ShowDialog()
+                    form = New Frm_Upload
                 Case "View"
                     form = New Frm_ViewListeners
-                    form.Show()
-                    Me.Close()
             End Select
+
+            form.Show()
+            Me.Close()
         End If
     End Sub
 

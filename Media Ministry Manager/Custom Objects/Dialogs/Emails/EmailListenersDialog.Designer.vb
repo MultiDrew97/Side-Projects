@@ -1,7 +1,5 @@
-﻿Imports MediaMinistry.MediaMinistry
-
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_DisplayOrders
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class EmailListenersDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -20,17 +18,20 @@ Partial Class Frm_DisplayOrders
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayOrders))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.dgv_Orders = New System.Windows.Forms.DataGridView()
-        Me.bsOrders = New System.Windows.Forms.BindingSource(Me.components)
-        Me.btn_Complete = New System.Windows.Forms.Button()
-        Me.btn_CancelOrder = New System.Windows.Forms.Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmailListenersDialog))
+        Me.ofd_SelectAudio = New System.Windows.Forms.OpenFileDialog()
+        Me.bw_Upload = New System.ComponentModel.BackgroundWorker()
+        Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
+        Me.tss_Feedback = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btn_SendEmails = New System.Windows.Forms.Button()
+        Me.btn_ViewListeners = New System.Windows.Forms.Button()
+        Me.bw_SendEmails = New System.ComponentModel.BackgroundWorker()
+        Me.rdo_GoingLive = New System.Windows.Forms.RadioButton()
+        Me.rdo_EmailMinistry = New System.Windows.Forms.RadioButton()
         Me.mnstr_Strip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -51,54 +52,71 @@ Partial Class Frm_DisplayOrders
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OrderTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsOrders, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btn_Upload = New System.Windows.Forms.Button()
+        Me.btn_Cancel = New System.Windows.Forms.Button()
+        Me.ss_Feedback.SuspendLayout()
         Me.mnstr_Strip.SuspendLayout()
         Me.SuspendLayout()
         '
-        'dgv_Orders
+        'ofd_SelectAudio
         '
-        Me.dgv_Orders.AllowUserToAddRows = False
-        Me.dgv_Orders.AllowUserToOrderColumns = True
-        Me.dgv_Orders.AutoGenerateColumns = False
-        Me.dgv_Orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgv_Orders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        Me.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Orders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CustomerName, Me.ItemName, Me.Quantity, Me.OrderTotal})
-        Me.dgv_Orders.DataSource = Me.bsOrders
-        Me.dgv_Orders.Dock = System.Windows.Forms.DockStyle.Right
-        Me.dgv_Orders.Location = New System.Drawing.Point(157, 24)
-        Me.dgv_Orders.MultiSelect = False
-        Me.dgv_Orders.Name = "dgv_Orders"
-        Me.dgv_Orders.Size = New System.Drawing.Size(643, 426)
-        Me.dgv_Orders.TabIndex = 0
+        Me.ofd_SelectAudio.Multiselect = True
+        Me.ofd_SelectAudio.Title = "Email Ministry"
         '
-        'btn_Complete
+        'ss_Feedback
         '
-        Me.btn_Complete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_Complete.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Complete.Location = New System.Drawing.Point(12, 55)
-        Me.btn_Complete.Name = "btn_Complete"
-        Me.btn_Complete.Size = New System.Drawing.Size(128, 63)
-        Me.btn_Complete.TabIndex = 1
-        Me.btn_Complete.Text = "Complete Order(s)"
-        Me.btn_Complete.UseVisualStyleBackColor = True
+        Me.ss_Feedback.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_Feedback})
+        Me.ss_Feedback.Location = New System.Drawing.Point(0, 232)
+        Me.ss_Feedback.Name = "ss_Feedback"
+        Me.ss_Feedback.Size = New System.Drawing.Size(369, 22)
+        Me.ss_Feedback.TabIndex = 7
+        Me.ss_Feedback.Text = "ss_Feedback"
         '
-        'btn_CancelOrder
+        'tss_Feedback
         '
-        Me.btn_CancelOrder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_CancelOrder.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btn_CancelOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_CancelOrder.Location = New System.Drawing.Point(12, 188)
-        Me.btn_CancelOrder.Name = "btn_CancelOrder"
-        Me.btn_CancelOrder.Size = New System.Drawing.Size(128, 63)
-        Me.btn_CancelOrder.TabIndex = 1
-        Me.btn_CancelOrder.Text = "Cancel Order(s)"
-        Me.btn_CancelOrder.UseVisualStyleBackColor = True
+        Me.tss_Feedback.Name = "tss_Feedback"
+        Me.tss_Feedback.Size = New System.Drawing.Size(340, 17)
+        Me.tss_Feedback.Text = "Please select the file to be uploaded and the folder to upload to"
+        '
+        'btn_SendEmails
+        '
+        Me.btn_SendEmails.AutoSize = True
+        Me.btn_SendEmails.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_SendEmails.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_SendEmails.Location = New System.Drawing.Point(65, 68)
+        Me.btn_SendEmails.MinimumSize = New System.Drawing.Size(238, 36)
+        Me.btn_SendEmails.Name = "btn_SendEmails"
+        Me.btn_SendEmails.Size = New System.Drawing.Size(238, 36)
+        Me.btn_SendEmails.TabIndex = 8
+        Me.btn_SendEmails.Text = "Send Emails"
+        Me.btn_SendEmails.UseVisualStyleBackColor = True
+        '
+        'btn_ViewListeners
+        '
+        Me.btn_ViewListeners.AutoSize = True
+        Me.btn_ViewListeners.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_ViewListeners.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_ViewListeners.Location = New System.Drawing.Point(65, 124)
+        Me.btn_ViewListeners.MinimumSize = New System.Drawing.Size(238, 36)
+        Me.btn_ViewListeners.Name = "btn_ViewListeners"
+        Me.btn_ViewListeners.Size = New System.Drawing.Size(238, 36)
+        Me.btn_ViewListeners.TabIndex = 10
+        Me.btn_ViewListeners.Text = "Current Listeners"
+        Me.btn_ViewListeners.UseVisualStyleBackColor = True
+        '
+        'rdo_GoingLive
+        '
+        Me.rdo_GoingLive.Location = New System.Drawing.Point(0, 0)
+        Me.rdo_GoingLive.Name = "rdo_GoingLive"
+        Me.rdo_GoingLive.Size = New System.Drawing.Size(104, 24)
+        Me.rdo_GoingLive.TabIndex = 0
+        '
+        'rdo_EmailMinistry
+        '
+        Me.rdo_EmailMinistry.Location = New System.Drawing.Point(0, 0)
+        Me.rdo_EmailMinistry.Name = "rdo_EmailMinistry"
+        Me.rdo_EmailMinistry.Size = New System.Drawing.Size(104, 24)
+        Me.rdo_EmailMinistry.TabIndex = 0
         '
         'mnstr_Strip
         '
@@ -106,8 +124,8 @@ Partial Class Frm_DisplayOrders
         Me.mnstr_Strip.Location = New System.Drawing.Point(0, 0)
         Me.mnstr_Strip.Name = "mnstr_Strip"
         Me.mnstr_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mnstr_Strip.Size = New System.Drawing.Size(800, 24)
-        Me.mnstr_Strip.TabIndex = 2
+        Me.mnstr_Strip.Size = New System.Drawing.Size(826, 24)
+        Me.mnstr_Strip.TabIndex = 11
         Me.mnstr_Strip.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
@@ -231,61 +249,67 @@ Partial Class Frm_DisplayOrders
         Me.ListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ListenersToolStripMenuItem.Text = "Listeners"
         '
-        'CustomerName
+        'btn_Upload
         '
-        Me.CustomerName.DataPropertyName = "CustomerName"
-        Me.CustomerName.HeaderText = "Customer Name"
-        Me.CustomerName.Name = "CustomerName"
+        Me.btn_Upload.AutoSize = True
+        Me.btn_Upload.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Upload.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_Upload.Location = New System.Drawing.Point(65, 12)
+        Me.btn_Upload.MinimumSize = New System.Drawing.Size(238, 36)
+        Me.btn_Upload.Name = "btn_Upload"
+        Me.btn_Upload.Size = New System.Drawing.Size(238, 36)
+        Me.btn_Upload.TabIndex = 8
+        Me.btn_Upload.Text = "Upload New File"
+        Me.btn_Upload.UseVisualStyleBackColor = True
         '
-        'ItemName
+        'btn_Cancel
         '
-        Me.ItemName.DataPropertyName = "ItemName"
-        Me.ItemName.HeaderText = "Item Name"
-        Me.ItemName.Name = "ItemName"
+        Me.btn_Cancel.AutoSize = True
+        Me.btn_Cancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_Cancel.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_Cancel.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_Cancel.Location = New System.Drawing.Point(65, 180)
+        Me.btn_Cancel.MinimumSize = New System.Drawing.Size(238, 36)
+        Me.btn_Cancel.Name = "btn_Cancel"
+        Me.btn_Cancel.Size = New System.Drawing.Size(238, 36)
+        Me.btn_Cancel.TabIndex = 11
+        Me.btn_Cancel.Text = "Cancel"
+        Me.btn_Cancel.UseVisualStyleBackColor = True
         '
-        'Quantity
+        'EmailListenersDialog
         '
-        Me.Quantity.DataPropertyName = "Quantity"
-        Me.Quantity.HeaderText = "Quantity"
-        Me.Quantity.Name = "Quantity"
-        '
-        'OrderTotal
-        '
-        Me.OrderTotal.DataPropertyName = "OrderTotal"
-        DataGridViewCellStyle1.Format = "C2"
-        Me.OrderTotal.DefaultCellStyle = DataGridViewCellStyle1
-        Me.OrderTotal.HeaderText = "Total"
-        Me.OrderTotal.Name = "OrderTotal"
-        '
-        'Frm_DisplayOrders
-        '
-        Me.AcceptButton = Me.btn_Complete
+        Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.dgv_Orders)
-        Me.Controls.Add(Me.mnstr_Strip)
-        Me.Controls.Add(Me.btn_Complete)
-        Me.Controls.Add(Me.btn_CancelOrder)
+        Me.ClientSize = New System.Drawing.Size(369, 254)
+        Me.Controls.Add(Me.btn_Cancel)
+        Me.Controls.Add(Me.btn_ViewListeners)
+        Me.Controls.Add(Me.btn_Upload)
+        Me.Controls.Add(Me.btn_SendEmails)
+        Me.Controls.Add(Me.ss_Feedback)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "Frm_DisplayOrders"
+        Me.Name = "EmailListenersDialog"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
-        CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsOrders, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ss_Feedback.ResumeLayout(False)
+        Me.ss_Feedback.PerformLayout()
         Me.mnstr_Strip.ResumeLayout(False)
         Me.mnstr_Strip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents dgv_Orders As DataGridView
-    Friend WithEvents btn_Complete As Button
-    Friend WithEvents btn_CancelOrder As Button
+    Friend WithEvents ofd_SelectAudio As OpenFileDialog
+    Friend WithEvents bw_Upload As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ss_Feedback As StatusStrip
+    Friend WithEvents tss_Feedback As ToolStripStatusLabel
+    Friend WithEvents btn_SendEmails As Button
+    Friend WithEvents btn_ViewListeners As Button
+    Friend WithEvents bw_SendEmails As System.ComponentModel.BackgroundWorker
+    Friend WithEvents rdo_GoingLive As RadioButton
+    Friend WithEvents rdo_EmailMinistry As RadioButton
     Friend WithEvents mnstr_Strip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
@@ -306,9 +330,7 @@ Partial Class Frm_DisplayOrders
     Friend WithEvents OrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents bsOrders As BindingSource
-    Friend WithEvents CustomerName As DataGridViewTextBoxColumn
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents OrderTotal As DataGridViewTextBoxColumn
+    Friend WithEvents btn_Upload As Button
+    Friend WithEvents db As Database
+    Friend WithEvents btn_Cancel As Button
 End Class

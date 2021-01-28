@@ -4,8 +4,8 @@ Imports System.ComponentModel
 Imports MediaMinistry.Types.Listener
 
 Public Class Frm_ViewListeners
-    Private ReadOnly ListenersTable As New CustomData.ListenersDataTable
-    Private ReadOnly FiltersTable As New DataTable
+    Private ListenersTable As New CustomData.ListenersDataTable
+    Private FiltersTable As New DataTable
 
     ReadOnly totalListeners As String = "Total Listeners: {0}"
     Private ListenersData As ObjectModel.Collection(Of Types.Listener)
@@ -189,9 +189,5 @@ Public Class Frm_ViewListeners
                 bsListeners.Filter = String.Format("Name like '%{0}%' AND EmailAddress like '%{1}%'", txt_NameSearch.Text, txt_EmailSearch.Text)
             End If
         End If
-    End Sub
-
-    Private Sub Cbx_Column_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Column.SelectedIndexChanged
-        txt_SearchBox.Text = ""
     End Sub
 End Class

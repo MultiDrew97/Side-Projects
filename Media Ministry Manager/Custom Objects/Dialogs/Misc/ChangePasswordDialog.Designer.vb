@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class ChangePasswordDialog
+Partial Class Frm_ChangePassword
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class ChangePasswordDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ChangePasswordDialog))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_ChangePassword))
         Me.txt_Password = New System.Windows.Forms.TextBox()
         Me.txt_Username = New System.Windows.Forms.TextBox()
         Me.lbl_Password = New System.Windows.Forms.Label()
@@ -31,8 +31,10 @@ Partial Class ChangePasswordDialog
         Me.btn_Cancel = New System.Windows.Forms.Button()
         Me.txt_ConfirmPassword = New System.Windows.Forms.TextBox()
         Me.lbl_ConfirmPassword = New System.Windows.Forms.Label()
-        Me.tss_UserFeedback = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
+        Me.tss_UserFeedback = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.bw_LoadDatabase = New System.ComponentModel.BackgroundWorker()
+        Me.bw_ResetAdminInfo = New System.ComponentModel.BackgroundWorker()
         Me.ss_Feedback.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -113,13 +115,6 @@ Partial Class ChangePasswordDialog
         Me.lbl_ConfirmPassword.TabIndex = 4
         Me.lbl_ConfirmPassword.Text = "Confirm Password:"
         '
-        'tss_UserFeedback
-        '
-        Me.tss_UserFeedback.BackColor = System.Drawing.Color.Transparent
-        Me.tss_UserFeedback.Name = "tss_UserFeedback"
-        Me.tss_UserFeedback.Size = New System.Drawing.Size(345, 17)
-        Me.tss_UserFeedback.Text = "Enter the username of the user to change and the new password"
-        '
         'ss_Feedback
         '
         Me.ss_Feedback.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tss_UserFeedback})
@@ -128,7 +123,20 @@ Partial Class ChangePasswordDialog
         Me.ss_Feedback.Size = New System.Drawing.Size(362, 22)
         Me.ss_Feedback.TabIndex = 8
         '
-        'ChangePasswordDialog
+        'tss_UserFeedback
+        '
+        Me.tss_UserFeedback.BackColor = System.Drawing.Color.Transparent
+        Me.tss_UserFeedback.Name = "tss_UserFeedback"
+        Me.tss_UserFeedback.Size = New System.Drawing.Size(345, 17)
+        Me.tss_UserFeedback.Text = "Enter the username of the user to change and the new password"
+        '
+        'bw_LoadDatabase
+        '
+        '
+        'bw_ResetAdminInfo
+        '
+        '
+        'frm_ChangePassword
         '
         Me.AcceptButton = Me.btn_ChangePassword
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -146,7 +154,7 @@ Partial Class ChangePasswordDialog
         Me.Controls.Add(Me.btn_Cancel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "ChangePasswordDialog"
+        Me.Name = "frm_ChangePassword"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)
@@ -164,6 +172,8 @@ Partial Class ChangePasswordDialog
     Friend WithEvents btn_Cancel As Button
     Friend WithEvents txt_ConfirmPassword As TextBox
     Friend WithEvents lbl_ConfirmPassword As Label
-    Friend WithEvents tss_UserFeedback As ToolStripStatusLabel
     Friend WithEvents ss_Feedback As StatusStrip
+    Friend WithEvents tss_UserFeedback As ToolStripStatusLabel
+    Friend WithEvents bw_LoadDatabase As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bw_ResetAdminInfo As System.ComponentModel.BackgroundWorker
 End Class
