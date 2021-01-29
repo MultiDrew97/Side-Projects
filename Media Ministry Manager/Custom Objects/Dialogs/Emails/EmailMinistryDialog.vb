@@ -4,18 +4,18 @@ Public Class EmailMinistryDialog
     Shared Property SelectedItem As String
 
     Private Sub Btn_Upload_Click(sender As Object, e As EventArgs) Handles btn_Upload.Click
-        'SelectedItem = "Upload"
-        'DialogResult = DialogResult.OK
-        'Me.Close()
         If DriveUploadDialog.ShowDialog() = DialogResult.OK Then
             DialogResult = DialogResult.Ignore
         End If
     End Sub
 
     Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
-        SelectedItem = "Send"
-        DialogResult = DialogResult.OK
-        Me.Close()
+        'SelectedItem = "Send"
+        'DialogResult = DialogResult.OK
+        'Me.Close()
+        If SendEmailsDialog.ShowDialog() = DialogResult.OK Then
+            DialogResult = DialogResult.Ignore
+        End If
     End Sub
 
     Private Sub Btn_ViewListeners_Click(sender As Object, e As EventArgs) Handles btn_ViewListeners.Click

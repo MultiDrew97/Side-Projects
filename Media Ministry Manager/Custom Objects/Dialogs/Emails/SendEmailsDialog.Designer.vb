@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Frm_SendEmails
+Partial Class SendEmailsDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class Frm_SendEmails
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_SendEmails))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SendEmailsDialog))
         Me.lbl_FileLocation = New System.Windows.Forms.Label()
         Me.lbl_Folder = New System.Windows.Forms.Label()
         Me.cbx_Folders = New System.Windows.Forms.ComboBox()
@@ -199,7 +199,7 @@ Partial Class Frm_SendEmails
         'bw_GetFileID
         '
         '
-        'Frm_SendEmails
+        'SendEmailsDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -212,7 +212,7 @@ Partial Class Frm_SendEmails
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(6)
         Me.MaximizeBox = False
-        Me.Name = "Frm_SendEmails"
+        Me.Name = "SendEmailsDialog"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Tag = "emails"
         Me.Text = "Media Ministry Manager"

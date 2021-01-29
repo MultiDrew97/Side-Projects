@@ -1,10 +1,9 @@
 ﻿Imports System.ComponentModel
 Imports MediaMinistry.Types
-Imports MediaMinistry.Helpers
 Imports MimeKit
 Imports System.Collections.ObjectModel
 
-Public Class Frm_SendEmails
+Public Class SendEmailsDialog
     Private ReadOnly shareLink As String = "https://drive.google.com/file/d/{0}/view?usp=sharing"
     Private fileID As String = Nothing
     Private listeners As Collection(Of Listener)
@@ -40,7 +39,7 @@ Public Class Frm_SendEmails
     End Sub
 
     Private Sub Bw_SendEmails_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_SendEmails.DoWork
-        Dim subject = "", body As String
+        Dim subject = "", body As String = ""
         Dim content As MimeMessage
 
         If chk_DefaultMessage.Checked Then
@@ -53,10 +52,6 @@ Public Class Frm_SendEmails
             Else
                 e.Cancel = True
             End If
-
-            'While Not My.Settings.AdminInfoRecieved
-            '    Utils.Wait(1)
-            'End While
         End If
 
         If Not bw_SendEmails.CancellationPending Then
@@ -71,6 +66,7 @@ Public Class Frm_SendEmails
                         body = String.Format(My.Resources.customMessageTemplate, listener.Name, CustomMessageDialog.Body)
                     End If
 
+                    'TODO: Fix this for release
                     If listener.EmailAddress.Address.Equals("arandlemiller97@yahoo.com") Then
                         content = emailer.Create(listener.EmailAddress, subject, body)
                         emailer.Send(content)

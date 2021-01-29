@@ -206,7 +206,6 @@ Public Class AddListenerDialog
 
             If (failCount > 0) Then
                 MessageBox.Show("Check Faild Additions.csv in the locaiton to see the failed additions.", "Some Addition Failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                'TODO: Send an ok signal after some failures? Or send a retry signal? Or just show the dialog and let them retry immediately?
                 Me.Show()
             Else
                 MessageBox.Show("All emails were imported successfully...", "All Additions Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)

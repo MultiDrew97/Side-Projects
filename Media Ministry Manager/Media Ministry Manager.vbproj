@@ -289,10 +289,10 @@
     <Compile Include="Forms\Email Listeners\frm_ViewListeners.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Email Listeners\SendEmails.Designer.vb">
-      <DependentUpon>SendEmails.vb</DependentUpon>
+    <Compile Include="Custom Objects\Dialogs\Emails\SendEmailsDialog.Designer.vb">
+      <DependentUpon>SendEmailsDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Email Listeners\SendEmails.vb">
+    <Compile Include="Custom Objects\Dialogs\Emails\SendEmailsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom Objects\Dialogs\Emails\DriveUploadDialog.Designer.vb">
@@ -431,8 +431,8 @@
     <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
       <DependentUpon>frm_ViewListeners.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Email Listeners\SendEmails.resx">
-      <DependentUpon>SendEmails.vb</DependentUpon>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Emails\SendEmailsDialog.resx">
+      <DependentUpon>SendEmailsDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Objects\Dialogs\Emails\DriveUploadDialog.resx">
       <DependentUpon>DriveUploadDialog.vb</DependentUpon>
