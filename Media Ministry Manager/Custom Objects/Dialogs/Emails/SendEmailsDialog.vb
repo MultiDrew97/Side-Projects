@@ -19,19 +19,23 @@ Public Class SendEmailsDialog
         End If
     End Sub
 
-    Private Sub Cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Folders.SelectedIndexChanged
+    Private Sub Cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs)
         LoadFiles()
     End Sub
 
-    Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
-        bw_GetFileID.RunWorkerAsync()
+    Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles Button1.Click, btn_SendEmails.Click
+        If tcl_EmailOptions.SelectedIndex = 0 Then
+            bw_GetFileID.RunWorkerAsync()
+        Else
+
+        End If
         bw_LoadListeners.RunWorkerAsync()
     End Sub
 
     Private Sub Bw_LoadListeners_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_LoadListeners.DoWork
-        Using db As New Database()
-            listeners = db.GetListeners()
-        End Using
+        If ListenerSelectionDialog.ShowDialog = DialogResult.OK Then
+            listeners = ListenerSelectionDialog.Listeners
+        End If
     End Sub
 
     Private Sub Bw_LoadListeners_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_LoadListeners.RunWorkerCompleted
@@ -56,21 +60,18 @@ Public Class SendEmailsDialog
 
         If Not bw_SendEmails.CancellationPending Then
             Using emailer As New GoogleAPI.Sender()
-                'content = emailer.Create(New MailboxAddress("Andrew Randle-Warren", "arandlemiller97@yahoo.com"), "Test Email", "Test Email")
-                'emailer.Send(content)
                 For Each listener As Listener In listeners
                     If chk_DefaultMessage.Checked Then
-                        'String.Format(shareLink, fileID)
                         body = String.Format(My.Resources.newSermon, listener.Name, String.Format(shareLink, fileID))
                     Else
                         body = String.Format(My.Resources.customMessageTemplate, listener.Name, CustomMessageDialog.Body)
                     End If
 
                     'TODO: Fix this for release
-                    If listener.EmailAddress.Address.Equals("arandlemiller97@yahoo.com") Then
-                        content = emailer.Create(listener.EmailAddress, subject, body)
-                        emailer.Send(content)
-                    End If
+                    'If listener.EmailAddress.Address.Equals("arandlemiller97@yahoo.com") Then
+                    content = emailer.Create(listener.EmailAddress, subject, body)
+                    emailer.Send(content)
+                    'End If
                 Next
             End Using
         End If
@@ -94,13 +95,13 @@ Public Class SendEmailsDialog
     End Sub
 
     Private Sub Bw_GetFileID_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_GetFileID.DoWork
-        'Invoke(
-        'Sub()
-        Using uploader As New GoogleAPI.DriveUploader()
-            fileID = uploader.FindFile(CType(cbx_Files.SelectedItem, String))
-        End Using
-        'End Sub
-        ')
+        Invoke(
+            Sub()
+                Using uploader As New GoogleAPI.DriveUploader()
+                    fileID = uploader.FindFile(CType(cbx_Files.SelectedItem, String))
+                End Using
+            End Sub
+        )
     End Sub
 
     Sub LoadFolders()

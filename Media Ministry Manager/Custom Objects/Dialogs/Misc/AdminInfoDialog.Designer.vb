@@ -29,7 +29,7 @@ Partial Class AdminInfoDialog
         Me.txt_Username = New System.Windows.Forms.TextBox()
         Me.ss_Info = New System.Windows.Forms.StatusStrip()
         Me.tss_Info = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.PasswordField1 = New MediaMinistry.PasswordField()
+        Me.PasswordField1 = New MediaMinistry.FileLocationField()
         Me.SuspendLayout()
         '
         'btn_Submit
@@ -120,5 +120,5 @@ Partial Class AdminInfoDialog
     Friend WithEvents txt_Username As TextBox
     Friend WithEvents ss_Info As StatusStrip
     Friend WithEvents tss_Info As ToolStripStatusLabel
-    Friend WithEvents PasswordField1 As PasswordField
+    Friend WithEvents PasswordField1 As FileLocationField
 End Class

@@ -52,9 +52,7 @@ Public Class Frm_Main
             Dim form As Form
             Select Case EmailMinistryDialog.SelectedItem
                 Case "Send"
-                    form = New SendEmailsDialog
-                    form.Show()
-                    Me.Close()
+                    SendEmailsDialog.ShowDialog()
                 Case "Upload"
                     DriveUploadDialog.ShowDialog()
                 Case "View"
