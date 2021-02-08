@@ -24,7 +24,6 @@ Partial Class EmailMinistryDialog
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmailMinistryDialog))
         Me.ofd_SelectAudio = New System.Windows.Forms.OpenFileDialog()
-        Me.bw_Upload = New System.ComponentModel.BackgroundWorker()
         Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
         Me.tss_Feedback = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btn_SendEmails = New System.Windows.Forms.Button()
@@ -276,7 +275,7 @@ Partial Class EmailMinistryDialog
         Me.btn_Cancel.Text = "Cancel"
         Me.btn_Cancel.UseVisualStyleBackColor = True
         '
-        'EmailListenersDialog
+        'EmailMinistryDialog
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -290,7 +289,7 @@ Partial Class EmailMinistryDialog
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "EmailListenersDialog"
+        Me.Name = "EmailMinistryDialog"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Media Ministry Manager"
         Me.ss_Feedback.ResumeLayout(False)
@@ -302,7 +301,6 @@ Partial Class EmailMinistryDialog
 
     End Sub
     Friend WithEvents ofd_SelectAudio As OpenFileDialog
-    Friend WithEvents bw_Upload As System.ComponentModel.BackgroundWorker
     Friend WithEvents ss_Feedback As StatusStrip
     Friend WithEvents tss_Feedback As ToolStripStatusLabel
     Friend WithEvents btn_SendEmails As Button

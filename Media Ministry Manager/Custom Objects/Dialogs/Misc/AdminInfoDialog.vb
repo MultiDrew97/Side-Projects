@@ -12,8 +12,8 @@ Public Class AdminInfoDialog
             If txt_Username.Text <> "" Then
                 Username = txt_Username.Text
 
-                If PasswordField1.txtPassword.Text <> "" Then
-                    Password = PasswordField1.txtPassword.Text
+                If pf_Password.txtPassword.Text <> "" Then
+                    Password = pf_Password.txtPassword.Text
 
                     If CheckCreds() Then
                         DialogResult = DialogResult.OK

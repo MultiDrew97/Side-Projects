@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class AdminInfoDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class AdminInfoDialog
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminInfoDialog))
         Me.btn_Submit = New System.Windows.Forms.Button()
@@ -29,7 +29,7 @@ Partial Class AdminInfoDialog
         Me.txt_Username = New System.Windows.Forms.TextBox()
         Me.ss_Info = New System.Windows.Forms.StatusStrip()
         Me.tss_Info = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.PasswordField1 = New MediaMinistry.FileLocationField()
+        Me.pf_Password = New MediaMinistry.PasswordField()
         Me.SuspendLayout()
         '
         'btn_Submit
@@ -56,7 +56,7 @@ Partial Class AdminInfoDialog
         '
         Me.lbl_Password.AutoSize = True
         Me.lbl_Password.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Password.Location = New System.Drawing.Point(30, 80)
+        Me.lbl_Password.Location = New System.Drawing.Point(26, 80)
         Me.lbl_Password.Name = "lbl_Password"
         Me.lbl_Password.Size = New System.Drawing.Size(91, 20)
         Me.lbl_Password.TabIndex = 2
@@ -83,14 +83,15 @@ Partial Class AdminInfoDialog
         Me.tss_Info.Size = New System.Drawing.Size(159, 17)
         Me.tss_Info.Text = "Enter the admin's credentials"
         '
-        'PasswordField1
+        'pf_Password
         '
-        Me.PasswordField1.Font = New System.Drawing.Font("Times New Roman", 15.75!)
-        Me.PasswordField1.Location = New System.Drawing.Point(30, 105)
-        Me.PasswordField1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.PasswordField1.Name = "PasswordField1"
-        Me.PasswordField1.Size = New System.Drawing.Size(272, 32)
-        Me.PasswordField1.TabIndex = 7
+        Me.pf_Password.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.pf_Password.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.pf_Password.Location = New System.Drawing.Point(30, 106)
+        Me.pf_Password.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.pf_Password.Name = "pf_Password"
+        Me.pf_Password.Size = New System.Drawing.Size(271, 40)
+        Me.pf_Password.TabIndex = 7
         '
         'AdminInfoDialog
         '
@@ -98,7 +99,7 @@ Partial Class AdminInfoDialog
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(332, 232)
-        Me.Controls.Add(Me.PasswordField1)
+        Me.Controls.Add(Me.pf_Password)
         Me.Controls.Add(Me.ss_Info)
         Me.Controls.Add(Me.txt_Username)
         Me.Controls.Add(Me.lbl_Password)
@@ -120,5 +121,5 @@ Partial Class AdminInfoDialog
     Friend WithEvents txt_Username As TextBox
     Friend WithEvents ss_Info As StatusStrip
     Friend WithEvents tss_Info As ToolStripStatusLabel
-    Friend WithEvents PasswordField1 As FileLocationField
+    Friend WithEvents pf_Password As PasswordField
 End Class

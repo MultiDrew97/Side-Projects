@@ -5,17 +5,11 @@ Imports Google.Apis.Gmail.v1
 Imports Google.Apis.Gmail.v1.Data
 Imports Google.Apis.Services
 Imports Google.Apis.Util.Store
+Imports Microsoft.IdentityModel.Tokens
 Imports MimeKit
-Imports NeoSmart.Utils
 Imports NPOI.Util
-Imports System
-Imports System.Collections.Generic
-Imports System.Collections.ObjectModel
 Imports System.IO
-Imports System.Linq
-Imports System.Text
 Imports System.Threading
-Imports System.Threading.Tasks
 
 
 Namespace GoogleAPI
@@ -71,7 +65,7 @@ Namespace GoogleAPI
             Dim buffer As ByteArrayOutputStream = New ByteArrayOutputStream()
             emailContent.WriteTo(buffer)
             Dim bytes As Byte() = buffer.ToByteArray()
-            Dim encodedEmail As String = UrlBase64.Encode(bytes)
+            Dim encodedEmail As String = Base64UrlEncoder.Encode(bytes)
             Dim message As New Message With {
                 .Raw = encodedEmail
             }
@@ -79,7 +73,7 @@ Namespace GoogleAPI
             Return message
         End Function
 
-        Function CreateWithAttachment([to] As MailboxAddress, subject As String, body As String, files As String(), Optional from As String = "me") As MimeMessage
+        Function CreateWithAttachment([to] As MailboxAddress, subject As String, body As String, file As String, Optional from As String = "me") As MimeMessage
             Dim email As New MimeMessage() With {
                 .Sender = New MailboxAddress(from, from),
                 .Subject = subject
@@ -97,16 +91,9 @@ Namespace GoogleAPI
                 mimeBodyPart
             }
 
-            Dim attachments As New AttachmentCollection()
-
-            For Each file In files
-                attachments.Add(file)
-            Next
-
-            'Dim source As javax.activation.DataSource = New FileDataSource(File)
-
-            'mimeBodyPart.setDataHandler(New DataHandler(source))
-            'mimeBodyPart.setFileName(file.getName())
+            Dim attachments As New AttachmentCollection From {
+                file
+            }
 
             For Each attachment In attachments
                 multipart.Add(attachment)

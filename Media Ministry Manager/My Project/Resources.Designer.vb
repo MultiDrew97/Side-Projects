@@ -91,12 +91,49 @@ Namespace My.Resources
         '''&lt;p&gt;Hello {0},&lt;/p&gt;&lt;br&gt;
         '''
         '''{1}
+        '''&lt;hr&gt;
+        '''
+        '''&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
+        '''		St. Paul Primitive Baptist Church&lt;br&gt;
+        '''		Email Listening Ministry&lt;br&gt;
+        '''		2209 East 14th Street&lt;br&gt;
+        '''		Austin, TX. 78702&lt;/p&gt;
         '''&lt;/body&gt;
         '''&lt;/html&gt;.
         '''</summary>
         Friend ReadOnly Property customMessageTemplate() As String
             Get
                 Return ResourceManager.GetString("customMessageTemplate", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        '''&lt;html&gt;
+        '''&lt;head&gt;
+        '''&lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;
+        '''&lt;/head&gt;
+        '''&lt;body&gt;
+        '''
+        '''&lt;p&gt;Hello {0},&lt;/p&gt;&lt;br&gt;
+        '''
+        '''{1}&lt;br&gt;
+        '''
+        '''&lt;a href=&quot;{2}&quot;&gt;Drive File&lt;/a&gt;
+        '''
+        '''&lt;hr&gt;
+        '''
+        '''&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
+        '''		St. Paul Primitive Baptist Church&lt;br&gt;
+        '''		Email Listening Ministry&lt;br&gt;
+        '''		2209 East 14th Street&lt;br&gt;
+        '''		Austin, TX. 78702&lt;/p&gt;
+        '''&lt;/body&gt;
+        '''&lt;/html&gt;.
+        '''</summary>
+        Friend ReadOnly Property customMessageWithDriveLink() As String
+            Get
+                Return ResourceManager.GetString("customMessageWithDriveLink", resourceCulture)
             End Get
         End Property
         
@@ -182,7 +219,10 @@ Namespace My.Resources
         '''        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;&gt;
         '''    &lt;/head&gt;
         '''    &lt;body&gt;
-        '''        &lt;p&gt;Thank you for your blessing of {0:C} for {1}.&lt;/p&gt;
+        '''
+        '''	&lt;p&gt;Greetings {0},&lt;/p&gt;
+        '''
+        '''        &lt;p&gt;Thank you for your blessing of {1:C} for {2}.&lt;/p&gt;
         '''
         '''		&lt;p&gt;Thank You For Your Support.&lt;/p&gt;
         '''
@@ -194,8 +234,7 @@ Namespace My.Resources
         '''		
         '''		&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
         '''		St. Paul Primitive Baptist Church&lt;br&gt;
-        '''		Email Listening Ministry&lt;br&gt;
-        '''		2 [rest of string was truncated]&quot;;.
+        '''		Email [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property receipt() As String
             Get

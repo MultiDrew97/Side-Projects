@@ -1,6 +1,7 @@
 ﻿Option Strict On
 
 Imports System.ComponentModel
+Imports MediaMinistry.Helpers
 
 Public Class Frm_ViewListeners
     Private ReadOnly ListenersTable As New CustomData.ListenersDataTable
@@ -8,6 +9,8 @@ Public Class Frm_ViewListeners
 
     ReadOnly totalListeners As String = "Total Listeners: {0}"
     Private ListenersData As ObjectModel.Collection(Of Types.Listener)
+
+    Private Tooled As Boolean = False
 
     Structure Sizes
         'window sizes
@@ -57,8 +60,10 @@ Public Class Frm_ViewListeners
     End Sub
 
     Private Sub Frm_ViewListeners_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim frm As New Frm_Main
-        frm.Show()
+        If Not Tooled Then
+            Dim frm As New Frm_Main
+            frm.Show()
+        End If
     End Sub
 
     Private Sub Dgv_Listeners_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Listeners.UserDeletingRow
@@ -98,6 +103,7 @@ Public Class Frm_ViewListeners
         gbx_Search.Hide()
 
         txt_SearchBox.Text = ""
+        bsListeners.Filter = ""
     End Sub
 
     'Private Sub MaxChanges()
@@ -135,6 +141,7 @@ Public Class Frm_ViewListeners
 
         txt_NameSearch.Text = ""
         txt_EmailSearch.Text = ""
+        bsListeners.Filter = ""
     End Sub
 
     Private Sub GetData()
@@ -194,7 +201,7 @@ Public Class Frm_ViewListeners
         txt_SearchBox.Text = ""
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+    Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         My.Settings.Username = ""
         My.Settings.Password = ""
         My.Settings.KeepLoggedIn = False
@@ -203,7 +210,7 @@ Public Class Frm_ViewListeners
     End Sub
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Helpers.Utils.CloseOpenForms()
+        Utils.CloseOpenForms()
     End Sub
 
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewCustomerToolStripMenuItem.Click
@@ -233,35 +240,39 @@ Public Class Frm_ViewListeners
         'If Not latestVersion.Contains(currentVersion) Then
         '    wb_Updater.Navigate(updateLocation)
         'End If
+        MessageBox.Show("This feature is currently under construction.", "Out of Order", MessageBoxButtons.OK, MessageBoxIcon.Hand)
     End Sub
 
     Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomersToolStripMenuItem.Click
         Dim customers As New Frm_DisplayCustomers
         customers.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
         Dim products As New Frm_DisplayInventory
         products.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
         Dim orders As New Frm_DisplayOrders
         orders.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewListenersToolStripMenuItem.Click
         Dim listeners As New Frm_ViewListeners
         listeners.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Dim settings As New Frm_Settings()
         settings.Show()
-        Me.Hide()
     End Sub
 End Class

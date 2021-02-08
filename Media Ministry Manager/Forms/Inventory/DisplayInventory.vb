@@ -1,8 +1,11 @@
 ﻿Option Strict On
+Imports MediaMinistry.Helpers
 
 Public Class Frm_DisplayInventory
     Private ReadOnly ProductsTable As New CustomData.InventoryDataTable
     Private Products As ObjectModel.Collection(Of Types.Product)
+
+    Private Tooled As Boolean = False
 
     Private Sub ViewInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Refresh()
@@ -22,8 +25,10 @@ Public Class Frm_DisplayInventory
     End Sub
 
     Private Sub Frm_ViewInventory_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim frm As New Frm_Main()
-        frm.Show()
+        If Not Tooled Then
+            Dim frm As New Frm_Main
+            frm.Show()
+        End If
     End Sub
 
     Private Sub Dgv_Inventory_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Inventory.CellEndEdit
@@ -109,7 +114,7 @@ Public Class Frm_DisplayInventory
         Next
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+    Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         My.Settings.Username = ""
         My.Settings.Password = ""
         My.Settings.KeepLoggedIn = False
@@ -118,7 +123,7 @@ Public Class Frm_DisplayInventory
     End Sub
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Helpers.Utils.CloseOpenForms()
+        Utils.CloseOpenForms()
     End Sub
 
     Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewCustomerToolStripMenuItem.Click
@@ -148,35 +153,39 @@ Public Class Frm_DisplayInventory
         'If Not latestVersion.Contains(currentVersion) Then
         '    wb_Updater.Navigate(updateLocation)
         'End If
+        MessageBox.Show("This feature is currently under construction.", "Out of Order", MessageBoxButtons.OK, MessageBoxIcon.Hand)
     End Sub
 
     Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomersToolStripMenuItem.Click
         Dim customers As New Frm_DisplayCustomers
         customers.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
         Dim products As New Frm_DisplayInventory
         products.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
         Dim orders As New Frm_DisplayOrders
         orders.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewListenersToolStripMenuItem.Click
         Dim listeners As New Frm_ViewListeners
         listeners.Show()
+        Tooled = True
         Me.Close()
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Dim settings As New Frm_Settings()
         settings.Show()
-        Me.Hide()
     End Sub
 End Class

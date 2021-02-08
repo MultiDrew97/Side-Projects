@@ -26,28 +26,32 @@ Partial Class SendEmailsDialog
         Me.ss_Feedback = New System.Windows.Forms.StatusStrip()
         Me.tss_Feedback = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsp_Progress = New System.Windows.Forms.ToolStripProgressBar()
-        Me.btn_AddFolder = New System.Windows.Forms.Button()
-        Me.btn_UploadFile = New System.Windows.Forms.Button()
         Me.bw_LoadListeners = New System.ComponentModel.BackgroundWorker()
         Me.bw_SendEmails = New System.ComponentModel.BackgroundWorker()
         Me.bw_GetFileID = New System.ComponentModel.BackgroundWorker()
         Me.tcl_EmailOptions = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.btn_SendEmails = New System.Windows.Forms.Button()
-        Me.chk_DefaultMessage = New System.Windows.Forms.CheckBox()
+        Me.btn_SermonSend = New System.Windows.Forms.Button()
+        Me.chk_SermonDefault = New System.Windows.Forms.CheckBox()
         Me.cbx_Files = New System.Windows.Forms.ComboBox()
         Me.cbx_Folders = New System.Windows.Forms.ComboBox()
         Me.lbl_Folder = New System.Windows.Forms.Label()
         Me.lbl_FileLocation = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.FileLocationField1 = New MediaMinistry.FileLocationField()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.flf_LocalReciept = New MediaMinistry.FileLocationField()
+        Me.btn_LocalSend = New System.Windows.Forms.Button()
+        Me.chk_RecieptDefault = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.btn_CustomSend = New System.Windows.Forms.Button()
+        Me.btn_CustomMessage = New System.Windows.Forms.Button()
+        Me.btn_UploadFile = New System.Windows.Forms.Button()
+        Me.btn_AddFolder = New System.Windows.Forms.Button()
         Me.ss_Feedback.SuspendLayout()
         Me.tcl_EmailOptions.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
         'ss_Feedback
@@ -73,21 +77,218 @@ Partial Class SendEmailsDialog
         Me.tsp_Progress.Size = New System.Drawing.Size(100, 16)
         Me.tsp_Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
-        'btn_AddFolder
+        'bw_LoadListeners
         '
-        Me.btn_AddFolder.AutoSize = True
-        Me.btn_AddFolder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_AddFolder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.btn_AddFolder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.btn_AddFolder.Location = New System.Drawing.Point(28, 81)
-        Me.btn_AddFolder.Margin = New System.Windows.Forms.Padding(6)
-        Me.btn_AddFolder.MaximumSize = New System.Drawing.Size(154, 80)
-        Me.btn_AddFolder.MinimumSize = New System.Drawing.Size(154, 80)
-        Me.btn_AddFolder.Name = "btn_AddFolder"
-        Me.btn_AddFolder.Size = New System.Drawing.Size(154, 80)
-        Me.btn_AddFolder.TabIndex = 12
-        Me.btn_AddFolder.Text = "Create New Folder"
-        Me.btn_AddFolder.UseVisualStyleBackColor = True
+        '
+        'bw_SendEmails
+        '
+        Me.bw_SendEmails.WorkerReportsProgress = True
+        Me.bw_SendEmails.WorkerSupportsCancellation = True
+        '
+        'bw_GetFileID
+        '
+        '
+        'tcl_EmailOptions
+        '
+        Me.tcl_EmailOptions.Controls.Add(Me.TabPage1)
+        Me.tcl_EmailOptions.Controls.Add(Me.TabPage2)
+        Me.tcl_EmailOptions.Controls.Add(Me.TabPage3)
+        Me.tcl_EmailOptions.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.tcl_EmailOptions.Dock = System.Windows.Forms.DockStyle.Right
+        Me.tcl_EmailOptions.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.tcl_EmailOptions.Location = New System.Drawing.Point(217, 0)
+        Me.tcl_EmailOptions.Name = "tcl_EmailOptions"
+        Me.tcl_EmailOptions.SelectedIndex = 0
+        Me.tcl_EmailOptions.Size = New System.Drawing.Size(629, 382)
+        Me.tcl_EmailOptions.TabIndex = 17
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.btn_SermonSend)
+        Me.TabPage1.Controls.Add(Me.chk_SermonDefault)
+        Me.TabPage1.Controls.Add(Me.cbx_Files)
+        Me.TabPage1.Controls.Add(Me.cbx_Folders)
+        Me.TabPage1.Controls.Add(Me.lbl_Folder)
+        Me.TabPage1.Controls.Add(Me.lbl_FileLocation)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 34)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(621, 344)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "New Sermon"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'btn_SermonSend
+        '
+        Me.btn_SermonSend.AutoSize = True
+        Me.btn_SermonSend.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_SermonSend.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_SermonSend.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_SermonSend.Location = New System.Drawing.Point(221, 282)
+        Me.btn_SermonSend.Name = "btn_SermonSend"
+        Me.btn_SermonSend.Size = New System.Drawing.Size(178, 35)
+        Me.btn_SermonSend.TabIndex = 23
+        Me.btn_SermonSend.Text = "Send Message"
+        Me.btn_SermonSend.UseVisualStyleBackColor = True
+        '
+        'chk_SermonDefault
+        '
+        Me.chk_SermonDefault.AutoSize = True
+        Me.chk_SermonDefault.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chk_SermonDefault.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.chk_SermonDefault.Location = New System.Drawing.Point(188, 219)
+        Me.chk_SermonDefault.Margin = New System.Windows.Forms.Padding(6)
+        Me.chk_SermonDefault.Name = "chk_SermonDefault"
+        Me.chk_SermonDefault.Size = New System.Drawing.Size(256, 29)
+        Me.chk_SermonDefault.TabIndex = 22
+        Me.chk_SermonDefault.Text = "Use Default Message"
+        Me.chk_SermonDefault.UseVisualStyleBackColor = True
+        '
+        'cbx_Files
+        '
+        Me.cbx_Files.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.cbx_Files.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.cbx_Files.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.cbx_Files.FormattingEnabled = True
+        Me.cbx_Files.Location = New System.Drawing.Point(75, 156)
+        Me.cbx_Files.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbx_Files.Name = "cbx_Files"
+        Me.cbx_Files.Size = New System.Drawing.Size(480, 33)
+        Me.cbx_Files.TabIndex = 21
+        '
+        'cbx_Folders
+        '
+        Me.cbx_Folders.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.cbx_Folders.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.cbx_Folders.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.cbx_Folders.FormattingEnabled = True
+        Me.cbx_Folders.Location = New System.Drawing.Point(75, 57)
+        Me.cbx_Folders.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbx_Folders.Name = "cbx_Folders"
+        Me.cbx_Folders.Size = New System.Drawing.Size(480, 33)
+        Me.cbx_Folders.TabIndex = 18
+        '
+        'lbl_Folder
+        '
+        Me.lbl_Folder.AutoSize = True
+        Me.lbl_Folder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.lbl_Folder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.lbl_Folder.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lbl_Folder.Location = New System.Drawing.Point(65, 27)
+        Me.lbl_Folder.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbl_Folder.Name = "lbl_Folder"
+        Me.lbl_Folder.Size = New System.Drawing.Size(79, 25)
+        Me.lbl_Folder.TabIndex = 19
+        Me.lbl_Folder.Text = "Folder"
+        '
+        'lbl_FileLocation
+        '
+        Me.lbl_FileLocation.AutoSize = True
+        Me.lbl_FileLocation.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.lbl_FileLocation.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.lbl_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lbl_FileLocation.Location = New System.Drawing.Point(65, 125)
+        Me.lbl_FileLocation.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbl_FileLocation.Name = "lbl_FileLocation"
+        Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 25)
+        Me.lbl_FileLocation.TabIndex = 20
+        Me.lbl_FileLocation.Text = "File:"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.flf_LocalReciept)
+        Me.TabPage2.Controls.Add(Me.btn_LocalSend)
+        Me.TabPage2.Controls.Add(Me.chk_RecieptDefault)
+        Me.TabPage2.Controls.Add(Me.Label2)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 34)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(621, 344)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Reciept/Local File"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'flf_LocalReciept
+        '
+        Me.flf_LocalReciept.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.flf_LocalReciept.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.flf_LocalReciept.Location = New System.Drawing.Point(46, 109)
+        Me.flf_LocalReciept.Name = "flf_LocalReciept"
+        Me.flf_LocalReciept.Size = New System.Drawing.Size(560, 33)
+        Me.flf_LocalReciept.TabIndex = 26
+        '
+        'btn_LocalSend
+        '
+        Me.btn_LocalSend.AutoSize = True
+        Me.btn_LocalSend.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_LocalSend.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_LocalSend.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_LocalSend.Location = New System.Drawing.Point(224, 230)
+        Me.btn_LocalSend.Name = "btn_LocalSend"
+        Me.btn_LocalSend.Size = New System.Drawing.Size(178, 35)
+        Me.btn_LocalSend.TabIndex = 23
+        Me.btn_LocalSend.Text = "Send Message"
+        Me.btn_LocalSend.UseVisualStyleBackColor = True
+        '
+        'chk_RecieptDefault
+        '
+        Me.chk_RecieptDefault.AutoSize = True
+        Me.chk_RecieptDefault.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chk_RecieptDefault.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.chk_RecieptDefault.Location = New System.Drawing.Point(191, 180)
+        Me.chk_RecieptDefault.Margin = New System.Windows.Forms.Padding(6)
+        Me.chk_RecieptDefault.Name = "chk_RecieptDefault"
+        Me.chk_RecieptDefault.Size = New System.Drawing.Size(256, 29)
+        Me.chk_RecieptDefault.TabIndex = 22
+        Me.chk_RecieptDefault.Text = "Use Default Message"
+        Me.chk_RecieptDefault.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.Label2.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label2.Location = New System.Drawing.Point(41, 81)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(58, 25)
+        Me.Label2.TabIndex = 20
+        Me.Label2.Text = "File:"
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.btn_CustomSend)
+        Me.TabPage3.Controls.Add(Me.btn_CustomMessage)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 34)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(621, 344)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Custom Message"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'btn_CustomSend
+        '
+        Me.btn_CustomSend.AutoSize = True
+        Me.btn_CustomSend.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_CustomSend.Location = New System.Drawing.Point(221, 217)
+        Me.btn_CustomSend.Name = "btn_CustomSend"
+        Me.btn_CustomSend.Size = New System.Drawing.Size(178, 35)
+        Me.btn_CustomSend.TabIndex = 1
+        Me.btn_CustomSend.Text = "Send Message"
+        Me.btn_CustomSend.UseVisualStyleBackColor = True
+        '
+        'btn_CustomMessage
+        '
+        Me.btn_CustomMessage.AutoSize = True
+        Me.btn_CustomMessage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_CustomMessage.Location = New System.Drawing.Point(170, 93)
+        Me.btn_CustomMessage.Name = "btn_CustomMessage"
+        Me.btn_CustomMessage.Size = New System.Drawing.Size(280, 35)
+        Me.btn_CustomMessage.TabIndex = 0
+        Me.btn_CustomMessage.Text = "Create Custom Message"
+        Me.btn_CustomMessage.UseVisualStyleBackColor = True
         '
         'btn_UploadFile
         '
@@ -105,181 +306,21 @@ Partial Class SendEmailsDialog
         Me.btn_UploadFile.Text = "Upload New File"
         Me.btn_UploadFile.UseVisualStyleBackColor = True
         '
-        'bw_LoadListeners
+        'btn_AddFolder
         '
-        '
-        'bw_SendEmails
-        '
-        Me.bw_SendEmails.WorkerReportsProgress = True
-        Me.bw_SendEmails.WorkerSupportsCancellation = True
-        '
-        'bw_GetFileID
-        '
-        '
-        'tcl_EmailOptions
-        '
-        Me.tcl_EmailOptions.Controls.Add(Me.TabPage1)
-        Me.tcl_EmailOptions.Controls.Add(Me.TabPage2)
-        Me.tcl_EmailOptions.Dock = System.Windows.Forms.DockStyle.Right
-        Me.tcl_EmailOptions.Location = New System.Drawing.Point(217, 0)
-        Me.tcl_EmailOptions.Name = "tcl_EmailOptions"
-        Me.tcl_EmailOptions.SelectedIndex = 0
-        Me.tcl_EmailOptions.Size = New System.Drawing.Size(629, 382)
-        Me.tcl_EmailOptions.TabIndex = 17
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.btn_SendEmails)
-        Me.TabPage1.Controls.Add(Me.chk_DefaultMessage)
-        Me.TabPage1.Controls.Add(Me.cbx_Files)
-        Me.TabPage1.Controls.Add(Me.cbx_Folders)
-        Me.TabPage1.Controls.Add(Me.lbl_Folder)
-        Me.TabPage1.Controls.Add(Me.lbl_FileLocation)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 34)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(621, 344)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'btn_SendEmails
-        '
-        Me.btn_SendEmails.AutoSize = True
-        Me.btn_SendEmails.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.btn_SendEmails.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.btn_SendEmails.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.btn_SendEmails.Location = New System.Drawing.Point(221, 291)
-        Me.btn_SendEmails.Name = "btn_SendEmails"
-        Me.btn_SendEmails.Size = New System.Drawing.Size(178, 35)
-        Me.btn_SendEmails.TabIndex = 23
-        Me.btn_SendEmails.Text = "Send Message"
-        Me.btn_SendEmails.UseVisualStyleBackColor = True
-        '
-        'chk_DefaultMessage
-        '
-        Me.chk_DefaultMessage.AutoSize = True
-        Me.chk_DefaultMessage.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chk_DefaultMessage.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.chk_DefaultMessage.Location = New System.Drawing.Point(188, 210)
-        Me.chk_DefaultMessage.Margin = New System.Windows.Forms.Padding(6)
-        Me.chk_DefaultMessage.Name = "chk_DefaultMessage"
-        Me.chk_DefaultMessage.Size = New System.Drawing.Size(256, 29)
-        Me.chk_DefaultMessage.TabIndex = 22
-        Me.chk_DefaultMessage.Text = "Use Default Message"
-        Me.chk_DefaultMessage.UseVisualStyleBackColor = True
-        '
-        'cbx_Files
-        '
-        Me.cbx_Files.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.cbx_Files.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.cbx_Files.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cbx_Files.FormattingEnabled = True
-        Me.cbx_Files.Location = New System.Drawing.Point(75, 147)
-        Me.cbx_Files.Margin = New System.Windows.Forms.Padding(6)
-        Me.cbx_Files.Name = "cbx_Files"
-        Me.cbx_Files.Size = New System.Drawing.Size(480, 33)
-        Me.cbx_Files.TabIndex = 21
-        '
-        'cbx_Folders
-        '
-        Me.cbx_Folders.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.cbx_Folders.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.cbx_Folders.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cbx_Folders.FormattingEnabled = True
-        Me.cbx_Folders.Location = New System.Drawing.Point(75, 48)
-        Me.cbx_Folders.Margin = New System.Windows.Forms.Padding(6)
-        Me.cbx_Folders.Name = "cbx_Folders"
-        Me.cbx_Folders.Size = New System.Drawing.Size(480, 33)
-        Me.cbx_Folders.TabIndex = 18
-        '
-        'lbl_Folder
-        '
-        Me.lbl_Folder.AutoSize = True
-        Me.lbl_Folder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.lbl_Folder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.lbl_Folder.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_Folder.Location = New System.Drawing.Point(65, 18)
-        Me.lbl_Folder.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.lbl_Folder.Name = "lbl_Folder"
-        Me.lbl_Folder.Size = New System.Drawing.Size(79, 25)
-        Me.lbl_Folder.TabIndex = 19
-        Me.lbl_Folder.Text = "Folder"
-        '
-        'lbl_FileLocation
-        '
-        Me.lbl_FileLocation.AutoSize = True
-        Me.lbl_FileLocation.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.lbl_FileLocation.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.lbl_FileLocation.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_FileLocation.Location = New System.Drawing.Point(65, 116)
-        Me.lbl_FileLocation.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.lbl_FileLocation.Name = "lbl_FileLocation"
-        Me.lbl_FileLocation.Size = New System.Drawing.Size(58, 25)
-        Me.lbl_FileLocation.TabIndex = 20
-        Me.lbl_FileLocation.Text = "File:"
-        '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.FileLocationField1)
-        Me.TabPage2.Controls.Add(Me.Button1)
-        Me.TabPage2.Controls.Add(Me.CheckBox1)
-        Me.TabPage2.Controls.Add(Me.Label2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 34)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(621, 344)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'FileLocationField1
-        '
-        Me.FileLocationField1.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.FileLocationField1.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.FileLocationField1.Location = New System.Drawing.Point(46, 88)
-        Me.FileLocationField1.Name = "FileLocationField1"
-        Me.FileLocationField1.Size = New System.Drawing.Size(560, 33)
-        Me.FileLocationField1.TabIndex = 26
-        '
-        'Button1
-        '
-        Me.Button1.AutoSize = True
-        Me.Button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.Button1.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.Button1.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.Button1.Location = New System.Drawing.Point(224, 240)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(178, 35)
-        Me.Button1.TabIndex = 23
-        Me.Button1.Text = "Send Message"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.CheckBox1.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.CheckBox1.Location = New System.Drawing.Point(191, 159)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(6)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(256, 29)
-        Me.CheckBox1.TabIndex = 22
-        Me.CheckBox1.Text = "Use Default Message"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.Label2.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(41, 60)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 25)
-        Me.Label2.TabIndex = 20
-        Me.Label2.Text = "File:"
+        Me.btn_AddFolder.AutoSize = True
+        Me.btn_AddFolder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.btn_AddFolder.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.btn_AddFolder.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.btn_AddFolder.Location = New System.Drawing.Point(28, 81)
+        Me.btn_AddFolder.Margin = New System.Windows.Forms.Padding(6)
+        Me.btn_AddFolder.MaximumSize = New System.Drawing.Size(154, 80)
+        Me.btn_AddFolder.MinimumSize = New System.Drawing.Size(154, 80)
+        Me.btn_AddFolder.Name = "btn_AddFolder"
+        Me.btn_AddFolder.Size = New System.Drawing.Size(154, 80)
+        Me.btn_AddFolder.TabIndex = 12
+        Me.btn_AddFolder.Text = "Create New Folder"
+        Me.btn_AddFolder.UseVisualStyleBackColor = True
         '
         'SendEmailsDialog
         '
@@ -305,6 +346,8 @@ Partial Class SendEmailsDialog
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -319,15 +362,18 @@ Partial Class SendEmailsDialog
     Friend WithEvents tsp_Progress As ToolStripProgressBar
     Friend WithEvents tcl_EmailOptions As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents btn_SendEmails As Button
-    Friend WithEvents chk_DefaultMessage As CheckBox
+    Friend WithEvents btn_SermonSend As Button
+    Friend WithEvents chk_SermonDefault As CheckBox
     Friend WithEvents cbx_Files As ComboBox
     Friend WithEvents cbx_Folders As ComboBox
     Friend WithEvents lbl_Folder As Label
     Friend WithEvents lbl_FileLocation As Label
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents Button1 As Button
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents btn_LocalSend As Button
+    Friend WithEvents chk_RecieptDefault As CheckBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents FileLocationField1 As FileLocationField
+    Friend WithEvents flf_LocalReciept As FileLocationField
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents btn_CustomMessage As Button
+    Friend WithEvents btn_CustomSend As Button
 End Class

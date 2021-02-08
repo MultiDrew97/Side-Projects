@@ -106,7 +106,7 @@ Public Class Frm_Main
         'tctl_MaxOption.Hide()
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+    Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         My.Settings.Username = ""
         My.Settings.Password = ""
         My.Settings.KeepLoggedIn = False
@@ -145,6 +145,7 @@ Public Class Frm_Main
         'If Not latestVersion.Contains(currentVersion) Then
         '    wb_Updater.Navigate(updateLocation)
         'End If
+        MessageBox.Show("This feature is currently under construction.", "Out of Order", MessageBoxButtons.OK, MessageBoxIcon.Hand)
     End Sub
 
     Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomersToolStripMenuItem.Click
@@ -174,7 +175,6 @@ Public Class Frm_Main
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Dim settings As New Frm_Settings()
         settings.Show()
-        Me.Hide()
     End Sub
 
     Private Sub Bw_ChangedSizes_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_ChangedSizes.DoWork

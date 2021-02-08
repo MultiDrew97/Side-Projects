@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Imports System.ComponentModel
 
 Public Class EmailMinistryDialog
     Shared Property SelectedItem As String
@@ -10,9 +11,6 @@ Public Class EmailMinistryDialog
     End Sub
 
     Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_SendEmails.Click
-        'SelectedItem = "Send"
-        'DialogResult = DialogResult.OK
-        'Me.Close()
         If SendEmailsDialog.ShowDialog() = DialogResult.OK Then
             DialogResult = DialogResult.Ignore
         End If

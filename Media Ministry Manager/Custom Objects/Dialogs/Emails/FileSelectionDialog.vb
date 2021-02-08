@@ -5,28 +5,35 @@ Imports MediaMinistry.GoogleAPI
 Public Class FileSelectionDialog
     Shared Property FileName As String
     Shared Property FileID As String
-    Shared Property Parents As IList(Of String)
 
     Private Sub Btn_Select_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_Ok.Click
-        If cbx_File.SelectedIndex > -1 Then
-            Using uploader As New DriveUploader
-                Dim file = uploader.GetFileInfo(CType(cbx_File.SelectedItem, String), CType(cbx_Folder.SelectedItem, String))
-                FileName = file.Name
-                FileID = file.Id
-                Parents = file.Parents
-            End Using
+        If tcl_Options.SelectedIndex = 0 Then
+            If cbx_File.SelectedIndex > -1 Then
 
-            Me.DialogResult = DialogResult.OK
-            Me.Close()
+                Using uploader As New DriveUploader
+                    Dim file = uploader.GetFileInfo(CType(cbx_File.SelectedItem, String), CType(cbx_Folder.SelectedItem, String))
+                    FileID = file.Id
+                End Using
+
+                Me.DialogResult = DialogResult.OK
+                Me.Close()
+            Else
+                MessageBox.Show("A file must be selected. Please try again.", "File Not Selected", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         Else
-            MessageBox.Show("A file must be selected. Please try again.", "File Not Selected", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If flf_FileSelection.ofdFileSelection.FileName <> "" Then
+                FileName = flf_FileSelection.ofdFileSelection.FileName
+                Me.DialogResult = DialogResult.OK
+                Me.Close()
+            Else
+                MessageBox.Show("A file must be selected. Please try again.", "File Not Selected", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End If
     End Sub
 
     Private Sub Btn_Cancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_Cancel.Click
         FileName = Nothing
         FileID = Nothing
-        Parents = Nothing
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
@@ -38,6 +45,8 @@ Public Class FileSelectionDialog
     End Sub
 
     Private Sub FileSelectionDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        FileName = Nothing
+        FileID = Nothing
         Using uploader As New DriveUploader()
             cbx_Folder.DataSource = uploader.GetFolders
         End Using

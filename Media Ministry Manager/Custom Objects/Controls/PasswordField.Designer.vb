@@ -45,7 +45,7 @@ Partial Class PasswordField
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.btnShow)
-        Me.SplitContainer1.Size = New System.Drawing.Size(414, 21)
+        Me.SplitContainer1.Size = New System.Drawing.Size(414, 20)
         Me.SplitContainer1.SplitterDistance = 344
         Me.SplitContainer1.TabIndex = 0
         '
@@ -64,7 +64,7 @@ Partial Class PasswordField
         Me.btnShow.Image = CType(resources.GetObject("btnShow.Image"), System.Drawing.Image)
         Me.btnShow.Location = New System.Drawing.Point(0, 0)
         Me.btnShow.Name = "btnShow"
-        Me.btnShow.Size = New System.Drawing.Size(66, 21)
+        Me.btnShow.Size = New System.Drawing.Size(66, 20)
         Me.btnShow.TabIndex = 0
         Me.btnShow.UseVisualStyleBackColor = True
         '
@@ -72,9 +72,10 @@ Partial Class PasswordField
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.Controls.Add(Me.SplitContainer1)
         Me.Name = "PasswordField"
-        Me.Size = New System.Drawing.Size(414, 21)
+        Me.Size = New System.Drawing.Size(414, 20)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)

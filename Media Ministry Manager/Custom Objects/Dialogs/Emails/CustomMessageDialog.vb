@@ -12,7 +12,17 @@ Public Class CustomMessageDialog
     End Sub
 
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+        Reset()
         DialogResult = DialogResult.Cancel
         Me.Close()
+    End Sub
+
+    Private Sub CustomMessageDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Reset()
+    End Sub
+
+    Private Sub Reset()
+        Subject = ""
+        Body = ""
     End Sub
 End Class
