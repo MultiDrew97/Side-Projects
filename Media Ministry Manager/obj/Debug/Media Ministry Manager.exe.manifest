@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\App Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Media Ministry Manager" version="3.0.697.10" publicKeyToken="639B03656C07EE60" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Media Ministry Manager" version="3.0.698.10" publicKeyToken="639B03656C07EE60" language="neutral" processorArchitecture="msil" />
     <commandLine file="Media Ministry Manager.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -200,13 +200,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Media Ministry Manager.exe" size="1401928">
-      <assemblyIdentity name="Media Ministry Manager" version="3.0.697.10" publicKeyToken="639B03656C07EE60" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Media Ministry Manager" version="3.0.698.10" publicKeyToken="639B03656C07EE60" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UE5ph4L6hzo2NNkh7sOX3aPvquSE/NJHdfAWg8jyzWw=</dsig:DigestValue>
+        <dsig:DigestValue>C4pXJId9FbISuM4N1M6pXc/iF1jcH5cPB5OIPBNxWaI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
