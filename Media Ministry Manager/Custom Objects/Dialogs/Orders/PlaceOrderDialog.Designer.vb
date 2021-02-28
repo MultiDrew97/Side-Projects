@@ -53,6 +53,10 @@ Partial Class PlaceOrderDialog
         Me.cbx_ItemName.Size = New System.Drawing.Size(323, 33)
         Me.cbx_ItemName.TabIndex = 5
         '
+        'bsProducts
+        '
+        Me.bsProducts.Filter = "Available=True"
+        '
         'lbl_ItemName
         '
         Me.lbl_ItemName.AutoSize = True

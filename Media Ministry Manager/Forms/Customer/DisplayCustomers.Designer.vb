@@ -24,15 +24,15 @@ Partial Class Frm_DisplayCustomers
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayCustomers))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
-        Me.FirstNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LastNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PhoneNumberColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailAddressColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.JoinDateColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsCustomers = New System.Windows.Forms.BindingSource(Me.components)
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
@@ -56,6 +56,15 @@ Partial Class Frm_DisplayCustomers
         Me.ViewOrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FirstNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Street = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.City = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.State = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ZipCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhoneNumberColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailAddressColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JoinDateColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_CustomerView.SuspendLayout()
@@ -72,52 +81,18 @@ Partial Class Frm_DisplayCustomers
         Me.dgv_Customers.AutoGenerateColumns = False
         Me.dgv_Customers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgv_Customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FirstNameColumn, Me.LastNameColumn, Me.PhoneNumberColumn, Me.EmailAddressColumn, Me.JoinDateColumn})
+        Me.dgv_Customers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FirstNameColumn, Me.LastNameColumn, Me.Street, Me.City, Me.State, Me.ZipCode, Me.PhoneNumberColumn, Me.EmailAddressColumn, Me.JoinDateColumn})
         Me.dgv_Customers.DataSource = Me.bsCustomers
         Me.dgv_Customers.Dock = System.Windows.Forms.DockStyle.Top
         Me.dgv_Customers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
         Me.dgv_Customers.Location = New System.Drawing.Point(0, 24)
         Me.dgv_Customers.MultiSelect = False
         Me.dgv_Customers.Name = "dgv_Customers"
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.dgv_Customers.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.dgv_Customers.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.dgv_Customers.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.dgv_Customers.Size = New System.Drawing.Size(888, 381)
         Me.dgv_Customers.TabIndex = 0
-        '
-        'FirstNameColumn
-        '
-        Me.FirstNameColumn.DataPropertyName = "FirstName"
-        Me.FirstNameColumn.HeaderText = "First Name"
-        Me.FirstNameColumn.Name = "FirstNameColumn"
-        '
-        'LastNameColumn
-        '
-        Me.LastNameColumn.DataPropertyName = "LastName"
-        Me.LastNameColumn.HeaderText = "Last Name"
-        Me.LastNameColumn.Name = "LastNameColumn"
-        '
-        'PhoneNumberColumn
-        '
-        Me.PhoneNumberColumn.DataPropertyName = "PhoneNumber"
-        Me.PhoneNumberColumn.HeaderText = "Phone Number"
-        Me.PhoneNumberColumn.Name = "PhoneNumberColumn"
-        '
-        'EmailAddressColumn
-        '
-        Me.EmailAddressColumn.DataPropertyName = "EmailAddress"
-        Me.EmailAddressColumn.HeaderText = "Email Address"
-        Me.EmailAddressColumn.Name = "EmailAddressColumn"
-        '
-        'JoinDateColumn
-        '
-        Me.JoinDateColumn.DataPropertyName = "JoinDate"
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.JoinDateColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.JoinDateColumn.HeaderText = "Join Date"
-        Me.JoinDateColumn.Name = "JoinDateColumn"
-        Me.JoinDateColumn.ReadOnly = True
         '
         'ss_CustomerView
         '
@@ -243,7 +218,7 @@ Partial Class Frm_DisplayCustomers
         'UpdateToolStripMenuItem
         '
         Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.UpdateToolStripMenuItem.Text = "Update"
         '
         'ViewToolStripMenuItem
@@ -256,20 +231,88 @@ Partial Class Frm_DisplayCustomers
         'ViewOrdersToolStripMenuItem
         '
         Me.ViewOrdersToolStripMenuItem.Name = "ViewOrdersToolStripMenuItem"
-        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.ViewOrdersToolStripMenuItem.Text = "Orders"
         '
         'ViewProductsToolStripMenuItem
         '
         Me.ViewProductsToolStripMenuItem.Name = "ViewProductsToolStripMenuItem"
-        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.ViewProductsToolStripMenuItem.Text = "Products"
         '
         'ViewListenersToolStripMenuItem
         '
         Me.ViewListenersToolStripMenuItem.Name = "ViewListenersToolStripMenuItem"
-        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.ViewListenersToolStripMenuItem.Text = "Listeners"
+        '
+        'FirstNameColumn
+        '
+        Me.FirstNameColumn.DataPropertyName = "FirstName"
+        Me.FirstNameColumn.HeaderText = "First Name"
+        Me.FirstNameColumn.Name = "FirstNameColumn"
+        '
+        'LastNameColumn
+        '
+        Me.LastNameColumn.DataPropertyName = "LastName"
+        Me.LastNameColumn.HeaderText = "Last Name"
+        Me.LastNameColumn.Name = "LastNameColumn"
+        '
+        'Street
+        '
+        Me.Street.DataPropertyName = "Street"
+        DataGridViewCellStyle2.NullValue = "N/A"
+        Me.Street.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Street.HeaderText = "Street"
+        Me.Street.Name = "Street"
+        '
+        'City
+        '
+        Me.City.DataPropertyName = "City"
+        DataGridViewCellStyle3.NullValue = "N/A"
+        Me.City.DefaultCellStyle = DataGridViewCellStyle3
+        Me.City.HeaderText = "City"
+        Me.City.Name = "City"
+        '
+        'State
+        '
+        Me.State.DataPropertyName = "State"
+        DataGridViewCellStyle4.NullValue = "N/A"
+        Me.State.DefaultCellStyle = DataGridViewCellStyle4
+        Me.State.HeaderText = "State"
+        Me.State.Name = "State"
+        '
+        'ZipCode
+        '
+        Me.ZipCode.DataPropertyName = "ZipCode"
+        DataGridViewCellStyle5.NullValue = "N/A"
+        Me.ZipCode.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ZipCode.HeaderText = "Zip Code"
+        Me.ZipCode.Name = "ZipCode"
+        '
+        'PhoneNumberColumn
+        '
+        Me.PhoneNumberColumn.DataPropertyName = "PhoneNumber"
+        Me.PhoneNumberColumn.HeaderText = "Phone Number"
+        Me.PhoneNumberColumn.Name = "PhoneNumberColumn"
+        '
+        'EmailAddressColumn
+        '
+        Me.EmailAddressColumn.DataPropertyName = "EmailAddress"
+        DataGridViewCellStyle6.NullValue = "N/A"
+        Me.EmailAddressColumn.DefaultCellStyle = DataGridViewCellStyle6
+        Me.EmailAddressColumn.HeaderText = "Email Address"
+        Me.EmailAddressColumn.Name = "EmailAddressColumn"
+        '
+        'JoinDateColumn
+        '
+        Me.JoinDateColumn.DataPropertyName = "JoinDate"
+        DataGridViewCellStyle7.Format = "d"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.JoinDateColumn.DefaultCellStyle = DataGridViewCellStyle7
+        Me.JoinDateColumn.HeaderText = "Join Date"
+        Me.JoinDateColumn.Name = "JoinDateColumn"
+        Me.JoinDateColumn.ReadOnly = True
         '
         'Frm_DisplayCustomers
         '
@@ -331,6 +374,10 @@ Partial Class Frm_DisplayCustomers
     Friend WithEvents RemoveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FirstNameColumn As DataGridViewTextBoxColumn
     Friend WithEvents LastNameColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Street As DataGridViewTextBoxColumn
+    Friend WithEvents City As DataGridViewTextBoxColumn
+    Friend WithEvents State As DataGridViewTextBoxColumn
+    Friend WithEvents ZipCode As DataGridViewTextBoxColumn
     Friend WithEvents PhoneNumberColumn As DataGridViewTextBoxColumn
     Friend WithEvents EmailAddressColumn As DataGridViewTextBoxColumn
     Friend WithEvents JoinDateColumn As DataGridViewTextBoxColumn

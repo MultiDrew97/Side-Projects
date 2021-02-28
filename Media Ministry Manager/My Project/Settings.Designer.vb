@@ -116,7 +116,7 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Data Source=sppbc.hopto.org,14339;Initial Catalog=""Media Ministry"";Connect Timeou"& _ 
-        "t=30;Encrypt=True;Authentication=""Sql Password""")>  _
+        "t=30;Encrypt=True;Authentication=""Sql Password"";TrustServerCertificate=True;")>  _
     Public Property releaseConnection() As String
         Get
             Return CType(Me("releaseConnection"),String)
@@ -129,7 +129,8 @@ Partial Friend NotInheritable Class MySettings
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Data Source=sppbc.hopto.org,14339;Initial Catalog=""Media Ministry Test"";Connect T"& _ 
-        "imeout=30;Encrypt=True;Authentication=""Sql Password""")>  _
+        "imeout=30;Encrypt=True;Authentication=""Sql Password"";TrustServerCertificate=True"& _ 
+        ";")>  _
     Public Property debugConnection() As String
         Get
             Return CType(Me("debugConnection"),String)
@@ -137,6 +138,15 @@ Partial Friend NotInheritable Class MySettings
         Set
             Me("debugConnection") = value
         End Set
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString)>  _
+    Public ReadOnly Property Setting() As String
+        Get
+            Return CType(Me("Setting"),String)
+        End Get
     End Property
 End Class
 

@@ -54,7 +54,7 @@ Public Class PlaceOrderDialog
     Private Sub GenerateColumns()
         CustomersTable.Columns.AddRange({New DataColumn("CustomerID", GetType(Integer)), New DataColumn("Name", GetType(String))})
 
-        ProductsTable.Columns.AddRange({New DataColumn("ProductID", GetType(Integer)), New DataColumn("Name", GetType(String))})
+        ProductsTable.Columns.AddRange({New DataColumn("ProductID", GetType(Integer)), New DataColumn("Name", GetType(String)), New DataColumn("Available", GetType(Boolean))})
 
         FillTables()
     End Sub
@@ -73,6 +73,7 @@ Public Class PlaceOrderDialog
             row = ProductsTable.NewRow
             row("ProductID") = product.Id
             row("Name") = product.Name
+            row("Available") = product.Available
             ProductsTable.Rows.Add(row)
         Next
     End Sub
