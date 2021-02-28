@@ -2,15 +2,15 @@
 Imports System.Threading
 Imports Google.Apis.Drive.v3.Data
 Imports Google.Apis.Gmail.v1.Data
-Imports MediaMinistry.SendingEmails
+Imports MediaMinistry.GoogleAPI
 Imports MediaMinistry.Helpers
 
 Public Class Frm_Settings
     Private Const currentUser = "Current User: {0}"
     Private cts As CancellationTokenSource
-    ReadOnly bold As String = "Bolded? {0}"
-    ReadOnly fontSize As String = "Font Size: {0}pt"
-    Private textFont As String = "Font: {0}"
+    Private ReadOnly bold As String = "Bolded? {0}"
+    Private ReadOnly fontSize As String = "Font Size: {0}pt"
+    Private ReadOnly textFont As String = "Font: {0}"
     Private result As DialogResult
 
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -71,11 +71,11 @@ Public Class Frm_Settings
         End Select
     End Sub
 
-    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) 
         Utils.CloseOpenForms()
     End Sub
 
-    Private Sub btn_GoogleDrive_Click(sender As Object, e As EventArgs) Handles btn_GoogleDrive.Click
+    Private Sub Btn_GoogleDrive_Click(sender As Object, e As EventArgs) Handles btn_GoogleDrive.Click
         If btn_GoogleDrive.Text = "Unlink Google Drive" Then
             Try
                 Directory.Delete(Application.StartupPath & "\Drive Token", True)
@@ -100,7 +100,7 @@ Public Class Frm_Settings
         End If
     End Sub
 
-    Private Sub btn_Gmail_Click(sender As Object, e As EventArgs) Handles btn_Gmail.Click
+    Private Sub Btn_Gmail_Click(sender As Object, e As EventArgs) Handles btn_Gmail.Click
         If btn_Gmail.Text = "Unlink Gmail" Then
             Try
                 Directory.Delete(Application.StartupPath & "\Gmail Token", True)
@@ -125,7 +125,7 @@ Public Class Frm_Settings
         End If
     End Sub
 
-    Private Sub bw_Service_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Service.DoWork
+    Private Sub Bw_Service_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_Service.DoWork
         cts = New CancellationTokenSource()
         Dim service As Service
         Select Case CType(e.Argument, String)
@@ -146,9 +146,9 @@ Public Class Frm_Settings
 
             Case "m"
                 Try
-                    service = New Sender(cts.Token)
                     Invoke(
                         Sub()
+                            service = New Sender(cts.Token)
                             btn_Gmail.Text = "Unlink Gmail"
                             lbl_CurrentGmail.Text = String.Format(currentUser, CType(service.Info, Profile).EmailAddress)
                         End Sub
@@ -167,8 +167,15 @@ Public Class Frm_Settings
                 'Retrieve the Google Drive Info being used by the user
                 If Directory.Exists(Application.StartupPath & "\Drive Token") Then
                     Using uploader As New DriveUploader()
-                        lbl_CurrentDrive.Text = String.Format(currentUser, CType(uploader.Info, User).EmailAddress)
-                        btn_GoogleDrive.Text = "Unlink Google Drive"
+                        Dim user As User = CType(uploader.Info, User)
+
+                        If user IsNot Nothing Then
+                            lbl_CurrentDrive.Text = String.Format(currentUser, user.EmailAddress)
+                            btn_GoogleDrive.Text = "Unlink Google Drive"
+                        Else
+                            lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
+                            btn_GoogleDrive.Text = "Link Google Drive"
+                        End If
                     End Using
                 Else
                     lbl_CurrentDrive.Text = String.Format(currentUser, "Unlinked")
@@ -185,7 +192,7 @@ Public Class Frm_Settings
                             btn_Gmail.Text = "Unlink Gmail"
                         Else
                             lbl_CurrentGmail.Text = String.Format(currentUser, "Unlinked")
-                            btn_Gmail.Text = "Unlink Gmail"
+                            btn_Gmail.Text = "Link Gmail"
                         End If
                     End Using
                 Else

@@ -5,87 +5,81 @@ Imports System.IO
 Imports MediaMinistry.Helpers
 
 Public Class Frm_Main
+    ReadOnly emailerLocation As String = Application.StartupPath & "\sender.jar"
+    Dim firstTime As Boolean = True
+
     Structure WindowSizes
         Shared normal As New Size(413, 452)
         Shared max As New Size(1382, 744)
     End Structure
 
     Private Sub MediaMinistry_Close(sender As Object, e As EventArgs) Handles MyBase.Closing
-        If My.Application.OpenForms.Count = 1 Then
-            If Not My.Settings.KeepLoggedIn Then
-                Dim login As New Frm_Login()
-                login.Show()
-            Else
-                My.Settings.Save()
-            End If
-        Else
-            For Each form As Form In My.Application.OpenForms
-                If Not form.Name.Equals(Me.Name) Then
-                    form.Show()
-                    Exit For
-                End If
-            Next
+        If My.Application.OpenForms.Count = 1 And Not My.Settings.KeepLoggedIn Then
+            Dim login As New Frm_Login()
+            login.Show()
         End If
     End Sub
 
-    Private Sub btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
-        'TODO: Re-enable this area
-        MessageBox.Show("Sorry. This area is currently under reconstruction.", "Minor Inconveniance", MessageBoxButtons.OK)
-        'Dim frm_PlaceOrder As frm_PlaceOrder = New frm_PlaceOrder With {.mainForm = Me}
-        'frm_PlaceOrder.Show()
+    Private Sub Btn_placeOrder_Click(sender As Object, e As EventArgs) Handles btn_placeOrder.Click
+        PlaceOrderDialog.ShowDialog()
     End Sub
 
-    Private Sub btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
-        Dim inventory As Frm_ViewInventory = New Frm_ViewInventory
+    Private Sub Btn_ProductManagement_Click(sender As Object, e As EventArgs) Handles btn_ProductManagement.Click
+        Dim inventory As New Frm_DisplayInventory
         inventory.Show()
         Me.Close()
     End Sub
 
-    Private Sub btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
-        'TODO: Re-enable this area
-        MessageBox.Show("Sorry. This area is currently under reconstruction.", "Minor Inconveniance", MessageBoxButtons.OK)
-        'Dim ordersView = New Frm_DisplayOrders
-        'ordersView.Show()
-        'Me.Close()
+    Private Sub Btn_ShowOrders_Click(sender As Object, e As EventArgs) Handles btn_ShowOrders.Click
+        Dim ordersView = New Frm_DisplayOrders
+        ordersView.Show()
+        Me.Close()
     End Sub
 
-    Private Sub btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
-        Dim displayCustomers = New frm_DisplayCustomers
+    Private Sub Btn_CustomerManagement_Click(sender As Object, e As EventArgs) Handles btn_CustomerManagement.Click
+        Dim displayCustomers = New Frm_DisplayCustomers
         displayCustomers.Show()
         Me.Close()
     End Sub
 
-    Private Sub reset()
+    Private Sub Reset()
         tss_Feedback.Text = "What would you like to do?"
         tss_Feedback.ForeColor = SystemColors.WindowText
     End Sub
 
-    Private Sub btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
-        'create a email listeners form in the background
-        Dim emailListeners As New Frm_EmailListeners()
-        emailListeners.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub Bw_UpdateJar_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_UpdateJar.DoWork
-        'Using out As New BinaryWriter(New FileStream(CType(e.Argument, String), FileMode.OpenOrCreate, FileAccess.Write))
-        '    out.Write(My.Resources.sender)
-        'End Using
-
-        'If Not ValidateSender(CType(e.Argument, String)) Then
-        '    Throw New FileNotFoundException("Sender was not found or was not copied correctly. Contact your developer.")
-        'End If
-    End Sub
-
-    Private Sub frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
-        If Me.Size = WindowSizes.max Then
-            growToMax()
-        Else
-            backToNormal()
+    Private Sub Btn_EmailMinistry_Click(sender As Object, e As EventArgs) Handles btn_EmailMinistry.Click
+        If EmailMinistryDialog.ShowDialog = DialogResult.OK Then
+            Dim form As Form
+            Select Case EmailMinistryDialog.SelectedItem
+                Case "Send"
+                    SendEmailsDialog.ShowDialog()
+                Case "Upload"
+                    DriveUploadDialog.ShowDialog()
+                Case "View"
+                    form = New Frm_ViewListeners
+                    form.Show()
+                    Me.Close()
+            End Select
         End If
     End Sub
 
-    Private Sub growToMax()
+    Private Sub Frm_Main_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        Dim size As String
+
+        If Me.Size = WindowSizes.max Then
+            size = "b"
+        Else
+            size = "s"
+        End If
+
+        If Not firstTime Then
+            bw_ChangedSizes.RunWorkerAsync(size)
+        Else
+            firstTime = False
+        End If
+    End Sub
+
+    Private Sub GrowToMax()
         'Hide normal size menu buttons
         btn_CustomerManagement.Hide()
         btn_placeOrder.Hide()
@@ -100,7 +94,7 @@ Public Class Frm_Main
         '1366, 667
     End Sub
 
-    Private Sub backToNormal()
+    Private Sub BackToNormal()
         'show normal size menu buttons
         btn_CustomerManagement.Show()
         btn_placeOrder.Show()
@@ -120,45 +114,23 @@ Public Class Frm_Main
         Me.Close()
     End Sub
 
-    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Utils.CloseOpenForms()
     End Sub
 
-    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem.Click
-        Dim frm_AddCustomer As New frm_AddNewCustomer With {.Opener = Me}
-        frm_AddCustomer.Show()
-        Me.Hide()
+    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewCustomerToolStripMenuItem.Click
+        AddCustomerDialog.ShowDialog()
     End Sub
 
-    Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-        Dim frm_AddProduct As New Frm_AddNewProduct() With {.Opener = Me}
-        frm_AddProduct.Show()
-        Me.Hide()
+    Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewProductToolStripMenuItem.Click
+        AddProductDialog.ShowDialog()
     End Sub
 
-    Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem.Click
-        Dim frm_AddListener As New Frm_AddListener()
-        frm_AddListener.Show()
-        Me.Hide()
+    Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewListenerToolStripMenuItem.Click
+        AddListenerDialog.Show()
     End Sub
 
-    Private Sub CustomerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CustomerToolStripMenuItem1.Click
-        'TODO: Add Find Customer Functionality
-    End Sub
-
-    Private Sub ProductToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem1.Click
-        'TODO: Add Find Product Functionality
-    End Sub
-
-    Private Sub ListenerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ListenerToolStripMenuItem1.Click
-        'TODO: Add Find Listener Functionality
-    End Sub
-
-    Private Function validateSender(path As String) As Boolean
-        Return File.Exists(path)
-    End Function
-
-    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem.Click
         'Dim updateLocation As String = "https://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
         'Dim updateCheck As String = "https://sppbc.hopto.org/Manager%20Installer/version.txt"
 
@@ -173,28 +145,29 @@ Public Class Frm_Main
         'If Not latestVersion.Contains(currentVersion) Then
         '    wb_Updater.Navigate(updateLocation)
         'End If
+        MessageBox.Show("This feature is currently under construction.", "Out of Order", MessageBoxButtons.OK, MessageBoxIcon.Hand)
     End Sub
 
-    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomersToolStripMenuItem.Click
-        Dim customers As New frm_DisplayCustomers
+    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomersToolStripMenuItem.Click
+        Dim customers As New Frm_DisplayCustomers
         customers.Show()
         Me.Close()
     End Sub
 
-    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsToolStripMenuItem.Click
-        Dim products As New Frm_ViewInventory
+    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
+        Dim products As New Frm_DisplayInventory
         products.Show()
         Me.Close()
     End Sub
 
-    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrdersToolStripMenuItem.Click
+    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
         Dim orders As New Frm_DisplayOrders
         orders.Show()
         Me.Close()
     End Sub
 
-    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenersToolStripMenuItem.Click
-        Dim listeners As New frm_ViewListeners
+    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewListenersToolStripMenuItem.Click
+        Dim listeners As New Frm_ViewListeners
         listeners.Show()
         Me.Close()
     End Sub
@@ -202,6 +175,23 @@ Public Class Frm_Main
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Dim settings As New Frm_Settings()
         settings.Show()
-        Me.Hide()
+    End Sub
+
+    Private Sub Bw_ChangedSizes_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_ChangedSizes.DoWork
+        Select Case CStr(e.Argument)
+            Case "b"
+                Invoke(
+                    Sub()
+                        GrowToMax()
+                    End Sub
+                )
+            Case "s"
+                Invoke(
+                    Sub()
+                        BackToNormal()
+                    End Sub
+                )
+        End Select
+
     End Sub
 End Class

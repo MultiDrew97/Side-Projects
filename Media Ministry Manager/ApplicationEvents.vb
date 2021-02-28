@@ -1,8 +1,6 @@
 ﻿Option Strict On
 
 Imports System.Collections.ObjectModel
-Imports System.ComponentModel
-Imports NeoSmart.Utils
 
 Namespace My
 
@@ -18,10 +16,6 @@ Namespace My
         'the time that the splash screen is on screen to 5000 ms (5 seconds)
         Protected Overrides Function OnInitialize(commandLineArgs As ReadOnlyCollection(Of String)) As Boolean
             Me.MinimumSplashScreenDisplayTime = 5000
-            Dim stuff1 As Byte() = Text.Encoding.Unicode.GetBytes("954086404571-qf8mk56uatvgijtkcp633ieik0nf22rb.apps.googleusercontent.com")
-            Dim stuff2 As Byte() = Text.Encoding.Unicode.GetBytes("RW5XtkIcK8GvJRaMZPXObv-c")
-            Environment.SetEnvironmentVariable("stuff1", UrlBase64.Encode(stuff1))
-            Environment.SetEnvironmentVariable("stuff2", UrlBase64.Encode(stuff2))
             Return MyBase.OnInitialize(commandLineArgs)
         End Function
 

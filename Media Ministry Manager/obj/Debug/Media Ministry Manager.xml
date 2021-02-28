@@ -32,6 +32,65 @@ Media Ministry Manager
   Looks up a localized resource of type System.Byte[].
 </summary>
 </member>
+<member name="P:MediaMinistry.My.Resources.Resources.customMessageTemplate">
+<summary>
+  Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;Hello {0},&lt;/p&gt;&lt;br&gt;
+
+{1}
+&lt;hr&gt;
+
+&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
+		St. Paul Primitive Baptist Church&lt;br&gt;
+		Email Listening Ministry&lt;br&gt;
+		2209 East 14th Street&lt;br&gt;
+		Austin, TX. 78702&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;.
+</summary>
+</member>
+<member name="P:MediaMinistry.My.Resources.Resources.customMessageWithDriveLink">
+<summary>
+  Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;Hello {0},&lt;/p&gt;&lt;br&gt;
+
+{1}&lt;br&gt;
+
+&lt;a href=&quot;{2}&quot;&gt;Drive File&lt;/a&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
+		St. Paul Primitive Baptist Church&lt;br&gt;
+		Email Listening Ministry&lt;br&gt;
+		2209 East 14th Street&lt;br&gt;
+		Austin, TX. 78702&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;.
+</summary>
+</member>
+<member name="P:MediaMinistry.My.Resources.Resources.debugConnection">
+<summary>
+  Looks up a localized string similar to Data Source=sppbc.hopto.org,14339;Initial Catalog=&quot;Media Ministry Test&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;;TrustServerCertificate=True;.
+</summary>
+</member>
+<member name="P:MediaMinistry.My.Resources.Resources.HidePasswordIcon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:MediaMinistry.My.Resources.Resources.logout_button">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -78,7 +137,10 @@ Media Ministry Manager
         &lt;link rel=&quot;stylesheet&quot; href=&quot;https://sppbc.hopto.org/css/emails.css&quot;&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        &lt;p&gt;Thank you for your blessing of {0:C} for {1}.&lt;/p&gt;
+
+	&lt;p&gt;Greetings {0},&lt;/p&gt;
+
+        &lt;p&gt;Thank you for your blessing of {1:C} for {2}.&lt;/p&gt;
 
 		&lt;p&gt;Thank You For Your Support.&lt;/p&gt;
 
@@ -90,253 +152,22 @@ Media Ministry Manager
 		
 		&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
 		St. Paul Primitive Baptist Church&lt;br&gt;
-		Email Listening Ministry&lt;br&gt;
-		2 [rest of string was truncated]&quot;;.
+		Email [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="T:MediaMinistry.MediaMinistryDataSet">
+<member name="P:MediaMinistry.My.Resources.Resources.releaseConnection">
 <summary>
-Represents a strongly typed in-memory cache of data.
+  Looks up a localized string similar to Data Source=sppbc.hopto.org,14339;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
 </summary>
 </member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.COMPLETED_ORDER_COUNTSDataTable">
+<member name="P:MediaMinistry.My.Resources.Resources.releaseConnectionAzure">
 <summary>
-Represents the strongly named DataTable class.
+  Looks up a localized string similar to Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
 </summary>
 </member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.CompletedOrdersDataTable">
+<member name="P:MediaMinistry.My.Resources.Resources.ShowPasswordIcon">
 <summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.CUSTOMERSDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.EmailListenersDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.INVENTORYDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.INVENTORY_TESTDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDER_COUNTSDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDERSDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.COMPLETED_ORDER_SUMMARYDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDER_SUMMARYDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.COMPLETED_ORDER_COUNTSRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.CompletedOrdersRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.CUSTOMERSRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.EmailListenersRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.INVENTORYRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.INVENTORY_TESTRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDER_COUNTSRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDERSRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.COMPLETED_ORDER_SUMMARYRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDER_SUMMARYRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.COMPLETED_ORDER_COUNTSRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.CompletedOrdersRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.CUSTOMERSRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.EmailListenersRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.INVENTORYRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.INVENTORY_TESTRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDER_COUNTSRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDERSRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.COMPLETED_ORDER_SUMMARYRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSet.ORDER_SUMMARYRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.COMPLETED_ORDER_COUNTSTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.CompletedOrdersTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.CUSTOMERSTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.EmailListenersTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORYTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.INVENTORY_TESTTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.ORDER_COUNTSTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.ORDERSTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.COMPLETED_ORDER_SUMMARYTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.ORDER_SUMMARYTableAdapter">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager">
-<summary>
-TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
-</summary>
-</member>
-<member name="M:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(MediaMinistry.MediaMinistryDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Update rows in top-down order.
-</summary>
-</member>
-<member name="M:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(MediaMinistry.MediaMinistryDataSet,System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Insert rows in top-down order.
-</summary>
-</member>
-<member name="M:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(MediaMinistry.MediaMinistryDataSet,System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Delete rows in bottom-up order.
-</summary>
-</member>
-<member name="M:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
-<summary>
-Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
-</summary>
-</member>
-<member name="M:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager.UpdateAll(MediaMinistry.MediaMinistryDataSet)">
-<summary>
-Update all changes to the dataset.
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
-<summary>
-Update Order Option
-</summary>
-</member>
-<member name="T:MediaMinistry.MediaMinistryDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
-<summary>
-Used to sort self-referenced table's rows
+  Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
 </members>

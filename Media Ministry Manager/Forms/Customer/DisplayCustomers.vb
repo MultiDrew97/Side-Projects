@@ -1,107 +1,189 @@
 ﻿Option Strict On
+Imports MediaMinistry.Helpers
 
-Imports System.Data.SqlClient
+Public Class Frm_DisplayCustomers
+    Private Property Customers As ObjectModel.Collection(Of Types.Customer)
+    Private Property CustomersTable As New CustomData.CustomersDataTable
+    Private Tooled As Boolean = False
 
-Public Class frm_DisplayCustomers
     Private Sub Display_Customers_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TODO: This line of code loads data into the 'MediaMinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
-        Me.CUSTOMERSTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
-        refresh()
-    End Sub
-
-    Private Sub Btn_Update_Click(sender As Object, e As EventArgs)
-        'update customer information that was entered
-        Dim index, updateCount As Integer
-        Dim street, city, state, zip, phone, email, payment As String
-        Dim failedUpdate As Boolean
-
-        updateCount = 0
-        failedUpdate = False
-
-        If dgv_Customers.SelectedCells().Count > 0 Then
-            'got this idea from these sources
-            'how to remove items from the data grid view
-            'https://www.youtube.com/watch?v=Yfa1hnpKIzk
-            'how to obtain the value from the desired cell from the data grid view
-            'https://stackoverflow.com/questions/19721984/how-to-get-cell-value-from-datagridview-in-vb-net
-
-            Do
-                If dgv_Customers.Rows(index).Cells(0).Value.Equals(True) Then
-                    Using db = New Database(My.Settings.Username, My.Settings.Password)
-                        street = dgv_Customers.Rows(index).Cells(4).Value.ToString
-                        city = dgv_Customers.Rows(index).Cells(5).Value.ToString
-                        state = dgv_Customers.Rows(index).Cells(6).Value.ToString
-                        zip = dgv_Customers.Rows(index).Cells(7).Value.ToString
-                        phone = dgv_Customers.Rows(index).Cells(3).Value.ToString
-                        email = dgv_Customers.Rows(index).Cells(8).Value.ToString
-                        payment = dgv_Customers.Rows(index).Cells(9).Value.ToString
-
-                        Try
-                            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
-                            updateCount += 1
-                        Catch ex As SqlException
-                            failedUpdate = True
-                        End Try
-                    End Using
-                End If
-
-                index += 1
-            Loop Until (index >= dgv_Customers.Rows.Count)
-        End If
-
-        If failedUpdate Then
-            tss_CustomersView.ForeColor = Color.Red
-            tss_CustomersView.Text = "Some people's informtion was not updated. Please try again."
-        ElseIf updateCount > 1 Then
-            tss_CustomersView.ForeColor = SystemColors.WindowText
-            tss_CustomersView.Text = String.Format("{0} people's informtion was updated", updateCount)
-        ElseIf updateCount = 1 Then
-            tss_CustomersView.ForeColor = SystemColors.WindowText
-            tss_CustomersView.Text = String.Format("{0} person's information was updated", updateCount)
-        End If
+        bsCustomers.DataSource = CustomersTable
+        Refresh()
     End Sub
 
     Private Sub Frm_DisplayCustomers_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim main As New Frm_Main()
-        main.Show()
-    End Sub
-
-    Private Sub Btn_UpdatePhone_Click(sender As Object, e As EventArgs) Handles btn_UpdatePhone.Click
-        Dim updateNumber = New frm_UpdatePhoneNumber
-        updateNumber.Show()
+        If Not Tooled Then
+            Dim frm As New Frm_Main
+            frm.Show()
+        End If
     End Sub
 
     Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
-        Dim addForm = New frm_AddNewCustomer With {.Opener = Me}
-        addForm.Show()
+        If AddCustomerDialog.ShowDialog() = DialogResult.OK Then
+            Refresh()
+        End If
     End Sub
 
     Private Sub Dgv_Customers_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Customers.UserDeletingRow
-        Using db As New Database(My.Settings.Username, My.Settings.Password)
-            db.RemovePerson(CType(e.Row.Cells(2).Value, String))
-        End Using
+        If MessageBox.Show("Are you sure you want to delete this customer?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            Dim id As Integer = CInt(CType(dgv_Customers.Rows(e.Row.Index).DataBoundItem, DataRowView)("CustomerID"))
+            Console.WriteLine(id)
+            Using db As New Database
+                db.RemoveCustomer(id)
+            End Using
+        Else
+            e.Cancel = True
+        End If
     End Sub
 
-    Public Overrides Sub refresh()
-        'This line of code loads data into the 'Media_MinistryDataSet.CUSTOMERS' table. You can move, or remove it, as needed.
-        Me.CUSTOMERSTableAdapter.Fill(Me.MediaMinistryDataSet.CUSTOMERS)
+    Public Overrides Sub Refresh() Handles tsm_Refresh.Click
+        Using db As New Database
+            Customers = db.GetCustomers()
+        End Using
+
+        FillDataTable()
     End Sub
 
     Private Sub Dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
-        Dim changedRow As Integer = e.RowIndex
-
         'get values from table
-        Dim phone As String = CType(dgv_Customers.Rows(changedRow).Cells(2).Value, String)
-        Dim street As String = CType(dgv_Customers.Rows(changedRow).Cells(3).Value, String)
-        Dim city As String = CType(dgv_Customers.Rows(changedRow).Cells(4).Value, String)
-        Dim state As String = CType(dgv_Customers.Rows(changedRow).Cells(5).Value, String)
-        Dim zip As String = CType(dgv_Customers.Rows(changedRow).Cells(6).Value, String)
-        Dim email As String = CType(dgv_Customers.Rows(changedRow).Cells(7).Value, String)
-        Dim payment As String = CType(dgv_Customers.Rows(changedRow).Cells(8).Value, String)
+        Dim column As String = dgv_Customers.Columns(e.ColumnIndex).DataPropertyName
+        Dim value As String = If(dgv_Customers.Rows(e.RowIndex).Cells(e.ColumnIndex).Value IsNot DBNull.Value, dgv_Customers.Rows(e.RowIndex).Cells(e.ColumnIndex).Value, "").ToString()
+        Dim customerID As Integer = CInt(CustomersTable.Rows(e.RowIndex)("CustomerID"))
 
-        Using db = New Database(My.Settings.Username, My.Settings.Password)
-            db.UpdateCustomerInfo(street, city, state, zip, email, payment, phone)
-        End Using
+        Select Case column
+            Case "FirstName", "LastName", "PhoneNumber"
+                If Not String.IsNullOrWhiteSpace(value) Then
+                    Using db As New Database
+                        db.UpdateCustomer(customerID, column, value)
+                    End Using
+                Else
+                    MessageBox.Show("You must enter AddressOf value for this field", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Case Else
+                Using db As New Database
+                    db.UpdateCustomer(customerID, column, value)
+                End Using
+        End Select
+
     End Sub
 
+    Private Sub FillDataTable()
+        Dim row As DataRow
+
+        CustomersTable.Clear()
+
+        If Customers IsNot Nothing Then
+            For Each customer As Types.Customer In Customers
+                row = CustomersTable.NewRow
+                row("CustomerID") = customer.Id
+                row("FirstName") = customer.FirstName
+                row("LastName") = customer.LastName
+                row("Street") = customer.Address.Street
+                row("City") = customer.Address.City
+                row("State") = customer.Address.State
+                row("ZipCode") = customer.Address.ZipCode
+                row("PhoneNumber") = customer.PhoneNumber
+                row("EmailAddress") = customer.EmailAddress?.Address
+                row("JoinDate") = customer.JoinDate
+                CustomersTable.Rows.Add(row)
+            Next
+        End If
+    End Sub
+
+    Private Sub RemoveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
+        For Each row As DataGridViewRow In dgv_Customers.SelectedRows
+            If row.Selected Then
+                Dgv_Customers_UserDeletingRow(sender, New DataGridViewRowCancelEventArgs(row))
+            End If
+        Next
+    End Sub
+
+    Private Sub Dgv_Customers_MouseDown(sender As Object, e As MouseEventArgs) Handles dgv_Customers.MouseDown
+        For Each cell As DataGridViewCell In dgv_Customers.SelectedCells
+            cell.Selected = False
+        Next
+
+        If e.Button = MouseButtons.Right Then
+            Dim info As DataGridView.HitTestInfo = dgv_Customers.HitTest(e.X, e.Y)
+            RemoveToolStripMenuItem.Enabled = info.RowIndex > -1
+            If info.RowIndex > -1 Then
+                dgv_Customers.Rows(info.RowIndex).Selected = True
+            End If
+        End If
+    End Sub
+
+    Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+        My.Settings.Username = ""
+        My.Settings.Password = ""
+        My.Settings.KeepLoggedIn = False
+        My.Settings.Save()
+        Me.Close()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Utils.CloseOpenForms()
+    End Sub
+
+    Private Sub CustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewCustomerToolStripMenuItem.Click
+        AddCustomerDialog.ShowDialog()
+    End Sub
+
+    Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewProductToolStripMenuItem.Click
+        AddProductDialog.ShowDialog()
+    End Sub
+
+    Private Sub ListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewListenerToolStripMenuItem.Click
+        AddListenerDialog.Show()
+    End Sub
+
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem.Click
+        'Dim updateLocation As String = "https://sppbc.hopto.org/Manager%20Installer/MediaMinistryManagerSetup.msi"
+        'Dim updateCheck As String = "https://sppbc.hopto.org/Manager%20Installer/version.txt"
+
+        'Dim request As HttpWebRequest = WebRequest.CreateHttp(updateCheck)
+        'Dim responce As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+
+        'Dim sr As StreamReader = New StreamReader(responce.GetResponseStream)
+
+        'Dim latestVersion As String = sr.ReadToEnd()
+        'Dim currentVersion As String = Application.ProductVersion
+
+        'If Not latestVersion.Contains(currentVersion) Then
+        '    wb_Updater.Navigate(updateLocation)
+        'End If
+        MessageBox.Show("This feature is currently under construction.", "Out of Order", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+    End Sub
+
+    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        Dim customers As New Frm_DisplayCustomers
+        customers.Show()
+        Tooled = True
+        Me.Close()
+    End Sub
+
+    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
+        Dim products As New Frm_DisplayInventory
+        products.Show()
+        Tooled = True
+        Me.Close()
+    End Sub
+
+    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
+        Dim orders As New Frm_DisplayOrders
+        orders.Show()
+        Tooled = True
+        Me.Close()
+    End Sub
+
+    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewListenersToolStripMenuItem.Click
+        Dim listeners As New Frm_ViewListeners
+        listeners.Show()
+        Tooled = True
+        Me.Close()
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        Dim settings As New Frm_Settings()
+        settings.Show()
+    End Sub
 End Class
