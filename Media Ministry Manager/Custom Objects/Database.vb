@@ -155,14 +155,12 @@ Public Class Database
     End Sub
 
     Public Sub RemoveListener(parameter As SqlParameter)
-        If Not Debugger.IsAttached Then
-            myCmd.Parameters.Add(parameter)
+        myCmd.Parameters.Add(parameter)
 
-            myCmd.CommandType = CommandType.StoredProcedure
-            myCmd.CommandText = "RemoveListener"
+        myCmd.CommandType = CommandType.StoredProcedure
+        myCmd.CommandText = "RemoveListener"
 
-            myCmd.ExecuteNonQuery()
-        End If
+        myCmd.ExecuteNonQuery()
     End Sub
 
     Public Sub UpdateListener(listenerID As Integer, column As String, value As String)
@@ -175,17 +173,23 @@ Public Class Database
     End Sub
 
     Public Sub UpdateCustomer(customerID As Integer, column As String, value As String)
-        If Not Debugger.IsAttached Then
-            Dim command As String = String.Format("{0} = {1}", column, value)
+        Dim command As String
 
-            myCmd.Parameters.AddWithValue("CustomerID", customerID)
+        ' If using an empty string, set the database value to null
+        'TODO: Figure out if N/A counts as null or empty
+        If Not String.IsNullOrEmpty(value) And Not value.Equals("N/A") Then
+            command = String.Format("{0} = '{1}'", column, value)
+        Else
+            command = String.Format("{0} = NULL", column)
+        End If
 
-            myCmd.CommandText = String.Format("UPDATE CUSTOMERS
+        myCmd.Parameters.AddWithValue("CustomerID", customerID)
+
+        myCmd.CommandText = String.Format("UPDATE CUSTOMERS
                                             SET {0}
                                             WHERE CustomerID = @CustomerID", command)
 
-            myCmd.ExecuteNonQuery()
-        End If
+        myCmd.ExecuteNonQuery()
     End Sub
 
     Public Function GetProductInfo(itemID As Integer) As Product
@@ -338,12 +342,30 @@ Public Class Database
 
     Public Function GetCustomers() As Collection(Of Customer)
         Dim customers As New Collection(Of Customer)
+        Dim customerID As Integer
+        Dim first, last, street, city, state, zip, phone, email, join As String
 
         myCmd.CommandText = "SELECT * FROM CUSTOMERS"
 
         Using myReader = myCmd.ExecuteReader
             Do While myReader.Read()
-                customers.Add(New Customer(myReader.GetInt32(0), myReader.GetString(1), myReader.GetString(2), myReader.GetString(3), myReader.GetString(4), myReader.GetString(5), myReader.GetString(6), myReader.GetString(7), myReader.GetString(8), myReader.GetString(9)))
+                customerID = myReader.GetInt32(0)
+                first = myReader.GetString(1)
+                last = myReader.GetString(2)
+                street = myReader.GetString(3)
+                city = myReader.GetString(4)
+                state = myReader.GetString(5)
+                zip = myReader.GetString(6)
+                phone = myReader.GetString(7)
+
+                Try
+                    email = myReader.GetString(8)
+                Catch ex As SqlTypes.SqlNullValueException
+                    email = Nothing
+                End Try
+
+                join = myReader.GetString(9)
+                customers.Add(New Customer(customerID, first, last, street, city, state, zip, phone, email, join))
             Loop
         End Using
 

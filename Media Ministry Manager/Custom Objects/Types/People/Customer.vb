@@ -17,7 +17,7 @@ Namespace Types
             If ValidEmail(email) Then
                 Me.EmailAddress = New MimeKit.MailboxAddress(Name, email)
             Else
-                Me.EmailAddress = New MimeKit.MailboxAddress(Name, "N/A")
+                Me.EmailAddress = Nothing
             End If
 
             If Not String.IsNullOrEmpty(joinDate) Then
@@ -26,7 +26,12 @@ Namespace Types
         End Sub
 
         Private Function ValidEmail(email As String) As Boolean
-            Return Text.RegularExpressions.Regex.IsMatch(email, EmailPattern)
+            Try
+                Return Text.RegularExpressions.Regex.IsMatch(email, EmailPattern)
+            Catch ex As ArgumentNullException
+                Return False
+            End Try
+
         End Function
 
         Shared Function Parse(arr As Object()) As Customer

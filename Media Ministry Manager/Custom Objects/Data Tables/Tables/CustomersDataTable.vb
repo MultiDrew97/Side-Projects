@@ -199,15 +199,17 @@
             Me.FirstName.MaxLength = 50
             Me.LastName.AllowDBNull = False
             Me.LastName.MaxLength = 50
-            Me.Street.AllowDBNull = False
+            Me.Street.AllowDBNull = True
             Me.Street.MaxLength = 50
-            Me.City.AllowDBNull = False
+            Me.City.AllowDBNull = True
             Me.City.MaxLength = 50
-            Me.State.AllowDBNull = False
+            Me.State.AllowDBNull = True
             Me.State.MaxLength = 50
-            Me.ZipCode.AllowDBNull = False
+            Me.ZipCode.AllowDBNull = True
             Me.ZipCode.MaxLength = 50
-            Me.EmailAddress.AllowDBNull = False
+            Me.PhoneNumber.MaxLength = 12
+            Me.PhoneNumber.AllowDBNull = False
+            Me.EmailAddress.AllowDBNull = True
             Me.EmailAddress.MaxLength = 100
             Me.JoinDate.AllowDBNull = False
         End Sub

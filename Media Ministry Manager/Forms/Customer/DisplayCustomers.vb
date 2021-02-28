@@ -47,12 +47,24 @@ Public Class Frm_DisplayCustomers
     Private Sub Dgv_Customers_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Customers.CellEndEdit
         'get values from table
         Dim column As String = dgv_Customers.Columns(e.ColumnIndex).DataPropertyName
-        Dim value As String = CStr(dgv_Customers.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+        Dim value As String = If(dgv_Customers.Rows(e.RowIndex).Cells(e.ColumnIndex).Value IsNot DBNull.Value, dgv_Customers.Rows(e.RowIndex).Cells(e.ColumnIndex).Value, "").ToString()
         Dim customerID As Integer = CInt(CustomersTable.Rows(e.RowIndex)("CustomerID"))
 
-        Using db As New Database
-            db.UpdateCustomer(customerID, column, value)
-        End Using
+        Select Case column
+            Case "FirstName", "LastName", "PhoneNumber"
+                If Not String.IsNullOrWhiteSpace(value) Then
+                    Using db As New Database
+                        db.UpdateCustomer(customerID, column, value)
+                    End Using
+                Else
+                    MessageBox.Show("You must enter AddressOf value for this field", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Case Else
+                Using db As New Database
+                    db.UpdateCustomer(customerID, column, value)
+                End Using
+        End Select
+
     End Sub
 
     Private Sub FillDataTable()
@@ -71,7 +83,7 @@ Public Class Frm_DisplayCustomers
                 row("State") = customer.Address.State
                 row("ZipCode") = customer.Address.ZipCode
                 row("PhoneNumber") = customer.PhoneNumber
-                row("EmailAddress") = customer.EmailAddress.Address
+                row("EmailAddress") = customer.EmailAddress?.Address
                 row("JoinDate") = customer.JoinDate
                 CustomersTable.Rows.Add(row)
             Next
