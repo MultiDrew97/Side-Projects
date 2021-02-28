@@ -9,6 +9,7 @@ Public Class SendEmailsDialog
     Private listeners As Collection(Of Listener)
     Private closable As Boolean = False
     Private body As String = "", subject As String = ""
+    Private Property SelectedOption As Integer
 
     Private Sub Frm_EmailListeners_Load(sender As Object, e As EventArgs) Handles Me.Load
         LoadFolders()
@@ -20,14 +21,14 @@ Public Class SendEmailsDialog
         End If
     End Sub
 
-    Private Sub Cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs)
+    Private Sub Cbx_Folders_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Folders.SelectedIndexChanged
         LoadFiles()
     End Sub
 
     Private Sub Btn_SendEmails_Click(sender As Object, e As EventArgs) Handles btn_LocalSend.Click, btn_SermonSend.Click, btn_CustomSend.Click
-        If tcl_EmailOptions.SelectedIndex = 0 Then
+        If SelectedOption = 0 Then
             bw_GetFileID.RunWorkerAsync()
-        ElseIf tcl_EmailOptions.SelectedIndex = 2 Then
+        ElseIf SelectedOption = 2 Then
             If MessageBox.Show("Would you like to attach a file to this message?", "Attachment", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 GetFile()
             End If
@@ -36,7 +37,7 @@ Public Class SendEmailsDialog
     End Sub
 
     Private Sub Bw_LoadListeners_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_LoadListeners.DoWork
-        If ListenerSelectionDialog.ShowDialog = DialogResult.OK Then
+        If ListenerSelectionDialog.ShowDialog() = DialogResult.OK Then
             listeners = ListenerSelectionDialog.Listeners
         End If
     End Sub
@@ -56,8 +57,8 @@ Public Class SendEmailsDialog
                     Using emailer As New GoogleAPI.Sender()
                         For Each listener As Listener In listeners
                             If PrepBody(listener.Name) Then
-                                If tcl_EmailOptions.SelectedIndex < 2 Then
-                                    If tcl_EmailOptions.SelectedIndex = 1 Then
+                                If SelectedOption < 2 Then
+                                    If SelectedOption = 1 Then
                                         content = emailer.CreateWithAttachment(listener.EmailAddress, subject, body, flf_LocalReciept.ofdFileSelection.FileName)
                                     Else
                                         content = emailer.Create(listener.EmailAddress, subject, body)
@@ -70,7 +71,7 @@ Public Class SendEmailsDialog
                                     End If
                                 End If
                                 emailer.Send(content)
-                                End If
+                            End If
                         Next
                     End Using
                 Else
@@ -148,35 +149,48 @@ Public Class SendEmailsDialog
     End Sub
 
     Private Function PrepBody(name As String) As Boolean
-        If tcl_EmailOptions.SelectedIndex < 2 Then
-            If chk_SermonDefault.Checked Then
-                body = String.Format(My.Resources.newSermon, name, String.Format(shareLink, fileID))
-            ElseIf chk_RecieptDefault.Checked Then
-                If RecieptTypeDialog.ShowDialog = DialogResult.OK Then
-                    body = String.Format(My.Resources.receipt, name, RecieptTypeDialog.Amount, RecieptTypeDialog.Type)
+        Select Case SelectedOption
+            Case 0
+                If chk_SermonDefault.Checked Then
+                    body = String.Format(My.Resources.newSermon, name, String.Format(shareLink, fileID))
                 Else
-                    Return False
+                    body = String.Format(My.Resources.customMessageWithDriveLink, name, CustomMessageDialog.Body, String.Format(shareLink, fileID))
                 End If
-            Else
-                    body = String.Format(My.Resources.customMessageTemplate, name, CustomMessageDialog.Body)
-            End If
-        ElseIf tcl_EmailOptions.SelectedIndex = 2 Then
-            If FileSelectionDialog.FileID = Nothing Then
-                If CustomMessageDialog.Subject <> "" And CustomMessageDialog.Body <> "" Then
-                    body = String.Format(My.Resources.customMessageTemplate, name, CustomMessageDialog.Body)
+            Case 1
+                If chk_RecieptDefault.Checked Then
+                    If RecieptTypeDialog.ShowDialog = DialogResult.OK Then
+                        body = String.Format(My.Resources.receipt, RecieptTypeDialog.Amount, RecieptTypeDialog.Type)
+                    Else
+                        Return False
+                    End If
                 Else
-                    MessageBox.Show("You must create a custom message first before you can send one.", "No Custom Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Return False
+                    If CustomMessageDialog.ShowDialog = DialogResult.OK Then
+                        If RecieptTypeDialog.ShowDialog = DialogResult.OK Then
+                            body = String.Format(My.Resources.receipt, name, RecieptTypeDialog.Amount, RecieptTypeDialog.Type)
+                        Else
+                            Return False
+                        End If
+                    Else
+                        Return False
+                    End If
                 End If
-            Else
-                If CustomMessageDialog.Subject <> "" And CustomMessageDialog.Body <> "" Then
-                    body = String.Format(My.Resources.customMessageWithDriveLink, name, CustomMessageDialog.Body, String.Format(shareLink, FileSelectionDialog.FileID))
+            Case 2
+                If FileSelectionDialog.FileID = Nothing Then
+                    If CustomMessageDialog.Subject <> "" And CustomMessageDialog.Body <> "" Then
+                        body = String.Format(My.Resources.customMessageTemplate, name, CustomMessageDialog.Body)
+                    Else
+                        MessageBox.Show("You must create a custom message first before you can send one.", "No Custom Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Return False
+                    End If
                 Else
-                    MessageBox.Show("You must create a custom message first before you can send one.", "No Custom Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Return False
+                    If CustomMessageDialog.Subject <> "" And CustomMessageDialog.Body <> "" Then
+                        body = String.Format(My.Resources.customMessageWithDriveLink, name, CustomMessageDialog.Body, String.Format(shareLink, FileSelectionDialog.FileID))
+                    Else
+                        MessageBox.Show("You must create a custom message first before you can send one.", "No Custom Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Return False
+                    End If
                 End If
-            End If
-        End If
+        End Select
 
         Return True
     End Function
@@ -209,4 +223,8 @@ Public Class SendEmailsDialog
 
         Return True
     End Function
+
+    Private Sub Tcl_EmailOptions_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tcl_EmailOptions.SelectedIndexChanged
+        SelectedOption = tcl_EmailOptions.SelectedIndex
+    End Sub
 End Class

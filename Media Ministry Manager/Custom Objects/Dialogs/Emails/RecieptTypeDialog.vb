@@ -1,6 +1,4 @@
-﻿Imports System.Windows.Forms
-
-Public Class RecieptTypeDialog
+﻿Public Class RecieptTypeDialog
 
     Public Shared Amount As Double
     Public Shared Type As String

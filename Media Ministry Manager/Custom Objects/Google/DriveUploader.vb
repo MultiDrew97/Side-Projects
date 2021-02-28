@@ -13,11 +13,11 @@ Imports Google.Apis.Util.Store
 Namespace GoogleAPI
     Public Class DriveUploader
         Inherits Service
-        Implements IComponent
+        Implements IDisposable
 
         Private ReadOnly Scopes As String() = {DriveService.Scope.Drive}
         Private ReadOnly ApplicationName As String = "Media Ministry Manager"
-        Public Event Disposed As EventHandler Implements IComponent.Disposed
+
         Private Property Service As DriveService
         Private Property Credential As UserCredential
         Overrides ReadOnly Property Info As Object
@@ -28,8 +28,6 @@ Namespace GoogleAPI
             End Get
         End Property
 
-        Public Property Site As ISite Implements IComponent.Site
-
         Sub New(Optional ct As CancellationToken = Nothing)
             If IsNothing(ct) Then
                 ct = CancellationToken.None
@@ -38,23 +36,14 @@ Namespace GoogleAPI
             Dim credPath = "Drive Token"
 
             Using stream As New MemoryStream(My.Resources.credentials)
-                'The file token.json stores the user's access and refresh tokens, and is created
-                'automatically when the authorization flow completes for the first time.
-
-                '    Dim secrets As New ClientSecrets() With {
-                '    .ClientId = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff1"))),
-                '    .ClientSecret = Encoding.Unicode.GetString(UrlBase64.Decode(Environment.GetEnvironmentVariable("stuff2")))
-                '}
-
                 Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", ct, New FileDataStore(credPath, True)).Result
             End Using
 
             'Create Drive API service.
             Service = New DriveService(New BaseClientService.Initializer() With {
-                    .HttpClientInitializer = Credential,
-                    .ApplicationName = ApplicationName
-                }
-            )
+                .HttpClientInitializer = Credential,
+                .ApplicationName = ApplicationName
+            })
         End Sub
 
         Sub Dispose() Implements IDisposable.Dispose

@@ -116,11 +116,15 @@ Public Class AddListenerDialog
     End Function
 
     Private Sub Bw_AddListeners_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_AddListeners.DoWork
-        If rdo_Single.Checked Then
-            AddSingle()
-        Else
-            AddMultiple()
-        End If
+        Invoke(
+            Sub()
+                If rdo_Single.Checked Then
+                    AddSingle()
+                Else
+                    AddMultiple()
+                End If
+            End Sub
+            )
     End Sub
 
     Private Sub AddSingle()

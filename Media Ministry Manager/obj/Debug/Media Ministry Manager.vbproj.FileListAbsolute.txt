@@ -146,9 +146,25 @@ E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\D
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.SendEmailsDialog.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.FileLocationField.resources
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\Media Ministry Manager.vbprojAssemblyReference.cache
-E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\BouncyCastle.Crypto.xml
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Microsoft.IdentityModel.Logging.dll
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Microsoft.IdentityModel.Logging.xml
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Microsoft.IdentityModel.Tokens.xml
 E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\obj\Debug\MediaMinistry.RecieptTypeDialog.resources
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Protobuf.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\K4os.Compression.LZ4.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\K4os.Compression.LZ4.Streams.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\K4os.Hash.xxHash.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Renci.SshNet.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Memory.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Numerics.Vectors.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Protobuf.pdb
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Google.Protobuf.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\K4os.Compression.LZ4.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\K4os.Compression.LZ4.Streams.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\K4os.Hash.xxHash.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\Renci.SshNet.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Memory.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Numerics.Vectors.xml
+E:\Development\Visual Studio\Media-Ministry-Manager\Media Ministry Manager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

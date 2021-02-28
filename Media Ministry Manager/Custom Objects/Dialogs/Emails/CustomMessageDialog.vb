@@ -18,7 +18,8 @@ Public Class CustomMessageDialog
     End Sub
 
     Private Sub CustomMessageDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Reset()
+        txt_MessageSubject.Text = Subject
+        rtb_MessageBody.Text = Body
     End Sub
 
     Private Sub Reset()

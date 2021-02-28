@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 
 Public Class NewUserDialog
     ReadOnly db As Database
-    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+    ReadOnly _connection As SqlConnectionStringBuilder = New SqlConnectionStringBuilder(My.Settings.releaseConnection)
 
     Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         DialogResult = DialogResult.Cancel

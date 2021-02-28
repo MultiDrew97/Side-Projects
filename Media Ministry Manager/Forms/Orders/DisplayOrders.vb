@@ -132,7 +132,7 @@ Public Class Frm_DisplayOrders
         Me.Close()
     End Sub
 
-    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOrdersToolStripMenuItem.Click
+    Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) 
         Dim orders As New Frm_DisplayOrders
         orders.Show()
         Tooled = True

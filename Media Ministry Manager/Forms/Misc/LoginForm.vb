@@ -7,7 +7,11 @@ Public Class Frm_Login
     Dim _dbConnection As SqlConnectionStringBuilder
 
     Private Sub Frm_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _dbConnection = New SqlConnectionStringBuilder(My.Settings.masterConnectionString)
+#If DEBUG Then
+        _dbConnection = New SqlConnectionStringBuilder(My.Settings.debugConnection)
+#Else
+        _dbConnection = New SqlConnectionStringBuilder(My.Settings.releaseConnection)
+#End If
         Reset()
     End Sub
 

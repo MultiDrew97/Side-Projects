@@ -81,9 +81,9 @@ Media Ministry Manager
 &lt;/html&gt;.
 </summary>
 </member>
-<member name="P:MediaMinistry.My.Resources.Resources.databaseConnection">
+<member name="P:MediaMinistry.My.Resources.Resources.debugConnection">
 <summary>
-  Looks up a localized string similar to Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
+  Looks up a localized string similar to Data Source=sppbc.hopto.org,14339;Initial Catalog=&quot;Media Ministry Test&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;;TrustServerCertificate=True;.
 </summary>
 </member>
 <member name="P:MediaMinistry.My.Resources.Resources.HidePasswordIcon">
@@ -138,7 +138,7 @@ Media Ministry Manager
     &lt;/head&gt;
     &lt;body&gt;
 
-	&lt;p&gt;Greetings {0},&lt;/p&gt;&lt;br&gt;
+	&lt;p&gt;Greetings {0},&lt;/p&gt;
 
         &lt;p&gt;Thank you for your blessing of {1:C} for {2}.&lt;/p&gt;
 
@@ -152,7 +152,17 @@ Media Ministry Manager
 		
 		&lt;p&gt;&lt;strong&gt;Elder Bryon K Miller, Pastor&lt;/strong&gt;&lt;br&gt;
 		St. Paul Primitive Baptist Church&lt;br&gt;
-		E [rest of string was truncated]&quot;;.
+		Email [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:MediaMinistry.My.Resources.Resources.releaseConnection">
+<summary>
+  Looks up a localized string similar to Data Source=sppbc.hopto.org,14339;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
+</summary>
+</member>
+<member name="P:MediaMinistry.My.Resources.Resources.releaseConnectionAzure">
+<summary>
+  Looks up a localized string similar to Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
 </summary>
 </member>
 <member name="P:MediaMinistry.My.Resources.Resources.ShowPasswordIcon">

@@ -38,7 +38,9 @@ Partial Class SendEmailsDialog
         Me.lbl_Folder = New System.Windows.Forms.Label()
         Me.lbl_FileLocation = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.flf_LocalReciept = New MediaMinistry.FileLocationField()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.rdo_Other = New System.Windows.Forms.RadioButton()
+        Me.rdo_Reciept = New System.Windows.Forms.RadioButton()
         Me.btn_LocalSend = New System.Windows.Forms.Button()
         Me.chk_RecieptDefault = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -47,10 +49,12 @@ Partial Class SendEmailsDialog
         Me.btn_CustomMessage = New System.Windows.Forms.Button()
         Me.btn_UploadFile = New System.Windows.Forms.Button()
         Me.btn_AddFolder = New System.Windows.Forms.Button()
+        Me.flf_LocalReciept = New MediaMinistry.FileLocationField()
         Me.ss_Feedback.SuspendLayout()
         Me.tcl_EmailOptions.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -196,10 +200,11 @@ Partial Class SendEmailsDialog
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.flf_LocalReciept)
+        Me.TabPage2.Controls.Add(Me.GroupBox1)
         Me.TabPage2.Controls.Add(Me.btn_LocalSend)
         Me.TabPage2.Controls.Add(Me.chk_RecieptDefault)
         Me.TabPage2.Controls.Add(Me.Label2)
+        Me.TabPage2.Controls.Add(Me.flf_LocalReciept)
         Me.TabPage2.Location = New System.Drawing.Point(4, 34)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -208,14 +213,38 @@ Partial Class SendEmailsDialog
         Me.TabPage2.Text = "Reciept/Local File"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'flf_LocalReciept
+        'GroupBox1
         '
-        Me.flf_LocalReciept.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.flf_LocalReciept.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.flf_LocalReciept.Location = New System.Drawing.Point(46, 109)
-        Me.flf_LocalReciept.Name = "flf_LocalReciept"
-        Me.flf_LocalReciept.Size = New System.Drawing.Size(560, 33)
-        Me.flf_LocalReciept.TabIndex = 26
+        Me.GroupBox1.Controls.Add(Me.rdo_Other)
+        Me.GroupBox1.Controls.Add(Me.rdo_Reciept)
+        Me.GroupBox1.Location = New System.Drawing.Point(142, 27)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(361, 100)
+        Me.GroupBox1.TabIndex = 27
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "GroupBox1"
+        '
+        'rdo_Other
+        '
+        Me.rdo_Other.AutoSize = True
+        Me.rdo_Other.Location = New System.Drawing.Point(220, 46)
+        Me.rdo_Other.Name = "rdo_Other"
+        Me.rdo_Other.Size = New System.Drawing.Size(88, 29)
+        Me.rdo_Other.TabIndex = 1
+        Me.rdo_Other.Text = "Other"
+        Me.rdo_Other.UseVisualStyleBackColor = True
+        '
+        'rdo_Reciept
+        '
+        Me.rdo_Reciept.AutoSize = True
+        Me.rdo_Reciept.Checked = True
+        Me.rdo_Reciept.Location = New System.Drawing.Point(53, 46)
+        Me.rdo_Reciept.Name = "rdo_Reciept"
+        Me.rdo_Reciept.Size = New System.Drawing.Size(110, 29)
+        Me.rdo_Reciept.TabIndex = 0
+        Me.rdo_Reciept.TabStop = True
+        Me.rdo_Reciept.Text = "Reciept"
+        Me.rdo_Reciept.UseVisualStyleBackColor = True
         '
         'btn_LocalSend
         '
@@ -223,7 +252,7 @@ Partial Class SendEmailsDialog
         Me.btn_LocalSend.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btn_LocalSend.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.btn_LocalSend.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.btn_LocalSend.Location = New System.Drawing.Point(224, 230)
+        Me.btn_LocalSend.Location = New System.Drawing.Point(219, 280)
         Me.btn_LocalSend.Name = "btn_LocalSend"
         Me.btn_LocalSend.Size = New System.Drawing.Size(178, 35)
         Me.btn_LocalSend.TabIndex = 23
@@ -235,7 +264,7 @@ Partial Class SendEmailsDialog
         Me.chk_RecieptDefault.AutoSize = True
         Me.chk_RecieptDefault.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.chk_RecieptDefault.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.chk_RecieptDefault.Location = New System.Drawing.Point(191, 180)
+        Me.chk_RecieptDefault.Location = New System.Drawing.Point(186, 230)
         Me.chk_RecieptDefault.Margin = New System.Windows.Forms.Padding(6)
         Me.chk_RecieptDefault.Name = "chk_RecieptDefault"
         Me.chk_RecieptDefault.Size = New System.Drawing.Size(256, 29)
@@ -249,7 +278,7 @@ Partial Class SendEmailsDialog
         Me.Label2.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.Label2.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(41, 81)
+        Me.Label2.Location = New System.Drawing.Point(36, 131)
         Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(58, 25)
@@ -322,6 +351,15 @@ Partial Class SendEmailsDialog
         Me.btn_AddFolder.Text = "Create New Folder"
         Me.btn_AddFolder.UseVisualStyleBackColor = True
         '
+        'flf_LocalReciept
+        '
+        Me.flf_LocalReciept.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.flf_LocalReciept.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.flf_LocalReciept.Location = New System.Drawing.Point(41, 159)
+        Me.flf_LocalReciept.Name = "flf_LocalReciept"
+        Me.flf_LocalReciept.Size = New System.Drawing.Size(560, 33)
+        Me.flf_LocalReciept.TabIndex = 26
+        '
         'SendEmailsDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
@@ -346,6 +384,8 @@ Partial Class SendEmailsDialog
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         Me.ResumeLayout(False)
@@ -376,4 +416,7 @@ Partial Class SendEmailsDialog
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents btn_CustomMessage As Button
     Friend WithEvents btn_CustomSend As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents rdo_Other As RadioButton
+    Friend WithEvents rdo_Reciept As RadioButton
 End Class

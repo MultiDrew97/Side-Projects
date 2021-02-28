@@ -23,7 +23,7 @@ Partial Class Frm_DisplayOrders
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayOrders))
         Me.dgv_Orders = New System.Windows.Forms.DataGridView()
         Me.CustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,7 +48,6 @@ Partial Class Frm_DisplayOrders
         Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewOrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgv_Orders, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,8 +92,8 @@ Partial Class Frm_DisplayOrders
         'OrderTotal
         '
         Me.OrderTotal.DataPropertyName = "OrderTotal"
-        DataGridViewCellStyle2.Format = "C2"
-        Me.OrderTotal.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Format = "C2"
+        Me.OrderTotal.DefaultCellStyle = DataGridViewCellStyle1
         Me.OrderTotal.HeaderText = "Total"
         Me.OrderTotal.Name = "OrderTotal"
         '
@@ -216,7 +215,7 @@ Partial Class Frm_DisplayOrders
         '
         'ViewToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewCustomersToolStripMenuItem, Me.ViewOrdersToolStripMenuItem, Me.ViewProductsToolStripMenuItem, Me.ViewListenersToolStripMenuItem})
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewCustomersToolStripMenuItem, Me.ViewProductsToolStripMenuItem, Me.ViewListenersToolStripMenuItem})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.ViewToolStripMenuItem.Text = "&View"
@@ -224,25 +223,19 @@ Partial Class Frm_DisplayOrders
         'ViewCustomersToolStripMenuItem
         '
         Me.ViewCustomersToolStripMenuItem.Name = "ViewCustomersToolStripMenuItem"
-        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewCustomersToolStripMenuItem.Text = "Customers"
-        '
-        'ViewOrdersToolStripMenuItem
-        '
-        Me.ViewOrdersToolStripMenuItem.Name = "ViewOrdersToolStripMenuItem"
-        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.ViewOrdersToolStripMenuItem.Text = "Orders"
         '
         'ViewProductsToolStripMenuItem
         '
         Me.ViewProductsToolStripMenuItem.Name = "ViewProductsToolStripMenuItem"
-        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewProductsToolStripMenuItem.Text = "Products"
         '
         'ViewListenersToolStripMenuItem
         '
         Me.ViewListenersToolStripMenuItem.Name = "ViewListenersToolStripMenuItem"
-        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewListenersToolStripMenuItem.Text = "Listeners"
         '
         'Frm_DisplayOrders
@@ -295,7 +288,6 @@ Partial Class Frm_DisplayOrders
     Friend WithEvents UpdateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewCustomersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewOrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewListenersToolStripMenuItem As ToolStripMenuItem
 End Class

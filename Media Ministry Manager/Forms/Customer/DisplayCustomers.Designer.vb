@@ -25,9 +25,14 @@ Partial Class Frm_DisplayCustomers
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayCustomers))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_DisplayCustomers))
         Me.dgv_Customers = New System.Windows.Forms.DataGridView()
+        Me.FirstNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhoneNumberColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailAddressColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JoinDateColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsCustomers = New System.Windows.Forms.BindingSource(Me.components)
         Me.ss_CustomerView = New System.Windows.Forms.StatusStrip()
         Me.tss_CustomersView = New System.Windows.Forms.ToolStripStatusLabel()
@@ -48,15 +53,9 @@ Partial Class Frm_DisplayCustomers
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewOrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FirstNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LastNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PhoneNumberColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailAddressColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.JoinDateColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgv_Customers, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ss_CustomerView.SuspendLayout()
@@ -85,6 +84,40 @@ Partial Class Frm_DisplayCustomers
         Me.dgv_Customers.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.dgv_Customers.Size = New System.Drawing.Size(888, 381)
         Me.dgv_Customers.TabIndex = 0
+        '
+        'FirstNameColumn
+        '
+        Me.FirstNameColumn.DataPropertyName = "FirstName"
+        Me.FirstNameColumn.HeaderText = "First Name"
+        Me.FirstNameColumn.Name = "FirstNameColumn"
+        '
+        'LastNameColumn
+        '
+        Me.LastNameColumn.DataPropertyName = "LastName"
+        Me.LastNameColumn.HeaderText = "Last Name"
+        Me.LastNameColumn.Name = "LastNameColumn"
+        '
+        'PhoneNumberColumn
+        '
+        Me.PhoneNumberColumn.DataPropertyName = "PhoneNumber"
+        Me.PhoneNumberColumn.HeaderText = "Phone Number"
+        Me.PhoneNumberColumn.Name = "PhoneNumberColumn"
+        '
+        'EmailAddressColumn
+        '
+        Me.EmailAddressColumn.DataPropertyName = "EmailAddress"
+        Me.EmailAddressColumn.HeaderText = "Email Address"
+        Me.EmailAddressColumn.Name = "EmailAddressColumn"
+        '
+        'JoinDateColumn
+        '
+        Me.JoinDateColumn.DataPropertyName = "JoinDate"
+        DataGridViewCellStyle2.Format = "d"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.JoinDateColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.JoinDateColumn.HeaderText = "Join Date"
+        Me.JoinDateColumn.Name = "JoinDateColumn"
+        Me.JoinDateColumn.ReadOnly = True
         '
         'ss_CustomerView
         '
@@ -155,49 +188,49 @@ Partial Class Frm_DisplayCustomers
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'NewCustomerToolStripMenuItem
         '
         Me.NewCustomerToolStripMenuItem.Name = "NewCustomerToolStripMenuItem"
-        Me.NewCustomerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewCustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.NewCustomerToolStripMenuItem.Text = "Customer"
         '
         'NewProductToolStripMenuItem
         '
         Me.NewProductToolStripMenuItem.Name = "NewProductToolStripMenuItem"
-        Me.NewProductToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewProductToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.NewProductToolStripMenuItem.Text = "Product"
         '
         'NewListenerToolStripMenuItem
         '
         Me.NewListenerToolStripMenuItem.Name = "NewListenerToolStripMenuItem"
-        Me.NewListenerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewListenerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.NewListenerToolStripMenuItem.Text = "Listener"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(113, 6)
         '
         'LogoutToolStripMenuItem
         '
         Me.LogoutToolStripMenuItem.Image = Global.MediaMinistry.My.Resources.Resources.logout_button
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.LogoutToolStripMenuItem.Text = "&Logout"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -210,73 +243,33 @@ Partial Class Frm_DisplayCustomers
         'UpdateToolStripMenuItem
         '
         Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UpdateToolStripMenuItem.Text = "Update"
         '
         'ViewToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewCustomersToolStripMenuItem, Me.ViewOrdersToolStripMenuItem, Me.ViewProductsToolStripMenuItem, Me.ViewListenersToolStripMenuItem})
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewOrdersToolStripMenuItem, Me.ViewProductsToolStripMenuItem, Me.ViewListenersToolStripMenuItem})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.ViewToolStripMenuItem.Text = "&View"
         '
-        'ViewCustomersToolStripMenuItem
-        '
-        Me.ViewCustomersToolStripMenuItem.Name = "ViewCustomersToolStripMenuItem"
-        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.ViewCustomersToolStripMenuItem.Text = "Customers"
-        '
         'ViewOrdersToolStripMenuItem
         '
         Me.ViewOrdersToolStripMenuItem.Name = "ViewOrdersToolStripMenuItem"
-        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewOrdersToolStripMenuItem.Text = "Orders"
         '
         'ViewProductsToolStripMenuItem
         '
         Me.ViewProductsToolStripMenuItem.Name = "ViewProductsToolStripMenuItem"
-        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewProductsToolStripMenuItem.Text = "Products"
         '
         'ViewListenersToolStripMenuItem
         '
         Me.ViewListenersToolStripMenuItem.Name = "ViewListenersToolStripMenuItem"
-        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewListenersToolStripMenuItem.Text = "Listeners"
-        '
-        'FirstNameColumn
-        '
-        Me.FirstNameColumn.DataPropertyName = "FirstName"
-        Me.FirstNameColumn.HeaderText = "First Name"
-        Me.FirstNameColumn.Name = "FirstNameColumn"
-        '
-        'LastNameColumn
-        '
-        Me.LastNameColumn.DataPropertyName = "LastName"
-        Me.LastNameColumn.HeaderText = "Last Name"
-        Me.LastNameColumn.Name = "LastNameColumn"
-        '
-        'PhoneNumberColumn
-        '
-        Me.PhoneNumberColumn.DataPropertyName = "PhoneNumber"
-        Me.PhoneNumberColumn.HeaderText = "Phone Number"
-        Me.PhoneNumberColumn.Name = "PhoneNumberColumn"
-        '
-        'EmailAddressColumn
-        '
-        Me.EmailAddressColumn.DataPropertyName = "EmailAddress"
-        Me.EmailAddressColumn.HeaderText = "Email Address"
-        Me.EmailAddressColumn.Name = "EmailAddressColumn"
-        '
-        'JoinDateColumn
-        '
-        Me.JoinDateColumn.DataPropertyName = "JoinDate"
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.JoinDateColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.JoinDateColumn.HeaderText = "Join Date"
-        Me.JoinDateColumn.Name = "JoinDateColumn"
-        Me.JoinDateColumn.ReadOnly = True
         '
         'Frm_DisplayCustomers
         '
@@ -332,7 +325,6 @@ Partial Class Frm_DisplayCustomers
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewCustomersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewOrdersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewListenersToolStripMenuItem As ToolStripMenuItem

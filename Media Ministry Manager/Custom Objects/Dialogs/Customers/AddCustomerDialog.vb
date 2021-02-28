@@ -1,5 +1,6 @@
 ﻿Option Strict On
 
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
 
@@ -14,7 +15,7 @@ Public Class AddCustomerDialog
 
     Private Sub Btn_AddNewCustomer_Click(sender As Object, e As EventArgs) Handles btn_AddNewCustomer.Click
         bw_AddCustomer.RunWorkerAsync()
-        Me.Hide()
+        'Me.Hide()
     End Sub
 
     Private Sub Reset()
@@ -228,12 +229,18 @@ Public Class AddCustomerDialog
                 End Using
 
                 DialogResult = DialogResult.OK
-                Me.Close()
             Catch ex As SqlException
+                DialogResult = DialogResult.Retry
                 Console.WriteLine(ex.Message)
                 tss_AddCustomer.ForeColor = Color.Red
                 tss_AddCustomer.Text = "This person might already be in the system. Please try again."
             End Try
+        End If
+    End Sub
+
+    Private Sub Bw_AddCustomer_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_AddCustomer.RunWorkerCompleted
+        If DialogResult = DialogResult.OK Then
+            Me.Close()
         End If
     End Sub
 End Class

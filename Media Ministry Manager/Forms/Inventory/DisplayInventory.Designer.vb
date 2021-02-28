@@ -75,7 +75,6 @@ Partial Class Frm_DisplayInventory
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewOrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewProductsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewListenersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgv_Inventory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cms_ProductsTable.SuspendLayout()
@@ -404,7 +403,7 @@ Partial Class Frm_DisplayInventory
         '
         'ToolStripMenuItem5
         '
-        Me.ToolStripMenuItem5.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewCustomersToolStripMenuItem, Me.ViewOrdersToolStripMenuItem, Me.ViewProductsToolStripMenuItem, Me.ViewListenersToolStripMenuItem})
+        Me.ToolStripMenuItem5.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewCustomersToolStripMenuItem, Me.ViewOrdersToolStripMenuItem, Me.ViewListenersToolStripMenuItem})
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
         Me.ToolStripMenuItem5.Size = New System.Drawing.Size(44, 20)
         Me.ToolStripMenuItem5.Text = "&View"
@@ -412,25 +411,19 @@ Partial Class Frm_DisplayInventory
         'ViewCustomersToolStripMenuItem
         '
         Me.ViewCustomersToolStripMenuItem.Name = "ViewCustomersToolStripMenuItem"
-        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewCustomersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewCustomersToolStripMenuItem.Text = "Customers"
         '
         'ViewOrdersToolStripMenuItem
         '
         Me.ViewOrdersToolStripMenuItem.Name = "ViewOrdersToolStripMenuItem"
-        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewOrdersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewOrdersToolStripMenuItem.Text = "Orders"
-        '
-        'ViewProductsToolStripMenuItem
-        '
-        Me.ViewProductsToolStripMenuItem.Name = "ViewProductsToolStripMenuItem"
-        Me.ViewProductsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.ViewProductsToolStripMenuItem.Text = "Products"
         '
         'ViewListenersToolStripMenuItem
         '
         Me.ViewListenersToolStripMenuItem.Name = "ViewListenersToolStripMenuItem"
-        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ViewListenersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewListenersToolStripMenuItem.Text = "Listeners"
         '
         'Frm_DisplayInventory
@@ -503,6 +496,5 @@ Partial Class Frm_DisplayInventory
     Friend WithEvents ToolStripMenuItem5 As ToolStripMenuItem
     Friend WithEvents ViewCustomersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewOrdersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewProductsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewListenersToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -14,7 +14,6 @@ Public Class Frm_Settings
     Private result As DialogResult
 
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Console.WriteLine(String.Format("{0:C}", 10.568))
         'Load settings from settings file to display to user
         Me.Font = My.Settings.CurrentFont
         bw_Settings.RunWorkerAsync("l")
@@ -147,9 +146,9 @@ Public Class Frm_Settings
 
             Case "m"
                 Try
-                    service = New Sender(cts.Token)
                     Invoke(
                         Sub()
+                            service = New Sender(cts.Token)
                             btn_Gmail.Text = "Unlink Gmail"
                             lbl_CurrentGmail.Text = String.Format(currentUser, CType(service.Info, Profile).EmailAddress)
                         End Sub

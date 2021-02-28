@@ -17,7 +17,7 @@ Namespace GoogleAPI
         Inherits Service
         Implements IDisposable
 
-        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailSend}
+        Private ReadOnly Scopes As String() = {GmailService.Scope.GmailCompose}
         Private ReadOnly ApplicationName As String = "Media Ministry Manager"
         Private Property Credential As UserCredential
         Private Property Service As GmailService
@@ -32,9 +32,12 @@ Namespace GoogleAPI
             Dim credPath As String = "Gmail Token"
             Using stream As New MemoryStream(My.Resources.credentials)
                 Credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CType(IIf(IsNothing(ct), CancellationToken.None, ct), CancellationToken), New FileDataStore(credPath, True)).Result
-                Console.WriteLine("Credential file saved to: " + credPath)
-                Service = New GmailService(New BaseClientService.Initializer() With {.HttpClientInitializer = Credential, .ApplicationName = ApplicationName})
             End Using
+
+            Service = New GmailService(New BaseClientService.Initializer() With {
+                .HttpClientInitializer = Credential,
+                .ApplicationName = ApplicationName
+            })
         End Sub
 
         Public Sub Dispose() Implements IDisposable.Dispose

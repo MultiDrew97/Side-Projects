@@ -155,7 +155,7 @@ Partial Class RecieptTypeDialog
         Me.nud_Amount.DecimalPlaces = 2
         Me.nud_Amount.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
         Me.nud_Amount.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.nud_Amount.Location = New System.Drawing.Point(154, 220)
+        Me.nud_Amount.Location = New System.Drawing.Point(154, 217)
         Me.nud_Amount.Maximum = New Decimal(New Integer() {1316134912, 2328, 0, 0})
         Me.nud_Amount.Minimum = New Decimal(New Integer() {1, 0, 0, 131072})
         Me.nud_Amount.Name = "nud_Amount"
@@ -170,7 +170,7 @@ Partial Class RecieptTypeDialog
         Me.lbl_Amount.AutoSize = True
         Me.lbl_Amount.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.lbl_Amount.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.lbl_Amount.Location = New System.Drawing.Point(149, 192)
+        Me.lbl_Amount.Location = New System.Drawing.Point(149, 189)
         Me.lbl_Amount.Name = "lbl_Amount"
         Me.lbl_Amount.Size = New System.Drawing.Size(98, 25)
         Me.lbl_Amount.TabIndex = 30

@@ -174,6 +174,8 @@ Public Class Frm_ViewListeners
     Private Sub Txt_SearchBox_TextChanged(sender As Object, e As EventArgs) Handles txt_SearchBox.TextChanged
         If Not String.IsNullOrWhiteSpace(txt_SearchBox.Text) Then
             bsListeners.Filter = String.Format("{0} like '%{1}%'", CType(cbx_Column.SelectedItem, DataRowView)("Column"), txt_SearchBox.Text)
+        Else
+            bsListeners.Filter = ""
         End If
     End Sub
 
@@ -264,7 +266,7 @@ Public Class Frm_ViewListeners
         Me.Close()
     End Sub
 
-    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewListenersToolStripMenuItem.Click
+    Private Sub ListenersToolStripMenuItem_Click(sender As Object, e As EventArgs) 
         Dim listeners As New Frm_ViewListeners
         listeners.Show()
         Tooled = True

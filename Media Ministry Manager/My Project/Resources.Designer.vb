@@ -138,11 +138,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
+        '''  Looks up a localized string similar to Data Source=sppbc.hopto.org,14339;Initial Catalog=&quot;Media Ministry Test&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;;TrustServerCertificate=True;.
         '''</summary>
-        Friend ReadOnly Property databaseConnection() As String
+        Friend ReadOnly Property debugConnection() As String
             Get
-                Return ResourceManager.GetString("databaseConnection", resourceCulture)
+                Return ResourceManager.GetString("debugConnection", resourceCulture)
             End Get
         End Property
         
@@ -239,6 +239,24 @@ Namespace My.Resources
         Friend ReadOnly Property receipt() As String
             Get
                 Return ResourceManager.GetString("receipt", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Data Source=sppbc.hopto.org,14339;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
+        '''</summary>
+        Friend ReadOnly Property releaseConnection() As String
+            Get
+                Return ResourceManager.GetString("releaseConnection", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Data Source=mediaministry.database.windows.net;Initial Catalog=&quot;Media Ministry&quot;;Connect Timeout=30;Encrypt=True;Authentication=&quot;Sql Password&quot;.
+        '''</summary>
+        Friend ReadOnly Property releaseConnectionAzure() As String
+            Get
+                Return ResourceManager.GetString("releaseConnectionAzure", resourceCulture)
             End Get
         End Property
         

@@ -60,20 +60,22 @@ Public Class Frm_DisplayCustomers
 
         CustomersTable.Clear()
 
-        For Each customer As Types.Customer In Customers
-            row = CustomersTable.NewRow
-            row("CustomerID") = customer.Id
-            row("FirstName") = customer.FirstName
-            row("LastName") = customer.LastName
-            row("Street") = customer.Address.Street
-            row("City") = customer.Address.City
-            row("State") = customer.Address.State
-            row("ZipCode") = customer.Address.ZipCode
-            row("PhoneNumber") = customer.PhoneNumber
-            row("EmailAddress") = customer.EmailAddress.Address
-            row("JoinDate") = customer.JoinDate
-            CustomersTable.Rows.Add(row)
-        Next
+        If Customers IsNot Nothing Then
+            For Each customer As Types.Customer In Customers
+                row = CustomersTable.NewRow
+                row("CustomerID") = customer.Id
+                row("FirstName") = customer.FirstName
+                row("LastName") = customer.LastName
+                row("Street") = customer.Address.Street
+                row("City") = customer.Address.City
+                row("State") = customer.Address.State
+                row("ZipCode") = customer.Address.ZipCode
+                row("PhoneNumber") = customer.PhoneNumber
+                row("EmailAddress") = customer.EmailAddress.Address
+                row("JoinDate") = customer.JoinDate
+                CustomersTable.Rows.Add(row)
+            Next
+        End If
     End Sub
 
     Private Sub RemoveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
@@ -140,7 +142,7 @@ Public Class Frm_DisplayCustomers
         MessageBox.Show("This feature is currently under construction.", "Out of Order", MessageBoxButtons.OK, MessageBoxIcon.Hand)
     End Sub
 
-    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomersToolStripMenuItem.Click
+    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim customers As New Frm_DisplayCustomers
         customers.Show()
         Tooled = True

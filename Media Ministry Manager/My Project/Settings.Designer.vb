@@ -101,24 +101,42 @@ Partial Friend NotInheritable Class MySettings
         End Set
     End Property
     
-    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt, style=Bold")>  _
-    Public ReadOnly Property DefaultFont() As Global.System.Drawing.Font
+    Public Property DefaultFont() As Global.System.Drawing.Font
         Get
             Return CType(Me("DefaultFont"),Global.System.Drawing.Font)
         End Get
+        Set
+            Me("DefaultFont") = value
+        End Set
     End Property
     
-    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=mediaministry.database.windows.net;Initial Catalog=""Media Ministry"";C"& _ 
-        "onnect Timeout=30;Encrypt=True;Authentication=""Sql Password""")>  _
-    Public ReadOnly Property masterConnectionString() As String
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=sppbc.hopto.org,14339;Initial Catalog=""Media Ministry"";Connect Timeou"& _ 
+        "t=30;Encrypt=True;Authentication=""Sql Password""")>  _
+    Public Property releaseConnection() As String
         Get
-            Return CType(Me("masterConnectionString"),String)
+            Return CType(Me("releaseConnection"),String)
         End Get
+        Set
+            Me("releaseConnection") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=sppbc.hopto.org,14339;Initial Catalog=""Media Ministry Test"";Connect T"& _ 
+        "imeout=30;Encrypt=True;Authentication=""Sql Password""")>  _
+    Public Property debugConnection() As String
+        Get
+            Return CType(Me("debugConnection"),String)
+        End Get
+        Set
+            Me("debugConnection") = value
+        End Set
     End Property
 End Class
 

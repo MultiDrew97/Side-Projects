@@ -44,7 +44,7 @@ Public Class Frm_DisplayInventory
 
     Private Sub Dgv_Inventory_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgv_Inventory.UserDeletingRow
         Dim itemID As Integer = CInt(CType(e.Row.DataBoundItem, DataRowView)("ItemID"))
-        Dim available As Boolean = CBool(CType(e.Row.DataBoundItem, DataRowView)("Availablity"))
+        Dim available As Boolean = CBool(CType(e.Row.DataBoundItem, DataRowView)("Available"))
 
         Using db As New Database
             db.ChangeAvailability(itemID, Not available)
@@ -104,7 +104,7 @@ Public Class Frm_DisplayInventory
     Private Sub AvailabilityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AvailabilityToolStripMenuItem.Click
         For Each row As DataGridViewRow In dgv_Inventory.SelectedRows
             Dim itemID As Integer = CInt(CType(row.DataBoundItem, DataRowView)("ItemID"))
-            Dim available As Boolean = CBool(CType(row.DataBoundItem, DataRowView)("Availablity"))
+            Dim available As Boolean = CBool(CType(row.DataBoundItem, DataRowView)("Available"))
 
             Using db As New Database
                 db.ChangeAvailability(itemID, Not available)
@@ -122,7 +122,7 @@ Public Class Frm_DisplayInventory
         Me.Close()
     End Sub
 
-    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Utils.CloseOpenForms()
     End Sub
 
@@ -163,7 +163,7 @@ Public Class Frm_DisplayInventory
         Me.Close()
     End Sub
 
-    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewProductsToolStripMenuItem.Click
+    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) 
         Dim products As New Frm_DisplayInventory
         products.Show()
         Tooled = True
