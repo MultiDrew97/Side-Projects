@@ -207,7 +207,7 @@
             Me.State.MaxLength = 50
             Me.ZipCode.AllowDBNull = True
             Me.ZipCode.MaxLength = 50
-            Me.PhoneNumber.MaxLength = 12
+            Me.PhoneNumber.MaxLength = 15
             Me.PhoneNumber.AllowDBNull = False
             Me.EmailAddress.AllowDBNull = True
             Me.EmailAddress.MaxLength = 100
