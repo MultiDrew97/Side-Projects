@@ -24,6 +24,9 @@ Partial Class ListenerSelectionDialog
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.dgv_Listeners = New System.Windows.Forms.DataGridView()
+        Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ListenersName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ListenersEmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsListeners = New System.Windows.Forms.BindingSource(Me.components)
         Me.chk_AllListeners = New System.Windows.Forms.CheckBox()
         Me.btn_Finish = New System.Windows.Forms.Button()
@@ -31,9 +34,7 @@ Partial Class ListenerSelectionDialog
         Me.bw_RetrieveListeners = New System.ComponentModel.BackgroundWorker()
         Me.cbx_Column = New System.Windows.Forms.ComboBox()
         Me.txt_Search = New System.Windows.Forms.TextBox()
-        Me.Selection = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ListenersName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ListenersEmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bw_AllListeners = New System.ComponentModel.BackgroundWorker()
         CType(Me.dgv_Listeners, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsListeners, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -55,6 +56,29 @@ Partial Class ListenerSelectionDialog
         Me.dgv_Listeners.Name = "dgv_Listeners"
         Me.dgv_Listeners.Size = New System.Drawing.Size(671, 546)
         Me.dgv_Listeners.TabIndex = 0
+        '
+        'Selection
+        '
+        Me.Selection.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Selection.FillWeight = 50.0!
+        Me.Selection.HeaderText = ""
+        Me.Selection.MinimumWidth = 50
+        Me.Selection.Name = "Selection"
+        Me.Selection.Width = 50
+        '
+        'ListenersName
+        '
+        Me.ListenersName.DataPropertyName = "Name"
+        Me.ListenersName.HeaderText = "Name"
+        Me.ListenersName.Name = "ListenersName"
+        Me.ListenersName.ReadOnly = True
+        '
+        'ListenersEmailAddress
+        '
+        Me.ListenersEmailAddress.DataPropertyName = "EmailAddress"
+        Me.ListenersEmailAddress.HeaderText = "Email Address"
+        Me.ListenersEmailAddress.Name = "ListenersEmailAddress"
+        Me.ListenersEmailAddress.ReadOnly = True
         '
         'chk_AllListeners
         '
@@ -113,28 +137,8 @@ Partial Class ListenerSelectionDialog
         Me.txt_Search.Size = New System.Drawing.Size(320, 31)
         Me.txt_Search.TabIndex = 5
         '
-        'Selection
+        'bw_AllListeners
         '
-        Me.Selection.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Selection.FillWeight = 50.0!
-        Me.Selection.HeaderText = ""
-        Me.Selection.MinimumWidth = 50
-        Me.Selection.Name = "Selection"
-        Me.Selection.Width = 50
-        '
-        'ListenersName
-        '
-        Me.ListenersName.DataPropertyName = "Name"
-        Me.ListenersName.HeaderText = "Name"
-        Me.ListenersName.Name = "ListenersName"
-        Me.ListenersName.ReadOnly = True
-        '
-        'ListenersEmailAddress
-        '
-        Me.ListenersEmailAddress.DataPropertyName = "EmailAddress"
-        Me.ListenersEmailAddress.HeaderText = "Email Address"
-        Me.ListenersEmailAddress.Name = "ListenersEmailAddress"
-        Me.ListenersEmailAddress.ReadOnly = True
         '
         'ListenerSelectionDialog
         '
@@ -174,4 +178,5 @@ Partial Class ListenerSelectionDialog
     Friend WithEvents Selection As DataGridViewCheckBoxColumn
     Friend WithEvents ListenersName As DataGridViewTextBoxColumn
     Friend WithEvents ListenersEmailAddress As DataGridViewTextBoxColumn
+    Friend WithEvents bw_AllListeners As System.ComponentModel.BackgroundWorker
 End Class

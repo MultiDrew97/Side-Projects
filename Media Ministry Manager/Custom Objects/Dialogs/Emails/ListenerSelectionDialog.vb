@@ -19,10 +19,10 @@ Public Class ListenerSelectionDialog
 
     Public Overrides Sub Refresh()
         Listeners.Clear()
-        FillTable()
+        ClearSelections()
     End Sub
 
-    Private Sub btn_Finish_Click(sender As Object, e As EventArgs) Handles btn_Finish.Click
+    Private Sub Btn_Finish_Click(sender As Object, e As EventArgs) Handles btn_Finish.Click
         For Each row As DataGridViewRow In dgv_Listeners.Rows
             If CBool(row.Cells(0).Value) = True Then
                 Listeners.Add(Listener.Parse(ListenersTable.Rows(row.Index).ItemArray()))
@@ -38,16 +38,20 @@ Public Class ListenerSelectionDialog
         End If
     End Sub
 
-    Private Sub btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
+    Private Sub Btn_Cancel_Click(sender As Object, e As EventArgs) Handles btn_Cancel.Click
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
 
-    Private Sub chk_AllListeners_CheckedChanged(sender As Object, e As EventArgs) Handles chk_AllListeners.CheckedChanged
-        bw_RetrieveListeners.RunWorkerAsync()
+    Private Sub Chk_AllListeners_CheckedChanged(sender As Object, e As EventArgs) Handles chk_AllListeners.CheckedChanged
+        If chk_AllListeners.Checked Then
+            bw_AllListeners.RunWorkerAsync()
+        Else
+            Refresh()
+        End If
     End Sub
 
-    Private Sub bw_RetrieveListeners_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_RetrieveListeners.DoWork
+    Private Sub Bw_RetrieveListeners_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_RetrieveListeners.DoWork
         Using db As New Database()
             ListenerList = db.GetListeners()
         End Using
@@ -69,16 +73,31 @@ Public Class ListenerSelectionDialog
         End Try
     End Sub
 
-    Private Sub bw_RetrieveListeners_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_RetrieveListeners.RunWorkerCompleted
+    Private Sub Bw_RetrieveListeners_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bw_RetrieveListeners.RunWorkerCompleted
+        FillTable()
         Refresh()
     End Sub
 
-    Private Sub cbx_Column_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Column.SelectedIndexChanged
+    Private Sub Cbx_Column_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbx_Column.SelectedIndexChanged
         txt_Search.Text = ""
         column = If(cbx_Column.SelectedItem.ToString.Equals("Email Address"), "EmailAddress", "Name")
     End Sub
 
-    Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
+    Private Sub Txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
         bsListeners.Filter = String.Format("{0} like '%{1}%'", column, txt_Search.Text)
+    End Sub
+
+    Private Sub Bw_AllListeners_DoWork(sender As Object, e As DoWorkEventArgs) Handles bw_AllListeners.DoWork
+        For Each row As DataGridViewRow In dgv_Listeners.Rows
+            row.Cells(0).Value = True
+        Next
+    End Sub
+
+    Private Sub ClearSelections()
+        For Each row As DataGridViewRow In dgv_Listeners.Rows
+            If CBool(row.Cells(0).Value) = True Then
+                row.Cells(0).Value = False
+            End If
+        Next
     End Sub
 End Class
