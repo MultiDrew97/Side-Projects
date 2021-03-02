@@ -11,7 +11,7 @@ Public Class Frm_Settings
     Private ReadOnly bold As String = "Bolded? {0}"
     Private ReadOnly fontSize As String = "Font Size: {0}pt"
     Private ReadOnly textFont As String = "Font: {0}"
-    Private result As DialogResult
+    'Private result As DialogResult
 
     Private Sub Frm_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Load settings from settings file to display to user
@@ -29,7 +29,7 @@ Public Class Frm_Settings
     End Sub
 
     Private Sub Btn_SelectFont_Click(sender As Object, e As EventArgs) Handles btn_ChangeFont.Click
-        result = fd_FontSelector.ShowDialog()
+        Dim result = fd_FontSelector.ShowDialog()
 
         If result = DialogResult.OK Then
             ChangeFont()
@@ -162,6 +162,7 @@ Public Class Frm_Settings
     End Sub
 
     Private Sub Bw_CheckServices_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bw_CheckServices.DoWork
+        'TODO: Create 2 seperate background workers for performing GoogleAPI calls
         Invoke(
             Sub()
                 'Retrieve the Google Drive Info being used by the user

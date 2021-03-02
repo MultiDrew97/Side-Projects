@@ -294,6 +294,12 @@
     <Compile Include="Custom Objects\Dialogs\Emails\RecieptTypeDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Custom Objects\Dialogs\Misc\MasterSettingsDialog.Designer.vb">
+      <DependentUpon>MasterSettingsDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Objects\Dialogs\Misc\MasterSettingsDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Custom Objects\Exceptions\FormClosedException.vb" />
     <Compile Include="Custom Objects\Exceptions\InvalidStateCodeException.vb" />
     <Compile Include="Custom Objects\Exceptions\PasswordException.vb" />
@@ -480,6 +486,9 @@
     <EmbeddedResource Include="Custom Objects\Dialogs\Emails\RecieptTypeDialog.resx">
       <DependentUpon>RecieptTypeDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Custom Objects\Dialogs\Misc\MasterSettingsDialog.resx">
+      <DependentUpon>MasterSettingsDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Email Listeners\frm_ViewListeners.resx">
       <DependentUpon>frm_ViewListeners.vb</DependentUpon>
     </EmbeddedResource>
@@ -551,11 +560,6 @@
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Java.SE.Development.Kit">
-      <Visible>False</Visible>
-      <ProductName>JDK 13.0.2</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
