@@ -52,7 +52,7 @@ Namespace GoogleAPI
 
         Function Create([to] As MailboxAddress, subject As String, body As String, Optional from As String = "me") As MimeMessage
             Dim email As New MimeMessage() With {
-                .Sender = New MailboxAddress(from, from),
+                .Sender = New MailboxAddress("Elder Bryon Miller", from),
                 .Subject = subject,
                 .Body = New TextPart("html") With {
                     .Text = body
