@@ -44,12 +44,12 @@ Partial Class SendEmailsDialog
         Me.btn_LocalSend = New System.Windows.Forms.Button()
         Me.chk_RecieptDefault = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.flf_LocalReciept = New MediaMinistry.FileLocationField()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.btn_CustomSend = New System.Windows.Forms.Button()
         Me.btn_CustomMessage = New System.Windows.Forms.Button()
         Me.btn_UploadFile = New System.Windows.Forms.Button()
         Me.btn_AddFolder = New System.Windows.Forms.Button()
-        Me.flf_LocalReciept = New MediaMinistry.FileLocationField()
         Me.ss_Feedback.SuspendLayout()
         Me.tcl_EmailOptions.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -285,6 +285,15 @@ Partial Class SendEmailsDialog
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "File:"
         '
+        'flf_LocalReciept
+        '
+        Me.flf_LocalReciept.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.flf_LocalReciept.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
+        Me.flf_LocalReciept.Location = New System.Drawing.Point(41, 159)
+        Me.flf_LocalReciept.Name = "flf_LocalReciept"
+        Me.flf_LocalReciept.Size = New System.Drawing.Size(560, 33)
+        Me.flf_LocalReciept.TabIndex = 26
+        '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.btn_CustomSend)
@@ -350,15 +359,6 @@ Partial Class SendEmailsDialog
         Me.btn_AddFolder.TabIndex = 12
         Me.btn_AddFolder.Text = "Create New Folder"
         Me.btn_AddFolder.UseVisualStyleBackColor = True
-        '
-        'flf_LocalReciept
-        '
-        Me.flf_LocalReciept.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.MediaMinistry.MySettings.Default, "CurrentFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.flf_LocalReciept.Font = Global.MediaMinistry.MySettings.Default.CurrentFont
-        Me.flf_LocalReciept.Location = New System.Drawing.Point(41, 159)
-        Me.flf_LocalReciept.Name = "flf_LocalReciept"
-        Me.flf_LocalReciept.Size = New System.Drawing.Size(560, 33)
-        Me.flf_LocalReciept.TabIndex = 26
         '
         'SendEmailsDialog
         '
